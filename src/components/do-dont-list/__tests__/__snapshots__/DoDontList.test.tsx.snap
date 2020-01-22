@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DoDontList DoDontList.Item matches snapshot: DoDontList.Item 1`] = `
+<li>
+  <Component />
+  Text
+</li>
+`;
+
+exports[`DoDontList matches snapshot: DoDontList-Do 1`] = `
+<div
+  className="nhsuk-do-dont-list"
+>
+  <HeadingLevel
+    className="nhsuk-do-dont-list__label"
+  >
+    Do
+  </HeadingLevel>
+  <ul
+    className="nhsuk-list nhsuk-list--tick"
+  >
+    <ContextProvider
+      value="do"
+    />
+  </ul>
+</div>
+`;
+
+exports[`DoDontList matches snapshot: DoDontList-Dont 1`] = `
+<div
+  className="nhsuk-do-dont-list"
+>
+  <HeadingLevel
+    className="nhsuk-do-dont-list__label"
+  >
+    Don't
+  </HeadingLevel>
+  <ul
+    className="nhsuk-list nhsuk-list--cross"
+  >
+    <ContextProvider
+      value="dont"
+    />
+  </ul>
+</div>
+`;

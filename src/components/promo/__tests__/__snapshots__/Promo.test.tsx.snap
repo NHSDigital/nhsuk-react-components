@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[` 1`] = `
+<p
+  className="nhsuk-promo__description"
+>
+  Description
+</p>
+`;
+
+exports[`Promo Promo.Heading matches snapshot: Promo.Heading 1`] = `
+<h3
+  className="nhsuk-promo__heading"
+>
+  Heading
+</h3>
+`;
+
+exports[`Promo matches snapshot: Promo 1`] = `
+<Promo>
+  <BasePromo
+    imageProps={Object {}}
+  >
+    <div
+      className="nhsuk-promo"
+    >
+      <a
+        className="nhsuk-promo__link-wrapper"
+      >
+        <div
+          className="nhsuk-promo__content"
+        />
+      </a>
+    </div>
+  </BasePromo>
+</Promo>
+`;

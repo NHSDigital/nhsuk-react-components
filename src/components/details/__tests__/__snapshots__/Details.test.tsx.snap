@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Details Details.ExpanderGroup matches snapshot: Details.ExpanderGroup 1`] = `
+<div
+  className="nhsuk-expander-group"
+/>
+`;
+
+exports[`Details Details.Summary matches snapshot: Details.Summary 1`] = `
+<summary
+  className="nhsuk-details__summary"
+>
+  <span
+    className="nhsuk-details__summary-text"
+  >
+    Content
+  </span>
+</summary>
+`;
+
+exports[`Details Details.Text matches snapshot: Details.Text 1`] = `
+<div
+  className="nhsuk-details__text"
+>
+  Text
+</div>
+`;
+
+exports[`Details matches snapshot: ExpanderDetails 1`] = `
+<details
+  className="nhsuk-details nhsuk-expander"
+/>
+`;
+
+exports[`Details matches snapshot: StandardDetails 1`] = `
+<details
+  className="nhsuk-details"
+/>
+`;

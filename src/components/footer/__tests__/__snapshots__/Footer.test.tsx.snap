@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer Footer.Copyright matches snapshot: Footer.Copyright 1`] = `
+<p
+  className="nhsuk-footer__copyright"
+/>
+`;
+
+exports[`Footer Footer.List matches snapshot: Footer.List 1`] = `
+<ul
+  className="nhsuk-footer__list"
+/>
+`;
+
+exports[`Footer Footer.ListItem matches snapshot: Footer.ListItem 1`] = `
+<li
+  className="nhsuk-footer__list-item"
+>
+  <a
+    className="nhsuk-footer__list-item-link"
+  />
+</li>
+`;
+
+exports[`Footer matches snapshot: Footer 1`] = `
+<footer>
+  <div
+    className="nhsuk-footer"
+  >
+    <Container>
+      <h2
+        className="nhsuk-u-visually-hidden"
+      >
+        Support links
+      </h2>
+    </Container>
+  </div>
+</footer>
+`;

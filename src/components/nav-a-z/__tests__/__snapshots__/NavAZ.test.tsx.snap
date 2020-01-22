@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavAZ matches snapshot: NavAZ 1`] = `
+<nav
+  className="nhsuk-nav-a-z"
+>
+  <ol
+    className="nhsuk-nav-a-z__list"
+    role="list"
+  />
+</nav>
+`;

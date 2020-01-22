@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CareCard matches snapshot: BaseCareCard 1`] = `
+<CareCard
+  type="urgent"
+>
+  <div
+    className="nhsuk-care-card nhsuk-care-card--urgent"
+  />
+</CareCard>
+`;

@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ReviewDate matches snapshot: ReviewDate 1`] = `
+<div
+  className="nhsuk-review-date"
+>
+  <p
+    className="nhsuk-body-s"
+  />
+</div>
+`;

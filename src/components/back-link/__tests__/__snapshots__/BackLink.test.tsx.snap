@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BackLink matches snapshot: BackLink 1`] = `
+<div
+  className="nhsuk-back-link"
+>
+  <a
+    className="nhsuk-back-link__link"
+    href="/back"
+  >
+    <Component />
+    Back
+  </a>
+</div>
+`;

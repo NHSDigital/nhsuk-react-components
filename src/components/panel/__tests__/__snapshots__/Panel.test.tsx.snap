@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Panel matches snapshot: Panel 1`] = `
+<Panel>
+  <BasePanel>
+    <div
+      className="nhsuk-panel"
+    />
+  </BasePanel>
+</Panel>
+`;

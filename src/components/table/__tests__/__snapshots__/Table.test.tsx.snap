@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table Table.Body matches snapshot 1`] = `
+<tbody
+  className="nhsuk-table__body"
+>
+  <ContextProvider
+    value="BODY"
+  />
+</tbody>
+`;
+
+exports[`Table Table.Cell matches snapshot 1`] = `
+<th
+  className="nhsuk-table__header"
+  scope="col"
+>
+  Cell
+</th>
+`;
+
+exports[`Table Table.Head matches snapshot 1`] = `
+<thead
+  className="nhsuk-table__head"
+>
+  <ContextProvider
+    value="HEADER"
+  />
+</thead>
+`;
+
+exports[`Table Table.Panel matches snapshot 1`] = `
+<div
+  className="nhsuk-table__panel-with-heading-tab"
+/>
+`;
+
+exports[`Table Table.Row matches snapshot 1`] = `
+<tr
+  className="nhsuk-table__row"
+/>
+`;
+
+exports[`Table matches snapshot 1`] = `
+<div
+  className="nhsuk-table-responsive"
+>
+  <table
+    className="nhsuk-table"
+  />
+</div>
+`;

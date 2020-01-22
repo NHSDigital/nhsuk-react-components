@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Hero Hero.Heading matches snapshot: Hero.Heading 1`] = `
+<h1
+  className="nhsuk-u-margin-bottom-3"
+>
+  Text
+</h1>
+`;
+
+exports[`Hero Hero.Text matches snapshot: Hero.Text 1`] = `
+<p
+  className="nhsuk-body-l nhsuk-u-margin-bottom-0"
+>
+  Text
+</p>
+`;
+
+exports[`Hero matches snapshot: Hero 1`] = `
+<section
+  className="nhsuk-hero"
+>
+  <HeroContent
+    hasImage={false}
+  />
+</section>
+`;

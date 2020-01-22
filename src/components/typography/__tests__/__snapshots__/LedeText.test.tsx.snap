@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LedeText matches snapshot 1`] = `
+<p
+  className="nhsuk-lede-text"
+>
+  Text
+</p>
+`;

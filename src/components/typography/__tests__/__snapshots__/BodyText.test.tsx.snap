@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`BodyText matches snapshot 1`] = `
+<p
+  className="nhsuk-body"
+>
+  Text
+</p>
+`;

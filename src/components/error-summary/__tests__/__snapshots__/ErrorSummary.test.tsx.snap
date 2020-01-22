@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ErrorSummary ErrorSummary.Body matches snapshot: ErrorSummary.Body 1`] = `
+<div
+  className="nhsuk-error-summary__body"
+>
+  Body
+</div>
+`;
+
+exports[`ErrorSummary ErrorSummary.List matches snapshot: ErrorSummary.List 1`] = `
+<ul
+  className="nhsuk-list nhsuk-error-summary__list"
+>
+  List
+</ul>
+`;
+
+exports[`ErrorSummary ErrorSummary.ListItem matches snapshot: ErrorSummary.ListItem 1`] = `
+<li>
+  <a>
+    ListItem
+  </a>
+</li>
+`;
+
+exports[`ErrorSummary ErrorSummary.Title matches snapshot: ErrorSummary.Title 1`] = `
+<h2
+  className="nhsuk-error-summary__title"
+>
+  Title
+</h2>
+`;
+
+exports[`ErrorSummary matches snapshot: ErrorSummary 1`] = `
+<div
+  className="nhsuk-error-summary"
+/>
+`;

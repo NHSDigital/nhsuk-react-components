@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pagination Pagination.Link matches snapshot: Pagination.Link 1`] = `
+<li
+  className=""
+>
+  <a
+    className="nhsuk-pagination__link"
+  >
+    <span
+      className="nhsuk-pagination__title"
+    />
+    <span
+      className="nhsuk-u-visually-hidden"
+    >
+      :
+    </span>
+    <span
+      className="nhsuk-pagination__page"
+    />
+  </a>
+</li>
+`;
+
+exports[`Pagination matches snapshot: Pagination 1`] = `
+<nav
+  aria-label="Pagination"
+  className="nhsuk-pagination"
+  role="navigation"
+>
+  <ul
+    className="nhsuk-list nhsuk-pagination__list"
+  />
+</nav>
+`;

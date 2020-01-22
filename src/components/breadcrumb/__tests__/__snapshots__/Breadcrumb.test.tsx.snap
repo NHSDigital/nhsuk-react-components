@@ -1,0 +1,66 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Breadcrumb base element matches snapshot: BaseBreadcrumbs 1`] = `
+<nav
+  aria-label="Breadcrumb"
+  className="nhsuk-breadcrumb"
+>
+  <Container>
+    <ol
+      className="nhsuk-breadcrumb__list"
+    />
+  </Container>
+</nav>
+`;
+
+exports[`Breadcrumb renders with children: BreadcrumbWithChildren 1`] = `
+<Breadcrumb
+  aria-label="Breadcrumb"
+>
+  <nav
+    aria-label="Breadcrumb"
+    className="nhsuk-breadcrumb"
+  >
+    <Container>
+      <div
+        className="nhsuk-width-container"
+      >
+        <ol
+          className="nhsuk-breadcrumb__list"
+        >
+          <Item
+            href="/bc-1"
+            key=".0"
+          >
+            <li
+              className="nhsuk-breadcrumb__item"
+            >
+              <a
+                className="nhsuk-breadcrumb__link"
+                href="/bc-1"
+              >
+                Breadcrumb 1
+              </a>
+            </li>
+          </Item>
+          <Item
+            href="/bc-2"
+            key=".1"
+          >
+            <li
+              className="nhsuk-breadcrumb__item"
+            >
+              <a
+                className="nhsuk-breadcrumb__link"
+                href="/bc-2"
+              >
+                Breadcrumb 2
+              </a>
+            </li>
+          </Item>
+        </ol>
+      </div>
+    </Container>
+  </nav>
+</Breadcrumb>
+`;

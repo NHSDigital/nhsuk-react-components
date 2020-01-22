@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`InsetText matches snapshot: InsetText 1`] = `
+<div
+  className="nhsuk-inset-text"
+>
+  <span
+    className="nhsuk-u-visually-hidden"
+  >
+    Information: 
+  </span>
+</div>
+`;
