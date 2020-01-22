@@ -1,6 +1,10 @@
 # NHS.UK React Components
 NHS.UK Frontend ported to React
 
+## Coming from 0.x?
+
+If you're coming from versions of the library prior to 1.0.0, please give [this wiki page](https://github.com/NHSDigital/nhsuk-react-components/wiki/Porting-Guide-for-0.X-to-1.0) a brief read, as there a number of changes between 0.x release and the 1.0 release.
+
 ## Installation
 
 You can install this package using either `yarn` or `npm`.
