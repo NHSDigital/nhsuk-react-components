@@ -1,4 +1,4 @@
-# nhsuk-react-components
+# NHS.UK React Components
 NHS.UK Frontend ported to React
 
 ## Installation
@@ -38,5 +38,5 @@ class GetStartedButton extends PureComponent {
 
 **We're currently looking for new maintainers!** If you have knowledge of React and would be willing to help maintain this library, you can email me (Thomas Judd-Cooper) [here](thomas.judd-cooper1@nhs.net).
 
-[Thomas Judd-Cooper](https://github.com/tomdango)
-[Sam Brown](https://github.com/samueldavidbrown)
+- Thomas Judd-Cooper [GitHub](https://github.com/tomdango)
+- Sam Brown [GitHub](https://github.com/samueldavidbrown)
