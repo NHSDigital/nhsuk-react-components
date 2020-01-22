@@ -24,7 +24,7 @@ import Button from "nhsuk-react-components/lib/components/button";
 
 class GetStartedButton extends PureComponent {
     render() {
-        return <Button>Click Me!</Buttons>
+        return <Button>Click Me!</Button>
     }
 };
 ```
