@@ -1,11 +1,12 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import centered from '@storybook/addon-centered/react';
 import { ContentsList } from '../src';
 
 const stories = storiesOf('ContentsList', module);
 
-stories.add('Normal', () => (
+stories.addDecorator(centered).add('Normal', () => (
   <ContentsList aria-label="Pages in this guide">
     <ContentsList.Item current aria-current="page">
       What is AMD?

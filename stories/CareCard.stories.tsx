@@ -1,11 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import centered from '@storybook/addon-centered/react';
 import { CareCard } from '../src';
 
 const stories = storiesOf('CareCard', module);
 
 stories
+  .addDecorator(centered)
   .add('Non-Urgent', () => (
     <CareCard type="non-urgent">
       <CareCard.Heading>Speak to a GP if:</CareCard.Heading>

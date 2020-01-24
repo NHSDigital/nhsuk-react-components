@@ -1,11 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import centered from '@storybook/addon-centered';
 import { WarningCallout } from '../src';
 
 const stories = storiesOf('Warning Callout', module);
 
 stories
+  .addDecorator(centered)
   .add('Standard', () => (
     <WarningCallout label="School, nursery or work">
       <p>

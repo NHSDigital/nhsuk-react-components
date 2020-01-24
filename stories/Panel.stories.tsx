@@ -1,11 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import centered from '@storybook/addon-centered';
 import { Panel } from '../src';
 
 const stories = storiesOf('Panel', module);
 
 stories
+  .addDecorator(centered)
   .add('Standard', () => (
     <Panel>
       <h3>Live Well</h3>

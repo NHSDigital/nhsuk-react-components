@@ -1,11 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import centered from '@storybook/addon-centered';
 import { Input, Form } from '../src';
 
 const stories = storiesOf('Input', module);
 
 stories
+  .addDecorator(centered)
   .add('Standard', () => (
     <Input id="input-example" name="test-name">
       National Insurance Number

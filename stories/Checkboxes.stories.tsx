@@ -1,11 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { MouseEvent } from 'react';
 import { storiesOf } from '@storybook/react';
+import centered from '@storybook/addon-centered/react';
 import { Checkboxes, Form, Fieldset, Hint, Button, Input } from '../src';
 
 const stories = storiesOf('Checkboxes', module);
 
 stories
+  .addDecorator(centered)
   .add('Standard', () => (
     <Form>
       <Fieldset aria-describedby="nationality-hint">
@@ -119,24 +121,22 @@ stories
             </Checkboxes>
           </Fieldset>
         </Form>
-        <Input value={error} onChange={e => setError(e.currentTarget.value)}></Input>
+        <Input value={error} onChange={e => setError(e.currentTarget.value)} />
       </>
     );
   })
-  .add('With Conditional Content', () => {
-    return (
-      <Form>
-        <Fieldset aria-describedby="waste-hint">
-          <Fieldset.Legend isPageHeading>
-            Which types of waste do you transport regularly?
-          </Fieldset.Legend>
-          <Hint id="waste-hint">Select all that apply</Hint>
-          <Checkboxes id="waste" name="waste">
-            <Checkboxes.Box conditional={<p>This includes rocks and earth.</p>} value="mines">
-              Waste from mines or quarries
-            </Checkboxes.Box>
-          </Checkboxes>
-        </Fieldset>
-      </Form>
-    );
-  });
+  .add('With Conditional Content', () => (
+    <Form>
+      <Fieldset aria-describedby="waste-hint">
+        <Fieldset.Legend isPageHeading>
+          Which types of waste do you transport regularly?
+        </Fieldset.Legend>
+        <Hint id="waste-hint">Select all that apply</Hint>
+        <Checkboxes id="waste" name="waste">
+          <Checkboxes.Box conditional={<p>This includes rocks and earth.</p>} value="mines">
+            Waste from mines or quarries
+          </Checkboxes.Box>
+        </Checkboxes>
+      </Fieldset>
+    </Form>
+  ));

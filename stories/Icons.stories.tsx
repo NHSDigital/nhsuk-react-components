@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import centered from '@storybook/addon-centered';
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
@@ -20,6 +21,7 @@ import {
 const stories = storiesOf('Icons', module);
 
 stories
+  .addDecorator(centered)
   .add('ArrowLeft', () => <ArrowLeftIcon />)
   .add('ArrowRight', () => <ArrowRightIcon />)
   .add('ArrowRightCircle', () => <ArrowRightCircleIcon />)

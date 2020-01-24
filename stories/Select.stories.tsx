@@ -1,11 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { MouseEvent } from 'react';
 import { storiesOf } from '@storybook/react';
+import centered from '@storybook/addon-centered';
 import { Select, Form, Button, Input } from '../src';
 
 const stories = storiesOf('Select', module);
 
 stories
+  .addDecorator(centered)
   .add('Standard', () => (
     <Select id="select-1" label="Label text goes here">
       <Select.Option value="1">NHS.UK frontend option 1</Select.Option>
@@ -57,7 +59,7 @@ stories
             <Select.Option value="3">NHS.UK frontend option 3</Select.Option>
           </Select>
         </Form>
-        <Input onChange={e => setError(e.currentTarget.value)} value={error}></Input>
+        <Input onChange={e => setError(e.currentTarget.value)} value={error} />
       </>
     );
   });

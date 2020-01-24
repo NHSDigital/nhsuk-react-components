@@ -1,11 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { MouseEvent } from 'react';
 import { storiesOf } from '@storybook/react';
+import centered from '@storybook/addon-centered';
 import { Radios, Form, Fieldset, Hint, Button, Input } from '../src';
 
 const stories = storiesOf('Radios', module);
 
 stories
+  .addDecorator(centered)
   .add('Standard', () => (
     <Form>
       <Fieldset>
@@ -144,7 +146,7 @@ stories
             </Radios>
           </Fieldset>
         </Form>
-        <Input value={error} onChange={e => setError(e.currentTarget.value)}></Input>
+        <Input value={error} onChange={e => setError(e.currentTarget.value)} />
       </>
     );
   });

@@ -1,11 +1,12 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import centered from '@storybook/addon-centered';
 import { ListPanel } from '../src';
 
 const stories = storiesOf('List Panel', module);
 
-stories.add('Standard', () => (
+stories.addDecorator(centered).add('Standard', () => (
   <ListPanel>
     <ListPanel.Panel label="A" labelProps={{ id: 'A' }} backToTop backToTopLink="#">
       <ListPanel.LinkItem href="/conditions/abdominal-aortic-aneurysm/">AAA</ListPanel.LinkItem>

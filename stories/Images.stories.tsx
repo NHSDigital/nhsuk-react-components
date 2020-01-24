@@ -1,11 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import centered from '@storybook/addon-centered';
 import { Images } from '../src';
 
 const stories = storiesOf('Images', module);
 
 stories
+  .addDecorator(centered)
   .add('With Caption', () => (
     <Images
       src="https://assets.nhs.uk/prod/images/S_1017_allergic-conjunctivitis_M15.2e16d0ba.fill-320x213.jpg"

@@ -1,11 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import centered from '@storybook/addon-centered';
 import { Promo } from '../src';
 
 const stories = storiesOf('Promo', module);
 
 stories
+  .addDecorator(centered)
   .add('Standard', () => (
     <Promo href="https://www.nhs.uk">
       <Promo.Heading>Save a life: give blood</Promo.Heading>

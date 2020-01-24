@@ -1,11 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import centered from '@storybook/addon-centered';
 import { NavAZ } from '../src';
 
 const stories = storiesOf('Nav A-Z', module);
 
 stories
+  .addDecorator(centered)
   .add('Basic', () => (
     <NavAZ>
       <NavAZ.LinkItem href="#A">A</NavAZ.LinkItem>
@@ -36,18 +38,18 @@ stories
       <NavAZ.LinkItem href="#Z">Z</NavAZ.LinkItem>
     </NavAZ>
   ))
-  .add('Using fullAlphabet', () => <NavAZ fullAlphabet></NavAZ>)
+  .add('Using fullAlphabet', () => <NavAZ fullAlphabet />)
   .add('Using fullAlphabet with disabled letters', () => (
-    <NavAZ fullAlphabet disabledLetters={['A', 'B', 'C']}></NavAZ>
+    <NavAZ fullAlphabet disabledLetters={['A', 'B', 'C']} />
   ))
   .add('Using fullAlphabet with removed letters', () => (
-    <NavAZ fullAlphabet removedLetters={['A', 'B', 'C']}></NavAZ>
+    <NavAZ fullAlphabet removedLetters={['A', 'B', 'C']} />
   ))
-  .add('Using letters', () => <NavAZ letters={['A', 'B', 'C']}></NavAZ>)
+  .add('Using letters', () => <NavAZ letters={['A', 'B', 'C']} />)
   .add('Using a combination', () => (
     <NavAZ
       letters={'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')}
       disabledLetters={'QWERTY'.split('')}
       removedLetters={'UIOP'.split('')}
-    ></NavAZ>
+    />
   ));

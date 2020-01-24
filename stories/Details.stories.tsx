@@ -1,11 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import centered from '@storybook/addon-centered/react';
 import { Details } from '../src';
 
 const stories = storiesOf('Details', module);
 
 stories
+  .addDecorator(centered)
   .add('Standard', () => (
     <Details>
       <Details.Summary>Where can I find my NHS number?</Details.Summary>
@@ -72,7 +74,7 @@ stories
       </Details.Text>
     </Details>
   ))
-  .add('Expander Grouo', () => (
+  .add('Expander Group', () => (
     <Details.ExpanderGroup>
       <Details expander>
         <Details.Summary>How to measure your blood glucose levels</Details.Summary>

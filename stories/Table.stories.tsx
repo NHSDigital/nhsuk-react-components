@@ -1,11 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import centered from '@storybook/addon-centered';
 import { Table } from '../src';
 
 const stories = storiesOf('Table', module);
 
 stories
+  .addDecorator(centered)
   .add('Standard', () => (
     <Table caption="Skin symptoms and possible causes">
       <Table.Head>

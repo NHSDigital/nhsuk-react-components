@@ -1,11 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { storiesOf } from '@storybook/react';
+import centered from '@storybook/addon-centered';
 import { DoDontList } from '../src';
 
 const stories = storiesOf('DoDontList', module);
 
 stories
+  .addDecorator(centered)
   .add('Do', () => (
     <DoDontList listType="do">
       <DoDontList.Item>

@@ -40,6 +40,12 @@ const Box: React.FC<BoxProps> = ({
     }
   }, [id]);
 
+  const onBoxChange = () => {
+    if (typeof checked === 'undefined') {
+      setIsChecked(!isChecked);
+    }
+  };
+
   return (
     <div className={classNames('nhsuk-checkboxes__item', className)}>
       <input
@@ -48,7 +54,8 @@ const Box: React.FC<BoxProps> = ({
         id={boxId}
         ref={inputRef}
         name={context.isCheckbox ? name || context.name : name}
-        checked={isChecked || checked}
+        checked={Boolean(isChecked || checked)}
+        onChange={onBoxChange}
       />
       <Label
         className="nhsuk-checkboxes__label"

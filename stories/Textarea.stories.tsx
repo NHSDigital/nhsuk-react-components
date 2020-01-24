@@ -1,11 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { MouseEvent, useState } from 'react';
 import { storiesOf } from '@storybook/react';
+import Centered from '@storybook/addon-centered';
 import { Textarea, Form, Button, Input } from '../src';
 
 const stories = storiesOf('Textarea', module);
 
 stories
+  .addDecorator(Centered)
   .add('Standard', () => (
     <Textarea
       label="Can you provide more detail?"
@@ -13,7 +15,7 @@ stories
       id="more-detail"
       name="more-detail"
       rows={5}
-    ></Textarea>
+    />
   ))
   .add('With autoComplete attribute', () => (
     <Textarea
@@ -22,7 +24,7 @@ stories
       name="address"
       rows={5}
       autoComplete="street-address"
-    ></Textarea>
+    />
   ))
   .add('With Error (Boolean)', () => {
     const [error, setError] = useState<boolean>(true);
@@ -36,7 +38,7 @@ stories
             name="no-ni-reason"
             rows={5}
             label="Why can&#39;t you provide a National Insurance number?"
-          ></Textarea>
+          />
         </Form>
         <Button
           onClick={(e: MouseEvent<HTMLButtonElement>) => {
@@ -60,7 +62,7 @@ stories
             name="no-ni-reason"
             rows={5}
             label="Why can&#39;t you provide a National Insurance number?"
-          ></Textarea>
+          />
         </Form>
         <Input onChange={e => setError(e.currentTarget.value)} value={error} />
       </>
