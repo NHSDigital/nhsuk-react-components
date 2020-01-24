@@ -109,3 +109,4 @@ dist
 # Custom
 lib/
 yarn-error.log
+storybook-static/
