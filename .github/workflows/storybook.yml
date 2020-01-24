@@ -1,4 +1,4 @@
-name: Publish Storybook
+name: Build & Deploy Storybook
 
 on: [push]
 
@@ -22,4 +22,4 @@ jobs:
       - name: Deploy Storybook
         run: yarn storybook-to-ghpages --ci
         env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
