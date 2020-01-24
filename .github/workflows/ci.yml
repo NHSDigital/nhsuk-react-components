@@ -16,3 +16,5 @@ jobs:
         run: yarn test:ci
       - name: Typescript build
         run: yarn build
+      - name: Storybook build
+        run: yarn build-storybook

@@ -20,4 +20,4 @@ jobs:
         run: yarn install
 
       - name: Deploy Storybook
-        run: storybook-to-ghpages --ci
+        run: yarn storybook-to-ghpages --ci
