@@ -38,8 +38,7 @@ class GetStartedButton extends PureComponent {
 
 ### Storybook
 
-**Coming Soon!**
-~~A storybook containing all of the components and their usage can be found [here](https://nhsdigital.github.io/nhsuk-react-components).~~
+A storybook containing all of the components and their usage can be found [here](https://nhsdigital.github.io/nhsuk-react-components).
 
 ## Maintainers
 
