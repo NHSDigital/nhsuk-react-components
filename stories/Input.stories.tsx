@@ -59,7 +59,7 @@ stories
       National Insurance Number
     </Input>
   ))
-  .add('Known Crash', () => {
+  .add('Multiple Error States', () => {
     const [firstName, setFirstName] = useState<string>('');
     const [lastName, setLastName] = useState<string>('');
     const [firstNameError, setFirstNameError] = useState<string>('');
