@@ -13,9 +13,9 @@ If you're coming from versions of the library prior to 1.0.0, please give [this 
 You can install this package using either `yarn` or `npm`.
 
 ```bash
-npm install --save nhsuk-react-components
+npm install --save nhsuk-react-components@next
 # Or
-yarn add nhsuk-react-components
+yarn add nhsuk-react-components@next
 ```
 
 ## Usage
@@ -38,8 +38,7 @@ class GetStartedButton extends PureComponent {
 
 ### Storybook
 
-**Coming Soon!**
-~~A storybook containing all of the components and their usage can be found [here](https://nhsdigital.github.io/nhsuk-react-components).~~
+A storybook containing all of the components and their usage can be found [here](https://nhsdigital.github.io/nhsuk-react-components).
 
 ## Maintainers
 

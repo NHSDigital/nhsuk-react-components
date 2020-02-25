@@ -4,8 +4,6 @@ import HeaderContext, { IHeaderContext } from '../HeaderContext';
 
 const NHSLogo: React.FC<HTMLProps<HTMLAnchorElement>> = ({ className, ...rest }) => {
   const { serviceName, hasMenuToggle, hasSearch } = useContext<IHeaderContext>(HeaderContext);
-  console.log(hasMenuToggle);
-  console.log(hasSearch);
   return (
     <div
       className={classNames('nhsuk-header__logo', {
