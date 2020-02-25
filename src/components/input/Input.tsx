@@ -1,4 +1,4 @@
-import React, { HTMLProps, useContext } from 'react';
+import React, { HTMLProps, useContext, useState, useEffect } from 'react';
 import classNames from 'classnames';
 import Hint from '../hint';
 import FormContext, { IFormContext } from '../form/FormContext';
@@ -23,10 +23,15 @@ const Input: React.FC<InputProps> = ({
   ...rest
 }) => {
   const { isForm, setError } = useContext<IFormContext>(FormContext);
+  const [name] = useState<string>(
+    rest.name || `input_${(Math.random() + 1).toString(36).substring(2, 7)}`,
+  );
 
-  if (isForm) {
-    setError(name, Boolean(error));
-  }
+  useEffect(() => {
+    if (isForm) {
+      setError(name, Boolean(error));
+    }
+  }, [error, name, isForm]);
 
   return (
     <>
@@ -54,7 +59,7 @@ const Input: React.FC<InputProps> = ({
         ref={ref}
         aria-describedby={hint && id ? `${id}-label` : undefined}
         {...rest}
-      ></input>
+      />
     </>
   );
 };
