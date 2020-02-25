@@ -57,7 +57,7 @@ const DateInputInput: React.FC<DateInputInputProps> = ({
         <label className="nhsuk-label nhsuk-date-input__label" htmlFor={id}>
           {dateInputType}
         </label>
-i        <input
+        <input
           className={classNames(
             'nhsuk-input nhsuk-date-input__input',
             {
@@ -69,6 +69,8 @@ i        <input
             error ? "nhsuk-input--error" : "",
             className,
           )}
+          id={`${name}-${dateInputType.toLowerCase()}`}
+          aria-label={`${name}-${dateInputType.toLowerCase()} input`}
           autoComplete={
             autoComplete || autoCompletePrefix
               ? `${autoCompletePrefix}-${dateInputType.toLowerCase()}`
