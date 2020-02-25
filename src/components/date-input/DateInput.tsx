@@ -8,6 +8,9 @@ import React, {
   SyntheticEvent,
 } from 'react';
 import classNames from 'classnames';
+import ErrorMessage from '../error-message';
+import Hint from '../hint';
+import Label from '../label';
 
 interface IDateInputContext {
   isDateInput: boolean;
@@ -26,6 +29,7 @@ const DateInputContext = createContext<IDateInputContext>({
 type DateInputType = 'Day' | 'Month' | 'Year';
 interface DateInputInputProps extends HTMLProps<HTMLInputElement> {
   dateInputType: DateInputType;
+  error?: string;
 }
 
 const DateInputInput: React.FC<DateInputInputProps> = ({
@@ -33,6 +37,7 @@ const DateInputInput: React.FC<DateInputInputProps> = ({
   className,
   dateInputType,
   autoComplete,
+  error,
   ...rest
 }) => {
   const { isDateInput, registerRef, name, autoCompletePrefix } = useContext<IDateInputContext>(
@@ -52,7 +57,7 @@ const DateInputInput: React.FC<DateInputInputProps> = ({
         <label className="nhsuk-label nhsuk-date-input__label" htmlFor={id}>
           {dateInputType}
         </label>
-        <input
+i        <input
           className={classNames(
             'nhsuk-input nhsuk-date-input__input',
             {
@@ -61,6 +66,7 @@ const DateInputInput: React.FC<DateInputInputProps> = ({
             {
               'nhsuk-input--width-4': dateInputType === 'Year',
             },
+            error ? "nhsuk-input--error" : "",
             className,
           )}
           autoComplete={
@@ -82,16 +88,21 @@ DateInputInput.defaultProps = {
   pattern: '[0-9]*',
 };
 
-const DateInputDay: React.FC<HTMLProps<HTMLInputElement>> = props => (
-  <DateInputInput dateInputType="Day" {...props} />
+
+interface DateInputComponent extends HTMLProps<HTMLInputElement> {
+  error?: string
+}
+
+const DateInputDay: React.FC<DateInputComponent>  = props => (
+  <DateInputInput dateInputType="Day" error={props.error} {...props} />
 );
 
-const DateInputMonth: React.FC<HTMLProps<HTMLInputElement>> = props => (
-  <DateInputInput dateInputType="Month" {...props} />
+const DateInputMonth: React.FC<DateInputComponent> = props => (
+  <DateInputInput dateInputType="Month" error={props.error} {...props}/>
 );
 
-const DateInputYear: React.FC<HTMLProps<HTMLInputElement>> = props => (
-  <DateInputInput dateInputType="Year" {...props} />
+const DateInputYear: React.FC<DateInputComponent> = props => (
+  <DateInputInput dateInputType="Year" error={props.error} {...props}/>
 );
 
 interface DateInputTargetElement extends Omit<HTMLInputElement, 'value'> {
@@ -113,6 +124,9 @@ interface DateInputProps extends Omit<HTMLProps<HTMLDivElement>, 'onChange'> {
   autoSelectNext?: boolean;
   onChange?: (e: DateInputEvent) => any;
   autoCompletePrefix?: string;
+  error?: string;
+  hint?: string;
+  labelHtmlFor?: string;
 }
 
 type DateInputState = {
@@ -188,7 +202,7 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
   static Year = DateInputYear;
 
   render() {
-    const { className, children, autoSelectNext, autoCompletePrefix, ...rest } = this.props;
+    const { className, children, autoSelectNext, autoCompletePrefix, labelHtmlFor, hint, ...rest } = this.props;
     const { name } = this.state;
     const contextValue = {
       isDateInput: true,
@@ -198,17 +212,22 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
     };
 
     return (
+      <>
+      {this.props.label ? <Label htmlFor={labelHtmlFor}>{this.props.label}</Label> : "null"}
+      {this.props.hint ? <Hint>{this.props.hint}</Hint> : "null"}
+      {this.props.error ? <ErrorMessage>{this.props.error}</ErrorMessage> : "null"}
       <div className={classNames('nhsuk-date-input', className)} {...rest} onChange={this.onChange}>
         <DateInputContext.Provider value={contextValue}>
           {children || (
             <>
-              <DateInput.Day />
-              <DateInput.Month />
-              <DateInput.Year />
+              <DateInput.Day error={this.props.error}/>
+              <DateInput.Month error={this.props.error}/>
+              <DateInput.Year error={this.props.error} />
             </>
           )}
         </DateInputContext.Provider>
       </div>
+      </>
     );
   }
 }
