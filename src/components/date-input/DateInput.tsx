@@ -54,7 +54,7 @@ const DateInputInput: React.FC<DateInputInputProps> = ({
   return (
     <div className="nhsuk-date-input__item">
       <div className="nhsuk-form-group">
-        <label className="nhsuk-label nhsuk-date-input__label" htmlFor={id}>
+        <label className="nhsuk-label nhsuk-date-input__label" htmlFor={`${name}-${dateInputType.toLowerCase()}`}>
           {dateInputType}
         </label>
         <input
@@ -96,15 +96,15 @@ interface DateInputComponent extends HTMLProps<HTMLInputElement> {
 }
 
 const DateInputDay: React.FC<DateInputComponent>  = props => (
-  <DateInputInput dateInputType="Day" error={props.error} {...props} />
+  <DateInputInput dateInputType="Day" {...props} />
 );
 
 const DateInputMonth: React.FC<DateInputComponent> = props => (
-  <DateInputInput dateInputType="Month" error={props.error} {...props}/>
+  <DateInputInput dateInputType="Month" {...props}/>
 );
 
 const DateInputYear: React.FC<DateInputComponent> = props => (
-  <DateInputInput dateInputType="Year" error={props.error} {...props}/>
+  <DateInputInput dateInputType="Year" {...props}/>
 );
 
 interface DateInputTargetElement extends Omit<HTMLInputElement, 'value'> {
@@ -204,7 +204,7 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
   static Year = DateInputYear;
 
   render() {
-    const { className, children, autoSelectNext, autoCompletePrefix, labelHtmlFor, hint, ...rest } = this.props;
+    const { id, className, children, autoSelectNext, autoCompletePrefix, labelHtmlFor, hint, ...rest } = this.props;
     const { name } = this.state;
     const contextValue = {
       isDateInput: true,
@@ -215,16 +215,16 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
 
     return (
       <>
-      {this.props.label ? <Label htmlFor={labelHtmlFor}>{this.props.label}</Label> : "null"}
-      {this.props.hint ? <Hint>{this.props.hint}</Hint> : "null"}
-      {this.props.error ? <ErrorMessage>{this.props.error}</ErrorMessage> : "null"}
-      <div className={classNames('nhsuk-date-input', className)} {...rest} onChange={this.onChange}>
+      {this.props.label ? <Label htmlFor={labelHtmlFor}>{this.props.label}</Label> : ""}
+      {this.props.hint ? <Hint>{this.props.hint}</Hint> : ""}
+      {this.props.error ? <ErrorMessage>{this.props.error}</ErrorMessage> : ""}
+      <div id = {this.props.id} className={classNames('nhsuk-date-input', className)} {...rest} onChange={this.onChange}>
         <DateInputContext.Provider value={contextValue}>
           {children || (
             <>
               <DateInput.Day error={this.props.error}/>
               <DateInput.Month error={this.props.error}/>
-              <DateInput.Year error={this.props.error} />
+              <DateInput.Year error={this.props.error}/>
             </>
           )}
         </DateInputContext.Provider>
