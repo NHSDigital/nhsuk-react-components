@@ -53,4 +53,4 @@ export { LedeText, BodyText } from './components/typography';
 export { default as WarningCallout } from './components/warning-callout';
 export { default as Clearfix } from './components/utils/Clearfix';
 export { default as ReadingWidth } from './components/utils/ReadingWidth';
-export { default as TabSet } from './components/tab-set';
+export { default as SubNavigation } from './components/sub-navigation/SubNavigation';
