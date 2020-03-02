@@ -21,7 +21,7 @@ interface IDateInputContext {
 
 const DateInputContext = createContext<IDateInputContext>({
   isDateInput: false,
-  registerRef: () => {},
+  registerRef: () => undefined,
   name: '',
   autoCompletePrefix: '',
 });
@@ -66,7 +66,7 @@ const DateInputInput: React.FC<DateInputInputProps> = ({
             {
               'nhsuk-input--width-4': dateInputType === 'Year',
             },
-            error ? "nhsuk-input--error" : "",
+            error ? 'nhsuk-input--error' : '',
             className,
           )}
           id={`${name}-${dateInputType.toLowerCase()}`}
@@ -215,16 +215,16 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
 
     return (
       <>
-      {this.props.label ? <Label htmlFor={labelHtmlFor}>{this.props.label}</Label> : ""}
-      {this.props.hint ? <Hint>{this.props.hint}</Hint> : ""}
-      {this.props.error ? <ErrorMessage>{this.props.error}</ErrorMessage> : ""}
+      {this.props.label ? <Label htmlFor={labelHtmlFor}>{this.props.label}</Label> : ''}
+      {this.props.hint ? <Hint>{this.props.hint}</Hint> : ''}
+      {this.props.error ? <ErrorMessage>{this.props.error}</ErrorMessage> : ''}
       <div id = {this.props.id} className={classNames('nhsuk-date-input', className)} {...rest} onChange={this.onChange}>
         <DateInputContext.Provider value={contextValue}>
           {children || (
             <>
-              <DateInput.Day error={this.props.error}/>
+              <DateInput.Day error={this.props.error} />
               <DateInput.Month error={this.props.error}/>
-              <DateInput.Year error={this.props.error}/>
+              <DateInput.Year error={this.props.error} />
             </>
           )}
         </DateInputContext.Provider>
