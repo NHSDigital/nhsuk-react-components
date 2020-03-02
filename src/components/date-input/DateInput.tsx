@@ -17,6 +17,7 @@ interface IDateInputContext {
   registerRef: (type: DateInputType, ref: HTMLInputElement | null) => void;
   name: string;
   autoCompletePrefix: string | undefined;
+  error?: string
 }
 
 const DateInputContext = createContext<IDateInputContext>({
@@ -24,12 +25,13 @@ const DateInputContext = createContext<IDateInputContext>({
   registerRef: () => undefined,
   name: '',
   autoCompletePrefix: '',
+  error: '',
 });
 
 type DateInputType = 'Day' | 'Month' | 'Year';
 interface DateInputInputProps extends HTMLProps<HTMLInputElement> {
   dateInputType: DateInputType;
-  error?: string;
+  errorFromField?: string
 }
 
 const DateInputInput: React.FC<DateInputInputProps> = ({
@@ -37,10 +39,10 @@ const DateInputInput: React.FC<DateInputInputProps> = ({
   className,
   dateInputType,
   autoComplete,
-  error,
+  errorFromField,
   ...rest
 }) => {
-  const { isDateInput, registerRef, name, autoCompletePrefix } = useContext<IDateInputContext>(
+  const { isDateInput, registerRef, name, autoCompletePrefix, error } = useContext<IDateInputContext>(
     DateInputContext,
   );
   const inputRef = useRef<HTMLInputElement>(null);
@@ -54,7 +56,7 @@ const DateInputInput: React.FC<DateInputInputProps> = ({
   return (
     <div className="nhsuk-date-input__item">
       <div className="nhsuk-form-group">
-        <label className="nhsuk-label nhsuk-date-input__label" htmlFor={`${name}-${dateInputType.toLowerCase()}`}>
+        <label className="nhsuk-label nhsuk-date-input__label" htmlFor={id || `${name}-${dateInputType.toLowerCase()}`}>
           {dateInputType}
         </label>
         <input
@@ -66,10 +68,12 @@ const DateInputInput: React.FC<DateInputInputProps> = ({
             {
               'nhsuk-input--width-4': dateInputType === 'Year',
             },
-            error ? 'nhsuk-input--error' : '',
+            {
+              "nhsuk-input--error": error
+            },
             className,
           )}
-          id={`${name}-${dateInputType.toLowerCase()}`}
+          id={id || `${name}-${dateInputType.toLowerCase()}`}
           aria-label={`${name}-${dateInputType.toLowerCase()} input`}
           autoComplete={
             autoComplete || autoCompletePrefix
@@ -92,7 +96,7 @@ DateInputInput.defaultProps = {
 
 
 interface DateInputComponent extends HTMLProps<HTMLInputElement> {
-  error?: string
+  error?: boolean
 }
 
 const DateInputDay: React.FC<DateInputComponent>  = props => (
@@ -204,27 +208,28 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
   static Year = DateInputYear;
 
   render() {
-    const { id, className, children, autoSelectNext, autoCompletePrefix, labelHtmlFor, hint, ...rest } = this.props;
+    const { id, className, children, autoSelectNext, autoCompletePrefix, labelHtmlFor, hint, error, label,...rest } = this.props;
     const { name } = this.state;
     const contextValue = {
       isDateInput: true,
       registerRef: this.registerRef,
       name,
       autoCompletePrefix,
+      error
     };
 
     return (
       <>
-      {this.props.label ? <Label htmlFor={labelHtmlFor}>{this.props.label}</Label> : ''}
-      {this.props.hint ? <Hint>{this.props.hint}</Hint> : ''}
-      {this.props.error ? <ErrorMessage>{this.props.error}</ErrorMessage> : ''}
+      {label ? <Label htmlFor={labelHtmlFor}>{label}</Label> : ''}
+      {hint ? <Hint>{hint}</Hint> : ''}
+      {error ? <ErrorMessage>{error}</ErrorMessage> : ''}
       <div id = {this.props.id} className={classNames('nhsuk-date-input', className)} {...rest} onChange={this.onChange}>
         <DateInputContext.Provider value={contextValue}>
           {children || (
             <>
-              <DateInput.Day error={this.props.error} />
-              <DateInput.Month error={this.props.error}/>
-              <DateInput.Year error={this.props.error} />
+              <DateInput.Day/>
+              <DateInput.Month/>
+              <DateInput.Year/>
             </>
           )}
         </DateInputContext.Provider>
