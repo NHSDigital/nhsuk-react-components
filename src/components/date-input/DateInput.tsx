@@ -31,7 +31,7 @@ const DateInputContext = createContext<IDateInputContext>({
 type DateInputType = 'Day' | 'Month' | 'Year';
 interface DateInputInputProps extends HTMLProps<HTMLInputElement> {
   dateInputType: DateInputType;
-  errorFromField?: string
+  errorFromField?: boolean
 }
 
 const DateInputInput: React.FC<DateInputInputProps> = ({
@@ -52,7 +52,7 @@ const DateInputInput: React.FC<DateInputInputProps> = ({
       registerRef(dateInputType, inputRef.current);
     }
   }, [inputRef.current]);
-
+  
   return (
     <div className="nhsuk-date-input__item">
       <div className="nhsuk-form-group">
@@ -69,7 +69,7 @@ const DateInputInput: React.FC<DateInputInputProps> = ({
               'nhsuk-input--width-4': dateInputType === 'Year',
             },
             {
-              "nhsuk-input--error": error
+              "nhsuk-input--error": typeof errorFromField === "undefined" ? error : errorFromField
             },
             className,
           )}
@@ -96,7 +96,7 @@ DateInputInput.defaultProps = {
 
 
 interface DateInputComponent extends HTMLProps<HTMLInputElement> {
-  error?: boolean
+  errorFromField?: boolean
 }
 
 const DateInputDay: React.FC<DateInputComponent>  = props => (
