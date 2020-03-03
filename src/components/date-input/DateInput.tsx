@@ -214,9 +214,9 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
 
     return (
       <>
-      {label ? <Label htmlFor={labelHtmlFor}>{label}</Label> : ''}
-      {hint ? <Hint>{hint}</Hint> : ''}
-      {error ? <ErrorMessage>{error}</ErrorMessage> : ''}
+      {label ? <Label htmlFor={labelHtmlFor}>{label}</Label> : null}
+      {hint ? <Hint>{hint}</Hint> : null
+      {error ? <ErrorMessage>{error}</ErrorMessage> : null}
       <div id = {this.props.id} className={classNames('nhsuk-date-input', className)} {...rest} onChange={this.onChange}>
         <DateInputContext.Provider value={contextValue}>
           {children || (
