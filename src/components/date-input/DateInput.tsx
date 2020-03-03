@@ -31,7 +31,7 @@ const DateInputContext = createContext<IDateInputContext>({
 type DateInputType = 'Day' | 'Month' | 'Year';
 interface DateInputInputProps extends HTMLProps<HTMLInputElement> {
   dateInputType: DateInputType;
-  errorFromField?: boolean
+  error?: boolean
 }
 
 const DateInputInput: React.FC<DateInputInputProps> = ({
@@ -39,7 +39,6 @@ const DateInputInput: React.FC<DateInputInputProps> = ({
   className,
   dateInputType,
   autoComplete,
-  errorFromField,
   ...rest
 }) => {
   const { isDateInput, registerRef, name, autoCompletePrefix, error } = useContext<IDateInputContext>(
@@ -69,7 +68,7 @@ const DateInputInput: React.FC<DateInputInputProps> = ({
               'nhsuk-input--width-4': dateInputType === 'Year',
             },
             {
-              "nhsuk-input--error": typeof errorFromField === "undefined" ? error : errorFromField
+              "nhsuk-input--error": typeof rest.error === "undefined" ? error : rest.error
             },
             className,
           )}
@@ -94,20 +93,15 @@ DateInputInput.defaultProps = {
   pattern: '[0-9]*',
 };
 
-
-interface DateInputComponent extends HTMLProps<HTMLInputElement> {
-  errorFromField?: boolean
-}
-
-const DateInputDay: React.FC<DateInputComponent>  = props => (
+const DateInputDay: React.FC<HTMLProps<HTMLInputElement>>  = props => (
   <DateInputInput dateInputType="Day" {...props} />
 );
 
-const DateInputMonth: React.FC<DateInputComponent> = props => (
+const DateInputMonth: React.FC<HTMLProps<HTMLInputElement>> = props => (
   <DateInputInput dateInputType="Month" {...props}/>
 );
 
-const DateInputYear: React.FC<DateInputComponent> = props => (
+const DateInputYear: React.FC<HTMLProps<HTMLInputElement>> = props => (
   <DateInputInput dateInputType="Year" {...props}/>
 );
 

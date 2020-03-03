@@ -35,7 +35,7 @@ stories.add('Standard with Error', () => (
     <h5>Component with specific field errors</h5>
     <Form error={true}>
       <DateInput onChange={e => console.log(e.target.value)} error="Test Error" hint="Test hint" label="Test label">
-        <DateInput.Day errorFromField={false}/>
+        <DateInput.Day error={false}/>
         <DateInput.Month/>
         <DateInput.Year/>
       </DateInput>
