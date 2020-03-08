@@ -1,0 +1,1 @@
+require('jest-axe/extend-expect');
