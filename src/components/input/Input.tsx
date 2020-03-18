@@ -53,7 +53,7 @@ const Input: React.FC<InputProps> = ({
           'nhsuk-input',
           { [`nhsuk-input--width-${width}`]: width },
           { 'nhsuk-input--error': error },
-          classNames,
+          className,
         )}
         id={id}
         ref={ref}
