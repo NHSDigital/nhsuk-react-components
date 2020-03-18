@@ -46,7 +46,9 @@ const Input: React.FC<InputProps> = ({
       ) : null}
       {hint ? <Hint id={id ? `${id}-label` : undefined}>{hint}</Hint> : null}
       {error && typeof error === 'string' ? (
-        <ErrorMessage id={id ? `${id}-error` : undefined}>{error}</ErrorMessage>
+        <ErrorMessage id={id ? `${id}-error` : undefined} aria-live="polite">
+          {error}
+        </ErrorMessage>
       ) : null}
       <input
         className={classNames(
