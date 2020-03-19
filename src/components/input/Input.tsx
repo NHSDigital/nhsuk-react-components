@@ -6,6 +6,7 @@ import ErrorMessage from '../error-message';
 
 interface InputProps extends HTMLProps<HTMLInputElement> {
   labelProps?: HTMLProps<HTMLLabelElement>;
+  errorMessageProps?: HTMLProps<HTMLLabelElement>;
   hint?: string;
   error?: boolean | string;
   width?: '2' | '3' | '4' | '5' | '10';
@@ -17,6 +18,7 @@ const Input: React.FC<InputProps> = ({
   id,
   ref,
   labelProps,
+  errorMessageProps,
   hint,
   width,
   error,
@@ -45,11 +47,9 @@ const Input: React.FC<InputProps> = ({
         </label>
       ) : null}
       {hint ? <Hint id={id ? `${id}-label` : undefined}>{hint}</Hint> : null}
-      {error && typeof error === 'string' ? (
-        <ErrorMessage id={id ? `${id}-error` : undefined} aria-live="polite">
-          {error}
-        </ErrorMessage>
-      ) : null}
+      <ErrorMessage id={id ? `${id}-error` : undefined} {...errorMessageProps}>
+        {error}
+      </ErrorMessage>
       <input
         className={classNames(
           'nhsuk-input',
@@ -68,6 +68,9 @@ const Input: React.FC<InputProps> = ({
 
 Input.defaultProps = {
   type: 'text',
+  errorMessageProps: {
+    'aria-live': 'polite',
+  },
 };
 
 export default Input;
