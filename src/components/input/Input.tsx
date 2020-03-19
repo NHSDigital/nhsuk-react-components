@@ -47,9 +47,11 @@ const Input: React.FC<InputProps> = ({
         </label>
       ) : null}
       {hint ? <Hint id={id ? `${id}-label` : undefined}>{hint}</Hint> : null}
-      <ErrorMessage id={id ? `${id}-error` : undefined} {...errorMessageProps}>
-        {error}
-      </ErrorMessage>
+      {errorMessageProps && errorMessageProps['aria-live'] !== 'off' ? (
+        <ErrorMessage id={id ? `${id}-error` : undefined} {...errorMessageProps}>
+          {error}
+        </ErrorMessage>
+      ) : null}
       <input
         className={classNames(
           'nhsuk-input',
