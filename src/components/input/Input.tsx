@@ -1,7 +1,7 @@
-import React, { HTMLProps, useContext, useState, useEffect } from 'react';
+import React, { HTMLProps, useState, useEffect } from 'react';
 import classNames from 'classnames';
 import Hint from '../hint';
-import FormContext, { IFormContext } from '../form/FormContext';
+import { useFormContext } from '../form/FormContext';
 import ErrorMessage from '../error-message';
 
 interface InputProps extends HTMLProps<HTMLInputElement> {
@@ -22,7 +22,7 @@ const Input: React.FC<InputProps> = ({
   error,
   ...rest
 }) => {
-  const { isForm, setError } = useContext<IFormContext>(FormContext);
+  const { isForm, setError } = useFormContext();
   const [name] = useState<string>(
     rest.name || `input_${(Math.random() + 1).toString(36).substring(2, 7)}`,
   );
