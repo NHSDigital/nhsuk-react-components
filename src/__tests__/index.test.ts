@@ -20,6 +20,7 @@ describe('Index', () => {
       'Fieldset',
       'Footer',
       'Form',
+      'useFormContext',
       'Header',
       'Hero',
       'Hint',
