@@ -17,6 +17,7 @@
     "@storybook/addon-info": "^5.2.1",
     "@storybook/addon-storysource": "^5.3.3",
     "@storybook/react": "^5.2.1",
+    "@storybook/storybook-deployer": "^2.8.1",
     "@types/classnames": "^2.2.9",
     "@types/enzyme": "^3.10.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
@@ -66,7 +67,6 @@
     "react-dom": "^16.9.0"
   },
   "dependencies": {
-    "@storybook/storybook-deployer": "^2.8.1",
     "classnames": "^2.2.6"
   },
   "scripts": {
