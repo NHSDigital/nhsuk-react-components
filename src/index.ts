@@ -12,7 +12,7 @@ export { default as ErrorMessage } from './components/error-message';
 export { default as ErrorSummary } from './components/error-summary';
 export { default as Fieldset } from './components/fieldset';
 export { default as Footer } from './components/footer';
-export { default as Form } from './components/form';
+export { default as Form, useFormContext } from './components/form';
 export { default as Header } from './components/header';
 export { default as Hero } from './components/hero';
 export { default as Hint } from './components/hint';
