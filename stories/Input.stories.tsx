@@ -6,6 +6,74 @@ import { Input, Form, Button } from '../src';
 
 const stories = storiesOf('Input', module);
 
+const form = (disableErrorFromComponents: boolean) => (
+  () => {
+    const [firstName, setFirstName] = useState<string>('');
+    const [middleName, setMiddleName] = useState<string>('');
+    const [lastName, setLastName] = useState<string>('');
+    const [firstNameError, setFirstNameError] = useState<string>('');
+    const [middleNameError, setMiddleNameError] = useState<string>('');
+    const [lastNameError, setLastNameError] = useState<string>('');
+
+    const onSubmit = (e: SyntheticEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      setFirstNameError(firstName.length === 0 ? 'You must enter a first name' : null);
+      setMiddleNameError(middleName.length === 0 ? 'You must enter a middle name' : null);
+      setLastNameError(lastName.length === 0 ? 'You must enter a last name' : null);
+    };
+
+    return (
+      <Form onSubmit={onSubmit} disableErrorFromComponents={disableErrorFromComponents}>
+        <Input
+          className="nhsuk-u-margin-bottom-3"
+          autoFocus
+          name="first_name"
+          type="string"
+          aria-label="First name input"
+          value={firstName || ''}
+          onChange={e => setFirstName(e.currentTarget.value)}
+          error={firstNameError}
+          autoComplete={process.env.NODE_ENV === 'development' ? '' : undefined}
+          width="10"
+        >
+          First Name
+        </Input>
+
+        <Input
+          className="nhsuk-u-margin-bottom-3"
+          label="middle name"
+          name="middle_name"
+          type="string"
+          aria-label="middle name input"
+          value={middleName || ''}
+          onChange={e => setMiddleName(e.currentTarget.value)}
+          error={middleNameError}
+          autoComplete={process.env.NODE_ENV === 'development' ? '' : undefined}
+          width="10"
+        >
+          Middle name
+        </Input>
+
+        <Input
+          className="nhsuk-u-margin-bottom-3"
+          label="Last name"
+          name="last_name"
+          type="string"
+          aria-label="Last name input"
+          value={lastName || ''}
+          onChange={e => setLastName(e.currentTarget.value)}
+          error={lastNameError}
+          autoComplete={process.env.NODE_ENV === 'development' ? '' : undefined}
+          width="10"
+        >
+          Last name
+        </Input>
+        <Button style={{ display: 'block' }} type="submit">Submit</Button>
+      </Form>
+    );
+  }
+);
+
 stories
   .addDecorator(centered)
   .add('Standard', () => (
@@ -59,58 +127,5 @@ stories
       National Insurance Number
     </Input>
   ))
-  .add('Multiple Error States', () => {
-    const [firstName, setFirstName] = useState<string>('');
-    const [lastName, setLastName] = useState<string>('');
-    const [firstNameError, setFirstNameError] = useState<string>('');
-    const [lastNameError, setLastNameError] = useState<string>('');
-
-    const onSubmit = (e: SyntheticEvent<HTMLFormElement>) => {
-      e.preventDefault();
-
-      if (firstNameError) {
-        setFirstNameError('');
-        setLastNameError('');
-      } else {
-        setFirstNameError('Error');
-        setLastNameError('Error');
-      }
-    };
-
-    return (
-      <Form onSubmit={onSubmit}>
-        <Input
-          id="FirstnameX"
-          style={{ marginBottom: 10 }}
-          autoFocus
-          name="first_name"
-          type="string"
-          aria-label="First name input"
-          value={firstName || ''}
-          onChange={e => setFirstName(e.currentTarget.value)}
-          error={firstNameError}
-          autoComplete={process.env.NODE_ENV === 'development' ? '' : undefined}
-          width="10"
-        >
-          First Name
-        </Input>
-        <Input
-          style={{ marginBottom: 10 }}
-          autoFocus
-          label="Last name"
-          name="last_name"
-          type="string"
-          aria-label="Last name input"
-          value={lastName || ''}
-          onChange={e => setLastName(e.currentTarget.value)}
-          error={lastNameError}
-          autoComplete={process.env.NODE_ENV === 'development' ? '' : undefined}
-          width="10"
-        >
-          Last name
-        </Input>
-
-        <Button type="submit">Submit</Button>
-      </Form>
-    );
-  });
+  .add('Multiple Error States', form(false))
+  .add('Form Error State Disabled', form(true));
