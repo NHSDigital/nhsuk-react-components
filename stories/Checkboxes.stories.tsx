@@ -12,10 +12,11 @@ stories
     <Form>
       <Fieldset aria-describedby="nationality-hint">
         <Fieldset.Legend>What is your nationality?</Fieldset.Legend>
-        <Hint id="nationality-hint">
-          If you have more than 1 nationality, select all options that are relevant to you.
-        </Hint>
-        <Checkboxes name="nationality" id="nationality">
+        <Checkboxes
+          name="nationality"
+          id="nationality"
+          hint="If you have more than 1 nationality, select all options that are relevant to you."
+        >
           <Checkboxes.Box value="british">British</Checkboxes.Box>
           <Checkboxes.Box value="irish">Irish</Checkboxes.Box>
           <Checkboxes.Box value="other">Citizen of another country</Checkboxes.Box>
@@ -66,8 +67,7 @@ stories
         <Fieldset.Legend isPageHeading>
           Which types of waste do you transport regularly?
         </Fieldset.Legend>
-        <Hint id="waste-hint">Select all that apply</Hint>
-        <Checkboxes id="waste" name="waste">
+        <Checkboxes id="waste" name="waste" hint="Select all that apply">
           <Checkboxes.Box value="animal">Waste from animal carcasses</Checkboxes.Box>
           <Checkboxes.Box value="mines">Waste from mines or quarries</Checkboxes.Box>
           <Checkboxes.Box value="farm">Farm or agricultural waste</Checkboxes.Box>
@@ -84,8 +84,7 @@ stories
             <Fieldset.Legend isPageHeading>
               Which types of waste do you transport regularly?
             </Fieldset.Legend>
-            <Hint id="waste-hint">Select all that apply</Hint>
-            <Checkboxes error={errorToggle} id="waste" name="waste">
+            <Checkboxes error={errorToggle} id="waste" name="waste" hint="Select all that apply">
               <Checkboxes.Box value="animal">Waste from animal carcasses</Checkboxes.Box>
               <Checkboxes.Box value="mines">Waste from mines or quarries</Checkboxes.Box>
               <Checkboxes.Box value="farm">Farm or agricultural waste</Checkboxes.Box>
@@ -113,8 +112,7 @@ stories
             <Fieldset.Legend isPageHeading>
               Which types of waste do you transport regularly?
             </Fieldset.Legend>
-            <Hint id="waste-hint">Select all that apply</Hint>
-            <Checkboxes id="waste" name="waste" error={error}>
+            <Checkboxes id="waste" name="waste" hint="Select all that apply" error={error}>
               <Checkboxes.Box value="animal">Waste from animal carcasses</Checkboxes.Box>
               <Checkboxes.Box value="mines">Waste from mines or quarries</Checkboxes.Box>
               <Checkboxes.Box value="farm">Farm or agricultural waste</Checkboxes.Box>

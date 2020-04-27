@@ -2,7 +2,7 @@
 import React, { MouseEvent } from 'react';
 import { storiesOf } from '@storybook/react';
 import centered from '@storybook/addon-centered';
-import { Radios, Form, Fieldset, Hint, Button, Input } from '../src';
+import { Radios, Form, Fieldset, Button, Input } from '../src';
 
 const stories = storiesOf('Radios', module);
 
@@ -12,8 +12,10 @@ stories
     <Form>
       <Fieldset>
         <Fieldset.Legend>Have you changed your name?</Fieldset.Legend>
-        <Hint>This includes charging your last name or spelling your name differently.</Hint>
-        <Radios name="example">
+        <Radios
+          name="example"
+          hint="This includes charging your last name or spelling your name differently."
+        >
           <Radios.Radio id="example-1" value="yes">
             Yes
           </Radios.Radio>
@@ -28,8 +30,11 @@ stories
     <Form>
       <Fieldset>
         <Fieldset.Legend>Have you changed your name?</Fieldset.Legend>
-        <Hint>This includes charging your last name or spelling your name differently.</Hint>
-        <Radios name="example" inline>
+        <Radios
+          name="example"
+          inline
+          hint="This includes charging your last name or spelling your name differently."
+        >
           <Radios.Radio id="example-1" value="yes">
             Yes
           </Radios.Radio>
@@ -44,8 +49,10 @@ stories
     <Form>
       <Fieldset>
         <Fieldset.Legend>Have you changed your name?</Fieldset.Legend>
-        <Hint>This includes charging your last name or spelling your name differently.</Hint>
-        <Radios name="example">
+        <Radios
+          name="example"
+          hint="This includes charging your last name or spelling your name differently."
+        >
           <Radios.Radio disabled id="example-1" value="yes">
             Yes
           </Radios.Radio>
@@ -106,8 +113,11 @@ stories
         <Form>
           <Fieldset>
             <Fieldset.Legend>Have you changed your name?</Fieldset.Legend>
-            <Hint>This includes charging your last name or spelling your name differently.</Hint>
-            <Radios name="example" error={error}>
+            <Radios
+              name="example"
+              error={error}
+              hint="This includes changing your last name or spelling your name differently."
+            >
               <Radios.Radio id="example-1" value="yes">
                 Yes
               </Radios.Radio>
@@ -135,8 +145,11 @@ stories
         <Form>
           <Fieldset>
             <Fieldset.Legend>Have you changed your name?</Fieldset.Legend>
-            <Hint>This includes charging your last name or spelling your name differently.</Hint>
-            <Radios name="example" error={error}>
+            <Radios
+              name="example"
+              error={error}
+              hint="This includes charging your last name or spelling your name differently."
+            >
               <Radios.Radio id="example-1" value="yes">
                 Yes
               </Radios.Radio>

@@ -9,34 +9,33 @@ const stories = storiesOf('Input', module);
 stories
   .addDecorator(centered)
   .add('Standard', () => (
-    <Input id="input-example" name="test-name">
-      National Insurance Number
-    </Input>
+    <Input id="input-example" name="test-name" label="National Insurance Number" />
   ))
   .add('With autoComplete attribute', () => (
-    <Input id="input-with-autocomplete-attribute" name="postcode" autoComplete="postal-code">
-      Postcode
-    </Input>
+    <Input
+      id="input-with-autocomplete-attribute"
+      name="postcode"
+      autoComplete="postal-code"
+      label="Postcode"
+    />
   ))
   .add('With hint text', () => (
     <Input
       id="input-with-hint-text"
       name="test-name-2"
+      label="National Insurance Number"
       hint="It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
-    >
-      National Insurance Number
-    </Input>
+    />
   ))
   .add('With error (Boolean)', () => (
     <Form>
       <Input
         id="input-with-error-message"
         name="test-name-3"
+        label="National Insurance Number"
         error
         hint="It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
-      >
-        National Insurance Number
-      </Input>
+      />
     </Form>
   ))
   .add('With error (String)', () => (
@@ -44,20 +43,18 @@ stories
       <Input
         id="input-with-error-message"
         name="test-name-3"
+        label="National Insurance Number"
         error="Error message goes here"
         hint="It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
-      >
-        National Insurance Number
-      </Input>
+      />
     </Form>
   ))
   .add('With width modifier', () => (
     <Input
       hint="It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+      label="National Insurance Number"
       width="10"
-    >
-      National Insurance Number
-    </Input>
+    />
   ))
   .add('Multiple Error States', () => {
     const [firstName, setFirstName] = useState<string>('');

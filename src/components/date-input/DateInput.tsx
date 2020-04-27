@@ -98,15 +98,15 @@ DateInputInput.defaultProps = {
   pattern: '[0-9]*',
 };
 
-const DateInputDay: React.FC<HTMLProps<HTMLInputElement>> = props => (
+const DateInputDay: React.FC<Omit<DateInputInputProps, 'dateInputType'>> = props => (
   <DateInputInput dateInputType="Day" {...props} />
 );
 
-const DateInputMonth: React.FC<HTMLProps<HTMLInputElement>> = props => (
+const DateInputMonth: React.FC<Omit<DateInputInputProps, 'dateInputType'>> = props => (
   <DateInputInput dateInputType="Month" {...props} />
 );
 
-const DateInputYear: React.FC<HTMLProps<HTMLInputElement>> = props => (
+const DateInputYear: React.FC<Omit<DateInputInputProps, 'dateInputType'>> = props => (
   <DateInputInput dateInputType="Year" {...props} />
 );
 

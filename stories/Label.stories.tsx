@@ -10,4 +10,5 @@ stories
   .addDecorator(centered)
   .add('Standard', () => <Label>National Insurance Number</Label>)
   .add('Bold', () => <Label bold>National Insurance Number</Label>)
-  .add('Page Heading', () => <Label isPageHeading>National Insurance Number</Label>);
+  .add('Page Heading', () => <Label isPageHeading>National Insurance Number</Label>)
+  .add('With Size', () => <Label size="m">National Insurance Number</Label>);
