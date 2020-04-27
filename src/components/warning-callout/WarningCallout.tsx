@@ -2,7 +2,7 @@ import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
 
 interface WarningCalloutProps extends HTMLProps<HTMLDivElement> {
-  labelProps: HTMLProps<HTMLHeadingElement>;
+  labelProps?: HTMLProps<HTMLHeadingElement>;
 }
 
 const WarningCallout: React.FC<WarningCalloutProps> = ({
@@ -15,7 +15,7 @@ const WarningCallout: React.FC<WarningCalloutProps> = ({
   <div className={classNames('nhsuk-warning-callout', className)} {...rest}>
     {label ? (
       <h3
-        className={classNames('nhsuk-warning-callout__label', labelProps.className)}
+        className={classNames('nhsuk-warning-callout__label', labelProps?.className)}
         {...labelProps}
       >
         {label}
@@ -24,9 +24,5 @@ const WarningCallout: React.FC<WarningCalloutProps> = ({
     {children}
   </div>
 );
-
-WarningCallout.defaultProps = {
-  labelProps: {},
-};
 
 export default WarningCallout;
