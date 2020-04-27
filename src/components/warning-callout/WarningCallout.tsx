@@ -7,7 +7,7 @@ const WarningCallout: React.FC<HTMLProps<HTMLDivElement>> = ({
   children,
   ...rest
 }) => (
-  <div className={classNames('nhsuk-warning-callout')} {...rest}>
+  <div className={classNames('nhsuk-warning-callout', className)} {...rest}>
     {label ? <h3 className="nhsuk-warning-callout__label">{label}</h3> : null}
     {children}
   </div>
