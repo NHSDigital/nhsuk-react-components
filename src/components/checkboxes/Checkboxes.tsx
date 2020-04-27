@@ -1,18 +1,27 @@
 import React, { HTMLProps, PureComponent, SyntheticEvent } from 'react';
 import classNames from 'classnames';
+import LabelBlock from '../utils/LabelBlock';
+import { HintProps } from '../hint/Hint';
+import { generateRandomName } from '../../util/RandomName';
 import FormContext from '../form/FormContext';
-import ErrorMessage from '../error-message';
 import CheckboxContext from './CheckboxContext';
 import Box, { BoxProps } from './Box';
+import { LabelProps } from '../label/Label';
+import { ErrorMessageProps } from '../error-message/ErrorMessage';
 
 interface CheckboxesEvent extends SyntheticEvent<HTMLInputElement> {
   target: HTMLInputElement;
 }
 
 interface CheckboxesProps extends HTMLProps<HTMLDivElement> {
-  error?: string | boolean;
   idPrefix?: string;
   onChange?: (e: CheckboxesEvent) => any;
+  label?: string;
+  labelProps?: LabelProps;
+  hint?: string;
+  hintProps?: HintProps;
+  error?: string | boolean;
+  errorProps?: ErrorMessageProps;
 }
 
 interface CheckboxesState {
@@ -27,7 +36,7 @@ class Checkboxes extends PureComponent<CheckboxesProps, CheckboxesState> {
   constructor(props: CheckboxesProps, ...rest: any[]) {
     super(props, ...rest);
     this.state = {
-      name: props.name || `checkbox_${(Math.random() + 1).toString(36).substring(2, 7)}`,
+      name: props.name || generateRandomName('checkbox'),
     };
     this.boxCount = 0;
   }
@@ -47,7 +56,19 @@ class Checkboxes extends PureComponent<CheckboxesProps, CheckboxesState> {
   static Box: React.FC<BoxProps> = Box;
 
   render() {
-    const { error, className, id, children, idPrefix, ...rest } = this.props;
+    const {
+      error,
+      className,
+      id,
+      children,
+      idPrefix,
+      label,
+      labelProps,
+      errorProps,
+      hint,
+      hintProps,
+      ...rest
+    } = this.props;
     const { name } = this.state;
     const { isForm, setError } = this.context;
 
@@ -56,14 +77,22 @@ class Checkboxes extends PureComponent<CheckboxesProps, CheckboxesState> {
     }
 
     return (
-      <CheckboxContext.Provider value={{ isCheckbox: true, name, getBoxId: this.getBoxId }}>
-        <div className={classNames('nhsuk-checkboxes', className)} id={id} {...rest}>
-          {error && typeof error === 'string' ? (
-            <ErrorMessage id={id ? `${id}--error` : undefined}>{error}</ErrorMessage>
-          ) : null}
-          {children}
-        </div>
-      </CheckboxContext.Provider>
+      <>
+        <LabelBlock
+          elementId={id}
+          label={label}
+          labelProps={labelProps}
+          error={error}
+          errorProps={errorProps}
+          hint={hint}
+          hintProps={hintProps}
+        />
+        <CheckboxContext.Provider value={{ isCheckbox: true, name, getBoxId: this.getBoxId }}>
+          <div className={classNames('nhsuk-checkboxes', className)} id={id} {...rest}>
+            {children}
+          </div>
+        </CheckboxContext.Provider>
+      </>
     );
   }
 }
