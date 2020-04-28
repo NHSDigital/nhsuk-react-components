@@ -60,11 +60,11 @@ const Panel: Panel = props => {
     }
     return (
       <Col width={panelWidth} className="nhsuk-panel-group__item">
-        <BasePanel {...props}></BasePanel>
+        <BasePanel {...props} />
       </Col>
     );
   }
-  return <BasePanel {...props}></BasePanel>;
+  return <BasePanel {...props} />;
 };
 
 const PanelGroup: React.FC<HTMLProps<HTMLDivElement>> = ({ className, children, ...rest }) => {

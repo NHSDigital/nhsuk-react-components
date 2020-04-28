@@ -1,20 +1,11 @@
 import React, { HTMLProps, useState, useContext } from 'react';
 import classNames from 'classnames';
+import { FormElementProps } from '../../util/types/FormTypes';
 import { generateRandomName } from '../../util/RandomName';
-import LabelBlock from '../utils/LabelBlock';
-import { HintProps } from '../hint/Hint';
-import { ErrorMessageProps } from '../error-message/ErrorMessage';
-import { LabelProps } from '../label/Label';
+import LabelBlock from '../../util/LabelBlock';
 import FormContext from '../form/FormContext';
 
-interface TextareaProps extends HTMLProps<HTMLTextAreaElement> {
-  label?: string;
-  labelProps?: LabelProps;
-  hint?: string;
-  hintProps?: HintProps;
-  error?: boolean | string;
-  errorProps?: ErrorMessageProps;
-}
+type TextareaProps = HTMLProps<HTMLTextAreaElement> & FormElementProps;
 
 const Textarea: React.FC<TextareaProps> = ({
   className,

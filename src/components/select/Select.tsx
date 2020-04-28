@@ -1,20 +1,11 @@
 import React, { HTMLProps, useContext, useState } from 'react';
 import classNames from 'classnames';
+import { FormElementProps } from '../../util/types/FormTypes';
 import { generateRandomName } from '../../util/RandomName';
-import { ErrorMessageProps } from '../error-message/ErrorMessage';
-import { HintProps } from '../hint/Hint';
-import { LabelProps } from '../label/Label';
-import LabelBlock from '../utils/LabelBlock';
+import LabelBlock from '../../util/LabelBlock';
 import FormContext from '../form/FormContext';
 
-interface SelectProps extends HTMLProps<HTMLSelectElement> {
-  label?: string;
-  labelProps?: LabelProps;
-  hint?: string;
-  hintProps?: HintProps;
-  error?: boolean | string;
-  errorProps?: ErrorMessageProps;
-}
+interface SelectProps extends HTMLProps<HTMLSelectElement>, FormElementProps {}
 
 interface ISelect extends React.FC<SelectProps> {
   Option: React.FC<HTMLProps<HTMLOptionElement>>;

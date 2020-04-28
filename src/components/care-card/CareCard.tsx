@@ -1,8 +1,7 @@
 import React, { HTMLProps, createContext, useContext } from 'react';
 import classNames from 'classnames';
+import { CareCardType } from '../../util/types/NHSUKTypes';
 import HeadingLevel, { HeadingLevelType } from '../../util/HeadingLevel';
-
-type CareCardType = 'non-urgent' | 'urgent' | 'immediate';
 
 interface CareCardProps extends HTMLProps<HTMLDivElement> {
   type: CareCardType;

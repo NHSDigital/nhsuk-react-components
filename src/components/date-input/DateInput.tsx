@@ -8,11 +8,9 @@ import React, {
   SyntheticEvent,
 } from 'react';
 import classNames from 'classnames';
+import { FormElementProps } from '../../util/types/FormTypes';
 import { generateRandomName } from '../../util/RandomName';
-import { HintProps } from '../hint/Hint';
-import { ErrorMessageProps } from '../error-message/ErrorMessage';
-import { LabelProps } from '../label/Label';
-import LabelBlock from '../utils/LabelBlock';
+import LabelBlock from '../../util/LabelBlock';
 
 interface IDateInputContext {
   isDateInput: boolean;
@@ -125,16 +123,10 @@ type DateInputValue = {
   year: string;
 };
 
-interface DateInputProps extends Omit<HTMLProps<HTMLDivElement>, 'onChange'> {
+interface DateInputProps extends Omit<HTMLProps<HTMLDivElement>, 'onChange'>, FormElementProps {
   autoSelectNext?: boolean;
   onChange?: (e: DateInputEvent) => any;
   autoCompletePrefix?: string;
-  label?: string;
-  labelProps?: LabelProps;
-  error?: string;
-  errorProps?: ErrorMessageProps;
-  hint?: string;
-  hintProps?: HintProps;
 }
 
 type DateInputState = {

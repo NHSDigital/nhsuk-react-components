@@ -1,10 +1,11 @@
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
+import { NHSUKSize } from '../../util/types/NHSUKTypes';
 
 export interface LabelProps extends Omit<HTMLProps<HTMLLabelElement>, 'size'> {
   bold?: boolean;
   isPageHeading?: boolean;
-  size?: 's ' | 'm' | 'l' | 'xl';
+  size?: NHSUKSize;
 }
 
 const BaseLabel: React.FC<LabelProps> = ({ className, bold, size, isPageHeading, ...rest }) => (

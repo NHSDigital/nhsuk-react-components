@@ -1,20 +1,13 @@
 import React, { HTMLProps, useState, useEffect } from 'react';
 import classNames from 'classnames';
+import { InputWidth } from '../../util/types/NHSUKTypes';
+import { FormElementProps } from '../../util/types/FormTypes';
 import { generateRandomName } from '../../util/RandomName';
-import LabelBlock from '../utils/LabelBlock';
-import { LabelProps } from '../label/Label';
-import { HintProps } from '../hint/Hint';
-import { ErrorMessageProps } from '../error-message/ErrorMessage';
+import LabelBlock from '../../util/LabelBlock';
 import { useFormContext } from '../form/FormContext';
 
-interface InputProps extends HTMLProps<HTMLInputElement> {
-  label?: string;
-  labelProps?: LabelProps;
-  hint?: string;
-  hintProps?: HintProps;
-  error?: boolean | string;
-  errorProps?: ErrorMessageProps;
-  width?: '2' | '3' | '4' | '5' | '10';
+interface InputProps extends HTMLProps<HTMLInputElement>, FormElementProps {
+  width?: InputWidth;
 }
 
 const Input: React.FC<InputProps> = ({

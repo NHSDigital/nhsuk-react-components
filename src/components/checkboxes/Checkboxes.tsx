@@ -1,27 +1,19 @@
 import React, { HTMLProps, PureComponent, SyntheticEvent } from 'react';
 import classNames from 'classnames';
-import LabelBlock from '../utils/LabelBlock';
-import { HintProps } from '../hint/Hint';
+import { FormElementProps } from '../../util/types/FormTypes';
+import LabelBlock from '../../util/LabelBlock';
 import { generateRandomName } from '../../util/RandomName';
 import FormContext from '../form/FormContext';
 import CheckboxContext from './CheckboxContext';
 import Box, { BoxProps } from './Box';
-import { LabelProps } from '../label/Label';
-import { ErrorMessageProps } from '../error-message/ErrorMessage';
 
 interface CheckboxesEvent extends SyntheticEvent<HTMLInputElement> {
   target: HTMLInputElement;
 }
 
-interface CheckboxesProps extends HTMLProps<HTMLDivElement> {
+interface CheckboxesProps extends HTMLProps<HTMLDivElement>, FormElementProps {
   idPrefix?: string;
   onChange?: (e: CheckboxesEvent) => any;
-  label?: string;
-  labelProps?: LabelProps;
-  hint?: string;
-  hintProps?: HintProps;
-  error?: string | boolean;
-  errorProps?: ErrorMessageProps;
 }
 
 interface CheckboxesState {

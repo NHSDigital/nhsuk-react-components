@@ -19,13 +19,18 @@ export const BaseIconSVG: React.FC<BaseIconSVGProps> = ({
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 24 24"
     aria-hidden="true"
-    height={height || 32}
-    width={width || 32}
+    height={height}
+    width={width}
     {...rest}
   >
     {children}
   </svg>
 );
+
+BaseIconSVG.defaultProps = {
+  height: 32,
+  width: 32,
+};
 
 export const ArrowLeft: React.FC<BaseIconSVGProps> = props => (
   <BaseIconSVG iconType="nhsuk-icon__arrow-left" {...props}>
@@ -125,6 +130,6 @@ export const Tick: React.FC<BaseIconSVGProps> = props => (
       stroke="#007f3b"
       fill="none"
       d="M18.4 7.8l-8.5 8.4L5.6 12"
-    ></path>
+    />
   </BaseIconSVG>
 );

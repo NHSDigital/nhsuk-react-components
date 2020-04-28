@@ -1,17 +1,16 @@
 import React, { HTMLProps, PureComponent, useState, useEffect, useContext } from 'react';
 import classNames from 'classnames';
+import { FormElementProps } from '../../util/types/FormTypes';
 import { generateRandomName } from '../../util/RandomName';
 import { LabelProps } from '../label/Label';
-import { HintProps } from '../hint/Hint';
-import LabelBlock from '../utils/LabelBlock';
-import { ErrorMessageProps } from '../error-message/ErrorMessage';
+import LabelBlock from '../../util/LabelBlock';
 import Label from '../label';
 import RadioContext, { IRadioContext } from './RadioContext';
 import Hint from '../hint';
 import FormContext from '../form/FormContext';
 
 interface RadioProps extends HTMLProps<HTMLInputElement> {
-  labelProps?: HTMLProps<HTMLLabelElement>;
+  labelProps?: LabelProps;
   hint?: string;
 }
 
@@ -77,14 +76,8 @@ interface Radios {
   name: string;
 }
 
-interface RadiosProps extends HTMLProps<HTMLDivElement> {
+interface RadiosProps extends HTMLProps<HTMLDivElement>, FormElementProps {
   inline?: boolean;
-  label?: string;
-  labelProps?: LabelProps;
-  hint?: string;
-  hintProps?: HintProps;
-  error?: boolean | string;
-  errorProps?: ErrorMessageProps;
 }
 
 class Radios extends PureComponent<RadiosProps> {

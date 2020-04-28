@@ -1,11 +1,12 @@
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
+import { NHSUKSize } from '../../util/types/NHSUKTypes';
 import HeadingLevel, { HeadingLevelType } from '../../util/HeadingLevel';
 
 interface LegendProps extends Omit<HTMLProps<HTMLLegendElement>, 'size'> {
   isPageHeading?: boolean;
   headingLevel?: HeadingLevelType;
-  size?: 's' | 'm' | 'l' | 'xl';
+  size?: NHSUKSize;
 }
 
 const Legend: React.FC<LegendProps> = ({
