@@ -12,7 +12,7 @@ const WarningCallout: React.FC<WarningCalloutProps> = ({
   labelProps,
   ...rest
 }) => {
-  const { labelClassName: className, ...restLabelProps } = labelProps || {};
+  const { className: labelClassName, ...restLabelProps } = labelProps || {};
   return (
     <div className={classNames('nhsuk-warning-callout', className)} {...rest}>
       {label ? (
@@ -26,6 +26,6 @@ const WarningCallout: React.FC<WarningCalloutProps> = ({
       {children}
     </div>
   );
-}
+};
 
 export default WarningCallout;
