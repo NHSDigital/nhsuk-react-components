@@ -1,31 +1,30 @@
 import React, { HTMLProps, useState, useEffect } from 'react';
 import classNames from 'classnames';
-import Hint from '../hint';
+import { InputWidth } from '../../util/types/NHSUKTypes';
+import { FormElementProps } from '../../util/types/FormTypes';
+import { generateRandomName } from '../../util/RandomName';
+import LabelBlock from '../../util/LabelBlock';
 import { useFormContext } from '../form/FormContext';
-import ErrorMessage from '../error-message';
 
-interface InputProps extends HTMLProps<HTMLInputElement> {
-  labelProps?: HTMLProps<HTMLLabelElement>;
-  hint?: string;
-  error?: boolean | string;
-  width?: '2' | '3' | '4' | '5' | '10';
+interface InputProps extends HTMLProps<HTMLInputElement>, FormElementProps {
+  width?: InputWidth;
 }
 
 const Input: React.FC<InputProps> = ({
   className,
-  children,
+  label,
   id,
   ref,
   labelProps,
   hint,
-  width,
+  hintProps,
   error,
+  errorProps,
+  width,
   ...rest
 }) => {
   const { isForm, setError } = useFormContext();
-  const [name] = useState<string>(
-    rest.name || `input_${(Math.random() + 1).toString(36).substring(2, 7)}`,
-  );
+  const [name] = useState<string>(rest.name || generateRandomName('input'));
 
   useEffect(() => {
     if (isForm) {
@@ -35,19 +34,15 @@ const Input: React.FC<InputProps> = ({
 
   return (
     <>
-      {children ? (
-        <label
-          className={classNames('nhsuk-label', labelProps ? labelProps.className : undefined)}
-          htmlFor={id}
-          {...labelProps}
-        >
-          {children}
-        </label>
-      ) : null}
-      {hint ? <Hint id={id ? `${id}-label` : undefined}>{hint}</Hint> : null}
-      {error && typeof error === 'string' ? (
-        <ErrorMessage id={id ? `${id}-error` : undefined}>{error}</ErrorMessage>
-      ) : null}
+      <LabelBlock
+        elementId={id}
+        label={label}
+        labelProps={labelProps}
+        hint={hint}
+        hintProps={hintProps}
+        error={error}
+        errorProps={errorProps}
+      />
       <input
         className={classNames(
           'nhsuk-input',

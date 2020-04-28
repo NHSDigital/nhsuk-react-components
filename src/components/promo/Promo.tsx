@@ -21,11 +21,7 @@ const BasePromo: React.FC<BasePromoProps> = ({
   small,
   ...rest
 }) => {
-  let imageClassName = '';
-  if (imageProps && imageProps.className) {
-    imageClassName = imageProps.className;
-    delete imageProps.className;
-  }
+  const { className: imageClassName, ...restImageProps } = imageProps || {};
   return (
     <div className={classNames('nhsuk-promo', { 'nhsuk-promo--small': small }, className)}>
       <a className="nhsuk-promo__link-wrapper" {...rest}>
@@ -33,8 +29,8 @@ const BasePromo: React.FC<BasePromoProps> = ({
           <img
             className={classNames('nhsuk-promo__img', imageClassName)}
             src={imageSrc}
-            {...imageProps}
-          ></img>
+            {...restImageProps}
+          />
         ) : null}
         <div className="nhsuk-promo__content">{children}</div>
       </a>
@@ -47,11 +43,11 @@ BasePromo.defaultProps = {
 };
 
 const PromoHeading: React.FC<HTMLProps<HTMLHeadingElement>> = ({ className, ...rest }) => (
-  <h3 className={classNames('nhsuk-promo__heading', className)} {...rest}></h3>
+  <h3 className={classNames('nhsuk-promo__heading', className)} {...rest} />
 );
 
 const PromoDescription: React.FC<HTMLProps<HTMLParagraphElement>> = ({ className, ...rest }) => (
-  <p className={classNames('nhsuk-promo__description', className)} {...rest}></p>
+  <p className={classNames('nhsuk-promo__description', className)} {...rest} />
 );
 
 const PromoGroup: React.FC<HTMLProps<HTMLDivElement>> = ({ className, children, ...rest }) => {
@@ -95,11 +91,11 @@ const Promo: Promo = props => {
     }
     return (
       <Col className="nhsuk-promo-group__item" width={promoWidth}>
-        <BasePromo {...props}></BasePromo>
+        <BasePromo {...props} />
       </Col>
     );
   }
-  return <BasePromo {...props}></BasePromo>;
+  return <BasePromo {...props} />;
 };
 
 Promo.Group = PromoGroup;

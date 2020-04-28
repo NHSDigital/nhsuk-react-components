@@ -8,9 +8,9 @@ interface ContentsListItemProps extends HTMLProps<HTMLAnchorElement> {
 const ContentsListItem: React.FC<ContentsListItemProps> = ({ className, current, ...rest }) => (
   <li className={classNames('nhsuk-contents-list__item', className)}>
     {current ? (
-      <span className="nhsuk-contents-list__current" {...rest}></span>
+      <span className="nhsuk-contents-list__current" {...rest} />
     ) : (
-      <a className="nhsuk-contents-list__link" {...rest}></a>
+      <a className="nhsuk-contents-list__link" {...rest} />
     )}
   </li>
 );

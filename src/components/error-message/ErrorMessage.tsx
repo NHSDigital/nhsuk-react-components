@@ -1,7 +1,7 @@
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
 
-interface ErrorMessageProps extends HTMLProps<HTMLSpanElement> {
+export interface ErrorMessageProps extends HTMLProps<HTMLSpanElement> {
   visuallyHiddenText?: false | string;
 }
 
