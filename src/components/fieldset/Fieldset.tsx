@@ -7,7 +7,13 @@ interface LegendProps extends HTMLProps<HTMLLegendElement> {
   headingLevel?: HeadingLevelType;
 }
 
-const Legend: React.FC<LegendProps> = ({ className, children, isPageHeading, headingLevel }) => (
+const Legend: React.FC<LegendProps> = ({
+  className,
+  children,
+  isPageHeading,
+  headingLevel,
+  ...rest
+}) => (
   <legend
     className={classNames(
       'nhsuk-fieldset__legend',
@@ -16,6 +22,7 @@ const Legend: React.FC<LegendProps> = ({ className, children, isPageHeading, hea
       },
       className,
     )}
+    {...rest}
   >
     {isPageHeading ? (
       <HeadingLevel className="nhsuk-fieldset__heading" headingLevel={headingLevel}>
@@ -36,7 +43,7 @@ interface Fieldset extends React.FC<HTMLProps<HTMLFieldSetElement>> {
 }
 
 const Fieldset: Fieldset = ({ className, ...rest }) => (
-  <fieldset className={classNames('nhsuk-fieldset', className)} {...rest}></fieldset>
+  <fieldset className={classNames('nhsuk-fieldset', className)} {...rest} />
 );
 
 Fieldset.Legend = Legend;
