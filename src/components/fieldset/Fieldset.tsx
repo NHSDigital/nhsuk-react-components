@@ -15,6 +15,7 @@ const Legend: React.FC<LegendProps> = ({
   isPageHeading,
   headingLevel,
   size,
+  ...rest
 }) => (
   <legend
     className={classNames(
@@ -25,6 +26,7 @@ const Legend: React.FC<LegendProps> = ({
       { [`nhsuk-fieldset__legend--${size}`]: size },
       className,
     )}
+    {...rest}
   >
     {isPageHeading ? (
       <HeadingLevel className="nhsuk-fieldset__heading" headingLevel={headingLevel}>
