@@ -20,7 +20,7 @@ const BaseHeaderLogo: React.FC<OrganisationalLogoProps> = props => {
 };
 
 const HeaderContainer: React.FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => (
-  <Container className={classNames('nhsuk-header__container', className)} {...rest}></Container>
+  <Container className={classNames('nhsuk-header__container', className)} {...rest} />
 );
 
 interface HeaderProps extends HTMLProps<HTMLDivElement> {
@@ -41,12 +41,19 @@ interface HeaderState {
 
 class Header extends PureComponent<HeaderProps, HeaderState> {
   static Logo = BaseHeaderLogo;
+
   static Search = Search;
+
   static Nav = Nav;
+
   static NavItem = NavItem;
+
   static Container = HeaderContainer;
+
   static Content = Content;
+
   static MenuToggle = MenuToggle;
+
   static ServiceName = TransactionalServiceName;
 
   static defaultProps = {
@@ -72,11 +79,11 @@ class Header extends PureComponent<HeaderProps, HeaderState> {
   };
 
   toggleMenu = () => {
-    this.setState({ menuOpen: !this.state.menuOpen });
+    this.setState(state => ({ menuOpen: !state.menuOpen }));
   };
 
   toggleSearch = () => {
-    this.setState({ searchOpen: !this.state.searchOpen });
+    this.setState(state => ({ searchOpen: !state.searchOpen }));
   };
 
   render() {

@@ -2,19 +2,19 @@ import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
 
 const SummaryListRow: React.FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => (
-  <div className={classNames('nhsuk-summary-list__row', className)} {...rest}></div>
+  <div className={classNames('nhsuk-summary-list__row', className)} {...rest} />
 );
 
 const SummaryListKey: React.FC<HTMLProps<HTMLDListElement>> = ({ className, ...rest }) => (
-  <dt className={classNames('nhsuk-summary-list__key', className)} {...rest}></dt>
+  <dt className={classNames('nhsuk-summary-list__key', className)} {...rest} />
 );
 
 const SummaryListValue: React.FC<HTMLProps<HTMLDListElement>> = ({ className, ...rest }) => (
-  <dd className={classNames('nhsuk-summary-list__value', className)} {...rest}></dd>
+  <dd className={classNames('nhsuk-summary-list__value', className)} {...rest} />
 );
 
 const SummaryListActions: React.FC<HTMLProps<HTMLDListElement>> = ({ className, ...rest }) => (
-  <dd className={classNames('nhsuk-summary-list__actions')} {...rest}></dd>
+  <dd className={classNames('nhsuk-summary-list__actions')} {...rest} />
 );
 
 interface SummaryListProps extends HTMLProps<HTMLDListElement> {

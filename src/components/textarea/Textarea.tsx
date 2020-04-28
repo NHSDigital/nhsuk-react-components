@@ -1,40 +1,46 @@
 import React, { HTMLProps, useState, useContext } from 'react';
 import classNames from 'classnames';
-import Label from '../label';
-import Hint from '../hint';
+import { FormElementProps } from '../../util/types/FormTypes';
+import { generateRandomName } from '../../util/RandomName';
+import LabelBlock from '../../util/LabelBlock';
 import FormContext from '../form/FormContext';
-import ErrorMessage from '../error-message';
 
-interface TextareaProps extends HTMLProps<HTMLTextAreaElement> {
-  hint?: string;
-  error?: boolean | string;
-}
+type TextareaProps = HTMLProps<HTMLTextAreaElement> & FormElementProps;
 
-const Textarea: React.FC<TextareaProps> = ({ className, label, hint, error, id, ...rest }) => {
+const Textarea: React.FC<TextareaProps> = ({
+  className,
+  label,
+  labelProps,
+  hint,
+  hintProps,
+  error,
+  errorProps,
+  id,
+  name,
+  ...rest
+}) => {
   const { isForm, setError } = useContext(FormContext);
-  const [selectName] = useState<string>(
-    name || `select_${(Math.random() + 1).toString(36).substring(2, 7)}`,
-  );
+  const [selectName] = useState<string>(name || generateRandomName('textarea'));
   if (isForm) {
     setError(selectName, Boolean(error));
   }
   return (
     <>
-      {label ? (
-        <Label id={id ? `${id}--label` : undefined} htmlFor={id}>
-          {label}
-        </Label>
-      ) : null}
-      {hint ? <Hint id={id ? `${id}--label` : undefined}>{hint}</Hint> : null}
-      {error && typeof error === 'string' ? (
-        <ErrorMessage id={id ? `${id}--error` : id}>{error}</ErrorMessage>
-      ) : null}
+      <LabelBlock
+        elementId={id}
+        label={label}
+        labelProps={labelProps}
+        error={error}
+        errorProps={errorProps}
+        hint={hint}
+        hintProps={hintProps}
+      />
       <textarea
         className={classNames('nhsuk-textarea', { 'nhsuk-textarea--error': error }, className)}
         id={id}
         name={selectName}
         {...rest}
-      ></textarea>
+      />
     </>
   );
 };

@@ -1,8 +1,9 @@
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
+import { ColWidth } from '../../util/types/NHSUKTypes';
 
 interface ColProps extends HTMLProps<HTMLDivElement> {
-  width: 'full' | 'three-quarters' | 'one-half' | 'two-thirds' | 'one-third' | 'one-quarter';
+  width: ColWidth;
 }
 
 const Col: React.FC<ColProps> = ({ className, width, ...rest }) => (

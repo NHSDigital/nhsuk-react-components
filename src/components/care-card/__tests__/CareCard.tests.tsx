@@ -54,9 +54,9 @@ describe('CareCard', () => {
   });
 
   it('renders with correct classNames', () => {
-    const nonUrgentCard = shallow(<CareCard type="non-urgent"></CareCard>);
-    const urgentCard = shallow(<CareCard type="urgent"></CareCard>);
-    const immediateCard = shallow(<CareCard type="immediate"></CareCard>);
+    const nonUrgentCard = shallow(<CareCard type="non-urgent" />);
+    const urgentCard = shallow(<CareCard type="urgent" />);
+    const immediateCard = shallow(<CareCard type="immediate" />);
 
     expect(nonUrgentCard.hasClass('nhsuk-care-card--non-urgent')).toBeTruthy();
     expect(urgentCard.hasClass('nhsuk-care-card--urgent')).toBeTruthy();

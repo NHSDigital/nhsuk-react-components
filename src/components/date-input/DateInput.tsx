@@ -8,9 +8,9 @@ import React, {
   SyntheticEvent,
 } from 'react';
 import classNames from 'classnames';
-import ErrorMessage from '../error-message';
-import Hint from '../hint';
-import Label from '../label';
+import { FormElementProps } from '../../util/types/FormTypes';
+import { generateRandomName } from '../../util/RandomName';
+import LabelBlock from '../../util/LabelBlock';
 
 interface IDateInputContext {
   isDateInput: boolean;
@@ -96,15 +96,15 @@ DateInputInput.defaultProps = {
   pattern: '[0-9]*',
 };
 
-const DateInputDay: React.FC<HTMLProps<HTMLInputElement>> = props => (
+const DateInputDay: React.FC<Omit<DateInputInputProps, 'dateInputType'>> = props => (
   <DateInputInput dateInputType="Day" {...props} />
 );
 
-const DateInputMonth: React.FC<HTMLProps<HTMLInputElement>> = props => (
+const DateInputMonth: React.FC<Omit<DateInputInputProps, 'dateInputType'>> = props => (
   <DateInputInput dateInputType="Month" {...props} />
 );
 
-const DateInputYear: React.FC<HTMLProps<HTMLInputElement>> = props => (
+const DateInputYear: React.FC<Omit<DateInputInputProps, 'dateInputType'>> = props => (
   <DateInputInput dateInputType="Year" {...props} />
 );
 
@@ -123,13 +123,10 @@ type DateInputValue = {
   year: string;
 };
 
-interface DateInputProps extends Omit<HTMLProps<HTMLDivElement>, 'onChange'> {
+interface DateInputProps extends Omit<HTMLProps<HTMLDivElement>, 'onChange'>, FormElementProps {
   autoSelectNext?: boolean;
   onChange?: (e: DateInputEvent) => any;
   autoCompletePrefix?: string;
-  error?: string;
-  hint?: string;
-  labelHtmlFor?: string;
 }
 
 type DateInputState = {
@@ -146,7 +143,7 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
   constructor(props: DateInputProps, ...rest: any[]) {
     super(props, ...rest);
     this.state = {
-      name: props.name || `dateinput_${(Math.random() + 1).toString(36).substring(2, 7)}`,
+      name: props.name || generateRandomName('dateinput'),
       value: { day: '', month: '', year: '' },
     };
     this.monthRef = null;
@@ -211,10 +208,12 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
       children,
       autoSelectNext,
       autoCompletePrefix,
-      labelHtmlFor,
       hint,
       error,
       label,
+      labelProps,
+      errorProps,
+      hintProps,
       ...rest
     } = this.props;
     const { name } = this.state;
@@ -228,13 +227,20 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
 
     return (
       <>
-        {label ? <Label htmlFor={labelHtmlFor || id}>{label}</Label> : null}
-        {hint ? <Hint>{hint}</Hint> : null}
-        {error ? <ErrorMessage>{error}</ErrorMessage> : null}
+        <LabelBlock
+          elementId={id}
+          label={label}
+          labelProps={labelProps}
+          hint={hint}
+          hintProps={hintProps}
+          error={error}
+          errorProps={errorProps}
+        />
         <div
+          id={id}
           className={classNames('nhsuk-date-input', className)}
-          {...rest}
           onChange={this.onChange}
+          {...rest}
         >
           <DateInputContext.Provider value={contextValue}>
             {children || (

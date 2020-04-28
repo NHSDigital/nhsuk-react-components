@@ -13,15 +13,15 @@ const processLetters = (
   const letterMap = (letter: string) => {
     if (removedLetters && removedLetters.includes(letter)) {
       return null;
-    } else if (disabledLetters && disabledLetters.includes(letter)) {
-      return <DisabledItem key={letter}>{letter}</DisabledItem>;
-    } else {
-      return (
-        <LinkItem key={letter} href={`#${letter}`}>
-          {letter}
-        </LinkItem>
-      );
     }
+    if (disabledLetters && disabledLetters.includes(letter)) {
+      return <DisabledItem key={letter}>{letter}</DisabledItem>;
+    }
+    return (
+      <LinkItem key={letter} href={`#${letter}`}>
+        {letter}
+      </LinkItem>
+    );
   };
   if (children) {
     return children;
@@ -57,7 +57,7 @@ const NavAZ: NavAZ = ({
   ...rest
 }) => (
   <nav className={classNames('nhsuk-nav-a-z', className)} {...rest}>
-    <ol className="nhsuk-nav-a-z__list" role="list">
+    <ol className="nhsuk-nav-a-z__list">
       {processLetters(children, fullAlphabet, removedLetters, disabledLetters, letters)}
     </ol>
   </nav>
@@ -65,13 +65,13 @@ const NavAZ: NavAZ = ({
 
 const LinkItem: React.FC<HTMLProps<HTMLAnchorElement>> = ({ className, ...rest }) => (
   <li className="nhsuk-nav-a-z__item">
-    <a className={classNames('nhsuk-nav-a-z__link', className)} {...rest}></a>
+    <a className={classNames('nhsuk-nav-a-z__link', className)} {...rest} />
   </li>
 );
 
 const DisabledItem: React.FC<HTMLProps<HTMLSpanElement>> = ({ className, ...rest }) => (
   <li className="nhsuk-nav-a-z__item">
-    <span className={classNames('nhsuk-nav-a-z__link--disabled', className)} {...rest}></span>
+    <span className={classNames('nhsuk-nav-a-z__link--disabled', className)} {...rest} />
   </li>
 );
 

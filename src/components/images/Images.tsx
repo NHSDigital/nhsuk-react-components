@@ -10,7 +10,7 @@ interface ImageProps extends HTMLProps<HTMLImageElement> {
 
 const Images: React.FC<ImageProps> = ({ className, src, caption, ...rest }) => (
   <figure className="nhsuk-image">
-    <img className={classNames('nhsuk-image__img', className)} {...rest}></img>
+    <img className={classNames('nhsuk-image__img', className)} {...rest} />
     {caption ? <figcaption className="nhsuk-image__caption">{caption}</figcaption> : null}
   </figure>
 );

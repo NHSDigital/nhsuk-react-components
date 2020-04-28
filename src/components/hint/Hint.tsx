@@ -1,8 +1,10 @@
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
 
-const Hint: React.FC<HTMLProps<HTMLSpanElement>> = ({ className, ...rest }) => (
-  <span className={classNames('nhsuk-hint', className)} {...rest}></span>
+export type HintProps = HTMLProps<HTMLSpanElement>;
+
+const Hint: React.FC<HintProps> = ({ className, ...rest }) => (
+  <span className={classNames('nhsuk-hint', className)} {...rest} />
 );
 
 export default Hint;

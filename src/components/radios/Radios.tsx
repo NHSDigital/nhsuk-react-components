@@ -1,13 +1,16 @@
 import React, { HTMLProps, PureComponent, useState, useEffect, useContext } from 'react';
 import classNames from 'classnames';
+import { FormElementProps } from '../../util/types/FormTypes';
+import { generateRandomName } from '../../util/RandomName';
+import { LabelProps } from '../label/Label';
+import LabelBlock from '../../util/LabelBlock';
 import Label from '../label';
 import RadioContext, { IRadioContext } from './RadioContext';
 import Hint from '../hint';
 import FormContext from '../form/FormContext';
-import ErrorMessage from '../error-message';
 
 interface RadioProps extends HTMLProps<HTMLInputElement> {
-  labelProps?: HTMLProps<HTMLLabelElement>;
+  labelProps?: LabelProps;
   hint?: string;
 }
 
@@ -35,10 +38,10 @@ const Radio: React.FC<RadioProps> = ({
     <div className="nhsuk-radios__item" {...rest}>
       <input
         id={radioId}
-        name={name ? name : context.name}
+        name={name || context.name}
         className={classNames('nhsuk-radios__input', className)}
         {...rest}
-      ></input>
+      />
       {children ? (
         <Label
           id={labelProps && labelProps.id ? labelProps.id : `${radioId}-label`}
@@ -65,7 +68,7 @@ Radio.defaultProps = {
 };
 
 const Divider: React.FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => (
-  <div className={classNames('nhsuk-radios__divider', className)} {...rest}></div>
+  <div className={classNames('nhsuk-radios__divider', className)} {...rest} />
 );
 
 interface Radios {
@@ -73,51 +76,73 @@ interface Radios {
   name: string;
 }
 
-interface RadiosProps extends HTMLProps<HTMLDivElement> {
+interface RadiosProps extends HTMLProps<HTMLDivElement>, FormElementProps {
   inline?: boolean;
-  error?: boolean | string;
 }
 
 class Radios extends PureComponent<RadiosProps> {
   static contextType = FormContext;
+
   static Radio = Radio;
+
   static Divider = Divider;
 
   constructor(props: RadiosProps, ...rest: any[]) {
     super(props, ...rest);
-    this.name = props.name || `radio_${(Math.random() + 1).toString(36).substring(2, 7)}`;
+    this.name = props.name || generateRandomName('radios');
     this.radioCount = 0;
   }
 
   getRadioId = (): string | undefined => {
     const { id } = this.props;
     if (id) {
-      ++this.radioCount;
+      this.radioCount += 1;
       return `${id}-${this.radioCount}`;
     }
     return undefined;
   };
 
   render() {
-    const { className, id, children, inline, error, ...rest } = this.props;
+    const {
+      className,
+      id,
+      children,
+      inline,
+      label,
+      labelProps,
+      hint,
+      hintProps,
+      error,
+      errorProps,
+      ...rest
+    } = this.props;
+
     const { isForm, setError } = this.context;
     if (isForm) {
       setError(this.name, Boolean(error));
     }
 
     return (
-      <RadioContext.Provider value={{ getRadioId: this.getRadioId, name: this.name }}>
-        {error && typeof error === 'string' ? (
-          <ErrorMessage id={id ? `${id}--error` : undefined}>{error}</ErrorMessage>
-        ) : null}
-        <div
-          className={classNames('nhsuk-radios', { 'nhsuk-radios--inline': inline }, className)}
-          id={id}
-          {...rest}
-        >
-          {children}
-        </div>
-      </RadioContext.Provider>
+      <>
+        <LabelBlock
+          elementId={id}
+          label={label}
+          labelProps={labelProps}
+          hint={hint}
+          hintProps={hintProps}
+          error={error}
+          errorProps={errorProps}
+        />
+        <RadioContext.Provider value={{ getRadioId: this.getRadioId, name: this.name }}>
+          <div
+            className={classNames('nhsuk-radios', { 'nhsuk-radios--inline': inline }, className)}
+            id={id}
+            {...rest}
+          >
+            {children}
+          </div>
+        </RadioContext.Provider>
+      </>
     );
   }
 }

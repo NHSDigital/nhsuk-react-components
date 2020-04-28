@@ -35,10 +35,14 @@ export const Button: React.FC<ButtonProps> = ({
     )}
     disabled={disabled}
     aria-disabled={disabled ? 'true' : 'false'}
-    type={type || 'submit'}
+    type={type}
     {...rest}
   />
 );
+
+Button.defaultProps = {
+  type: 'submit',
+};
 
 export const ButtonLink: React.FC<ButtonLinkProps> = ({
   className,
@@ -58,14 +62,19 @@ export const ButtonLink: React.FC<ButtonLinkProps> = ({
       { 'nhsuk-button--reverse': reverse },
       className,
     )}
-    role={role || 'button'}
+    role={role}
     aria-disabled={disabled ? 'true' : 'false'}
-    draggable={draggable || false}
+    draggable={draggable}
     {...rest}
   >
     {children}
   </a>
 );
+
+ButtonLink.defaultProps = {
+  role: 'button',
+  draggable: false,
+};
 
 const ButtonWrapper: React.FC<ButtonLinkProps | ButtonProps> = ({ href, as, ...rest }) => {
   if (as === 'a') {
