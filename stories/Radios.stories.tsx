@@ -14,7 +14,7 @@ stories
         <Fieldset.Legend>Have you changed your name?</Fieldset.Legend>
         <Radios
           name="example"
-          hint="This includes charging your last name or spelling your name differently."
+          hint="This includes changing your last name or spelling your name differently."
         >
           <Radios.Radio id="example-1" value="yes">
             Yes
@@ -33,7 +33,7 @@ stories
         <Radios
           name="example"
           inline
-          hint="This includes charging your last name or spelling your name differently."
+          hint="This includes changing your last name or spelling your name differently."
         >
           <Radios.Radio id="example-1" value="yes">
             Yes
@@ -51,7 +51,7 @@ stories
         <Fieldset.Legend>Have you changed your name?</Fieldset.Legend>
         <Radios
           name="example"
-          hint="This includes charging your last name or spelling your name differently."
+          hint="This includes changing your last name or spelling your name differently."
         >
           <Radios.Radio disabled id="example-1" value="yes">
             Yes
@@ -148,7 +148,7 @@ stories
             <Radios
               name="example"
               error={error}
-              hint="This includes charging your last name or spelling your name differently."
+              hint="This includes changing your last name or spelling your name differently."
             >
               <Radios.Radio id="example-1" value="yes">
                 Yes
