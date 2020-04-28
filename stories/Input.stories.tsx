@@ -10,7 +10,7 @@ interface Props {
   disableErrorFromComponents?: boolean;
 }
 
-const ExampleForm: FunctionComponent<Props> = (props: Props) => {
+const ExampleForm: FunctionComponent<Props> = (props) => {
   const { disableErrorFromComponents } = props;
   const [firstName, setFirstName] = useState<string>('');
   const [middleName, setMiddleName] = useState<string>('');
