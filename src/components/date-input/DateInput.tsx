@@ -17,7 +17,7 @@ interface IDateInputContext {
   registerRef: (type: DateInputType, ref: HTMLInputElement | null) => void;
   name: string;
   autoCompletePrefix: string | undefined;
-  error?: string;
+  error?: string | boolean;
 }
 
 const DateInputContext = createContext<IDateInputContext>({
@@ -123,10 +123,14 @@ type DateInputValue = {
   year: string;
 };
 
-interface DateInputProps extends Omit<HTMLProps<HTMLDivElement>, 'onChange'>, FormElementProps {
+interface DateInputProps
+  extends Omit<HTMLProps<HTMLDivElement>, 'onChange' | 'value' | 'defaultValue'>,
+    FormElementProps {
   autoSelectNext?: boolean;
   onChange?: (e: DateInputEvent) => any;
   autoCompletePrefix?: string;
+  value?: DateInputValue;
+  defaultValue?: DateInputValue;
 }
 
 type DateInputState = {
@@ -161,6 +165,8 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
   };
 
   onChange = (e: SyntheticEvent<HTMLInputElement>) => {
+    e.stopPropagation();
+
     const target = e.target as HTMLInputElement;
     const { value, name } = this.state;
     if (target && target.name) {
@@ -181,6 +187,7 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
       target: { ...target, name, value },
       currentTarget: { ...target, name, value },
     };
+
     if (this.props.onChange) {
       this.props.onChange(newEvent);
     }
@@ -211,9 +218,12 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
       hint,
       error,
       label,
+      onChange,
       labelProps,
       errorProps,
       hintProps,
+      value,
+      defaultValue,
       ...rest
     } = this.props;
     const { name } = this.state;
@@ -245,9 +255,18 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
           <DateInputContext.Provider value={contextValue}>
             {children || (
               <>
-                <DateInput.Day />
-                <DateInput.Month />
-                <DateInput.Year />
+                <DateInput.Day
+                  value={value ? value.day : undefined}
+                  defaultValue={defaultValue ? defaultValue.day : undefined}
+                />
+                <DateInput.Month
+                  value={value ? value.month : undefined}
+                  defaultValue={defaultValue ? defaultValue.month : undefined}
+                />
+                <DateInput.Year
+                  value={value ? value.year : undefined}
+                  defaultValue={defaultValue ? defaultValue.year : undefined}
+                />
               </>
             )}
           </DateInputContext.Provider>

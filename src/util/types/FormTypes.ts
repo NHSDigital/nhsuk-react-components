@@ -5,7 +5,7 @@ import { LabelProps } from '../../components/label/Label';
 export interface FormElementProps {
   label?: string;
   labelProps?: LabelProps;
-  error?: string;
+  error?: string | boolean;
   errorProps?: ErrorMessageProps;
   hint?: string;
   hintProps?: HintProps
