@@ -10,7 +10,7 @@ interface Props {
   disableErrorFromComponents?: boolean;
 }
 
-const ExampleForm: FunctionComponent<Props> = (props) => {
+const ExampleForm: FunctionComponent<Props> = props => {
   const { disableErrorFromComponents } = props;
   const [firstName, setFirstName] = useState<string>('');
   const [middleName, setMiddleName] = useState<string>('');
@@ -65,7 +65,9 @@ const ExampleForm: FunctionComponent<Props> = (props) => {
       >
         Last name
       </Input>
-      <Button style={{ display: 'block' }} type="submit">Submit</Button>
+      <Button style={{ display: 'block' }} type="submit">
+        Submit
+      </Button>
     </Form>
   );
 };
@@ -120,9 +122,5 @@ stories
       width="10"
     />
   ))
-  .add('Multiple Error States', () => (
-    <ExampleForm />
-  ))
-  .add('Form Error State Disabled', () => (
-    <ExampleForm disableErrorFromComponents />
-  ));
+  .add('Multiple Error States', () => <ExampleForm />)
+  .add('Form Error State Disabled', () => <ExampleForm disableErrorFromComponents />);
