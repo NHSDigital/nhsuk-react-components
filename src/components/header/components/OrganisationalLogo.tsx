@@ -17,10 +17,12 @@ const OrganisationalLogo: React.FC<OrganisationalLogoProps> = ({ logoUrl, alt, .
             <svg
               className="nhsuk-logo"
               xmlns="http://www.w3.org/2000/svg"
-              role="presentation"
+              role="img"
               focusable="false"
               viewBox="0 0 40 16"
+              aria-labelledby="nhsuk-logo_title"
             >
+              <title id="nhsuk-logo_title">{alt}</title>
               <path className="nhsuk-logo__background" d="M0 0h40v16H0z"></path>
               <path
                 className="nhsuk-logo__text"
