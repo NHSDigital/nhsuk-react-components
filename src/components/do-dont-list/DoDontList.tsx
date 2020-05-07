@@ -27,7 +27,7 @@ const DoDontList: DoDontList = ({
 }) => (
   <div className={classNames('nhsuk-do-dont-list', className)} {...rest}>
     <HeadingLevel className="nhsuk-do-dont-list__label" headingLevel={headingLevel}>
-      {heading || listType === 'do' ? 'Do' : "Don't"}
+      {heading || (listType === 'do' ? 'Do' : "Don't")}
     </HeadingLevel>
     <ul
       className={classNames(
