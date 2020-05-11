@@ -1,10 +1,13 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DateInput matches snapshot 1`] = `
-<DateInput>
+<DateInput
+  name="testInput"
+>
   <LabelBlock />
   <div
     className="nhsuk-date-input"
+    name="testInput"
     onChange={[Function]}
   >
     <DateInputDay>
@@ -21,15 +24,15 @@ exports[`DateInput matches snapshot 1`] = `
           >
             <label
               className="nhsuk-label nhsuk-date-input__label"
-              htmlFor="dateinput_01p06-day"
+              htmlFor="testInput-day"
             >
               Day
             </label>
             <input
-              aria-label="dateinput_01p06-day input"
+              aria-label="testInput-day input"
               className="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
-              id="dateinput_01p06-day"
-              name="dateinput_01p06-day"
+              id="testInput-day"
+              name="testInput-day"
               pattern="[0-9]*"
               type="number"
             />
@@ -51,15 +54,15 @@ exports[`DateInput matches snapshot 1`] = `
           >
             <label
               className="nhsuk-label nhsuk-date-input__label"
-              htmlFor="dateinput_01p06-month"
+              htmlFor="testInput-month"
             >
               Month
             </label>
             <input
-              aria-label="dateinput_01p06-month input"
+              aria-label="testInput-month input"
               className="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
-              id="dateinput_01p06-month"
-              name="dateinput_01p06-month"
+              id="testInput-month"
+              name="testInput-month"
               pattern="[0-9]*"
               type="number"
             />
@@ -81,15 +84,15 @@ exports[`DateInput matches snapshot 1`] = `
           >
             <label
               className="nhsuk-label nhsuk-date-input__label"
-              htmlFor="dateinput_01p06-year"
+              htmlFor="testInput-year"
             >
               Year
             </label>
             <input
-              aria-label="dateinput_01p06-year input"
+              aria-label="testInput-year input"
               className="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
-              id="dateinput_01p06-year"
-              name="dateinput_01p06-year"
+              id="testInput-year"
+              name="testInput-year"
               pattern="[0-9]*"
               type="number"
             />

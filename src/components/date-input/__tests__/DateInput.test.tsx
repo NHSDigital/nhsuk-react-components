@@ -4,7 +4,7 @@ import DateInput from '../DateInput';
 
 describe('DateInput', () => {
   it('matches snapshot', () => {
-    const component = mount(<DateInput />);
+    const component = mount(<DateInput name="testInput" />);
     expect(component).toMatchSnapshot();
     component.unmount();
   });
