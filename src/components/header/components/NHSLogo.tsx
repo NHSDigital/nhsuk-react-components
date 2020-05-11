@@ -21,7 +21,7 @@ const NHSLogo: React.FC<HTMLProps<HTMLAnchorElement>> = ({ className, alt, ...re
         <svg
           className="nhsuk-logo"
           xmlns="http://www.w3.org/2000/svg"
-          role="presentation"
+          role="img"
           focusable="false"
           viewBox="0 0 40 16"
           aria-labelledby="nhsuk-logo_title"
