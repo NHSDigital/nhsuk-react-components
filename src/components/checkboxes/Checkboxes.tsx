@@ -80,7 +80,12 @@ class Checkboxes extends PureComponent<CheckboxesProps, CheckboxesState> {
           hintProps={hintProps}
         />
         <CheckboxContext.Provider value={{ isCheckbox: true, name, getBoxId: this.getBoxId }}>
-          <div className={classNames('nhsuk-checkboxes', className)} id={id} {...rest}>
+          <div
+            className={classNames('nhsuk-checkboxes', className)}
+            id={id}
+            aria-describedby={hint ? `${id}--hint` : undefined}
+            {...rest}
+          >
             {children}
           </div>
         </CheckboxContext.Provider>

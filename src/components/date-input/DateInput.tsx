@@ -11,10 +11,12 @@ import classNames from 'classnames';
 import { FormElementProps } from '../../util/types/FormTypes';
 import { generateRandomName } from '../../util/RandomName';
 import LabelBlock from '../../util/LabelBlock';
+import FormContext, { IFormContext } from '../form/FormContext';
 
 interface IDateInputContext {
   isDateInput: boolean;
   registerRef: (type: DateInputType, ref: HTMLInputElement | null) => void;
+  registerError: (type: DateInputType, error: boolean | undefined) => void;
   name: string;
   autoCompletePrefix: string | undefined;
   error?: string | boolean;
@@ -23,6 +25,7 @@ interface IDateInputContext {
 const DateInputContext = createContext<IDateInputContext>({
   isDateInput: false,
   registerRef: () => undefined,
+  registerError: () => undefined,
   name: '',
   autoCompletePrefix: '',
   error: '',
@@ -41,7 +44,7 @@ const DateInputInput: React.FC<DateInputInputProps> = ({
   autoComplete,
   ...rest
 }) => {
-  const { isDateInput, registerRef, name, autoCompletePrefix, error } = useContext<
+  const { isDateInput, registerRef, name, autoCompletePrefix, registerError, error } = useContext<
     IDateInputContext
   >(DateInputContext);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -51,6 +54,12 @@ const DateInputInput: React.FC<DateInputInputProps> = ({
       registerRef(dateInputType, inputRef.current);
     }
   }, [inputRef.current]);
+
+  useEffect(() => {
+    if (isDateInput) {
+      registerError(dateInputType, rest.error);
+    }
+  }, [rest.error]);
 
   return (
     <div className="nhsuk-date-input__item">
@@ -123,6 +132,12 @@ type DateInputValue = {
   year: string;
 };
 
+type DateInputErrors = {
+  day: boolean | undefined;
+  month: boolean | undefined;
+  year: boolean | undefined;
+};
+
 interface DateInputProps
   extends Omit<HTMLProps<HTMLDivElement>, 'onChange' | 'value' | 'defaultValue'>,
     FormElementProps {
@@ -133,10 +148,15 @@ interface DateInputProps
   defaultValue?: DateInputValue;
 }
 
-type DateInputState = {
+export type DateInputState = {
   name: string;
   value: DateInputValue;
+  errors: DateInputErrors;
 };
+
+interface DateInput extends PureComponent<DateInputProps, DateInputState> {
+  context: IFormContext;
+}
 
 interface DateInput extends PureComponent<DateInputProps, DateInputState> {
   monthRef: HTMLInputElement | null;
@@ -149,10 +169,32 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
     this.state = {
       name: props.name || generateRandomName('dateinput'),
       value: { day: '', month: '', year: '' },
+      errors: { day: undefined, month: undefined, year: undefined },
     };
     this.monthRef = null;
     this.yearRef = null;
   }
+
+  componentDidUpdate() {
+    if (!this.context.isForm) return;
+    if (this.props.error !== undefined) {
+      this.context.setError(this.state.name, Boolean(this.props.error));
+    } else {
+      const { day, month, year } = this.state.errors;
+      const errorInChild = day || month || year;
+      this.context.setError(this.state.name, Boolean(errorInChild));
+    }
+  }
+
+  registerError = (type: DateInputType, error: boolean | undefined) => {
+    this.setState(state => ({
+      ...state,
+      errors: {
+        ...state.errors,
+        [type]: error,
+      },
+    }));
+  };
 
   registerRef = (type: DateInputType, ref: HTMLInputElement | null) => {
     if (ref !== null) {
@@ -166,7 +208,6 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
 
   onChange = (e: SyntheticEvent<HTMLInputElement>) => {
     e.stopPropagation();
-
     const target = e.target as HTMLInputElement;
     const { value, name } = this.state;
     if (target && target.name) {
@@ -188,6 +229,7 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
       currentTarget: { ...target, name, value },
     };
 
+    this.setState({ value });
     if (this.props.onChange) {
       this.props.onChange(newEvent);
     }
@@ -201,6 +243,8 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
       this.yearRef.focus();
     }
   };
+
+  static contextType = FormContext;
 
   static Day = DateInputDay;
 
@@ -227,8 +271,10 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
       ...rest
     } = this.props;
     const { name } = this.state;
+
     const contextValue = {
       isDateInput: true,
+      registerError: this.registerError,
       registerRef: this.registerRef,
       name,
       autoCompletePrefix,
