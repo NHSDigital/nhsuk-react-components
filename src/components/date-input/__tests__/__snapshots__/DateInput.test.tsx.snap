@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DateInput matches snapshot 1`] = `
+<DateInput>
+  <LabelBlock />
+  <div
+    className="nhsuk-date-input"
+    onChange={[Function]}
+  >
+    <DateInputDay>
+      <DateInputInput
+        dateInputType="Day"
+        pattern="[0-9]*"
+        type="number"
+      >
+        <div
+          className="nhsuk-date-input__item"
+        >
+          <div
+            className="nhsuk-form-group"
+          >
+            <label
+              className="nhsuk-label nhsuk-date-input__label"
+              htmlFor="dateinput_01p06-day"
+            >
+              Day
+            </label>
+            <input
+              aria-label="dateinput_01p06-day input"
+              className="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+              id="dateinput_01p06-day"
+              name="dateinput_01p06-day"
+              pattern="[0-9]*"
+              type="number"
+            />
+          </div>
+        </div>
+      </DateInputInput>
+    </DateInputDay>
+    <DateInputMonth>
+      <DateInputInput
+        dateInputType="Month"
+        pattern="[0-9]*"
+        type="number"
+      >
+        <div
+          className="nhsuk-date-input__item"
+        >
+          <div
+            className="nhsuk-form-group"
+          >
+            <label
+              className="nhsuk-label nhsuk-date-input__label"
+              htmlFor="dateinput_01p06-month"
+            >
+              Month
+            </label>
+            <input
+              aria-label="dateinput_01p06-month input"
+              className="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+              id="dateinput_01p06-month"
+              name="dateinput_01p06-month"
+              pattern="[0-9]*"
+              type="number"
+            />
+          </div>
+        </div>
+      </DateInputInput>
+    </DateInputMonth>
+    <DateInputYear>
+      <DateInputInput
+        dateInputType="Year"
+        pattern="[0-9]*"
+        type="number"
+      >
+        <div
+          className="nhsuk-date-input__item"
+        >
+          <div
+            className="nhsuk-form-group"
+          >
+            <label
+              className="nhsuk-label nhsuk-date-input__label"
+              htmlFor="dateinput_01p06-year"
+            >
+              Year
+            </label>
+            <input
+              aria-label="dateinput_01p06-year input"
+              className="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
+              id="dateinput_01p06-year"
+              name="dateinput_01p06-year"
+              pattern="[0-9]*"
+              type="number"
+            />
+          </div>
+        </div>
+      </DateInputInput>
+    </DateInputYear>
+  </div>
+</DateInput>
+`;
