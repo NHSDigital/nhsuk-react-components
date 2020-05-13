@@ -2,7 +2,7 @@ import React, { HTMLProps, PureComponent, SyntheticEvent } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '../../util/types/FormTypes';
 import LabelBlock from '../../util/LabelBlock';
-import { generateRandomName } from '../../util/RandomName';
+import { generateRandomName } from '../../util/RandomID';
 import FormContext from '../form/FormContext';
 import CheckboxContext from './CheckboxContext';
 import Box, { BoxProps } from './Box';

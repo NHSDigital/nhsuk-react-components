@@ -1,7 +1,7 @@
 import React, { HTMLProps, useState, useContext } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '../../util/types/FormTypes';
-import { generateRandomName } from '../../util/RandomName';
+import { generateRandomName } from '../../util/RandomID';
 import LabelBlock from '../../util/LabelBlock';
 import FormContext from '../form/FormContext';
 

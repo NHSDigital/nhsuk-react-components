@@ -21,6 +21,7 @@ const ErrorMessage: React.FC<ErrorMessageProps> = ({
 
 ErrorMessage.defaultProps = {
   visuallyHiddenText: 'Error: ',
+  role: 'alert',
 };
 
 export default ErrorMessage;

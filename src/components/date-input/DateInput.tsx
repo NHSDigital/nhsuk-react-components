@@ -9,7 +9,7 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '../../util/types/FormTypes';
-import { generateRandomName } from '../../util/RandomName';
+import { generateRandomName } from '../../util/RandomID';
 import LabelBlock from '../../util/LabelBlock';
 import FormContext, { IFormContext } from '../form/FormContext';
 
@@ -176,14 +176,9 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
   }
 
   componentDidUpdate() {
-    if (!this.context.isForm) return;
-    if (this.props.error !== undefined) {
-      this.context.setError(this.state.name, Boolean(this.props.error));
-    } else {
-      const { day, month, year } = this.state.errors;
-      const errorInChild = day || month || year;
-      this.context.setError(this.state.name, Boolean(errorInChild));
-    }
+    const { day, month, year } = this.state.errors;
+    const errorInChild = day || month || year;
+    this.context.setError(this.state.name, Boolean(errorInChild));
   }
 
   registerError = (type: DateInputType, error: boolean | undefined) => {

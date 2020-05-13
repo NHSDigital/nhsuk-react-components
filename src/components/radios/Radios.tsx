@@ -1,7 +1,7 @@
 import React, { HTMLProps, PureComponent, useState, useEffect, useContext } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '../../util/types/FormTypes';
-import { generateRandomName } from '../../util/RandomName';
+import { generateRandomName } from '../../util/RandomID';
 import { LabelProps } from '../label/Label';
 import LabelBlock from '../../util/LabelBlock';
 import Label from '../label';
