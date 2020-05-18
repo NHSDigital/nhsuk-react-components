@@ -9,4 +9,3 @@ addParameters({
 });
 
 configure(require.context('../stories', true, /TestFormGroup\.stories\.tsx$/), module);
-

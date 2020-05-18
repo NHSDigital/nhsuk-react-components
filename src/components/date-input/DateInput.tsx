@@ -1,130 +1,8 @@
-import React, {
-  HTMLProps,
-  PureComponent,
-  createContext,
-  useEffect,
-  useContext,
-  useRef,
-  SyntheticEvent,
-} from 'react';
-import classNames from 'classnames';
+import React, { HTMLProps, PureComponent, ChangeEvent } from 'react';
+import { DayInput, MonthInput, YearInput } from './components/IndividualDateInputs';
+import FormGroup from '../../util/FormGroup';
+import DateInputContext, { IDateInputContext } from './DateInputContext';
 import { FormElementProps } from '../../util/types/FormTypes';
-import { generateRandomName } from '../../util/RandomID';
-import LabelBlock from '../../util/LabelBlock';
-import FormContext, { IFormContext } from '../form/FormContext';
-
-interface IDateInputContext {
-  isDateInput: boolean;
-  registerRef: (type: DateInputType, ref: HTMLInputElement | null) => void;
-  registerError: (type: DateInputType, error: boolean | undefined) => void;
-  name: string;
-  autoCompletePrefix: string | undefined;
-  error?: string | boolean;
-}
-
-const DateInputContext = createContext<IDateInputContext>({
-  isDateInput: false,
-  registerRef: () => undefined,
-  registerError: () => undefined,
-  name: '',
-  autoCompletePrefix: '',
-  error: '',
-});
-
-type DateInputType = 'Day' | 'Month' | 'Year';
-interface DateInputInputProps extends HTMLProps<HTMLInputElement> {
-  dateInputType: DateInputType;
-  error?: boolean;
-}
-
-const DateInputInput: React.FC<DateInputInputProps> = ({
-  id,
-  className,
-  dateInputType,
-  autoComplete,
-  ...rest
-}) => {
-  const { isDateInput, registerRef, name, autoCompletePrefix, registerError, error } = useContext<
-    IDateInputContext
-  >(DateInputContext);
-  const inputRef = useRef<HTMLInputElement>(null);
-
-  useEffect(() => {
-    if (isDateInput) {
-      registerRef(dateInputType, inputRef.current);
-    }
-  }, [inputRef.current]);
-
-  useEffect(() => {
-    if (isDateInput) {
-      registerError(dateInputType, rest.error);
-    }
-  }, [rest.error]);
-
-  return (
-    <div className="nhsuk-date-input__item">
-      <div className="nhsuk-form-group">
-        <label
-          className="nhsuk-label nhsuk-date-input__label"
-          htmlFor={id || `${name}-${dateInputType.toLowerCase()}`}
-        >
-          {dateInputType}
-        </label>
-        <input
-          className={classNames(
-            'nhsuk-input nhsuk-date-input__input',
-            {
-              'nhsuk-input--width-2': dateInputType === 'Day' || dateInputType === 'Month',
-            },
-            {
-              'nhsuk-input--width-4': dateInputType === 'Year',
-            },
-            {
-              'nhsuk-input--error': typeof rest.error === 'undefined' ? error : rest.error,
-            },
-            className,
-          )}
-          id={id || `${name}-${dateInputType.toLowerCase()}`}
-          aria-label={`${name}-${dateInputType.toLowerCase()} input`}
-          autoComplete={
-            autoComplete || autoCompletePrefix
-              ? `${autoCompletePrefix}-${dateInputType.toLowerCase()}`
-              : undefined
-          }
-          name={rest.name ? rest.name : `${name}-${dateInputType.toLowerCase()}`}
-          ref={inputRef}
-          {...rest}
-        />
-      </div>
-    </div>
-  );
-};
-
-DateInputInput.defaultProps = {
-  type: 'number',
-  pattern: '[0-9]*',
-};
-
-const DateInputDay: React.FC<Omit<DateInputInputProps, 'dateInputType'>> = props => (
-  <DateInputInput dateInputType="Day" {...props} />
-);
-
-const DateInputMonth: React.FC<Omit<DateInputInputProps, 'dateInputType'>> = props => (
-  <DateInputInput dateInputType="Month" {...props} />
-);
-
-const DateInputYear: React.FC<Omit<DateInputInputProps, 'dateInputType'>> = props => (
-  <DateInputInput dateInputType="Year" {...props} />
-);
-
-interface DateInputTargetElement extends Omit<HTMLInputElement, 'value'> {
-  value: DateInputValue;
-}
-
-interface DateInputEvent extends SyntheticEvent<DateInputTargetElement> {
-  target: DateInputTargetElement;
-  currentTarget: DateInputTargetElement;
-}
 
 type DateInputValue = {
   day: string;
@@ -132,187 +10,114 @@ type DateInputValue = {
   year: string;
 };
 
-type DateInputErrors = {
-  day: boolean | undefined;
-  month: boolean | undefined;
-  year: boolean | undefined;
+type DateInputChangeEvent = ChangeEvent<HTMLInputElement> & {
+  target: HTMLInputElement & { value: DateInputValue };
+  currentTarget: HTMLInputElement & { value: DateInputValue };
 };
 
 interface DateInputProps
-  extends Omit<HTMLProps<HTMLDivElement>, 'onChange' | 'value' | 'defaultValue'>,
+  extends Omit<HTMLProps<HTMLDivElement>, 'value' | 'defaultValue'>,
     FormElementProps {
   autoSelectNext?: boolean;
-  onChange?: (e: DateInputEvent) => any;
-  autoCompletePrefix?: string;
-  value?: DateInputValue;
-  defaultValue?: DateInputValue;
+  value?: Partial<DateInputValue>;
+  defaultValue?: Partial<DateInputValue>;
+  onChange?: (e: DateInputChangeEvent) => any;
 }
 
-export type DateInputState = {
-  name: string;
-  value: DateInputValue;
-  errors: DateInputErrors;
-};
-
-interface DateInput extends PureComponent<DateInputProps, DateInputState> {
-  context: IFormContext;
+interface DateInputState {
+  values: {
+    day: string;
+    month: string;
+    year: string;
+  };
 }
 
 interface DateInput extends PureComponent<DateInputProps, DateInputState> {
-  monthRef: HTMLInputElement | null;
-  yearRef: HTMLInputElement | null;
+  monthRef: null | HTMLInputElement;
+  yearRef: null | HTMLInputElement;
 }
 
 class DateInput extends PureComponent<DateInputProps, DateInputState> {
   constructor(props: DateInputProps, ...rest: any[]) {
     super(props, ...rest);
     this.state = {
-      name: props.name || generateRandomName('dateinput'),
-      value: { day: '', month: '', year: '' },
-      errors: { day: undefined, month: undefined, year: undefined },
+      values: { day: '', month: '', year: '' },
     };
+
     this.monthRef = null;
     this.yearRef = null;
   }
 
-  componentDidUpdate() {
-    const { day, month, year } = this.state.errors;
-    const errorInChild = day || month || year;
-    this.context.setError(this.state.name, Boolean(errorInChild));
-  }
-
-  registerError = (type: DateInputType, error: boolean | undefined) => {
-    this.setState(state => ({
-      ...state,
-      errors: {
-        ...state.errors,
-        [type]: error,
-      },
-    }));
-  };
-
-  registerRef = (type: DateInputType, ref: HTMLInputElement | null) => {
-    if (ref !== null) {
-      if (type === 'Month') {
-        this.monthRef = ref;
-      } else if (type === 'Year') {
-        this.yearRef = ref;
-      }
-    }
-  };
-
-  onChange = (e: SyntheticEvent<HTMLInputElement>) => {
-    e.stopPropagation();
-    const target = e.target as HTMLInputElement;
-    const { value, name } = this.state;
-    if (target && target.name) {
-      const inputType = target.name.split('-').pop();
-      if (inputType === 'day') {
-        value.day = target.value;
-      } else if (inputType === 'month') {
-        value.month = target.value;
-      } else if (inputType === 'year') {
-        value.year = target.value;
-      }
-      if (this.props.autoSelectNext) {
-        this.autoSelectNext(value, inputType);
-      }
-    }
-    const newEvent: DateInputEvent = {
-      ...e,
-      target: { ...target, name, value },
-      currentTarget: { ...target, name, value },
-    };
-
-    this.setState({ value });
-    if (this.props.onChange) {
-      this.props.onChange(newEvent);
-    }
-  };
-
-  autoSelectNext = (value: DateInputValue, inputType: string | undefined) => {
-    if (inputType === 'day' && value.day.length === 2 && this.monthRef) {
+  handleSelectNext = (inputType: 'day' | 'month' | 'year', value: string) => {
+    if (!this.props.autoSelectNext) return;
+    if (inputType === 'day' && value.length === 2 && this.monthRef) {
       this.monthRef.focus();
-    }
-    if (inputType === 'month' && value.month.length === 2 && this.yearRef) {
+    } else if (inputType === 'month' && value.length === 2 && this.yearRef) {
       this.yearRef.focus();
     }
   };
 
-  static contextType = FormContext;
+  handleChange = (inputType: 'day' | 'month' | 'year', event: ChangeEvent<HTMLInputElement>) => {
+    this.handleSelectNext(inputType, event.target.value);
+    event.stopPropagation();
+    this.setState(state => {
+      const newEventValue = {
+        ...state.values,
+        [inputType]: event.target.value,
+      };
+      if (this.props.onChange) {
+        const newEvent = {
+          ...event,
+          target: { ...event.target, value: newEventValue },
+          currentTarget: { ...event.currentTarget, value: newEventValue },
+        } as DateInputChangeEvent;
+        this.props.onChange(newEvent);
+      }
+      return { values: newEventValue };
+    });
+  };
 
-  static Day = DateInputDay;
+  registerRef = (inputType: 'day' | 'month' | 'year', ref: HTMLInputElement | null) => {
+    if (inputType === 'month') this.monthRef = ref;
+    if (inputType === 'year') this.yearRef = ref;
+  };
 
-  static Month = DateInputMonth;
+  static Day = DayInput;
 
-  static Year = DateInputYear;
+  static Month = MonthInput;
+
+  static Year = YearInput;
 
   render() {
-    const {
-      id,
-      className,
-      children,
-      autoSelectNext,
-      autoCompletePrefix,
-      hint,
-      error,
-      label,
-      onChange,
-      labelProps,
-      errorProps,
-      hintProps,
-      value,
-      defaultValue,
-      ...rest
-    } = this.props;
-    const { name } = this.state;
-
-    const contextValue = {
-      isDateInput: true,
-      registerError: this.registerError,
-      registerRef: this.registerRef,
-      name,
-      autoCompletePrefix,
-      error,
-    };
+    const { children, onChange, value, defaultValue, ...rest } = this.props;
 
     return (
-      <>
-        <LabelBlock
-          elementId={id}
-          label={label}
-          labelProps={labelProps}
-          hint={hint}
-          hintProps={hintProps}
-          error={error}
-          errorProps={errorProps}
-        />
-        <div
-          id={id}
-          className={classNames('nhsuk-date-input', className)}
-          onChange={this.onChange}
-          {...rest}
-        >
-          <DateInputContext.Provider value={contextValue}>
-            {children || (
-              <>
-                <DateInput.Day
-                  value={value ? value.day : undefined}
-                  defaultValue={defaultValue ? defaultValue.day : undefined}
-                />
-                <DateInput.Month
-                  value={value ? value.month : undefined}
-                  defaultValue={defaultValue ? defaultValue.month : undefined}
-                />
-                <DateInput.Year
-                  value={value ? value.year : undefined}
-                  defaultValue={defaultValue ? defaultValue.year : undefined}
-                />
-              </>
-            )}
-          </DateInputContext.Provider>
-        </div>
-      </>
+      <FormGroup<Omit<DateInputProps, 'value' | 'defaultValue'>> inputType="dateinput" {...rest}>
+        {({ className, name, id, error, ...restRenderProps }) => {
+          const contextValue: IDateInputContext = {
+            id,
+            name,
+            error,
+            value,
+            defaultValue,
+            handleChange: this.handleChange,
+            registerRef: this.registerRef,
+          };
+          return (
+            <div className="nhsuk-date-input" {...restRenderProps} id={id}>
+              <DateInputContext.Provider value={contextValue}>
+                {children || (
+                  <>
+                    <DateInput.Day />
+                    <DateInput.Month />
+                    <DateInput.Year />
+                  </>
+                )}
+              </DateInputContext.Provider>
+            </div>
+          );
+        }}
+      </FormGroup>
     );
   }
 }

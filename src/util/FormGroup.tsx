@@ -1,33 +1,75 @@
-import React, { ReactNode, useState, useEffect } from 'react';
+import React, { ReactNode, useState, useEffect, HTMLProps, useContext } from 'react';
 import classNames from 'classnames';
-import Hint, { HintProps } from '../components/hint/Hint';
-import ErrorMessage, { ErrorMessageProps } from '../components/error-message/ErrorMessage';
+import Hint from '../components/hint/Hint';
+import ErrorMessage from '../components/error-message/ErrorMessage';
 import { generateRandomID } from './RandomID';
-import Label, { LabelProps } from '../components/label/Label';
+import Label from '../components/label/Label';
+import { FormElementProps } from './types/FormTypes';
+import FieldsetContext, { IFieldsetContext } from '../components/fieldset/FieldsetContext';
 
-type FormGroupProps = {
-  children: (props: any) => ReactNode;
-  error?: boolean | string;
-  label?: string;
-  hint?: string;
-  id?: string;
-  labelProps?: LabelProps;
-  hintProps?: HintProps;
-  errorProps?: ErrorMessageProps;
-  inputType: 'input';
+type ExcludedProps =
+  | 'hint'
+  | 'label'
+  | 'labelProps'
+  | 'hintProps'
+  | 'errorProps'
+  | 'inputType'
+  | 'disableErrorLine';
+
+type BaseFormElementRenderProps = HTMLProps<
+  HTMLInputElement | HTMLDivElement | HTMLSelectElement | HTMLTextAreaElement
+> & {
+  error?: string | boolean;
 };
 
-const FormGroup = (props: FormGroupProps) => {
-  const { children, hint, label, id, labelProps, error, hintProps, errorProps, ...rest } = props;
-  const [elementID, setElementID] = useState<string>(id || generateRandomID(props.inputType));
+type FormElementRenderProps<T> = Omit<T, ExcludedProps> & {
+  id: string;
+  name: string;
+};
+
+type FormGroupProps<T> = FormElementProps & {
+  children: (props: FormElementRenderProps<T>) => ReactNode;
+  inputType: 'input' | 'radios' | 'select' | 'checkboxes' | 'dateinput' | 'textarea';
+};
+
+const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T>) => {
+  const {
+    children,
+    hint,
+    label,
+    id,
+    labelProps,
+    error,
+    hintProps,
+    errorProps,
+    inputType,
+    disableErrorLine,
+    name,
+    ...rest
+  } = props;
+  const [elementID, setElementID] = useState<string>(id || generateRandomID(inputType));
+  const { isFieldset, registerComponent, passError } = useContext<IFieldsetContext>(
+    FieldsetContext,
+  );
 
   useEffect(() => {
     if (id !== undefined) {
       setElementID(id);
     } else {
-      generateRandomID(props.inputType);
+      setElementID(generateRandomID(props.inputType));
     }
   }, [props.id]);
+
+  useEffect(() => {
+    if (!isFieldset) return () => {};
+    passError(elementID, Boolean(error));
+    return () => passError(elementID, false);
+  }, [elementID, error, isFieldset]);
+
+  useEffect(() => {
+    registerComponent(elementID);
+    return () => registerComponent(elementID, true);
+  }, []);
 
   const labelID = `${elementID}--label`;
   const errorID = `${elementID}--error-message`;
@@ -37,12 +79,17 @@ const FormGroup = (props: FormGroupProps) => {
     'aria-describedby': hint ? hintID : undefined,
     'aria-labelledby': label ? labelID : undefined,
     error,
+    name: name || elementID,
     id: elementID,
     ...rest,
-  };
+  } as FormElementRenderProps<T>;
 
   return (
-    <div className={classNames('nhsuk-form-group', { 'nhsuk-form-group--error': error })}>
+    <div
+      className={classNames('nhsuk-form-group', {
+        'nhsuk-form-group--error': !disableErrorLine && error,
+      })}
+    >
       {label ? (
         <Label id={labelID} htmlFor={elementID} {...labelProps}>
           {label}
@@ -58,7 +105,7 @@ const FormGroup = (props: FormGroupProps) => {
           {error}
         </ErrorMessage>
       ) : null}
-      {props.children(childProps)}
+      {children(childProps)}
     </div>
   );
 };
