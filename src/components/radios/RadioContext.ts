@@ -6,6 +6,8 @@ export type IRadiosContext = {
   getRadioId: () => string;
   setConditional: (radioRef: string, hasConditional: boolean) => void;
   setSelected: (radioRef: string) => void;
+  leaseReference: () => string;
+  unleaseReference: (reference: string) => void;
 };
 
 export const RadiosContext = createContext<IRadiosContext>({
@@ -14,4 +16,6 @@ export const RadiosContext = createContext<IRadiosContext>({
   getRadioId: () => '',
   setConditional: () => {},
   setSelected: () => {},
+  leaseReference: () => '',
+  unleaseReference: () => {},
 });

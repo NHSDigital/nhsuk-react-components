@@ -3,7 +3,6 @@ import classNames from 'classnames';
 import { RadiosContext, IRadiosContext } from '../RadioContext';
 import Hint, { HintProps } from '../../hint/Hint';
 import Label, { LabelProps } from '../../label/Label';
-import { generateRandomName } from '../../../util/RandomID';
 
 export interface RadioProps extends HTMLProps<HTMLInputElement> {
   hint?: string;
@@ -29,11 +28,19 @@ const Radio: React.FC<RadioProps> = ({
   onChange,
   ...rest
 }) => {
-  const [radioReference] = useState<string>(generateRandomName());
-  const { name, getRadioId, setConditional, setSelected, selectedRadio } = useContext<
-    IRadiosContext
-  >(RadiosContext);
+  const {
+    name,
+    getRadioId,
+    setConditional,
+    setSelected,
+    selectedRadio,
+    leaseReference,
+    unleaseReference,
+  } = useContext<IRadiosContext>(RadiosContext);
+  const [radioReference] = useState<string>(leaseReference());
   const inputID = id || getRadioId();
+
+  useEffect(() => () => unleaseReference(radioReference));
 
   useEffect(() => {
     if (defaultChecked) setSelected(radioReference);

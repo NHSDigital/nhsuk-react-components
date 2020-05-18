@@ -5,6 +5,7 @@ import { RadiosContext } from './RadioContext';
 import FormGroup from '../../util/FormGroup';
 import Divider from './components/Divider';
 import Radio from './components/Radio';
+import { generateRandomName } from '../../util/RandomID';
 
 interface RadiosProps extends HTMLProps<HTMLDivElement>, FormElementProps {
   inline?: boolean;
@@ -17,6 +18,8 @@ type RadiosState = {
 
 class Radios extends PureComponent<RadiosProps, RadiosState> {
   private radioCount: number = 0;
+
+  private radioReferences: Array<string> = [];
 
   static defaultProps = {
     role: 'radiogroup',
@@ -33,6 +36,19 @@ class Radios extends PureComponent<RadiosProps, RadiosState> {
   getRadioId = (id: string): string => {
     this.radioCount += 1;
     return `${id}-${this.radioCount}`;
+  };
+
+  leaseReference = (): string => {
+    const reference = generateRandomName();
+    if (this.radioReferences.includes(reference)) {
+      return this.leaseReference();
+    }
+    this.radioReferences.push(reference);
+    return reference;
+  };
+
+  unleaseReference = (reference: string) => {
+    this.radioReferences = this.radioReferences.filter(ref => ref !== reference);
   };
 
   setConditional = (radioReference: string, hasConditional: boolean) => {
@@ -75,6 +91,8 @@ class Radios extends PureComponent<RadiosProps, RadiosState> {
             selectedRadio: this.state.selectedRadio,
             setConditional: this.setConditional,
             setSelected: this.setSelected,
+            leaseReference: this.leaseReference,
+            unleaseReference: this.unleaseReference,
             name,
           };
           const containsConditional = this.state.conditionalRadios.length > 0;
