@@ -6,7 +6,9 @@ import CheckboxContext, { ICheckboxContext } from './CheckboxContext';
 import Box from './components/Box';
 import { generateRandomName } from '../../util/RandomID';
 
-interface CheckboxesProps extends HTMLProps<HTMLDivElement>, FormElementProps {}
+interface CheckboxesProps extends HTMLProps<HTMLDivElement>, FormElementProps {
+  idPrefix?: string;
+}
 
 type CheckboxesState = {
   conditionalBoxes: Array<string>;
@@ -57,8 +59,9 @@ class Checkboxes extends PureComponent<CheckboxesProps, CheckboxesState> {
   };
 
   getBoxId = (id: string): string => {
+    const { idPrefix } = this.props;
     this.boxCount += 1;
-    return `${id}-${this.boxCount}`;
+    return `${idPrefix || id}-${this.boxCount}`;
   };
 
   static Box = Box;
@@ -67,7 +70,7 @@ class Checkboxes extends PureComponent<CheckboxesProps, CheckboxesState> {
     const { children, ...rest } = this.props;
     return (
       <FormGroup<CheckboxesProps> inputType="checkboxes" {...rest}>
-        {({ className, name, id, ...restRenderProps }) => {
+        {({ className, name, id, idPrefix, ...restRenderProps }) => {
           this.boxCount = 0;
           const containsConditional = this.state.conditionalBoxes.length > 0;
           const contextValue: ICheckboxContext = {

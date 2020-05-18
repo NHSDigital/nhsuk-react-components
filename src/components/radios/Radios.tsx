@@ -9,6 +9,7 @@ import { generateRandomName } from '../../util/RandomID';
 
 interface RadiosProps extends HTMLProps<HTMLDivElement>, FormElementProps {
   inline?: boolean;
+  idPrefix?: string;
 }
 
 type RadiosState = {
@@ -34,8 +35,9 @@ class Radios extends PureComponent<RadiosProps, RadiosState> {
   }
 
   getRadioId = (id: string): string => {
+    const { idPrefix } = this.props;
     this.radioCount += 1;
-    return `${id}-${this.radioCount}`;
+    return `${idPrefix || id}-${this.radioCount}`;
   };
 
   leaseReference = (): string => {

@@ -25,6 +25,7 @@ const Box: React.FC<BoxProps> = ({
   defaultChecked,
   checked,
   onChange,
+  inputRef,
   forceShowConditional,
   conditionalWrapperProps,
   ...rest
@@ -67,6 +68,7 @@ const Box: React.FC<BoxProps> = ({
           id={inputID}
           checked={checked}
           defaultChecked={defaultChecked}
+          ref={inputRef}
           {...rest}
         />
         {children ? (

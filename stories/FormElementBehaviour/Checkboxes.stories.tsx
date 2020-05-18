@@ -1,5 +1,5 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React, { useEffect, SyntheticEvent } from 'react';
+import React, { useEffect, SyntheticEvent, useState } from 'react';
 import { storiesOf } from '@storybook/react';
 import { Checkboxes } from '../../src';
 
@@ -13,9 +13,9 @@ type CheckboxState = {
 
 stories
   .add('No ID supplied', () => {
-    const checkbox1Ref = React.useRef<HTMLInputElement>(null);
-    const checkbox2Ref = React.useRef<HTMLInputElement>(null);
-    const checkbox3Ref = React.useRef<HTMLInputElement>(null);
+    const [checkbox1Ref, setCheckbox1Ref] = useState<HTMLInputElement | null>(null);
+    const [checkbox2Ref, setCheckbox2Ref] = useState<HTMLInputElement | null>(null);
+    const [checkbox3Ref, setCheckbox3Ref] = useState<HTMLInputElement | null>(null);
 
     const [checkboxState, setCheckboxState] = React.useState<CheckboxState>({
       box1: {
@@ -32,22 +32,24 @@ stories
       },
     });
 
+    console.log(checkbox1Ref);
+
     useEffect(() => {
       setCheckboxState({
         box1: {
-          name: checkbox1Ref.current?.name,
-          id: checkbox1Ref.current?.id,
+          name: checkbox1Ref?.name,
+          id: checkbox1Ref?.id,
         },
         box2: {
-          name: checkbox2Ref.current?.name,
-          id: checkbox2Ref.current?.id,
+          name: checkbox2Ref?.name,
+          id: checkbox2Ref?.id,
         },
         box3: {
-          name: checkbox3Ref.current?.name,
-          id: checkbox3Ref.current?.id,
+          name: checkbox3Ref?.name,
+          id: checkbox3Ref?.id,
         },
       });
-    }, [checkbox1Ref.current, checkbox2Ref.current, checkbox3Ref.current]);
+    }, [checkbox1Ref, checkbox2Ref, checkbox3Ref]);
 
     return (
       <div style={{ padding: 20 }}>
@@ -68,9 +70,9 @@ stories
         </ul>
         <h5>Component</h5>
         <Checkboxes>
-          <Checkboxes.Box inputRef={checkbox1Ref}>Box 1</Checkboxes.Box>
-          <Checkboxes.Box inputRef={checkbox2Ref}>Box 2</Checkboxes.Box>
-          <Checkboxes.Box inputRef={checkbox3Ref}>Box 3</Checkboxes.Box>
+          <Checkboxes.Box inputRef={ref => setCheckbox1Ref(ref)}>Box 1</Checkboxes.Box>
+          <Checkboxes.Box inputRef={ref => setCheckbox2Ref(ref)}>Box 2</Checkboxes.Box>
+          <Checkboxes.Box inputRef={ref => setCheckbox3Ref(ref)}>Box 3</Checkboxes.Box>
         </Checkboxes>
       </div>
     );
