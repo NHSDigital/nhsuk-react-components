@@ -48,31 +48,13 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
     name,
     ...rest
   } = props;
-  const [elementID, setElementID] = useState<string>(id || generateRandomID(inputType));
+  const [generatedID] = useState<string>(generateRandomID(inputType));
   const { isFieldset, registerComponent, passError } = useContext<IFieldsetContext>(
     FieldsetContext,
   );
   const { disableErrorFromComponents } = useFormContext();
 
-  useEffect(() => {
-    if (id !== undefined) {
-      setElementID(id);
-    } else if (elementID === undefined) {
-      setElementID(generateRandomID(props.inputType));
-    }
-  }, [props.id]);
-
-  useEffect(() => {
-    if (!isFieldset) return () => {};
-    passError(elementID, disableErrorFromComponents ? false : Boolean(error));
-    return () => passError(elementID, false);
-  }, [elementID, error, isFieldset]);
-
-  useEffect(() => {
-    registerComponent(elementID);
-    return () => registerComponent(elementID, true);
-  }, []);
-
+  const elementID = id || generatedID;
   const labelID = `${elementID}--label`;
   const errorID = `${elementID}--error-message`;
   const hintID = `${elementID}--hint`;
@@ -85,6 +67,17 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
     id: elementID,
     ...rest,
   } as FormElementRenderProps<T>;
+
+  useEffect(() => {
+    if (!isFieldset) return () => {};
+    passError(elementID, disableErrorFromComponents ? false : Boolean(error));
+    return () => passError(elementID, false);
+  }, [elementID, error, isFieldset]);
+
+  useEffect(() => {
+    registerComponent(elementID);
+    return () => registerComponent(elementID, true);
+  }, []);
 
   return (
     <div
