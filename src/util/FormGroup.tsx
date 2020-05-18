@@ -6,6 +6,7 @@ import { generateRandomID } from './RandomID';
 import Label from '../components/label/Label';
 import { FormElementProps } from './types/FormTypes';
 import FieldsetContext, { IFieldsetContext } from '../components/fieldset/FieldsetContext';
+import { useFormContext } from '../components/form';
 
 type ExcludedProps =
   | 'hint'
@@ -51,18 +52,19 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
   const { isFieldset, registerComponent, passError } = useContext<IFieldsetContext>(
     FieldsetContext,
   );
+  const { disableErrorFromComponents } = useFormContext();
 
   useEffect(() => {
     if (id !== undefined) {
       setElementID(id);
-    } else {
+    } else if (elementID === undefined) {
       setElementID(generateRandomID(props.inputType));
     }
   }, [props.id]);
 
   useEffect(() => {
     if (!isFieldset) return () => {};
-    passError(elementID, Boolean(error));
+    passError(elementID, disableErrorFromComponents ? false : Boolean(error));
     return () => passError(elementID, false);
   }, [elementID, error, isFieldset]);
 
@@ -87,7 +89,7 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
   return (
     <div
       className={classNames('nhsuk-form-group', {
-        'nhsuk-form-group--error': !disableErrorLine && error,
+        'nhsuk-form-group--error': !disableErrorFromComponents && !disableErrorLine && error,
       })}
     >
       {label ? (
@@ -100,7 +102,7 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
           {hint}
         </Hint>
       ) : null}
-      {error && typeof error === 'string' ? (
+      {!disableErrorFromComponents && error && typeof error === 'string' ? (
         <ErrorMessage id={errorID} {...errorProps}>
           {error}
         </ErrorMessage>
