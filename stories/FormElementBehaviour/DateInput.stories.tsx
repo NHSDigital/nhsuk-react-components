@@ -15,13 +15,7 @@ stories
         <li>The value is passed through</li>
       </ul>
       <h5>Component</h5>
-      <Form>
-        <DateInput
-          onChange={e => console.log(e.target.value)}
-          hint="Test hint"
-          label="Test label"
-        />
-      </Form>
+      <DateInput onChange={e => console.log(e.target.value)} hint="Test hint" label="Test label" />
     </div>
   ))
   .add('Standard with Error', () => (
@@ -33,27 +27,24 @@ stories
         <li>The value is passed through</li>
       </ul>
       <h5>Component</h5>
-      <Form error>
-        <DateInput
-          onChange={e => console.log(e.target.value)}
-          error="Test Error"
-          hint="Test hint"
-          label="Test label"
-        />
-      </Form>
+      <DateInput
+        onChange={e => console.log(e.target.value)}
+        error="Test Error"
+        hint="Test hint"
+        label="Test label"
+      />
       <h5>Component with specific field errors</h5>
-      <Form error>
-        <DateInput
-          onChange={e => console.log(e.target.value)}
-          error="Test Error"
-          hint="Test hint"
-          label="Test label"
-        >
-          <DateInput.Day error={false} />
-          <DateInput.Month />
-          <DateInput.Year />
-        </DateInput>
-      </Form>
+
+      <DateInput
+        onChange={e => console.log(e.target.value)}
+        error="Test Error"
+        hint="Test hint"
+        label="Test label"
+      >
+        <DateInput.Day error={false} />
+        <DateInput.Month />
+        <DateInput.Year />
+      </DateInput>
     </div>
   ))
   .add('Pre-populated (Individual Components)', () => {
@@ -61,13 +52,11 @@ stories
     return (
       <div style={{ padding: 20 }}>
         <h5>Component</h5>
-        <Form>
-          <DateInput hint="Test hint" label="Test label">
-            <DateInput.Day defaultValue={defaultValue.day} />
-            <DateInput.Month defaultValue={defaultValue.month} />
-            <DateInput.Year defaultValue={defaultValue.year} />
-          </DateInput>
-        </Form>
+        <DateInput hint="Test hint" label="Test label">
+          <DateInput.Day defaultValue={defaultValue.day} />
+          <DateInput.Month defaultValue={defaultValue.month} />
+          <DateInput.Year defaultValue={defaultValue.year} />
+        </DateInput>
       </div>
     );
   })
@@ -76,9 +65,7 @@ stories
     return (
       <div style={{ padding: 20 }}>
         <h5>Component</h5>
-        <Form>
-          <DateInput hint="Test hint" label="Test label" defaultValue={defaultValue} />
-        </Form>
+        <DateInput hint="Test hint" label="Test label" defaultValue={defaultValue} />
       </div>
     );
   })
@@ -87,13 +74,11 @@ stories
     return (
       <div style={{ padding: 20 }}>
         <h5>Component</h5>
-        <Form>
-          <DateInput hint="Test hint" label="Test label">
-            <DateInput.Day value={value.day} />
-            <DateInput.Month value={value.month} />
-            <DateInput.Year value={value.year} />
-          </DateInput>
-        </Form>
+        <DateInput hint="Test hint" label="Test label">
+          <DateInput.Day value={value.day} />
+          <DateInput.Month value={value.month} />
+          <DateInput.Year value={value.year} />
+        </DateInput>
       </div>
     );
   })
@@ -102,9 +87,7 @@ stories
     return (
       <div style={{ padding: 20 }}>
         <h5>Component</h5>
-        <Form>
-          <DateInput hint="Test hint" label="Test label" value={value} />
-        </Form>
+        <DateInput hint="Test hint" label="Test label" value={value} />
       </div>
     );
   });

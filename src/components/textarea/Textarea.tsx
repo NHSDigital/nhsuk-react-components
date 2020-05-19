@@ -1,48 +1,19 @@
-import React, { HTMLProps, useState, useContext } from 'react';
+import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '../../util/types/FormTypes';
-import { generateRandomName } from '../../util/RandomID';
-import LabelBlock from '../../util/LabelBlock';
-import FormContext from '../form/FormContext';
+import FormGroup from '../../util/FormGroup';
 
 type TextareaProps = HTMLProps<HTMLTextAreaElement> & FormElementProps;
 
-const Textarea: React.FC<TextareaProps> = ({
-  className,
-  label,
-  labelProps,
-  hint,
-  hintProps,
-  error,
-  errorProps,
-  id,
-  name,
-  ...rest
-}) => {
-  const { isForm, setError } = useContext(FormContext);
-  const [selectName] = useState<string>(name || generateRandomName('textarea'));
-  if (isForm) {
-    setError(selectName, Boolean(error));
-  }
-  return (
-    <>
-      <LabelBlock
-        elementId={id}
-        label={label}
-        labelProps={labelProps}
-        error={error}
-        errorProps={errorProps}
-        hint={hint}
-        hintProps={hintProps}
-      />
+const Textarea: React.FC<TextareaProps> = props => (
+  <FormGroup<TextareaProps> inputType="textarea" {...props}>
+    {({ className, error, ...rest }) => (
       <textarea
         className={classNames('nhsuk-textarea', { 'nhsuk-textarea--error': error }, className)}
-        id={id}
-        name={selectName}
         {...rest}
       />
-    </>
-  );
-};
+    )}
+  </FormGroup>
+);
 
 export default Textarea;

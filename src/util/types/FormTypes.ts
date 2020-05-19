@@ -8,5 +8,8 @@ export interface FormElementProps {
   error?: string | boolean;
   errorProps?: ErrorMessageProps;
   hint?: string;
-  hintProps?: HintProps
+  hintProps?: HintProps;
+  disableErrorLine?: boolean;
+  id?: string;
+  name?: string;
 }

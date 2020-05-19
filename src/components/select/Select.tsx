@@ -1,53 +1,26 @@
-import React, { HTMLProps, useContext, useState } from 'react';
+import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '../../util/types/FormTypes';
-import { generateRandomName } from '../../util/RandomID';
-import LabelBlock from '../../util/LabelBlock';
-import FormContext from '../form/FormContext';
+import FormGroup from '../../util/FormGroup';
 
-interface SelectProps extends HTMLProps<HTMLSelectElement>, FormElementProps {}
+type SelectProps = HTMLProps<HTMLSelectElement> & FormElementProps;
 
 interface ISelect extends React.FC<SelectProps> {
   Option: React.FC<HTMLProps<HTMLOptionElement>>;
 }
 
-const Select: ISelect = ({
-  className,
-  label,
-  labelProps,
-  id,
-  error,
-  errorProps,
-  hint,
-  hintProps,
-  name,
-  ...rest
-}) => {
-  const { isForm, setError } = useContext(FormContext);
-  const [selectName] = useState<string>(name || generateRandomName('select'));
-  if (isForm) {
-    setError(selectName, Boolean(error));
-  }
-  return (
-    <>
-      <LabelBlock
-        elementId={id}
-        label={label}
-        labelProps={labelProps}
-        error={error}
-        errorProps={errorProps}
-        hint={hint}
-        hintProps={hintProps}
-      />
+const Select: ISelect = ({ children, ...rest }) => (
+  <FormGroup<SelectProps> inputType="select" {...rest}>
+    {({ className, error, ...restRenderProps }) => (
       <select
         className={classNames('nhsuk-select', { 'nhsuk-select--error': error }, className)}
-        name={selectName}
-        id={id}
-        {...rest}
-      />
-    </>
-  );
-};
+        {...restRenderProps}
+      >
+        {children}
+      </select>
+    )}
+  </FormGroup>
+);
 
 const Option: React.FC<HTMLProps<HTMLOptionElement>> = ({ className, ...rest }) => (
   <option {...rest} />

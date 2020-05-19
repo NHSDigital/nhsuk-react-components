@@ -31,15 +31,13 @@ stories
 
     return (
       <>
-        <Form>
-          <Textarea
-            error={error}
-            id="no-ni-reason"
-            name="no-ni-reason"
-            rows={5}
-            label="Why can&#39;t you provide a National Insurance number?"
-          />
-        </Form>
+        <Textarea
+          error={error}
+          id="no-ni-reason"
+          name="no-ni-reason"
+          rows={5}
+          label="Why can&#39;t you provide a National Insurance number?"
+        />
         <Button
           onClick={(e: MouseEvent<HTMLButtonElement>) => {
             e.preventDefault();
@@ -55,15 +53,13 @@ stories
     const [error, setError] = useState<string>('You must provide an explanation');
     return (
       <>
-        <Form>
-          <Textarea
-            error={error}
-            id="no-ni-reason"
-            name="no-ni-reason"
-            rows={5}
-            label="Why can&#39;t you provide a National Insurance number?"
-          />
-        </Form>
+        <Textarea
+          error={error}
+          id="no-ni-reason"
+          name="no-ni-reason"
+          rows={5}
+          label="Why can&#39;t you provide a National Insurance number?"
+        />
         <Input onChange={e => setError(e.currentTarget.value)} value={error} />
       </>
     );

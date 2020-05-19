@@ -94,26 +94,22 @@ stories
     />
   ))
   .add('With error (Boolean)', () => (
-    <Form>
-      <Input
-        id="input-with-error-message"
-        name="test-name-3"
-        label="National Insurance Number"
-        error
-        hint="It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
-      />
-    </Form>
+    <Input
+      id="input-with-error-message"
+      name="test-name-3"
+      label="National Insurance Number"
+      error
+      hint="It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+    />
   ))
   .add('With error (String)', () => (
-    <Form>
-      <Input
-        id="input-with-error-message"
-        name="test-name-3"
-        label="National Insurance Number"
-        error="Error message goes here"
-        hint="It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
-      />
-    </Form>
+    <Input
+      id="input-with-error-message"
+      name="test-name-3"
+      label="National Insurance Number"
+      error="Error message goes here"
+      hint="It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+    />
   ))
   .add('With width modifier', () => (
     <Input
