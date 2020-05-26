@@ -31,16 +31,15 @@ const Box: React.FC<BoxProps> = ({
   ...rest
 }) => {
   const { getBoxId, name, setConditional, unleaseReference, leaseReference } = useContext<
-    ICheckboxContext
+  ICheckboxContext
   >(CheckboxContext);
   const [boxReference] = useState<string>(leaseReference());
   const [showConditional, setShowConditional] = useState<boolean>(!!(checked || defaultChecked));
-  const inputID = id || getBoxId();
+  const inputID = id || getBoxId(boxReference);
 
   const { className: labelClassName, ...restLabelProps } = labelProps || {};
   const { className: hintClassName, ...restHintProps } = hintProps || {};
-  const { className: conditionalClassName, ...restConditionalProps } =
-    conditionalWrapperProps || {};
+  const { className: conditionalClassName, ...restConditionalProps } = conditionalWrapperProps || {};
 
   useEffect(() => () => unleaseReference(boxReference), []);
 

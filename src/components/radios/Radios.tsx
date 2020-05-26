@@ -1,7 +1,7 @@
 import React, { HTMLProps, PureComponent } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '../../util/types/FormTypes';
-import { RadiosContext } from './RadioContext';
+import { RadiosContext, IRadiosContext } from './RadioContext';
 import FormGroup from '../../util/FormGroup';
 import Divider from './components/Divider';
 import Radio from './components/Radio';
@@ -22,6 +22,8 @@ class Radios extends PureComponent<RadiosProps, RadiosState> {
 
   private radioReferences: Array<string> = [];
 
+  private radioIds: Record<string, string> = {};
+
   static defaultProps = {
     role: 'radiogroup',
   };
@@ -34,10 +36,14 @@ class Radios extends PureComponent<RadiosProps, RadiosState> {
     };
   }
 
-  getRadioId = (id: string): string => {
+  getRadioId = (id: string, reference: string): string => {
     const { idPrefix } = this.props;
+    if (reference in this.radioIds) {
+      return this.radioIds[reference];
+    }
     this.radioCount += 1;
-    return `${idPrefix || id}-${this.radioCount}`;
+    this.radioIds[reference] = `${idPrefix || id}-${this.radioCount}`;
+    return this.radioIds[reference];
   };
 
   leaseReference = (): string => {
@@ -78,6 +84,11 @@ class Radios extends PureComponent<RadiosProps, RadiosState> {
     });
   };
 
+  resetRadioIds = () => {
+    this.radioCount = 0;
+    this.radioIds = {};
+  };
+
   static Divider = Divider;
 
   static Radio = Radio;
@@ -87,9 +98,9 @@ class Radios extends PureComponent<RadiosProps, RadiosState> {
     return (
       <FormGroup<RadiosProps> inputType="radios" {...rest}>
         {({ className, inline, name, id, error, ...restRenderProps }) => {
-          this.radioCount = 0;
-          const contextValue = {
-            getRadioId: () => this.getRadioId(id),
+          this.resetRadioIds();
+          const contextValue: IRadiosContext = {
+            getRadioId: reference => this.getRadioId(id, reference),
             selectedRadio: this.state.selectedRadio,
             setConditional: this.setConditional,
             setSelected: this.setSelected,

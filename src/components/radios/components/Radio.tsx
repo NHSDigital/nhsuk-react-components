@@ -38,7 +38,7 @@ const Radio: React.FC<RadioProps> = ({
     unleaseReference,
   } = useContext<IRadiosContext>(RadiosContext);
   const [radioReference] = useState<string>(leaseReference());
-  const inputID = id || getRadioId();
+  const inputID = id || getRadioId(radioReference);
 
   useEffect(() => () => unleaseReference(radioReference));
 

@@ -3,7 +3,7 @@ import { createContext } from 'react';
 export type IRadiosContext = {
   name: string;
   selectedRadio: string;
-  getRadioId: () => string;
+  getRadioId: (reference: string) => string;
   setConditional: (radioRef: string, hasConditional: boolean) => void;
   setSelected: (radioRef: string) => void;
   leaseReference: () => string;

@@ -2,7 +2,7 @@ import { createContext } from 'react';
 
 export interface ICheckboxContext {
   name: string;
-  getBoxId: () => string | undefined;
+  getBoxId: (reference: string) => string | undefined;
   setConditional: (boxReference: string, hasConditional: boolean) => void;
   leaseReference: () => string;
   unleaseReference: (reference: string) => void;

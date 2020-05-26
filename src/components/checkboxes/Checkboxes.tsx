@@ -19,6 +19,8 @@ class Checkboxes extends PureComponent<CheckboxesProps, CheckboxesState> {
 
   private boxReferences: Array<string> = [];
 
+  private boxIds: Record<string, string> = {};
+
   constructor(props: {}, ...rest: any[]) {
     super(props, ...rest);
     this.state = {
@@ -58,10 +60,19 @@ class Checkboxes extends PureComponent<CheckboxesProps, CheckboxesState> {
     });
   };
 
-  getBoxId = (id: string): string => {
+  getBoxId = (id: string, reference: string): string => {
     const { idPrefix } = this.props;
+    if (reference in this.boxIds) {
+      return this.boxIds[reference];
+    }
     this.boxCount += 1;
-    return `${idPrefix || id}-${this.boxCount}`;
+    this.boxIds[reference] = `${idPrefix || id}-${this.boxCount}`;
+    return this.boxIds[reference];
+  };
+
+  resetBoxIds = () => {
+    this.boxCount = 0;
+    this.boxIds = {};
   };
 
   static Box = Box;
@@ -71,11 +82,11 @@ class Checkboxes extends PureComponent<CheckboxesProps, CheckboxesState> {
     return (
       <FormGroup<CheckboxesProps> inputType="checkboxes" {...rest}>
         {({ className, name, id, idPrefix, ...restRenderProps }) => {
-          this.boxCount = 0;
+          this.resetBoxIds();
           const containsConditional = this.state.conditionalBoxes.length > 0;
           const contextValue: ICheckboxContext = {
             name,
-            getBoxId: () => this.getBoxId(id),
+            getBoxId: reference => this.getBoxId(id, reference),
             setConditional: this.setConditional,
             leaseReference: this.leaseReference,
             unleaseReference: this.unleaseReference,
