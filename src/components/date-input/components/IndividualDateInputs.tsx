@@ -44,8 +44,8 @@ const IndividualDateInput: React.FC<IndividualDateInputProps> = ({
 
   const inputID = id || `${ctxId}-${inputType}`;
   const inputName = name || `${ctxName}-${inputType}`;
-  const inputValue = value || ctxValue?.[inputType];
-  const inputDefaultValue = defaultValue || ctxDefaultValue?.[inputType];
+  const inputValue = value || ctxValue?.[inputType] || undefined;
+  const inputDefaultValue = defaultValue || ctxDefaultValue?.[inputType] || undefined;
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.persist();

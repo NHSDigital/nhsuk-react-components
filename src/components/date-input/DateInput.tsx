@@ -93,7 +93,7 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
 
     return (
       <FormGroup<Omit<DateInputProps, 'value' | 'defaultValue'>> inputType="dateinput" {...rest}>
-        {({ className, name, id, error, ...restRenderProps }) => {
+        {({ className, name, id, error, autoSelectNext, ...restRenderProps }) => {
           const contextValue: IDateInputContext = {
             id,
             name,
