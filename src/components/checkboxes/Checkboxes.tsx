@@ -1,95 +1,111 @@
-import React, { HTMLProps, PureComponent, SyntheticEvent } from 'react';
+import React, { HTMLProps, PureComponent } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '../../util/types/FormTypes';
-import LabelBlock from '../../util/LabelBlock';
-import { generateRandomName } from '../../util/RandomName';
-import FormContext from '../form/FormContext';
-import CheckboxContext from './CheckboxContext';
-import Box, { BoxProps } from './Box';
-
-interface CheckboxesEvent extends SyntheticEvent<HTMLInputElement> {
-  target: HTMLInputElement;
-}
+import FormGroup from '../../util/FormGroup';
+import CheckboxContext, { ICheckboxContext } from './CheckboxContext';
+import Box from './components/Box';
+import { generateRandomName } from '../../util/RandomID';
 
 interface CheckboxesProps extends HTMLProps<HTMLDivElement>, FormElementProps {
   idPrefix?: string;
-  onChange?: (e: CheckboxesEvent) => any;
 }
 
-interface CheckboxesState {
-  name: string;
-}
-
-interface Checkboxes {
-  boxCount: number;
-}
+type CheckboxesState = {
+  conditionalBoxes: Array<string>;
+};
 
 class Checkboxes extends PureComponent<CheckboxesProps, CheckboxesState> {
-  constructor(props: CheckboxesProps, ...rest: any[]) {
+  private boxCount: number = 0;
+
+  private boxReferences: Array<string> = [];
+
+  private boxIds: Record<string, string> = {};
+
+  constructor(props: {}, ...rest: any[]) {
     super(props, ...rest);
     this.state = {
-      name: props.name || generateRandomName('checkbox'),
+      conditionalBoxes: [],
     };
-    this.boxCount = 0;
   }
 
-  getBoxId = (): string | undefined => {
-    const { idPrefix } = this.props;
-    const { name } = this.state;
-    if (!name && !idPrefix) {
-      return undefined;
+  leaseReference = (): string => {
+    const reference = generateRandomName();
+    if (this.boxReferences.includes(reference)) {
+      return this.leaseReference();
     }
-    this.boxCount += 1;
-    return `${idPrefix || name}-${this.boxCount}`;
+    this.boxReferences.push(reference);
+    return reference;
   };
 
-  static contextType = FormContext;
+  unleaseReference = (reference: string) => {
+    this.boxReferences = this.boxReferences.filter(ref => ref !== reference);
+  };
 
-  static Box: React.FC<BoxProps> = Box;
+  setConditional = (boxReference: string, hasConditional: boolean) => {
+    this.setState(state => {
+      const currentHasConditional = state.conditionalBoxes.includes(boxReference);
+      if (currentHasConditional && hasConditional === false) {
+        return {
+          ...state,
+          conditionalBoxes: state.conditionalBoxes.filter(ref => ref !== boxReference),
+        };
+      }
+      if (!currentHasConditional && hasConditional === true) {
+        return {
+          ...state,
+          conditionalBoxes: [...state.conditionalBoxes, boxReference],
+        };
+      }
+      return state;
+    });
+  };
+
+  getBoxId = (id: string, reference: string): string => {
+    const { idPrefix } = this.props;
+    if (reference in this.boxIds) {
+      return this.boxIds[reference];
+    }
+    this.boxCount += 1;
+    this.boxIds[reference] = `${idPrefix || id}-${this.boxCount}`;
+    return this.boxIds[reference];
+  };
+
+  resetBoxIds = () => {
+    this.boxCount = 0;
+    this.boxIds = {};
+  };
+
+  static Box = Box;
 
   render() {
-    const {
-      error,
-      className,
-      id,
-      children,
-      idPrefix,
-      label,
-      labelProps,
-      errorProps,
-      hint,
-      hintProps,
-      ...rest
-    } = this.props;
-    const { name } = this.state;
-    const { isForm, setError } = this.context;
-
-    if (isForm) {
-      setError(name, Boolean(error));
-    }
-
+    const { children, ...rest } = this.props;
     return (
-      <>
-        <LabelBlock
-          elementId={id}
-          label={label}
-          labelProps={labelProps}
-          error={error}
-          errorProps={errorProps}
-          hint={hint}
-          hintProps={hintProps}
-        />
-        <CheckboxContext.Provider value={{ isCheckbox: true, name, getBoxId: this.getBoxId }}>
-          <div
-            className={classNames('nhsuk-checkboxes', className)}
-            id={id}
-            aria-describedby={hint ? `${id}--hint` : undefined}
-            {...rest}
-          >
-            {children}
-          </div>
-        </CheckboxContext.Provider>
-      </>
+      <FormGroup<CheckboxesProps> inputType="checkboxes" {...rest}>
+        {({ className, name, id, idPrefix, ...restRenderProps }) => {
+          this.resetBoxIds();
+          const containsConditional = this.state.conditionalBoxes.length > 0;
+          const contextValue: ICheckboxContext = {
+            name,
+            getBoxId: reference => this.getBoxId(id, reference),
+            setConditional: this.setConditional,
+            leaseReference: this.leaseReference,
+            unleaseReference: this.unleaseReference,
+          };
+          return (
+            <div
+              className={classNames(
+                'nhsuk-checkboxes',
+                { 'nhsuk-checkboxes--conditional': containsConditional },
+                className,
+              )}
+              id={id}
+              {...restRenderProps}
+            >
+              <CheckboxContext.Provider value={contextValue}>{children}</CheckboxContext.Provider>
+            </div>
+          );
+        }}
+      </FormGroup>
     );
   }
 }

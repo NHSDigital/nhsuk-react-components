@@ -1,11 +1,21 @@
 import { createContext } from 'react';
 
-export interface IRadioContext {
-  getRadioId: () => undefined | string;
-  name: string | undefined;
-}
+export type IRadiosContext = {
+  name: string;
+  selectedRadio: string;
+  getRadioId: (reference: string) => string;
+  setConditional: (radioRef: string, hasConditional: boolean) => void;
+  setSelected: (radioRef: string) => void;
+  leaseReference: () => string;
+  unleaseReference: (reference: string) => void;
+};
 
-export default createContext<IRadioContext>({
-  getRadioId: () => undefined,
-  name: undefined,
+export const RadiosContext = createContext<IRadiosContext>({
+  name: '',
+  selectedRadio: '',
+  getRadioId: () => '',
+  setConditional: () => {},
+  setSelected: () => {},
+  leaseReference: () => '',
+  unleaseReference: () => {},
 });

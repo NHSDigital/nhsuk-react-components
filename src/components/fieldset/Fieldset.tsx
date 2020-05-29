@@ -1,7 +1,8 @@
-import React, { HTMLProps } from 'react';
+import React, { HTMLProps, PureComponent } from 'react';
 import classNames from 'classnames';
 import { NHSUKSize } from '../../util/types/NHSUKTypes';
 import HeadingLevel, { HeadingLevelType } from '../../util/HeadingLevel';
+import FieldsetContext, { IFieldsetContext } from './FieldsetContext';
 
 interface LegendProps extends Omit<HTMLProps<HTMLLegendElement>, 'size'> {
   isPageHeading?: boolean;
@@ -42,13 +43,85 @@ Legend.defaultProps = {
   headingLevel: 'h1',
 };
 
-interface Fieldset extends React.FC<HTMLProps<HTMLFieldSetElement>> {
-  Legend: React.FC<LegendProps>;
+interface FieldsetProps extends HTMLProps<HTMLFieldSetElement> {
+  disableErrorLine?: boolean;
 }
 
-const Fieldset: Fieldset = ({ className, ...rest }) => (
-  <fieldset className={classNames('nhsuk-fieldset', className)} {...rest} />
-);
+type FieldsetState = { registeredComponents: Array<string>; erroredComponents: Array<string> };
+
+class Fieldset extends PureComponent<FieldsetProps, FieldsetState> {
+  constructor(props: FieldsetProps, ...rest: any[]) {
+    super(props, ...rest);
+    this.state = {
+      registeredComponents: [],
+      erroredComponents: [],
+    };
+  }
+
+  passError = (componentId: string, error: boolean) => {
+    this.setState(state => {
+      const existingError = state.erroredComponents.includes(componentId);
+      if (existingError && !error) {
+        return {
+          ...state,
+          erroredComponents: state.erroredComponents.filter(id => id !== componentId),
+        };
+      }
+      if (!existingError && error) {
+        return { ...state, erroredComponents: [...state.erroredComponents, componentId] };
+      }
+      return state;
+    });
+  };
+
+  registerComponent = (componentId: string, deregister: boolean = false) => {
+    this.setState(state => {
+      if (deregister) {
+        return {
+          ...state,
+          registeredComponents: state.registeredComponents.filter(id => id !== componentId),
+        };
+      }
+      if (!state.registeredComponents.includes(componentId)) {
+        return {
+          ...state,
+          registeredComponents: [...state.registeredComponents, componentId],
+        };
+      }
+      return state;
+    });
+  };
+
+  static Legend = Legend;
+
+  render() {
+    const { className, disableErrorLine, ...rest } = this.props;
+    const contextValue: IFieldsetContext = {
+      isFieldset: true,
+      registerComponent: this.registerComponent,
+      passError: this.passError,
+    };
+
+    const containsFormElements = this.state.registeredComponents.length > 0;
+    const containsError = this.state.erroredComponents.length > 0;
+
+    return (
+      <FieldsetContext.Provider value={contextValue}>
+        {containsFormElements ? (
+          <div
+            className={classNames('nhsuk-form-group', {
+              'nhsuk-form-group--error': disableErrorLine ? false : containsError,
+            })}
+          >
+            <fieldset className={classNames('nhsuk-fieldset', className)} {...rest} />
+          </div>
+        ) : (
+          <fieldset className={classNames('nhsuk-fieldset', className)} {...rest} />
+        )}
+      </FieldsetContext.Provider>
+    );
+  }
+}
 
 Fieldset.Legend = Legend;
 
