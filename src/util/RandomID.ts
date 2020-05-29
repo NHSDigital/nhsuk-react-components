@@ -7,3 +7,5 @@ export const generateRandomName = (prefix?: string) => {
   const randomString = getRandomString();
   return prefix ? `${prefix}_${randomString}` : randomString;
 };
+
+export const generateRandomID = generateRandomName;

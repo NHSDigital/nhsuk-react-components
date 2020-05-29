@@ -1,48 +1,18 @@
-import React, { HTMLProps, useState, useEffect } from 'react';
+import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
+import FormGroup from '../../util/FormGroup';
 import { InputWidth } from '../../util/types/NHSUKTypes';
 import { FormElementProps } from '../../util/types/FormTypes';
-import { generateRandomName } from '../../util/RandomName';
-import LabelBlock from '../../util/LabelBlock';
-import { useFormContext } from '../form/FormContext';
 
 interface InputProps extends HTMLProps<HTMLInputElement>, FormElementProps {
+  inputRef?: (inputRef: HTMLInputElement | null) => any;
   width?: InputWidth;
+  disableErrorLine?: boolean;
 }
 
-const Input: React.FC<InputProps> = ({
-  className,
-  label,
-  id,
-  ref,
-  labelProps,
-  hint,
-  hintProps,
-  error,
-  errorProps,
-  width,
-  ...rest
-}) => {
-  const { isForm, setError } = useFormContext();
-  const [name] = useState<string>(rest.name || generateRandomName('input'));
-
-  useEffect(() => {
-    if (isForm) {
-      setError(name, Boolean(error));
-    }
-  }, [error, name, isForm]);
-
-  return (
-    <>
-      <LabelBlock
-        elementId={id}
-        label={label}
-        labelProps={labelProps}
-        hint={hint}
-        hintProps={hintProps}
-        error={error}
-        errorProps={errorProps}
-      />
+const Input: React.FC<InputProps> = props => (
+  <FormGroup<InputProps> {...props} inputType="input">
+    {({ width, className, error, inputRef, ...rest }) => (
       <input
         className={classNames(
           'nhsuk-input',
@@ -50,14 +20,12 @@ const Input: React.FC<InputProps> = ({
           { 'nhsuk-input--error': error },
           className,
         )}
-        id={id}
-        ref={ref}
-        aria-describedby={hint && id ? `${id}-label` : undefined}
+        ref={inputRef}
         {...rest}
       />
-    </>
-  );
-};
+    )}
+  </FormGroup>
+);
 
 Input.defaultProps = {
   type: 'text',
