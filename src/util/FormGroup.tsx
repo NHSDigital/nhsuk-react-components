@@ -43,6 +43,7 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
     error,
     hintProps,
     errorProps,
+    formGroupProps,
     inputType,
     disableErrorLine,
     name,
@@ -79,11 +80,18 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
     return () => registerComponent(elementID, true);
   }, []);
 
+  const { className: formGroupClassName, ...formGroupRestProps } = formGroupProps || {};
+
   return (
     <div
-      className={classNames('nhsuk-form-group', {
-        'nhsuk-form-group--error': !disableErrorFromComponents && !disableErrorLine && error,
-      })}
+      className={classNames(
+        'nhsuk-form-group',
+        {
+          'nhsuk-form-group--error': !disableErrorFromComponents && !disableErrorLine && error,
+        },
+        formGroupClassName,
+      )}
+      {...formGroupRestProps}
     >
       {label ? (
         <Label id={labelID} htmlFor={elementID} {...labelProps}>
