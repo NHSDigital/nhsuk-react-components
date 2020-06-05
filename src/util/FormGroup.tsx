@@ -95,7 +95,7 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
           {hint}
         </Hint>
       ) : null}
-      {!disableErrorFromComponents && error && typeof error === 'string' ? (
+      {error && typeof error === 'string' ? (
         <ErrorMessage id={errorID} {...errorProps}>
           {error}
         </ErrorMessage>
