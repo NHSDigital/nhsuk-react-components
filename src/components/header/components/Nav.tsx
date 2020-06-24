@@ -25,8 +25,9 @@ const Nav: React.FC<HTMLProps<HTMLDivElement>> = ({
       <Container>
         <p className="nhsuk-header__navigation-title">
           <span>Menu</span>
-          <button className="nhsuk-header__navigation-close" onClick={toggleMenu}>
+          <button className="nhsuk-header__navigation-close" type="button" onClick={toggleMenu}>
             <CloseIcon />
+            <span className="nhsuk-u-visually-hidden">Close menu</span>
           </button>
         </p>
         <ul className="nhsuk-header__navigation-list">{children}</ul>
