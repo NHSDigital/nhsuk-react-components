@@ -31,8 +31,7 @@ describe('SkipLink', () => {
   });
 
   it('does not set the href to #maincontent if disableDefaultBehaviour is set', () => {
-    const onClick = jest.fn();
-    const component = mount(<SkipLink disableDefaultBehaviour onClick={onClick} />);
+    const component = mount(<SkipLink disableDefaultBehaviour />);
     expect(component.find('.nhsuk-skip-link').prop('href')).toBeUndefined();
   });
 });
