@@ -84,9 +84,14 @@ class SkipLink extends React.Component<SkipLinkProps> {
   };
 
   render() {
-    const { className, focusTargetRef, disableDefaultBehaviour, ...rest } = this.props;
+    const { className, focusTargetRef, disableDefaultBehaviour, href, ...rest } = this.props;
     return (
-      <a className={classNames('nhsuk-skip-link', className)} onClick={this.onClick} {...rest} />
+      <a
+        className={classNames('nhsuk-skip-link', className)}
+        onClick={this.onClick}
+        href={disableDefaultBehaviour ? undefined : href}
+        {...rest}
+      />
     );
   }
 }
