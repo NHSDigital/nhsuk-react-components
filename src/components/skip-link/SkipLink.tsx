@@ -14,6 +14,7 @@ class SkipLink extends React.Component<SkipLinkProps> {
   static defaultProps = {
     children: 'Skip to main content',
     href: '#maincontent',
+    tabIndex: 0,
   };
 
   constructor(props: SkipLinkProps, ...rest: any[]) {
