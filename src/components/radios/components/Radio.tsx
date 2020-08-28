@@ -39,6 +39,7 @@ const Radio: React.FC<RadioProps> = ({
   } = useContext<IRadiosContext>(RadiosContext);
   const [radioReference] = useState<string>(leaseReference());
   const inputID = id || getRadioId(radioReference);
+  const shouldShowConditional = selectedRadio === radioReference && checked !== false;
 
   useEffect(() => () => unleaseReference(radioReference));
 
@@ -88,7 +89,7 @@ const Radio: React.FC<RadioProps> = ({
           </Hint>
         ) : null}
       </div>
-      {conditional && (selectedRadio === radioReference || forceShowConditional) ? (
+      {conditional && (shouldShowConditional || forceShowConditional) ? (
         <div
           className="nhsuk-radios__conditional"
           id={`${inputID}--conditional`}

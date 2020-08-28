@@ -2,7 +2,7 @@
 import React, { MouseEvent } from 'react';
 import { storiesOf } from '@storybook/react';
 import centered from '@storybook/addon-centered';
-import { Radios, Form, Fieldset, Button, Input } from '../src';
+import { Radios, Fieldset, Button, Input, Checkboxes } from '../src';
 
 const stories = storiesOf('Radios', module);
 
@@ -57,6 +57,38 @@ stories
       </Radios>
     </Fieldset>
   ))
+  .add('With conditional content', () => {
+    const impairmentsForm = (
+      <Checkboxes name="impairments" id="impairments">
+        <Checkboxes.Box value="autism">Autism</Checkboxes.Box>
+        <Checkboxes.Box value="developmental-conditions">
+          Developmental conditions (excluding autism)
+        </Checkboxes.Box>
+        <Checkboxes.Box value="dementia">Dementia</Checkboxes.Box>
+        <Checkboxes.Box value="learning-disability">Learning disability</Checkboxes.Box>
+        <Checkboxes.Box value="mental-health-condition">Mental Health Condition</Checkboxes.Box>
+        <Checkboxes.Box value="physical-disability">Physical disability</Checkboxes.Box>
+        <Checkboxes.Box value="sensory-disability">
+          Sensory disability - such as sight, hearing or verbal
+        </Checkboxes.Box>
+        <Checkboxes.Box value="long-term-condition">Long-term condition</Checkboxes.Box>
+      </Checkboxes>
+    );
+
+    return (
+      <Fieldset>
+        <Fieldset.Legend>Impairment requirement</Fieldset.Legend>
+        <Radios name="example" id="example-conditional" hint="Select relevant options.">
+          <Radios.Radio id="hello1" value="yes" conditional={impairmentsForm}>
+            Patient requires an impairment to be added
+          </Radios.Radio>
+          <Radios.Radio id="hello2" value="no">
+            Patient would prefer not to say
+          </Radios.Radio>
+        </Radios>
+      </Fieldset>
+    );
+  })
   .add('With a divider', () => (
     <Fieldset>
       <Fieldset.Legend>How do you want to sign in?</Fieldset.Legend>
