@@ -1,5 +1,5 @@
-import React from 'react';
 import { mount } from 'enzyme';
+import React from 'react';
 import Radios from '../Radios';
 
 describe('Radios', () => {
@@ -21,7 +21,12 @@ describe('Radios', () => {
   it('does not render the conditional content if checked is false', () => {
     const element = mount(
       <Radios id="example" name="example">
-        <Radios.Radio id="example-1" value="yes" checked={false} conditional={<p>Test</p>}>
+        <Radios.Radio
+          id="example-1"
+          value="yes"
+          checked={false}
+          conditional={<p className="conditional-test">Test</p>}
+        >
           Yes
         </Radios.Radio>
         <Radios.Radio id="example-2" value="no">
@@ -30,14 +35,18 @@ describe('Radios', () => {
       </Radios>,
     );
     element.find('input#example-1').simulate('change');
-    expect(element).toMatchSnapshot();
+    expect(element.exists('.conditional-test')).toBeFalsy();
     element.unmount();
   });
 
   it('renders the conditional content if the radio reference = selected radio', () => {
     const element = mount(
       <Radios id="example" name="example">
-        <Radios.Radio id="example-1" value="yes" conditional={<p>Test</p>}>
+        <Radios.Radio
+          id="example-1"
+          value="yes"
+          conditional={<p className="conditional-test">Test</p>}
+        >
           Yes
         </Radios.Radio>
         <Radios.Radio id="example-2" value="no">
@@ -46,7 +55,7 @@ describe('Radios', () => {
       </Radios>,
     );
     element.find('input#example-1').simulate('change');
-    expect(element).toMatchSnapshot();
+    expect(element.exists('.conditional-test')).toBeTruthy();
     element.unmount();
   });
 });
