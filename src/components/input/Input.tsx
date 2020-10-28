@@ -1,9 +1,8 @@
 import React, { HTMLProps } from 'react';
-
-import { FormElementProps } from '../../util/types/FormTypes';
+import classNames from 'classnames';
 import FormGroup from '../../util/FormGroup';
 import { InputWidth } from '../../util/types/NHSUKTypes';
-import classNames from 'classnames';
+import { FormElementProps } from '../../util/types/FormTypes';
 
 interface InputProps extends HTMLProps<HTMLInputElement>, FormElementProps {
   inputRef?: (inputRef: HTMLInputElement | null) => any;
@@ -14,19 +13,16 @@ interface InputProps extends HTMLProps<HTMLInputElement>, FormElementProps {
 const Input: React.FC<InputProps> = props => (
   <FormGroup<InputProps> {...props} inputType="input">
     {({ width, className, error, inputRef, ...rest }) => (
-      <>
-        <input
-          className={classNames(
-            'nhsuk-input',
-            { [`nhsuk-input--width-${width}`]: width },
-            { 'nhsuk-input--error': error },
-            className,
-          )}
-          ref={inputRef}
-          {...rest}
-        />
-        {props.children}
-      </>
+      <input
+        className={classNames(
+          'nhsuk-input',
+          { [`nhsuk-input--width-${width}`]: width },
+          { 'nhsuk-input--error': error },
+          className,
+        )}
+        ref={inputRef}
+        {...rest}
+      />
     )}
   </FormGroup>
 );
