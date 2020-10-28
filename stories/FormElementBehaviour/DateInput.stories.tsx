@@ -1,7 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React from 'react';
+import React, { useState } from 'react';
 import { storiesOf } from '@storybook/react';
-import { DateInput, Form } from '../../src';
+import { DateInput } from '../../src';
 
 const stories = storiesOf('FormElementBehaviour: DateInput', module);
 
@@ -88,6 +88,21 @@ stories
       <div style={{ padding: 20 }}>
         <h5>Component</h5>
         <DateInput hint="Test hint" label="Test label" value={value} />
+      </div>
+    );
+  })
+  .add('Changeable Controlled Element', () => {
+    const [value, setValue] = useState({ day: '20', month: '09', year: '1996' });
+
+    return (
+      <div style={{ padding: 20 }}>
+        <h5>Component</h5>
+        <DateInput
+          hint="Test hint"
+          label="Test label"
+          value={value}
+          onChange={e => setValue(e.currentTarget.value)}
+        />
       </div>
     );
   });
