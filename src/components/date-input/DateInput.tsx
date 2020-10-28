@@ -17,7 +17,7 @@ type DateInputChangeEvent = ChangeEvent<HTMLInputElement> & {
 
 interface DateInputProps
   extends Omit<HTMLProps<HTMLDivElement>, 'value' | 'defaultValue'>,
-    FormElementProps {
+  FormElementProps {
   autoSelectNext?: boolean;
   value?: Partial<DateInputValue>;
   defaultValue?: Partial<DateInputValue>;
@@ -38,14 +38,45 @@ interface DateInput extends PureComponent<DateInputProps, DateInputState> {
 }
 
 class DateInput extends PureComponent<DateInputProps, DateInputState> {
+  static Day = DayInput;
+
+  static Month = MonthInput;
+
+  static Year = YearInput;
+
   constructor(props: DateInputProps, ...rest: any[]) {
     super(props, ...rest);
     this.state = {
-      values: { day: '', month: '', year: '' },
+      values: {
+        day: props.value?.day || '',
+        month: props.value?.month || '',
+        year: props.value?.year || '',
+      },
     };
 
     this.monthRef = null;
     this.yearRef = null;
+  }
+
+  componentDidUpdate(prevProps: DateInputProps) {
+    if (this.props.value && prevProps.value !== this.props.value) {
+      // This is the only way that we can update our internal state
+      // when the value updates. We check if the value has changed first,
+      // preventing an infinite loop.
+      //
+      // eslint-disable-next-line react/no-did-update-set-state
+      this.setState(state => {
+        if (!this.props.value) return state;
+
+        const newState = { ...state };
+        const { day, month, year } = this.props.value;
+        if (day && day !== state.values.day) newState.values.day = day;
+        if (month && month !== state.values.month) newState.values.month = month;
+        if (year && year !== state.values.year) newState.values.year = year;
+
+        return newState;
+      });
+    }
   }
 
   handleSelectNext = (inputType: 'day' | 'month' | 'year', value: string) => {
@@ -82,11 +113,6 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
     if (inputType === 'year') this.yearRef = ref;
   };
 
-  static Day = DayInput;
-
-  static Month = MonthInput;
-
-  static Year = YearInput;
 
   render() {
     const { children, onChange, value, defaultValue, ...rest } = this.props;
