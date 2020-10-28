@@ -13,9 +13,9 @@ If you're coming from versions of the library prior to 1.0.0, please give [this 
 You can install this package using either `yarn` or `npm`.
 
 ```bash
-npm install --save nhsuk-react-components@next
+npm install --save nhsuk-react-components
 # Or
-yarn add nhsuk-react-components@next
+yarn add nhsuk-react-components
 ```
 
 ## Usage
