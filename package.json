@@ -79,7 +79,8 @@
     "test:ci": "jest --coverage",
     "test:watch": "jest --watch",
     "lint": "eslint --fix -c .eslintrc.js --ext .ts --ext .tsx src/*.ts src/components/**/*.ts src/util/*.ts",
-    "prebuild": "yarn lint && yarn test --coverage"
+    "prebuild": "yarn lint && yarn test --coverage",
+    "prepare": "yarn build"
   },
   "files": [
     "dist",
