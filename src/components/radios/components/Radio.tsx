@@ -11,7 +11,7 @@ export interface RadioProps extends HTMLProps<HTMLInputElement> {
   conditional?: ReactNode;
   forceShowConditional?: boolean;
   conditionalWrapperProps?: HTMLProps<HTMLDivElement>;
-  inputRef?: (inputRef: HTMLElement | null) => any;
+  inputRef?: (inputRef: HTMLInputElement | null) => any;
 }
 
 const Radio: React.FC<RadioProps> = ({
