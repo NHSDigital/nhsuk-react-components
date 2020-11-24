@@ -2,14 +2,16 @@ import React, { HTMLProps, useContext } from 'react';
 import HeaderContext, { IHeaderContext } from '../HeaderContext';
 
 export interface OrganisationalLogoProps extends HTMLProps<HTMLAnchorElement> {
+  asElement?: React.ElementType;
+  to?: string;
   logoUrl?: string;
 }
 
-const OrganisationalLogo: React.FC<OrganisationalLogoProps> = ({ logoUrl, alt, ...rest }) => {
+const OrganisationalLogo: React.FC<OrganisationalLogoProps> = ({ logoUrl, alt, asElement: Component = 'a', ...rest }) => {
   const { orgName, orgSplit, orgDescriptor } = useContext<IHeaderContext>(HeaderContext);
   return (
     <div className="nhsuk-header__logo">
-      <a className="nhsuk-header__link" {...rest}>
+      <Component className="nhsuk-header__link" {...rest}>
         {logoUrl ? (
           <img className="nhsuk-org-logo" src={logoUrl} alt={alt} />
         ) : (
@@ -44,7 +46,7 @@ const OrganisationalLogo: React.FC<OrganisationalLogoProps> = ({ logoUrl, alt, .
             ) : null}
           </>
         )}
-      </a>
+      </Component>
     </div>
   );
 };

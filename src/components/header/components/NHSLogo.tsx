@@ -6,9 +6,14 @@ interface SVGImageWithSrc extends SVGProps<SVGImageElement> {
   src: string;
 }
 
+export interface NHSLogoNavProps extends HTMLProps<HTMLAnchorElement> {
+  asElement?: React.ElementType;
+  to?: string;
+}
+
 const SVGImageWithSrc: React.FC<SVGImageWithSrc> = props => <image {...props} />;
 
-const NHSLogo: React.FC<HTMLProps<HTMLAnchorElement>> = ({ className, alt, ...rest }) => {
+const NHSLogo: React.FC<NHSLogoNavProps> = ({ className, alt, asElement: Component = 'a', ...rest }) => {
   const { serviceName, hasMenuToggle, hasSearch } = useContext<IHeaderContext>(HeaderContext);
   return (
     <div
@@ -16,7 +21,7 @@ const NHSLogo: React.FC<HTMLProps<HTMLAnchorElement>> = ({ className, alt, ...re
         'nhsuk-header__logo--only': !hasMenuToggle && !hasSearch,
       })}
     >
-      <a
+      <Component
         className={classNames(
           'nhsuk-header__link',
           { 'nhsuk-header__link--service': serviceName },
@@ -41,7 +46,7 @@ const NHSLogo: React.FC<HTMLProps<HTMLAnchorElement>> = ({ className, alt, ...re
           <SVGImageWithSrc src="https://assets.nhs.uk/images/nhs-logo.png" xlinkHref="" />
         </svg>
         {serviceName ? <span className="nhsuk-header__service-name">{serviceName}</span> : null}
-      </a>
+      </Component>
     </div>
   );
 };
