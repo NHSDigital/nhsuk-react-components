@@ -2,7 +2,7 @@ import React, { HTMLProps, useContext, isValidElement } from 'react';
 import classNames from 'classnames';
 import PromoContext, { PromoContextType } from './PromoContext';
 import { Col, Row } from '../layout';
-import type { AsElementLink } from 'util/types/LinkTypes';
+import type { AsElementLink } from '../../util/types/LinkTypes';
 
 interface ImageProps extends HTMLProps<HTMLImageElement> {
   crossOrigin?: '' | 'anonymous' | 'use-credentials';

@@ -1,7 +1,7 @@
 import React, { useContext, SVGProps } from 'react';
 import classNames from 'classnames';
 import HeaderContext, { IHeaderContext } from '../HeaderContext';
-import type { AsElementLink } from 'util/types/LinkTypes';
+import type { AsElementLink } from '../../../util/types/LinkTypes';
 
 interface SVGImageWithSrc extends SVGProps<SVGImageElement> {
   src: string;

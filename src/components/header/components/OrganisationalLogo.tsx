@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import HeaderContext, { IHeaderContext } from '../HeaderContext';
-import type { AsElementLink } from 'util/types/LinkTypes';
+import type { AsElementLink } from '../../../util/types/LinkTypes';
 
 
 export interface OrganisationalLogoProps extends AsElementLink<HTMLAnchorElement> {

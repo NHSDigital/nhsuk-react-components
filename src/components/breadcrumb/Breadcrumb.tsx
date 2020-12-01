@@ -2,7 +2,7 @@
 import React, { HTMLProps, ReactNode } from 'react';
 import classNames from 'classnames';
 import { Container } from '../layout';
-import type { AsElementLink } from 'util/types/LinkTypes';
+import type { AsElementLink } from '../../util/types/LinkTypes';
 
 type Item = React.FC<AsElementLink<HTMLAnchorElement>>;
 

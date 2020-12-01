@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
 import { ChevronRight as ChevronRightIcon } from '../../icons';
-import type { AsElementLink } from 'util/types/LinkTypes';
+import type { AsElementLink } from '../../../util/types/LinkTypes';
 
 export interface NavItemProps extends AsElementLink<HTMLAnchorElement> {
   mobileOnly?: boolean;
