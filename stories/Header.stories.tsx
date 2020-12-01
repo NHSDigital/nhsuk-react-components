@@ -1,7 +1,8 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React from 'react';
+import React, { HTMLProps } from 'react';
 import { storiesOf } from '@storybook/react';
 import { Header } from '../src';
+import { AsElementLink } from '../src/util/types/LinkTypes';
 
 const stories = storiesOf('Header', module);
 
@@ -135,4 +136,31 @@ stories
         <Header.NavItem>Our research</Header.NavItem>
       </Header.Nav>
     </Header>
-  ));
+  ))
+  .add('Header with custom NavItem component', () => {
+    const customElement = (props: AsElementLink<HTMLDivElement>) => <div {...props} />;
+
+    return (
+      <Header
+        orgName="Anytown Anyplace"
+        orgSplit="Anywhere"
+        orgDescriptor="NHS Foundation Trust"
+        white
+      >
+        <Header.Container>
+          <Header.Logo href="/" />
+          <Header.Content>
+            <Header.MenuToggle />
+            <Header.Search />
+          </Header.Content>
+        </Header.Container>
+        <Header.Nav>
+          <Header.NavItem to="/" asElement={customElement}>
+            Link to props
+          </Header.NavItem>
+          <Header.NavItem>Your hospital visit</Header.NavItem>
+          <Header.NavItem>Wards and departments</Header.NavItem>
+        </Header.Nav>
+      </Header>
+    );
+  });
