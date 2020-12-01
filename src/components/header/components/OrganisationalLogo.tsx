@@ -1,9 +1,9 @@
-import React, { HTMLProps, useContext } from 'react';
+import React, { useContext } from 'react';
 import HeaderContext, { IHeaderContext } from '../HeaderContext';
+import type { AsElementLink } from 'util/types/LinkTypes';
 
-export interface OrganisationalLogoProps extends HTMLProps<HTMLAnchorElement> {
-  asElement?: React.ElementType;
-  to?: string;
+
+export interface OrganisationalLogoProps extends AsElementLink<HTMLAnchorElement> {
   logoUrl?: string;
 }
 
