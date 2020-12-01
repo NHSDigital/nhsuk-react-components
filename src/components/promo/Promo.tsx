@@ -2,12 +2,13 @@ import React, { HTMLProps, useContext, isValidElement } from 'react';
 import classNames from 'classnames';
 import PromoContext, { PromoContextType } from './PromoContext';
 import { Col, Row } from '../layout';
+import type { AsElementLink } from 'util/types/LinkTypes';
 
 interface ImageProps extends HTMLProps<HTMLImageElement> {
   crossOrigin?: '' | 'anonymous' | 'use-credentials';
 }
 
-interface BasePromoProps extends HTMLProps<HTMLAnchorElement> {
+interface BasePromoProps extends AsElementLink<HTMLAnchorElement> {
   imageSrc?: string;
   small?: boolean;
   imageProps?: ImageProps;
@@ -19,12 +20,13 @@ const BasePromo: React.FC<BasePromoProps> = ({
   imageSrc,
   imageProps,
   small,
+  asElement: Component = 'a',
   ...rest
 }) => {
   const { className: imageClassName, ...restImageProps } = imageProps || {};
   return (
     <div className={classNames('nhsuk-promo', { 'nhsuk-promo--small': small }, className)}>
-      <a className="nhsuk-promo__link-wrapper" {...rest}>
+      <Component className="nhsuk-promo__link-wrapper" {...rest}>
         {imageSrc ? (
           <img
             className={classNames('nhsuk-promo__img', imageClassName)}
@@ -33,7 +35,7 @@ const BasePromo: React.FC<BasePromoProps> = ({
           />
         ) : null}
         <div className="nhsuk-promo__content">{children}</div>
-      </a>
+      </Component>
     </div>
   );
 };

@@ -2,20 +2,21 @@
 import React, { HTMLProps, ReactNode } from 'react';
 import classNames from 'classnames';
 import { Container } from '../layout';
+import type { AsElementLink } from 'util/types/LinkTypes';
 
-type Item = React.FC<HTMLProps<HTMLAnchorElement>>;
+type Item = React.FC<AsElementLink<HTMLAnchorElement>>;
 
-const Item: Item = ({ className, children, ...rest }) => (
+const Item: Item = ({ className, children, asElement: Component = 'a',  ...rest }) => (
   <li className="nhsuk-breadcrumb__item">
-    <a className={classNames('nhsuk-breadcrumb__link', className)} {...rest}>
+    <Component className={classNames('nhsuk-breadcrumb__link', className)} {...rest}>
       {children}
-    </a>
+    </Component>
   </li>
 );
 
-const Back: Item = ({ className, ...rest }) => (
+const Back: Item = ({ className, asElement: Component = 'a', ...rest }) => (
   <p className={classNames('nhsuk-breadcrumb__back', className)}>
-    <a className="nhsuk-breadcrumb__backlink" {...rest} />
+    <Component className="nhsuk-breadcrumb__backlink" {...rest} />
   </p>
 );
 

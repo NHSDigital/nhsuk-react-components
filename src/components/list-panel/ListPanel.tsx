@@ -1,5 +1,7 @@
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
+import type { AsElementLink } from 'util/types/LinkTypes';
+
 
 interface PanelProps extends HTMLProps<HTMLDivElement> {
   labelProps?: HTMLProps<HTMLHeadingElement>;
@@ -67,9 +69,9 @@ const PanelItem: React.FC<HTMLProps<HTMLLIElement>> = ({ className, ...rest }) =
   <li className={classNames('nhsuk-list-panel__item', className)} {...rest} />
 );
 
-const PanelLinkItem: React.FC<HTMLProps<HTMLAnchorElement>> = ({ className, ...rest }) => (
+const PanelLinkItem: React.FC<AsElementLink<HTMLAnchorElement>> = ({ className, asElement: Component = 'a', ...rest }) => (
   <PanelItem>
-    <a className={classNames('nhsuk-list-panel__link', className)} {...rest} />
+    <Component className={classNames('nhsuk-list-panel__link', className)} {...rest} />
   </PanelItem>
 );
 

@@ -1,5 +1,6 @@
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
+import type { AsElementLink } from 'util/types/LinkTypes';
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
@@ -43,7 +44,7 @@ interface NavAZProps extends HTMLProps<HTMLDivElement> {
 }
 
 interface NavAZ extends React.FC<NavAZProps> {
-  LinkItem: React.FC<HTMLProps<HTMLAnchorElement>>;
+  LinkItem: React.FC<AsElementLink<HTMLAnchorElement>>;
   DisabledItem: React.FC<HTMLProps<HTMLSpanElement>>;
 }
 
@@ -63,9 +64,13 @@ const NavAZ: NavAZ = ({
   </nav>
 );
 
-const LinkItem: React.FC<HTMLProps<HTMLAnchorElement>> = ({ className, ...rest }) => (
+const LinkItem: React.FC<AsElementLink<HTMLAnchorElement>> = ({ 
+  className,
+  asElement: Component = 'a',
+  ...rest 
+  }) => (
   <li className="nhsuk-nav-a-z__item">
-    <a className={classNames('nhsuk-nav-a-z__link', className)} {...rest} />
+    <Component className={classNames('nhsuk-nav-a-z__link', className)} {...rest} />
   </li>
 );
 
