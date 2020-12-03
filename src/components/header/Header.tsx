@@ -6,10 +6,14 @@ import HeaderContext, { IHeaderContext } from './HeaderContext';
 import Search from './components/Search';
 import Nav from './components/Nav';
 import NavItem from './components/NavItem';
+import NavItemList from './components/NavItemList';
+import NavMenuCollapse from './components/NavMenuCollapse';
 import { Container } from '../layout';
 import Content from './components/Content';
 import MenuToggle from './components/MenuToggle';
 import TransactionalServiceName from './components/TransactionalServiceName';
+import NavTitle from './components/NavTitle';
+import NavContainer from './components/NavContainer';
 
 const BaseHeaderLogo: React.FC<OrganisationalLogoProps> = props => {
   const { orgName } = useContext<IHeaderContext>(HeaderContext);
@@ -46,7 +50,15 @@ class Header extends PureComponent<HeaderProps, HeaderState> {
 
   static Nav = Nav;
 
+  static NavTitle = NavTitle;
+
+  static NavContainer = NavContainer;
+
+  static NavItemList = NavItemList;
+
   static NavItem = NavItem;
+
+  static NavMenuCollapse = NavMenuCollapse;
 
   static Container = HeaderContainer;
 

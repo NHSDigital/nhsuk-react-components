@@ -135,4 +135,31 @@ stories
         <Header.NavItem>Our research</Header.NavItem>
       </Header.Nav>
     </Header>
+  ))
+  .add('Custom Navigation header', () => (
+    <Header
+      orgName="Anytown Anyplace"
+      orgSplit="Anywhere"
+      orgDescriptor="NHS Foundation Trust"
+      white
+    >
+      <Header.Container>
+        <Header.Logo href="/" />
+        <Header.Content>
+          <Header.MenuToggle />
+          <Header.Search />
+        </Header.Content>
+      </Header.Container>
+      <Header.NavContainer>
+        <Header.NavTitle>
+          <span>Menu</span>
+          <Header.NavMenuCollapse />
+        </Header.NavTitle>
+        <Header.NavItemList>
+          <Header.NavItem>
+            Link
+          </Header.NavItem>
+        </Header.NavItemList>
+      </Header.NavContainer>
+    </Header>
   ));
