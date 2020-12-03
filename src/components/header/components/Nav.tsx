@@ -1,7 +1,7 @@
 import React, { HTMLProps } from 'react';
 import NavTitle from './NavTitle';
 import NavItemList from './NavItemList';
-import NavMenuCollapse from './NavMenuCollapse';
+import NavMenuClose from './NavMenuClose';
 import NavContainer from './NavContainer';
 
 const Nav: React.FC<HTMLProps<HTMLDivElement>> = ({
@@ -13,7 +13,7 @@ const Nav: React.FC<HTMLProps<HTMLDivElement>> = ({
   <NavContainer open={open} {...rest}>
     <NavTitle>
       <span>Menu</span>
-      <NavMenuCollapse />
+      <NavMenuClose />
     </NavTitle>
     <NavItemList>{children}</NavItemList>
   </NavContainer>

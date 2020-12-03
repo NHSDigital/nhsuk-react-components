@@ -7,7 +7,7 @@ import Search from './components/Search';
 import Nav from './components/Nav';
 import NavItem from './components/NavItem';
 import NavItemList from './components/NavItemList';
-import NavMenuCollapse from './components/NavMenuCollapse';
+import NavMenuClose from './components/NavMenuClose';
 import { Container } from '../layout';
 import Content from './components/Content';
 import MenuToggle from './components/MenuToggle';
@@ -58,7 +58,7 @@ class Header extends PureComponent<HeaderProps, HeaderState> {
 
   static NavItem = NavItem;
 
-  static NavMenuCollapse = NavMenuCollapse;
+  static NavMenuClose = NavMenuClose;
 
   static Container = HeaderContainer;
 
