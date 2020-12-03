@@ -1,6 +1,6 @@
 import React, { PureComponent, HTMLProps, useContext } from 'react';
 import classNames from 'classnames';
-import NHSLogo from './components/NHSLogo';
+import NHSLogo, { NHSLogoNavProps } from './components/NHSLogo';
 import OrganisationalLogo, { OrganisationalLogoProps } from './components/OrganisationalLogo';
 import HeaderContext, { IHeaderContext } from './HeaderContext';
 import Search from './components/Search';
@@ -11,7 +11,7 @@ import Content from './components/Content';
 import MenuToggle from './components/MenuToggle';
 import TransactionalServiceName from './components/TransactionalServiceName';
 
-const BaseHeaderLogo: React.FC<OrganisationalLogoProps> = props => {
+const BaseHeaderLogo: React.FC<OrganisationalLogoProps & NHSLogoNavProps> = props => {
   const { orgName } = useContext<IHeaderContext>(HeaderContext);
   if (orgName) {
     return <OrganisationalLogo {...props} />;
