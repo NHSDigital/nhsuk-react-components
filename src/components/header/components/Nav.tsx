@@ -10,7 +10,7 @@ const Nav: React.FC<HTMLProps<HTMLDivElement>> = ({
   open,
   ...rest
 }) => (
-  <NavContainer open={open} {...rest}>
+  <NavContainer open={open} className={className} {...rest}>
     <NavTitle>
       <span>Menu</span>
       <NavMenuClose />

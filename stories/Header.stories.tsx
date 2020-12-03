@@ -163,7 +163,7 @@ stories
         </Header.Nav>
       </Header>
     );
-  });
+  })
   .add('Custom Navigation header', () => (
     <Header
       orgName="Anytown Anyplace"
@@ -181,7 +181,7 @@ stories
       <Header.NavContainer>
         <Header.NavTitle>
           <span>Menu</span>
-          <Header.NavMenuCollapse />
+          <Header.NavMenuClose />
         </Header.NavTitle>
         <Header.NavItemList>
           <Header.NavItem>
