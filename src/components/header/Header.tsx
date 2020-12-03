@@ -60,8 +60,8 @@ class Header extends PureComponent<HeaderProps, HeaderState> {
     role: 'banner',
   };
 
-  constructor(props: HeaderProps, ...rest: any[]) {
-    super(props, ...rest);
+  constructor(props: HeaderProps) {
+    super(props);
     this.state = {
       hasMenuToggle: false,
       hasSearch: false,

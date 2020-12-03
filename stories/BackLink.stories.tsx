@@ -1,9 +1,15 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import centered from '@storybook/addon-centered/react';
 import { BackLink } from '../src';
 
-const stories = storiesOf('BackLink', module);
+export const StandardLink = () => <BackLink href="/">Link</BackLink>;
 
-stories.addDecorator(centered).add('BackLink', () => <BackLink>Link</BackLink>);
+export const OpenInNewTabLink = () => (
+  <BackLink target="_blank" rel="noopener noreferrer" href="/">
+    Link
+  </BackLink>
+);
+
+export default {
+  title: 'Components/BackLink',
+  component: BackLink,
+};
