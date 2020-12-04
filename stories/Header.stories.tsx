@@ -164,7 +164,7 @@ stories
       </Header>
     );
   })
-  .add('Custom Navigation header', () => (
+  .add('Header with custom NavMenuClose and NavItemList component', () => (
     <Header
       orgName="Anytown Anyplace"
       orgSplit="Anywhere"
@@ -184,9 +184,14 @@ stories
           <Header.NavMenuClose />
         </Header.NavTitle>
         <Header.NavItemList>
-          <Header.NavItem>
-            Link
+          <Header.NavItem href="/" mobileOnly>
+            Home
           </Header.NavItem>
+          <Header.NavItem href="/conditions">Health A-Z</Header.NavItem>
+          <Header.NavItem href="/live-well">Live Well</Header.NavItem>
+          <Header.NavItem href="/social-care-and-support">Care and support</Header.NavItem>
+          <Header.NavItem href="/news">Health news</Header.NavItem>
+          <Header.NavItem href="/service-search">Services near you</Header.NavItem>
         </Header.NavItemList>
       </Header.NavContainer>
     </Header>
