@@ -1,6 +1,6 @@
 import React, { HTMLProps, useContext, useEffect, MouseEvent } from 'react';
-import HeaderContext, { IHeaderContext } from '../HeaderContext';
 import classNames from 'classnames';
+import HeaderContext, { IHeaderContext } from '../HeaderContext';
 
 export interface MenuToggleProps extends HTMLProps<HTMLButtonElement> {
   type?: 'button' | 'submit' | 'reset';
