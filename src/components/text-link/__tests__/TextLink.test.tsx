@@ -1,6 +1,6 @@
 import React from 'react';
-import TextLink from '../TextLink';
 import { shallow } from 'enzyme';
+import TextLink from '../TextLink';
 
 describe('TextLink', () => {
   it('matches snapshot', () => {
