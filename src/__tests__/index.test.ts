@@ -56,6 +56,7 @@ describe('Index', () => {
       'SkipLink',
       'SummaryList',
       'Table',
+      'TextLink',
       'Textarea',
       'LedeText',
       'BodyText',
