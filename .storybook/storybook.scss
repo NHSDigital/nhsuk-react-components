@@ -1,1 +1,8 @@
 @import '../node_modules/nhsuk-frontend/dist/nhsuk.css';
+
+/* TODO Add this component html to main nhsuk lib */
+.text-link {
+  display: block;
+  padding-top: 8px;
+  font-size: 15px;
+}

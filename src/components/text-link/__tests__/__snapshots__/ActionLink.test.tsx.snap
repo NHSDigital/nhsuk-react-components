@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ActionLink matches snapshot: ActionLink 1`] = `
+<div
+  className="nhsuk-action-link"
+>
+  <a
+    className="nhsuk-action-link__link"
+    href="/test"
+  >
+    <Component />
+    <span
+      className="nhsuk-action-link__text"
+    >
+      Test
+    </span>
+  </a>
+</div>
+`;
