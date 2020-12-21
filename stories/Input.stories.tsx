@@ -80,7 +80,7 @@ stories
   .add('With text link', () => (
     <Input
       id="input-example-with-link"
-      name="test-name-1111"
+      name="input-example-with-link"
       label="Link with text"
       textLink={{ href: 'http://www.google.com', title: 'Don\'t know the Question Name?' }}
     />
