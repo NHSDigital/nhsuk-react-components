@@ -1,5 +1,6 @@
 import React, { ReactNode, useState, useEffect, HTMLProps, useContext } from 'react';
 import classNames from 'classnames';
+import TextLink from '../components/text-link/TextLink';
 import Hint from '../components/hint/Hint';
 import ErrorMessage from '../components/error-message/ErrorMessage';
 import { generateRandomID } from './RandomID';
@@ -47,6 +48,7 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
     inputType,
     disableErrorLine,
     name,
+    textLink,
     ...rest
   } = props;
   const [generatedID] = useState<string>(generateRandomID(inputType));
@@ -109,6 +111,11 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
         </ErrorMessage>
       ) : null}
       {children(childProps)}
+      {textLink ? (
+        <TextLink href={textLink.href}>
+          {textLink.title}
+        </TextLink>
+      ) : null}
     </div>
   );
 };

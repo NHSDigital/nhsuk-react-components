@@ -73,9 +73,17 @@ const ExampleForm: FunctionComponent<Props> = props => {
 };
 
 stories
-  .addDecorator(centered)
-  .add('Standard', () => (
-    <Input id="input-example" name="test-name" label="National Insurance Number" />
+.addDecorator(centered)
+.add('Standard', () => (
+  <Input id="input-example" name="test-name" label="National Insurance Number" />
+  ))
+  .add('With text link', () => (
+    <Input
+      id="input-example-with-link"
+      name="test-name-1111"
+      label="Link with text"
+      textLink={{ href: 'http://www.google.com', title: 'Don\'t know the Question Name?' }}
+    />
   ))
   .add('With autoComplete attribute', () => (
     <Input
