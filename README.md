@@ -1,5 +1,13 @@
 # NHS.UK React Components
 
+- [NHS.UK React Components](#nhsuk-react-components)
+  - [Coming from 0.x?](#coming-from-0x)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [Storybook](#storybook)
+  - [Maintainers](#maintainers)
+    - [Preparing Releases](#preparing-releases)
+
 NHS.UK Frontend ported to React
 
 [![GitHub Actions CI Status](https://github.com/NHSDigital/nhsuk-react-components/workflows/CI/badge.svg)](https://github.com/NHSDigital/nhsuk-react-components/actions?query=workflow%3A%22CI+Build%22+branch%3Amain) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-airbnb-brightgreen.svg)](https://github.com/airbnb/javascript) [![Bundle Size](https://img.shields.io/bundlephobia/minzip/nhsuk-react-components.svg)](https://bundlephobia.com/result?p=nhsuk-react-components)
@@ -47,3 +55,14 @@ A storybook containing all of the components and their usage can be found [here]
 - Thomas Judd-Cooper ([GitHub](https://github.com/tomdango))
 - Sam Brown ([GitHub](https://github.com/samueldavidbrown))
 - Luke Pearson ([GitHub](https://github.com/lukepearson))
+
+### Preparing Releases
+
+Releases run in CI using github actions. 
+
+To prepare a release create a new release TAG in github with your release version.
+
+>`NPM_TOKEN` should be stored in the repositories [secrets in GitHub](https://github.com/NHSDigital/nhsuk-react-components/settings/secrets/actions)
+
+- Create a new release with a tag like `major.minor.patch` against main.
+- If the change is a `beta` then select `pre-release` as true, this will make the `tag` point at `beta`. Otherwise the tag will be `latest`.
