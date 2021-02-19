@@ -17,7 +17,7 @@ type DateInputChangeEvent = ChangeEvent<HTMLInputElement> & {
 
 interface DateInputProps
   extends Omit<HTMLProps<HTMLDivElement>, 'value' | 'defaultValue'>,
-  FormElementProps {
+    FormElementProps {
   autoSelectNext?: boolean;
   value?: Partial<DateInputValue>;
   defaultValue?: Partial<DateInputValue>;
@@ -44,8 +44,8 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
 
   static Year = YearInput;
 
-  constructor(props: DateInputProps, ...rest: any[]) {
-    super(props, ...rest);
+  constructor(props: DateInputProps) {
+    super(props);
     this.state = {
       values: {
         day: props.value?.day || '',
@@ -112,7 +112,6 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
     if (inputType === 'month') this.monthRef = ref;
     if (inputType === 'year') this.yearRef = ref;
   };
-
 
   render() {
     const { children, onChange, value, defaultValue, ...rest } = this.props;

@@ -1,23 +1,23 @@
 import React from 'react';
-import Panel from '..';
 import { mount } from 'enzyme';
+import Panel from '..';
 
 describe('Panel', () => {
   it('matches snapshot', () => {
-    const element = mount(<Panel></Panel>);
+    const element = mount(<Panel />);
     expect(element).toMatchSnapshot('Panel');
     element.unmount();
   });
 
   it('adds correct classes when grey', () => {
-    const element = mount(<Panel grey></Panel>);
+    const element = mount(<Panel grey />);
     const renderedElement = element.render();
     expect(renderedElement.hasClass('nhsuk-panel--grey')).toBeTruthy();
     element.unmount();
   });
 
   it('adds correct attributes when a label is added', () => {
-    const element = mount(<Panel label="Label"></Panel>);
+    const element = mount(<Panel label="Label" />);
     const renderedElement = element.render();
     expect(renderedElement.hasClass('nhsuk-panel-with-label')).toBeTruthy();
     expect(renderedElement.find('.nhsuk-panel-with-label__label').text()).toBe('Label');

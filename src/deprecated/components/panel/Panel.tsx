@@ -1,7 +1,8 @@
-import React, { HTMLProps, isValidElement } from 'react';
+import React, { HTMLProps, isValidElement, useEffect } from 'react';
 import classNames from 'classnames';
-import { Row, Col } from '../layout';
+import { Row, Col } from '../../../components/layout';
 import PanelContext, { PanelContextType } from './PanelContext';
+import isDev from '../../../util/IsDev';
 
 interface PanelProps extends HTMLProps<HTMLDivElement> {
   grey?: boolean;
@@ -20,24 +21,35 @@ const BasePanel: React.FC<PanelProps> = ({
   labelProps,
   children,
   ...rest
-}) => (
-  <div
-    className={classNames(
-      { 'nhsuk-panel': !label },
-      { 'nhsuk-panel--grey': grey },
-      { 'nhsuk-panel-with-label': label },
-      className,
-    )}
-    {...rest}
-  >
-    {label ? (
-      <h3 className="nhsuk-panel-with-label__label" {...labelProps}>
-        {label}
-      </h3>
-    ) : null}
-    {children}
-  </div>
-);
+}) => {
+  useEffect(() => {
+    if (isDev()) {
+      // eslint-disable-next-line no-console
+      console.warn(
+        'The Panel component is deprecated, and will be removed in the next major version of nhsuk-react-components. The Card component is the intended replacement.',
+      );
+    }
+  }, []);
+
+  return (
+    <div
+      className={classNames(
+        { 'nhsuk-panel': !label },
+        { 'nhsuk-panel--grey': grey },
+        { 'nhsuk-panel-with-label': label },
+        className,
+      )}
+      {...rest}
+    >
+      {label ? (
+        <h3 className="nhsuk-panel-with-label__label" {...labelProps}>
+          {label}
+        </h3>
+      ) : null}
+      {children}
+    </div>
+  );
+};
 
 const Panel: Panel = props => {
   const PanelGroupContext = React.useContext<PanelContextType | null>(PanelContext);

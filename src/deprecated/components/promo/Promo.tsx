@@ -1,8 +1,9 @@
-import React, { HTMLProps, useContext, isValidElement } from 'react';
+import React, { HTMLProps, useContext, isValidElement, useEffect } from 'react';
 import classNames from 'classnames';
 import PromoContext, { PromoContextType } from './PromoContext';
-import { Col, Row } from '../layout';
-import type { AsElementLink } from '../../util/types/LinkTypes';
+import { Col, Row } from '../../../components/layout';
+import type { AsElementLink } from '../../../util/types/LinkTypes';
+import isDev from '../../../util/IsDev';
 
 interface ImageProps extends HTMLProps<HTMLImageElement> {
   crossOrigin?: '' | 'anonymous' | 'use-credentials';
@@ -24,6 +25,17 @@ const BasePromo: React.FC<BasePromoProps> = ({
   ...rest
 }) => {
   const { className: imageClassName, ...restImageProps } = imageProps || {};
+
+  useEffect(() => {
+    if (isDev()) {
+      // eslint-disable-next-line no-console
+      console.warn(`
+        The Promo component is deprecated, and will be removed in the next major version of nhsuk-react-components.
+        The Card component is the intended replacement.
+      `);
+    }
+  }, []);
+
   return (
     <div className={classNames('nhsuk-promo', { 'nhsuk-promo--small': small }, className)}>
       <Component className="nhsuk-promo__link-wrapper" {...rest}>

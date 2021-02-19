@@ -40,8 +40,7 @@ export { Container, Col, Row } from './components/layout';
 export { default as ListPanel } from './components/list-panel';
 export { default as NavAZ } from './components/nav-a-z';
 export { default as Pagination } from './components/pagination';
-export { default as Panel } from './components/panel';
-export { default as Promo } from './components/promo';
+
 export { default as Radios } from './components/radios';
 export { default as ReviewDate } from './components/review-date';
 export { default as Select } from './components/select';
