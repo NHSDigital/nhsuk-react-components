@@ -6,12 +6,11 @@ export const StandardRadios = () => (
     <Fieldset.Legend>Have you changed your name?</Fieldset.Legend>
     <Radios
       name="example"
+      id="standard-example"
       hint="This includes changing your last name or spelling your name differently."
     >
-      <Radios.Radio id="example-1" value="yes">
-        Yes
-      </Radios.Radio>
-      <Radios.Radio id="example-2" value="no" checked>
+      <Radios.Radio value="yes">Yes</Radios.Radio>
+      <Radios.Radio value="no" checked>
         No
       </Radios.Radio>
     </Radios>
@@ -24,12 +23,11 @@ export const InlineRadios = () => (
     <Radios
       name="example"
       inline
+      id="inline-example"
       hint="This includes changing your last name or spelling your name differently."
     >
-      <Radios.Radio id="example-1" value="yes">
-        Yes
-      </Radios.Radio>
-      <Radios.Radio id="example-2" value="no" checked>
+      <Radios.Radio value="yes">Yes</Radios.Radio>
+      <Radios.Radio value="no" checked>
         No
       </Radios.Radio>
     </Radios>
@@ -41,12 +39,13 @@ export const DisabledRadios = () => (
     <Fieldset.Legend>Have you changed your name?</Fieldset.Legend>
     <Radios
       name="example"
+      id="disabled-example"
       hint="This includes changing your last name or spelling your name differently."
     >
-      <Radios.Radio disabled id="example-1" value="yes">
+      <Radios.Radio disabled value="yes">
         Yes
       </Radios.Radio>
-      <Radios.Radio disabled id="example-2" value="no">
+      <Radios.Radio disabled value="no">
         No
       </Radios.Radio>
     </Radios>
@@ -157,7 +156,6 @@ export const RadiosWithErrorBoolean = () => {
 };
 RadiosWithErrorBoolean.storyName = 'Radios With Error (Boolean)';
 
-
 export const RadiosWithErrorString = () => {
   const [error, setError] = React.useState('Please select an option');
   return (
@@ -182,7 +180,6 @@ export const RadiosWithErrorString = () => {
   );
 };
 RadiosWithErrorString.storyName = 'Radios With Error (String)';
-
 
 export default {
   title: 'Components/Radios',

@@ -17,7 +17,6 @@ ForceButton.storyName = 'Button Element Forced';
 export const ForceAnchor = () => <Button as="a">As an Anchor</Button>;
 ForceAnchor.storyName = 'Anchor Element Forced';
 
-
 export default {
   title: 'Components/Button',
   component: Button,

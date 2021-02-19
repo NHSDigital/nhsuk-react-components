@@ -5,7 +5,11 @@ import { Button } from '../src/components/button';
 export const Standard = () => (
   <Fieldset aria-describedby="nationality--hint">
     <Fieldset.Legend>What is your nationality?</Fieldset.Legend>
-    <Checkboxes name="nationality" id="nationality" hint="If you have more than 1 nationality, select all options that are relevant to you.">
+    <Checkboxes
+      name="nationality"
+      id="nationality"
+      hint="If you have more than 1 nationality, select all options that are relevant to you."
+    >
       <Checkboxes.Box value="british">British</Checkboxes.Box>
       <Checkboxes.Box value="irish">Irish</Checkboxes.Box>
       <Checkboxes.Box value="other">Citizen of another country</Checkboxes.Box>
@@ -89,7 +93,7 @@ export const WithErrorBoolean = () => {
         </Checkboxes>
       </Fieldset>
       <Button
-        onClick={(e: MouseEvent<HTMLButtonElement>) => {
+        onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
           e.preventDefault();
           setErrorToggle(!errorToggle);
         }}
@@ -115,7 +119,7 @@ export const WithErrorString = () => {
           <Checkboxes.Box value="farm">Farm or agricultural waste</Checkboxes.Box>
         </Checkboxes>
       </Fieldset>
-      <Input value={error} onChange={e => setError(e.currentTarget.value)} />
+      <Input label="Error Value" value={error} onChange={e => setError(e.currentTarget.value)} />
     </>
   );
 };
