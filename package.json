@@ -74,7 +74,7 @@
     "classnames": "^2.2.6"
   },
   "scripts": {
-    "storybook": "start-storybook -p 6006 --no-dll",
+    "storybook": "start-storybook -p 6006",
     "cleanup": "bash scripts/cleanup.sh",
     "build": "yarn cleanup && yarn build:dist && yarn build:lib",
     "build:dist": "rollup -c",
