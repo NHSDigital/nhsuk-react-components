@@ -1,6 +1,6 @@
 {
   "name": "nhsuk-react-components",
-  "version": "1.2.6",
+  "version": "1.2.8",
   "author": {
     "email": "thomas.judd-cooper1@nhs.net",
     "name": "Thomas Judd-Cooper",
@@ -84,7 +84,8 @@
     "test:watch": "jest --watch",
     "lint": "eslint --fix -c .eslintrc.js --ext .ts --ext .tsx src/*.ts src/components/**/*.ts src/util/*.ts",
     "prebuild": "yarn lint && yarn test --coverage",
-    "build-storybook": "build-storybook --no-dll"
+    "build-storybook": "build-storybook --no-dll",
+    "prepare": "yarn build"
   },
   "files": [
     "dist",

@@ -1,14 +1,17 @@
-import React, { useContext, HTMLProps, SVGProps } from 'react';
+import React, { useContext, SVGProps } from 'react';
 import classNames from 'classnames';
 import HeaderContext, { IHeaderContext } from '../HeaderContext';
+import type { AsElementLink } from '../../../util/types/LinkTypes';
 
 interface SVGImageWithSrc extends SVGProps<SVGImageElement> {
   src: string;
 }
 
+export interface NHSLogoNavProps extends AsElementLink<HTMLAnchorElement> {}
+
 const SVGImageWithSrc: React.FC<SVGImageWithSrc> = props => <image {...props} />;
 
-const NHSLogo: React.FC<HTMLProps<HTMLAnchorElement>> = ({ className, alt, ...rest }) => {
+const NHSLogo: React.FC<NHSLogoNavProps> = ({ className, alt, asElement: Component = 'a', ...rest }) => {
   const { serviceName, hasMenuToggle, hasSearch } = useContext<IHeaderContext>(HeaderContext);
   return (
     <div
@@ -16,7 +19,7 @@ const NHSLogo: React.FC<HTMLProps<HTMLAnchorElement>> = ({ className, alt, ...re
         'nhsuk-header__logo--only': !hasMenuToggle && !hasSearch,
       })}
     >
-      <a
+      <Component
         className={classNames(
           'nhsuk-header__link',
           { 'nhsuk-header__link--service': serviceName },
@@ -41,7 +44,7 @@ const NHSLogo: React.FC<HTMLProps<HTMLAnchorElement>> = ({ className, alt, ...re
           <SVGImageWithSrc src="https://assets.nhs.uk/images/nhs-logo.png" xlinkHref="" />
         </svg>
         {serviceName ? <span className="nhsuk-header__service-name">{serviceName}</span> : null}
-      </a>
+      </Component>
     </div>
   );
 };

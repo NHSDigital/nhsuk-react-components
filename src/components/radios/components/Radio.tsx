@@ -11,6 +11,7 @@ export interface RadioProps extends HTMLProps<HTMLInputElement> {
   conditional?: ReactNode;
   forceShowConditional?: boolean;
   conditionalWrapperProps?: HTMLProps<HTMLDivElement>;
+  inputRef?: (inputRef: HTMLInputElement | null) => any;
 }
 
 const Radio: React.FC<RadioProps> = ({
@@ -26,6 +27,7 @@ const Radio: React.FC<RadioProps> = ({
   checked,
   defaultChecked,
   onChange,
+  inputRef,
   ...rest
 }) => {
   const {
@@ -71,6 +73,7 @@ const Radio: React.FC<RadioProps> = ({
           aria-describedby={hint ? `${inputID}--hint` : undefined}
           checked={checked}
           defaultChecked={defaultChecked}
+          ref={inputRef}
           {...rest}
         />
         {children ? (

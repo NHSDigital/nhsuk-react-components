@@ -1,5 +1,6 @@
 import React from 'react';
 import { Header } from '../src';
+import { AsElementLink } from '../src/util/types/LinkTypes';
 
 export const BasicHeader = () => (
   <Header>
@@ -63,7 +64,7 @@ export const HeaderWithLogo = () => (
   </Header>
 );
 
-export const HeaderTransactional = () => (
+export const TransactionalHeader = () => (
   <Header transactional>
     <Header.Container>
       <Header.Logo href="/" />
@@ -71,7 +72,7 @@ export const HeaderTransactional = () => (
   </Header>
 );
 
-export const HeaderTransactionalWithServiceName = () => (
+export const TransactionalHeaderWithServiceName = () => (
   <Header transactional>
     <Header.Container>
       <Header.Logo href="/" />
@@ -80,7 +81,7 @@ export const HeaderTransactionalWithServiceName = () => (
   </Header>
 );
 
-export const HeaderTransactionalWithALongServiceName = () => (
+export const TransactionalHeaderWithALongServiceName = () => (
   <Header transactional>
     <Header.Container>
       <Header.Logo href="/" />
@@ -114,12 +115,7 @@ export const OrganisationalHeader = () => (
 );
 
 export const OrganisationalHeaderWithWhiteHeader = () => (
-  <Header
-    orgName="Anytown Anyplace"
-    orgSplit="Anywhere"
-    orgDescriptor="NHS Foundation Trust"
-    white
-  >
+  <Header orgName="Anytown Anyplace" orgSplit="Anywhere" orgDescriptor="NHS Foundation Trust" white>
     <Header.Container>
       <Header.Logo href="/" />
       <Header.Content>
@@ -137,6 +133,62 @@ export const OrganisationalHeaderWithWhiteHeader = () => (
       <Header.NavItem>Our people</Header.NavItem>
       <Header.NavItem>Our research</Header.NavItem>
     </Header.Nav>
+  </Header>
+);
+
+export const HeaderWithCustomNavItemComponent = () => {
+  const customElement = (props: AsElementLink<HTMLDivElement>) => <div {...props} />;
+
+  return (
+    <Header
+      orgName="Anytown Anyplace"
+      orgSplit="Anywhere"
+      orgDescriptor="NHS Foundation Trust"
+      white
+    >
+      <Header.Container>
+        <Header.Logo href="/" />
+        <Header.Content>
+          <Header.MenuToggle />
+          <Header.Search />
+        </Header.Content>
+      </Header.Container>
+      <Header.Nav>
+        <Header.NavItem to="/" asElement={customElement}>
+          Link to props
+        </Header.NavItem>
+        <Header.NavItem>Your hospital visit</Header.NavItem>
+        <Header.NavItem>Wards and departments</Header.NavItem>
+      </Header.Nav>
+    </Header>
+  );
+};
+
+export const HeaderWithCustomNavMenuCloseAndNavItemListComponent = () => (
+  <Header orgName="Anytown Anyplace" orgSplit="Anywhere" orgDescriptor="NHS Foundation Trust" white>
+    <Header.Container>
+      <Header.Logo href="/" />
+      <Header.Content>
+        <Header.MenuToggle />
+        <Header.Search />
+      </Header.Content>
+    </Header.Container>
+    <Header.NavContainer>
+      <Header.NavTitle>
+        <span>Menu</span>
+        <Header.NavMenuClose />
+      </Header.NavTitle>
+      <Header.NavItemList>
+        <Header.NavItem href="/" mobileOnly>
+          Home
+        </Header.NavItem>
+        <Header.NavItem href="/conditions">Health A-Z</Header.NavItem>
+        <Header.NavItem href="/live-well">Live Well</Header.NavItem>
+        <Header.NavItem href="/social-care-and-support">Care and support</Header.NavItem>
+        <Header.NavItem href="/news">Health news</Header.NavItem>
+        <Header.NavItem href="/service-search">Services near you</Header.NavItem>
+      </Header.NavItemList>
+    </Header.NavContainer>
   </Header>
 );
 

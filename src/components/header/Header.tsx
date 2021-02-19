@@ -1,17 +1,21 @@
 import React, { PureComponent, HTMLProps, useContext } from 'react';
 import classNames from 'classnames';
-import NHSLogo from './components/NHSLogo';
+import NHSLogo, { NHSLogoNavProps } from './components/NHSLogo';
 import OrganisationalLogo, { OrganisationalLogoProps } from './components/OrganisationalLogo';
 import HeaderContext, { IHeaderContext } from './HeaderContext';
 import Search from './components/Search';
 import Nav from './components/Nav';
 import NavItem from './components/NavItem';
+import NavItemList from './components/NavItemList';
+import NavMenuClose from './components/NavMenuClose';
 import { Container } from '../layout';
 import Content from './components/Content';
 import MenuToggle from './components/MenuToggle';
 import TransactionalServiceName from './components/TransactionalServiceName';
+import NavTitle from './components/NavTitle';
+import NavContainer from './components/NavContainer';
 
-const BaseHeaderLogo: React.FC<OrganisationalLogoProps> = props => {
+const BaseHeaderLogo: React.FC<OrganisationalLogoProps & NHSLogoNavProps> = props => {
   const { orgName } = useContext<IHeaderContext>(HeaderContext);
   if (orgName) {
     return <OrganisationalLogo {...props} />;
@@ -46,7 +50,15 @@ class Header extends PureComponent<HeaderProps, HeaderState> {
 
   static Nav = Nav;
 
+  static NavTitle = NavTitle;
+
+  static NavContainer = NavContainer;
+
+  static NavItemList = NavItemList;
+
   static NavItem = NavItem;
+
+  static NavMenuClose = NavMenuClose;
 
   static Container = HeaderContainer;
 
