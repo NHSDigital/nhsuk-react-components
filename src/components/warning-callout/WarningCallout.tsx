@@ -1,31 +1,38 @@
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
+import HeadingLevel, { HeadingLevelType } from '../../util/HeadingLevel';
 
-interface WarningCalloutProps extends HTMLProps<HTMLDivElement> {
-  labelProps?: HTMLProps<HTMLHeadingElement>;
+interface WarningCalloutLabelProps extends HTMLProps<HTMLHeadingElement> {
+  headingLevel?: HeadingLevelType;
+  visuallyHiddenText?: string | false;
 }
 
-const WarningCallout: React.FC<WarningCalloutProps> = ({
+const WarningCalloutLabel: React.FC<WarningCalloutLabelProps> = ({
   className,
-  label,
+  visuallyHiddenText,
   children,
-  labelProps,
   ...rest
-}) => {
-  const { className: labelClassName, ...restLabelProps } = labelProps || {};
-  return (
-    <div className={classNames('nhsuk-warning-callout', className)} {...rest}>
-      {label ? (
-        <h3
-          className={classNames('nhsuk-warning-callout__label', labelClassName)}
-          {...restLabelProps}
-        >
-          {label}
-        </h3>
-      ) : null}
+}) => (
+  <HeadingLevel className={classNames('nhsuk-warning-callout__label')} {...rest}>
+    <span role="text">
+      {visuallyHiddenText && <span className="nhsuk-u-visually-hidden">{visuallyHiddenText}</span>}
       {children}
-    </div>
-  );
+    </span>
+  </HeadingLevel>
+);
+
+WarningCalloutLabel.defaultProps = {
+  visuallyHiddenText: 'Important: ',
 };
+
+interface IWarningCallout extends React.FC<HTMLProps<HTMLDivElement>> {
+  Label: typeof WarningCalloutLabel;
+}
+
+const WarningCallout: IWarningCallout = ({ className, ...rest }) => (
+  <div className={classNames('nhsuk-warning-callout', className)} {...rest} />
+);
+
+WarningCallout.Label = WarningCalloutLabel;
 
 export default WarningCallout;

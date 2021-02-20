@@ -9,7 +9,8 @@ const stories = storiesOf('Warning Callout', module);
 stories
   .addDecorator(centered)
   .add('Standard', () => (
-    <WarningCallout label="School, nursery or work">
+    <WarningCallout>
+      <WarningCallout.Label>School, nursery or work</WarningCallout.Label>
       <p>
         Stay away from school, nursery or work until all the spots have crusted over. This is
         usually 5 days after the spots first appeared.
