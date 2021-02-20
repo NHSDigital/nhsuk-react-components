@@ -1,8 +1,8 @@
 @import '../node_modules/nhsuk-frontend/dist/nhsuk.css';
 
 .tag-wrapper {
-  display: 'flex';
-  flex-direction: 'column';
+  display: flex;
+  flex-direction: column;
 
   & > .nhsuk-tag {
     margin-bottom: 10px;
