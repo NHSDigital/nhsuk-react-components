@@ -48,6 +48,7 @@ export { default as Select } from './components/select';
 export { default as SkipLink } from './components/skip-link';
 export { default as SummaryList } from './components/summary-list';
 export { default as Table } from './components/table';
+export { default as Tag } from './components/tag';
 export { default as Textarea } from './components/textarea';
 export { LedeText, BodyText } from './components/typography';
 export { default as WarningCallout } from './components/warning-callout';
