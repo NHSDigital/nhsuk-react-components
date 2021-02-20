@@ -17,6 +17,28 @@ stories
       </p>
     </WarningCallout>
   ))
+  .add('With Custom Visually Hidden Text', () => (
+    <WarningCallout>
+      <WarningCallout.Label visuallyHiddenText="Not Important: ">
+        School, nursery or work
+      </WarningCallout.Label>
+      <p>
+        Stay away from school, nursery or work until all the spots have crusted over. This is
+        usually 5 days after the spots first appeared.
+      </p>
+    </WarningCallout>
+  ))
+  .add('With Disabled Visually Hidden Text', () => (
+    <WarningCallout>
+      <WarningCallout.Label visuallyHiddenText={false}>
+        School, nursery or work
+      </WarningCallout.Label>
+      <p>
+        Stay away from school, nursery or work until all the spots have crusted over. This is
+        usually 5 days after the spots first appeared.
+      </p>
+    </WarningCallout>
+  ))
   .add('Without label', () => (
     <WarningCallout>
       <p>
