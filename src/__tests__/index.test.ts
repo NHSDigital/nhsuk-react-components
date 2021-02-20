@@ -9,6 +9,7 @@ describe('Index', () => {
       'Button',
       'DefaultButton',
       'ButtonLink',
+      'Card',
       'CareCard',
       'Checkboxes',
       'ContentsList',
