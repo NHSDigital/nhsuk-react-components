@@ -2,6 +2,7 @@ export { default as ActionLink } from './components/action-link';
 export { default as BackLink } from './components/back-link';
 export { default as Breadcrumb } from './components/breadcrumb';
 export { default as Button, Button as DefaultButton, ButtonLink } from './components/button';
+export { default as Card } from './components/card';
 export { default as CareCard } from './components/care-card';
 export { default as Checkboxes } from './components/checkboxes';
 export { default as ContentsList } from './components/contents-list';
