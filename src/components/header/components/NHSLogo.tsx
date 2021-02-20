@@ -14,8 +14,7 @@ const SVGImageWithSrc: React.FC<SVGImageWithSrc> = props => <image {...props} />
 const NHSLogo: React.FC<NHSLogoNavProps> = ({
   className,
   alt,
-  asElement:
-  Component = 'a',
+  asElement: Component = 'a',
   ...rest
 }) => {
   const { serviceName, hasMenuToggle, hasSearch } = useContext<IHeaderContext>(HeaderContext);
