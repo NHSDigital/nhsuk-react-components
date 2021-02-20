@@ -11,7 +11,13 @@ export interface NHSLogoNavProps extends AsElementLink<HTMLAnchorElement> {}
 
 const SVGImageWithSrc: React.FC<SVGImageWithSrc> = props => <image {...props} />;
 
-const NHSLogo: React.FC<NHSLogoNavProps> = ({ className, alt, asElement: Component = 'a', ...rest }) => {
+const NHSLogo: React.FC<NHSLogoNavProps> = ({
+  className,
+  alt,
+  asElement:
+  Component = 'a',
+  ...rest
+}) => {
   const { serviceName, hasMenuToggle, hasSearch } = useContext<IHeaderContext>(HeaderContext);
   return (
     <div
@@ -30,6 +36,7 @@ const NHSLogo: React.FC<NHSLogoNavProps> = ({ className, alt, asElement: Compone
         <svg
           className="nhsuk-logo"
           xmlns="http://www.w3.org/2000/svg"
+          xmlnsXlink="http://www.w3.org/1999/xlink"
           role="img"
           focusable="false"
           viewBox="0 0 40 16"
