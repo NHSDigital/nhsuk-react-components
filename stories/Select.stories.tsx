@@ -1,8 +1,9 @@
+import { Button, ErrorMessage, FormGroup, Hint, Input, Label, Select } from '../src';
 /* eslint-disable import/no-extraneous-dependencies */
 import React, { MouseEvent } from 'react';
-import { storiesOf } from '@storybook/react';
+
 import centered from '@storybook/addon-centered';
-import { Select, Form, Button, Input } from '../src';
+import { storiesOf } from '@storybook/react';
 
 const stories = storiesOf('Select', module);
 
@@ -25,6 +26,29 @@ stories
       <Select.Option value="2">NHS.UK frontend option 2</Select.Option>
       <Select.Option value="3">NHS.UK frontend option 3</Select.Option>
     </Select>
+  ))
+  .add('With form group and hint text', () => (
+    <FormGroup>
+      <Hint>This is hint</Hint>
+      <Select>
+        <Select.Option value="1">NHS.UK frontend option 1</Select.Option>
+        <Select.Option value="2">NHS.UK frontend option 2</Select.Option>
+        <Select.Option value="3">NHS.UK frontend option 3</Select.Option>
+      </Select>
+    </FormGroup>
+  ))
+  .add('With form group , label, hint text', () => (
+    <FormGroup>
+      <Label>Please select</Label>
+      <Hint>This is hint</Hint>
+      <ErrorMessage>Empty not allowed</ErrorMessage>
+      <Select>
+        <Select.Option>Select</Select.Option>
+        <Select.Option value="1">NHS.UK frontend option 1</Select.Option>
+        <Select.Option value="2">NHS.UK frontend option 2</Select.Option>
+        <Select.Option value="3">NHS.UK frontend option 3</Select.Option>
+      </Select>
+    </FormGroup>
   ))
   .add('With Error (Boolean)', () => {
     const [error, setError] = React.useState<boolean>(true);

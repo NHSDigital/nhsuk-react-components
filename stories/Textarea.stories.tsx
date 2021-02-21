@@ -1,8 +1,8 @@
-/* eslint-disable import/no-extraneous-dependencies */
+import { Button, ErrorMessage, FormGroup, Hint, Input, Label, Textarea } from '../src';
 import React, { MouseEvent, useState } from 'react';
-import { storiesOf } from '@storybook/react';
+
 import Centered from '@storybook/addon-centered';
-import { Textarea, Form, Button, Input } from '../src';
+import { storiesOf } from '@storybook/react';
 
 const stories = storiesOf('Textarea', module);
 
@@ -46,6 +46,39 @@ stories
         >
           Toggle Error
         </Button>
+      </>
+    );
+  })
+  .add('With Form Group (with error)', () => {
+    return (
+      <>
+        <FormGroup>
+          <Label>Please specify (others)</Label>
+          <Hint>Hint: Use this box to specify more</Hint>
+          <ErrorMessage>At least 20 characters...</ErrorMessage>
+          <Textarea
+            id="no-ni-reason2"
+            name="no-ni-reason2"
+            rows={5}
+            label="Why can&#39;t you provide a National Insurance number?"
+          />
+        </FormGroup>
+      </>
+    );
+  })
+  .add('With Form Group', () => {
+    return (
+      <>
+        <FormGroup>
+          <Label>Please specify (others)</Label>
+          <Hint>Hint: Use this box to specify more</Hint>
+          <Textarea
+            id="no-ni-reason2"
+            name="no-ni-reason2"
+            rows={5}
+            label="Why can&#39;t you provide a National Insurance number?"
+          />
+        </FormGroup>
       </>
     );
   })

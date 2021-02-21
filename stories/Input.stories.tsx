@@ -1,8 +1,13 @@
 /* eslint-disable import/no-extraneous-dependencies */
-import React, { useState, SyntheticEvent, FunctionComponent } from 'react';
-import { storiesOf } from '@storybook/react';
+// eslint-disable-next-line
+import { Button, ErrorMessage, Form, FormGroup, Hint, Input, Label } from '../src';
+import React, { FunctionComponent, SyntheticEvent, useState } from 'react';
+
 import centered from '@storybook/addon-centered';
-import { Input, Form, Button } from '../src';
+// eslint-disable-next-line
+import { storiesOf } from '@storybook/react';
+
+/* eslint-disable import/no-extraneous-dependencies */
 
 const stories = storiesOf('Input', module);
 
@@ -117,6 +122,48 @@ stories
       label="National Insurance Number"
       width="10"
     />
+  ))
+  .add('With Form Group', () => (
+    <FormGroup>
+      <Input
+        hint="It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
+        label="National Insurance Number"
+        width="10"
+      />
+    </FormGroup>
+  ))
+  .add('With Form Group and a link', () => (
+    <FormGroup>
+      <Input hint="Test Hint" label="Test Label" />
+      <a href="/somewhere-else">Dont have a number?</a>
+    </FormGroup>
+  ))
+  .add('With Form Group and a label', () => (
+    <FormGroup>
+      <Label>Input Label</Label>
+      <Input id="input-id1" />
+    </FormGroup>
+  ))
+  .add('With Form Group and a hint', () => (
+    <FormGroup>
+      <Hint>This is a Hint</Hint>
+      <Input id="input-id2" width="10" />
+    </FormGroup>
+  ))
+  .add('With Form Group, label and a hint', () => (
+    <FormGroup>
+      <Hint>This is a Hint</Hint>
+      <Label>Input Label</Label>
+      <Input id="input-id3" width="10" />
+    </FormGroup>
+  ))
+  .add('With Form Group, label, Error and a hint', () => (
+    <FormGroup>
+      <Hint>This is a Hint</Hint>
+      <Label>Input Label</Label>
+      <ErrorMessage>This is a error message</ErrorMessage>
+      <Input id="input-id4" width="10" />
+    </FormGroup>
   ))
   .add('Multiple Error States', () => <ExampleForm />)
   .add('Form Error State Disabled', () => <ExampleForm disableErrorFromComponents />);

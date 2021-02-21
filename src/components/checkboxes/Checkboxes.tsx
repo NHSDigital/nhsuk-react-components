@@ -1,11 +1,11 @@
-import React, { HTMLProps, PureComponent } from 'react';
+import React, { HTMLProps, PureComponent, useContext } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '../../util/types/FormTypes';
 import FormGroup from '../../util/FormGroup';
 import CheckboxContext, { ICheckboxContext } from './CheckboxContext';
 import Box from './components/Box';
 import { generateRandomName } from '../../util/RandomID';
-
+import FormGroupContext from '../formgroup/FormGroupContext';
 interface CheckboxesProps extends HTMLProps<HTMLDivElement>, FormElementProps {
   idPrefix?: string;
 }
@@ -79,6 +79,14 @@ class Checkboxes extends PureComponent<CheckboxesProps, CheckboxesState> {
 
   render() {
     const { children, ...rest } = this.props;
+    const { isInFormGroup } = useContext(FormGroupContext);
+    if (isInFormGroup) {
+      return (
+        {
+          // TODO: this
+        }
+      );
+    }
     return (
       <FormGroup<CheckboxesProps> inputType="checkboxes" {...rest}>
         {({ className, name, id, idPrefix, ...restRenderProps }) => {

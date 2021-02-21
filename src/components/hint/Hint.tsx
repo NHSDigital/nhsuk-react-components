@@ -1,33 +1,15 @@
-import React, { HTMLProps, useContext, useEffect } from 'react';
+import React, { HTMLProps, useContext } from 'react';
 import classNames from 'classnames';
 import FormGroupContext from '../formgroup/FormGroupContext';
 
 export type HintProps = HTMLProps<HTMLSpanElement>;
 
-const Hint: React.FC<HintProps> = props => {
-  const { isInFormGroup, setInputID } = useContext(FormGroupContext);
-  useEffect(() => {
-    if (isInFormGroup && props.id) {
-      setInputID(props.id);
-      return () => {
-        setInputID(undefined);
-      };
-    }
-    return () => {};
-  }, [isInFormGroup, props.id]);
+const Hint: React.FC<HintProps> = props => <BaseHint {...props} />;
 
-  /* if (isInFormGroup) {
-    return <HintTag {...props} />;
-  } */
-  return <HintTag {...props} />;
+const BaseHint: React.FC<HintProps> = props => {
+  const { id, className, ...rest } = props;
+  const { inputID } = useContext(FormGroupContext);
+  const inputId = id || inputID ? `${inputID}--hint` : undefined;
+  return <span id={inputId} className={classNames('nhsuk-hint', className)} {...rest} />;
 };
-
-const HintTag: React.FC<HintProps> = props => {
-  const { className, ...rest } = props;
-  return <span className={classNames('nhsuk-hint', className)} {...rest} />;
-};
-
-/* const Hint: React.FC<HintProps> = ({ className, ...rest }) => (
-  <span className={classNames('nhsuk-hint', className)} {...rest} />
-); */
 export default Hint;
