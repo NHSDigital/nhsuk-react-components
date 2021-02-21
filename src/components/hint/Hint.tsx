@@ -1,4 +1,8 @@
+<<<<<<< d5dccd10652d62a089e904999c074ce1f9b6cbe4
 import React, { HTMLProps, useContext, useEffect } from 'react';
+=======
+import React, { HTMLProps, useContext } from 'react';
+>>>>>>> snapshot testing fixed for hint and error messages
 
 import FormGroupContext from '../formgroup/FormGroupContext';
 import classNames from 'classnames';

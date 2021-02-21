@@ -9,9 +9,7 @@ export interface ErrorMessageProps extends HTMLProps<HTMLSpanElement> {
   visuallyHiddenText?: false | string;
 }
 
-const ErrorMessage: React.FC<ErrorMessageProps> = props => <BaseErrorMessage {...props} />;
-
-const BaseErrorMessage: React.FC<ErrorMessageProps> = props => {
+const ErrorMessage: React.FC<ErrorMessageProps> = props => {
   const { id, className, visuallyHiddenText, children, ...rest } = props;
   const { isInFormGroup, inputID, setError } = useContext(FormGroupContext);
   useEffect(() => {
