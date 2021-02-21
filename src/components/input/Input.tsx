@@ -1,9 +1,12 @@
 import React, { HTMLProps, useContext, useEffect } from 'react';
-import classNames from 'classnames';
-import FormGroup from '../../util/FormGroup';
-import { InputWidth } from '../../util/types/NHSUKTypes';
+
 import { FormElementProps } from '../../util/types/FormTypes';
+import FormGroup from '../../util/FormGroup';
+// eslint-disable-next-line import/no-named-as-default
 import FormGroupContext from '../formgroup/FormGroupContext';
+import { InputWidth } from '../../util/types/NHSUKTypes';
+// eslint-disable-next-line
+import classNames from 'classnames';
 
 interface InputProps extends HTMLProps<HTMLInputElement>, FormElementProps {
   inputRef?: (inputRef: HTMLInputElement | null) => any;

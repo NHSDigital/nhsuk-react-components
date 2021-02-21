@@ -1,7 +1,9 @@
-import React, { HTMLProps, useContext } from 'react';
+import React, { HTMLProps, useContext, useEffect } from 'react';
 
-import classNames from 'classnames';
+// eslint-disable-next-line import/no-named-as-default
 import FormGroupContext from '../formgroup/FormGroupContext';
+// eslint-disable-next-line
+import classNames from 'classnames';
 
 export interface ErrorMessageProps extends HTMLProps<HTMLSpanElement> {
   visuallyHiddenText?: false | string;
@@ -11,8 +13,18 @@ const ErrorMessage: React.FC<ErrorMessageProps> = props => <BaseErrorMessage {..
 
 const BaseErrorMessage: React.FC<ErrorMessageProps> = props => {
   const { id, className, visuallyHiddenText, children, ...rest } = props;
-  const { inputID } = useContext(FormGroupContext);
-  const errorMessageId = props.id || inputID || undefined;
+  const { isInFormGroup, inputID, setError } = useContext(FormGroupContext);
+  useEffect(() => {
+    if (isInFormGroup || inputID) {
+      setError(true);
+      return () => {
+        setError(false);
+      };
+    }
+    return () => {};
+  }, [isInFormGroup, inputID]);
+
+  const errorMessageId = id || inputID ? `${inputID}--error-message` : undefined;
   return (
     <span id={errorMessageId} className={classNames('nhsuk-error-message', className)} {...rest}>
       {visuallyHiddenText !== false ? (
