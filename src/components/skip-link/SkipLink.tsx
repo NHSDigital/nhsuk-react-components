@@ -17,8 +17,8 @@ class SkipLink extends React.Component<SkipLinkProps> {
     tabIndex: 0,
   };
 
-  constructor(props: SkipLinkProps, ...rest: any[]) {
-    super(props, ...rest);
+  constructor(props: SkipLinkProps) {
+    super(props);
     this.firstHeadingElement = null;
   }
 
