@@ -1,12 +1,8 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import centered from '@storybook/addon-centered/react';
 import { ContentsList } from '../src';
 
-const stories = storiesOf('ContentsList', module);
 
-stories.addDecorator(centered).add('Normal', () => (
+export const Standard = () => (
   <ContentsList aria-label="Pages in this guide">
     <ContentsList.Item current aria-current="page">
       What is AMD?
@@ -24,4 +20,9 @@ stories.addDecorator(centered).add('Normal', () => (
       Living with AMD
     </ContentsList.Item>
   </ContentsList>
-));
+);
+
+export default {
+  title: 'Components/ContentsList',
+  component: ContentsList,
+};

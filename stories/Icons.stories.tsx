@@ -1,7 +1,4 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import centered from '@storybook/addon-centered';
 import {
   ArrowLeftIcon,
   ArrowRightIcon,
@@ -18,20 +15,20 @@ import {
   TickIcon,
 } from '../src';
 
-const stories = storiesOf('Icons', module);
+export const ArrowLeft = () => <ArrowLeftIcon />;
+export const ArrowRight = () => <ArrowRightIcon />;
+export const ArrowRightCircle = () => <ArrowRightCircleIcon />;
+export const ChevronLeft = () => <ChevronLeftIcon />;
+export const ChevronRight = () => <ChevronRightIcon />;
+export const Close = () => <CloseIcon />;
+export const Cross = () => <CrossIcon />;
+export const SmallEmdash = () => <SmallEmdashIcon />;
+export const Emdash = () => <EmdashIcon />;
+export const Minus = () => <MinusIcon />;
+export const Plus = () => <PlusIcon />;
+export const Search = () => <SearchIcon />;
+export const Tick = () => <TickIcon />;
 
-stories
-  .addDecorator(centered)
-  .add('ArrowLeft', () => <ArrowLeftIcon />)
-  .add('ArrowRight', () => <ArrowRightIcon />)
-  .add('ArrowRightCircle', () => <ArrowRightCircleIcon />)
-  .add('ChevronLeft', () => <ChevronLeftIcon />)
-  .add('ChevronRight', () => <ChevronRightIcon />)
-  .add('Close', () => <CloseIcon />)
-  .add('Cross', () => <CrossIcon />)
-  .add('SmallEmdash', () => <SmallEmdashIcon />)
-  .add('Emdash', () => <EmdashIcon />)
-  .add('Minus', () => <MinusIcon />)
-  .add('Plus', () => <PlusIcon />)
-  .add('Search', () => <SearchIcon />)
-  .add('Tick', () => <TickIcon />);
+export default {
+  title: 'Components/Icons',
+};
