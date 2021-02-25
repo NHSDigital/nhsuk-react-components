@@ -64,7 +64,6 @@ const Radio: React.FC<RadioProps> = ({
         <input
           onChange={e => {
             setSelected(radioReference);
-            e.persist();
             if (onChange) onChange(e);
           }}
           className={classNames('nhsuk-radios__input', className)}
