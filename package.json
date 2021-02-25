@@ -62,7 +62,7 @@
     "typescript": "^3.9.5"
   },
   "peerDependencies": {
-    "nhsuk-frontend": "^4.1.0",
+    "nhsuk-frontend": ">=4.0.0",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   },
