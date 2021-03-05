@@ -2,7 +2,7 @@ import React, { HTMLProps, useContext, useEffect } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '../../util/types/FormTypes';
 import FormGroup from '../../util/FormGroup';
-import FormGroupContext from '../formgroup/FormGroupContext';
+import { FormGroupContext } from '../formgroup/FormGroupContext';
 
 type SelectProps = HTMLProps<HTMLSelectElement> & FormElementProps;
 
@@ -21,8 +21,9 @@ const Select: ISelect = props => {
     }
     return () => {};
   }, [isInFormGroup, props.id]);
+  const { width, children, className, error, hint, label, ...rest } = props;
+
   if (isInFormGroup) {
-    const { children, className, error, ...rest } = props;
     return (
       <select
         className={classNames('nhsuk-select', { 'nhsuk-select--error': error }, className)}
@@ -33,8 +34,15 @@ const Select: ISelect = props => {
     );
   }
   return (
-    <FormGroup<SelectProps> inputType="select" {...props}>
-      {renderProps => <SelectElement {...renderProps} />}
+    <FormGroup<SelectProps> inputType="select" {...rest}>
+      {({ ...restRenderProps }) => (
+        <select
+          className={classNames('nhsuk-select', { 'nhsuk-select--error': error }, className)}
+          {...restRenderProps}
+        >
+          {children}
+        </select>
+      )}
     </FormGroup>
   );
 };
@@ -42,6 +50,8 @@ const Select: ISelect = props => {
 const Option: React.FC<HTMLProps<HTMLOptionElement>> = ({ className, ...rest }) => (
   <option {...rest} />
 );
+
+/*
 
 const SelectElement: React.FC<SelectProps> = ({ children, ...props }) => {
   const { width, className, error, hint, label, ...rest } = props;
@@ -54,7 +64,7 @@ const SelectElement: React.FC<SelectProps> = ({ children, ...props }) => {
     </select>
   );
 };
-
+*/
 Select.Option = Option;
 
 export default Select;

@@ -12,7 +12,7 @@ export interface LabelProps extends Omit<HTMLProps<HTMLLabelElement>, 'size'> {
 const BaseLabel: React.FC<LabelProps> = props => {
   const { id, className, bold, size, isPageHeading, ...rest } = props;
   const { inputID } = useContext(FormGroupContext);
-  const labelId = props.id || inputID || undefined;
+  const labelId = props.id || `${inputID}--label` || undefined;
 
   return (
     // eslint-disable-next-line jsx-a11y/label-has-associated-control
