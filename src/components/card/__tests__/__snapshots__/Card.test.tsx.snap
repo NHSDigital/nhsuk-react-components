@@ -1,0 +1,169 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card Card.Group matches snapshot 1`] = `
+<CardGroup>
+  <Row
+    className="nhsuk-card-group"
+  >
+    <div
+      className="nhsuk-grid-row nhsuk-card-group"
+    >
+      <CardGroupItem
+        width="one-half"
+      >
+        <Col
+          className="nhsuk-card-group__item"
+          width="one-half"
+        >
+          <div
+            className="nhsuk-grid-column-one-half nhsuk-card-group__item"
+          >
+            <Card
+              feature={false}
+            >
+              <div
+                className="nhsuk-card"
+              >
+                <CardContent>
+                  <div
+                    className="nhsuk-card__content"
+                  >
+                    <CardHeading
+                      headingLevel="h2"
+                    >
+                      <HeadingLevel
+                        className="nhsuk-card__heading"
+                        headingLevel="h2"
+                      >
+                        <h2
+                          className="nhsuk-card__heading"
+                        >
+                          Test Card 1
+                        </h2>
+                      </HeadingLevel>
+                    </CardHeading>
+                    <CardDescription>
+                      <p
+                        className="nhsuk-card__description"
+                      >
+                        Test Card 1 Description
+                      </p>
+                    </CardDescription>
+                  </div>
+                </CardContent>
+              </div>
+            </Card>
+          </div>
+        </Col>
+      </CardGroupItem>
+      <CardGroupItem
+        width="one-half"
+      >
+        <Col
+          className="nhsuk-card-group__item"
+          width="one-half"
+        >
+          <div
+            className="nhsuk-grid-column-one-half nhsuk-card-group__item"
+          >
+            <Card
+              feature={false}
+            >
+              <div
+                className="nhsuk-card"
+              >
+                <CardContent>
+                  <div
+                    className="nhsuk-card__content"
+                  >
+                    <CardHeading
+                      headingLevel="h2"
+                    >
+                      <HeadingLevel
+                        className="nhsuk-card__heading"
+                        headingLevel="h2"
+                      >
+                        <h2
+                          className="nhsuk-card__heading"
+                        >
+                          Test Card 2
+                        </h2>
+                      </HeadingLevel>
+                    </CardHeading>
+                    <CardDescription>
+                      <p
+                        className="nhsuk-card__description"
+                      >
+                        Test Card 2 Description
+                      </p>
+                    </CardDescription>
+                  </div>
+                </CardContent>
+              </div>
+            </Card>
+          </div>
+        </Col>
+      </CardGroupItem>
+    </div>
+  </Row>
+</CardGroup>
+`;
+
+exports[`Card matches snapshot 1`] = `
+<Card
+  feature={false}
+>
+  <div
+    className="nhsuk-card"
+  >
+    <CardImage
+      alt="imageAlt"
+      src="imageSrc"
+    >
+      <img
+        alt="imageAlt"
+        className="nhsuk-card__img"
+        src="imageSrc"
+      />
+    </CardImage>
+    <CardContent>
+      <div
+        className="nhsuk-card__content"
+      >
+        <CardHeading
+          headingLevel="h2"
+        >
+          <HeadingLevel
+            className="nhsuk-card__heading"
+            headingLevel="h2"
+          >
+            <h2
+              className="nhsuk-card__heading"
+            >
+              If you need help now but it's not an emergency
+            </h2>
+          </HeadingLevel>
+        </CardHeading>
+        <CardDescription>
+          <p
+            className="nhsuk-card__description"
+          >
+            Go to 
+            <a
+              href="#"
+            >
+              111.nhs.uk
+            </a>
+             or 
+            <a
+              href="#"
+            >
+              call 111
+            </a>
+          </p>
+        </CardDescription>
+      </div>
+    </CardContent>
+  </div>
+</Card>
+`;
