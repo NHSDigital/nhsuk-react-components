@@ -1,12 +1,7 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import centered from '@storybook/addon-centered';
 import { SkipLink, Hint } from '../src';
 
-const stories = storiesOf('Skip Link', module);
-
-const CodeText = props => (
+const CodeText: React.FC = props => (
   <span
     style={{
       fontFamily: 'monospace',
@@ -21,25 +16,30 @@ const CodeText = props => (
   />
 );
 
-stories
-  .addDecorator(centered)
-  .add('Standard', () => (
-    <>
-      <Hint>
-        Press
-        <CodeText>tab</CodeText>
-        to show the SkipLink
-      </Hint>
-      <SkipLink />
-    </>
-  ))
-  .add('With default behaviour disabled', () => (
-    <>
-      <Hint>
-        Press
-        <CodeText>tab</CodeText>
-        to show the SkipLink
-      </Hint>
-      <SkipLink disableDefaultBehaviour />
-    </>
-  ));
+export const Standard = () => (
+  <>
+    <Hint>
+      Press
+      <CodeText>tab</CodeText>
+      to show the SkipLink
+    </Hint>
+    <SkipLink />
+  </>
+);
+
+export const SkipLinkWithDefaultBehaviourDisabled = () => (
+  <>
+    <Hint>
+      Press
+      <CodeText>tab</CodeText>
+      to show the SkipLink
+    </Hint>
+    <SkipLink disableDefaultBehaviour />
+  </>
+);
+
+
+export default {
+  title: 'Components/SkipLink',
+  component: SkipLink,
+};

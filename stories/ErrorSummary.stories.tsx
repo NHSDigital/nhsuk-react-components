@@ -1,12 +1,7 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import centered from '@storybook/addon-centered';
 import { ErrorSummary } from '../src';
 
-const stories = storiesOf('Error Summary', module);
-
-stories.addDecorator(centered).add('Standard', () => (
+export const Standard = () => (
   <ErrorSummary aria-labelledby="error-summary-title" role="alert" tabIndex={-1}>
     <ErrorSummary.Title id="error-summary-title">There is a problem</ErrorSummary.Title>
     <ErrorSummary.Body>
@@ -21,4 +16,9 @@ stories.addDecorator(centered).add('Standard', () => (
       </ErrorSummary.List>
     </ErrorSummary.Body>
   </ErrorSummary>
-));
+);
+
+export default {
+  title: 'Components/ErrorSummary',
+  component: ErrorSummary,
+};

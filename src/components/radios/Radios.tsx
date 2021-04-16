@@ -28,8 +28,8 @@ class Radios extends PureComponent<RadiosProps, RadiosState> {
     role: 'radiogroup',
   };
 
-  constructor(props: RadiosProps, ...rest: any[]) {
-    super(props, ...rest);
+  constructor(props: RadiosProps) {
+    super(props);
     this.state = {
       conditionalRadios: [],
       selectedRadio: '',

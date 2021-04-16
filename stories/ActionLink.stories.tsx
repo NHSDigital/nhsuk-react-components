@@ -1,10 +1,15 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import centered from '@storybook/addon-centered/react';
-
 import { ActionLink } from '../src';
 
-const stories = storiesOf('ActionLink', module);
+export const StandardLink = () => <ActionLink href="/">Link</ActionLink>;
 
-stories.addDecorator(centered).add('ActionLink', () => <ActionLink>Link</ActionLink>);
+export const OpenInNewTabLink = () => (
+  <ActionLink target="_blank" rel="noopener noreferrer" href="/">
+    Link
+  </ActionLink>
+);
+
+export default {
+  title: 'Components/ActionLink',
+  component: ActionLink,
+};
