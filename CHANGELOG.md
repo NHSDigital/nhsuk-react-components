@@ -43,4 +43,6 @@ The `WarningCallout.Label` now has the hidden text `Important: ` before the labe
 </WarningCallout.Label>
 ```
 
+## Hint component renders as div
 
+The `Hint` component now renders as a `div` element rather than a `span`.
