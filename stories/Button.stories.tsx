@@ -1,17 +1,23 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import { storiesOf } from '@storybook/react';
-import centered from '@storybook/addon-centered/react';
 import { Button } from '../src';
 
-const stories = storiesOf('Button', module);
+export const Primary = () => <Button>Primary</Button>;
 
-stories
-  .addDecorator(centered)
-  .add('Primary', () => <Button>Primary</Button>)
-  .add('As a link (href)', () => <Button href="/">As a Link</Button>)
-  .add('As a link (as)', () => <Button as="a">As a Link</Button>)
-  .add('As a button', () => <Button as="button">Button</Button>)
-  .add('Disabled', () => <Button disabled>Disabled</Button>)
-  .add('Secondary', () => <Button secondary>Secondary</Button>)
-  .add('Reverse', () => <Button reverse>Reverse</Button>);
+export const Secondary = () => <Button secondary>Secondary</Button>;
+
+export const Reverse = () => <Button reverse>Reverse</Button>;
+
+export const Disabled = () => <Button disabled>Disabled</Button>;
+
+export const LinkButton = () => <Button href="/">As a Link</Button>;
+
+export const ForceButton = () => <Button as="button">As a Button</Button>;
+ForceButton.storyName = 'Button Element Forced';
+
+export const ForceAnchor = () => <Button as="a">As an Anchor</Button>;
+ForceAnchor.storyName = 'Anchor Element Forced';
+
+export default {
+  title: 'Components/Button',
+  component: Button,
+};
