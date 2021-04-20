@@ -1,10 +1,13 @@
 import React from 'react';
 import Promo from '..';
 import { mount, shallow } from 'enzyme';
+import { PromoDeprecationWarning } from '../../../warnings';
+
+jest.spyOn(console, 'warn').mockImplementation();
 
 describe('Promo', () => {
   it('matches snapshot', () => {
-    const element = mount(<Promo></Promo>);
+    const element = mount(<Promo />);
     expect(element).toMatchSnapshot('Promo');
     element.unmount();
   });
@@ -13,10 +16,24 @@ describe('Promo', () => {
     const imageProps = {
       className: 'className',
     };
-    const element = mount(<Promo imageProps={imageProps} imageSrc="image.png"></Promo>);
+    const element = mount(<Promo imageProps={imageProps} imageSrc="image.png" />);
     const renderedElement = element.render();
     expect(renderedElement.find('.nhsuk-promo__img').hasClass('className')).toBeTruthy();
     expect(renderedElement.find('.nhsuk-promo__img').prop('src')).toBe('image.png');
+
+    element.unmount();
+  });
+
+  it('prints console deprecation warning', () => {
+    const imageProps = {
+      className: 'className',
+    };
+    const element = mount(<Promo imageProps={imageProps} imageSrc="image.png" />);
+
+    // eslint-disable-next-line no-console
+    expect(console.warn).toHaveBeenCalled();
+    // eslint-disable-next-line no-console
+    expect((console.warn as jest.Mock).mock.calls[0][0]).toBe(PromoDeprecationWarning);
 
     element.unmount();
   });

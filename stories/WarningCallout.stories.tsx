@@ -1,7 +1,7 @@
 import React from 'react';
 import { WarningCallout } from '../src';
 
-export const WarningCallout = () => (
+export const StandardWarningCallout = () => (
   <WarningCallout>
     <WarningCallout.Label>School, nursery or work</WarningCallout.Label>
     <p>
@@ -10,6 +10,7 @@ export const WarningCallout = () => (
     </p>
   </WarningCallout>
 );
+StandardWarningCallout.storyName = 'WarningCallout';
 
 export const WarningCalloutWithCustomVisuallyHiddenText = () => (
   <WarningCallout>

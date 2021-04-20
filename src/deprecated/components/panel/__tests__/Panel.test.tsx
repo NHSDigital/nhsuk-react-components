@@ -1,8 +1,22 @@
 import React from 'react';
 import { mount } from 'enzyme';
 import Panel from '..';
+import { PanelDeprecationWarning } from '../../../warnings';
+
+jest.spyOn(console, 'warn').mockImplementation();
 
 describe('Panel', () => {
+  it('prints console deprecation warning', () => {
+    const element = mount(<Panel />);
+
+    // eslint-disable-next-line no-console
+    expect(console.warn).toHaveBeenCalled();
+    // eslint-disable-next-line no-console
+    expect((console.warn as jest.Mock).mock.calls[0][0]).toBe(PanelDeprecationWarning);
+
+    element.unmount();
+  });
+
   it('matches snapshot', () => {
     const element = mount(<Panel />);
     expect(element).toMatchSnapshot('Panel');

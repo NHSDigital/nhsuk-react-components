@@ -1,8 +1,9 @@
-import React, { HTMLProps, isValidElement, useEffect } from 'react';
+import React, { HTMLProps, isValidElement } from 'react';
 import classNames from 'classnames';
 import { Row, Col } from '../../../components/layout';
 import PanelContext, { PanelContextType } from './PanelContext';
-import isDev from '../../../util/IsDev';
+import useDevWarning from '../../../util/hooks/UseDevWarning';
+import { PanelDeprecationWarning } from '../../warnings';
 
 interface PanelProps extends HTMLProps<HTMLDivElement> {
   grey?: boolean;
@@ -22,14 +23,7 @@ const BasePanel: React.FC<PanelProps> = ({
   children,
   ...rest
 }) => {
-  useEffect(() => {
-    if (isDev()) {
-      // eslint-disable-next-line no-console
-      console.warn(
-        'The Panel component is deprecated, and will be removed in the next major version of nhsuk-react-components. The Card component is the intended replacement.',
-      );
-    }
-  }, []);
+  useDevWarning(PanelDeprecationWarning);
 
   return (
     <div
