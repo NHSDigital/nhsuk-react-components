@@ -1,8 +1,10 @@
 import React, { HTMLProps, useContext, isValidElement } from 'react';
 import classNames from 'classnames';
 import PromoContext, { PromoContextType } from './PromoContext';
-import { Col, Row } from '../layout';
-import type { AsElementLink } from '../../util/types/LinkTypes';
+import { Col, Row } from '../../../components/layout';
+import type { AsElementLink } from '../../../util/types/LinkTypes';
+import useDevWarning from '../../../util/hooks/UseDevWarning';
+import { PromoDeprecationWarning } from '../../warnings';
 
 interface ImageProps extends HTMLProps<HTMLImageElement> {
   crossOrigin?: '' | 'anonymous' | 'use-credentials';
@@ -23,7 +25,9 @@ const BasePromo: React.FC<BasePromoProps> = ({
   asElement: Component = 'a',
   ...rest
 }) => {
+  useDevWarning(PromoDeprecationWarning);
   const { className: imageClassName, ...restImageProps } = imageProps || {};
+
   return (
     <div className={classNames('nhsuk-promo', { 'nhsuk-promo--small': small }, className)}>
       <Component className="nhsuk-promo__link-wrapper" {...rest}>

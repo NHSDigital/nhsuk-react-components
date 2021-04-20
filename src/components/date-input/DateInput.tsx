@@ -17,7 +17,7 @@ type DateInputChangeEvent = ChangeEvent<HTMLInputElement> & {
 
 interface DateInputProps
   extends Omit<HTMLProps<HTMLDivElement>, 'value' | 'defaultValue'>,
-  FormElementProps {
+    FormElementProps {
   autoSelectNext?: boolean;
   value?: Partial<DateInputValue>;
   defaultValue?: Partial<DateInputValue>;

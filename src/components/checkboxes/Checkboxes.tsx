@@ -21,7 +21,7 @@ class Checkboxes extends PureComponent<CheckboxesProps, CheckboxesState> {
 
   private boxIds: Record<string, string> = {};
 
-  constructor(props: {}) {
+  constructor(props: CheckboxesProps) {
     super(props);
     this.state = {
       conditionalBoxes: [],

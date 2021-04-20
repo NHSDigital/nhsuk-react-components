@@ -49,8 +49,6 @@ describe('Index', () => {
       'ListPanel',
       'NavAZ',
       'Pagination',
-      'Panel',
-      'Promo',
       'Radios',
       'ReviewDate',
       'Select',

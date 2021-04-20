@@ -1,4 +1,10 @@
-@import '../node_modules/nhsuk-frontend/dist/nhsuk.css';
+// Also import styles for deprecated Panel and Promo
+@import '../node_modules/nhsuk-frontend-legacy/packages/core/all.scss';
+@import '../node_modules/nhsuk-frontend-legacy/packages/components/panel/panel';
+@import '../node_modules/nhsuk-frontend-legacy/packages/components/promo/promo';
+
+// Allow current nhsuk styles to override legacy
+@import '../node_modules/nhsuk-frontend/packages/nhsuk.scss';
 
 .tag-wrapper {
   display: flex;

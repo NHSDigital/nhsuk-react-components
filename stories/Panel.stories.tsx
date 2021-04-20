@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import { Panel } from '../src';
+import { Panel } from '../src/deprecated';
 
 export const Standard = () => (
   <Panel>
@@ -52,6 +52,6 @@ export const PanelGroup = () => (
 );
 
 export default {
-  title: 'Components/Panel',
+  title: 'Deprecated/Panel',
   component: Panel,
 };

@@ -49,3 +49,18 @@ The `WarningCallout.Label` now has the hidden text `Important: ` before the labe
 ## Hint component renders as div
 
 The `Hint` component now renders as a `div` element rather than a `span`.
+
+## Deprecation of Panel & Promo Components
+
+The `Panel` and `Promo` components have been removed from `nhsuk-frontend` since version 4.0.0. As a result, we have deprecated these components. These components work exactly as they did before, with the only difference being a slightly different import.
+
+```jsx
+// Old Imports
+import { Button, Panel, Promo } from "nhsuk-react-components";
+
+// New Imports
+import { Button } from "nhsuk-react-components";
+import { Panel, Promo } from "nhsuk-react-components/deprecated";
+```
+
+A warning is printed to the console in dev environments when using these components, as they are set to be removed in the next major release.

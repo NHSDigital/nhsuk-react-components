@@ -1,9 +1,9 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
-import { Promo } from '../src';
+import { Promo } from '../src/deprecated';
 
 export const Standard = () => (
-  <Promo href="https://www.nhs.uk">
+  <Promo href="#">
     <Promo.Heading>Save a life: give blood</Promo.Heading>
     <Promo.Description>
       Please register today. Donating blood is easy, and saves lives.
@@ -98,6 +98,6 @@ export const PromoGroup = () => (
 );
 
 export default {
-  title: 'Components/Promo',
+  title: 'Deprecated/Promo',
   component: Promo,
 };
