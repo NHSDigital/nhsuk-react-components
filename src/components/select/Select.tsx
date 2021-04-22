@@ -1,19 +1,28 @@
-import React, { HTMLProps } from 'react';
-import classNames from 'classnames';
+import React, { HTMLProps, MutableRefObject } from 'react';
+
 import { FormElementProps } from '../../util/types/FormTypes';
 import FormGroup from '../../util/FormGroup';
+import classNames from 'classnames';
 
-type SelectProps = HTMLProps<HTMLSelectElement> & FormElementProps;
+//  SelectProps = HTMLProps<HTMLSelectElement> & FormElementProps;
+interface ISelectProps extends HTMLProps<HTMLSelectElement>, FormElementProps {
+  selectRef?: MutableRefObject<HTMLSelectElement | null>;
+}
 
-interface ISelect extends React.FC<SelectProps> {
+interface ISelect extends React.FC<ISelectProps> {
   Option: React.FC<HTMLProps<HTMLOptionElement>>;
 }
 
 const Select: ISelect = ({ children, ...rest }) => (
-  <FormGroup<SelectProps> inputType="select" {...rest}>
-    {({ className, error, ...restRenderProps }) => (
+  <FormGroup<ISelectProps> inputType="select" {...rest}>
+    {({ className, error, selectRef, ...restRenderProps }) => (
       <select
-        className={classNames('nhsuk-select', { 'nhsuk-select--error': error }, className)}
+        className={classNames(
+          'nhsuk-select',
+          { 'nhsuk-select--error': error },
+          className,
+        )}
+        ref={selectRef}
         {...restRenderProps}
       >
         {children}
