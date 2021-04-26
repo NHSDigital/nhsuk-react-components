@@ -19,7 +19,6 @@ describe('Input', () => {
     it('should do nothing if ref does not exist', () => {
         const useRefSpy = jest.spyOn(React, 'useRef').mockReturnValueOnce({ current: null });
         const component = shallow(<InputComp />);
-        console.log(component.debug());
         component.find('Input').simulate('click');
         expect(useRefSpy).toBeCalledWith(null);
     });

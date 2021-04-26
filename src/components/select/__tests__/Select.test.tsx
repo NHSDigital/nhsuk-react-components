@@ -20,7 +20,6 @@ describe(`Select`, () => {
     it(`should do nothing if ref does not exist`, () => {
         const useRefSpy = jest.spyOn(React, 'useRef').mockReturnValueOnce({ current: null });
         const component = shallow(<SelectComp />);
-        console.log(component.debug());
         component.find('Select').simulate('click');
         expect(useRefSpy).toBeCalledWith(null);
     });
