@@ -1,10 +1,11 @@
+import { IRadiosContext, RadiosContext } from './RadioContext';
 import React, { HTMLProps, PureComponent } from 'react';
-import classNames from 'classnames';
-import { FormElementProps } from '../../util/types/FormTypes';
-import { RadiosContext, IRadiosContext } from './RadioContext';
-import FormGroup from '../../util/FormGroup';
+
 import Divider from './components/Divider';
+import { FormElementProps } from '../../util/types/FormTypes';
+import FormGroup from '../../util/FormGroup';
 import Radio from './components/Radio';
+import classNames from 'classnames';
 import { generateRandomName } from '../../util/RandomID';
 
 interface RadiosProps extends HTMLProps<HTMLDivElement>, FormElementProps {
@@ -28,8 +29,12 @@ class Radios extends PureComponent<RadiosProps, RadiosState> {
     role: 'radiogroup',
   };
 
-  constructor(props: RadiosProps, ...rest: any[]) {
-    super(props, ...rest);
+  static Divider = Divider;
+
+  static Radio = Radio;
+
+  constructor(props: RadiosProps) {
+    super(props);
     this.state = {
       conditionalRadios: [],
       selectedRadio: '',
@@ -88,10 +93,6 @@ class Radios extends PureComponent<RadiosProps, RadiosState> {
     this.radioCount = 0;
     this.radioIds = {};
   };
-
-  static Divider = Divider;
-
-  static Radio = Radio;
 
   render() {
     const { children, ...rest } = this.props;

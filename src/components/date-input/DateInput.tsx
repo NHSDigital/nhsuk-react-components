@@ -1,8 +1,9 @@
-import React, { HTMLProps, PureComponent, ChangeEvent } from 'react';
-import { DayInput, MonthInput, YearInput } from './components/IndividualDateInputs';
-import FormGroup from '../../util/FormGroup';
 import DateInputContext, { IDateInputContext } from './DateInputContext';
+import { DayInput, MonthInput, YearInput } from './components/IndividualDateInputs';
+import React, { ChangeEvent, HTMLProps, PureComponent } from 'react';
+
 import { FormElementProps } from '../../util/types/FormTypes';
+import FormGroup from '../../util/FormGroup';
 
 type DateInputValue = {
   day: string;
@@ -44,8 +45,8 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
 
   static Year = YearInput;
 
-  constructor(props: DateInputProps, ...rest: any[]) {
-    super(props, ...rest);
+  constructor(props: DateInputProps) {
+    super(props);
     this.state = {
       values: {
         day: props.value?.day || '',

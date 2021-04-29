@@ -1,4 +1,5 @@
 import React, { HTMLProps, MouseEvent } from 'react';
+
 import classNames from 'classnames';
 
 interface SkipLinkProps extends HTMLProps<HTMLAnchorElement> {
@@ -17,8 +18,8 @@ class SkipLink extends React.Component<SkipLinkProps> {
     tabIndex: 0,
   };
 
-  constructor(props: SkipLinkProps, ...rest: any[]) {
-    super(props, ...rest);
+  constructor(props: SkipLinkProps) {
+    super(props);
     this.firstHeadingElement = null;
   }
 

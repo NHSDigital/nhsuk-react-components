@@ -1,19 +1,20 @@
-import React, { PureComponent, HTMLProps, useContext } from 'react';
-import classNames from 'classnames';
+import HeaderContext, { IHeaderContext } from './HeaderContext';
 import NHSLogo, { NHSLogoNavProps } from './components/NHSLogo';
 import OrganisationalLogo, { OrganisationalLogoProps } from './components/OrganisationalLogo';
-import HeaderContext, { IHeaderContext } from './HeaderContext';
-import Search from './components/Search';
-import Nav from './components/Nav';
-import NavItem from './components/NavItem';
-import NavItemList from './components/NavItemList';
-import NavMenuClose from './components/NavMenuClose';
+import React, { HTMLProps, PureComponent, useContext } from 'react';
+
 import { Container } from '../layout';
 import Content from './components/Content';
 import MenuToggle from './components/MenuToggle';
-import TransactionalServiceName from './components/TransactionalServiceName';
-import NavTitle from './components/NavTitle';
+import Nav from './components/Nav';
 import NavContainer from './components/NavContainer';
+import NavItem from './components/NavItem';
+import NavItemList from './components/NavItemList';
+import NavMenuClose from './components/NavMenuClose';
+import NavTitle from './components/NavTitle';
+import Search from './components/Search';
+import TransactionalServiceName from './components/TransactionalServiceName';
+import classNames from 'classnames';
 
 const BaseHeaderLogo: React.FC<OrganisationalLogoProps & NHSLogoNavProps> = props => {
   const { orgName } = useContext<IHeaderContext>(HeaderContext);
@@ -72,8 +73,8 @@ class Header extends PureComponent<HeaderProps, HeaderState> {
     role: 'banner',
   };
 
-  constructor(props: HeaderProps, ...rest: any[]) {
-    super(props, ...rest);
+  constructor(props: HeaderProps) {
+    super(props);
     this.state = {
       hasMenuToggle: false,
       hasSearch: false,

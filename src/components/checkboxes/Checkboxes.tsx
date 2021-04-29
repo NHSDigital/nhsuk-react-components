@@ -1,11 +1,12 @@
+import CheckboxContext, { ICheckboxContext } from './CheckboxContext';
 import React, { HTMLProps, PureComponent, useContext } from 'react';
-import classNames from 'classnames';
+
+import Box from './components/Box';
 import { FormElementProps } from '../../util/types/FormTypes';
 import FormGroup from '../../util/FormGroup';
-import CheckboxContext, { ICheckboxContext } from './CheckboxContext';
-import Box from './components/Box';
-import { generateRandomName } from '../../util/RandomID';
 import FormGroupContext from '../formgroup/FormGroupContext';
+import classNames from 'classnames';
+import { generateRandomName } from '../../util/RandomID';
 interface CheckboxesProps extends HTMLProps<HTMLDivElement>, FormElementProps {
   idPrefix?: string;
 }
@@ -21,8 +22,8 @@ class Checkboxes extends PureComponent<CheckboxesProps, CheckboxesState> {
 
   private boxIds: Record<string, string> = {};
 
-  constructor(props: {}, ...rest: any[]) {
-    super(props, ...rest);
+  constructor(props: {}) {
+    super(props);
     this.state = {
       conditionalBoxes: [],
     };
