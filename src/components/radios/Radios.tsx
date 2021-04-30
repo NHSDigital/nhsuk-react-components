@@ -90,6 +90,10 @@ class Radios extends PureComponent<RadiosProps, RadiosState> {
     this.radioIds = {};
   };
 
+  static Divider = Divider;
+
+  static Radio = Radio;
+
   render() {
     const { children, ...rest } = this.props;
     return (

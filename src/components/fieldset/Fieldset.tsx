@@ -52,6 +52,8 @@ interface FieldsetProps extends HTMLProps<HTMLFieldSetElement> {
 type FieldsetState = { registeredComponents: Array<string>; erroredComponents: Array<string> };
 
 class Fieldset extends PureComponent<FieldsetProps, FieldsetState> {
+  static Legend = Legend;
+
   constructor(props: FieldsetProps) {
     super(props);
     this.state = {
