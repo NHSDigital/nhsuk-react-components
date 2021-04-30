@@ -19,7 +19,6 @@ export const FormGroupContext = createContext<IFormGroupContext>({
 });
 
 // eslint-disable-next-line max-len
-export const useFormGroupContext = (): IFormGroupContext =>
-  useContext<IFormGroupContext>(FormGroupContext);
+export const useFormGroupContext = (): IFormGroupContext => useContext<IFormGroupContext>(FormGroupContext);
 
 export default FormGroupContext;
