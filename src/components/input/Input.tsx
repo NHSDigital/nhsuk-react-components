@@ -1,10 +1,9 @@
 import React, { HTMLProps, useContext, useEffect, MutableRefObject } from 'react';
-
-import { FormElementProps } from '../../util/types/FormTypes';
 import FormGroup from '../../util/FormGroup';
 // eslint-disable-next-line import/no-named-as-default
 import FormGroupContext from '../formgroup/FormGroupContext';
 import { InputWidth } from '../../util/types/NHSUKTypes';
+import { FormElementProps } from '../../util/types/FormTypes';
 // eslint-disable-next-line
 import classNames from 'classnames';
 

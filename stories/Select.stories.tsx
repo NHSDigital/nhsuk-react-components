@@ -87,7 +87,7 @@ export const SelectWithFormGroupLabelAndHint = () => (
     </FormGroup>
   </>
 );
-SelectWithFormGroupLabelAndHint.storyName = 'Select With Form Group, Label and Hint text';
+SelectWithFormGroupLabelAndHint.storyName = 'Select With Form Group, Label, Hint and Error text';
 
 export default {
   title: 'Components/Select',

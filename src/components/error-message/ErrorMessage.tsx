@@ -14,8 +14,10 @@ const ErrorMessage: React.FC<ErrorMessageProps> = props => {
   const { isInFormGroup, inputID, setError } = useContext(FormGroupContext);
   useEffect(() => {
     if (isInFormGroup || inputID) {
-      return () => setError(false);
+      setError(Boolean(children));
+      return () => setError(undefined);
     }
+
     return () => {};
   }, [isInFormGroup, inputID]);
 
