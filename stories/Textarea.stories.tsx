@@ -1,5 +1,5 @@
 import React, { MouseEvent, useState } from 'react';
-import { Textarea, Form, Button, Input } from '../src';
+import { Button, ErrorMessage, FormGroup, Hint, Input, Label, Textarea } from '../src';
 
 export const Standard = () => (
   <Textarea
@@ -62,6 +62,38 @@ export const TextareaWithErrorString = () => {
   );
 };
 TextareaWithErrorString.storyName = 'Textarea With Error (String)';
+
+export const TextareaWithFormGroup = () => (
+  <FormGroup>
+    <Label>Please specify (others)</Label>
+    <Hint>Hint: Use this box to specify more</Hint>
+    <Textarea
+      id="no-ni-reason2"
+      name="no-ni-reason2"
+      rows={5}
+      label="Why can&#39;t you provide a National Insurance number?"
+    />
+  </FormGroup>
+);
+
+TextareaWithFormGroup.storyName = 'Textarea Form Group, Label and Hint';
+
+export const TextareaWithFormGroupLabelHintErrorString = () => (
+  <FormGroup>
+    <Label>Please specify (others)</Label>
+    <Hint>Hint: Use this box to specify more</Hint>
+    <ErrorMessage>At least 20 characters...</ErrorMessage>
+    <Textarea
+      id="no-ni-reason2"
+      name="no-ni-reason2"
+      rows={5}
+      label="Why can&#39;t you provide a National Insurance number?"
+    />
+  </FormGroup>
+);
+
+TextareaWithFormGroupLabelHintErrorString.storyName =
+  'Textarea Form Group, Label, Hint (with error)';
 
 export default {
   title: 'Components/Textarea',
