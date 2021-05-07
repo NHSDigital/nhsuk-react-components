@@ -1,8 +1,9 @@
-import React, { HTMLProps, PureComponent } from 'react';
-import classNames from 'classnames';
-import { NHSUKSize } from '../../util/types/NHSUKTypes';
-import HeadingLevel, { HeadingLevelType } from '../../util/HeadingLevel';
 import FieldsetContext, { IFieldsetContext } from './FieldsetContext';
+import HeadingLevel, { HeadingLevelType } from '../../util/HeadingLevel';
+import React, { HTMLProps, PureComponent } from 'react';
+
+import { NHSUKSize } from '../../util/types/NHSUKTypes';
+import classNames from 'classnames';
 
 interface LegendProps extends Omit<HTMLProps<HTMLLegendElement>, 'size'> {
   isPageHeading?: boolean;
@@ -43,6 +44,7 @@ Legend.defaultProps = {
   headingLevel: 'h1',
 };
 
+
 interface FieldsetProps extends HTMLProps<HTMLFieldSetElement> {
   disableErrorLine?: boolean;
 }
@@ -50,6 +52,8 @@ interface FieldsetProps extends HTMLProps<HTMLFieldSetElement> {
 type FieldsetState = { registeredComponents: Array<string>; erroredComponents: Array<string> };
 
 class Fieldset extends PureComponent<FieldsetProps, FieldsetState> {
+  static Legend = Legend;
+
   constructor(props: FieldsetProps) {
     super(props);
     this.state = {
@@ -92,8 +96,8 @@ class Fieldset extends PureComponent<FieldsetProps, FieldsetState> {
     });
   };
 
-  static Legend = Legend;
 
+  
   render() {
     const { className, disableErrorLine, ...rest } = this.props;
     const contextValue: IFieldsetContext = {

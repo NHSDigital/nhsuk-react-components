@@ -1,3 +1,4 @@
+import React, { HTMLProps, MutableRefObject, useContext, useEffect  } from 'react';
 import React, { HTMLProps, MutableRefObject } from 'react';
 
 import { FormElementProps } from '../../util/types/FormTypes';
@@ -27,14 +28,40 @@ const Select: ISelect = ({ children, ...rest }) => (
       >
         {children}
       </select>
-    )}
-  </FormGroup>
-);
+    );
+  }
+  return (
+    <FormGroup<SelectProps> inputType="select" {...rest}>
+      {({ ...restRenderProps }) => (
+        <select
+          className={classNames('nhsuk-select', { 'nhsuk-select--error': error }, className)}
+          {...restRenderProps}
+        >
+          {children}
+        </select>
+      )}
+    </FormGroup>
+  );
+};
 
 const Option: React.FC<HTMLProps<HTMLOptionElement>> = ({ className, ...rest }) => (
   <option {...rest} />
 );
 
+/*
+
+const SelectElement: React.FC<SelectProps> = ({ children, ...props }) => {
+  const { width, className, error, hint, label, ...rest } = props;
+  return (
+    <select
+      className={classNames('nhsuk-select', { 'nhsuk-select--error': error }, className)}
+      {...rest}
+    >
+      {children}
+    </select>
+  );
+};
+*/
 Select.Option = Option;
 
 export default Select;
