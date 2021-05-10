@@ -76,7 +76,7 @@ export const TextareaWithFormGroup = () => (
   </FormGroup>
 );
 
-TextareaWithFormGroup.storyName = 'Textarea Form Group, Label and Hint';
+TextareaWithFormGroup.storyName = 'Textarea Form Group, Label, Hint (with error)';
 
 export const TextareaWithFormGroupLabelHintErrorString = () => (
   <FormGroup>
