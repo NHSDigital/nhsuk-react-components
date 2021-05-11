@@ -17,6 +17,7 @@
     "@storybook/addon-links": "^6.2.9",
     "@storybook/react": "^6.2.9",
     "@storybook/storybook-deployer": "^2.8.7",
+    "@types/enzyme": "^3.10.8",
     "@types/jest": "^26.0.23",
     "@types/jest-axe": "^3.5.1",
     "@types/node": "^15.0.2",
@@ -65,14 +66,14 @@
     "cleanup": "rm -rf dist/ > /dev/null && rm -rf lib/ > /dev/null",
     "storybook": "start-storybook -p 6006",
     "build:dist": "rollup -c",
-    "build:lib": "NODE_ENV=production babel src --out-dir lib --extensions \".ts,.tsx\"",
+    "build:lib": "NODE_ENV=production babel src --out-dir lib --extensions \".ts,.tsx\" --ignore \"**/__tests__,**/__mocks__,**/setupTests.ts\"",
     "build": "yarn cleanup && yarn build:dist && yarn build:lib",
     "test": "jest",
     "test:ci": "jest --coverage",
     "lint": "eslint 'src/**/*.{js,ts,tsx}' 'stories/**/*.{js,ts,tsx}' --fix",
     "lint:ci": "eslint 'src/**/*.{js,ts,tsx}' 'stories/**/*.{js,ts,tsx}'",
     "build-storybook": "build-storybook",
-    "prepublish": "yarn install && yarn build"
+    "prepublishOnly": "yarn lint:ci && yarn test:ci && yarn start-storybook --smoke-test"
   },
   "files": [
     "dist",
