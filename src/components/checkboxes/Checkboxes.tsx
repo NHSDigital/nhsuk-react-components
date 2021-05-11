@@ -15,6 +15,8 @@ type CheckboxesState = {
 };
 
 class Checkboxes extends PureComponent<CheckboxesProps, CheckboxesState> {
+  static Box = Box;
+
   private boxCount: number = 0;
 
   private boxReferences: Array<string> = [];
@@ -74,8 +76,6 @@ class Checkboxes extends PureComponent<CheckboxesProps, CheckboxesState> {
     this.boxCount = 0;
     this.boxIds = {};
   };
-
-  static Box = Box;
 
   render() {
     const { children, ...rest } = this.props;

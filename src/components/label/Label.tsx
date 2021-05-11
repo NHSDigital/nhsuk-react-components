@@ -9,6 +9,7 @@ export interface LabelProps extends Omit<HTMLProps<HTMLLabelElement>, 'size'> {
 }
 
 const BaseLabel: React.FC<LabelProps> = ({ className, bold, size, isPageHeading, ...rest }) => (
+  // eslint-disable-next-line jsx-a11y/label-has-associated-control
   <label
     className={classNames(
       'nhsuk-label',

@@ -1,6 +1,6 @@
 {
   "name": "nhsuk-react-components",
-  "version": "1.2.8",
+  "version": "2.0.0-test.1",
   "author": {
     "email": "thomas.judd-cooper1@nhs.net",
     "name": "Thomas Judd-Cooper",
@@ -83,7 +83,7 @@
     "test": "jest",
     "test:ci": "jest --coverage",
     "test:watch": "jest --watch",
-    "lint": "eslint --fix -c .eslintrc.js --ext .ts --ext .tsx src/*.ts src/components/**/*.ts src/util/*.ts",
+    "lint": "eslint --fix -c .eslintrc.js --ext .ts --ext .tsx src/*.ts src/components/**/*.ts src/components/**/*.tsx src/util/*.ts src/util/*.tsx",
     "prebuild": "yarn lint && yarn test --coverage",
     "build-storybook": "build-storybook",
     "prepare": "yarn build"

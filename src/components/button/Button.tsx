@@ -18,7 +18,6 @@ interface ButtonLinkProps extends HTMLProps<HTMLAnchorElement> {
 
 export const Button: React.FC<ButtonProps> = ({
   className,
-  type,
   disabled,
   secondary,
   reverse,
@@ -35,7 +34,6 @@ export const Button: React.FC<ButtonProps> = ({
     )}
     disabled={disabled}
     aria-disabled={disabled ? 'true' : 'false'}
-    type={type}
     {...rest}
   />
 );

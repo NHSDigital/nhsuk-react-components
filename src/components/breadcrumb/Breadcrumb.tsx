@@ -6,7 +6,7 @@ import type { AsElementLink } from '../../util/types/LinkTypes';
 
 type Item = React.FC<AsElementLink<HTMLAnchorElement>>;
 
-const Item: Item = ({ className, children, asElement: Component = 'a',  ...rest }) => (
+const Item: Item = ({ className, children, asElement: Component = 'a', ...rest }) => (
   <li className="nhsuk-breadcrumb__item">
     <Component className={classNames('nhsuk-breadcrumb__link', className)} {...rest}>
       {children}

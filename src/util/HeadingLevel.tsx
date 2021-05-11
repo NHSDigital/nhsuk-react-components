@@ -22,23 +22,23 @@ const HeadingLevel: React.FC<HeadingLevelProps> = ({ headingLevel, ...rest }) =>
   switch (headingLevel) {
     case 'h1':
     case 'H1':
-      return <h1 {...rest}></h1>;
+      return <h1 {...rest} />;
     case 'h2':
     case 'H2':
-      return <h2 {...rest}></h2>;
+      return <h2 {...rest} />;
     case 'h3':
     case 'H3':
     default:
-      return <h3 {...rest}></h3>;
+      return <h3 {...rest} />;
     case 'h4':
     case 'H4':
-      return <h4 {...rest}></h4>;
+      return <h4 {...rest} />;
     case 'h5':
     case 'H5':
-      return <h5 {...rest}></h5>;
+      return <h5 {...rest} />;
     case 'h6':
     case 'H6':
-      return <h6 {...rest}></h6>;
+      return <h6 {...rest} />;
   }
 };
 

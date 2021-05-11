@@ -18,6 +18,10 @@ type RadiosState = {
 };
 
 class Radios extends PureComponent<RadiosProps, RadiosState> {
+  static Divider = Divider;
+
+  static Radio = Radio;
+
   private radioCount: number = 0;
 
   private radioReferences: Array<string> = [];
@@ -88,10 +92,6 @@ class Radios extends PureComponent<RadiosProps, RadiosState> {
     this.radioCount = 0;
     this.radioIds = {};
   };
-
-  static Divider = Divider;
-
-  static Radio = Radio;
 
   render() {
     const { children, ...rest } = this.props;

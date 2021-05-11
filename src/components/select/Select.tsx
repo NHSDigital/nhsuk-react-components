@@ -1,8 +1,8 @@
 import React, { HTMLProps, MutableRefObject } from 'react';
 
+import classNames from 'classnames';
 import { FormElementProps } from '../../util/types/FormTypes';
 import FormGroup from '../../util/FormGroup';
-import classNames from 'classnames';
 
 //  SelectProps = HTMLProps<HTMLSelectElement> & FormElementProps;
 interface ISelectProps extends HTMLProps<HTMLSelectElement>, FormElementProps {
