@@ -9,7 +9,7 @@
         "jsx": "react",
         "moduleResolution": "node",
         "forceConsistentCasingInFileNames": true,
-        "types": ["react", "jest"],
+        "types": ["react", "jest", "node"],
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
         "skipLibCheck": true

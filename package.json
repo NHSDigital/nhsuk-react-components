@@ -19,6 +19,7 @@
     "@storybook/storybook-deployer": "^2.8.7",
     "@types/jest": "^26.0.23",
     "@types/jest-axe": "^3.5.1",
+    "@types/node": "^15.0.2",
     "@types/react": "16.14.0",
     "@types/react-dom": "^16.9.12",
     "@typescript-eslint/eslint-plugin": "^4.23.0",
@@ -69,9 +70,8 @@
     "test": "jest",
     "test:ci": "jest --coverage",
     "lint": "eslint 'src/**/*.{js,ts,tsx}' 'stories/**/*.{js,ts,tsx}' --fix",
-    "lint:ci": "eslint 'src/**/*.{js,ts,tsx}'",
-    "build-storybook": "build-storybook",
-    "prepare": "yarn build"
+    "lint:ci": "eslint 'src/**/*.{js,ts,tsx}' 'stories/**/*.{js,ts,tsx}'",
+    "build-storybook": "build-storybook"
   },
   "files": [
     "dist",
