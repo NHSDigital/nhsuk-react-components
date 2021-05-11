@@ -71,7 +71,8 @@
     "test:ci": "jest --coverage",
     "lint": "eslint 'src/**/*.{js,ts,tsx}' 'stories/**/*.{js,ts,tsx}' --fix",
     "lint:ci": "eslint 'src/**/*.{js,ts,tsx}' 'stories/**/*.{js,ts,tsx}'",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "prepublish": "yarn install && yarn build"
   },
   "files": [
     "dist",
