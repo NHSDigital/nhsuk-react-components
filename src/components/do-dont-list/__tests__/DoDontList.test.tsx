@@ -1,11 +1,11 @@
 import React from 'react';
-import DoDontList from '..';
 import { shallow, mount } from 'enzyme';
+import DoDontList from '..';
 
 describe('DoDontList', () => {
   it('matches snapshot', () => {
-    const doElement = shallow(<DoDontList listType="do"></DoDontList>);
-    const dontElement = shallow(<DoDontList listType="dont"></DoDontList>);
+    const doElement = shallow(<DoDontList listType="do" />);
+    const dontElement = shallow(<DoDontList listType="dont" />);
     expect(doElement).toMatchSnapshot('DoDontList-Do');
     expect(dontElement).toMatchSnapshot('DoDontList-Dont');
     doElement.unmount();
@@ -13,8 +13,8 @@ describe('DoDontList', () => {
   });
 
   it('adds the correct header', () => {
-    const doElement = mount(<DoDontList listType="do"></DoDontList>);
-    const dontElement = mount(<DoDontList listType="dont"></DoDontList>);
+    const doElement = mount(<DoDontList listType="do" />);
+    const dontElement = mount(<DoDontList listType="dont" />);
     expect(doElement.find('h3.nhsuk-do-dont-list__label').text()).toEqual('Do');
     expect(dontElement.find('h3.nhsuk-do-dont-list__label').text()).toEqual("Don't");
     doElement.unmount();
@@ -22,8 +22,8 @@ describe('DoDontList', () => {
   });
 
   it('adds the correct classes', () => {
-    const doElement = mount(<DoDontList listType="do"></DoDontList>);
-    const dontElement = mount(<DoDontList listType="dont"></DoDontList>);
+    const doElement = mount(<DoDontList listType="do" />);
+    const dontElement = mount(<DoDontList listType="dont" />);
 
     expect(doElement.find('ul').hasClass('nhsuk-list--tick')).toBeTruthy();
     expect(doElement.find('ul').hasClass('nhsuk-list--cross')).toBeFalsy();

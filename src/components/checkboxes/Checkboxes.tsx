@@ -82,7 +82,9 @@ class Checkboxes extends PureComponent<CheckboxesProps, CheckboxesState> {
     return (
       <FormGroup<CheckboxesProps> inputType="checkboxes" {...rest}>
         {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
-        {({ className, name, id, idPrefix, ...restRenderProps }) => {
+        {({
+          className, name, id, idPrefix, ...restRenderProps
+        }) => {
           this.resetBoxIds();
           const containsConditional = this.state.conditionalBoxes.length > 0;
           const contextValue: ICheckboxContext = {

@@ -53,7 +53,9 @@ interface Hero extends React.FC<HeroProps> {
   Text: React.FC<HTMLProps<HTMLParagraphElement>>;
 }
 
-const Hero: Hero = ({ className, children, imageSrc, ...rest }) => (
+const Hero: Hero = ({
+  className, children, imageSrc, ...rest
+}) => (
   <section
     className={classNames(
       'nhsuk-hero',

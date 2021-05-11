@@ -9,7 +9,9 @@ export const NonUrgent = (): JSX.Element => (
         <li>you&apos;re not sure it&apos;s chickenpox</li>
         <li>the skin around the blisters is red, hot or painful (signs of infection)</li>
         <li>
-          your child is <a href="https://www.nhs.uk/conditions/dehydration">dehydrated</a>
+          your child is
+          {' '}
+          <a href="https://www.nhs.uk/conditions/dehydration">dehydrated</a>
         </li>
         <li>you&apos;re concerned about your child or they get worse</li>
       </ul>
@@ -64,7 +66,9 @@ export const WithoutVisuallyHiddenText = (): JSX.Element => (
         <li>you&apos;re not sure it&apos;s chickenpox</li>
         <li>the skin around the blisters is red, hot or painful (signs of infection)</li>
         <li>
-          your child is <a href="https://www.nhs.uk/conditions/dehydration">dehydrated</a>
+          your child is
+          {' '}
+          <a href="https://www.nhs.uk/conditions/dehydration">dehydrated</a>
         </li>
         <li>you&apos;re concerned about your child or they get worse</li>
       </ul>
@@ -84,7 +88,9 @@ export const WithCustomVisuallyHiddenText = (): JSX.Element => (
         <li>you&apos;re not sure it&apos;s chickenpox</li>
         <li>the skin around the blisters is red, hot or painful (signs of infection)</li>
         <li>
-          your child is <a href="https://www.nhs.uk/conditions/dehydration">dehydrated</a>
+          your child is
+          {' '}
+          <a href="https://www.nhs.uk/conditions/dehydration">dehydrated</a>
         </li>
         <li>you&apos;re concerned about your child or they get worse</li>
       </ul>

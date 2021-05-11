@@ -4,7 +4,9 @@ import { Container } from '../../layout';
 import { Close as CloseIcon } from '../../icons';
 import HeaderContext, { IHeaderContext } from '../HeaderContext';
 
-const Nav: React.FC<HTMLProps<HTMLDivElement>> = ({ className, children, open, ...rest }) => {
+const Nav: React.FC<HTMLProps<HTMLDivElement>> = ({
+  className, children, open, ...rest
+}) => {
   const { menuOpen, toggleMenu } = useContext<IHeaderContext>(HeaderContext);
 
   return (

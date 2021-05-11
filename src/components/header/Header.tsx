@@ -110,7 +110,9 @@ class Header extends PureComponent<HeaderProps, HeaderState> {
       white,
       ...rest
     } = this.props;
-    const { hasSearch, hasMenuToggle, menuOpen, searchOpen } = this.state;
+    const {
+      hasSearch, hasMenuToggle, menuOpen, searchOpen,
+    } = this.state;
     const contextValue: IHeaderContext = {
       orgName,
       orgSplit,

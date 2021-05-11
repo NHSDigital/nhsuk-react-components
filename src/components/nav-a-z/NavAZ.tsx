@@ -64,11 +64,11 @@ const NavAZ: NavAZ = ({
   </nav>
 );
 
-const LinkItem: React.FC<AsElementLink<HTMLAnchorElement>> = ({ 
+const LinkItem: React.FC<AsElementLink<HTMLAnchorElement>> = ({
   className,
   asElement: Component = 'a',
-  ...rest 
-  }) => (
+  ...rest
+}) => (
   <li className="nhsuk-nav-a-z__item">
     <Component className={classNames('nhsuk-nav-a-z__link', className)} {...rest} />
   </li>

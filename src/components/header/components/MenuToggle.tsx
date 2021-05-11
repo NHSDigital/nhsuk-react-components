@@ -1,4 +1,6 @@
-import React, { HTMLProps, useContext, useEffect, MouseEvent } from 'react';
+import React, {
+  HTMLProps, useContext, useEffect, MouseEvent,
+} from 'react';
 import classNames from 'classnames';
 import HeaderContext, { IHeaderContext } from '../HeaderContext';
 

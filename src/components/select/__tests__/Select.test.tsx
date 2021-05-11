@@ -1,8 +1,8 @@
 import React from 'react';
-import Select from '../Select';
 import { shallow } from 'enzyme';
+import Select from '../Select';
 
-describe(`Select`, () => {
+describe('Select', () => {
   afterEach(() => {
     jest.restoreAllMocks();
   });
@@ -16,7 +16,7 @@ describe(`Select`, () => {
     return <Select onClick={handleClick} selectRef={ref} />;
   };
 
-  it(`should do nothing if ref does not Exist`, () => {
+  it('should do nothing if ref does not Exist', () => {
     const useRefSpy = jest.spyOn(React, 'useRef').mockReturnValueOnce({ current: null });
     const component = shallow(<SelectComp />);
     component.find('Select').simulate('click');

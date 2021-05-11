@@ -98,7 +98,9 @@ class Radios extends PureComponent<RadiosProps, RadiosState> {
     return (
       <FormGroup<RadiosProps> inputType="radios" {...rest}>
         {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
-        {({ className, inline, name, id, error, ...restRenderProps }) => {
+        {({
+          className, inline, name, id, error, ...restRenderProps
+        }) => {
           this.resetRadioIds();
           const contextValue: IRadiosContext = {
             getRadioId: (reference) => this.getRadioId(id, reference),

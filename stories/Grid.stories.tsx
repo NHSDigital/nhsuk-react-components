@@ -1,5 +1,7 @@
 import React from 'react';
-import { Row, Col, Card, Container } from '../src';
+import {
+  Row, Col, Card, Container,
+} from '../src';
 
 export const Grid = (): JSX.Element => (
   <Container>

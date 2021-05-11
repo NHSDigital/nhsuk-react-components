@@ -12,7 +12,7 @@ describe('ListPanel', () => {
 
   describe('ListPanel.Panel', () => {
     it('matches snapshot', () => {
-      const component = shallow(<ListPanel.Panel></ListPanel.Panel>);
+      const component = shallow(<ListPanel.Panel />);
       expect(component).toMatchSnapshot('ListPanel.Panel');
       component.unmount();
     });
@@ -29,7 +29,7 @@ describe('ListPanel', () => {
     });
 
     it('renders back to top button', () => {
-      const component = shallow(<ListPanel.Panel backToTop></ListPanel.Panel>);
+      const component = shallow(<ListPanel.Panel backToTop />);
       expect(component.find('.nhsuk-back-to-top').exists()).toBeTruthy();
       component.unmount();
     });

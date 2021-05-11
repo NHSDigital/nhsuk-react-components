@@ -1,5 +1,7 @@
 import React, { MouseEvent } from 'react';
-import { Radios, Fieldset, Button, Input, Checkboxes } from '../src';
+import {
+  Radios, Fieldset, Button, Input, Checkboxes,
+} from '../src';
 
 export const StandardRadios = (): JSX.Element => (
   <Fieldset>

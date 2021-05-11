@@ -29,8 +29,8 @@ describe('FormGroup', () => {
       </FormGroup>,
     );
     expect(renderProps).not.toBe(null);
-    expect(renderProps['id']).toHaveLength(11);
-    expect(renderProps['id']).toContain('input');
+    expect(renderProps.id).toHaveLength(11);
+    expect(renderProps.id).toContain('input');
     component.unmount();
   });
 
@@ -45,14 +45,14 @@ describe('FormGroup', () => {
       </FormGroup>,
     );
     expect(renderProps).not.toBe(null);
-    expect(renderProps['id']).toBe('TestID');
+    expect(renderProps.id).toBe('TestID');
 
     component.setProps({ id: undefined });
-    expect(renderProps['id']).toHaveLength(11);
-    expect(renderProps['id']).toContain('input');
+    expect(renderProps.id).toHaveLength(11);
+    expect(renderProps.id).toContain('input');
 
     component.setProps({ id: 'TestID2ElectricBoogaloo' });
-    expect(renderProps['id']).toBe('TestID2ElectricBoogaloo');
+    expect(renderProps.id).toBe('TestID2ElectricBoogaloo');
 
     component.unmount();
   });
@@ -68,11 +68,11 @@ describe('FormGroup', () => {
       </FormGroup>,
     );
     expect(renderProps).not.toBe(null);
-    expect(renderProps['id']).toHaveLength(11);
-    expect(renderProps['id']).toContain('input');
+    expect(renderProps.id).toHaveLength(11);
+    expect(renderProps.id).toContain('input');
 
-    expect(component.find('input').prop('aria-describedby')).toBe(`${renderProps['id']}--hint`);
-    expect(component.find('Hint').prop('id')).toBe(`${renderProps['id']}--hint`);
+    expect(component.find('input').prop('aria-describedby')).toBe(`${renderProps.id}--hint`);
+    expect(component.find('Hint').prop('id')).toBe(`${renderProps.id}--hint`);
 
     component.unmount();
   });
@@ -88,7 +88,7 @@ describe('FormGroup', () => {
       </FormGroup>,
     );
     expect(renderProps).not.toBe(null);
-    expect(renderProps['id']).toBe('testID');
+    expect(renderProps.id).toBe('testID');
 
     expect(component.find('input').prop('aria-describedby')).toBe('testID--hint');
     expect(component.find('Hint').prop('id')).toBe('testID--hint');
@@ -107,12 +107,12 @@ describe('FormGroup', () => {
       </FormGroup>,
     );
     expect(renderProps).not.toBe(null);
-    expect(renderProps['id']).toHaveLength(11);
-    expect(renderProps['id']).toContain('input');
+    expect(renderProps.id).toHaveLength(11);
+    expect(renderProps.id).toContain('input');
 
-    expect(component.find('input').prop('aria-labelledby')).toBe(`${renderProps['id']}--label`);
-    expect(component.find('Label').prop('id')).toBe(`${renderProps['id']}--label`);
-    expect(component.find('Label').prop('htmlFor')).toBe(renderProps['id']);
+    expect(component.find('input').prop('aria-labelledby')).toBe(`${renderProps.id}--label`);
+    expect(component.find('Label').prop('id')).toBe(`${renderProps.id}--label`);
+    expect(component.find('Label').prop('htmlFor')).toBe(renderProps.id);
 
     component.unmount();
   });
@@ -133,7 +133,7 @@ describe('FormGroup', () => {
       </FormGroup>,
     );
     expect(renderProps).not.toBe(null);
-    expect(renderProps['id']).toBe('testID');
+    expect(renderProps.id).toBe('testID');
 
     expect(component.find('input').prop('aria-labelledby')).toBe('testID--label');
     expect(component.find('Label').prop('id')).toBe('testID--label');
@@ -159,10 +159,10 @@ describe('FormGroup', () => {
       </FormGroup>,
     );
     expect(renderProps).not.toBe(null);
-    expect(renderProps['id']).toHaveLength(11);
-    expect(renderProps['id']).toContain('input');
+    expect(renderProps.id).toHaveLength(11);
+    expect(renderProps.id).toContain('input');
 
-    expect(component.find('ErrorMessage').prop('id')).toBe(`${renderProps['id']}--error-message`);
+    expect(component.find('ErrorMessage').prop('id')).toBe(`${renderProps.id}--error-message`);
     expect(component.find('ErrorMessage').text()).toBe('Error: This is a test error');
     expect(component.find('ErrorMessage').prop('title')).toBe('TestTitle');
 
@@ -185,7 +185,7 @@ describe('FormGroup', () => {
       </FormGroup>,
     );
     expect(renderProps).not.toBe(null);
-    expect(renderProps['id']).toBe('testID');
+    expect(renderProps.id).toBe('testID');
 
     expect(component.find('ErrorMessage').prop('id')).toBe('testID--error-message');
     expect(component.find('ErrorMessage').text()).toBe('Error: This is a test error');

@@ -1,6 +1,6 @@
 import React from 'react';
-import Promo from '..';
 import { mount, shallow } from 'enzyme';
+import Promo from '..';
 import { PromoDeprecationWarning } from '../../../warnings';
 
 jest.spyOn(console, 'warn').mockImplementation();

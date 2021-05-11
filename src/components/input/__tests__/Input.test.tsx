@@ -1,6 +1,6 @@
-import Input from '../Input';
 import React from 'react';
 import { shallow } from 'enzyme';
+import Input from '../Input';
 
 describe('Input', () => {
   afterEach(() => {
@@ -14,7 +14,7 @@ describe('Input', () => {
       onHandle();
     };
 
-    return <Input type="button" onClick={handleClick} inputRef={ref}></Input>;
+    return <Input type="button" onClick={handleClick} inputRef={ref} />;
   };
 
   it('should do nothing if ref does not exist', () => {

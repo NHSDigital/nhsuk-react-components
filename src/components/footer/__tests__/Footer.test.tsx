@@ -1,6 +1,6 @@
 import React from 'react';
-import Footer from '..';
 import { shallow, mount } from 'enzyme';
+import Footer from '..';
 
 describe('Footer', () => {
   it('matches snapshot', () => {

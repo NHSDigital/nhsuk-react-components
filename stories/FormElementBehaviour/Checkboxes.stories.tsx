@@ -54,12 +54,30 @@ export const NoIDSupplied = (): JSX.Element => {
       </ul>
       <h5>Results</h5>
       <ul className="nhsuk-hint">
-        <li>Box 1 ID: {checkboxState.box1.id}</li>
-        <li>Box 2 ID: {checkboxState.box2.id}</li>
-        <li>Box 3 ID: {checkboxState.box3.id}</li>
-        <li>Box 1 Name: {checkboxState.box1.name}</li>
-        <li>Box 2 Name: {checkboxState.box2.name}</li>
-        <li>Box 3 Name: {checkboxState.box3.name}</li>
+        <li>
+          Box 1 ID:
+          {checkboxState.box1.id}
+        </li>
+        <li>
+          Box 2 ID:
+          {checkboxState.box2.id}
+        </li>
+        <li>
+          Box 3 ID:
+          {checkboxState.box3.id}
+        </li>
+        <li>
+          Box 1 Name:
+          {checkboxState.box1.name}
+        </li>
+        <li>
+          Box 2 Name:
+          {checkboxState.box2.name}
+        </li>
+        <li>
+          Box 3 Name:
+          {checkboxState.box3.name}
+        </li>
       </ul>
       <h5>Component</h5>
       <Checkboxes>
@@ -118,12 +136,30 @@ export const NameSupplied = (): JSX.Element => {
       </ul>
       <h5>Results</h5>
       <ul className="nhsuk-hint">
-        <li>Box 1 ID: {checkboxState.box1.id}</li>
-        <li>Box 2 ID: {checkboxState.box2.id}</li>
-        <li>Box 3 ID: {checkboxState.box3.id}</li>
-        <li>Box 1 Name: {checkboxState.box1.name}</li>
-        <li>Box 2 Name: {checkboxState.box2.name}</li>
-        <li>Box 3 Name: {checkboxState.box3.name}</li>
+        <li>
+          Box 1 ID:
+          {checkboxState.box1.id}
+        </li>
+        <li>
+          Box 2 ID:
+          {checkboxState.box2.id}
+        </li>
+        <li>
+          Box 3 ID:
+          {checkboxState.box3.id}
+        </li>
+        <li>
+          Box 1 Name:
+          {checkboxState.box1.name}
+        </li>
+        <li>
+          Box 2 Name:
+          {checkboxState.box2.name}
+        </li>
+        <li>
+          Box 3 Name:
+          {checkboxState.box3.name}
+        </li>
       </ul>
       <h5>Component</h5>
       <Checkboxes name="name-supplied">
@@ -183,12 +219,30 @@ export const IDPrefixSupplied = (): JSX.Element => {
       </ul>
       <h5>Results</h5>
       <ul className="nhsuk-hint">
-        <li>Box 1 ID: {checkboxState.box1.id}</li>
-        <li>Box 2 ID: {checkboxState.box2.id}</li>
-        <li>Box 3 ID: {checkboxState.box3.id}</li>
-        <li>Box 1 Name: {checkboxState.box1.name}</li>
-        <li>Box 2 Name: {checkboxState.box2.name}</li>
-        <li>Box 3 Name: {checkboxState.box3.name}</li>
+        <li>
+          Box 1 ID:
+          {checkboxState.box1.id}
+        </li>
+        <li>
+          Box 2 ID:
+          {checkboxState.box2.id}
+        </li>
+        <li>
+          Box 3 ID:
+          {checkboxState.box3.id}
+        </li>
+        <li>
+          Box 1 Name:
+          {checkboxState.box1.name}
+        </li>
+        <li>
+          Box 2 Name:
+          {checkboxState.box2.name}
+        </li>
+        <li>
+          Box 3 Name:
+          {checkboxState.box3.name}
+        </li>
       </ul>
       <h5>Component</h5>
       <Checkboxes idPrefix="idprefix">
@@ -248,12 +302,30 @@ export const IDPrefixAndNameSupplied = (): JSX.Element => {
       </ul>
       <h5>Results</h5>
       <ul className="nhsuk-hint">
-        <li>Box 1 ID: {checkboxState.box1.id}</li>
-        <li>Box 2 ID: {checkboxState.box2.id}</li>
-        <li>Box 3 ID: {checkboxState.box3.id}</li>
-        <li>Box 1 Name: {checkboxState.box1.name}</li>
-        <li>Box 2 Name: {checkboxState.box2.name}</li>
-        <li>Box 3 Name: {checkboxState.box3.name}</li>
+        <li>
+          Box 1 ID:
+          {checkboxState.box1.id}
+        </li>
+        <li>
+          Box 2 ID:
+          {checkboxState.box2.id}
+        </li>
+        <li>
+          Box 3 ID:
+          {checkboxState.box3.id}
+        </li>
+        <li>
+          Box 1 Name:
+          {checkboxState.box1.name}
+        </li>
+        <li>
+          Box 2 Name:
+          {checkboxState.box2.name}
+        </li>
+        <li>
+          Box 3 Name:
+          {checkboxState.box3.name}
+        </li>
       </ul>
       <h5>Component</h5>
       <Checkboxes idPrefix="idprefix" name="testname">

@@ -1,6 +1,6 @@
 import React from 'react';
-import ActionLink from '../ActionLink';
 import { shallow } from 'enzyme';
+import ActionLink from '../ActionLink';
 
 describe('ActionLink', () => {
   it('matches snapshot', () => {

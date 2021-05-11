@@ -1,6 +1,6 @@
 import React from 'react';
-import SummaryList from '..';
 import { shallow } from 'enzyme';
+import SummaryList from '..';
 
 describe('SummaryList', () => {
   it('matches snapshot', () => {
@@ -10,7 +10,7 @@ describe('SummaryList', () => {
   });
 
   it('adds css classes when noBorder prop supplied', () => {
-    const element = shallow(<SummaryList noBorder></SummaryList>);
+    const element = shallow(<SummaryList noBorder />);
     expect(element.hasClass('nhsuk-summary-list--no-border')).toBeTruthy();
     element.unmount();
   });

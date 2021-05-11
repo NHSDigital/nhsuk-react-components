@@ -1,18 +1,18 @@
 import React from 'react';
-import Pagination from '..';
 import { shallow } from 'enzyme';
+import Pagination from '..';
 import { ArrowLeft, ArrowRight } from '../../icons';
 
 describe('Pagination', () => {
   it('matches snapshot', () => {
-    const element = shallow(<Pagination></Pagination>);
+    const element = shallow(<Pagination />);
     expect(element).toMatchSnapshot('Pagination');
     element.unmount();
   });
 
   describe('Pagination.Link', () => {
     it('matches snapshot', () => {
-      const element = shallow(<Pagination.Link></Pagination.Link>);
+      const element = shallow(<Pagination.Link />);
       expect(element).toMatchSnapshot('Pagination.Link');
       element.unmount();
     });

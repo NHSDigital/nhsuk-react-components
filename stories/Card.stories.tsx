@@ -7,7 +7,13 @@ export const Standard = (): JSX.Element => (
     <Card.Content>
       <Card.Heading>If you need help now but it&apos;s not an emergency</Card.Heading>
       <Card.Description>
-        Go to <a href="#">111.nhs.uk</a> or <a href="#">call 111</a>
+        Go to
+        {' '}
+        <a href="#">111.nhs.uk</a>
+        {' '}
+        or
+        {' '}
+        <a href="#">call 111</a>
       </Card.Description>
     </Card.Content>
   </Card>
@@ -156,7 +162,9 @@ export const CardGroupQuarters = (): JSX.Element => (
       <Card clickable>
         <Card.Content>
           <p className="nhsuk-heading-xl nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1">
-            91 <span className="nhsuk-u-visually-hidden">Applicants</span>
+            91
+            {' '}
+            <span className="nhsuk-u-visually-hidden">Applicants</span>
           </p>
           <Card.Link
             href="#"
@@ -172,7 +180,9 @@ export const CardGroupQuarters = (): JSX.Element => (
       <Card clickable>
         <Card.Content>
           <p className="nhsuk-heading-xl nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1">
-            23 <span className="nhsuk-u-visually-hidden">Jobs</span>
+            23
+            {' '}
+            <span className="nhsuk-u-visually-hidden">Jobs</span>
           </p>
           <Card.Link
             href="#"
@@ -187,7 +197,9 @@ export const CardGroupQuarters = (): JSX.Element => (
       <Card clickable>
         <Card.Content>
           <p className="nhsuk-heading-xl nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1">
-            8 <span className="nhsuk-u-visually-hidden">Services</span>
+            8
+            {' '}
+            <span className="nhsuk-u-visually-hidden">Services</span>
           </p>
           <Card.Link
             href="#"
@@ -202,7 +214,9 @@ export const CardGroupQuarters = (): JSX.Element => (
       <Card clickable>
         <Card.Content>
           <p className="nhsuk-heading-xl nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1">
-            33 <span className="nhsuk-u-visually-hidden">Messages</span>
+            33
+            {' '}
+            <span className="nhsuk-u-visually-hidden">Messages</span>
           </p>
           <Card.Link
             href="#"

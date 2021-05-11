@@ -1,21 +1,21 @@
 import React from 'react';
-import HeadingLevel from '../HeadingLevel';
 import { shallow } from 'enzyme';
+import HeadingLevel from '../HeadingLevel';
 
 describe('HeadingLevel', () => {
   it('renders the correct elements', () => {
-    const h1Element = shallow(<HeadingLevel headingLevel="h1"></HeadingLevel>);
-    const H1Element = shallow(<HeadingLevel headingLevel="H1"></HeadingLevel>);
-    const h2Element = shallow(<HeadingLevel headingLevel="h2"></HeadingLevel>);
-    const H2Element = shallow(<HeadingLevel headingLevel="H2"></HeadingLevel>);
-    const h3Element = shallow(<HeadingLevel headingLevel="h3"></HeadingLevel>);
-    const H3Element = shallow(<HeadingLevel headingLevel="H3"></HeadingLevel>);
-    const h4Element = shallow(<HeadingLevel headingLevel="h4"></HeadingLevel>);
-    const H4Element = shallow(<HeadingLevel headingLevel="H4"></HeadingLevel>);
-    const h5Element = shallow(<HeadingLevel headingLevel="h5"></HeadingLevel>);
-    const H5Element = shallow(<HeadingLevel headingLevel="H5"></HeadingLevel>);
-    const h6Element = shallow(<HeadingLevel headingLevel="h6"></HeadingLevel>);
-    const H6Element = shallow(<HeadingLevel headingLevel="H6"></HeadingLevel>);
+    const h1Element = shallow(<HeadingLevel headingLevel="h1" />);
+    const H1Element = shallow(<HeadingLevel headingLevel="H1" />);
+    const h2Element = shallow(<HeadingLevel headingLevel="h2" />);
+    const H2Element = shallow(<HeadingLevel headingLevel="H2" />);
+    const h3Element = shallow(<HeadingLevel headingLevel="h3" />);
+    const H3Element = shallow(<HeadingLevel headingLevel="H3" />);
+    const h4Element = shallow(<HeadingLevel headingLevel="h4" />);
+    const H4Element = shallow(<HeadingLevel headingLevel="H4" />);
+    const h5Element = shallow(<HeadingLevel headingLevel="h5" />);
+    const H5Element = shallow(<HeadingLevel headingLevel="H5" />);
+    const h6Element = shallow(<HeadingLevel headingLevel="h6" />);
+    const H6Element = shallow(<HeadingLevel headingLevel="H6" />);
 
     expect(h1Element.type()).toBe('h1');
     expect(H1Element.type()).toBe('h1');

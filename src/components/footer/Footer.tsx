@@ -37,7 +37,9 @@ interface Footer extends React.FC<FooterProps> {
   Copyright: React.FC<HTMLProps<HTMLParagraphElement>>;
 }
 
-const Footer: Footer = ({ className, children, visuallyHiddenText, ...rest }) => (
+const Footer: Footer = ({
+  className, children, visuallyHiddenText, ...rest
+}) => (
   <footer {...rest}>
     <div className={classNames('nhsuk-footer', className)}>
       <Container>
