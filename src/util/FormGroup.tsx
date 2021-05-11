@@ -1,6 +1,4 @@
-import React, {
-  ReactNode, useState, useEffect, HTMLProps, useContext,
-} from 'react';
+import React, { ReactNode, useState, useEffect, HTMLProps, useContext } from 'react';
 import classNames from 'classnames';
 import Hint from '../components/hint/Hint';
 import ErrorMessage from '../components/error-message/ErrorMessage';
@@ -52,9 +50,8 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
     ...rest
   } = props;
   const [generatedID] = useState<string>(generateRandomID(inputType));
-  const { isFieldset, registerComponent, passError } = useContext<IFieldsetContext>(
-    FieldsetContext,
-  );
+  const { isFieldset, registerComponent, passError } =
+    useContext<IFieldsetContext>(FieldsetContext);
   const { disableErrorFromComponents } = useFormContext();
 
   const elementID = id || generatedID;
@@ -75,12 +72,12 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
     if (!isFieldset) return;
     passError(elementID, disableErrorFromComponents ? false : Boolean(error));
     return () => passError(elementID, false);
-  }, [elementID, error, isFieldset, disableErrorFromComponents, passError]);
+  }, [elementID, error, isFieldset]);
 
   useEffect(() => {
     registerComponent(elementID);
     return () => registerComponent(elementID, true);
-  }, [registerComponent, elementID]);
+  }, []);
 
   const { className: formGroupClassName, ...formGroupRestProps } = formGroupProps || {};
 
