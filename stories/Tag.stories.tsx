@@ -1,10 +1,9 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { Tag } from '../src';
 
-export const StandardTag = () => <Tag>Active</Tag>;
+export const StandardTag = (): JSX.Element => <Tag>Active</Tag>;
 
-export const AllColours = () => (
+export const AllColours = (): JSX.Element => (
   <div className="tag-wrapper">
     <Tag color="white">Started</Tag>
     <Tag color="grey">Not started</Tag>

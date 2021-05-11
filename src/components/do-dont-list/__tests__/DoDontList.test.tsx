@@ -50,7 +50,7 @@ describe('DoDontList', () => {
       );
       const dontList = mount(
         <DoDontList listType="dont">
-          <DoDontList.Item>Don't</DoDontList.Item>
+          <DoDontList.Item>Don&apos;t</DoDontList.Item>
         </DoDontList>,
       );
 

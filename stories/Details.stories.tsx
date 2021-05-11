@@ -1,14 +1,12 @@
 import React from 'react';
 import { Details } from '../src';
 
-export const Standard = () => (
+export const Standard = (): JSX.Element => (
   <Details>
     <Details.Summary>Where can I find my NHS number?</Details.Summary>
     <Details.Text>
       <p>An NHS number is a 10 digit number, like 485 777 3456.</p>
-      <p>
-        You can find your NHS number on any document sent to you by the NHS. This may include:
-      </p>
+      <p>You can find your NHS number on any document sent to you by the NHS. This may include:</p>
       <ul>
         <li>prescriptions</li>
         <li>test results</li>
@@ -16,12 +14,12 @@ export const Standard = () => (
         <li>appointment letters</li>
         <li>your NHS medical card</li>
       </ul>
-      <p>Ask your GP practice for help if you can't find your NHS number.</p>
+      <p>Ask your GP practice for help if you can&apos;t find your NHS number.</p>
     </Details.Text>
   </Details>
 );
 
-export const Expander = () => (
+export const Expander = (): JSX.Element => (
   <Details expander>
     <Details.Summary>Opening times</Details.Summary>
     <Details.Text>
@@ -69,7 +67,7 @@ export const Expander = () => (
   </Details>
 );
 
-export const ExpanderGroup = () => (
+export const ExpanderGroup = (): JSX.Element => (
   <Details.ExpanderGroup>
     <Details expander>
       <Details.Summary>How to measure your blood glucose levels</Details.Summary>
@@ -97,8 +95,8 @@ export const ExpanderGroup = () => (
           <li>before, during (take a break) and after exercise</li>
         </ul>
         <p>
-          This helps you understand your blood glucose levels and how they’re affected by meals
-          and exercise. It should help you have more stable blood glucose levels.
+          This helps you understand your blood glucose levels and how they’re affected by meals and
+          exercise. It should help you have more stable blood glucose levels.
         </p>
       </Details.Text>
     </Details>

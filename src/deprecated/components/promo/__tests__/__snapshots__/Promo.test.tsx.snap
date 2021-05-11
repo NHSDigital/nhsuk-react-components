@@ -9,11 +9,20 @@ exports[` 1`] = `
 `;
 
 exports[`Promo Promo.Heading matches snapshot: Promo.Heading 1`] = `
-<h3
-  className="nhsuk-promo__heading"
+<PromoHeading
+  headingLevel="h3"
 >
-  Heading
-</h3>
+  <HeadingLevel
+    className="nhsuk-promo__heading"
+    headingLevel="h3"
+  >
+    <h3
+      className="nhsuk-promo__heading"
+    >
+      Heading
+    </h3>
+  </HeadingLevel>
+</PromoHeading>
 `;
 
 exports[`Promo matches snapshot: Promo 1`] = `

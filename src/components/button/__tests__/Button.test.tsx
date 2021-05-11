@@ -110,6 +110,7 @@ describe('ButtonWrapper', () => {
 
   it('renders an anchor when given a href', () => {
     const component = mount(<ButtonWrapper href="/">Submit</ButtonWrapper>);
+    // eslint-disable-next-line jsx-a11y/anchor-is-valid
     expect(component.containsMatchingElement(<a className="nhsuk-button">Submit</a>)).toBeTruthy();
     component.unmount();
   });

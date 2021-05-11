@@ -1,4 +1,4 @@
-import React, { useEffect, SyntheticEvent, useState } from 'react';
+import React, { useEffect, SyntheticEvent } from 'react';
 import { Checkboxes } from '../../src';
 
 type CheckboxState = {
@@ -7,10 +7,10 @@ type CheckboxState = {
   box3: { name?: string; id?: string };
 };
 
-export const NoIDSupplied = () => {
-  const [checkbox1Ref, setCheckbox1Ref] = useState<HTMLInputElement | null>(null);
-  const [checkbox2Ref, setCheckbox2Ref] = useState<HTMLInputElement | null>(null);
-  const [checkbox3Ref, setCheckbox3Ref] = useState<HTMLInputElement | null>(null);
+export const NoIDSupplied = (): JSX.Element => {
+  const checkbox1Ref = React.useRef<HTMLInputElement>(null);
+  const checkbox2Ref = React.useRef<HTMLInputElement>(null);
+  const checkbox3Ref = React.useRef<HTMLInputElement>(null);
 
   const [checkboxState, setCheckboxState] = React.useState<CheckboxState>({
     box1: {
@@ -30,19 +30,19 @@ export const NoIDSupplied = () => {
   useEffect(() => {
     setCheckboxState({
       box1: {
-        name: checkbox1Ref?.name,
-        id: checkbox1Ref?.id,
+        name: checkbox1Ref.current?.name,
+        id: checkbox1Ref.current?.id,
       },
       box2: {
-        name: checkbox2Ref?.name,
-        id: checkbox2Ref?.id,
+        name: checkbox2Ref.current?.name,
+        id: checkbox2Ref.current?.id,
       },
       box3: {
-        name: checkbox3Ref?.name,
-        id: checkbox3Ref?.id,
+        name: checkbox3Ref.current?.name,
+        id: checkbox3Ref.current?.id,
       },
     });
-  }, [checkbox1Ref, checkbox2Ref, checkbox3Ref]);
+  }, [checkbox1Ref.current, checkbox2Ref.current, checkbox3Ref.current]);
 
   return (
     <div style={{ padding: 20 }}>
@@ -54,48 +54,24 @@ export const NoIDSupplied = () => {
       </ul>
       <h5>Results</h5>
       <ul className="nhsuk-hint">
-        <li>
-          Box 1 ID:
-          {' '}
-          {checkboxState.box1.id}
-        </li>
-        <li>
-          Box 2 ID:
-          {' '}
-          {checkboxState.box2.id}
-        </li>
-        <li>
-          Box 3 ID:
-          {' '}
-          {checkboxState.box3.id}
-        </li>
-        <li>
-          Box 1 Name:
-          {' '}
-          {checkboxState.box1.name}
-        </li>
-        <li>
-          Box 2 Name:
-          {' '}
-          {checkboxState.box2.name}
-        </li>
-        <li>
-          Box 3 Name:
-          {' '}
-          {checkboxState.box3.name}
-        </li>
+        <li>Box 1 ID: {checkboxState.box1.id}</li>
+        <li>Box 2 ID: {checkboxState.box2.id}</li>
+        <li>Box 3 ID: {checkboxState.box3.id}</li>
+        <li>Box 1 Name: {checkboxState.box1.name}</li>
+        <li>Box 2 Name: {checkboxState.box2.name}</li>
+        <li>Box 3 Name: {checkboxState.box3.name}</li>
       </ul>
       <h5>Component</h5>
       <Checkboxes>
-        <Checkboxes.Box inputRef={ref => setCheckbox1Ref(ref)}>Box 1</Checkboxes.Box>
-        <Checkboxes.Box inputRef={ref => setCheckbox2Ref(ref)}>Box 2</Checkboxes.Box>
-        <Checkboxes.Box inputRef={ref => setCheckbox3Ref(ref)}>Box 3</Checkboxes.Box>
+        <Checkboxes.Box inputRef={checkbox1Ref}>Box 1</Checkboxes.Box>
+        <Checkboxes.Box inputRef={checkbox2Ref}>Box 2</Checkboxes.Box>
+        <Checkboxes.Box inputRef={checkbox3Ref}>Box 3</Checkboxes.Box>
       </Checkboxes>
     </div>
   );
 };
 
-export const NameSupplied = () => {
+export const NameSupplied = (): JSX.Element => {
   const checkbox1Ref = React.useRef<HTMLInputElement>(null);
   const checkbox2Ref = React.useRef<HTMLInputElement>(null);
   const checkbox3Ref = React.useRef<HTMLInputElement>(null);
@@ -142,36 +118,12 @@ export const NameSupplied = () => {
       </ul>
       <h5>Results</h5>
       <ul className="nhsuk-hint">
-        <li>
-          Box 1 ID:
-          {' '}
-          {checkboxState.box1.id}
-        </li>
-        <li>
-          Box 2 ID:
-          {' '}
-          {checkboxState.box2.id}
-        </li>
-        <li>
-          Box 3 ID:
-          {' '}
-          {checkboxState.box3.id}
-        </li>
-        <li>
-          Box 1 Name:
-          {' '}
-          {checkboxState.box1.name}
-        </li>
-        <li>
-          Box 2 Name:
-          {' '}
-          {checkboxState.box2.name}
-        </li>
-        <li>
-          Box 3 Name:
-          {' '}
-          {checkboxState.box3.name}
-        </li>
+        <li>Box 1 ID: {checkboxState.box1.id}</li>
+        <li>Box 2 ID: {checkboxState.box2.id}</li>
+        <li>Box 3 ID: {checkboxState.box3.id}</li>
+        <li>Box 1 Name: {checkboxState.box1.name}</li>
+        <li>Box 2 Name: {checkboxState.box2.name}</li>
+        <li>Box 3 Name: {checkboxState.box3.name}</li>
       </ul>
       <h5>Component</h5>
       <Checkboxes name="name-supplied">
@@ -183,7 +135,7 @@ export const NameSupplied = () => {
   );
 };
 
-export const IDPrefixSupplied = () => {
+export const IDPrefixSupplied = (): JSX.Element => {
   const checkbox1Ref = React.useRef<HTMLInputElement>(null);
   const checkbox2Ref = React.useRef<HTMLInputElement>(null);
   const checkbox3Ref = React.useRef<HTMLInputElement>(null);
@@ -231,36 +183,12 @@ export const IDPrefixSupplied = () => {
       </ul>
       <h5>Results</h5>
       <ul className="nhsuk-hint">
-        <li>
-          Box 1 ID:
-          {' '}
-          {checkboxState.box1.id}
-        </li>
-        <li>
-          Box 2 ID:
-          {' '}
-          {checkboxState.box2.id}
-        </li>
-        <li>
-          Box 3 ID:
-          {' '}
-          {checkboxState.box3.id}
-        </li>
-        <li>
-          Box 1 Name:
-          {' '}
-          {checkboxState.box1.name}
-        </li>
-        <li>
-          Box 2 Name:
-          {' '}
-          {checkboxState.box2.name}
-        </li>
-        <li>
-          Box 3 Name:
-          {' '}
-          {checkboxState.box3.name}
-        </li>
+        <li>Box 1 ID: {checkboxState.box1.id}</li>
+        <li>Box 2 ID: {checkboxState.box2.id}</li>
+        <li>Box 3 ID: {checkboxState.box3.id}</li>
+        <li>Box 1 Name: {checkboxState.box1.name}</li>
+        <li>Box 2 Name: {checkboxState.box2.name}</li>
+        <li>Box 3 Name: {checkboxState.box3.name}</li>
       </ul>
       <h5>Component</h5>
       <Checkboxes idPrefix="idprefix">
@@ -272,7 +200,7 @@ export const IDPrefixSupplied = () => {
   );
 };
 
-export const IDPrefixAndNameSupplied = () => {
+export const IDPrefixAndNameSupplied = (): JSX.Element => {
   const checkbox1Ref = React.useRef<HTMLInputElement>(null);
   const checkbox2Ref = React.useRef<HTMLInputElement>(null);
   const checkbox3Ref = React.useRef<HTMLInputElement>(null);
@@ -320,36 +248,12 @@ export const IDPrefixAndNameSupplied = () => {
       </ul>
       <h5>Results</h5>
       <ul className="nhsuk-hint">
-        <li>
-          Box 1 ID:
-          {' '}
-          {checkboxState.box1.id}
-        </li>
-        <li>
-          Box 2 ID:
-          {' '}
-          {checkboxState.box2.id}
-        </li>
-        <li>
-          Box 3 ID:
-          {' '}
-          {checkboxState.box3.id}
-        </li>
-        <li>
-          Box 1 Name:
-          {' '}
-          {checkboxState.box1.name}
-        </li>
-        <li>
-          Box 2 Name:
-          {' '}
-          {checkboxState.box2.name}
-        </li>
-        <li>
-          Box 3 Name:
-          {' '}
-          {checkboxState.box3.name}
-        </li>
+        <li>Box 1 ID: {checkboxState.box1.id}</li>
+        <li>Box 2 ID: {checkboxState.box2.id}</li>
+        <li>Box 3 ID: {checkboxState.box3.id}</li>
+        <li>Box 1 Name: {checkboxState.box1.name}</li>
+        <li>Box 2 Name: {checkboxState.box2.name}</li>
+        <li>Box 3 Name: {checkboxState.box3.name}</li>
       </ul>
       <h5>Component</h5>
       <Checkboxes idPrefix="idprefix" name="testname">
@@ -361,8 +265,7 @@ export const IDPrefixAndNameSupplied = () => {
   );
 };
 
-
-export const OnChangeAndOnInputHandlers = () => {
+export const OnChangeAndOnInputHandlers = (): JSX.Element => {
   const [changeEventLog, setChangeEventLog] = React.useState<Array<string>>([]);
   const [inputEventLog, setInputEventLog] = React.useState<Array<string>>([]);
   const [currentValue, setCurrentValue] = React.useState<Array<string>>([]);
@@ -374,7 +277,7 @@ export const OnChangeAndOnInputHandlers = () => {
       `[${target.id}] Value: ${target.value}, Checked: ${target.checked}`,
     ]);
     if (currentValue.includes(target.value)) {
-      setCurrentValue(currentValue.filter(x => x !== target.value));
+      setCurrentValue(currentValue.filter((x) => x !== target.value));
     } else {
       setCurrentValue([...currentValue, target.value]);
     }

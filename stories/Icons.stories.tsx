@@ -15,19 +15,19 @@ import {
   TickIcon,
 } from '../src';
 
-export const ArrowLeft = () => <ArrowLeftIcon />;
-export const ArrowRight = () => <ArrowRightIcon />;
-export const ArrowRightCircle = () => <ArrowRightCircleIcon />;
-export const ChevronLeft = () => <ChevronLeftIcon />;
-export const ChevronRight = () => <ChevronRightIcon />;
-export const Close = () => <CloseIcon />;
-export const Cross = () => <CrossIcon />;
-export const SmallEmdash = () => <SmallEmdashIcon />;
-export const Emdash = () => <EmdashIcon />;
-export const Minus = () => <MinusIcon />;
-export const Plus = () => <PlusIcon />;
-export const Search = () => <SearchIcon />;
-export const Tick = () => <TickIcon />;
+export const ArrowLeft = (): JSX.Element => <ArrowLeftIcon />;
+export const ArrowRight = (): JSX.Element => <ArrowRightIcon />;
+export const ArrowRightCircle = (): JSX.Element => <ArrowRightCircleIcon />;
+export const ChevronLeft = (): JSX.Element => <ChevronLeftIcon />;
+export const ChevronRight = (): JSX.Element => <ChevronRightIcon />;
+export const Close = (): JSX.Element => <CloseIcon />;
+export const Cross = (): JSX.Element => <CrossIcon />;
+export const SmallEmdash = (): JSX.Element => <SmallEmdashIcon />;
+export const Emdash = (): JSX.Element => <EmdashIcon />;
+export const Minus = (): JSX.Element => <MinusIcon />;
+export const Plus = (): JSX.Element => <PlusIcon />;
+export const Search = (): JSX.Element => <SearchIcon />;
+export const Tick = (): JSX.Element => <TickIcon />;
 
 export default {
   title: 'Components/Icons',

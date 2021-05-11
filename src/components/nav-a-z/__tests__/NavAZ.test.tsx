@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+/* eslint-disable react/jsx-key */
 import React from 'react';
 import NavAZ from '..';
 import { shallow, mount } from 'enzyme';
@@ -13,7 +15,7 @@ describe('NavAZ', () => {
 
   it('renders fullAlphabet', () => {
     const element = mount(<NavAZ fullAlphabet />);
-    const expectedElements = alphabet.split('').map(letter => (
+    const expectedElements = alphabet.split('').map((letter) => (
       <a key={letter} className="nhsuk-nav-a-z__link">
         {letter}
       </a>

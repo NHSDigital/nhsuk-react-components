@@ -11,7 +11,7 @@ export interface RadioProps extends HTMLProps<HTMLInputElement> {
   conditional?: ReactNode;
   forceShowConditional?: boolean;
   conditionalWrapperProps?: HTMLProps<HTMLDivElement>;
-  inputRef?: (inputRef: HTMLInputElement | null) => any;
+  inputRef?: (inputRef: HTMLInputElement | null) => void;
 }
 
 const Radio: React.FC<RadioProps> = ({
@@ -62,7 +62,7 @@ const Radio: React.FC<RadioProps> = ({
     <>
       <div className="nhsuk-radios__item">
         <input
-          onChange={e => {
+          onChange={(e) => {
             setSelected(radioReference);
             if (onChange) onChange(e);
           }}

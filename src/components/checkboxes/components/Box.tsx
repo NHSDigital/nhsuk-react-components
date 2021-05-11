@@ -1,22 +1,28 @@
-import React, { HTMLProps, useContext, ReactNode, useEffect, useState } from 'react';
+import React, {
+  HTMLProps,
+  useContext,
+  ReactNode,
+  useEffect,
+  useState,
+  MutableRefObject,
+} from 'react';
 import classNames from 'classnames';
 import CheckboxContext, { ICheckboxContext } from '../CheckboxContext';
 import Label, { LabelProps } from '../../label/Label';
 import Hint, { HintProps } from '../../hint/Hint';
 
-type BoxProps = HTMLProps<HTMLInputElement> & {
+type BoxProps = Omit<HTMLProps<HTMLInputElement>, 'label'> & {
   labelProps?: LabelProps;
   hint?: string;
   hintProps?: HintProps;
   conditional?: ReactNode;
   forceShowConditional?: boolean;
   conditionalWrapperProps?: HTMLProps<HTMLDivElement>;
-  inputRef?: (ref: HTMLInputElement | null) => any;
+  inputRef?: MutableRefObject<HTMLInputElement | null>;
 };
 
 const Box: React.FC<BoxProps> = ({
   id,
-  label,
   labelProps,
   children,
   hint,
@@ -30,16 +36,16 @@ const Box: React.FC<BoxProps> = ({
   conditionalWrapperProps,
   ...rest
 }) => {
-  const { getBoxId, name, setConditional, unleaseReference, leaseReference } = useContext<
-  ICheckboxContext
-  >(CheckboxContext);
+  const { getBoxId, name, setConditional, unleaseReference, leaseReference } =
+    useContext<ICheckboxContext>(CheckboxContext);
   const [boxReference] = useState<string>(leaseReference());
   const [showConditional, setShowConditional] = useState<boolean>(!!(checked || defaultChecked));
   const inputID = id || getBoxId(boxReference);
 
   const { className: labelClassName, ...restLabelProps } = labelProps || {};
   const { className: hintClassName, ...restHintProps } = hintProps || {};
-  const { className: conditionalClassName, ...restConditionalProps } = conditionalWrapperProps || {};
+  const { className: conditionalClassName, ...restConditionalProps } =
+    conditionalWrapperProps || {};
 
   useEffect(() => () => unleaseReference(boxReference), []);
 
@@ -59,7 +65,7 @@ const Box: React.FC<BoxProps> = ({
       <div className="nhsuk-checkboxes__item">
         <input
           className="nhsuk-checkboxes__input"
-          onChange={e => {
+          onChange={(e) => {
             if (checked === undefined) setShowConditional(e.target.checked);
             if (onChange) onChange(e);
           }}

@@ -18,7 +18,7 @@ type RadiosState = {
 };
 
 class Radios extends PureComponent<RadiosProps, RadiosState> {
-  private radioCount: number = 0;
+  private radioCount = 0;
 
   private radioReferences: Array<string> = [];
 
@@ -55,17 +55,17 @@ class Radios extends PureComponent<RadiosProps, RadiosState> {
     return reference;
   };
 
-  unleaseReference = (reference: string) => {
-    this.radioReferences = this.radioReferences.filter(ref => ref !== reference);
+  unleaseReference = (reference: string): void => {
+    this.radioReferences = this.radioReferences.filter((ref) => ref !== reference);
   };
 
-  setConditional = (radioReference: string, hasConditional: boolean) => {
-    this.setState(state => {
+  setConditional = (radioReference: string, hasConditional: boolean): void => {
+    this.setState((state) => {
       const currentHasConditional = state.conditionalRadios.includes(radioReference);
       if (currentHasConditional && hasConditional === false) {
         return {
           ...state,
-          conditionalRadios: state.conditionalRadios.filter(ref => ref !== radioReference),
+          conditionalRadios: state.conditionalRadios.filter((ref) => ref !== radioReference),
         };
       }
       if (!currentHasConditional && hasConditional === true) {
@@ -78,13 +78,13 @@ class Radios extends PureComponent<RadiosProps, RadiosState> {
     });
   };
 
-  setSelected = (radioReference: string) => {
+  setSelected = (radioReference: string): void => {
     this.setState({
       selectedRadio: radioReference,
     });
   };
 
-  resetRadioIds = () => {
+  resetRadioIds = (): void => {
     this.radioCount = 0;
     this.radioIds = {};
   };
@@ -93,14 +93,15 @@ class Radios extends PureComponent<RadiosProps, RadiosState> {
 
   static Radio = Radio;
 
-  render() {
+  render(): JSX.Element {
     const { children, ...rest } = this.props;
     return (
       <FormGroup<RadiosProps> inputType="radios" {...rest}>
+        {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
         {({ className, inline, name, id, error, ...restRenderProps }) => {
           this.resetRadioIds();
           const contextValue: IRadiosContext = {
-            getRadioId: reference => this.getRadioId(id, reference),
+            getRadioId: (reference) => this.getRadioId(id, reference),
             selectedRadio: this.state.selectedRadio,
             setConditional: this.setConditional,
             setSelected: this.setSelected,

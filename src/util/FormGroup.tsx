@@ -33,7 +33,7 @@ type FormGroupProps<T> = FormElementProps & {
   inputType: 'input' | 'radios' | 'select' | 'checkboxes' | 'dateinput' | 'textarea';
 };
 
-const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T>) => {
+const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T>): JSX.Element => {
   const {
     children,
     hint,
@@ -70,15 +70,15 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
   } as FormElementRenderProps<T>;
 
   useEffect(() => {
-    if (!isFieldset) return () => {};
+    if (!isFieldset) return;
     passError(elementID, disableErrorFromComponents ? false : Boolean(error));
     return () => passError(elementID, false);
-  }, [elementID, error, isFieldset]);
+  }, [elementID, error, isFieldset, disableErrorFromComponents, passError]);
 
   useEffect(() => {
     registerComponent(elementID);
     return () => registerComponent(elementID, true);
-  }, []);
+  }, [registerComponent, elementID]);
 
   const { className: formGroupClassName, ...formGroupRestProps } = formGroupProps || {};
 

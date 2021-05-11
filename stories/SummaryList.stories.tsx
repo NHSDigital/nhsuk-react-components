@@ -1,8 +1,8 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { SummaryList, BodyText } from '../src';
 
-
-export const Standard = () => (
+export const Standard = (): JSX.Element => (
   <SummaryList>
     <SummaryList.Row>
       <SummaryList.Key>Name</SummaryList.Key>
@@ -44,8 +44,7 @@ export const Standard = () => (
   </SummaryList>
 );
 
-
-export const SummaryListWithoutActions = () => (
+export const SummaryListWithoutActions = (): JSX.Element => (
   <SummaryList>
     <SummaryList.Row>
       <SummaryList.Key>Name</SummaryList.Key>
@@ -75,7 +74,7 @@ export const SummaryListWithoutActions = () => (
   </SummaryList>
 );
 
-export const SummaryListWithoutBorder = () => (
+export const SummaryListWithoutBorder = (): JSX.Element => (
   <SummaryList noBorder>
     <SummaryList.Row>
       <SummaryList.Key>Name</SummaryList.Key>

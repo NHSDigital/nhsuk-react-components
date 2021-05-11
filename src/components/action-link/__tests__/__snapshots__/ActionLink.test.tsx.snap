@@ -8,7 +8,7 @@ exports[`ActionLink matches snapshot: ActionLink 1`] = `
     className="nhsuk-action-link__link"
     href="/test"
   >
-    <Component />
+    <ArrowRightCircle />
     <span
       className="nhsuk-action-link__text"
     >

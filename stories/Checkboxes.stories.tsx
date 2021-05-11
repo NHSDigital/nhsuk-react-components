@@ -1,8 +1,8 @@
 import React from 'react';
-import { Fieldset, Checkboxes, Input, Hint } from '../src';
+import { Fieldset, Checkboxes, Input } from '../src';
 import { Button } from '../src/components/button';
 
-export const Standard = () => (
+export const Standard = (): JSX.Element => (
   <Fieldset aria-describedby="nationality--hint">
     <Fieldset.Legend>What is your nationality?</Fieldset.Legend>
     <Checkboxes
@@ -17,7 +17,7 @@ export const Standard = () => (
   </Fieldset>
 );
 
-export const WithHintText = () => (
+export const WithHintText = (): JSX.Element => (
   <Fieldset>
     <Fieldset.Legend isPageHeading>How do you want to sign in?</Fieldset.Legend>
     <Checkboxes>
@@ -42,7 +42,7 @@ export const WithHintText = () => (
   </Fieldset>
 );
 
-export const WithDisabledItem = () => (
+export const WithDisabledItem = (): JSX.Element => (
   <Checkboxes id="colours" name="colours">
     <Checkboxes.Box value="red">Red</Checkboxes.Box>
     <Checkboxes.Box value="green">Green</Checkboxes.Box>
@@ -52,7 +52,7 @@ export const WithDisabledItem = () => (
   </Checkboxes>
 );
 
-export const WithConditionalContent = () => (
+export const WithConditionalContent = (): JSX.Element => (
   <Fieldset aria-describedby="waste--hint">
     <Fieldset.Legend isPageHeading>
       Which types of waste do you transport regularly?
@@ -65,7 +65,7 @@ export const WithConditionalContent = () => (
   </Fieldset>
 );
 
-export const WithLegendAsPageHeading = () => (
+export const WithLegendAsPageHeading = (): JSX.Element => (
   <Fieldset aria-describedby="waste--hint">
     <Fieldset.Legend isPageHeading>
       Which types of waste do you transport regularly?
@@ -78,7 +78,7 @@ export const WithLegendAsPageHeading = () => (
   </Fieldset>
 );
 
-export const WithErrorBoolean = () => {
+export const WithErrorBoolean = (): JSX.Element => {
   const [errorToggle, setErrorToggle] = React.useState(true);
   return (
     <>
@@ -105,7 +105,7 @@ export const WithErrorBoolean = () => {
 };
 WithErrorBoolean.storyName = 'With Error (Boolean)';
 
-export const WithErrorString = () => {
+export const WithErrorString = (): JSX.Element => {
   const [error, setError] = React.useState('Please select an option');
   return (
     <>
@@ -119,7 +119,7 @@ export const WithErrorString = () => {
           <Checkboxes.Box value="farm">Farm or agricultural waste</Checkboxes.Box>
         </Checkboxes>
       </Fieldset>
-      <Input label="Error Value" value={error} onChange={e => setError(e.currentTarget.value)} />
+      <Input label="Error Value" value={error} onChange={(e) => setError(e.currentTarget.value)} />
     </>
   );
 };

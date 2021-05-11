@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import { mount } from 'enzyme';
 import React from 'react';
 import Card from '../Card';

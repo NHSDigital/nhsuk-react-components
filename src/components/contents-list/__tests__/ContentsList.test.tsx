@@ -47,6 +47,7 @@ describe('ContentsList', () => {
     it('normally renders as anchor', () => {
       const element = shallow(<ContentsList.Item>Content</ContentsList.Item>);
       expect(
+        // eslint-disable-next-line jsx-a11y/anchor-is-valid
         element.containsMatchingElement(<a className="nhsuk-contents-list__link">Content</a>),
       ).toBeTruthy();
       element.unmount();

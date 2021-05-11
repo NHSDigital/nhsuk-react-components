@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavAZ } from '../src';
 
-export const Basic = () => (
+export const Basic = (): JSX.Element => (
   <NavAZ>
     <NavAZ.LinkItem href="#A">A</NavAZ.LinkItem>
     <NavAZ.LinkItem href="#B">B</NavAZ.LinkItem>
@@ -32,19 +32,19 @@ export const Basic = () => (
   </NavAZ>
 );
 
-export const UsingFullAlphabetProp = () => <NavAZ fullAlphabet />;
+export const UsingFullAlphabetProp = (): JSX.Element => <NavAZ fullAlphabet />;
 
-export const UsingFullAlphabetPropWithDisabledLetters = () => (
+export const UsingFullAlphabetPropWithDisabledLetters = (): JSX.Element => (
   <NavAZ fullAlphabet disabledLetters={['A', 'B', 'C']} />
 );
 
-export const UsingFullAlphabetPropWithRemovedLetters = () => (
+export const UsingFullAlphabetPropWithRemovedLetters = (): JSX.Element => (
   <NavAZ fullAlphabet removedLetters={['A', 'B', 'C']} />
 );
 
-export const UsingIndividualLetters = () => <NavAZ letters={['A', 'B', 'C']} />;
+export const UsingIndividualLetters = (): JSX.Element => <NavAZ letters={['A', 'B', 'C']} />;
 
-export const UsingACombinationOfProps = () => (
+export const UsingACombinationOfProps = (): JSX.Element => (
   <NavAZ
     letters={'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('')}
     disabledLetters={'QWERTY'.split('')}

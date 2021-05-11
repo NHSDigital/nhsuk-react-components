@@ -16,6 +16,7 @@ export interface IHeaderContext {
 }
 
 export default createContext<IHeaderContext>({
+  /* eslint-disable @typescript-eslint/no-empty-function */
   orgName: undefined,
   serviceName: undefined,
   orgSplit: undefined,

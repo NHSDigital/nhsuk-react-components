@@ -1,27 +1,26 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { Panel } from '../src/deprecated';
 
-export const Standard = () => (
+export const Standard = (): JSX.Element => (
   <Panel>
     <h3>Live Well</h3>
     <p>Advice, tips and tools to help you make the best choices about your health and wellbeing</p>
   </Panel>
 );
 
-export const WithLabel = () => (
+export const WithLabel = (): JSX.Element => (
   <Panel label="Live well">
     <p>Advice, tips and tools to help you make the best choices about your health and wellbeing</p>
   </Panel>
 );
 
-export const GreyPanel = () => (
+export const GreyPanel = (): JSX.Element => (
   <Panel grey>
     <p>Advice, tips and tools to help you make the best choices about your health and wellbeing</p>
   </Panel>
 );
 
-export const PanelGroup = () => (
+export const PanelGroup = (): JSX.Element => (
   <>
     <Panel.Group>
       <Panel>

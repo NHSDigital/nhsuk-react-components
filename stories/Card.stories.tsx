@@ -1,7 +1,8 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { Card } from '../src';
 
-export const Standard = () => (
+export const Standard = (): JSX.Element => (
   <Card>
     <Card.Content>
       <Card.Heading>If you need help now but it&apos;s not an emergency</Card.Heading>
@@ -12,7 +13,7 @@ export const Standard = () => (
   </Card>
 );
 
-export const ClickableCard = () => (
+export const ClickableCard = (): JSX.Element => (
   <Card clickable>
     <Card.Content>
       <Card.Heading className="nhsuk-heading-m">
@@ -25,7 +26,7 @@ export const ClickableCard = () => (
   </Card>
 );
 
-export const CardWithImage = () => (
+export const CardWithImage = (): JSX.Element => (
   <Card clickable>
     <Card.Image
       src="https://assets.nhs.uk/prod/images/A_0218_exercise-main_FKW1X7.width-690.jpg"
@@ -42,7 +43,7 @@ export const CardWithImage = () => (
   </Card>
 );
 
-export const FeatureCard = () => (
+export const FeatureCard = (): JSX.Element => (
   <Card feature>
     <Card.Content>
       <Card.Heading>Feature card heading</Card.Heading>
@@ -51,7 +52,7 @@ export const FeatureCard = () => (
   </Card>
 );
 
-export const CardGroupHalves = () => (
+export const CardGroupHalves = (): JSX.Element => (
   <Card.Group>
     <Card.GroupItem width="one-half">
       <Card clickable>
@@ -106,7 +107,7 @@ export const CardGroupHalves = () => (
 
 CardGroupHalves.storyName = 'Card Group (Halves)';
 
-export const CardGroupThirds = () => (
+export const CardGroupThirds = (): JSX.Element => (
   <Card.Group>
     <Card.GroupItem width="one-third">
       <Card clickable>
@@ -149,7 +150,7 @@ export const CardGroupThirds = () => (
 );
 CardGroupThirds.storyName = 'Card Group (Thirds)';
 
-export const CardGroupQuarters = () => (
+export const CardGroupQuarters = (): JSX.Element => (
   <Card.Group>
     <Card.GroupItem width="one-quarter">
       <Card clickable>

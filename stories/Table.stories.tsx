@@ -1,7 +1,7 @@
 import React from 'react';
 import { Table } from '../src';
 
-export const StandardTable = () => (
+export const StandardTable = (): JSX.Element => (
   <Table caption="Skin symptoms and possible causes">
     <Table.Head>
       <Table.Row>
@@ -26,7 +26,7 @@ export const StandardTable = () => (
   </Table>
 );
 
-export const TablePanel = () => (
+export const TablePanel = (): JSX.Element => (
   <Table.Panel heading="Conditions similar to impetigo">
     <Table caption="Other possible causes of your symptoms">
       <Table.Head>

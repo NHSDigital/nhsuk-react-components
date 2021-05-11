@@ -55,7 +55,7 @@ describe('Hero', () => {
 
   describe('Hero.Text', () => {
     it('matches snapshot', () => {
-      const component = shallow(<Hero.Text>Text</Hero.Text>);
+      const component = mount(<Hero.Text>Text</Hero.Text>);
       expect(component.text()).toBe('Text');
       expect(component).toMatchSnapshot('Hero.Text');
       component.unmount();
@@ -64,7 +64,7 @@ describe('Hero', () => {
 
   describe('Hero.Heading', () => {
     it('matches snapshot', () => {
-      const component = shallow(<Hero.Heading>Text</Hero.Heading>);
+      const component = mount(<Hero.Heading>Text</Hero.Heading>);
       expect(component.text()).toBe('Text');
       expect(component).toMatchSnapshot('Hero.Heading');
       component.unmount();

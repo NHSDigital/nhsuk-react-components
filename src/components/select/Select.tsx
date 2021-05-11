@@ -17,11 +17,7 @@ const Select: ISelect = ({ children, ...rest }) => (
   <FormGroup<ISelectProps> inputType="select" {...rest}>
     {({ className, error, selectRef, ...restRenderProps }) => (
       <select
-        className={classNames(
-          'nhsuk-select',
-          { 'nhsuk-select--error': error },
-          className,
-        )}
+        className={classNames('nhsuk-select', { 'nhsuk-select--error': error }, className)}
         ref={selectRef}
         {...restRenderProps}
       >
@@ -31,9 +27,7 @@ const Select: ISelect = ({ children, ...rest }) => (
   </FormGroup>
 );
 
-const Option: React.FC<HTMLProps<HTMLOptionElement>> = ({ className, ...rest }) => (
-  <option {...rest} />
-);
+const Option: React.FC<HTMLProps<HTMLOptionElement>> = (props) => <option {...props} />;
 
 Select.Option = Option;
 

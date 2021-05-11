@@ -1,6 +1,6 @@
-import { addons } from "@storybook/addons";
-import nhsTheme from "./theme";
+import { addons } from '@storybook/addons';
+import nhsTheme from './theme';
 
 addons.setConfig({
-    theme: nhsTheme
+  theme: nhsTheme,
 });
