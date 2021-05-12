@@ -1,6 +1,7 @@
 import React from 'react';
-import { Fieldset, Checkboxes, Input } from '../src';
+import { Fieldset, Checkboxes, Input, Label, Hint, ErrorMessage } from '../src';
 import { Button } from '../src/components/button';
+import FormGroup from '../src/components/formgroup';
 
 export const Standard = (): JSX.Element => (
   <Fieldset aria-describedby="nationality--hint">
@@ -124,6 +125,21 @@ export const WithErrorString = (): JSX.Element => {
   );
 };
 WithErrorString.storyName = 'With Error (String)';
+
+export const WithCustomFormGroup = (): JSX.Element => (
+  <FormGroup>
+    <Fieldset>
+      <Label>Nationality</Label>
+      <Hint>If you have more than 1 nationality, select all options that are relevant to you.</Hint>
+      <ErrorMessage>Something went wrong.</ErrorMessage>
+      <Checkboxes name="nationality" id="nationality">
+        <Checkboxes.Box value="british">British</Checkboxes.Box>
+        <Checkboxes.Box value="irish">Irish</Checkboxes.Box>
+        <Checkboxes.Box value="other">Citizen of another country</Checkboxes.Box>
+      </Checkboxes>
+    </Fieldset>
+  </FormGroup>
+);
 
 export default {
   title: 'Components/Checkboxes',

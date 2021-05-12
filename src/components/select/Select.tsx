@@ -1,8 +1,7 @@
-import React, { HTMLProps, MutableRefObject, useContext, useEffect } from 'react';
+import React, { HTMLProps, MutableRefObject } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '../../util/types/FormTypes';
-import FormGroup from '../../util/FormGroup';
-import { FormGroupContext } from '../formgroup/FormGroupContext';
+import useFormGroup from '../../util/hooks/UseFormGroup';
 
 //  SelectProps = HTMLProps<HTMLSelectElement> & FormElementProps;
 interface ISelectProps extends HTMLProps<HTMLSelectElement>, FormElementProps {
@@ -14,39 +13,21 @@ interface ISelect extends React.FC<ISelectProps> {
 }
 
 const Select: ISelect = (props) => {
-  const { isInFormGroup, setInputID } = useContext(FormGroupContext);
-  useEffect(() => {
-    if (isInFormGroup && props.id) {
-      setInputID(props.id);
-      return () => {
-        setInputID(undefined);
-      };
-    }
-  }, [isInFormGroup, props.id]);
-  const { width, children, className, error, hint, label, ...rest } = props;
+  const { FormGroupWrapper, LabelBlock, wrapperProps, renderProps } = useFormGroup<ISelectProps>(
+    'select',
+    props,
+  );
+  const { className, error, selectRef, ...rest } = renderProps;
 
-  if (isInFormGroup) {
-    return (
+  return (
+    <FormGroupWrapper {...wrapperProps}>
+      {LabelBlock}
       <select
         className={classNames('nhsuk-select', { 'nhsuk-select--error': error }, className)}
+        ref={selectRef}
         {...rest}
-      >
-        {children}
-      </select>
-    );
-  }
-  return (
-    <FormGroup<ISelectProps> inputType="select" {...rest}>
-      {({ selectRef, ...restRenderProps }) => (
-        <select
-          className={classNames('nhsuk-select', { 'nhsuk-select--error': error }, className)}
-          ref={selectRef}
-          {...restRenderProps}
-        >
-          {children}
-        </select>
-      )}
-    </FormGroup>
+      />
+    </FormGroupWrapper>
   );
 };
 

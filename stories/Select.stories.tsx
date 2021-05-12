@@ -45,6 +45,7 @@ SelectWithErrorBoolean.storyName = 'Select With Error (Boolean)';
 
 export const SelectWithErrorString = (): JSX.Element => {
   const [error, setError] = React.useState<string>('Error message goes here');
+
   return (
     <>
       <Select error={error} label="Label text goes here">

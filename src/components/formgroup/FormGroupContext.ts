@@ -6,7 +6,7 @@ export interface IFormGroupContext {
   setInputID: (inputID: string | undefined) => void;
   error: boolean | undefined;
   setError: (error: boolean | undefined) => void;
-  disableErrorFromComponents: boolean;
+  // disableErrorFromComponents: boolean;
 }
 
 const FormGroupContext = createContext<IFormGroupContext>({
@@ -16,7 +16,7 @@ const FormGroupContext = createContext<IFormGroupContext>({
   setInputID: () => {},
   error: false,
   setError: () => {},
-  disableErrorFromComponents: false,
+  // disableErrorFromComponents: false,
 });
 
 // eslint-disable-next-line max-len

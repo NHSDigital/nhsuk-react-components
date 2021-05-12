@@ -9,10 +9,9 @@ export interface LabelProps extends Omit<HTMLProps<HTMLLabelElement>, 'size'> {
   size?: NHSUKSize;
 }
 
-const BaseLabel: React.FC<LabelProps> = (props) => {
-  const { id, className, bold, size, isPageHeading, ...rest } = props;
+const BaseLabel: React.FC<LabelProps> = ({ id, className, bold, size, isPageHeading, ...rest }) => {
   const { inputID } = useContext(FormGroupContext);
-  const labelId = props.id || `${inputID}--label` || undefined;
+  const labelId = id || (inputID ? `${inputID}--label` : undefined);
 
   return (
     // eslint-disable-next-line jsx-a11y/label-has-associated-control

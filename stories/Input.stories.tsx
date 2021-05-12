@@ -29,7 +29,7 @@ export const WithErrorString = (): JSX.Element => (
   <Input
     id="input-with-error-message"
     name="test-name-3"
-    label="National Insurance Number"
+    label={<span>National Insurance Number</span>}
     error="Error message goes here"
     hint="It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
   />
@@ -49,6 +49,7 @@ export const WithFormGroup = (): JSX.Element => (
     <Input
       hint="It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
       label="National Insurance Number"
+      error="TestError"
       width="10"
     />
   </FormGroup>
@@ -90,8 +91,8 @@ WithFormGroupHintAndLabel.storyName = 'With Form Group, Hint and Label';
 
 export const WithFormGroupErrorHintAndLabel = (): JSX.Element => (
   <FormGroup>
-    <Hint>This is a Hint</Hint>
     <Label>Input Label</Label>
+    <Hint>This is a Hint</Hint>
     <ErrorMessage>This is a error message</ErrorMessage>
     <Input id="input-id4" width="10" />
   </FormGroup>
