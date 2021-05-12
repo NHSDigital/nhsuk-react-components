@@ -1,20 +1,19 @@
-import React, { HTMLProps, useContext, useEffect } from 'react';
-
 import { FormElementProps } from '../../util/types/FormTypes';
+
+import React, { HTMLProps, useContext, useEffect, MutableRefObject } from 'react';
 import FormGroup from '../../util/FormGroup';
-// eslint-disable-next-line import/no-named-as-default
 import FormGroupContext from '../formgroup/FormGroupContext';
 import { InputWidth } from '../../util/types/NHSUKTypes';
-// eslint-disable-next-line
+
 import classNames from 'classnames';
 
 interface InputProps extends HTMLProps<HTMLInputElement>, FormElementProps {
-  inputRef?: (inputRef: HTMLInputElement | null) => any;
+  inputRef?: MutableRefObject<HTMLInputElement | null>;
   width?: InputWidth;
   disableErrorLine?: boolean;
 }
 
-const Input: React.FC<InputProps> = props => {
+const Input: React.FC<InputProps> = (props) => {
   const { isInFormGroup, setInputID } = useContext(FormGroupContext);
   useEffect(() => {
     if (isInFormGroup && props.id) {
@@ -31,12 +30,12 @@ const Input: React.FC<InputProps> = props => {
   }
   return (
     <FormGroup<InputProps> {...props} inputType="input">
-      {renderProps => <InputElement {...renderProps} />}
+      {(renderProps) => <InputElement {...renderProps} />}
     </FormGroup>
   );
 };
 
-const InputElement: React.FC<InputProps> = props => {
+const InputElement: React.FC<InputProps> = (props) => {
   const { width, className, error, inputRef, hint, label, ...rest } = props;
   return (
     <input

@@ -57,7 +57,7 @@ export const TextareaWithErrorString = () => {
         rows={5}
         label="Why can&#39;t you provide a National Insurance number?"
       />
-      <Input onChange={e => setError(e.currentTarget.value)} value={error} />
+      <Input onChange={(e) => setError(e.currentTarget.value)} value={error} />
     </>
   );
 };
@@ -75,8 +75,7 @@ export const TextareaWithFormGroup = () => (
     />
   </FormGroup>
 );
-
-TextareaWithFormGroup.storyName = 'Textarea Form Group, Label, Hint (with error)';
+TextareaWithFormGroup.storyName = 'Textarea Form Group, Label and Hint';
 
 export const TextareaWithFormGroupLabelHintErrorString = () => (
   <FormGroup>
