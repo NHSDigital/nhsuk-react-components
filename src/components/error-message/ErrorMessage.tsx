@@ -17,8 +17,6 @@ const ErrorMessage: React.FC<ErrorMessageProps> = (props) => {
       setError(Boolean(children));
       return () => setError(undefined);
     }
-
-    return () => {};
   }, [isInFormGroup, inputID]);
 
   const errorMessageId = id || inputID ? `${inputID}--error-message` : undefined;

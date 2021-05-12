@@ -1,6 +1,5 @@
 import React, { HTMLProps, useState } from 'react';
-import { FormGroupContext } from './FormGroupContext';
-// eslint-disable-next-line
+import FormGroupContext from './FormGroupContext';
 import classNames from 'classnames';
 
 interface FormGroupProps extends HTMLProps<HTMLDivElement> {
@@ -9,7 +8,7 @@ interface FormGroupProps extends HTMLProps<HTMLDivElement> {
   disableErrorFromComponents?: boolean;
 }
 
-const FormGroup: React.FC<FormGroupProps> = props => {
+const FormGroup: React.FC<FormGroupProps> = (props) => {
   const [inputID, setInputID] = useState<string>();
   const [error, setError] = useState<boolean>();
   const { children, className, disableErrorLine, disableErrorFromComponents, ...rest } = props;

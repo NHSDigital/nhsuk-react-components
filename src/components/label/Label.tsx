@@ -9,7 +9,7 @@ export interface LabelProps extends Omit<HTMLProps<HTMLLabelElement>, 'size'> {
   size?: NHSUKSize;
 }
 
-const BaseLabel: React.FC<LabelProps> = props => {
+const BaseLabel: React.FC<LabelProps> = (props) => {
   const { id, className, bold, size, isPageHeading, ...rest } = props;
   const { inputID } = useContext(FormGroupContext);
   const labelId = props.id || `${inputID}--label` || undefined;

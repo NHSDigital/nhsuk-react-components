@@ -1,6 +1,6 @@
 import React from 'react';
-import BodyText from '../BodyText';
 import { shallow } from 'enzyme';
+import BodyText from '../BodyText';
 
 describe('BodyText', () => {
   it('matches snapshot', () => {

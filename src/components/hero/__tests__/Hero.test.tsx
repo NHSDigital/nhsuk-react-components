@@ -1,6 +1,6 @@
 import React from 'react';
-import Hero from '..';
 import { shallow, mount } from 'enzyme';
+import Hero from '..';
 
 describe('Hero', () => {
   it('matches snapshot', () => {
@@ -11,7 +11,7 @@ describe('Hero', () => {
   });
 
   it('adds correct attributes when imageSrc is provided', () => {
-    const component = shallow(<Hero imageSrc="image.png"></Hero>);
+    const component = shallow(<Hero imageSrc="image.png" />);
     expect(component.hasClass('nhsuk-hero--image')).toBeTruthy();
     expect(component.prop('style')).toEqual({ backgroundImage: "url('image.png')" });
     expect(component.find('.nhsuk-hero__overlay').exists()).toBeTruthy();
@@ -48,14 +48,14 @@ describe('Hero', () => {
   });
 
   it('HeroContent renders null with no children', () => {
-    const component = mount(<Hero></Hero>);
+    const component = mount(<Hero />);
     expect(component.find('.nhsuk-width-container').exists()).toBeFalsy();
     component.unmount();
   });
 
   describe('Hero.Text', () => {
     it('matches snapshot', () => {
-      const component = shallow(<Hero.Text>Text</Hero.Text>);
+      const component = mount(<Hero.Text>Text</Hero.Text>);
       expect(component.text()).toBe('Text');
       expect(component).toMatchSnapshot('Hero.Text');
       component.unmount();
@@ -64,7 +64,7 @@ describe('Hero', () => {
 
   describe('Hero.Heading', () => {
     it('matches snapshot', () => {
-      const component = shallow(<Hero.Heading>Text</Hero.Heading>);
+      const component = mount(<Hero.Heading>Text</Hero.Heading>);
       expect(component.text()).toBe('Text');
       expect(component).toMatchSnapshot('Hero.Heading');
       component.unmount();

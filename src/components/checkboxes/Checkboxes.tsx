@@ -19,7 +19,7 @@ type CheckboxesState = {
 class Checkboxes extends PureComponent<CheckboxesProps, CheckboxesState> {
   static Box = Box;
 
-  private boxCount: number = 0;
+  private boxCount = 0;
 
   private boxReferences: Array<string> = [];
 
@@ -41,11 +41,11 @@ class Checkboxes extends PureComponent<CheckboxesProps, CheckboxesState> {
     return reference;
   };
 
-  unleaseReference = (reference: string) => {
+  unleaseReference = (reference: string): void => {
     this.boxReferences = this.boxReferences.filter((ref) => ref !== reference);
   };
 
-  setConditional = (boxReference: string, hasConditional: boolean) => {
+  setConditional = (boxReference: string, hasConditional: boolean): void => {
     this.setState((state) => {
       const currentHasConditional = state.conditionalBoxes.includes(boxReference);
       if (currentHasConditional && hasConditional === false) {
@@ -74,21 +74,20 @@ class Checkboxes extends PureComponent<CheckboxesProps, CheckboxesState> {
     return this.boxIds[reference];
   };
 
-  resetBoxIds = () => {
+  resetBoxIds = (): void => {
     this.boxCount = 0;
     this.boxIds = {};
   };
 
-  render() {
+  render(): JSX.Element {
     const { children, ...rest } = this.props;
-    const { isInFormGroup } = useContext(FormGroupContext);
-    if (isInFormGroup) {
-      return {
-        // TODO: this
-      };
-    }
+    // const { isInFormGroup } = useContext(FormGroupContext);
+    // if (isInFormGroup) {
+    //   return null;
+    // }
     return (
       <FormGroup<CheckboxesProps> inputType="checkboxes" {...rest}>
+        {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
         {({ className, name, id, idPrefix, ...restRenderProps }) => {
           this.resetBoxIds();
           const containsConditional = this.state.conditionalBoxes.length > 0;

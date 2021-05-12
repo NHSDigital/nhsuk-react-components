@@ -22,7 +22,6 @@ const Select: ISelect = (props) => {
         setInputID(undefined);
       };
     }
-    return () => {};
   }, [isInFormGroup, props.id]);
   const { width, children, className, error, hint, label, ...rest } = props;
 
@@ -51,9 +50,7 @@ const Select: ISelect = (props) => {
   );
 };
 
-const Option: React.FC<HTMLProps<HTMLOptionElement>> = ({ className, ...rest }) => (
-  <option {...rest} />
-);
+const Option: React.FC<HTMLProps<HTMLOptionElement>> = (props) => <option {...props} />;
 
 Select.Option = Option;
 

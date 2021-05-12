@@ -1,7 +1,7 @@
-import DateInputContext, { IDateInputContext } from './DateInputContext';
+import React, { HTMLProps, PureComponent, ChangeEvent } from 'react';
+import classNames from 'classnames';
 import { DayInput, MonthInput, YearInput } from './components/IndividualDateInputs';
-import React, { ChangeEvent, HTMLProps, PureComponent } from 'react';
-
+import DateInputContext, { IDateInputContext } from './DateInputContext';
 import { FormElementProps } from '../../util/types/FormTypes';
 import FormGroup from '../../util/FormGroup';
 
@@ -22,7 +22,7 @@ interface DateInputProps
   autoSelectNext?: boolean;
   value?: Partial<DateInputValue>;
   defaultValue?: Partial<DateInputValue>;
-  onChange?: (e: DateInputChangeEvent) => any;
+  onChange?: (e: DateInputChangeEvent) => void;
 }
 
 interface DateInputState {
@@ -59,14 +59,14 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
     this.yearRef = null;
   }
 
-  componentDidUpdate(prevProps: DateInputProps) {
+  componentDidUpdate(prevProps: DateInputProps): void {
     if (this.props.value && prevProps.value !== this.props.value) {
       // This is the only way that we can update our internal state
       // when the value updates. We check if the value has changed first,
       // preventing an infinite loop.
       //
       // eslint-disable-next-line react/no-did-update-set-state
-      this.setState(state => {
+      this.setState((state) => {
         if (!this.props.value) return state;
 
         const newState = { ...state };
@@ -80,7 +80,7 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
     }
   }
 
-  handleSelectNext = (inputType: 'day' | 'month' | 'year', value: string) => {
+  handleSelectNext = (inputType: 'day' | 'month' | 'year', value: string): void => {
     if (!this.props.autoSelectNext) return;
     if (inputType === 'day' && value.length === 2 && this.monthRef) {
       this.monthRef.focus();
@@ -89,10 +89,13 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
     }
   };
 
-  handleChange = (inputType: 'day' | 'month' | 'year', event: ChangeEvent<HTMLInputElement>) => {
+  handleChange = (
+    inputType: 'day' | 'month' | 'year',
+    event: ChangeEvent<HTMLInputElement>,
+  ): void => {
     this.handleSelectNext(inputType, event.target.value);
     event.stopPropagation();
-    this.setState(state => {
+    this.setState((state) => {
       const newEventValue = {
         ...state.values,
         [inputType]: event.target.value,
@@ -109,16 +112,18 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
     });
   };
 
-  registerRef = (inputType: 'day' | 'month' | 'year', ref: HTMLInputElement | null) => {
+  registerRef = (inputType: 'day' | 'month' | 'year', ref: HTMLInputElement | null): void => {
     if (inputType === 'month') this.monthRef = ref;
     if (inputType === 'year') this.yearRef = ref;
   };
 
-  render() {
+  render(): JSX.Element {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { children, onChange, value, defaultValue, ...rest } = this.props;
 
     return (
       <FormGroup<Omit<DateInputProps, 'value' | 'defaultValue'>> inputType="dateinput" {...rest}>
+        {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
         {({ className, name, id, error, autoSelectNext, ...restRenderProps }) => {
           const contextValue: IDateInputContext = {
             id,
@@ -130,7 +135,7 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
             registerRef: this.registerRef,
           };
           return (
-            <div className="nhsuk-date-input" {...restRenderProps} id={id}>
+            <div className={classNames('nhsuk-date-input', className)} {...restRenderProps} id={id}>
               <DateInputContext.Provider value={contextValue}>
                 {children || (
                   <>

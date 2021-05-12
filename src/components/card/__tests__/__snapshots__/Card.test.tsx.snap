@@ -148,13 +148,16 @@ exports[`Card matches snapshot 1`] = `
           <p
             className="nhsuk-card__description"
           >
-            Go to 
+            Go to
+             
             <a
               href="#"
             >
               111.nhs.uk
             </a>
-             or 
+             
+            or
+             
             <a
               href="#"
             >

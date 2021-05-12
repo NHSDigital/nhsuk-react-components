@@ -6,7 +6,7 @@ import { FormGroupContext } from '../formgroup/FormGroupContext';
 
 type TextareaProps = HTMLProps<HTMLTextAreaElement> & FormElementProps;
 
-const Textarea: React.FC<TextareaProps> = props => {
+const Textarea: React.FC<TextareaProps> = (props) => {
   const { isInFormGroup, setInputID } = useContext(FormGroupContext);
   useEffect(() => {
     if (isInFormGroup && props.id) {
@@ -15,7 +15,6 @@ const Textarea: React.FC<TextareaProps> = props => {
         setInputID(undefined);
       };
     }
-    return () => {};
   }, [isInFormGroup, props.id]);
 
   if (isInFormGroup) {

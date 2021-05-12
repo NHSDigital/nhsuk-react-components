@@ -1,6 +1,6 @@
 import React from 'react';
-import Promo from '..';
 import { mount, shallow } from 'enzyme';
+import Promo from '..';
 import { PromoDeprecationWarning } from '../../../warnings';
 
 jest.spyOn(console, 'warn').mockImplementation();
@@ -40,7 +40,7 @@ describe('Promo', () => {
 
   describe('Promo.Heading', () => {
     it('matches snapshot', () => {
-      const element = shallow(<Promo.Heading>Heading</Promo.Heading>);
+      const element = mount(<Promo.Heading>Heading</Promo.Heading>);
       expect(element).toMatchSnapshot('Promo.Heading');
       expect(element.text()).toBe('Heading');
       element.unmount();

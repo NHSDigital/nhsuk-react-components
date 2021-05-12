@@ -2,7 +2,6 @@ import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
 import type { AsElementLink } from '../../util/types/LinkTypes';
 
-
 interface PanelProps extends HTMLProps<HTMLDivElement> {
   labelProps?: HTMLProps<HTMLHeadingElement>;
   backToTop?: boolean;

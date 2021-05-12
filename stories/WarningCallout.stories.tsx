@@ -1,7 +1,7 @@
 import React from 'react';
 import { WarningCallout } from '../src';
 
-export const StandardWarningCallout = () => (
+export const StandardWarningCallout = (): JSX.Element => (
   <WarningCallout>
     <WarningCallout.Label>School, nursery or work</WarningCallout.Label>
     <p>
@@ -12,7 +12,7 @@ export const StandardWarningCallout = () => (
 );
 StandardWarningCallout.storyName = 'WarningCallout';
 
-export const WarningCalloutWithCustomVisuallyHiddenText = () => (
+export const WarningCalloutWithCustomVisuallyHiddenText = (): JSX.Element => (
   <WarningCallout>
     <WarningCallout.Label visuallyHiddenText="Not Important: ">
       School, nursery or work
@@ -24,7 +24,7 @@ export const WarningCalloutWithCustomVisuallyHiddenText = () => (
   </WarningCallout>
 );
 
-export const WarningCalloutWithDisabledVisuallyHiddenText = () => (
+export const WarningCalloutWithDisabledVisuallyHiddenText = (): JSX.Element => (
   <WarningCallout>
     <WarningCallout.Label visuallyHiddenText={false}>School, nursery or work</WarningCallout.Label>
     <p>
@@ -34,7 +34,7 @@ export const WarningCalloutWithDisabledVisuallyHiddenText = () => (
   </WarningCallout>
 );
 
-export const WarningCalloutWithoutLabel = () => (
+export const WarningCalloutWithoutLabel = (): JSX.Element => (
   <WarningCallout>
     <p>
       Stay away from school, nursery or work until all the spots have crusted over. This is usually

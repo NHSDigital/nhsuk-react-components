@@ -1,10 +1,10 @@
 import React, { HTMLProps, useContext, useEffect } from 'react';
 import classNames from 'classnames';
-import { FormGroupContext } from '../formgroup/FormGroupContext';
+import FormGroupContext from '../formgroup/FormGroupContext';
 
 export type HintProps = HTMLProps<HTMLDivElement>;
 
-const Hint: React.FC<HintProps> = props => {
+const Hint: React.FC<HintProps> = (props) => {
   const { isInFormGroup, setInputID } = useContext(FormGroupContext);
 
   useEffect(() => {
@@ -14,7 +14,6 @@ const Hint: React.FC<HintProps> = props => {
         setInputID(undefined);
       };
     }
-    return () => {};
   }, [isInFormGroup, props.id]);
 
   const { className, ...rest } = props;

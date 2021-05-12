@@ -22,7 +22,6 @@ const Input: React.FC<InputProps> = (props) => {
         setInputID(undefined);
       };
     }
-    return () => {};
   }, [isInFormGroup, props.id]);
 
   if (isInFormGroup) {

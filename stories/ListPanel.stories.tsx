@@ -1,7 +1,7 @@
 import React from 'react';
 import { ListPanel } from '../src';
 
-export const Standard = () => (
+export const Standard = (): JSX.Element => (
   <ListPanel>
     <ListPanel.Panel label="A" labelProps={{ id: 'A' }} backToTop backToTopLink="#">
       <ListPanel.LinkItem href="/conditions/abdominal-aortic-aneurysm/">AAA</ListPanel.LinkItem>

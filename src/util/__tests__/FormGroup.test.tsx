@@ -11,7 +11,7 @@ describe('FormGroup', () => {
   it('matches snapshot', () => {
     const component = mount(
       <FormGroup<InputProps> inputType="input" id="testID">
-        {props => <input {...props} />}
+        {(props) => <input {...props} />}
       </FormGroup>,
     );
     expect(component).toMatchSnapshot();
@@ -19,10 +19,10 @@ describe('FormGroup', () => {
   });
 
   it('generates a random ID for the input', () => {
-    let renderProps: any;
+    let renderProps: unknown;
     const component = mount(
       <FormGroup<InputProps> inputType="input">
-        {props => {
+        {(props) => {
           renderProps = props;
           return <input {...props} />;
         }}
@@ -35,10 +35,10 @@ describe('FormGroup', () => {
   });
 
   it('allows passing of custom IDs', () => {
-    let renderProps: any;
+    let renderProps: unknown;
     const component = mount(
       <FormGroup<InputProps> inputType="input" id="TestID">
-        {props => {
+        {(props) => {
           renderProps = props;
           return <input {...props} />;
         }}
@@ -58,10 +58,10 @@ describe('FormGroup', () => {
   });
 
   it('passes correct props for hint (generated id)', () => {
-    let renderProps: any;
+    let renderProps: unknown;
     const component = mount(
       <FormGroup<InputProps> inputType="input" hint="This is a test hint">
-        {props => {
+        {(props) => {
           renderProps = props;
           return <input {...props} />;
         }}
@@ -78,10 +78,10 @@ describe('FormGroup', () => {
   });
 
   it('passes correct props for hint (custom id)', () => {
-    let renderProps: any;
+    let renderProps: unknown;
     const component = mount(
       <FormGroup<InputProps> inputType="input" hint="This is a test hint" id="testID">
-        {props => {
+        {(props) => {
           renderProps = props;
           return <input {...props} />;
         }}
@@ -97,10 +97,10 @@ describe('FormGroup', () => {
   });
 
   it('passes correct props for label (generated id)', () => {
-    let renderProps: any;
+    let renderProps: unknown;
     const component = mount(
       <FormGroup<InputProps> inputType="input" label="This is a test label">
-        {props => {
+        {(props) => {
           renderProps = props;
           return <input {...props} />;
         }}
@@ -118,7 +118,7 @@ describe('FormGroup', () => {
   });
 
   it('passes correct props for label (custom id)', () => {
-    let renderProps: any;
+    let renderProps: unknown;
     const component = mount(
       <FormGroup<InputProps>
         inputType="input"
@@ -126,7 +126,7 @@ describe('FormGroup', () => {
         labelProps={{ title: 'TestTitle' }}
         id="testID"
       >
-        {props => {
+        {(props) => {
           renderProps = props;
           return <input {...props} />;
         }}
@@ -145,14 +145,14 @@ describe('FormGroup', () => {
   });
 
   it('passes correct props for error (generated id)', () => {
-    let renderProps: any;
+    let renderProps: unknown;
     const component = mount(
       <FormGroup<InputProps>
         inputType="input"
         error="This is a test error"
         errorProps={{ title: 'TestTitle' }}
       >
-        {props => {
+        {(props) => {
           renderProps = props;
           return <input />;
         }}
@@ -170,7 +170,7 @@ describe('FormGroup', () => {
   });
 
   it('passes correct props for error (custom id)', () => {
-    let renderProps: any;
+    let renderProps: unknown;
     const component = mount(
       <FormGroup<InputProps>
         inputType="input"
@@ -178,7 +178,7 @@ describe('FormGroup', () => {
         errorProps={{ title: 'TestTitle' }}
         id="testID"
       >
-        {props => {
+        {(props) => {
           renderProps = props;
           return <input />;
         }}
@@ -197,11 +197,13 @@ describe('FormGroup', () => {
   it('applies the correct classes when errored', () => {
     const booleanErrorComponent = mount(
       <FormGroup<InputProps> inputType="input" error>
+        {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
         {({ error, ...rest }) => <input {...rest} />}
       </FormGroup>,
     );
     const stringErrorComponent = mount(
       <FormGroup<InputProps> inputType="input" error="Oh no there's an error!">
+        {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
         {({ error, ...rest }) => <input {...rest} />}
       </FormGroup>,
     );
@@ -225,6 +227,7 @@ describe('FormGroup', () => {
     const component = mount(
       <main>
         <FormGroup<InputProps> inputType="input" error label="Form Label">
+          {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
           {({ error, ...rest }) => <input {...rest} />}
         </FormGroup>
       </main>,

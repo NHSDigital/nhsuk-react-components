@@ -1,12 +1,12 @@
 import React from 'react';
-import Select from '../Select';
 import { shallow } from 'enzyme';
+import Select from '../Select';
 
 describe('Select', () => {
   afterEach(() => {
     jest.restoreAllMocks();
   });
-  const SelectComp = ({ onHandle }: any) => {
+  const SelectComp = ({ onHandle }: { onHandle: () => void }) => {
     const ref = React.useRef<HTMLSelectElement | null>(null);
     const handleClick = () => {
       if (!ref.current) return;

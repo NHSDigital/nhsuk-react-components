@@ -1,6 +1,6 @@
 import React from 'react';
-import Details from '..';
 import { shallow } from 'enzyme';
+import Details from '..';
 
 describe('Details', () => {
   it('matches snapshot', () => {
@@ -13,7 +13,7 @@ describe('Details', () => {
   });
 
   it('adds expander classes', () => {
-    const expander = shallow(<Details expander></Details>);
+    const expander = shallow(<Details expander />);
     expect(expander.hasClass('nhsuk-expander')).toBeTruthy();
     expander.unmount();
   });

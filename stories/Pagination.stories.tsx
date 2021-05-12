@@ -1,7 +1,7 @@
 import React from 'react';
 import { Pagination } from '../src';
 
-export const Standard = () => (
+export const Standard = (): JSX.Element => (
   <Pagination>
     <Pagination.Link previous href="/section/treatments">
       Treatments

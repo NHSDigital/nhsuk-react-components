@@ -1,7 +1,7 @@
 import React from 'react';
 import { ErrorSummary } from '../src';
 
-export const Standard = () => (
+export const Standard = (): JSX.Element => (
   <ErrorSummary aria-labelledby="error-summary-title" role="alert" tabIndex={-1}>
     <ErrorSummary.Title id="error-summary-title">There is a problem</ErrorSummary.Title>
     <ErrorSummary.Body>

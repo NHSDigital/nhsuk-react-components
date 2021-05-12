@@ -45,7 +45,7 @@ const BasePanel: React.FC<PanelProps> = ({
   );
 };
 
-const Panel: Panel = props => {
+const Panel: Panel = (props) => {
   const PanelGroupContext = React.useContext<PanelContextType | null>(PanelContext);
   let panelWidth: 'one-half' | 'one-third' | 'one-quarter' | 'full';
   if (PanelGroupContext !== null) {
@@ -74,8 +74,8 @@ const Panel: Panel = props => {
 };
 
 const PanelGroup: React.FC<HTMLProps<HTMLDivElement>> = ({ className, children, ...rest }) => {
-  let panelCount: number = 0;
-  React.Children.forEach(children, child => {
+  let panelCount = 0;
+  React.Children.forEach(children, (child) => {
     if (child && isValidElement(child) && child.type === Panel) {
       panelCount += 1;
     }

@@ -1,6 +1,6 @@
 import React from 'react';
-import Row from '../Row';
 import { shallow } from 'enzyme';
+import Row from '../Row';
 
 describe('Row', () => {
   it('matches snapshot', () => {

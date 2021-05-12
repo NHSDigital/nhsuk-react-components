@@ -2,7 +2,7 @@
 
 exports[`DoDontList DoDontList.Item matches snapshot: DoDontList.Item 1`] = `
 <li>
-  <Component />
+  <Tick />
   Text
 </li>
 `;
@@ -13,6 +13,7 @@ exports[`DoDontList matches snapshot: DoDontList-Do 1`] = `
 >
   <HeadingLevel
     className="nhsuk-do-dont-list__label"
+    headingLevel="h3"
   >
     Do
   </HeadingLevel>
@@ -32,6 +33,7 @@ exports[`DoDontList matches snapshot: DoDontList-Dont 1`] = `
 >
   <HeadingLevel
     className="nhsuk-do-dont-list__label"
+    headingLevel="h3"
   >
     Don't
   </HeadingLevel>

@@ -1,11 +1,11 @@
 import React from 'react';
 import { ErrorMessage, FormGroup, Hint, Input, Label } from '../src';
 
-export const Standard = () => (
+export const Standard = (): JSX.Element => (
   <Input id="input-example" name="test-name" label="National Insurance Number" />
 );
 
-export const WithHintText = () => (
+export const WithHintText = (): JSX.Element => (
   <Input
     id="input-with-hint-text"
     name="test-name-2"
@@ -14,7 +14,7 @@ export const WithHintText = () => (
   />
 );
 
-export const WithErrorBoolean = () => (
+export const WithErrorBoolean = (): JSX.Element => (
   <Input
     id="input-with-error-message"
     name="test-name-3"
@@ -25,7 +25,7 @@ export const WithErrorBoolean = () => (
 );
 WithErrorBoolean.storyName = 'With Error (Boolean)';
 
-export const WithErrorString = () => (
+export const WithErrorString = (): JSX.Element => (
   <Input
     id="input-with-error-message"
     name="test-name-3"
@@ -36,7 +36,7 @@ export const WithErrorString = () => (
 );
 WithErrorString.storyName = 'With Error (String)';
 
-export const WithWidthModifier = () => (
+export const WithWidthModifier = (): JSX.Element => (
   <Input
     hint="It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
     label="National Insurance Number"
@@ -44,7 +44,7 @@ export const WithWidthModifier = () => (
   />
 );
 
-export const WithFormGroup = () => (
+export const WithFormGroup = (): JSX.Element => (
   <FormGroup>
     <Input
       hint="It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
@@ -55,7 +55,7 @@ export const WithFormGroup = () => (
 );
 WithFormGroup.storyName = 'With Form Group';
 
-export const WithFormGroupAndLink = () => (
+export const WithFormGroupAndLink = (): JSX.Element => (
   <FormGroup>
     <Input hint="Test Hint" label="Test Label" />
     <a href="/somewhere-else">Dont have a number?</a>
@@ -63,7 +63,7 @@ export const WithFormGroupAndLink = () => (
 );
 WithFormGroupAndLink.storyName = 'With Form Group and a link';
 
-export const WithFormGroupAndLabel = () => (
+export const WithFormGroupAndLabel = (): JSX.Element => (
   <FormGroup>
     <Label>Input Label</Label>
     <Input id="input-id1" />
@@ -71,7 +71,7 @@ export const WithFormGroupAndLabel = () => (
 );
 WithFormGroupAndLabel.storyName = 'With Form Group and a Label';
 
-export const WithFormGroupAndHint = () => (
+export const WithFormGroupAndHint = (): JSX.Element => (
   <FormGroup>
     <Hint>This is a Hint</Hint>
     <Input id="input-id2" width="10" />
@@ -79,7 +79,7 @@ export const WithFormGroupAndHint = () => (
 );
 WithFormGroupAndHint.storyName = 'With Form Group and Hint';
 
-export const WithFormGroupHintAndLabel = () => (
+export const WithFormGroupHintAndLabel = (): JSX.Element => (
   <FormGroup>
     <Hint>This is a Hint</Hint>
     <Label>Input Label</Label>
@@ -88,7 +88,7 @@ export const WithFormGroupHintAndLabel = () => (
 );
 WithFormGroupHintAndLabel.storyName = 'With Form Group, Hint and Label';
 
-export const WithFormGroupErrorHintAndLabel = () => (
+export const WithFormGroupErrorHintAndLabel = (): JSX.Element => (
   <FormGroup>
     <Hint>This is a Hint</Hint>
     <Label>Input Label</Label>
