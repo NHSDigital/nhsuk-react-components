@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table } from '../src';
+import { Col, Row, Table } from '../src';
 
 export const StandardTable = () => (
   <Table caption="Skin symptoms and possible causes">
@@ -51,6 +51,35 @@ export const TablePanel = () => (
       </Table.Body>
     </Table>
   </Table.Panel>
+);
+
+export const NumericTable = () => (
+  <Row>
+    <Col width="two-thirds">
+      <Table caption="Number of cases">
+        <Table.Head>
+          <Table.Row>
+            <Table.Cell>Location</Table.Cell>
+            <Table.Cell>Number of cases</Table.Cell>
+          </Table.Row>
+        </Table.Head>
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell>England</Table.Cell>
+            <Table.Cell isNumeric>4000</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>Wales</Table.Cell>
+            <Table.Cell isNumeric>2500</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>Scotland</Table.Cell>
+            <Table.Cell isNumeric>600</Table.Cell>
+          </Table.Row>
+        </Table.Body>
+      </Table>
+    </Col>
+  </Row>
 );
 
 export default {

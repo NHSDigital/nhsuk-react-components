@@ -39,22 +39,36 @@ const TableRow: React.FC<HTMLProps<HTMLTableRowElement>> = ({ className, ...rest
 );
 
 interface TableCellProps extends HTMLProps<HTMLTableCellElement> {
-  header?: boolean | undefined;
+  header?: boolean;
+  isNumeric?: boolean;
 }
 
-const TableCell: React.FC<TableCellProps> = ({ className, header, ...rest }) => {
+const TableCell: React.FC<TableCellProps> = ({ className, header, isNumeric, ...rest }) => {
   const sectionType = useContext(TableSectionContext);
+  const regularHeader = <th className={classNames('nhsuk-table__header', className)} scope="col" {...rest} />;
+  const numericHeader = <th className={classNames('nhsuk-table__header', 'nhsuk-table__header--numeric', className)} scope="col" {...rest} />;
+  const regularCell = <td className={classNames('nhsuk-table__cell', className)} {...rest} />;
+  const numericCell = <td className={classNames('nhsuk-table__cell', 'nhsuk-table__cell--numeric', className)} {...rest} />;
+
   if (header !== undefined) {
     if (header === true) {
-      return <th className={classNames('nhsuk-table__header', className)} scope="col" {...rest} />;
+      if (isNumeric) return numericHeader;
+      return regularHeader;
     }
-    return <td className={classNames('nhsuk-table__cell', className)} {...rest} />;
+    if (isNumeric) {
+      return numericCell;
+    }
+    return regularCell;
   }
   if (sectionType === TableSectionTypes.HEAD) {
-    return <th className={classNames('nhsuk-table__header', className)} scope="col" {...rest} />;
+    if (isNumeric) return numericHeader;
+    return regularHeader;
   }
   if (sectionType === TableSectionTypes.BODY) {
-    return <td className={classNames('nhsuk-table__cell', className)} {...rest} />;
+    if (isNumeric) {
+      return numericCell;
+    }
+    return regularCell;
   }
   if (isDev()) {
     console.warn(
