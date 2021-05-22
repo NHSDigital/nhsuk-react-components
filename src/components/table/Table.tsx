@@ -43,39 +43,33 @@ interface TableCellProps extends HTMLProps<HTMLTableCellElement> {
   isNumeric?: boolean;
 }
 
-const TableCell: React.FC<TableCellProps> = ({ className, header, isNumeric, ...rest }) => {
+const TableCell: React.FC<TableCellProps> = ({ className, header: isHeader, isNumeric, ...rest }) => {
   const sectionType = useContext(TableSectionContext);
   const regularHeader = <th className={classNames('nhsuk-table__header', className)} scope="col" {...rest} />;
   const numericHeader = <th className={classNames('nhsuk-table__header', 'nhsuk-table__header--numeric', className)} scope="col" {...rest} />;
   const regularCell = <td className={classNames('nhsuk-table__cell', className)} {...rest} />;
   const numericCell = <td className={classNames('nhsuk-table__cell', 'nhsuk-table__cell--numeric', className)} {...rest} />;
+  const cell = isNumeric ? numericCell : regularCell;
+  const header = isNumeric ? numericHeader : regularHeader;
 
-  if (header !== undefined) {
-    if (header === true) {
-      if (isNumeric) return numericHeader;
-      return regularHeader;
+  if (isHeader !== undefined) {
+    if (isHeader === true) {
+      return header;
     }
-    if (isNumeric) {
-      return numericCell;
-    }
-    return regularCell;
+    return cell;
   }
   if (sectionType === TableSectionTypes.HEAD) {
-    if (isNumeric) return numericHeader;
-    return regularHeader;
+    return header;
   }
   if (sectionType === TableSectionTypes.BODY) {
-    if (isNumeric) {
-      return numericCell;
-    }
-    return regularCell;
+    return cell;
   }
   if (isDev()) {
     console.warn(
       'TableCell used outside of TableHead or TableBody elements. Unable to determine section type from context.',
     );
   }
-  return <td className={classNames('nhsuk-table__cell', className)} {...rest} />;
+  return cell;
 };
 
 interface TablePanelProps extends HTMLProps<HTMLDivElement> {
