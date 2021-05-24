@@ -1,6 +1,7 @@
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
 import { Container, Row, Col } from '../layout';
+import HeadingLevel, { HeadingLevelType } from '../../util/HeadingLevel';
 
 interface HeroContentProps extends HTMLProps<HTMLDivElement> {
   hasImage: boolean;
@@ -28,9 +29,16 @@ const HeroContent: React.FC<HeroContentProps> = ({ children, hasImage }) => {
   );
 };
 
-const HeroHeading: React.FC<HTMLProps<HTMLHeadingElement>> = ({ className, ...rest }) => (
-  <h1 className={classNames('nhsuk-u-margin-bottom-3', className)} {...rest} />
+interface HeroHeadingProps extends HTMLProps<HTMLHeadingElement> {
+  headingLevel: HeadingLevelType;
+}
+
+const HeroHeading: React.FC<HeroHeadingProps> = ({ className, ...rest }) => (
+  <HeadingLevel className={classNames('nhsuk-u-margin-bottom-3', className)} {...rest} />
 );
+HeroHeading.defaultProps = {
+  headingLevel: 'h1',
+};
 
 const HeroText: React.FC<HTMLProps<HTMLParagraphElement>> = ({ className, ...rest }) => (
   <p className={classNames('nhsuk-body-l nhsuk-u-margin-bottom-0', className)} {...rest} />
@@ -45,7 +53,9 @@ interface Hero extends React.FC<HeroProps> {
   Text: React.FC<HTMLProps<HTMLParagraphElement>>;
 }
 
-const Hero: Hero = ({ className, children, imageSrc, ...rest }) => (
+const Hero: Hero = ({
+  className, children, imageSrc, ...rest
+}) => (
   <section
     className={classNames(
       'nhsuk-hero',

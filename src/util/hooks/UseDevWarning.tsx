@@ -9,7 +9,7 @@ const useDevWarning = (warning: string, condition: ConditionFn = () => true) => 
       // eslint-disable-next-line no-console
       console.warn(warning);
     }
-  }, []);
+  }, [warning]);
 };
 
 export default useDevWarning;

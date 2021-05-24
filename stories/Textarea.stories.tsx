@@ -1,7 +1,7 @@
 import React, { MouseEvent, useState } from 'react';
-import { Textarea, Form, Button, Input } from '../src';
+import { Textarea, Button, Input } from '../src';
 
-export const Standard = () => (
+export const Standard = (): JSX.Element => (
   <Textarea
     label="Can you provide more detail?"
     hint="Don&#39;t include personal or financial information, eg your National Insurance number or credit card details."
@@ -11,7 +11,7 @@ export const Standard = () => (
   />
 );
 
-export const TextareaWithAutoCompleteAttribute = () => (
+export const TextareaWithAutoCompleteAttribute = (): JSX.Element => (
   <Textarea
     label="Full address"
     id="textarea-with-autocomplete-attribute"
@@ -21,7 +21,7 @@ export const TextareaWithAutoCompleteAttribute = () => (
   />
 );
 
-export const TextareaWithErrorBoolean = () => {
+export const TextareaWithErrorBoolean = (): JSX.Element => {
   const [error, setError] = useState<boolean>(true);
 
   return (
@@ -46,7 +46,7 @@ export const TextareaWithErrorBoolean = () => {
 };
 TextareaWithErrorBoolean.storyName = 'Textarea With Error (Boolean)';
 
-export const TextareaWithErrorString = () => {
+export const TextareaWithErrorString = (): JSX.Element => {
   const [error, setError] = useState<string>('You must provide an explanation');
   return (
     <>
@@ -57,7 +57,7 @@ export const TextareaWithErrorString = () => {
         rows={5}
         label="Why can&#39;t you provide a National Insurance number?"
       />
-      <Input onChange={e => setError(e.currentTarget.value)} value={error} />
+      <Input onChange={(e) => setError(e.currentTarget.value)} value={error} />
     </>
   );
 };

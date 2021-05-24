@@ -1,6 +1,6 @@
 import React from 'react';
-import Hint from '..';
 import { shallow } from 'enzyme';
+import Hint from '..';
 
 describe('Hint', () => {
   it('matches snapshot', () => {

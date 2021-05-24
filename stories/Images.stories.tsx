@@ -1,7 +1,7 @@
 import React from 'react';
 import { Images } from '../src';
 
-export const ImageWithCaption = () => (
+export const ImageWithCaption = (): JSX.Element => (
   <Images
     src="https://assets.nhs.uk/prod/images/S_1017_allergic-conjunctivitis_M15.2e16d0ba.fill-320x213.jpg"
     alt="Picture of allergic conjunctivitis"
@@ -11,7 +11,7 @@ export const ImageWithCaption = () => (
   />
 );
 
-export const ImageWithoutCaption = () => (
+export const ImageWithoutCaption = (): JSX.Element => (
   <Images
     src="https://assets.nhs.uk/prod/images/S_1017_allergic-conjunctivitis_M15.2e16d0ba.fill-320x213.jpg"
     alt="Picture of allergic conjunctivitis"

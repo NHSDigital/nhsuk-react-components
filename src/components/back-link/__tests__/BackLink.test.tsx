@@ -1,6 +1,6 @@
 import React from 'react';
-import BackLink from '..';
 import { shallow } from 'enzyme';
+import BackLink from '..';
 
 describe('BackLink', () => {
   it('matches snapshot', () => {

@@ -4,7 +4,7 @@ import Breadcrumb from '..';
 
 describe('Breadcrumb', () => {
   it('base element matches snapshot', () => {
-    const component = shallow(<Breadcrumb></Breadcrumb>);
+    const component = shallow(<Breadcrumb />);
     expect(component).toMatchSnapshot('BaseBreadcrumbs');
     component.unmount();
   });
@@ -35,7 +35,7 @@ describe('Breadcrumb', () => {
       .children();
 
     expect(breadcrumbList.length).toBe(2);
-    breadcrumbList.toArray().forEach(child => {
+    breadcrumbList.toArray().forEach((child) => {
       expect(child.attribs.class).toBe('nhsuk-breadcrumb__item');
     });
 

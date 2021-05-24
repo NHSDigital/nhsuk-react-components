@@ -5,7 +5,7 @@ import FormGroup from '../../util/FormGroup';
 
 type TextareaProps = HTMLProps<HTMLTextAreaElement> & FormElementProps;
 
-const Textarea: React.FC<TextareaProps> = props => (
+const Textarea: React.FC<TextareaProps> = (props) => (
   <FormGroup<TextareaProps> inputType="textarea" {...props}>
     {({ className, error, ...rest }) => (
       <textarea

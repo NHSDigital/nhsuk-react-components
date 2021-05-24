@@ -1,9 +1,9 @@
 import React from 'react';
 import { ActionLink } from '../src';
 
-export const StandardLink = () => <ActionLink href="/">Link</ActionLink>;
+export const StandardLink = (): JSX.Element => <ActionLink href="/">Link</ActionLink>;
 
-export const OpenInNewTabLink = () => (
+export const OpenInNewTabLink = (): JSX.Element => (
   <ActionLink target="_blank" rel="noopener noreferrer" href="/">
     Link
   </ActionLink>

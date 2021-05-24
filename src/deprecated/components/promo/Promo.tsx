@@ -5,6 +5,7 @@ import { Col, Row } from '../../../components/layout';
 import type { AsElementLink } from '../../../util/types/LinkTypes';
 import useDevWarning from '../../../util/hooks/UseDevWarning';
 import { PromoDeprecationWarning } from '../../warnings';
+import HeadingLevel, { HeadingLevelType } from '../../../util/HeadingLevel';
 
 interface ImageProps extends HTMLProps<HTMLImageElement> {
   crossOrigin?: '' | 'anonymous' | 'use-credentials';
@@ -48,17 +49,24 @@ BasePromo.defaultProps = {
   imageProps: {},
 };
 
-const PromoHeading: React.FC<HTMLProps<HTMLHeadingElement>> = ({ className, ...rest }) => (
-  <h3 className={classNames('nhsuk-promo__heading', className)} {...rest} />
+interface PromoHeadingProps extends HTMLProps<HTMLHeadingElement> {
+  headingLevel: HeadingLevelType;
+}
+
+const PromoHeading: React.FC<PromoHeadingProps> = ({ className, ...rest }) => (
+  <HeadingLevel className={classNames('nhsuk-promo__heading', className)} {...rest} />
 );
+PromoHeading.defaultProps = {
+  headingLevel: 'h3',
+};
 
 const PromoDescription: React.FC<HTMLProps<HTMLParagraphElement>> = ({ className, ...rest }) => (
   <p className={classNames('nhsuk-promo__description', className)} {...rest} />
 );
 
 const PromoGroup: React.FC<HTMLProps<HTMLDivElement>> = ({ className, children, ...rest }) => {
-  let promoCount: number = 0;
-  React.Children.forEach(children, child => {
+  let promoCount = 0;
+  React.Children.forEach(children, (child) => {
     if (child && isValidElement(child) && child.type === Promo) {
       promoCount += 1;
     }
@@ -77,7 +85,7 @@ interface Promo extends React.FC<BasePromoProps> {
   Description: React.FC<HTMLProps<HTMLParagraphElement>>;
   Heading: React.FC<HTMLProps<HTMLHeadingElement>>;
 }
-const Promo: Promo = props => {
+const Promo: Promo = (props) => {
   const { isGroup, promoCount } = useContext<PromoContextType>(PromoContext);
   let promoWidth: 'one-half' | 'one-third' | 'one-quarter' | 'full';
   if (isGroup) {

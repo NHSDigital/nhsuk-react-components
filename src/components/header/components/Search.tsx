@@ -1,13 +1,15 @@
 import React, { HTMLProps, useContext, useEffect } from 'react';
+import classNames from 'classnames';
 import { Search as SearchIcon, Close as CloseIcon } from '../../icons';
 import HeaderContext, { IHeaderContext } from '../HeaderContext';
-import classNames from 'classnames';
 
 export interface SearchProps extends HTMLProps<HTMLInputElement> {
   visuallyHiddenText?: string;
 }
 
-const Search: React.FC<SearchProps> = ({ action, method, id, visuallyHiddenText, ...rest }) => {
+const Search: React.FC<SearchProps> = ({
+  action, method, id, visuallyHiddenText, ...rest
+}) => {
   const { setSearch, toggleSearch, searchOpen } = useContext<IHeaderContext>(HeaderContext);
   useEffect(() => {
     setSearch(true);
@@ -29,7 +31,7 @@ const Search: React.FC<SearchProps> = ({ action, method, id, visuallyHiddenText,
           <label className="nhsuk-u-visually-hidden" htmlFor={id}>
             {visuallyHiddenText}
           </label>
-          <input className="nhsuk-search__input" id={id} {...rest}></input>
+          <input className="nhsuk-search__input" id={id} {...rest} />
           <button className="nhsuk-search__submit" type="submit">
             <SearchIcon />
             <span className="nhsuk-u-visually-hidden">Search</span>

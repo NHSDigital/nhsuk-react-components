@@ -1,10 +1,10 @@
 import React from 'react';
-import Icons from '..';
 import { mount } from 'enzyme';
+import Icons from '..';
 
 describe('Icons', () => {
   it('all icons match snapshots', () => {
-    Object.entries(Icons).forEach(icon => {
+    Object.entries(Icons).forEach((icon) => {
       const [name, Component] = icon;
       const Icon = Component as React.FC<React.HTMLProps<SVGSVGElement>>;
       const mountedIcon = mount(<Icon />);

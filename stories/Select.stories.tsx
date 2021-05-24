@@ -1,7 +1,7 @@
 import React, { MouseEvent } from 'react';
-import { Select, Form, Button, Input } from '../src';
+import { Select, Button, Input } from '../src';
 
-export const Standard = () => (
+export const Standard = (): JSX.Element => (
   <Select id="select-1" label="Label text goes here">
     <Select.Option value="1">NHS.UK frontend option 1</Select.Option>
     <Select.Option value="2" selected>
@@ -13,7 +13,7 @@ export const Standard = () => (
   </Select>
 );
 
-export const SelectWithHintText = () => (
+export const SelectWithHintText = (): JSX.Element => (
   <Select label="Label text goes here" hint="Hint text goes here">
     <Select.Option value="1">NHS.UK frontend option 1</Select.Option>
     <Select.Option value="2">NHS.UK frontend option 2</Select.Option>
@@ -21,7 +21,7 @@ export const SelectWithHintText = () => (
   </Select>
 );
 
-export const SelectWithErrorBoolean = () => {
+export const SelectWithErrorBoolean = (): JSX.Element => {
   const [error, setError] = React.useState<boolean>(true);
   return (
     <>
@@ -43,8 +43,7 @@ export const SelectWithErrorBoolean = () => {
 };
 SelectWithErrorBoolean.storyName = 'Select With Error (Boolean)';
 
-
-export const SelectWithErrorString = () => {
+export const SelectWithErrorString = (): JSX.Element => {
   const [error, setError] = React.useState<string>('Error message goes here');
   return (
     <>
@@ -53,7 +52,7 @@ export const SelectWithErrorString = () => {
         <Select.Option value="2">NHS.UK frontend option 2</Select.Option>
         <Select.Option value="3">NHS.UK frontend option 3</Select.Option>
       </Select>
-      <Input onChange={e => setError(e.currentTarget.value)} value={error} />
+      <Input onChange={(e) => setError(e.currentTarget.value)} value={error} />
     </>
   );
 };

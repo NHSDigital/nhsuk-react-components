@@ -1,7 +1,9 @@
 import React, { MouseEvent } from 'react';
-import { Radios, Fieldset, Button, Input, Checkboxes } from '../src';
+import {
+  Radios, Fieldset, Button, Input, Checkboxes,
+} from '../src';
 
-export const StandardRadios = () => (
+export const StandardRadios = (): JSX.Element => (
   <Fieldset>
     <Fieldset.Legend>Have you changed your name?</Fieldset.Legend>
     <Radios
@@ -17,7 +19,7 @@ export const StandardRadios = () => (
   </Fieldset>
 );
 
-export const InlineRadios = () => (
+export const InlineRadios = (): JSX.Element => (
   <Fieldset>
     <Fieldset.Legend>Have you changed your name?</Fieldset.Legend>
     <Radios
@@ -34,7 +36,7 @@ export const InlineRadios = () => (
   </Fieldset>
 );
 
-export const DisabledRadios = () => (
+export const DisabledRadios = (): JSX.Element => (
   <Fieldset>
     <Fieldset.Legend>Have you changed your name?</Fieldset.Legend>
     <Radios
@@ -52,7 +54,7 @@ export const DisabledRadios = () => (
   </Fieldset>
 );
 
-export const RadiosWithConditionalContent = () => {
+export const RadiosWithConditionalContent = (): JSX.Element => {
   const impairmentsForm = (
     <Checkboxes name="impairments" id="impairments">
       <Checkboxes.Box value="autism">Autism</Checkboxes.Box>
@@ -84,7 +86,7 @@ export const RadiosWithConditionalContent = () => {
     </Fieldset>
   );
 };
-export const RadiosWithADivider = () => (
+export const RadiosWithADivider = (): JSX.Element => (
   <Fieldset>
     <Fieldset.Legend>How do you want to sign in?</Fieldset.Legend>
     <Radios name="example" id="example-divider">
@@ -96,7 +98,7 @@ export const RadiosWithADivider = () => (
   </Fieldset>
 );
 
-export const RadiosWithHintsOnItems = () => (
+export const RadiosWithHintsOnItems = (): JSX.Element => (
   <Fieldset>
     <Fieldset.Legend>How do you want to sign in?</Fieldset.Legend>
     <Radios name="example" id="example-divider">
@@ -116,7 +118,7 @@ export const RadiosWithHintsOnItems = () => (
   </Fieldset>
 );
 
-export const RadiosWithoutFieldset = () => (
+export const RadiosWithoutFieldset = (): JSX.Element => (
   <Radios name="colours" id="colours">
     <Radios.Radio value="red">Red</Radios.Radio>
     <Radios.Radio value="green">Green</Radios.Radio>
@@ -124,7 +126,7 @@ export const RadiosWithoutFieldset = () => (
   </Radios>
 );
 
-export const RadiosWithErrorBoolean = () => {
+export const RadiosWithErrorBoolean = (): JSX.Element => {
   const [error, setError] = React.useState<boolean>(true);
   return (
     <>
@@ -156,7 +158,7 @@ export const RadiosWithErrorBoolean = () => {
 };
 RadiosWithErrorBoolean.storyName = 'Radios With Error (Boolean)';
 
-export const RadiosWithErrorString = () => {
+export const RadiosWithErrorString = (): JSX.Element => {
   const [error, setError] = React.useState('Please select an option');
   return (
     <>
@@ -175,7 +177,7 @@ export const RadiosWithErrorString = () => {
           </Radios.Radio>
         </Radios>
       </Fieldset>
-      <Input value={error} onChange={e => setError(e.currentTarget.value)} />
+      <Input value={error} onChange={(e) => setError(e.currentTarget.value)} />
     </>
   );
 };

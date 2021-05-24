@@ -1,6 +1,6 @@
 import React from 'react';
-import LedeText from '../LedeText';
 import { shallow } from 'enzyme';
+import LedeText from '../LedeText';
 
 describe('LedeText', () => {
   it('matches snapshot', () => {

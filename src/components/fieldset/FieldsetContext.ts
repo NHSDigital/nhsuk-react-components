@@ -7,6 +7,7 @@ export type IFieldsetContext = {
 };
 
 const FieldsetContext = createContext<IFieldsetContext>({
+  /* eslint-disable @typescript-eslint/no-empty-function */
   isFieldset: false,
   passError: () => {},
   registerComponent: () => {},

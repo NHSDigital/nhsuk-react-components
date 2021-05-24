@@ -1,33 +1,33 @@
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
-import pkg from './package.json';
+
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const packageJson = require('./package.json');
+
+const plugins = [
+  peerDepsExternal(),
+  resolve(),
+  commonjs(),
+  typescript({ typescript: require('typescript') }),
+];
 
 export default [
   {
     input: 'src/index.ts',
     output: [
-      { file: pkg.main, format: 'cjs' },
-      { file: pkg.module, format: 'es' },
+      { file: packageJson.main, format: 'cjs', sourcemap: true },
+      { file: packageJson.module, format: 'esm', sourcemap: true },
     ],
-    external: [...Object.keys(pkg.dependencies || {}), ...Object.keys(pkg.peerDependencies || {})],
-    plugins: [
-      typescript({
-        typescript: require('typescript'),
-        exclude: ['**/*.test.d.ts'],
-      }),
-    ],
+    plugins,
   },
   {
-    input: 'src/deprecated/index.ts',
+    input: 'src/index.ts',
     output: [
-      { file: 'dist/deprecated.js', format: 'cjs' },
-      { file: 'dist/deprecated.es.js', format: 'es' },
+      { file: 'dist/deprecated.js', format: 'cjs', sourcemap: true },
+      { file: 'dist/deprecated.es.js', format: 'esm', sourcemap: true },
     ],
-    external: [...Object.keys(pkg.dependencies || {}), ...Object.keys(pkg.peerDependencies || {})],
-    plugins: [
-      typescript({
-        typescript: require('typescript'),
-        exclude: ['**/*.test.d.ts'],
-      }),
-    ],
+    plugins,
   },
 ];

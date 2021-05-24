@@ -1,6 +1,6 @@
 import React from 'react';
-import Container from '../Container';
 import { shallow } from 'enzyme';
+import Container from '../Container';
 
 describe('Container', () => {
   it('matches snapshot', () => {

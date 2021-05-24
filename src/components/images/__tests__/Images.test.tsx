@@ -1,6 +1,6 @@
 import React from 'react';
-import Images from '..';
 import { shallow } from 'enzyme';
+import Images from '..';
 
 describe('Images', () => {
   it('matches snapshot', () => {

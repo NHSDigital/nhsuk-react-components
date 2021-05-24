@@ -24,7 +24,9 @@ interface ICard extends React.FC<CardProps> {
   GroupItem: typeof CardGroupItem;
 }
 
-const Card: ICard = ({ className, clickable, children, feature, ...rest }) => (
+const Card: ICard = ({
+  className, clickable, children, feature, ...rest
+}) => (
   <div
     className={classNames(
       'nhsuk-card',

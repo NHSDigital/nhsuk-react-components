@@ -1,7 +1,7 @@
 import React from 'react';
 import { SkipLink, Hint } from '../src';
 
-const CodeText: React.FC = props => (
+const CodeText: React.FC = (props) => (
   <span
     style={{
       fontFamily: 'monospace',
@@ -16,7 +16,7 @@ const CodeText: React.FC = props => (
   />
 );
 
-export const Standard = () => (
+export const Standard = (): JSX.Element => (
   <>
     <Hint>
       Press
@@ -27,7 +27,7 @@ export const Standard = () => (
   </>
 );
 
-export const SkipLinkWithDefaultBehaviourDisabled = () => (
+export const SkipLinkWithDefaultBehaviourDisabled = (): JSX.Element => (
   <>
     <Hint>
       Press
@@ -37,7 +37,6 @@ export const SkipLinkWithDefaultBehaviourDisabled = () => (
     <SkipLink disableDefaultBehaviour />
   </>
 );
-
 
 export default {
   title: 'Components/SkipLink',

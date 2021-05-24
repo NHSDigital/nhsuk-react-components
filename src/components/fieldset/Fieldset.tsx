@@ -60,13 +60,13 @@ class Fieldset extends PureComponent<FieldsetProps, FieldsetState> {
     };
   }
 
-  passError = (componentId: string, error: boolean) => {
-    this.setState(state => {
+  passError = (componentId: string, error: boolean): void => {
+    this.setState((state) => {
       const existingError = state.erroredComponents.includes(componentId);
       if (existingError && !error) {
         return {
           ...state,
-          erroredComponents: state.erroredComponents.filter(id => id !== componentId),
+          erroredComponents: state.erroredComponents.filter((id) => id !== componentId),
         };
       }
       if (!existingError && error) {
@@ -76,12 +76,12 @@ class Fieldset extends PureComponent<FieldsetProps, FieldsetState> {
     });
   };
 
-  registerComponent = (componentId: string, deregister: boolean = false) => {
-    this.setState(state => {
+  registerComponent = (componentId: string, deregister = false): void => {
+    this.setState((state) => {
       if (deregister) {
         return {
           ...state,
-          registeredComponents: state.registeredComponents.filter(id => id !== componentId),
+          registeredComponents: state.registeredComponents.filter((id) => id !== componentId),
         };
       }
       if (!state.registeredComponents.includes(componentId)) {
@@ -94,7 +94,9 @@ class Fieldset extends PureComponent<FieldsetProps, FieldsetState> {
     });
   };
 
-  render() {
+  static Legend = Legend;
+
+  render(): JSX.Element {
     const { className, disableErrorLine, ...rest } = this.props;
     const contextValue: IFieldsetContext = {
       isFieldset: true,

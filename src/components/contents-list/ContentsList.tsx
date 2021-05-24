@@ -23,7 +23,9 @@ interface ContentsList extends React.FC<ContentsListProps> {
   Item: React.FC<ContentsListItemProps>;
 }
 
-const ContentsList: ContentsList = ({ className, children, visuallyHiddenText, ...rest }) => (
+const ContentsList: ContentsList = ({
+  className, children, visuallyHiddenText, ...rest
+}) => (
   <nav className={classNames('nhsuk-contents-list', className)} {...rest}>
     {visuallyHiddenText !== false ? (
       <h2 className="nhsuk-u-visually-hidden">{visuallyHiddenText}</h2>

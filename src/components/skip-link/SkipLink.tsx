@@ -22,7 +22,7 @@ class SkipLink extends React.Component<SkipLinkProps> {
     this.firstHeadingElement = null;
   }
 
-  componentDidMount() {
+  componentDidMount(): void {
     // The standard NHSUK Frontend behaviour is to listen on the
     // blur event on the first heading element.
     this.firstHeadingElement = this.getFirstHeadingElement();
@@ -31,7 +31,7 @@ class SkipLink extends React.Component<SkipLinkProps> {
     }
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     if (this.firstHeadingElement) {
       this.firstHeadingElement.removeEventListener('blur', this.handleHeadingBlur);
     }
@@ -84,8 +84,11 @@ class SkipLink extends React.Component<SkipLinkProps> {
     }
   };
 
-  render() {
-    const { className, focusTargetRef, disableDefaultBehaviour, href, ...rest } = this.props;
+  render(): JSX.Element {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const {
+      className, focusTargetRef, disableDefaultBehaviour, href, ...rest
+    } = this.props;
     return (
       <a
         className={classNames('nhsuk-skip-link', className)}

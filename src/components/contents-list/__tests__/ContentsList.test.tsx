@@ -1,6 +1,6 @@
 import React from 'react';
-import ContentsList from '..';
 import { shallow } from 'enzyme';
+import ContentsList from '..';
 
 describe('ContentsList', () => {
   it('matches snapshot', () => {
@@ -22,7 +22,7 @@ describe('ContentsList', () => {
   });
 
   it('disables hidden text', () => {
-    const element = shallow(<ContentsList visuallyHiddenText={false}></ContentsList>);
+    const element = shallow(<ContentsList visuallyHiddenText={false} />);
     expect(element.find('.nhsuk-u-visually-hidden').exists()).toBeFalsy();
     element.unmount();
   });
@@ -47,6 +47,7 @@ describe('ContentsList', () => {
     it('normally renders as anchor', () => {
       const element = shallow(<ContentsList.Item>Content</ContentsList.Item>);
       expect(
+        // eslint-disable-next-line jsx-a11y/anchor-is-valid
         element.containsMatchingElement(<a className="nhsuk-contents-list__link">Content</a>),
       ).toBeTruthy();
       element.unmount();

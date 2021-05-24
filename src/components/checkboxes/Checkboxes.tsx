@@ -15,9 +15,7 @@ type CheckboxesState = {
 };
 
 class Checkboxes extends PureComponent<CheckboxesProps, CheckboxesState> {
-  static Box = Box;
-
-  private boxCount: number = 0;
+  private boxCount = 0;
 
   private boxReferences: Array<string> = [];
 
@@ -39,17 +37,17 @@ class Checkboxes extends PureComponent<CheckboxesProps, CheckboxesState> {
     return reference;
   };
 
-  unleaseReference = (reference: string) => {
-    this.boxReferences = this.boxReferences.filter(ref => ref !== reference);
+  unleaseReference = (reference: string): void => {
+    this.boxReferences = this.boxReferences.filter((ref) => ref !== reference);
   };
 
-  setConditional = (boxReference: string, hasConditional: boolean) => {
-    this.setState(state => {
+  setConditional = (boxReference: string, hasConditional: boolean): void => {
+    this.setState((state) => {
       const currentHasConditional = state.conditionalBoxes.includes(boxReference);
       if (currentHasConditional && hasConditional === false) {
         return {
           ...state,
-          conditionalBoxes: state.conditionalBoxes.filter(ref => ref !== boxReference),
+          conditionalBoxes: state.conditionalBoxes.filter((ref) => ref !== boxReference),
         };
       }
       if (!currentHasConditional && hasConditional === true) {
@@ -72,21 +70,26 @@ class Checkboxes extends PureComponent<CheckboxesProps, CheckboxesState> {
     return this.boxIds[reference];
   };
 
-  resetBoxIds = () => {
+  resetBoxIds = (): void => {
     this.boxCount = 0;
     this.boxIds = {};
   };
 
-  render() {
+  static Box = Box;
+
+  render(): JSX.Element {
     const { children, ...rest } = this.props;
     return (
       <FormGroup<CheckboxesProps> inputType="checkboxes" {...rest}>
-        {({ className, name, id, idPrefix, ...restRenderProps }) => {
+        {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
+        {({
+          className, name, id, idPrefix, ...restRenderProps
+        }) => {
           this.resetBoxIds();
           const containsConditional = this.state.conditionalBoxes.length > 0;
           const contextValue: ICheckboxContext = {
             name,
-            getBoxId: reference => this.getBoxId(id, reference),
+            getBoxId: (reference) => this.getBoxId(id, reference),
             setConditional: this.setConditional,
             leaseReference: this.leaseReference,
             unleaseReference: this.unleaseReference,

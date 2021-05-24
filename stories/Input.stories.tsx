@@ -1,15 +1,11 @@
 import React from 'react';
 import { Input } from '../src';
 
-export const Standard = () => (
-  <Input
-    id="input-example"
-    name="test-name"
-    label="National Insurance Number"
-  />
+export const Standard = (): JSX.Element => (
+  <Input id="input-example" name="test-name" label="National Insurance Number" />
 );
 
-export const WithHintText = () => (
+export const WithHintText = (): JSX.Element => (
   <Input
     id="input-with-hint-text"
     name="test-name-2"
@@ -18,7 +14,7 @@ export const WithHintText = () => (
   />
 );
 
-export const WithErrorBoolean = () => (
+export const WithErrorBoolean = (): JSX.Element => (
   <Input
     id="input-with-error-message"
     name="test-name-3"
@@ -29,7 +25,7 @@ export const WithErrorBoolean = () => (
 );
 WithErrorBoolean.storyName = 'With Error (Boolean)';
 
-export const WithErrorString = () => (
+export const WithErrorString = (): JSX.Element => (
   <Input
     id="input-with-error-message"
     name="test-name-3"
@@ -40,7 +36,7 @@ export const WithErrorString = () => (
 );
 WithErrorString.storyName = 'With Error (String)';
 
-export const WithWidthModifier = () => (
+export const WithWidthModifier = (): JSX.Element => (
   <Input
     hint="It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’."
     label="National Insurance Number"

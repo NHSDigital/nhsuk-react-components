@@ -33,7 +33,7 @@ type FormGroupProps<T> = FormElementProps & {
   inputType: 'input' | 'radios' | 'select' | 'checkboxes' | 'dateinput' | 'textarea';
 };
 
-const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T>) => {
+const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T>): JSX.Element => {
   const {
     children,
     hint,
@@ -50,9 +50,8 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
     ...rest
   } = props;
   const [generatedID] = useState<string>(generateRandomID(inputType));
-  const { isFieldset, registerComponent, passError } = useContext<IFieldsetContext>(
-    FieldsetContext,
-  );
+  const { isFieldset, registerComponent, passError } =
+    useContext<IFieldsetContext>(FieldsetContext);
   const { disableErrorFromComponents } = useFormContext();
 
   const elementID = id || generatedID;
@@ -70,7 +69,7 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
   } as FormElementRenderProps<T>;
 
   useEffect(() => {
-    if (!isFieldset) return () => {};
+    if (!isFieldset) return;
     passError(elementID, disableErrorFromComponents ? false : Boolean(error));
     return () => passError(elementID, false);
   }, [elementID, error, isFieldset]);

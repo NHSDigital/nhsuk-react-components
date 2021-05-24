@@ -8,7 +8,7 @@ interface ImageProps extends HTMLProps<HTMLImageElement> {
   caption?: string;
 }
 
-const Images: React.FC<ImageProps> = ({ className, src, caption, ...rest }) => (
+const Images: React.FC<ImageProps> = ({ className, caption, ...rest }) => (
   <figure className="nhsuk-image">
     {/* eslint-disable-next-line jsx-a11y/alt-text */}
     <img className={classNames('nhsuk-image__img', className)} {...rest} />

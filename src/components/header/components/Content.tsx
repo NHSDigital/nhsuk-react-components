@@ -8,7 +8,7 @@ const Content: React.FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) =>
     <div
       className={classNames('nhsuk-header__content', { 'js-show': searchOpen }, className)}
       {...rest}
-    ></div>
+    />
   );
 };
 export default Content;
