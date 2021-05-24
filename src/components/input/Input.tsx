@@ -10,9 +10,11 @@ interface InputProps extends HTMLProps<HTMLInputElement>, FormElementProps {
   disableErrorLine?: boolean;
 }
 
-const Input: React.FC<InputProps> = props => (
+const Input: React.FC<InputProps> = (props) => (
   <FormGroup<InputProps> {...props} inputType="input">
-    {({ width, className, error, inputRef, ...rest }) => (
+    {({
+      width, className, error, inputRef, ...rest
+    }) => (
       <input
         className={classNames(
           'nhsuk-input',

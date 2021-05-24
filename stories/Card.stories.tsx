@@ -1,18 +1,25 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { Card } from '../src';
 
-export const Standard = () => (
+export const Standard = (): JSX.Element => (
   <Card>
     <Card.Content>
       <Card.Heading>If you need help now but it&apos;s not an emergency</Card.Heading>
       <Card.Description>
-        Go to <a href="#">111.nhs.uk</a> or <a href="#">call 111</a>
+        Go to
+        {' '}
+        <a href="#">111.nhs.uk</a>
+        {' '}
+        or
+        {' '}
+        <a href="#">call 111</a>
       </Card.Description>
     </Card.Content>
   </Card>
 );
 
-export const ClickableCard = () => (
+export const ClickableCard = (): JSX.Element => (
   <Card clickable>
     <Card.Content>
       <Card.Heading className="nhsuk-heading-m">
@@ -25,7 +32,7 @@ export const ClickableCard = () => (
   </Card>
 );
 
-export const CardWithImage = () => (
+export const CardWithImage = (): JSX.Element => (
   <Card clickable>
     <Card.Image
       src="https://assets.nhs.uk/prod/images/A_0218_exercise-main_FKW1X7.width-690.jpg"
@@ -42,7 +49,7 @@ export const CardWithImage = () => (
   </Card>
 );
 
-export const FeatureCard = () => (
+export const FeatureCard = (): JSX.Element => (
   <Card feature>
     <Card.Content>
       <Card.Heading>Feature card heading</Card.Heading>
@@ -51,7 +58,7 @@ export const FeatureCard = () => (
   </Card>
 );
 
-export const CardGroupHalves = () => (
+export const CardGroupHalves = (): JSX.Element => (
   <Card.Group>
     <Card.GroupItem width="one-half">
       <Card clickable>
@@ -106,7 +113,7 @@ export const CardGroupHalves = () => (
 
 CardGroupHalves.storyName = 'Card Group (Halves)';
 
-export const CardGroupThirds = () => (
+export const CardGroupThirds = (): JSX.Element => (
   <Card.Group>
     <Card.GroupItem width="one-third">
       <Card clickable>
@@ -149,13 +156,15 @@ export const CardGroupThirds = () => (
 );
 CardGroupThirds.storyName = 'Card Group (Thirds)';
 
-export const CardGroupQuarters = () => (
+export const CardGroupQuarters = (): JSX.Element => (
   <Card.Group>
     <Card.GroupItem width="one-quarter">
       <Card clickable>
         <Card.Content>
           <p className="nhsuk-heading-xl nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1">
-            91 <span className="nhsuk-u-visually-hidden">Applicants</span>
+            91
+            {' '}
+            <span className="nhsuk-u-visually-hidden">Applicants</span>
           </p>
           <Card.Link
             href="#"
@@ -171,7 +180,9 @@ export const CardGroupQuarters = () => (
       <Card clickable>
         <Card.Content>
           <p className="nhsuk-heading-xl nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1">
-            23 <span className="nhsuk-u-visually-hidden">Jobs</span>
+            23
+            {' '}
+            <span className="nhsuk-u-visually-hidden">Jobs</span>
           </p>
           <Card.Link
             href="#"
@@ -186,7 +197,9 @@ export const CardGroupQuarters = () => (
       <Card clickable>
         <Card.Content>
           <p className="nhsuk-heading-xl nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1">
-            8 <span className="nhsuk-u-visually-hidden">Services</span>
+            8
+            {' '}
+            <span className="nhsuk-u-visually-hidden">Services</span>
           </p>
           <Card.Link
             href="#"
@@ -201,7 +214,9 @@ export const CardGroupQuarters = () => (
       <Card clickable>
         <Card.Content>
           <p className="nhsuk-heading-xl nhsuk-u-font-size-64 nhsuk-u-margin-bottom-1">
-            33 <span className="nhsuk-u-visually-hidden">Messages</span>
+            33
+            {' '}
+            <span className="nhsuk-u-visually-hidden">Messages</span>
           </p>
           <Card.Link
             href="#"

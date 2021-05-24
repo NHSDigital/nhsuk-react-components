@@ -24,7 +24,7 @@ describe('Tag', () => {
     'red',
     'orange',
     'yellow',
-  ])('adds colour class %s ', colour => {
+  ])('adds colour class %s ', (colour) => {
     const wrapper = shallow(<Tag color={colour} />);
 
     expect(wrapper.find('strong').props().className).toBe(`nhsuk-tag nhsuk-tag--${colour}`);

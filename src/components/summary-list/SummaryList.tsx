@@ -14,7 +14,7 @@ const SummaryListValue: React.FC<HTMLProps<HTMLDListElement>> = ({ className, ..
 );
 
 const SummaryListActions: React.FC<HTMLProps<HTMLDListElement>> = ({ className, ...rest }) => (
-  <dd className={classNames('nhsuk-summary-list__actions')} {...rest} />
+  <dd className={classNames('nhsuk-summary-list__actions', className)} {...rest} />
 );
 
 interface SummaryListProps extends HTMLProps<HTMLDListElement> {

@@ -11,6 +11,7 @@ export type IDateInputContext = {
 };
 
 const DateInputContext = createContext<IDateInputContext>({
+  /* eslint-disable @typescript-eslint/no-empty-function */
   id: '',
   name: '',
   registerRef: () => {},

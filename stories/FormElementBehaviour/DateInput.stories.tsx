@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { DateInput } from '../../src';
 
-export const Standard = () => (
+export const Standard = (): JSX.Element => (
   <div style={{ padding: 20 }}>
     <h2>Scenario: onChange and onInput handlers are bound without any other props</h2>
     <h5>Expected Behaviour</h5>
@@ -10,11 +10,11 @@ export const Standard = () => (
       <li>The value is passed through</li>
     </ul>
     <h5>Component</h5>
-    <DateInput onChange={e => console.log(e.target.value)} hint="Test hint" label="Test label" />
+    <DateInput onChange={(e) => console.log(e.target.value)} hint="Test hint" label="Test label" />
   </div>
 );
 
-export const StandardWithError = () => (
+export const StandardWithError = (): JSX.Element => (
   <div style={{ padding: 20 }}>
     <h2>Scenario: onChange and onInput handlers are bound without any other props</h2>
     <h5>Expected Behaviour</h5>
@@ -24,7 +24,7 @@ export const StandardWithError = () => (
     </ul>
     <h5>Component</h5>
     <DateInput
-      onChange={e => console.log(e.target.value)}
+      onChange={(e) => console.log(e.target.value)}
       error="Test Error"
       hint="Test hint"
       label="Test label"
@@ -32,7 +32,7 @@ export const StandardWithError = () => (
     <h5>Component with specific field errors</h5>
 
     <DateInput
-      onChange={e => console.log(e.target.value)}
+      onChange={(e) => console.log(e.target.value)}
       error="Test Error"
       hint="Test hint"
       label="Test label"
@@ -44,7 +44,7 @@ export const StandardWithError = () => (
   </div>
 );
 
-export const PrePopulatedIndividualComponents = () => {
+export const PrePopulatedIndividualComponents = (): JSX.Element => {
   const defaultValue = { day: '20', month: '09', year: '1996' };
   return (
     <div style={{ padding: 20 }}>
@@ -58,7 +58,7 @@ export const PrePopulatedIndividualComponents = () => {
   );
 };
 
-export const PrePopulatedWrapper = () => {
+export const PrePopulatedWrapper = (): JSX.Element => {
   const defaultValue = { day: '20', month: '09', year: '1996' };
   return (
     <div style={{ padding: 20 }}>
@@ -68,7 +68,7 @@ export const PrePopulatedWrapper = () => {
   );
 };
 
-export const ControlledElementIndividualComponents = () => {
+export const ControlledElementIndividualComponents = (): JSX.Element => {
   const value = { day: '20', month: '09', year: '1996' };
   return (
     <div style={{ padding: 20 }}>
@@ -82,7 +82,7 @@ export const ControlledElementIndividualComponents = () => {
   );
 };
 
-export const ControlledElementWrapper = () => {
+export const ControlledElementWrapper = (): JSX.Element => {
   const value = { day: '20', month: '09', year: '1996' };
   return (
     <div style={{ padding: 20 }}>
@@ -92,7 +92,7 @@ export const ControlledElementWrapper = () => {
   );
 };
 
-export const ChangeableControlledElement = () => {
+export const ChangeableControlledElement = (): JSX.Element => {
   const [value, setValue] = useState({ day: '20', month: '09', year: '1996' });
 
   return (
@@ -102,7 +102,7 @@ export const ChangeableControlledElement = () => {
         hint="Test hint"
         label="Test label"
         value={value}
-        onChange={e => setValue(e.currentTarget.value)}
+        onChange={(e) => setValue(e.currentTarget.value)}
       />
     </div>
   );

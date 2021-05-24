@@ -7,9 +7,9 @@ interface SVGImageWithSrc extends SVGProps<SVGImageElement> {
   src: string;
 }
 
-export interface NHSLogoNavProps extends AsElementLink<HTMLAnchorElement> {}
+export type NHSLogoNavProps = AsElementLink<HTMLAnchorElement>
 
-const SVGImageWithSrc: React.FC<SVGImageWithSrc> = props => <image {...props} />;
+const SVGImageWithSrc: React.FC<SVGImageWithSrc> = (props) => <image {...props} />;
 
 const NHSLogo: React.FC<NHSLogoNavProps> = ({
   className,

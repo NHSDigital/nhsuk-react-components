@@ -15,7 +15,7 @@ import TransactionalServiceName from './components/TransactionalServiceName';
 import NavTitle from './components/NavTitle';
 import NavContainer from './components/NavContainer';
 
-const BaseHeaderLogo: React.FC<OrganisationalLogoProps & NHSLogoNavProps> = props => {
+const BaseHeaderLogo: React.FC<OrganisationalLogoProps & NHSLogoNavProps> = (props) => {
   const { orgName } = useContext<IHeaderContext>(HeaderContext);
   if (orgName) {
     return <OrganisationalLogo {...props} />;
@@ -82,23 +82,23 @@ class Header extends PureComponent<HeaderProps, HeaderState> {
     };
   }
 
-  setMenuToggle = (toggle: boolean) => {
+  setMenuToggle = (toggle: boolean): void => {
     this.setState({ hasMenuToggle: toggle });
   };
 
-  setSearch = (toggle: boolean) => {
+  setSearch = (toggle: boolean): void => {
     this.setState({ hasSearch: toggle });
   };
 
-  toggleMenu = () => {
-    this.setState(state => ({ menuOpen: !state.menuOpen }));
+  toggleMenu = (): void => {
+    this.setState((state) => ({ menuOpen: !state.menuOpen }));
   };
 
-  toggleSearch = () => {
-    this.setState(state => ({ searchOpen: !state.searchOpen }));
+  toggleSearch = (): void => {
+    this.setState((state) => ({ searchOpen: !state.searchOpen }));
   };
 
-  render() {
+  render(): JSX.Element {
     const {
       className,
       children,
@@ -110,7 +110,9 @@ class Header extends PureComponent<HeaderProps, HeaderState> {
       white,
       ...rest
     } = this.props;
-    const { hasSearch, hasMenuToggle, menuOpen, searchOpen } = this.state;
+    const {
+      hasSearch, hasMenuToggle, menuOpen, searchOpen,
+    } = this.state;
     const contextValue: IHeaderContext = {
       orgName,
       orgSplit,

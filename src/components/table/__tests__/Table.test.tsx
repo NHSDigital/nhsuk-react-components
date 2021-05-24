@@ -1,6 +1,6 @@
 import React from 'react';
-import Table from '..';
 import { shallow, mount } from 'enzyme';
+import Table from '..';
 
 describe('Table', () => {
   it('matches snapshot', () => {
@@ -23,7 +23,7 @@ describe('Table', () => {
     });
 
     it('renders heading', () => {
-      const element = shallow(<Table.Panel heading="Heading"></Table.Panel>);
+      const element = shallow(<Table.Panel heading="Heading" />);
       expect(
         element
           .find('.nhsuk-table__heading-tab')
@@ -36,7 +36,7 @@ describe('Table', () => {
 
   describe('Table.Head', () => {
     it('matches snapshot', () => {
-      const element = shallow(<Table.Head></Table.Head>);
+      const element = shallow(<Table.Head />);
       expect(element).toMatchSnapshot();
       element.unmount();
     });
@@ -46,7 +46,7 @@ describe('Table', () => {
         <Table>
           <Table.Head>
             <Table.Row>
-              <Table.Cell></Table.Cell>
+              <Table.Cell />
             </Table.Row>
           </Table.Head>
         </Table>,
@@ -59,7 +59,7 @@ describe('Table', () => {
 
   describe('Table.Body', () => {
     it('matches snapshot', () => {
-      const element = shallow(<Table.Body></Table.Body>);
+      const element = shallow(<Table.Body />);
       expect(element).toMatchSnapshot();
       element.unmount();
     });
@@ -69,7 +69,7 @@ describe('Table', () => {
         <Table>
           <Table.Body>
             <Table.Row>
-              <Table.Cell></Table.Cell>
+              <Table.Cell />
             </Table.Row>
           </Table.Body>
         </Table>,
@@ -82,7 +82,7 @@ describe('Table', () => {
 
   describe('Table.Row', () => {
     it('matches snapshot', () => {
-      const element = shallow(<Table.Row></Table.Row>);
+      const element = shallow(<Table.Row />);
       expect(element).toMatchSnapshot();
       element.unmount();
     });
@@ -97,14 +97,14 @@ describe('Table', () => {
     });
 
     it('renders as header when supplied', () => {
-      const element = shallow(<Table.Cell header></Table.Cell>);
+      const element = shallow(<Table.Cell header />);
       expect(element.type()).toBe('th');
       expect(element.hasClass('nhsuk-table__header')).toBeTruthy();
       element.unmount();
     });
 
     it('renders normally when header is false', () => {
-      const element = shallow(<Table.Cell header={false}></Table.Cell>);
+      const element = shallow(<Table.Cell header={false} />);
       expect(element.type()).toBe('td');
       expect(element.hasClass('nhsuk-table__header')).toBeFalsy();
       expect(element.hasClass('nhsuk-table__cell')).toBeTruthy();

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Footer } from '../src';
 
-export const Standard = () => (
+export const Standard = (): JSX.Element => (
   <>
     <div id="restOfThePage" style={{ height: '60vh' }} />
     <Footer>
@@ -17,7 +17,7 @@ export const Standard = () => (
   </>
 );
 
-export const WithThreeColumns = () => (
+export const WithThreeColumns = (): JSX.Element => (
   <>
     <div id="restOfThePage" style={{ height: '60vh' }} />
     <Footer>

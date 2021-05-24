@@ -108,7 +108,9 @@ interface Table extends React.FC<TableProps> {
   Panel: React.FC<TablePanelProps>;
 }
 
-const Table: Table = ({ className, caption, children, ...rest }) => (
+const Table: Table = ({
+  className, caption, children, ...rest
+}) => (
   <div className="nhsuk-table-responsive">
     <table className={classNames('nhsuk-table', className)} {...rest}>
       {caption ? <caption className="nhsuk-table__caption">{caption}</caption> : null}

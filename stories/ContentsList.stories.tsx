@@ -1,8 +1,7 @@
 import React from 'react';
 import { ContentsList } from '../src';
 
-
-export const Standard = () => (
+export const Standard = (): JSX.Element => (
   <ContentsList aria-label="Pages in this guide">
     <ContentsList.Item current aria-current="page">
       What is AMD?

@@ -1,7 +1,7 @@
 import React from 'react';
 import { DoDontList } from '../src';
 
-export const Do = () => (
+export const Do = (): JSX.Element => (
   <DoDontList listType="do">
     <DoDontList.Item>
       cover blisters that are likely to burst with a soft plaster or dressing
@@ -13,7 +13,7 @@ export const Do = () => (
   </DoDontList>
 );
 
-export const Dont = () => (
+export const Dont = (): JSX.Element => (
   <DoDontList listType="dont">
     <DoDontList.Item>do not burst a blister yourself</DoDontList.Item>
     <DoDontList.Item>do not peel the skin off a burst blister</DoDontList.Item>

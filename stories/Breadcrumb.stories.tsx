@@ -1,7 +1,7 @@
 import React from 'react';
 import { Breadcrumb } from '../src';
 
-export const StandardBreadcrumb = () => (
+export const StandardBreadcrumb = (): JSX.Element => (
   <Breadcrumb>
     <Breadcrumb.Item href="/level/one">Level One</Breadcrumb.Item>
     <Breadcrumb.Item href="/level/two">Level Two</Breadcrumb.Item>

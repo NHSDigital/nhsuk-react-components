@@ -1,6 +1,6 @@
 import React from 'react';
-import InsetText from '..';
 import { shallow } from 'enzyme';
+import InsetText from '..';
 
 describe('InsetText', () => {
   it('matches snapshot', () => {
@@ -22,7 +22,7 @@ describe('InsetText', () => {
   });
 
   it('has custom visually hidden text', () => {
-    const component = shallow(<InsetText visuallyHiddenText="Custom"></InsetText>);
+    const component = shallow(<InsetText visuallyHiddenText="Custom" />);
     expect(component.find('.nhsuk-u-visually-hidden').text()).toBe('Custom');
     component.unmount();
   });

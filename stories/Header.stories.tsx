@@ -2,7 +2,7 @@ import React from 'react';
 import { Header } from '../src';
 import { AsElementLink } from '../src/util/types/LinkTypes';
 
-export const BasicHeader = () => (
+export const BasicHeader = (): JSX.Element => (
   <Header>
     <Header.Container>
       <Header.Logo href="/" />
@@ -24,7 +24,7 @@ export const BasicHeader = () => (
   </Header>
 );
 
-export const HeaderWithNavigation = () => (
+export const HeaderWithNavigation = (): JSX.Element => (
   <Header>
     <Header.Container>
       <Header.Logo href="/" />
@@ -45,7 +45,7 @@ export const HeaderWithNavigation = () => (
   </Header>
 );
 
-export const HeaderWithSearch = () => (
+export const HeaderWithSearch = (): JSX.Element => (
   <Header>
     <Header.Container>
       <Header.Logo href="/" />
@@ -56,7 +56,7 @@ export const HeaderWithSearch = () => (
   </Header>
 );
 
-export const HeaderWithLogo = () => (
+export const HeaderWithLogo = (): JSX.Element => (
   <Header>
     <Header.Container>
       <Header.Logo href="/" />
@@ -64,7 +64,7 @@ export const HeaderWithLogo = () => (
   </Header>
 );
 
-export const TransactionalHeader = () => (
+export const TransactionalHeader = (): JSX.Element => (
   <Header transactional>
     <Header.Container>
       <Header.Logo href="/" />
@@ -72,7 +72,7 @@ export const TransactionalHeader = () => (
   </Header>
 );
 
-export const TransactionalHeaderWithServiceName = () => (
+export const TransactionalHeaderWithServiceName = (): JSX.Element => (
   <Header transactional>
     <Header.Container>
       <Header.Logo href="/" />
@@ -81,7 +81,7 @@ export const TransactionalHeaderWithServiceName = () => (
   </Header>
 );
 
-export const TransactionalHeaderWithALongServiceName = () => (
+export const TransactionalHeaderWithALongServiceName = (): JSX.Element => (
   <Header transactional>
     <Header.Container>
       <Header.Logo href="/" />
@@ -92,7 +92,7 @@ export const TransactionalHeaderWithALongServiceName = () => (
   </Header>
 );
 
-export const OrganisationalHeader = () => (
+export const OrganisationalHeader = (): JSX.Element => (
   <Header orgName="Anytown Anyplace" orgSplit="Anywhere" orgDescriptor="NHS Foundation Trust">
     <Header.Container>
       <Header.Logo href="/" />
@@ -114,7 +114,7 @@ export const OrganisationalHeader = () => (
   </Header>
 );
 
-export const OrganisationalHeaderWithWhiteHeader = () => (
+export const OrganisationalHeaderWithWhiteHeader = (): JSX.Element => (
   <Header orgName="Anytown Anyplace" orgSplit="Anywhere" orgDescriptor="NHS Foundation Trust" white>
     <Header.Container>
       <Header.Logo href="/" />
@@ -136,7 +136,7 @@ export const OrganisationalHeaderWithWhiteHeader = () => (
   </Header>
 );
 
-export const HeaderWithCustomNavItemComponent = () => {
+export const HeaderWithCustomNavItemComponent = (): JSX.Element => {
   const customElement = (props: AsElementLink<HTMLDivElement>) => <div {...props} />;
 
   return (
@@ -164,7 +164,7 @@ export const HeaderWithCustomNavItemComponent = () => {
   );
 };
 
-export const HeaderWithCustomNavMenuCloseAndNavItemListComponent = () => (
+export const HeaderWithCustomNavMenuCloseAndNavItemListComponent = (): JSX.Element => (
   <Header orgName="Anytown Anyplace" orgSplit="Anywhere" orgDescriptor="NHS Foundation Trust" white>
     <Header.Container>
       <Header.Logo href="/" />

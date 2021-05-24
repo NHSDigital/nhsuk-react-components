@@ -13,7 +13,7 @@ const ErrorSummaryList: React.FC<HTMLProps<HTMLUListElement>> = ({ className, ..
   <ul className={classNames('nhsuk-list', 'nhsuk-error-summary__list', className)} {...rest} />
 );
 
-const ErrorSummaryListItem: React.FC<HTMLProps<HTMLAnchorElement>> = props => (
+const ErrorSummaryListItem: React.FC<HTMLProps<HTMLAnchorElement>> = (props) => (
   <li>
     <a {...props} />
   </li>

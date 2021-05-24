@@ -17,7 +17,7 @@ const TransactionalServiceName: React.FC<TransactionalServiceNameProps> = ({
       className,
     )}
   >
-    <a className="nhsuk-header__transactional-service-name--link" {...rest}></a>
+    <a className="nhsuk-header__transactional-service-name--link" {...rest} />
   </div>
 );
 

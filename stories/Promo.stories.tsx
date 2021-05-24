@@ -1,8 +1,7 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import { Promo } from '../src/deprecated';
 
-export const Standard = () => (
+export const Standard = (): JSX.Element => (
   <Promo href="#">
     <Promo.Heading>Save a life: give blood</Promo.Heading>
     <Promo.Description>
@@ -11,7 +10,7 @@ export const Standard = () => (
   </Promo>
 );
 
-export const WithImage = () => (
+export const WithImage = (): JSX.Element => (
   <Promo
     href="https://www.nhs.uk"
     imageSrc="https://assets.nhs.uk/prod/images/MS_1018_give_blood.2e16d0ba.fill-2400x1350.jpg"
@@ -24,7 +23,7 @@ export const WithImage = () => (
   </Promo>
 );
 
-export const WithNoDescription = () => (
+export const WithNoDescription = (): JSX.Element => (
   <Promo
     href="https://www.nhs.uk"
     imageSrc="https://assets.nhs.uk/prod/images/MS_1018_give_blood.2e16d0ba.fill-2400x1350.jpg"
@@ -34,7 +33,7 @@ export const WithNoDescription = () => (
   </Promo>
 );
 
-export const SmallPromo = () => (
+export const SmallPromo = (): JSX.Element => (
   <Promo
     small
     href="https://www.nhs.uk"
@@ -48,7 +47,7 @@ export const SmallPromo = () => (
   </Promo>
 );
 
-export const PromoGroup = () => (
+export const PromoGroup = (): JSX.Element => (
   <>
     <Promo.Group>
       <Promo
