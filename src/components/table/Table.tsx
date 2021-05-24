@@ -43,7 +43,7 @@ class Table extends React.PureComponent<TableProps, TableState> {
     };
   }
 
-  setHeadings = (headings: string[]) => {
+  setHeadings = (headings: string[]): void => {
     const isEqual = headings.reduce(
       (prevValue, heading, index) => prevValue && heading === this.state.headings[index],
       true,
@@ -52,7 +52,7 @@ class Table extends React.PureComponent<TableProps, TableState> {
     if (!isEqual) this.setState({ headings });
   };
 
-  render() {
+  render(): JSX.Element {
     const { className, responsive, children, caption, captionProps, ...rest } = this.props;
 
     const contextValue: ITableContext = {

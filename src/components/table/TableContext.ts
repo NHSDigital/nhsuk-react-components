@@ -7,6 +7,7 @@ export interface ITableContext {
 }
 
 const TableContext = createContext<ITableContext>({
+  /* eslint-disable @typescript-eslint/no-empty-function */
   isResponsive: false,
   headings: [],
   setHeadings: () => {},

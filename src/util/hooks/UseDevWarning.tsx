@@ -3,7 +3,7 @@ import isDev from '../IsDev';
 
 type ConditionFn = () => boolean;
 
-const useDevWarning = (warning: string, condition: ConditionFn = () => true) => {
+const useDevWarning = (warning: string, condition: ConditionFn = () => true): void => {
   useEffect(() => {
     if (isDev() && condition()) {
       // eslint-disable-next-line no-console

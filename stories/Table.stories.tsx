@@ -53,7 +53,7 @@ export const TablePanel = (): JSX.Element => (
   </Table.Panel>
 );
 
-export const ResponsiveTable = () => (
+export const ResponsiveTable = (): JSX.Element => (
   <Table responsive caption="Ibuprofen syrup dosages for children">
     <Table.Head role="rowgroup">
       <Table.Row>
