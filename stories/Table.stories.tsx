@@ -1,5 +1,5 @@
 import React from 'react';
-import { Table } from '../src';
+import { Col, Hint, Row, Table } from '../src';
 
 export const StandardTable = (): JSX.Element => (
   <Table caption="Skin symptoms and possible causes">
@@ -80,6 +80,36 @@ export const ResponsiveTable = (): JSX.Element => (
       </Table.Row>
     </Table.Body>
   </Table>
+);
+
+export const NumericCells = () => (
+  <Row>
+    <Col width="one-half">
+      <Hint>Right-aligned cells are used for numeric values</Hint>
+      <Table caption="Number of cases">
+        <Table.Head>
+          <Table.Row>
+            <Table.Cell>Location</Table.Cell>
+            <Table.Cell isNumeric>Number of cases</Table.Cell>
+          </Table.Row>
+        </Table.Head>
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell>England</Table.Cell>
+            <Table.Cell isNumeric>4,000</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>Wales</Table.Cell>
+            <Table.Cell isNumeric>2,500</Table.Cell>
+          </Table.Row>
+          <Table.Row>
+            <Table.Cell>Scotland</Table.Cell>
+            <Table.Cell isNumeric>600</Table.Cell>
+          </Table.Row>
+        </Table.Body>
+      </Table>
+    </Col>
+  </Row>
 );
 
 export default {

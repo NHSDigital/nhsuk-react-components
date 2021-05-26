@@ -97,4 +97,62 @@ describe('Table.Cell', () => {
 
     wrapper.unmount();
   });
+
+  it('adds the numeric class when isNumeric is true', () => {
+    const wrapper = mount(
+      <table>
+        <tbody>
+          <tr>
+            <TableCell data-test="cell" isNumeric />
+          </tr>
+        </tbody>
+      </table>,
+    );
+
+    const cell = wrapper.find('[data-test="cell"]');
+    expect(cell.last().prop('className')).toContain('nhsuk-table__cell--numeric');
+
+    wrapper.unmount();
+  });
+
+  it('adds the numeric header class when isNumeric is true', () => {
+    const wrapper = mount(
+      <table>
+        <TableHead>
+          <tr>
+            <TableCell data-test="cell" isNumeric />
+          </tr>
+        </TableHead>
+      </table>,
+    );
+
+    const cell = wrapper.find('[data-test="cell"]');
+    expect(cell.last().prop('className')).toContain('nhsuk-table__header--numeric');
+
+    wrapper.unmount();
+  });
+
+  it('does not add the numeric header when isNumeric is false', () => {
+    const wrapper = mount(
+      <table>
+        <TableHead>
+          <tr>
+            <TableCell data-test="header" />
+          </tr>
+        </TableHead>
+        <tbody>
+          <tr>
+            <TableCell data-test="cell" />
+          </tr>
+        </tbody>
+      </table>,
+    );
+
+    const header = wrapper.find('[data-test="header"]');
+    expect(header.last().prop('className')).not.toContain('nhsuk-table__header--numeric');
+    const cell = wrapper.find('[data-test="cell"]');
+    expect(cell.last().prop('className')).not.toContain('nhsuk-table__header--numeric');
+
+    wrapper.unmount();
+  });
 });

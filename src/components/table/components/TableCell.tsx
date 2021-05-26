@@ -9,22 +9,28 @@ const CellOutsideOfSectionWarning =
 export interface TableCellProps extends HTMLProps<HTMLTableCellElement> {
   _responsive?: boolean;
   _responsiveHeading?: string;
+  isNumeric?: boolean;
 }
 
 const TableCell: React.FC<TableCellProps> = ({
   className,
   _responsive,
   _responsiveHeading,
+  isNumeric,
   children,
   ...rest
 }) => {
   const section = useContext(TableSectionContext);
   useDevWarning(CellOutsideOfSectionWarning, () => section === TableSection.NONE);
 
+  const cellClass = section === TableSection.HEAD ? 'nhsuk-table__header' : 'nhsuk-table__cell';
+  const numericHeader = isNumeric ? `${cellClass}--numeric` : '';
+  const classes = classNames(cellClass, numericHeader, className)
+
   switch (section) {
     case TableSection.HEAD:
       return (
-        <th className={classNames('nhsuk-table__header', className)} scope="col" {...rest}>
+        <th className={classes} scope="col" {...rest}>
           {children}
         </th>
       );
@@ -34,7 +40,7 @@ const TableCell: React.FC<TableCellProps> = ({
     default:
       return (
         <td
-          className={classNames('nhsuk-table__cell', className)}
+          className={classes}
           role={_responsive ? 'cell' : undefined}
           {...rest}
         >
