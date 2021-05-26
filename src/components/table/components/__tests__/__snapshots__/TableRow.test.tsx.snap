@@ -2,10 +2,12 @@
 
 exports[`Table.Row matches snapshot 1`] = `
 <table>
-  <Table.Row>
-    <tr
-      className="nhsuk-table__row"
-    />
-  </Table.Row>
+  <tbody>
+    <Table.Row>
+      <tr
+        className="nhsuk-table__row"
+      />
+    </Table.Row>
+  </tbody>
 </table>
 `;

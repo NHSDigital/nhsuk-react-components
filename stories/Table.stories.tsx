@@ -68,15 +68,11 @@ export const ResponsiveTable = (): JSX.Element => (
         <Table.Cell>2.5ml</Table.Cell>
         <Table.Cell>Max 3 times in 24 hours</Table.Cell>
       </Table.Row>
-    </Table.Body>
-    <Table.Body>
       <Table.Row>
         <Table.Cell>6 to 11 months</Table.Cell>
         <Table.Cell>2.5ml</Table.Cell>
         <Table.Cell>Max 3 to 4 times in 24 hours</Table.Cell>
       </Table.Row>
-    </Table.Body>
-    <Table.Body>
       <Table.Row>
         <Table.Cell>1 to 3 years</Table.Cell>
         <Table.Cell>5ml</Table.Cell>

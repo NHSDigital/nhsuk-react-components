@@ -19,7 +19,7 @@ const TableRow: React.FC<HTMLProps<HTMLTableRowElement>> = ({ className, childre
       if (isTableCell(child)) {
         return React.cloneElement(child, {
           _responsive: isResponsive,
-          _responsiveHeading: `${headings[index]} `,
+          _responsiveHeading: `${headings[index] || ''} `,
         });
       }
       return child;
