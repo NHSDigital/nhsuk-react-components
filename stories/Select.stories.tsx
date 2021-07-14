@@ -1,5 +1,5 @@
+import { Button, ErrorMessage, FormGroup, Hint, Input, Label, Select } from '../src';
 import React, { MouseEvent } from 'react';
-import { Select, Button, Input } from '../src';
 
 export const Standard = (): JSX.Element => (
   <Select id="select-1" label="Label text goes here">
@@ -45,6 +45,7 @@ SelectWithErrorBoolean.storyName = 'Select With Error (Boolean)';
 
 export const SelectWithErrorString = (): JSX.Element => {
   const [error, setError] = React.useState<string>('Error message goes here');
+
   return (
     <>
       <Select error={error} label="Label text goes here">
@@ -57,6 +58,37 @@ export const SelectWithErrorString = (): JSX.Element => {
   );
 };
 SelectWithErrorString.storyName = 'Select With Error (String)';
+
+export const SelectWithFormGroupAndHint = (): JSX.Element => (
+  <>
+    <FormGroup>
+      <Hint>This is hint</Hint>
+      <Select>
+        <Select.Option value="1">NHS.UK frontend option 1</Select.Option>
+        <Select.Option value="2">NHS.UK frontend option 2</Select.Option>
+        <Select.Option value="3">NHS.UK frontend option 3</Select.Option>
+      </Select>
+    </FormGroup>
+  </>
+);
+SelectWithFormGroupAndHint.storyName = 'Select With Form Group and Hint text';
+
+export const SelectWithFormGroupLabelAndHint = (): JSX.Element => (
+  <>
+    <FormGroup>
+      <Label>Please select</Label>
+      <Hint>This is hint</Hint>
+      <ErrorMessage>Empty not allowed</ErrorMessage>
+      <Select>
+        <Select.Option>Select</Select.Option>
+        <Select.Option value="1">NHS.UK frontend option 1</Select.Option>
+        <Select.Option value="2">NHS.UK frontend option 2</Select.Option>
+        <Select.Option value="3">NHS.UK frontend option 3</Select.Option>
+      </Select>
+    </FormGroup>
+  </>
+);
+SelectWithFormGroupLabelAndHint.storyName = 'Select With Form Group, Label, Hint and Error text';
 
 export default {
   title: 'Components/Select',

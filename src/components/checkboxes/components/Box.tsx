@@ -38,8 +38,7 @@ const Box: React.FC<BoxProps> = ({
 }) => {
   const { getBoxId, name, setConditional, unleaseReference, leaseReference } =
     useContext<ICheckboxContext>(CheckboxContext);
-
-  const [boxReference] = useState<string>(leaseReference());
+  const [boxReference] = useState<string>(() => leaseReference());
   const [showConditional, setShowConditional] = useState<boolean>(!!(checked || defaultChecked));
   const inputID = id || getBoxId(boxReference);
 

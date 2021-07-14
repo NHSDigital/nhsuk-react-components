@@ -1,11 +1,11 @@
-import React, { ReactNode, useState, useEffect, HTMLProps, useContext } from 'react';
+import React, { ReactNode, useState, HTMLProps } from 'react';
 import classNames from 'classnames';
 import Hint from '../components/hint/Hint';
 import ErrorMessage from '../components/error-message/ErrorMessage';
 import { generateRandomID } from './RandomID';
 import Label from '../components/label/Label';
 import { FormElementProps } from './types/FormTypes';
-import FieldsetContext, { IFieldsetContext } from '../components/fieldset/FieldsetContext';
+// import FieldsetContext, { IFieldsetContext } from '../components/fieldset/FieldsetContext';
 import { useFormContext } from '../components/form';
 
 type ExcludedProps =
@@ -50,8 +50,8 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
     ...rest
   } = props;
   const [generatedID] = useState<string>(generateRandomID(inputType));
-  const { isFieldset, registerComponent, passError } =
-    useContext<IFieldsetContext>(FieldsetContext);
+  // const { isFieldset, registerComponent, passError } =
+  //   useContext<IFieldsetContext>(FieldsetContext);
   const { disableErrorFromComponents } = useFormContext();
 
   const elementID = id || generatedID;
@@ -68,16 +68,16 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
     ...rest,
   } as FormElementRenderProps<T>;
 
-  useEffect(() => {
-    if (!isFieldset) return;
-    passError(elementID, disableErrorFromComponents ? false : Boolean(error));
-    return () => passError(elementID, false);
-  }, [elementID, error, isFieldset]);
+  // useEffect(() => {
+  //   if (!isFieldset) return;
+  //   passError(elementID, disableErrorFromComponents ? false : Boolean(error));
+  //   return () => passError(elementID, false);
+  // }, [elementID, error, isFieldset]);
 
-  useEffect(() => {
-    registerComponent(elementID);
-    return () => registerComponent(elementID, true);
-  }, []);
+  // useEffect(() => {
+  //   registerComponent(elementID);
+  //   return () => registerComponent(elementID, true);
+  // }, []);
 
   const { className: formGroupClassName, ...formGroupRestProps } = formGroupProps || {};
 

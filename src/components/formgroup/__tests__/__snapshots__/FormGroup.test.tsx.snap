@@ -1,0 +1,209 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Form Group matches snapshot Form group and label 1`] = `
+<div
+  className="nhsuk-form-group"
+>
+  <ContextProvider
+    value={
+      Object {
+        "disableErrorFromComponents": false,
+        "error": undefined,
+        "inputID": undefined,
+        "isInFormGroup": true,
+        "setError": [Function],
+        "setInputID": [Function],
+      }
+    }
+  >
+    <Label>
+      Please specify (others)
+    </Label>
+  </ContextProvider>
+</div>
+`;
+
+exports[`Form Group matches snapshot Form group label , Input and Error message 1`] = `
+<div
+  className="nhsuk-form-group"
+>
+  <ContextProvider
+    value={
+      Object {
+        "disableErrorFromComponents": false,
+        "error": undefined,
+        "inputID": undefined,
+        "isInFormGroup": true,
+        "setError": [Function],
+        "setInputID": [Function],
+      }
+    }
+  >
+    <Label>
+      Please specify (others)
+    </Label>
+    <Hint>
+      Hint: Use this box to specify more
+    </Hint>
+    <ErrorMessage
+      role="alert"
+      visuallyHiddenText="Error: "
+    >
+      At least 20 characters...
+    </ErrorMessage>
+    <Input
+      id="input-id4"
+      type="text"
+      width="10"
+    />
+  </ContextProvider>
+</div>
+`;
+
+exports[`Form Group matches snapshot Form group label , Select and Error message 1`] = `
+<div
+  className="nhsuk-form-group"
+>
+  <ContextProvider
+    value={
+      Object {
+        "disableErrorFromComponents": false,
+        "error": undefined,
+        "inputID": undefined,
+        "isInFormGroup": true,
+        "setError": [Function],
+        "setInputID": [Function],
+      }
+    }
+  >
+    <Label>
+      Please specify (others)
+    </Label>
+    <Hint>
+      Hint: Use this box to specify more
+    </Hint>
+    <ErrorMessage
+      role="alert"
+      visuallyHiddenText="Error: "
+    >
+      At least 20 characters...
+    </ErrorMessage>
+    <Select>
+      <Option>
+        Select
+      </Option>
+      <Option
+        value="1"
+      >
+        NHS.UK frontend option 1
+      </Option>
+      <Option
+        value="2"
+      >
+        NHS.UK frontend option 2
+      </Option>
+      <Option
+        value="3"
+      >
+        NHS.UK frontend option 3
+      </Option>
+    </Select>
+  </ContextProvider>
+</div>
+`;
+
+exports[`Form Group matches snapshot Form group label , Textarea and Error message 1`] = `
+<div
+  className="nhsuk-form-group"
+>
+  <ContextProvider
+    value={
+      Object {
+        "disableErrorFromComponents": false,
+        "error": undefined,
+        "inputID": undefined,
+        "isInFormGroup": true,
+        "setError": [Function],
+        "setInputID": [Function],
+      }
+    }
+  >
+    <Label>
+      Please specify (others)
+    </Label>
+    <Hint>
+      Hint: Use this box to specify more
+    </Hint>
+    <ErrorMessage
+      role="alert"
+      visuallyHiddenText="Error: "
+    >
+      At least 20 characters...
+    </ErrorMessage>
+    <Textarea
+      id="no-ni-reason2"
+      label="Why can't you provide a National Insurance number?"
+      name="no-ni-reason2"
+      rows={5}
+    />
+  </ContextProvider>
+</div>
+`;
+
+exports[`Form Group matches snapshot Form group label and Textarea 1`] = `
+<div
+  className="nhsuk-form-group"
+>
+  <ContextProvider
+    value={
+      Object {
+        "disableErrorFromComponents": false,
+        "error": undefined,
+        "inputID": undefined,
+        "isInFormGroup": true,
+        "setError": [Function],
+        "setInputID": [Function],
+      }
+    }
+  >
+    <Label>
+      Please specify (others)
+    </Label>
+    <Hint>
+      Hint: Use this box to specify more
+    </Hint>
+    <Textarea
+      id="no-ni-reason2"
+      label="Why can't you provide a National Insurance number?"
+      name="no-ni-reason2"
+      rows={5}
+    />
+  </ContextProvider>
+</div>
+`;
+
+exports[`Form Group matches snapshot Form group, label and Hint 1`] = `
+<div
+  className="nhsuk-form-group"
+>
+  <ContextProvider
+    value={
+      Object {
+        "disableErrorFromComponents": false,
+        "error": undefined,
+        "inputID": undefined,
+        "isInFormGroup": true,
+        "setError": [Function],
+        "setInputID": [Function],
+      }
+    }
+  >
+    <Label>
+      Please specify (others)
+    </Label>
+    <Hint>
+      Hint: Use this box to specify more
+    </Hint>
+  </ContextProvider>
+</div>
+`;

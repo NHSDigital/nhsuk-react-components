@@ -1,6 +1,7 @@
-import React, { HTMLProps } from 'react';
+import React, { HTMLProps, useContext } from 'react';
 import classNames from 'classnames';
 import { NHSUKSize } from '../../util/types/NHSUKTypes';
+import FormGroupContext from '../formgroup/FormGroupContext';
 
 export interface LabelProps extends Omit<HTMLProps<HTMLLabelElement>, 'size'> {
   bold?: boolean;
@@ -8,21 +9,25 @@ export interface LabelProps extends Omit<HTMLProps<HTMLLabelElement>, 'size'> {
   size?: NHSUKSize;
 }
 
-const BaseLabel: React.FC<LabelProps> = ({
-  className, bold, size, isPageHeading, ...rest
-}) => (
-  // eslint-disable-next-line jsx-a11y/label-has-associated-control
-  <label
-    className={classNames(
-      'nhsuk-label',
-      { 'nhsuk-label--s': bold && !size },
-      { 'nhsuk-label--xl': isPageHeading && !size },
-      { [`nhsuk-label--${size}`]: size },
-      className,
-    )}
-    {...rest}
-  />
-);
+const BaseLabel: React.FC<LabelProps> = ({ id, className, bold, size, isPageHeading, ...rest }) => {
+  const { inputID } = useContext(FormGroupContext);
+  const labelId = id || (inputID ? `${inputID}--label` : undefined);
+
+  return (
+    // eslint-disable-next-line jsx-a11y/label-has-associated-control
+    <label
+      id={labelId}
+      className={classNames(
+        'nhsuk-label',
+        { 'nhsuk-label--s': bold && !size },
+        { 'nhsuk-label--xl': isPageHeading && !size },
+        { [`nhsuk-label--${size}`]: size },
+        className,
+      )}
+      {...rest}
+    />
+  );
+};
 
 const Label: React.FC<LabelProps> = ({ isPageHeading, ...rest }) => {
   if (isPageHeading) {
