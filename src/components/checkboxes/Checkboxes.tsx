@@ -6,7 +6,7 @@ import useCheckboxes from '../../util/hooks/UseCheckboxes';
 import useFormGroup from '../../util/hooks/UseFormGroup';
 import Box from './components/Box';
 
-interface CheckboxesProps extends HTMLProps<HTMLDivElement>, FormElementProps {
+interface CheckboxesProps extends Omit<HTMLProps<HTMLDivElement>, "label">, FormElementProps {
   idPrefix?: string;
 }
 
