@@ -1,26 +1,17 @@
 import { IRadiosContext, RadiosContext } from './RadioContext';
-import React, { HTMLProps, PureComponent } from 'react';
+import React, { HTMLProps } from 'react';
 
 import Divider from './components/Divider';
 import { FormElementProps } from '../../util/types/FormTypes';
-import FormGroup from '../../util/FormGroup';
 import Radio from './components/Radio';
 import classNames from 'classnames';
-import { generateRandomName } from '../../util/RandomID';
 import useRadios from '../../util/hooks/UseRadios';
 import useFormGroup from '../../util/hooks/UseFormGroup';
-import { ICheckboxContext } from '../checkboxes/CheckboxContext';
 
 interface RadiosProps extends Omit<HTMLProps<HTMLDivElement>, "label">, FormElementProps {
   inline?: boolean;
   idPrefix?: string;
 }
-
-type RadiosState = {
-  conditionalRadios: Array<string>;
-  selectedRadio: string;
-};
-
 interface IRadios extends React.FC<RadiosProps> {
   Divider: typeof Divider;
   Radio: typeof Radio;

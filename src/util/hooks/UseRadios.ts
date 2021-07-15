@@ -51,7 +51,7 @@ const useRadios = (id: string, idPrefix: string) => {
         radioIds.current = {};
     }
 
-    return { selectedRadio, leaseReference, unleaseReference, setConditional, setSelected, conditionalRadios, getRadioId, resetRadioIds, }
+    return { selectedRadio, leaseReference, unleaseReference, setConditional, setSelected, conditionalRadios, getRadioId, resetRadioIds }
 }
 
 export default useRadios;

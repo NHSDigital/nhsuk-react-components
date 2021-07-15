@@ -29,10 +29,7 @@ const useDateInput: UseDateInputType = (value, defaultValue, onChange) => {
         year: value?.year || defaultValue?.year || ""
     });
 
-
-
     useEffect(() => {
-
         setDateValues(values => {
             if (!value) return values;
             const { day, month, year } = value;

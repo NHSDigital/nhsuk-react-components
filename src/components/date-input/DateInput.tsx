@@ -1,4 +1,4 @@
-import React, { HTMLProps, PureComponent, ChangeEvent } from 'react';
+import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
 import { DayInput, MonthInput, YearInput } from './components/IndividualDateInputs';
 import DateInputContext, { IDateInputContext } from './DateInputContext';

@@ -55,7 +55,7 @@ describe("UseDateInput", () => {
     });
 
     it("updates values on subsequent render if changed", async () => {
-        let value = {
+        const value = {
             day: "01",
             month: "02",
             year: "03"
