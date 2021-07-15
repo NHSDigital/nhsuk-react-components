@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { DateInput } from '../../src';
+import { DateInput, ErrorMessage, FormGroup, Hint, Label } from '../../src';
 
 export const Standard = (): JSX.Element => (
   <div style={{ padding: 20 }}>
@@ -107,6 +107,19 @@ export const ChangeableControlledElement = (): JSX.Element => {
     </div>
   );
 };
+
+export const DateInputWithCustomFormGroup = (): JSX.Element => (
+  <FormGroup>
+    <Label>Test Label</Label>
+    <Hint>Test Hint</Hint>
+    <ErrorMessage>Test Error Message</ErrorMessage>
+    <DateInput onChange={(e) => console.log(e.currentTarget.value)}>
+      <DateInput.Day />
+      <DateInput.Month />
+      <DateInput.Year />
+    </DateInput>
+  </FormGroup>
+)
 
 export default {
   title: 'FormBehaviour/DateInput',

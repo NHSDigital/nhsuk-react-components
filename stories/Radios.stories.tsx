@@ -1,6 +1,6 @@
 import React, { MouseEvent } from 'react';
 import {
-  Radios, Fieldset, Button, Input, Checkboxes,
+  Radios, Fieldset, Button, Input, Checkboxes, FormGroup, Label, Hint, ErrorMessage,
 } from '../src';
 
 export const StandardRadios = (): JSX.Element => (
@@ -12,7 +12,7 @@ export const StandardRadios = (): JSX.Element => (
       hint="This includes changing your last name or spelling your name differently."
     >
       <Radios.Radio value="yes">Yes</Radios.Radio>
-      <Radios.Radio value="no" checked>
+      <Radios.Radio value="no" defaultChecked>
         No
       </Radios.Radio>
     </Radios>
@@ -29,7 +29,7 @@ export const InlineRadios = (): JSX.Element => (
       hint="This includes changing your last name or spelling your name differently."
     >
       <Radios.Radio value="yes">Yes</Radios.Radio>
-      <Radios.Radio value="no" checked>
+      <Radios.Radio value="no" defaultChecked>
         No
       </Radios.Radio>
     </Radios>
@@ -126,6 +126,26 @@ export const RadiosWithoutFieldset = (): JSX.Element => (
   </Radios>
 );
 
+export const RadiosWithCustomFormGroup = (): JSX.Element => {
+  return (
+    <FormGroup>
+      <Fieldset>
+        <Fieldset.Legend>Have you changed your name?</Fieldset.Legend>
+        <Label>Test Label</Label>
+        <Hint>This includes changing your last name or spelling your name differently.</Hint>
+        <ErrorMessage>Please select a value</ErrorMessage>
+        <Radios
+          name="example"
+          id="standard-example"
+        >
+          <Radios.Radio value="yes">Yes</Radios.Radio>
+          <Radios.Radio value="no">No</Radios.Radio>
+        </Radios>
+      </Fieldset>
+    </FormGroup>
+  )
+}
+
 export const RadiosWithErrorBoolean = (): JSX.Element => {
   const [error, setError] = React.useState<boolean>(true);
   return (
@@ -140,7 +160,7 @@ export const RadiosWithErrorBoolean = (): JSX.Element => {
           <Radios.Radio id="example-1" value="yes">
             Yes
           </Radios.Radio>
-          <Radios.Radio id="example-2" value="no" checked>
+          <Radios.Radio id="example-2" value="no" defaultChecked>
             No
           </Radios.Radio>
         </Radios>
@@ -172,7 +192,7 @@ export const RadiosWithErrorString = (): JSX.Element => {
           <Radios.Radio id="example-1" value="yes">
             Yes
           </Radios.Radio>
-          <Radios.Radio id="example-2" value="no" checked>
+          <Radios.Radio id="example-2" value="no" defaultChecked>
             No
           </Radios.Radio>
         </Radios>

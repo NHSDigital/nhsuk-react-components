@@ -9,8 +9,8 @@ const useRadios = (id: string, idPrefix: string) => {
     const radioCount = useRef<number>(0);
     const radioIds = useRef<Record<string, string>>({});
 
-
     const leaseReference = () => {
+        console.log("LEASE");
         const reference = generateRandomName();
         if (radioReferences.current.includes(reference)) {
             return leaseReference();
@@ -20,10 +20,8 @@ const useRadios = (id: string, idPrefix: string) => {
     }
 
     const unleaseReference = (reference: string) => {
-        const radioRefIndex = radioReferences.current.findIndex(ref => ref === reference)
-        if (radioRefIndex !== -1) {
-            delete radioReferences.current[radioRefIndex];
-        }
+        console.log("UNLEASE")
+        radioReferences.current = radioReferences.current.filter(ref => ref !== reference)
     }
 
     const setConditional = (reference: string, hasConditional: boolean) => {
@@ -56,4 +54,4 @@ const useRadios = (id: string, idPrefix: string) => {
     return { selectedRadio, leaseReference, unleaseReference, setConditional, setSelected, conditionalRadios, getRadioId, resetRadioIds, }
 }
 
-export default useRadios
+export default useRadios;

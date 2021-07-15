@@ -14,6 +14,7 @@ describe('Radios', () => {
         </Radios.Radio>
       </Radios>,
     );
+
     expect(element).toMatchSnapshot();
     element.unmount();
   });

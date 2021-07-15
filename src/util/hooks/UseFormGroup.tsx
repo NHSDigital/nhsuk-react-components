@@ -7,7 +7,7 @@ import Hint from '../../components/hint';
 import ErrorMessage from '../../components/error-message';
 import FormGroup from '../../components/formgroup';
 
-export type FormGroupConsumerType = 'input' | 'select' | 'textarea' | 'checkboxes' | 'radios';
+export type FormGroupConsumerType = 'input' | 'select' | 'textarea' | 'checkboxes' | 'radios' | 'dateinput';
 
 type UseFormGroupRenderProps<T> = {
   'aria-describedby': string;

@@ -1,5 +1,5 @@
 import React, {
-  HTMLProps, useContext, ReactNode, useEffect, useState,
+  HTMLProps, useContext, ReactNode, useEffect, useMemo,
 } from 'react';
 import classNames from 'classnames';
 import { RadiosContext, IRadiosContext } from '../RadioContext';
@@ -41,18 +41,22 @@ const Radio: React.FC<RadioProps> = ({
     leaseReference,
     unleaseReference,
   } = useContext<IRadiosContext>(RadiosContext);
-  const [radioReference] = useState<string>(leaseReference());
+
+  const radioReference = useMemo(leaseReference, []);
   const inputID = id || getRadioId(radioReference);
   const shouldShowConditional = selectedRadio === radioReference && checked !== false;
-
-  useEffect(() => () => unleaseReference(radioReference));
+  const isChecked = typeof checked === "boolean" ? checked : selectedRadio === radioReference;
 
   useEffect(() => {
     if (defaultChecked) setSelected(radioReference);
+    return () => unleaseReference(radioReference);
   }, []);
 
   useEffect(() => {
     if (checked) setSelected(radioReference);
+    if (checked === false && selectedRadio === radioReference) {
+      setSelected(null);
+    }
   }, [checked]);
 
   useEffect(() => {
@@ -73,7 +77,7 @@ const Radio: React.FC<RadioProps> = ({
           name={name}
           aria-labelledby={children ? `${inputID}--label` : undefined}
           aria-describedby={hint ? `${inputID}--hint` : undefined}
-          checked={checked}
+          checked={isChecked}
           defaultChecked={defaultChecked}
           ref={inputRef}
           {...rest}
