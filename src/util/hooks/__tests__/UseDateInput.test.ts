@@ -107,7 +107,7 @@ describe("UseDateInput", () => {
             day: "01",
             month: "",
             year: ""
-        })
+        });
 
         changeEvent.target.value = "02"
         act(() => {

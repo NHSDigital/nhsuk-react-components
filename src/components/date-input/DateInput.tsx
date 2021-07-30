@@ -9,7 +9,6 @@ import useDateInput, { DateInputChangeEvent, DateInputValue } from '../../util/h
 interface DateInputProps
   extends Omit<HTMLProps<HTMLDivElement>, 'label' | 'value' | 'defaultValue'>,
   FormElementProps {
-  autoSelectNext?: boolean;
   value?: Partial<DateInputValue>;
   defaultValue?: Partial<DateInputValue>;
   onChange?: (e: DateInputChangeEvent) => void;
