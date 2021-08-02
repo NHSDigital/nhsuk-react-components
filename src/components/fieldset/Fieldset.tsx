@@ -94,8 +94,6 @@ class Fieldset extends PureComponent<FieldsetProps, FieldsetState> {
     });
   };
 
-  static Legend = Legend;
-
   render(): JSX.Element {
     const { className, disableErrorLine, ...rest } = this.props;
     const contextValue: IFieldsetContext = {
