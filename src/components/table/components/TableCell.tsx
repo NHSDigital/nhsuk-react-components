@@ -24,8 +24,7 @@ const TableCell: React.FC<TableCellProps> = ({
   useDevWarning(CellOutsideOfSectionWarning, () => section === TableSection.NONE);
 
   const cellClass = section === TableSection.HEAD ? 'nhsuk-table__header' : 'nhsuk-table__cell';
-  const numericHeader = isNumeric ? `${cellClass}--numeric` : '';
-  const classes = classNames(cellClass, numericHeader, className)
+  const classes = classNames(cellClass, { [`${cellClass}--numeric`]: isNumeric }, className);
 
   switch (section) {
     case TableSection.HEAD:
