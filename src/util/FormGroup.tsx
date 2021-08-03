@@ -18,7 +18,7 @@ type ExcludedProps =
   | 'disableErrorLine';
 
 type BaseFormElementRenderProps = HTMLProps<
-  HTMLInputElement | HTMLDivElement | HTMLSelectElement | HTMLTextAreaElement
+HTMLInputElement | HTMLDivElement | HTMLSelectElement | HTMLTextAreaElement
 > & {
   error?: string | boolean;
 };

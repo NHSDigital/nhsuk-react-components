@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableCaption matches snapshot 1`] = `
+<caption
+  className="nhsuk-table__caption"
+/>
+`;

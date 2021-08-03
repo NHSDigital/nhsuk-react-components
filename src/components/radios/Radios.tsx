@@ -24,6 +24,10 @@ class Radios extends PureComponent<RadiosProps, RadiosState> {
 
   private radioIds: Record<string, string> = {};
 
+  static Divider = Divider;
+
+  static Radio = Radio;
+
   static defaultProps = {
     role: 'radiogroup',
   };
@@ -89,18 +93,12 @@ class Radios extends PureComponent<RadiosProps, RadiosState> {
     this.radioIds = {};
   };
 
-  static Divider = Divider;
-
-  static Radio = Radio;
-
   render(): JSX.Element {
     const { children, ...rest } = this.props;
     return (
       <FormGroup<RadiosProps> inputType="radios" {...rest}>
         {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
-        {({
-          className, inline, name, id, error, ...restRenderProps
-        }) => {
+        {({ className, inline, name, id, error, ...restRenderProps }) => {
           this.resetRadioIds();
           const contextValue: IRadiosContext = {
             getRadioId: (reference) => this.getRadioId(id, reference),

@@ -118,17 +118,19 @@ class DateInput extends PureComponent<DateInputProps, DateInputState> {
   };
 
   render(): JSX.Element {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const {
-      children, onChange, value, defaultValue, ...rest
+      children,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      onChange,
+      value,
+      defaultValue,
+      ...rest
     } = this.props;
 
     return (
       <FormGroup<Omit<DateInputProps, 'value' | 'defaultValue'>> inputType="dateinput" {...rest}>
         {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
-        {({
-          className, name, id, error, autoSelectNext, ...restRenderProps
-        }) => {
+        {({ className, name, id, error, autoSelectNext, ...restRenderProps }) => {
           const contextValue: IDateInputContext = {
             id,
             name,
