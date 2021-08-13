@@ -14,7 +14,7 @@ NHS.UK Frontend ported to React
 
 ## Coming from 0.x?
 
-If you're coming from versions of the library prior to 1.0.0, please give [this wiki page](https://github.com/NHSDigital/nhsuk-react-components/wiki/Porting-Guide-for-0.X-to-1.0) a brief read, as there a number of changes between 0.x release and the 1.0 release.
+If you're coming from versions of the library prior to 1.0.0, please give [this doc](/docs/upgrade-to-1.0.md) a brief read, as there a number of changes between 0.x release and the 1.0 release.
 
 ## Installation
 
@@ -58,11 +58,11 @@ A storybook containing all of the components and their usage can be found [here]
 
 ### Preparing Releases
 
-Releases run in CI using github actions. 
+Releases run in CI using github actions.
 
 To prepare a release create a new release TAG in github with your release version.
 
->`NPM_TOKEN` should be stored in the repositories [secrets in GitHub](https://github.com/NHSDigital/nhsuk-react-components/settings/secrets/actions)
+> `NPM_TOKEN` should be stored in the repositories [secrets in GitHub](https://github.com/NHSDigital/nhsuk-react-components/settings/secrets/actions)
 
 - Create a new release with a tag like `major.minor.patch` against main.
 - If the change is a `beta` then select `pre-release` as true, this will make the `tag` point at `beta`. Otherwise the tag will be `latest`.
