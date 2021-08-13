@@ -86,9 +86,13 @@ class SkipLink extends React.Component<SkipLinkProps> {
   };
 
   render(): JSX.Element {
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const {
-      className, focusTargetRef, disableDefaultBehaviour, href, ...rest
+      className,
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      focusTargetRef,
+      disableDefaultBehaviour,
+      href,
+      ...rest
     } = this.props;
     return (
       <a

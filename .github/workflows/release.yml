@@ -1,0 +1,34 @@
+name: CD Build and Publish to NPM
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      
+      - name: Yarn Install
+        run: yarn
+      
+      - name: Lint
+        run: yarn lint
+      
+      - name: Jest Tests
+        run: yarn test:ci
+      
+      - name: Typescript build
+        run: yarn build
+      
+      - name: Set Version to Release Tag Name
+        run: |
+          yarn version --new-version ${{ github.event.release.tag_name }} --no-git-tag-version
+      
+      - name: Publish to npm, publish pre-release as beta
+        uses: JS-DevTools/npm-publish@v1 
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
+          tag: ${{ github.event.release.prerelease && 'beta' || 'latest' }}
