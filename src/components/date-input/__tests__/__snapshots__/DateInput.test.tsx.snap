@@ -6,9 +6,8 @@ exports[`DateInput matches snapshot 1`] = `
   name="testInput"
 >
   <FormGroup
-    id="testInput"
-    inputType="dateinput"
-    name="testInput"
+    _exposeContext={false}
+    error={false}
   >
     <div
       className="nhsuk-form-group"

@@ -20,12 +20,7 @@ describe('Fieldset', () => {
     it('renders as page heading', () => {
       const element = shallow(<Fieldset.Legend isPageHeading>Text</Fieldset.Legend>);
       expect(element.hasClass('nhsuk-fieldset__legend--xl')).toBeTruthy();
-      expect(
-        element
-          .find('.nhsuk-fieldset__heading')
-          .render()
-          .text(),
-      ).toBe('Text');
+      expect(element.find('.nhsuk-fieldset__heading').render().text()).toBe('Text');
       element.unmount();
     });
   });

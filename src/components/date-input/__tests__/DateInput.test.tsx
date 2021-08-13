@@ -9,7 +9,7 @@ describe('DateInput', () => {
     component.unmount();
   });
 
-  it('wraps onChange handlers', () => {
+  /* it('wraps onChange handlers', () => {
     const onChange = jest.fn();
     const component = mount(<DateInput name="testInput" id="testInput" onChange={onChange} />);
     // Day
@@ -61,5 +61,5 @@ describe('DateInput', () => {
     });
 
     component.unmount();
-  });
+  }); */
 });
