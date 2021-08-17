@@ -4,7 +4,7 @@ import { FormElementProps } from '../../util/types/FormTypes';
 import useFormGroup from '../../util/hooks/UseFormGroup';
 
 //  SelectProps = HTMLProps<HTMLSelectElement> & FormElementProps;
-interface ISelectProps extends HTMLProps<HTMLSelectElement>, FormElementProps {
+interface ISelectProps extends FormElementProps<HTMLSelectElement> {
   selectRef?: MutableRefObject<HTMLSelectElement | null>;
 }
 

@@ -6,7 +6,7 @@ import { InputWidth } from '../../util/types/NHSUKTypes';
 import classNames from 'classnames';
 import useFormGroup from '../../util/hooks/UseFormGroup';
 
-interface InputProps extends Omit<HTMLProps<HTMLInputElement>, 'label'>, FormElementProps {
+interface InputProps extends FormElementProps<HTMLInputElement> {
   inputRef?: MutableRefObject<HTMLInputElement | null>;
   width?: InputWidth;
   disableErrorLine?: boolean;

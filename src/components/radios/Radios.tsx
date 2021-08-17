@@ -8,7 +8,7 @@ import classNames from 'classnames';
 import useRadios from '../../util/hooks/UseRadios';
 import useFormGroup from '../../util/hooks/UseFormGroup';
 
-interface RadiosProps extends Omit<HTMLProps<HTMLDivElement>, "label">, FormElementProps {
+interface RadiosProps extends FormElementProps<HTMLDivElement> {
   inline?: boolean;
   idPrefix?: string;
 }
@@ -18,10 +18,10 @@ interface IRadios extends React.FC<RadiosProps> {
 }
 
 const Radios: IRadios = (props) => {
-  const { FormGroupWrapper, LabelBlock, wrapperProps, renderProps } = useFormGroup("radios", props);
+  const { FormGroupWrapper, LabelBlock, wrapperProps, renderProps } = useFormGroup('radios', props);
   const { resetRadioIds, conditionalRadios, ...radioFuncs } = useRadios(
     renderProps.id,
-    renderProps.idPrefix
+    renderProps.idPrefix,
   );
 
   const { inline, className, id, name, children, ...restRenderProps } = renderProps;
@@ -29,8 +29,8 @@ const Radios: IRadios = (props) => {
   const containsConditional = conditionalRadios.length > 0;
   const contextValue: IRadiosContext = {
     name,
-    ...radioFuncs
-  }
+    ...radioFuncs,
+  };
   resetRadioIds();
 
   return (
@@ -46,17 +46,15 @@ const Radios: IRadios = (props) => {
         id={id}
         {...restRenderProps}
       >
-        <RadiosContext.Provider value={contextValue}>
-          {children}
-        </RadiosContext.Provider>
+        <RadiosContext.Provider value={contextValue}>{children}</RadiosContext.Provider>
       </div>
     </FormGroupWrapper>
   );
-}
+};
 
 Radios.defaultProps = {
-  role: "radiogroup"
-}
+  role: 'radiogroup',
+};
 
 Radios.Divider = Divider;
 Radios.Radio = Radio;

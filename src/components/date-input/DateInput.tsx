@@ -6,9 +6,7 @@ import { FormElementProps } from '../../util/types/FormTypes';
 import useFormGroup from '../../util/hooks/UseFormGroup';
 import useDateInput, { DateInputChangeEvent, DateInputValue } from '../../util/hooks/UseDateInput';
 
-interface DateInputProps
-  extends Omit<HTMLProps<HTMLDivElement>, 'label' | 'value' | 'defaultValue'>,
-  FormElementProps {
+interface DateInputProps extends Omit<FormElementProps<HTMLDivElement>, 'value' | 'defaultValue'> {
   value?: Partial<DateInputValue>;
   defaultValue?: Partial<DateInputValue>;
   onChange?: (e: DateInputChangeEvent) => void;
@@ -21,8 +19,16 @@ interface IDateInput extends React.FC<DateInputProps> {
 }
 
 const DateInput: IDateInput = (props) => {
-  const { FormGroupWrapper, LabelBlock, wrapperProps, renderProps } = useFormGroup("dateinput", props);
-  const dateInputFuncs = useDateInput(renderProps.value, renderProps.defaultValue, renderProps.onChange);
+  // @ts-expect-error ignore
+  const { FormGroupWrapper, LabelBlock, wrapperProps, renderProps } = useFormGroup<DateInputProps>(
+    'dateinput',
+    props,
+  );
+  const dateInputFuncs = useDateInput(
+    renderProps.value,
+    renderProps.defaultValue,
+    renderProps.onChange,
+  );
   const {
     className,
     id,
@@ -41,17 +47,13 @@ const DateInput: IDateInput = (props) => {
     error,
     value,
     defaultValue,
-    ...dateInputFuncs
-  }
+    ...dateInputFuncs,
+  };
 
   return (
     <FormGroupWrapper {...wrapperProps}>
       {LabelBlock}
-      <div
-        className={classNames("nhsuk-date-input", className)}
-        id={id}
-        {...restRenderProps}
-      >
+      <div className={classNames('nhsuk-date-input', className)} id={id} {...restRenderProps}>
         <DateInputContext.Provider value={contextValue}>
           {children || (
             <>
@@ -63,8 +65,8 @@ const DateInput: IDateInput = (props) => {
         </DateInputContext.Provider>
       </div>
     </FormGroupWrapper>
-  )
-}
+  );
+};
 
 DateInput.Day = DayInput;
 DateInput.Month = MonthInput;

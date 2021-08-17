@@ -1,9 +1,9 @@
-import React, { HTMLProps } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '../../util/types/FormTypes';
 import useFormGroup from '../../util/hooks/UseFormGroup';
 
-type TextareaProps = HTMLProps<HTMLTextAreaElement> & FormElementProps;
+type TextareaProps = FormElementProps<HTMLTextAreaElement>;
 
 const Textarea: React.FC<TextareaProps> = (props) => {
   const { FormGroupWrapper, LabelBlock, wrapperProps, renderProps } = useFormGroup(
