@@ -7,7 +7,7 @@
   - [Usage](#usage)
     - [Storybook](#storybook)
   - [Maintainers](#maintainers)
-    - [Preparing Releases](#preparing-releases)
+  - [Preparing Releases](#preparing-releases)
 
 NHS.UK Frontend ported to React
 
@@ -60,8 +60,9 @@ A storybook containing all of the components and their usage can be found [here]
 - Thomas Judd-Cooper ([GitHub](https://github.com/tomdango))
 - Sam Brown ([GitHub](https://github.com/samueldavidbrown))
 - Luke Pearson ([GitHub](https://github.com/lukepearson))
+- Kevin Kuszyk ([GitHub](https://github.com/kevinkuszyk))
 
-### Preparing Releases
+## Preparing Releases
 
 Releases run in CI using github actions.
 
