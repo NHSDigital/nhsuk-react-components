@@ -1,11 +1,14 @@
-# Unreleased Changes
+# Upgrading to 2.0
+
+There are some breaking changes you'll need to be aware of when upgrading to v2.  These are mostly related to us upgrading our dependency on [nhsuk-frontend to v4](https://github.com/nhsuk/nhsuk-frontend/blob/master/CHANGELOG.md#400---26-october-2020) which also includes some breaking changes.
+
 ## New Card Component
 
 The new Card component from `nhsuk-frontend` 4 has been added. Check out the storybook for usage examples!
 
-## WarningCallout
+## Warning Callout
 
-### Removal of WarningCallout "label" prop
+### Removal of Warning Callout `label` prop
 
 The WarningCallout `label` prop has been removed, and replaced with `WarningCallout.Label`.
 
@@ -30,7 +33,7 @@ Existing usages of the WarningCallout will need to be replaced with the new synt
 </WarningCallout>
 ```
 
-### Addition of hidden text on the WarningCallout.Label
+### Addition of hidden text on the Warning Callout Label
 
 The `WarningCallout.Label` now has the hidden text `Important: ` before the label content. If this causes an issue in your application, and you would like to change or disable this hidden text you are able to do via the `visuallyHiddenText` prop.
 
@@ -64,3 +67,17 @@ import { Panel, Promo } from "nhsuk-react-components/deprecated";
 ```
 
 A warning is printed to the console in dev environments when using these components, as they are set to be removed in the next major release.
+
+## Date component input type has changed
+
+In line with the upstream nhsuk-frontend, NHS Design Kit and GDS recommendations, we now render the input boxes in the date component as follows:
+
+```html
+<input type="text" inputType="numeric" pattern="[0-9]*">
+```
+
+There is more on this change here:
+
+- [NHSDigital/nhsuk-react-components#108](https://github.com/NHSDigital/nhsuk-react-components/pull/108)
+- [nhsuk/nhsuk-frontend#666](https://github.com/nhsuk/nhsuk-frontend/pull/666)
+- https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/

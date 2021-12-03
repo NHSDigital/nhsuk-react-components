@@ -2,6 +2,7 @@
 
 - [NHS.UK React Components](#nhsuk-react-components)
   - [Coming from 0.x?](#coming-from-0x)
+  - [Upgrading to 2.0](#upgrading-to-20)
   - [Installation](#installation)
   - [Usage](#usage)
     - [Storybook](#storybook)
@@ -15,6 +16,10 @@ NHS.UK Frontend ported to React
 ## Coming from 0.x?
 
 If you're coming from versions of the library prior to 1.0.0, please give [this doc](/docs/upgrade-to-1.0.md) a brief read, as there a number of changes between 0.x release and the 1.0 release.
+
+## Upgrading to 2.0
+
+If you're upgrading to 2.0, please be aware we have made some breaking changes.  [This doc](/docs/upgrade-to-2.0.md) has the details.
 
 ## Installation
 
