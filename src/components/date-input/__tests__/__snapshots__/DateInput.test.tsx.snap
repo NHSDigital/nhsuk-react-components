@@ -21,7 +21,7 @@ exports[`DateInput matches snapshot 1`] = `
             inputMode="numeric"
             inputType="day"
             pattern="[0-9]*"
-            type="number"
+            type="text"
           >
             <div
               className="nhsuk-date-input__item"
@@ -56,7 +56,7 @@ exports[`DateInput matches snapshot 1`] = `
                   name="testInput-day"
                   onChange={[Function]}
                   pattern="[0-9]*"
-                  type="number"
+                  type="text"
                 />
               </div>
             </div>
@@ -67,7 +67,7 @@ exports[`DateInput matches snapshot 1`] = `
             inputMode="numeric"
             inputType="month"
             pattern="[0-9]*"
-            type="number"
+            type="text"
           >
             <div
               className="nhsuk-date-input__item"
@@ -102,7 +102,7 @@ exports[`DateInput matches snapshot 1`] = `
                   name="testInput-month"
                   onChange={[Function]}
                   pattern="[0-9]*"
-                  type="number"
+                  type="text"
                 />
               </div>
             </div>
@@ -113,7 +113,7 @@ exports[`DateInput matches snapshot 1`] = `
             inputMode="numeric"
             inputType="year"
             pattern="[0-9]*"
-            type="number"
+            type="text"
           >
             <div
               className="nhsuk-date-input__item"
@@ -148,7 +148,7 @@ exports[`DateInput matches snapshot 1`] = `
                   name="testInput-year"
                   onChange={[Function]}
                   pattern="[0-9]*"
-                  type="number"
+                  type="text"
                 />
               </div>
             </div>

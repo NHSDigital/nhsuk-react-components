@@ -83,7 +83,7 @@ const IndividualDateInput: React.FC<IndividualDateInputProps> = ({
 IndividualDateInput.defaultProps = {
   pattern: '[0-9]*',
   inputMode: 'numeric',
-  type: 'number',
+  type: 'text',
 };
 
 export const DayInput: React.FC<Omit<IndividualDateInputProps, 'inputType'>> = (props) => (
