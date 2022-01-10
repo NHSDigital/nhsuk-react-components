@@ -1,7 +1,7 @@
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
 
-interface ButtonProps extends HTMLProps<HTMLButtonElement> {
+export interface ButtonProps extends HTMLProps<HTMLButtonElement> {
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
   secondary?: boolean;
