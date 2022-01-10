@@ -1,8 +1,7 @@
-import HeadingLevel, { HeadingLevelType } from '../../util/HeadingLevel';
-import React, { HTMLProps } from 'react';
-
-import { NHSUKSize } from '../../util/types/NHSUKTypes';
 import classNames from 'classnames';
+import React, { HTMLProps } from 'react';
+import HeadingLevel, { HeadingLevelType } from '../../util/HeadingLevel';
+import { NHSUKSize } from '../../util/types/NHSUKTypes';
 
 interface LegendProps extends Omit<HTMLProps<HTMLLegendElement>, 'size'> {
   isPageHeading?: boolean;
@@ -21,9 +20,6 @@ const Legend: React.FC<LegendProps> = ({
   <legend
     className={classNames(
       'nhsuk-fieldset__legend',
-      {
-        'nhsuk-fieldset__legend--xl': isPageHeading && !size,
-      },
       { [`nhsuk-fieldset__legend--${size}`]: size },
       className,
     )}

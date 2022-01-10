@@ -1,27 +1,21 @@
-import { FormElementProps } from '../../util/types/FormTypes';
-import React, { HTMLProps, MutableRefObject } from 'react';
-
+import classNames from 'classnames';
+import React from 'react';
+import useFormGroup from '../../util/hooks/UseFormGroup';
+import { FormElementProps, FormGroupConsumer } from '../../util/types/FormTypes';
 import { InputWidth } from '../../util/types/NHSUKTypes';
 
-import classNames from 'classnames';
-import useFormGroup from '../../util/hooks/UseFormGroup';
-
 interface InputProps extends FormElementProps<HTMLInputElement> {
-  inputRef?: MutableRefObject<HTMLInputElement | null>;
   width?: InputWidth;
   disableErrorLine?: boolean;
 }
 
-const Input: React.FC<InputProps> = (props) => {
-  const { FormGroupWrapper, wrapperProps, LabelBlock, renderProps } = useFormGroup<InputProps>(
-    'input',
-    props,
-  );
-  const { width, className, error, inputRef, ...rest } = renderProps;
+const Input: React.FC<InputProps> = React.forwardRef((props, ref) => {
+  const group = useFormGroup<InputProps>(FormGroupConsumer.INPUT, props);
+  const { width, className, error, ...rest } = group.renderProps;
 
   return (
-    <FormGroupWrapper {...wrapperProps}>
-      {LabelBlock}
+    <group.Wrapper {...group.wrapperProps}>
+      {group.LabelBlock}
       <input
         className={classNames(
           'nhsuk-input',
@@ -29,12 +23,14 @@ const Input: React.FC<InputProps> = (props) => {
           { 'nhsuk-input--error': error },
           className,
         )}
-        ref={inputRef}
+        ref={ref}
         {...rest}
       />
-    </FormGroupWrapper>
+    </group.Wrapper>
   );
-};
+});
+
+Input.displayName = 'Input';
 
 Input.defaultProps = {
   type: 'text',

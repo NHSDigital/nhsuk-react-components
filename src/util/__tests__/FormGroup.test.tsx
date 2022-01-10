@@ -1,6 +1,6 @@
-import React, { HTMLProps } from 'react';
 import { mount } from 'enzyme';
 import { axe, toHaveNoViolations } from 'jest-axe';
+import React, { HTMLProps } from 'react';
 import FormGroup from '../FormGroup';
 
 expect.extend(toHaveNoViolations);

@@ -1,21 +1,16 @@
-import React, { HTMLProps, useContext, ChangeEvent } from 'react';
 import classNames from 'classnames';
-import Label, { LabelProps } from '../../label/Label';
+import React, { ChangeEvent, ComponentProps, HTMLProps, useContext } from 'react';
+import Label from '../../label';
 import DateInputContext, { IDateInputContext } from '../DateInputContext';
 
 export interface IndividualDateInputProps extends HTMLProps<HTMLInputElement> {
-  labelProps?: LabelProps;
+  labelProps?: ComponentProps<typeof Label>;
   inputType: 'day' | 'month' | 'year';
   inputRef?: (ref: HTMLInputElement | null) => void;
   error?: boolean;
 }
 
-const labels: Record<'day' | 'month' | 'year', string> = {
-  day: 'Day',
-  month: 'Month',
-  year: 'Year',
-};
-
+const labels = { day: 'Day', month: 'Month', year: 'Year' } as const;
 
 // TODO: Use React.forwardRef
 const IndividualDateInput: React.FC<IndividualDateInputProps> = ({
@@ -38,7 +33,8 @@ const IndividualDateInput: React.FC<IndividualDateInputProps> = ({
   const inputID = id || `${dateInputCtx.id}-${inputType}`;
   const inputName = name || `${dateInputCtx.name}-${inputType}`;
   const inputValue = value !== undefined ? value : dateInputCtx.value?.[inputType];
-  const inputDefaultValue = defaultValue !== undefined ? defaultValue : dateInputCtx.defaultValue?.[inputType];
+  const inputDefaultValue =
+    defaultValue !== undefined ? defaultValue : dateInputCtx.defaultValue?.[inputType];
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.persist();
@@ -89,11 +85,14 @@ IndividualDateInput.defaultProps = {
 export const DayInput: React.FC<Omit<IndividualDateInputProps, 'inputType'>> = (props) => (
   <IndividualDateInput inputType="day" {...props} />
 );
+DayInput.displayName = 'DateInput.Day';
 
 export const MonthInput: React.FC<Omit<IndividualDateInputProps, 'inputType'>> = (props) => (
   <IndividualDateInput inputType="month" {...props} />
 );
+MonthInput.displayName = 'DateInput.Month';
 
 export const YearInput: React.FC<Omit<IndividualDateInputProps, 'inputType'>> = (props) => (
   <IndividualDateInput inputType="year" {...props} />
 );
+YearInput.displayName = 'DateInput.Year';

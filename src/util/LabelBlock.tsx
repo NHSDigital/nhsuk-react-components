@@ -1,16 +1,16 @@
-import React from 'react';
-import Hint, { HintProps } from '../components/hint/Hint';
-import Label, { LabelProps } from '../components/label/Label';
-import ErrorMessage, { ErrorMessageProps } from '../components/error-message/ErrorMessage';
+import React, { ComponentProps, ReactNode } from 'react';
+import ErrorMessage from '../components/error-message/ErrorMessage';
+import Hint from '../components/hint/Hint';
+import Label from '../components/label/Label';
 
 interface LabelBlockProps {
   elementId?: string;
-  label?: string;
-  labelProps?: LabelProps;
-  hint?: string;
-  hintProps?: HintProps;
-  error?: string | boolean;
-  errorProps?: ErrorMessageProps;
+  label?: ReactNode;
+  labelProps?: ComponentProps<typeof Label>;
+  hint?: ReactNode;
+  hintProps?: ComponentProps<typeof Hint>;
+  error?: ReactNode | boolean;
+  errorProps?: ComponentProps<typeof ErrorMessage>;
 }
 
 const LabelBlock: React.FC<LabelBlockProps> = ({

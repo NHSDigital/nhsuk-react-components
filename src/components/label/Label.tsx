@@ -1,9 +1,9 @@
-import React, { HTMLProps, useContext } from 'react';
 import classNames from 'classnames';
+import React, { HTMLProps, useContext } from 'react';
 import { NHSUKSize } from '../../util/types/NHSUKTypes';
-import FormGroupContext from '../formgroup/FormGroupContext';
+import FormGroupContext from '../form-group/FormGroupContext';
 
-export interface LabelProps extends Omit<HTMLProps<HTMLLabelElement>, 'size'> {
+interface LabelProps extends Omit<HTMLProps<HTMLLabelElement>, 'size'> {
   bold?: boolean;
   isPageHeading?: boolean;
   size?: NHSUKSize;

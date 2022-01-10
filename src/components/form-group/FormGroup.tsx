@@ -1,6 +1,6 @@
-import React, { HTMLProps, useEffect, useState } from 'react';
-import FormGroupContext from './FormGroupContext';
 import classNames from 'classnames';
+import React, { HTMLProps, useState } from 'react';
+import FormGroupContext from './FormGroupContext';
 
 export interface FormGroupProps extends HTMLProps<HTMLDivElement> {
   error?: boolean;
@@ -21,19 +21,12 @@ const FormGroup: React.FC<FormGroupProps> = ({
   const [error, setError] = useState<boolean>(errorProp);
   const [inputID, setInputID] = useState<string>();
 
-  useEffect(() => {
-    if (typeof errorProp === 'boolean' && error !== errorProp) setError(errorProp);
-  }, [errorProp, error]);
+  const hasError =
+    typeof error === 'boolean' ? error : !disableErrorFromComponents && !disableErrorLine && error;
 
   return (
     <div
-      className={classNames(
-        'nhsuk-form-group',
-        {
-          'nhsuk-form-group--error': !disableErrorFromComponents && !disableErrorLine && error,
-        },
-        className,
-      )}
+      className={classNames('nhsuk-form-group', { 'nhsuk-form-group--error': hasError }, className)}
       {...rest}
     >
       {_exposeContext ? (
@@ -54,6 +47,7 @@ const FormGroup: React.FC<FormGroupProps> = ({
     </div>
   );
 };
+
 FormGroup.defaultProps = {
   _exposeContext: true,
 };

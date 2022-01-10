@@ -1,8 +1,8 @@
-import React, { HTMLProps, useContext, useEffect } from 'react';
 import classNames from 'classnames';
-import FormGroupContext from '../formgroup/FormGroupContext';
+import React, { HTMLProps, useContext, useEffect } from 'react';
+import FormGroupContext from '../form-group/FormGroupContext';
 
-export interface ErrorMessageProps extends HTMLProps<HTMLSpanElement> {
+interface ErrorMessageProps extends HTMLProps<HTMLSpanElement> {
   visuallyHiddenText?: false | string;
 }
 

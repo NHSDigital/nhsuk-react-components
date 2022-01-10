@@ -1,92 +1,75 @@
-import React, { ReactNode, useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import FormGroup from '../../components/form-group';
+import FormGroupContext from '../../components/form-group/FormGroupContext';
+import LabelBlock from '../LabelBlock';
 import { generateRandomID } from '../RandomID';
-import { FormElementProps } from '../types/FormTypes';
-import FormGroupContext from '../../components/formgroup/FormGroupContext';
-import Label from '../../components/label';
-import Hint from '../../components/hint';
-import ErrorMessage from '../../components/error-message';
-import FormGroup from '../../components/formgroup';
+import { UseFormGroupType } from '../types/FormTypes';
 
-export type FormGroupConsumerType =
-  | 'input'
-  | 'select'
-  | 'textarea'
-  | 'checkboxes'
-  | 'radios'
-  | 'dateinput';
+const useFormGroup: UseFormGroupType = (type, props) => {
+  const formGroupCtx = useContext(FormGroupContext);
 
-type UseFormGroupRenderProps<T> = {
-  'aria-describedby': string;
-  'aria-labelledby': string;
-  error: ReactNode;
-  name: string;
-  id: string;
-} & Omit<T, 'error' | 'id' | 'hint' | 'label' | 'name'>;
+  const Wrapper = formGroupCtx.isInFormGroup
+    ? React.Fragment
+    : ({ children }) => (
+        <FormGroup error={Boolean(props.error)} _exposeContext={false}>
+          {children}
+        </FormGroup>
+      );
 
-type UseFormGroupWrapperProps = {
-  error?: boolean;
-  _exposeContext?: boolean;
+
+  const labelBlock = <LabelBlock elementId={}/>
+
+  return {
+    Wrapper,
+  };
 };
 
-type UseFormGroup = <T extends FormElementProps>(
-  type: FormGroupConsumerType,
-  props: T,
-) => {
-  FormGroupWrapper: typeof FormGroup | typeof React.Fragment;
-  LabelBlock: ReactNode;
-  renderProps: UseFormGroupRenderProps<T>;
-  wrapperProps: UseFormGroupWrapperProps;
-  isInFormGroup: boolean;
-};
-
-const useFormGroup: UseFormGroup = (type, props) => {
-  const { isInFormGroup, error: formGroupError, setInputID } = useContext(FormGroupContext);
+const useFormGroupOld: UseFormGroupType = (type, props) => {
   const [generatedID] = useState(() => generateRandomID(type));
-  const { id, hint, label, error, name, ...rest } = props;
+  const {
+    isInFormGroup,
+    error: formGroupError,
+    setInputID,
+    setError,
+  } = useContext(FormGroupContext);
 
+  const { id, hint, hintProps, label, labelProps, error, errorProps, name, ...rest } = props;
   const elementID = id || generatedID;
-  const labelID = `${elementID}--label`;
-  const errorID = `${elementID}--error-message`;
-  const hintID = `${elementID}--hint`;
-
-  useEffect(() => setInputID(elementID), [elementID]);
 
   const renderProps = {
-    'aria-describedby': hint ? hintID : undefined,
-    'aria-labelledby': label ? labelID : undefined,
+    'aria-describedby': hint ? `${elementID}--hint` : undefined,
+    'aria-labelledby': label ? `${elementID}--label` : undefined,
     error: error || formGroupError,
     name: name || elementID,
     id: elementID,
     ...rest,
   };
+
   const wrapperProps = isInFormGroup
     ? {}
-    : { error: Boolean(renderProps.error), _exposeContext: false };
+    : {
+        error: Boolean(renderProps.error),
+        _exposeContext: false,
+      };
 
-  const FormGroupWrapper = isInFormGroup ? React.Fragment : FormGroup;
-  const LabelBlock = (
-    <>
-      {label && (
-        <Label id={labelID} {...props.labelProps}>
-          {label}
-        </Label>
-      )}
-      {hint && (
-        <Hint id={hintID} {...props.hintProps}>
-          {hint}
-        </Hint>
-      )}
-      {error && typeof error === 'string' && (
-        <ErrorMessage id={errorID} {...props.errorProps}>
-          {error}
-        </ErrorMessage>
-      )}
-    </>
-  );
+  const Wrapper = isInFormGroup ? React.Fragment : FormGroup;
+
+  useEffect(() => setError(Boolean(props.error)), [props.error]);
+  useEffect(() => setInputID(elementID), [elementID]);
 
   return {
-    FormGroupWrapper,
-    LabelBlock,
+    Wrapper,
+    labelBlock: (
+      <LabelBlock
+        elementId={elementID}
+        label={label}
+        labelProps={labelProps}
+        hint={hint}
+        hintProps={hintProps}
+        error={error}
+        errorProps={errorProps}
+      />
+    ),
     renderProps,
     wrapperProps,
     isInFormGroup,

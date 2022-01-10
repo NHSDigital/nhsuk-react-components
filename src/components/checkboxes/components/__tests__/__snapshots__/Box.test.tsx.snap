@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Box renders successfully 1`] = `
+<Box
+  type="checkbox"
+>
+  <div
+    className="nhsuk-checkboxes__item"
+  >
+    <input
+      className="nhsuk-checkboxes__input"
+      id="test-1"
+      name="test"
+      onChange={[Function]}
+      type="checkbox"
+    />
+    <Label
+      className="nhsuk-checkboxes__label"
+      htmlFor="test-1"
+      id="test-1--label"
+    >
+      <BaseLabel
+        className="nhsuk-checkboxes__label"
+        htmlFor="test-1"
+        id="test-1--label"
+      >
+        <label
+          className="nhsuk-label nhsuk-checkboxes__label"
+          htmlFor="test-1"
+          id="test-1--label"
+        >
+          Test Box
+        </label>
+      </BaseLabel>
+    </Label>
+  </div>
+</Box>
+`;

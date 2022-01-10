@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { createContext, useContext } from 'react';
 
 export interface ICheckboxContext {
   name: string;
@@ -8,7 +8,7 @@ export interface ICheckboxContext {
   unleaseReference: (reference: string) => void;
 }
 
-export default createContext<ICheckboxContext>({
+const CheckboxContext = createContext<ICheckboxContext>({
   /* eslint-disable @typescript-eslint/no-empty-function */
   name: '',
   getBoxId: () => undefined,
@@ -16,3 +16,7 @@ export default createContext<ICheckboxContext>({
   leaseReference: () => '',
   unleaseReference: () => {},
 });
+
+export const useCheckboxContext = (): ICheckboxContext => useContext(CheckboxContext);
+
+export default CheckboxContext;

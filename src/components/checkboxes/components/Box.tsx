@@ -1,112 +1,85 @@
-import React, {
-  HTMLProps,
-  useContext,
-  ReactNode,
-  useEffect,
-  useState,
-  MutableRefObject,
-} from 'react';
 import classNames from 'classnames';
-import CheckboxContext, { ICheckboxContext } from '../CheckboxContext';
-import Label, { LabelProps } from '../../label/Label';
-import Hint, { HintProps } from '../../hint/Hint';
+import React, { ComponentProps, HTMLProps, ReactNode, useEffect, useState } from 'react';
+import LabelBlock from '../../../util/LabelBlock';
+import Hint from '../../hint';
+import Label from '../../label';
+import { useCheckboxContext } from '../CheckboxContext';
 
-type BoxProps = Omit<HTMLProps<HTMLInputElement>, 'label'> & {
-  labelProps?: LabelProps;
-  hint?: string;
-  hintProps?: HintProps;
+type CheckboxesBoxProps = Omit<HTMLProps<HTMLInputElement>, 'label'> & {
+  labelProps?: ComponentProps<typeof Label>;
+  hint?: ReactNode;
+  hintProps?: ComponentProps<typeof Hint>;
   conditional?: ReactNode;
   forceShowConditional?: boolean;
   conditionalWrapperProps?: HTMLProps<HTMLDivElement>;
-  inputRef?: MutableRefObject<HTMLInputElement | null>;
 };
 
-const Box: React.FC<BoxProps> = ({
-  id,
-  labelProps,
-  children,
-  hint,
-  hintProps,
-  conditional,
-  defaultChecked,
-  checked,
-  onChange,
-  inputRef,
-  forceShowConditional,
-  conditionalWrapperProps,
-  ...rest
-}) => {
-  const { getBoxId, name, setConditional, unleaseReference, leaseReference } =
-    useContext<ICheckboxContext>(CheckboxContext);
-  const [boxReference] = useState<string>(() => leaseReference());
-  const [showConditional, setShowConditional] = useState<boolean>(!!(checked || defaultChecked));
-  const inputID = id || getBoxId(boxReference);
+const CheckboxesBox: React.FC<CheckboxesBoxProps> = React.forwardRef((props, ref) => {
+  const boxCtx = useCheckboxContext();
+  const [boxReference] = useState<string>(() => boxCtx.leaseReference());
+  const [showConditional, setShowConditional] = useState(!!(props.checked || props.defaultChecked));
 
-  const { className: labelClassName, ...restLabelProps } = labelProps || {};
-  const { className: hintClassName, ...restHintProps } = hintProps || {};
-  const { className: conditionalClassName, ...restConditionalProps } =
-    conditionalWrapperProps || {};
+  const inputID = props.id || boxCtx.getBoxId(boxReference);
 
-  useEffect(() => () => unleaseReference(boxReference), []);
+  useEffect(() => () => boxCtx.unleaseReference(boxReference), []);
 
   useEffect(() => {
-    if (checked !== undefined) {
-      setShowConditional(checked);
-    }
-  }, [checked]);
+    if (props.checked !== undefined) setShowConditional(props.checked);
+  }, [props.checked]);
 
   useEffect(() => {
-    setConditional(boxReference, Boolean(conditional));
-    return () => setConditional(boxReference, false);
-  }, [conditional]);
+    boxCtx.setConditional(boxReference, Boolean(props.conditional));
+    return () => boxCtx.setConditional(boxReference, false);
+  }, [props.conditional]);
+
+  const { children, ...inputProps } = props;
 
   return (
     <>
       <div className="nhsuk-checkboxes__item">
         <input
-          className="nhsuk-checkboxes__input"
+          {...inputProps}
+          className={classNames('nhsuk-checkboxes__input', props.className)}
           onChange={(e) => {
-            if (checked === undefined) setShowConditional(e.target.checked);
-            if (onChange) onChange(e);
+            if (props.checked === undefined) setShowConditional(e.target.checked);
+            if (props.onChange) props.onChange(e);
           }}
-          name={name}
           id={inputID}
-          checked={checked}
-          defaultChecked={defaultChecked}
-          ref={inputRef}
-          {...rest}
+          ref={ref}
         />
-        {children ? (
-          <Label
-            className={classNames('nhsuk-checkboxes__label', labelClassName)}
-            id={`${inputID}--label`}
-            htmlFor={inputID}
-            {...restLabelProps}
-          >
-            {children}
-          </Label>
-        ) : null}
-        {hint ? (
-          <Hint className={classNames('nhsuk-checkboxes__hint', hintClassName)} {...restHintProps}>
-            {hint}
-          </Hint>
-        ) : null}
+        <LabelBlock
+          elementId={inputID}
+          label={children}
+          labelProps={{
+            ...props.labelProps,
+            className: classNames('nhsuk-checkboxes__label', props.labelProps?.className),
+          }}
+          hint={props.hint}
+          hintProps={{
+            ...props.hintProps,
+            className: classNames('nhsuk-checkboxes__hint', props.hintProps?.className),
+          }}
+        />
       </div>
-      {conditional && (showConditional || forceShowConditional) ? (
+      {props.conditional && (showConditional || props.forceShowConditional) ? (
         <div
-          className={classNames('nhsuk-radios__conditional', conditionalClassName)}
+          {...props.conditionalWrapperProps}
+          className={classNames(
+            'nhsuk-radios__conditional',
+            props.conditionalWrapperProps?.className,
+          )}
           id={`${inputID}--conditional`}
-          {...restConditionalProps}
         >
-          {conditional}
+          {props.conditional}
         </div>
       ) : null}
     </>
   );
-};
+});
 
-Box.defaultProps = {
+CheckboxesBox.displayName = 'Checkboxes.Box';
+CheckboxesBox.defaultProps = {
   type: 'checkbox',
 };
 
-export default Box;
+export default CheckboxesBox;

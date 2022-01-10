@@ -1,30 +1,30 @@
-import { IRadiosContext, RadiosContext } from './RadioContext';
-import React, { HTMLProps } from 'react';
-
-import Divider from './components/Divider';
-import { FormElementProps } from '../../util/types/FormTypes';
-import Radio from './components/Radio';
 import classNames from 'classnames';
-import useRadios from '../../util/hooks/UseRadios';
+import React from 'react';
 import useFormGroup from '../../util/hooks/UseFormGroup';
+import useRadios from '../../util/hooks/UseRadios';
+import { FormElementProps, FormGroupConsumer } from '../../util/types/FormTypes';
+import Divider from './components/Divider';
+import Radio from './components/Radio';
+import { IRadiosContext, RadiosContext } from './RadioContext';
 
 interface RadiosProps extends FormElementProps<HTMLDivElement> {
   inline?: boolean;
   idPrefix?: string;
 }
-interface IRadios extends React.FC<RadiosProps> {
+
+interface RadiosChildComponents {
   Divider: typeof Divider;
   Radio: typeof Radio;
 }
 
-const Radios: IRadios = (props) => {
-  const { FormGroupWrapper, LabelBlock, wrapperProps, renderProps } = useFormGroup('radios', props);
+const Radios: React.FC<RadiosProps> & RadiosChildComponents = (props) => {
+  const group = useFormGroup(FormGroupConsumer.RADIOS, props);
   const { resetRadioIds, conditionalRadios, ...radioFuncs } = useRadios(
-    renderProps.id,
-    renderProps.idPrefix,
+    group.renderProps.id,
+    group.renderProps.idPrefix,
   );
 
-  const { inline, className, id, name, children, ...restRenderProps } = renderProps;
+  const { inline, className, id, name, children, ...restRenderProps } = group.renderProps;
 
   const containsConditional = conditionalRadios.length > 0;
   const contextValue: IRadiosContext = {
@@ -34,8 +34,8 @@ const Radios: IRadios = (props) => {
   resetRadioIds();
 
   return (
-    <FormGroupWrapper {...wrapperProps}>
-      {LabelBlock}
+    <group.Wrapper {...group.wrapperProps}>
+      {group.labelBlock}
       <div
         className={classNames(
           'nhsuk-radios',
@@ -48,7 +48,7 @@ const Radios: IRadios = (props) => {
       >
         <RadiosContext.Provider value={contextValue}>{children}</RadiosContext.Provider>
       </div>
-    </FormGroupWrapper>
+    </group.Wrapper>
   );
 };
 

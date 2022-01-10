@@ -1,10 +1,10 @@
-import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
+import React from 'react';
+import useDateInput, { DateInputChangeEvent, DateInputValue } from '../../util/hooks/UseDateInput';
+import useFormGroup from '../../util/hooks/UseFormGroup';
+import { FormElementProps, FormGroupConsumer } from '../../util/types/FormTypes';
 import { DayInput, MonthInput, YearInput } from './components/IndividualDateInputs';
 import DateInputContext, { IDateInputContext } from './DateInputContext';
-import { FormElementProps } from '../../util/types/FormTypes';
-import useFormGroup from '../../util/hooks/UseFormGroup';
-import useDateInput, { DateInputChangeEvent, DateInputValue } from '../../util/hooks/UseDateInput';
 
 interface DateInputProps extends Omit<FormElementProps<HTMLDivElement>, 'value' | 'defaultValue'> {
   value?: Partial<DateInputValue>;
@@ -19,16 +19,14 @@ interface IDateInput extends React.FC<DateInputProps> {
 }
 
 const DateInput: IDateInput = (props) => {
-  // @ts-expect-error ignore
-  const { FormGroupWrapper, LabelBlock, wrapperProps, renderProps } = useFormGroup<DateInputProps>(
-    'dateinput',
-    props,
-  );
+  const group = useFormGroup<DateInputProps>(FormGroupConsumer.DATE_INPUT, props);
+
   const dateInputFuncs = useDateInput(
-    renderProps.value,
-    renderProps.defaultValue,
-    renderProps.onChange,
+    group.renderProps.value,
+    group.renderProps.defaultValue,
+    group.renderProps.onChange,
   );
+
   const {
     className,
     id,
@@ -37,9 +35,10 @@ const DateInput: IDateInput = (props) => {
     value,
     defaultValue,
     children,
-    onChange,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    onChange: _,
     ...restRenderProps
-  } = renderProps;
+  } = group.renderProps;
 
   const contextValue: IDateInputContext = {
     id,
@@ -51,8 +50,8 @@ const DateInput: IDateInput = (props) => {
   };
 
   return (
-    <FormGroupWrapper {...wrapperProps}>
-      {LabelBlock}
+    <group.Wrapper {...group.wrapperProps}>
+      {group.LabelBlock}
       <div className={classNames('nhsuk-date-input', className)} id={id} {...restRenderProps}>
         <DateInputContext.Provider value={contextValue}>
           {children || (
@@ -64,7 +63,7 @@ const DateInput: IDateInput = (props) => {
           )}
         </DateInputContext.Provider>
       </div>
-    </FormGroupWrapper>
+    </group.Wrapper>
   );
 };
 

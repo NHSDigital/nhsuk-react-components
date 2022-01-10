@@ -1,8 +1,8 @@
-import React, { HTMLProps, useContext } from 'react';
 import classNames from 'classnames';
-import FormGroupContext from '../formgroup/FormGroupContext';
+import React, { HTMLProps, useContext } from 'react';
+import FormGroupContext from '../form-group/FormGroupContext';
 
-export type HintProps = HTMLProps<HTMLDivElement>;
+type HintProps = HTMLProps<HTMLDivElement>;
 
 const Hint: React.FC<HintProps> = ({ className, id, ...rest }) => {
   const { inputID } = useContext(FormGroupContext);

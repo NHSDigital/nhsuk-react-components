@@ -6,21 +6,16 @@ export interface IFormGroupContext {
   setInputID: (inputID: string | undefined) => void;
   error: boolean | undefined;
   setError: (error: boolean | undefined) => void;
-  // disableErrorFromComponents: boolean;
 }
 
 const FormGroupContext = createContext<IFormGroupContext>({
-  /* eslint-disable @typescript-eslint/no-empty-function */
   isInFormGroup: false,
   inputID: undefined,
-  setInputID: () => {},
+  setInputID: () => undefined,
   error: false,
-  setError: () => {},
-  // disableErrorFromComponents: false,
+  setError: () => undefined,
 });
 
-// eslint-disable-next-line max-len
-export const useFormGroupContext = (): IFormGroupContext =>
-  useContext<IFormGroupContext>(FormGroupContext);
+export const useFormGroupContext = (): IFormGroupContext => useContext(FormGroupContext);
 
 export default FormGroupContext;

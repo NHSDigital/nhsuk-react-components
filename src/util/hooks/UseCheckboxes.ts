@@ -1,13 +1,31 @@
 import { useRef, useState } from 'react';
 import { generateRandomName } from '../RandomID';
 
-const useCheckboxes = (id?: string, idPrefix?: string) => {
+type LeaseReferenceFunc = () => string;
+type UnleaseReferenceFunc = (reference: string) => void
+type SetConditionalFunc = (reference: string, hasConditional: boolean) => void
+type GetBoxIdFunc = (reference: string) => string;
+type ResetBoxIdsFunc = () => void;
+
+type UseCheckboxesHook = (
+  id: string | undefined,
+  idPrefix: string | undefined
+) => {
+  conditionalBoxes: string[],
+  leaseReference: LeaseReferenceFunc;
+  unleaseReference: UnleaseReferenceFunc;
+  setConditional: SetConditionalFunc,
+  getBoxId: GetBoxIdFunc,
+  resetBoxIds: ResetBoxIdsFunc,
+}
+
+const useCheckboxes: UseCheckboxesHook = (id, idPrefix) => {
   const [conditionalBoxes, setConditionalBoxes] = useState<string[]>([]);
   const boxIds = useRef<Record<string, string>>({});
   const boxReferences = useRef<string[]>([]);
   const boxCount = useRef<number>(0);
 
-  const leaseReference = () => {
+  const leaseReference: LeaseReferenceFunc = () => {
     const reference = generateRandomName();
     if (boxReferences.current.includes(reference)) {
       return leaseReference();
@@ -16,14 +34,14 @@ const useCheckboxes = (id?: string, idPrefix?: string) => {
     return reference;
   };
 
-  const unleaseReference = (reference: string): void => {
+  const unleaseReference: UnleaseReferenceFunc = (reference) => {
     const boxRefIndex = boxReferences.current.findIndex((ref) => ref === reference);
     if (boxRefIndex !== -1) {
       delete boxReferences.current[boxRefIndex];
     }
   };
 
-  const setConditional = (reference: string, hasConditional: boolean) => {
+  const setConditional: SetConditionalFunc = (reference, hasConditional) => {
     setConditionalBoxes((boxes) => {
       const currentHasConditional = boxes.includes(reference);
       if (currentHasConditional && !hasConditional) return boxes.filter((ref) => ref !== reference);
@@ -32,7 +50,7 @@ const useCheckboxes = (id?: string, idPrefix?: string) => {
     });
   };
 
-  const getBoxId = (reference: string): string => {
+  const getBoxId: GetBoxIdFunc = (reference) => {
     if (reference in boxIds.current) {
       return boxIds.current[reference];
     }
@@ -41,7 +59,7 @@ const useCheckboxes = (id?: string, idPrefix?: string) => {
     return boxIds.current[reference];
   };
 
-  const resetBoxIds = () => {
+  const resetBoxIds: ResetBoxIdsFunc = () => {
     boxCount.current = 0;
     boxIds.current = {};
   };

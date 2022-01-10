@@ -1,54 +1,52 @@
-import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
-import CheckboxContext, { ICheckboxContext } from './CheckboxContext';
-import { FormElementProps } from '../../util/types/FormTypes';
+import React from 'react';
 import useCheckboxes from '../../util/hooks/UseCheckboxes';
 import useFormGroup from '../../util/hooks/UseFormGroup';
+import { FormElementProps, FormGroupConsumer } from '../../util/types/FormTypes';
+import CheckboxContext, { ICheckboxContext } from './CheckboxContext';
 import Box from './components/Box';
 
 interface CheckboxesProps extends FormElementProps<HTMLDivElement> {
   idPrefix?: string;
 }
 
-interface ICheckboxes extends React.FC<CheckboxesProps> {
+type CheckboxesChildElements = {
   Box: typeof Box;
-}
+};
 
-const Checkboxes: ICheckboxes = (props) => {
-  const { FormGroupWrapper, LabelBlock, wrapperProps, renderProps } = useFormGroup(
-    'checkboxes',
-    props,
-  );
+const Checkboxes: React.FC<CheckboxesProps> & CheckboxesChildElements = (props) => {
+  const group = useFormGroup(FormGroupConsumer.CHECKBOXES, props);
   const { conditionalBoxes, resetBoxIds, ...checkboxFuncs } = useCheckboxes(
-    renderProps.id,
-    renderProps.idPrefix,
+    group.renderProps.id,
+    group.renderProps.idPrefix,
   );
-  const { className, name, id, children, ...rest } = renderProps;
+
+  // "error" prop is pulled out here so it is not passed to the div element
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const { className, name, children, error, ...rest } = group.renderProps;
 
   const containsConditional = conditionalBoxes.length > 0;
-  const contextValue: ICheckboxContext = {
-    name,
-    ...checkboxFuncs,
-  };
+  const contextValue: ICheckboxContext = { name, ...checkboxFuncs };
+
   resetBoxIds();
 
   return (
-    <FormGroupWrapper {...wrapperProps}>
-      {LabelBlock}
+    <group.Wrapper {...group.wrapperProps}>
+      {group.LabelBlock}
       <div
         className={classNames(
           'nhsuk-checkboxes',
           { 'nhsuk-checkboxes--conditional': containsConditional },
           className,
         )}
-        id={id}
         {...rest}
       >
         <CheckboxContext.Provider value={contextValue}>{children}</CheckboxContext.Provider>
       </div>
-    </FormGroupWrapper>
+    </group.Wrapper>
   );
 };
+
 Checkboxes.Box = Box;
 
 export default Checkboxes;
