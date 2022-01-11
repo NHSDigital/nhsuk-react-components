@@ -1,7 +1,7 @@
 const path = require("path");
 
 module.exports = {
-  stories: ["../stories/**/*.stories.@(ts|tsx)"],
+  stories: ["../stories/**/*.stories.@(ts|tsx|mdx)"],
   addons: ["@storybook/addon-links", "@storybook/addon-essentials"],
   webpackFinal: (config) => {
     config.module.rules.push({
@@ -11,6 +11,5 @@ module.exports = {
     });
 
     return config;
-  },
-
+  }
 };

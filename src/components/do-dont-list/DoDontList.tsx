@@ -1,7 +1,7 @@
-import React, { HTMLProps, createContext, useContext } from 'react';
 import classNames from 'classnames';
-import { Tick, Cross } from '../icons';
+import React, { createContext, HTMLProps, useContext } from 'react';
 import HeadingLevel, { HeadingLevelType } from '../../util/HeadingLevel';
+import { Cross, Tick } from '../icons';
 
 type ListType = 'do' | 'dont';
 
@@ -11,13 +11,13 @@ interface DoDontListProps extends HTMLProps<HTMLDivElement> {
   headingLevel?: HeadingLevelType;
 }
 
-interface DoDontList extends React.FC<DoDontListProps> {
-  Item: React.FC<DoDontItemProps>;
-}
+type DoDontListChildComponents = {
+  Item: typeof DoDontItem;
+};
 
 const DoDontListContext = createContext<ListType>('do');
 
-const DoDontList: DoDontList = ({
+const DoDontList: React.FC<DoDontListProps> & DoDontListChildComponents = ({
   className,
   listType,
   children,
@@ -54,6 +54,7 @@ const DoDontItem: React.FC<DoDontItemProps> = ({ children, listItemType, ...rest
     </li>
   );
 };
+DoDontItem.displayName = 'DoDontList.Item';
 
 DoDontList.Item = DoDontItem;
 

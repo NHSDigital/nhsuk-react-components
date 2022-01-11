@@ -1,14 +1,12 @@
-import React, {
-  HTMLProps, useContext, useEffect, MouseEvent,
-} from 'react';
 import classNames from 'classnames';
+import React, { HTMLProps, MouseEvent, useContext, useEffect } from 'react';
 import HeaderContext, { IHeaderContext } from '../HeaderContext';
 
 export interface MenuToggleProps extends HTMLProps<HTMLButtonElement> {
   type?: 'button' | 'submit' | 'reset';
 }
 
-const MenuToggle: React.FC<MenuToggleProps> = ({ onClick, ...rest }) => {
+const HeaderMenuToggle: React.FC<MenuToggleProps> = ({ onClick, ...rest }) => {
   const { setMenuToggle, toggleMenu, menuOpen } = useContext<IHeaderContext>(HeaderContext);
 
   const onToggleClick = (e: MouseEvent<HTMLButtonElement>) => {
@@ -38,5 +36,6 @@ const MenuToggle: React.FC<MenuToggleProps> = ({ onClick, ...rest }) => {
     </div>
   );
 };
+HeaderMenuToggle.displayName = 'Header.MenuToggle';
 
-export default MenuToggle;
+export default HeaderMenuToggle;

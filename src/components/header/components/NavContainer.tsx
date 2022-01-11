@@ -1,9 +1,9 @@
-import React, { HTMLProps, useContext } from 'react';
 import classNames from 'classnames';
+import React, { HTMLProps, useContext } from 'react';
 import { Container } from '../../layout';
 import HeaderContext, { IHeaderContext } from '../HeaderContext';
 
-const NavContainer: React.FC<HTMLProps<HTMLDivElement>> = ({
+const HeaderNavContainer: React.FC<HTMLProps<HTMLDivElement>> = ({
   className,
   children,
   open,
@@ -20,11 +20,10 @@ const NavContainer: React.FC<HTMLProps<HTMLDivElement>> = ({
       )}
       {...rest}
     >
-      <Container>
-        {children}
-      </Container>
+      <Container>{children}</Container>
     </nav>
   );
 };
+HeaderNavContainer.displayName = 'Header.NavContainer';
 
-export default NavContainer;
+export default HeaderNavContainer;

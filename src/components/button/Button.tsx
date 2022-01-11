@@ -1,5 +1,5 @@
-import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
+import React, { HTMLProps } from 'react';
 
 interface ButtonProps extends HTMLProps<HTMLButtonElement> {
   type?: 'button' | 'submit' | 'reset';
@@ -86,5 +86,6 @@ const ButtonWrapper: React.FC<ButtonLinkProps | ButtonProps> = ({ href, as, ...r
   }
   return <Button {...(rest as ButtonProps)} />;
 };
+ButtonWrapper.displayName = 'Button';
 
 export default ButtonWrapper;

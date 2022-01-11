@@ -1,55 +1,41 @@
 import classNames from 'classnames';
-import React, { HTMLProps, useState } from 'react';
+import React, { ContextType, HTMLProps, useContext, useState } from 'react';
 import FormGroupContext from './FormGroupContext';
 
 export interface FormGroupProps extends HTMLProps<HTMLDivElement> {
   error?: boolean;
-  disableErrorLine?: boolean;
-  disableErrorFromComponents?: boolean;
-  _exposeContext?: boolean;
 }
 
-const FormGroup: React.FC<FormGroupProps> = ({
-  error: errorProp,
-  children,
-  className,
-  disableErrorLine,
-  disableErrorFromComponents,
-  _exposeContext,
-  ...rest
-}) => {
-  const [error, setError] = useState<boolean>(errorProp);
+const FormGroup: React.FC<FormGroupProps> = ({ error, children, className, ...rest }) => {
+  const { isInFormGroup } = useContext(FormGroupContext);
+  if (isInFormGroup) {
+    throw new Error('A FormGroup component cannot be contained inside an existing FormGroup');
+  }
   const [inputID, setInputID] = useState<string>();
+  const [inputError, setInputError] = useState<boolean>(Boolean(error));
 
-  const hasError =
-    typeof error === 'boolean' ? error : !disableErrorFromComponents && !disableErrorLine && error;
+  const hasError = error === undefined ? inputError : error;
+
+  const contextValue: ContextType<typeof FormGroupContext> = {
+    isInFormGroup: true,
+    inputID: inputID,
+    error: error,
+    setError: setInputError,
+    setInputID,
+    getLabelID: (labelID?: string) => labelID || (inputID ? `${inputID}--label` : undefined),
+    getHintID: (hintID?: string) => hintID || (inputID ? `${inputID}--hint` : undefined),
+    getErrorMessageID: (errorMessageID?: string) =>
+      errorMessageID || (inputID ? `${inputID}--error-message` : undefined),
+  };
 
   return (
     <div
       className={classNames('nhsuk-form-group', { 'nhsuk-form-group--error': hasError }, className)}
       {...rest}
     >
-      {_exposeContext ? (
-        <FormGroupContext.Provider
-          value={{
-            isInFormGroup: true,
-            inputID,
-            error,
-            setError,
-            setInputID,
-          }}
-        >
-          {children}
-        </FormGroupContext.Provider>
-      ) : (
-        children
-      )}
+      <FormGroupContext.Provider value={contextValue}>{children}</FormGroupContext.Provider>
     </div>
   );
-};
-
-FormGroup.defaultProps = {
-  _exposeContext: true,
 };
 
 export default FormGroup;

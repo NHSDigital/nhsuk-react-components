@@ -13,16 +13,19 @@ const ErrorMessage: React.FC<ErrorMessageProps> = ({
   children,
   ...rest
 }) => {
-  const { inputID, setError } = useContext(FormGroupContext);
-  const elementID = id || (inputID ? `${inputID}--error-message` : undefined);
+  const { setError, getErrorMessageID } = useContext(FormGroupContext);
 
   useEffect(() => {
     if (children) setError(true);
-    // return setError(false);
+    return () => setError(false);
   }, [children]);
 
   return (
-    <span className={classNames('nhsuk-error-message', className)} id={elementID} {...rest}>
+    <span
+      className={classNames('nhsuk-error-message', className)}
+      id={getErrorMessageID(id)}
+      {...rest}
+    >
       {visuallyHiddenText !== false ? (
         <span className="nhsuk-u-visually-hidden">{visuallyHiddenText}</span>
       ) : null}

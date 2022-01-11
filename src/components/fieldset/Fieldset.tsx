@@ -35,6 +35,7 @@ const Legend: React.FC<LegendProps> = ({
   </legend>
 );
 
+Legend.displayName = 'Fieldset.Legend';
 Legend.defaultProps = {
   headingLevel: 'h1',
 };

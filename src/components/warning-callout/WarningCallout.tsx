@@ -1,5 +1,5 @@
-import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
+import React, { HTMLProps } from 'react';
 import HeadingLevel, { HeadingLevelType } from '../../util/HeadingLevel';
 
 interface WarningCalloutLabelProps extends HTMLProps<HTMLHeadingElement> {
@@ -21,6 +21,7 @@ const WarningCalloutLabel: React.FC<WarningCalloutLabelProps> = ({
     </span>
   </HeadingLevel>
 );
+WarningCalloutLabel.displayName = 'WarningCallout.Label';
 
 WarningCalloutLabel.defaultProps = {
   visuallyHiddenText: 'Important: ',

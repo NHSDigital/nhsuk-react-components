@@ -1,25 +1,24 @@
-import React from 'react';
 import classNames from 'classnames';
-import { FormElementProps } from '../../util/types/FormTypes';
+import React from 'react';
 import useFormGroup from '../../util/hooks/UseFormGroup';
+import LabelBlock from '../../util/LabelBlock';
+import { FormElementProps, InputType } from '../../util/types/FormTypes';
 
 type TextareaProps = FormElementProps<HTMLTextAreaElement>;
 
 const Textarea: React.FC<TextareaProps> = (props) => {
-  const { FormGroupWrapper, LabelBlock, wrapperProps, renderProps } = useFormGroup(
-    'textarea',
-    props,
-  );
+  const { FormGroup, renderProps } = useFormGroup(InputType.TEXTAREA, props);
+
   const { className, error, ...rest } = renderProps;
 
   return (
-    <FormGroupWrapper {...wrapperProps}>
-      {LabelBlock}
+    <FormGroup error={error}>
+      <LabelBlock elementId={renderProps.id} error={error} {...renderProps} />
       <textarea
         className={classNames('nhsuk-textarea', { 'nhsuk-textarea--error': error }, className)}
         {...rest}
       />
-    </FormGroupWrapper>
+    </FormGroup>
   );
 };
 

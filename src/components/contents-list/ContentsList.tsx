@@ -1,5 +1,5 @@
-import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
+import React, { HTMLProps } from 'react';
 
 interface ContentsListItemProps extends HTMLProps<HTMLAnchorElement> {
   current?: boolean;
@@ -14,17 +14,21 @@ const ContentsListItem: React.FC<ContentsListItemProps> = ({ className, current,
     )}
   </li>
 );
+ContentsListItem.displayName = 'ContentsList.Item';
 
 interface ContentsListProps extends HTMLProps<HTMLDivElement> {
   visuallyHiddenText?: false | string;
 }
 
-interface ContentsList extends React.FC<ContentsListProps> {
-  Item: React.FC<ContentsListItemProps>;
-}
+type ContentsListChildComponents = {
+  Item: typeof ContentsListItem;
+};
 
-const ContentsList: ContentsList = ({
-  className, children, visuallyHiddenText, ...rest
+const ContentsList: React.FC<ContentsListProps> & ContentsListChildComponents = ({
+  className,
+  children,
+  visuallyHiddenText,
+  ...rest
 }) => (
   <nav className={classNames('nhsuk-contents-list', className)} {...rest}>
     {visuallyHiddenText !== false ? (

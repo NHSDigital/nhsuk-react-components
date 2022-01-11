@@ -1,15 +1,13 @@
 import React, { HTMLProps, ReactNode } from 'react';
-import { ErrorMessageProps } from '../../components/error-message/ErrorMessage';
-import { HintProps } from '../../components/hint/Hint';
-import { LabelProps } from '../../components/label/Label';
+import { ErrorMessage, Hint, Label } from '../..';
 
 export interface FormElementProps<T = HTMLElement> extends Omit<HTMLProps<T>, 'label'> {
   label?: ReactNode;
-  labelProps?: LabelProps;
+  labelProps?: React.ComponentProps<typeof Label>;
   error?: ReactNode;
-  errorProps?: ErrorMessageProps;
+  errorProps?: React.ComponentProps<typeof ErrorMessage>;
   hint?: ReactNode;
-  hintProps?: HintProps;
+  hintProps?: React.ComponentProps<typeof Hint>;
   formGroupProps?: HTMLProps<HTMLDivElement>;
   disableErrorLine?: boolean;
   id?: string;
@@ -33,7 +31,7 @@ export type FormElementRenderProps<T> = Omit<Text, FormElementExcludedProps> & {
 };
 
 // FormGroup
-export enum FormGroupConsumer {
+export enum InputType {
   INPUT = 'input',
   SELECT = 'select',
   TEXTAREA = 'textarea',

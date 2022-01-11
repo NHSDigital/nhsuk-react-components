@@ -2,7 +2,8 @@ import classNames from 'classnames';
 import React from 'react';
 import useFormGroup from '../../util/hooks/UseFormGroup';
 import useRadios from '../../util/hooks/UseRadios';
-import { FormElementProps, FormGroupConsumer } from '../../util/types/FormTypes';
+import LabelBlock from '../../util/LabelBlock';
+import { FormElementProps, InputType } from '../../util/types/FormTypes';
 import Divider from './components/Divider';
 import Radio from './components/Radio';
 import { IRadiosContext, RadiosContext } from './RadioContext';
@@ -18,13 +19,13 @@ interface RadiosChildComponents {
 }
 
 const Radios: React.FC<RadiosProps> & RadiosChildComponents = (props) => {
-  const group = useFormGroup(FormGroupConsumer.RADIOS, props);
+  const { FormGroup, renderProps } = useFormGroup(InputType.RADIOS, props);
   const { resetRadioIds, conditionalRadios, ...radioFuncs } = useRadios(
-    group.renderProps.id,
-    group.renderProps.idPrefix,
+    renderProps.id,
+    renderProps.idPrefix,
   );
 
-  const { inline, className, id, name, children, ...restRenderProps } = group.renderProps;
+  const { inline, className, id, name, children, ...restRenderProps } = renderProps;
 
   const containsConditional = conditionalRadios.length > 0;
   const contextValue: IRadiosContext = {
@@ -34,8 +35,8 @@ const Radios: React.FC<RadiosProps> & RadiosChildComponents = (props) => {
   resetRadioIds();
 
   return (
-    <group.Wrapper {...group.wrapperProps}>
-      {group.labelBlock}
+    <FormGroup error={Boolean(renderProps.error)}>
+      <LabelBlock elementId={renderProps.id} {...renderProps} />
       <div
         className={classNames(
           'nhsuk-radios',
@@ -48,7 +49,7 @@ const Radios: React.FC<RadiosProps> & RadiosChildComponents = (props) => {
       >
         <RadiosContext.Provider value={contextValue}>{children}</RadiosContext.Provider>
       </div>
-    </group.Wrapper>
+    </FormGroup>
   );
 };
 

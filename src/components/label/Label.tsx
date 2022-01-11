@@ -10,13 +10,12 @@ interface LabelProps extends Omit<HTMLProps<HTMLLabelElement>, 'size'> {
 }
 
 const BaseLabel: React.FC<LabelProps> = ({ id, className, bold, size, isPageHeading, ...rest }) => {
-  const { inputID } = useContext(FormGroupContext);
-  const labelId = id || (inputID ? `${inputID}--label` : undefined);
-
+  const { inputID, getLabelID } = useContext(FormGroupContext);
   return (
     // eslint-disable-next-line jsx-a11y/label-has-associated-control
     <label
-      id={labelId}
+      id={getLabelID(id)}
+      htmlFor={inputID}
       className={classNames(
         'nhsuk-label',
         { 'nhsuk-label--s': bold && !size },

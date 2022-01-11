@@ -1,8 +1,5 @@
-import HeaderContext, { IHeaderContext } from './HeaderContext';
-import NHSLogo, { NHSLogoNavProps } from './components/NHSLogo';
-import OrganisationalLogo, { OrganisationalLogoProps } from './components/OrganisationalLogo';
+import classNames from 'classnames';
 import React, { HTMLProps, PureComponent, useContext } from 'react';
-
 import { Container } from '../layout';
 import Content from './components/Content';
 import MenuToggle from './components/MenuToggle';
@@ -12,9 +9,11 @@ import NavItem from './components/NavItem';
 import NavItemList from './components/NavItemList';
 import NavMenuClose from './components/NavMenuClose';
 import NavTitle from './components/NavTitle';
+import NHSLogo, { NHSLogoNavProps } from './components/NHSLogo';
+import OrganisationalLogo, { OrganisationalLogoProps } from './components/OrganisationalLogo';
 import Search from './components/Search';
-import TransactionalServiceName from './components/TransactionalServiceName';
-import classNames from 'classnames';
+import ServiceName from './components/ServiceName';
+import HeaderContext, { IHeaderContext } from './HeaderContext';
 
 const BaseHeaderLogo: React.FC<OrganisationalLogoProps & NHSLogoNavProps> = (props) => {
   const { orgName } = useContext<IHeaderContext>(HeaderContext);
@@ -23,10 +22,12 @@ const BaseHeaderLogo: React.FC<OrganisationalLogoProps & NHSLogoNavProps> = (pro
   }
   return <NHSLogo {...props} />;
 };
+BaseHeaderLogo.displayName = 'Header.Logo';
 
 const HeaderContainer: React.FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => (
   <Container className={classNames('nhsuk-header__container', className)} {...rest} />
 );
+HeaderContainer.displayName = 'Header.Container';
 
 interface HeaderProps extends HTMLProps<HTMLDivElement> {
   transactional?: boolean;
@@ -67,7 +68,7 @@ class Header extends PureComponent<HeaderProps, HeaderState> {
 
   static MenuToggle = MenuToggle;
 
-  static ServiceName = TransactionalServiceName;
+  static ServiceName = ServiceName;
 
   static defaultProps = {
     role: 'banner',
@@ -111,9 +112,7 @@ class Header extends PureComponent<HeaderProps, HeaderState> {
       white,
       ...rest
     } = this.props;
-    const {
-      hasSearch, hasMenuToggle, menuOpen, searchOpen,
-    } = this.state;
+    const { hasSearch, hasMenuToggle, menuOpen, searchOpen } = this.state;
     const contextValue: IHeaderContext = {
       orgName,
       orgSplit,

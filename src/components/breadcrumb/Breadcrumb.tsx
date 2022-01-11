@@ -1,12 +1,13 @@
-import React, { HTMLProps, ReactNode } from 'react';
 import classNames from 'classnames';
-import { Container } from '../layout';
+import React, { HTMLProps, ReactNode } from 'react';
 import type { AsElementLink } from '../../util/types/LinkTypes';
+import { Container } from '../layout';
 
-type Item = React.FC<AsElementLink<HTMLAnchorElement>>;
-
-const Item: Item = ({
-  className, children, asElement: Component = 'a', ...rest
+const Item: React.FC<AsElementLink<HTMLAnchorElement>> = ({
+  className,
+  children,
+  asElement: Component = 'a',
+  ...rest
 }) => (
   <li className="nhsuk-breadcrumb__item">
     <Component className={classNames('nhsuk-breadcrumb__link', className)} {...rest}>
@@ -15,23 +16,31 @@ const Item: Item = ({
   </li>
 );
 
-const Back: Item = ({ className, asElement: Component = 'a', ...rest }) => (
+const Back: React.FC<AsElementLink<HTMLAnchorElement>> = ({
+  className,
+  asElement: Component = 'a',
+  ...rest
+}) => (
   <p className={classNames('nhsuk-breadcrumb__back', className)}>
     <Component className="nhsuk-breadcrumb__backlink" {...rest} />
   </p>
 );
 
-interface Breadcrumb extends React.FC<HTMLProps<HTMLDivElement>> {
-  Item: Item;
-  Back: Item;
-}
+type BreadcrumbChildComponents = {
+  Item: typeof Item;
+  Back: typeof Back;
+};
 
 type SplitChildren = {
   ItemChildren: Array<ReactNode>;
   OtherChildren: Array<ReactNode>;
 };
 
-const Breadcrumb: Breadcrumb = ({ className, children, ...rest }) => {
+const Breadcrumb: React.FC<HTMLProps<HTMLDivElement>> & BreadcrumbChildComponents = ({
+  className,
+  children,
+  ...rest
+}) => {
   // Split off any "Item" components
   const { ItemChildren, OtherChildren } = React.Children.toArray(children).reduce<SplitChildren>(
     (prev, child) => {

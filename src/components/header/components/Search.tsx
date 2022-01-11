@@ -1,20 +1,26 @@
-import React, { HTMLProps, useContext, useEffect } from 'react';
 import classNames from 'classnames';
-import { Search as SearchIcon, Close as CloseIcon } from '../../icons';
+import React, { HTMLProps, useContext, useEffect } from 'react';
+import { Close as CloseIcon, Search as SearchIcon } from '../../icons';
 import HeaderContext, { IHeaderContext } from '../HeaderContext';
 
 export interface SearchProps extends HTMLProps<HTMLInputElement> {
   visuallyHiddenText?: string;
 }
 
-const Search: React.FC<SearchProps> = ({
-  action, method, id, visuallyHiddenText, ...rest
+const HeaderSearch: React.FC<SearchProps> = ({
+  action,
+  method,
+  id,
+  visuallyHiddenText,
+  ...rest
 }) => {
   const { setSearch, toggleSearch, searchOpen } = useContext<IHeaderContext>(HeaderContext);
+
   useEffect(() => {
     setSearch(true);
     return () => setSearch(false);
   }, []);
+
   return (
     <div className="nhsuk-header__search">
       <button
@@ -46,7 +52,8 @@ const Search: React.FC<SearchProps> = ({
   );
 };
 
-Search.defaultProps = {
+HeaderSearch.displayName = 'Header.Search';
+HeaderSearch.defaultProps = {
   method: 'get',
   role: 'search',
   id: 'search-field',
@@ -56,4 +63,4 @@ Search.defaultProps = {
   placeholder: 'Search',
 };
 
-export default Search;
+export default HeaderSearch;
