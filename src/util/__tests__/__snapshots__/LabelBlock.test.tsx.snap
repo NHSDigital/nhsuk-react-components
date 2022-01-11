@@ -2,7 +2,6 @@
 
 exports[`LabelBlock does not render an errormessage element when error is provided but is boolean 1`] = `
 <LabelBlock
-  elementId="test-element"
   error={true}
 />
 `;
@@ -19,12 +18,10 @@ exports[`LabelBlock renders a hint element when hint is provided and passes prop
 >
   <Hint
     aria-label="Test Aria Label for Hint"
-    id="test-element--hint"
   >
     <div
       aria-label="Test Aria Label for Hint"
       className="nhsuk-hint"
-      id="test-element--hint"
     >
       Test Hint
     </div>
@@ -44,19 +41,13 @@ exports[`LabelBlock renders a label element when label is provided and passes pr
 >
   <Label
     aria-label="Test Aria Label"
-    htmlFor="test-element"
-    id="test-element--label"
   >
     <BaseLabel
       aria-label="Test Aria Label"
-      htmlFor="test-element"
-      id="test-element--label"
     >
       <label
         aria-label="Test Aria Label"
         className="nhsuk-label"
-        htmlFor="test-element"
-        id="test-element--label"
       >
         Test Label
       </label>
@@ -77,14 +68,12 @@ exports[`LabelBlock renders an errormessage element when error is provided and p
 >
   <ErrorMessage
     aria-label="Test Aria Label for Error"
-    id="test-element--error-message"
     role="alert"
     visuallyHiddenText="Error: "
   >
     <span
       aria-label="Test Aria Label for Error"
       className="nhsuk-error-message"
-      id="test-element--error-message"
       role="alert"
     >
       <span

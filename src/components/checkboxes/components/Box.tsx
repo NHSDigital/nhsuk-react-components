@@ -46,6 +46,7 @@ const CheckboxesBox: React.FC<CheckboxesBoxProps> = React.forwardRef((props, ref
           }}
           id={inputID}
           ref={ref}
+          name={inputProps.name || boxCtx.name}
         />
         <LabelBlock
           elementId={inputID}

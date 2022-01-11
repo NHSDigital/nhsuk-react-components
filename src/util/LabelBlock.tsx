@@ -4,7 +4,7 @@ import Hint from '../components/hint/Hint';
 import Label from '../components/label/Label';
 
 interface LabelBlockProps {
-  elementId?: string;
+  elementID?: string;
   label?: ReactNode;
   labelProps?: ComponentProps<typeof Label>;
   hint?: ReactNode;

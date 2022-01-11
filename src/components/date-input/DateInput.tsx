@@ -2,7 +2,8 @@ import classNames from 'classnames';
 import React from 'react';
 import useDateInput, { DateInputChangeEvent, DateInputValue } from '../../util/hooks/UseDateInput';
 import useFormGroup from '../../util/hooks/UseFormGroup';
-import { FormElementProps, FormGroupConsumer } from '../../util/types/FormTypes';
+import LabelBlock from '../../util/LabelBlock';
+import { FormElementProps, InputType } from '../../util/types/FormTypes';
 import { DayInput, MonthInput, YearInput } from './components/IndividualDateInputs';
 import DateInputContext, { IDateInputContext } from './DateInputContext';
 
@@ -19,26 +20,26 @@ interface IDateInput extends React.FC<DateInputProps> {
 }
 
 const DateInput: IDateInput = (props) => {
-  const group = useFormGroup<DateInputProps>(FormGroupConsumer.DATE_INPUT, props);
-
-  const dateInputFuncs = useDateInput(
-    group.renderProps.value,
-    group.renderProps.defaultValue,
-    group.renderProps.onChange,
-  );
+  const { FormGroup, renderProps } = useFormGroup(InputType.DATE_INPUT, props);
 
   const {
     className,
+    children,
     id,
     name,
-    error,
     value,
     defaultValue,
-    children,
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    onChange: _,
-    ...restRenderProps
-  } = group.renderProps;
+    onChange,
+    label,
+    labelProps,
+    hint,
+    hintProps,
+    error,
+    errorProps,
+    ...rest
+  } = renderProps;
+
+  const dateInputFuncs = useDateInput(value, defaultValue, onChange);
 
   const contextValue: IDateInputContext = {
     id,
@@ -50,9 +51,17 @@ const DateInput: IDateInput = (props) => {
   };
 
   return (
-    <group.Wrapper {...group.wrapperProps}>
-      {group.LabelBlock}
-      <div className={classNames('nhsuk-date-input', className)} id={id} {...restRenderProps}>
+    <FormGroup>
+      <LabelBlock
+        elementId={renderProps.id}
+        label={label}
+        labelProps={labelProps}
+        hint={hint}
+        hintProps={hintProps}
+        error={error}
+        errorProps={errorProps}
+      />
+      <div className={classNames('nhsuk-date-input', className)} id={id} {...rest}>
         <DateInputContext.Provider value={contextValue}>
           {children || (
             <>
@@ -63,7 +72,7 @@ const DateInput: IDateInput = (props) => {
           )}
         </DateInputContext.Provider>
       </div>
-    </group.Wrapper>
+    </FormGroup>
   );
 };
 

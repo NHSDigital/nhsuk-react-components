@@ -4,18 +4,21 @@ exports[`Checkboxes renders without errors 1`] = `
 <Checkboxes
   id="test-id"
 >
-  <FormGroup
-    _exposeContext={false}
-    error={false}
-  >
+  <FormGroup>
     <div
       className="nhsuk-form-group"
     >
+      <LabelBlock
+        elementId="test-id"
+        id="test-id"
+        name="test-id"
+      />
       <div
         className="nhsuk-checkboxes"
         id="test-id"
+        name="test-id"
       >
-        <Box
+        <Checkboxes.Box
           type="checkbox"
           value="british"
         >
@@ -30,28 +33,37 @@ exports[`Checkboxes renders without errors 1`] = `
               type="checkbox"
               value="british"
             />
-            <Label
-              className="nhsuk-checkboxes__label"
-              htmlFor="test-id-1"
-              id="test-id-1--label"
+            <LabelBlock
+              elementId="test-id-1"
+              hintProps={
+                Object {
+                  "className": "nhsuk-checkboxes__hint",
+                }
+              }
+              label="British"
+              labelProps={
+                Object {
+                  "className": "nhsuk-checkboxes__label",
+                }
+              }
             >
-              <BaseLabel
+              <Label
                 className="nhsuk-checkboxes__label"
-                htmlFor="test-id-1"
-                id="test-id-1--label"
               >
-                <label
-                  className="nhsuk-label nhsuk-checkboxes__label"
-                  htmlFor="test-id-1"
-                  id="test-id-1--label"
+                <BaseLabel
+                  className="nhsuk-checkboxes__label"
                 >
-                  British
-                </label>
-              </BaseLabel>
-            </Label>
+                  <label
+                    className="nhsuk-label nhsuk-checkboxes__label"
+                  >
+                    British
+                  </label>
+                </BaseLabel>
+              </Label>
+            </LabelBlock>
           </div>
-        </Box>
-        <Box
+        </Checkboxes.Box>
+        <Checkboxes.Box
           type="checkbox"
           value="irish"
         >
@@ -66,28 +78,37 @@ exports[`Checkboxes renders without errors 1`] = `
               type="checkbox"
               value="irish"
             />
-            <Label
-              className="nhsuk-checkboxes__label"
-              htmlFor="test-id-2"
-              id="test-id-2--label"
+            <LabelBlock
+              elementId="test-id-2"
+              hintProps={
+                Object {
+                  "className": "nhsuk-checkboxes__hint",
+                }
+              }
+              label="Irish"
+              labelProps={
+                Object {
+                  "className": "nhsuk-checkboxes__label",
+                }
+              }
             >
-              <BaseLabel
+              <Label
                 className="nhsuk-checkboxes__label"
-                htmlFor="test-id-2"
-                id="test-id-2--label"
               >
-                <label
-                  className="nhsuk-label nhsuk-checkboxes__label"
-                  htmlFor="test-id-2"
-                  id="test-id-2--label"
+                <BaseLabel
+                  className="nhsuk-checkboxes__label"
                 >
-                  Irish
-                </label>
-              </BaseLabel>
-            </Label>
+                  <label
+                    className="nhsuk-label nhsuk-checkboxes__label"
+                  >
+                    Irish
+                  </label>
+                </BaseLabel>
+              </Label>
+            </LabelBlock>
           </div>
-        </Box>
-        <Box
+        </Checkboxes.Box>
+        <Checkboxes.Box
           type="checkbox"
           value="other"
         >
@@ -102,27 +123,36 @@ exports[`Checkboxes renders without errors 1`] = `
               type="checkbox"
               value="other"
             />
-            <Label
-              className="nhsuk-checkboxes__label"
-              htmlFor="test-id-3"
-              id="test-id-3--label"
+            <LabelBlock
+              elementId="test-id-3"
+              hintProps={
+                Object {
+                  "className": "nhsuk-checkboxes__hint",
+                }
+              }
+              label="Citizen of another country"
+              labelProps={
+                Object {
+                  "className": "nhsuk-checkboxes__label",
+                }
+              }
             >
-              <BaseLabel
+              <Label
                 className="nhsuk-checkboxes__label"
-                htmlFor="test-id-3"
-                id="test-id-3--label"
               >
-                <label
-                  className="nhsuk-label nhsuk-checkboxes__label"
-                  htmlFor="test-id-3"
-                  id="test-id-3--label"
+                <BaseLabel
+                  className="nhsuk-checkboxes__label"
                 >
-                  Citizen of another country
-                </label>
-              </BaseLabel>
-            </Label>
+                  <label
+                    className="nhsuk-label nhsuk-checkboxes__label"
+                  >
+                    Citizen of another country
+                  </label>
+                </BaseLabel>
+              </Label>
+            </LabelBlock>
           </div>
-        </Box>
+        </Checkboxes.Box>
       </div>
     </div>
   </FormGroup>

@@ -5,9 +5,8 @@ import FormGroupContext from '../form-group/FormGroupContext';
 type HintProps = HTMLProps<HTMLDivElement>;
 
 const Hint: React.FC<HintProps> = ({ className, id, ...rest }) => {
-  const { inputID } = useContext(FormGroupContext);
-  const elementID = id || (inputID ? `${inputID}--hint` : undefined);
-  return <div className={classNames('nhsuk-hint', className)} id={elementID} {...rest} />;
+  const { getHintID } = useContext(FormGroupContext);
+  return <div className={classNames('nhsuk-hint', className)} id={getHintID(id)} {...rest} />;
 };
 
 export default Hint;

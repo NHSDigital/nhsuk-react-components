@@ -7,19 +7,23 @@ exports[`Radios matches snapshot 1`] = `
   role="radiogroup"
 >
   <FormGroup
-    _exposeContext={false}
     error={false}
   >
     <div
       className="nhsuk-form-group"
     >
+      <LabelBlock
+        elementId="example"
+        id="example"
+        name="example"
+        role="radiogroup"
+      />
       <div
         className="nhsuk-radios"
-        error={false}
         id="example"
         role="radiogroup"
       >
-        <Radio
+        <Radios.Radio
           id="example-1"
           type="radio"
           value="yes"
@@ -37,28 +41,37 @@ exports[`Radios matches snapshot 1`] = `
               type="radio"
               value="yes"
             />
-            <Label
-              className="nhsuk-radios__label"
-              htmlFor="example-1"
-              id="example-1--label"
+            <LabelBlock
+              elementId="example-1"
+              hintProps={
+                Object {
+                  "className": "nhsuk-radios__hint",
+                }
+              }
+              label="Yes"
+              labelProps={
+                Object {
+                  "className": "nhsuk-radios__label",
+                }
+              }
             >
-              <BaseLabel
+              <Label
                 className="nhsuk-radios__label"
-                htmlFor="example-1"
-                id="example-1--label"
               >
-                <label
-                  className="nhsuk-label nhsuk-radios__label"
-                  htmlFor="example-1"
-                  id="example-1--label"
+                <BaseLabel
+                  className="nhsuk-radios__label"
                 >
-                  Yes
-                </label>
-              </BaseLabel>
-            </Label>
+                  <label
+                    className="nhsuk-label nhsuk-radios__label"
+                  >
+                    Yes
+                  </label>
+                </BaseLabel>
+              </Label>
+            </LabelBlock>
           </div>
-        </Radio>
-        <Radio
+        </Radios.Radio>
+        <Radios.Radio
           id="example-2"
           type="radio"
           value="no"
@@ -76,27 +89,36 @@ exports[`Radios matches snapshot 1`] = `
               type="radio"
               value="no"
             />
-            <Label
-              className="nhsuk-radios__label"
-              htmlFor="example-2"
-              id="example-2--label"
+            <LabelBlock
+              elementId="example-2"
+              hintProps={
+                Object {
+                  "className": "nhsuk-radios__hint",
+                }
+              }
+              label="No"
+              labelProps={
+                Object {
+                  "className": "nhsuk-radios__label",
+                }
+              }
             >
-              <BaseLabel
+              <Label
                 className="nhsuk-radios__label"
-                htmlFor="example-2"
-                id="example-2--label"
               >
-                <label
-                  className="nhsuk-label nhsuk-radios__label"
-                  htmlFor="example-2"
-                  id="example-2--label"
+                <BaseLabel
+                  className="nhsuk-radios__label"
                 >
-                  No
-                </label>
-              </BaseLabel>
-            </Label>
+                  <label
+                    className="nhsuk-label nhsuk-radios__label"
+                  >
+                    No
+                  </label>
+                </BaseLabel>
+              </Label>
+            </LabelBlock>
           </div>
-        </Radio>
+        </Radios.Radio>
       </div>
     </div>
   </FormGroup>

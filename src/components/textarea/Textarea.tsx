@@ -12,7 +12,7 @@ const Textarea: React.FC<TextareaProps> = (props) => {
   const { className, error, ...rest } = renderProps;
 
   return (
-    <FormGroup error={error}>
+    <FormGroup error={Boolean(error)}>
       <LabelBlock elementId={renderProps.id} error={error} {...renderProps} />
       <textarea
         className={classNames('nhsuk-textarea', { 'nhsuk-textarea--error': error }, className)}

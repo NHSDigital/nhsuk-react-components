@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Box renders successfully 1`] = `
-<Box
+<Checkboxes.Box
   type="checkbox"
 >
   <div
@@ -14,25 +14,34 @@ exports[`Box renders successfully 1`] = `
       onChange={[Function]}
       type="checkbox"
     />
-    <Label
-      className="nhsuk-checkboxes__label"
-      htmlFor="test-1"
-      id="test-1--label"
+    <LabelBlock
+      elementId="test-1"
+      hintProps={
+        Object {
+          "className": "nhsuk-checkboxes__hint",
+        }
+      }
+      label="Test Box"
+      labelProps={
+        Object {
+          "className": "nhsuk-checkboxes__label",
+        }
+      }
     >
-      <BaseLabel
+      <Label
         className="nhsuk-checkboxes__label"
-        htmlFor="test-1"
-        id="test-1--label"
       >
-        <label
-          className="nhsuk-label nhsuk-checkboxes__label"
-          htmlFor="test-1"
-          id="test-1--label"
+        <BaseLabel
+          className="nhsuk-checkboxes__label"
         >
-          Test Box
-        </label>
-      </BaseLabel>
-    </Label>
+          <label
+            className="nhsuk-label nhsuk-checkboxes__label"
+          >
+            Test Box
+          </label>
+        </BaseLabel>
+      </Label>
+    </LabelBlock>
   </div>
-</Box>
+</Checkboxes.Box>
 `;

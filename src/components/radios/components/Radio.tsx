@@ -1,13 +1,14 @@
 import classNames from 'classnames';
 import React, { HTMLProps, ReactNode, useContext, useEffect, useMemo } from 'react';
-import Hint, { HintProps } from '../../hint/Hint';
-import Label, { LabelProps } from '../../label/Label';
+import LabelBlock from '../../../util/LabelBlock';
+import Hint from '../../hint/Hint';
+import Label from '../../label/Label';
 import { IRadiosContext, RadiosContext } from '../RadioContext';
 
 export interface RadioProps extends HTMLProps<HTMLInputElement> {
   hint?: string;
-  hintProps?: HintProps;
-  labelProps?: LabelProps;
+  hintProps?: React.ComponentProps<typeof Hint>;
+  labelProps?: React.ComponentProps<typeof Label>;
   conditional?: ReactNode;
   forceShowConditional?: boolean;
   conditionalWrapperProps?: HTMLProps<HTMLDivElement>;
@@ -80,21 +81,13 @@ const RadiosRadio: React.FC<RadioProps> = ({
           ref={inputRef}
           {...rest}
         />
-        {children ? (
-          <Label
-            className="nhsuk-radios__label"
-            id={`${inputID}--label`}
-            htmlFor={inputID}
-            {...labelProps}
-          >
-            {children}
-          </Label>
-        ) : null}
-        {hint ? (
-          <Hint className="nhsuk-radios__hint" id={`${inputID}--hint`} {...hintProps}>
-            {hint}
-          </Hint>
-        ) : null}
+        <LabelBlock
+          elementId={inputID}
+          label={children}
+          labelProps={{ ...labelProps, className: 'nhsuk-radios__label' }}
+          hint={hint}
+          hintProps={{ ...hintProps, className: 'nhsuk-radios__hint' }}
+        />
       </div>
       {conditional && (shouldShowConditional || forceShowConditional) ? (
         <div

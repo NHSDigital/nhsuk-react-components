@@ -8,6 +8,9 @@ exports[`Form Group matches snapshot Form group and label 1`] = `
     value={
       Object {
         "error": undefined,
+        "getErrorMessageID": [Function],
+        "getHintID": [Function],
+        "getLabelID": [Function],
         "inputID": undefined,
         "isInFormGroup": true,
         "setError": [Function],
@@ -30,6 +33,9 @@ exports[`Form Group matches snapshot Form group label , Input and Error message 
     value={
       Object {
         "error": undefined,
+        "getErrorMessageID": [Function],
+        "getHintID": [Function],
+        "getLabelID": [Function],
         "inputID": undefined,
         "isInFormGroup": true,
         "setError": [Function],
@@ -66,6 +72,9 @@ exports[`Form Group matches snapshot Form group label , Select and Error message
     value={
       Object {
         "error": undefined,
+        "getErrorMessageID": [Function],
+        "getHintID": [Function],
+        "getLabelID": [Function],
         "inputID": undefined,
         "isInFormGroup": true,
         "setError": [Function],
@@ -86,24 +95,24 @@ exports[`Form Group matches snapshot Form group label , Select and Error message
       At least 20 characters...
     </ErrorMessage>
     <Select>
-      <Option>
+      <Component>
         Select
-      </Option>
-      <Option
+      </Component>
+      <Component
         value="1"
       >
         NHS.UK frontend option 1
-      </Option>
-      <Option
+      </Component>
+      <Component
         value="2"
       >
         NHS.UK frontend option 2
-      </Option>
-      <Option
+      </Component>
+      <Component
         value="3"
       >
         NHS.UK frontend option 3
-      </Option>
+      </Component>
     </Select>
   </ContextProvider>
 </div>
@@ -117,6 +126,9 @@ exports[`Form Group matches snapshot Form group label , Textarea and Error messa
     value={
       Object {
         "error": undefined,
+        "getErrorMessageID": [Function],
+        "getHintID": [Function],
+        "getLabelID": [Function],
         "inputID": undefined,
         "isInFormGroup": true,
         "setError": [Function],
@@ -154,6 +166,9 @@ exports[`Form Group matches snapshot Form group label and Textarea 1`] = `
     value={
       Object {
         "error": undefined,
+        "getErrorMessageID": [Function],
+        "getHintID": [Function],
+        "getLabelID": [Function],
         "inputID": undefined,
         "isInFormGroup": true,
         "setError": [Function],
@@ -185,6 +200,9 @@ exports[`Form Group matches snapshot Form group, label and Hint 1`] = `
     value={
       Object {
         "error": undefined,
+        "getErrorMessageID": [Function],
+        "getHintID": [Function],
+        "getLabelID": [Function],
         "inputID": undefined,
         "isInFormGroup": true,
         "setError": [Function],

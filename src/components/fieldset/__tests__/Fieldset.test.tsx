@@ -1,5 +1,5 @@
-import React from 'react';
 import { shallow } from 'enzyme';
+import React from 'react';
 import Fieldset from '..';
 
 describe('Fieldset', () => {
@@ -19,7 +19,7 @@ describe('Fieldset', () => {
 
     it('renders as page heading', () => {
       const element = shallow(<Fieldset.Legend isPageHeading>Text</Fieldset.Legend>);
-      expect(element.hasClass('nhsuk-fieldset__legend--xl')).toBeTruthy();
+
       expect(element.find('.nhsuk-fieldset__heading').render().text()).toBe('Text');
       element.unmount();
     });

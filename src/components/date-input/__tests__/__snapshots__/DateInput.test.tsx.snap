@@ -5,18 +5,18 @@ exports[`DateInput matches snapshot 1`] = `
   id="testInput"
   name="testInput"
 >
-  <FormGroup
-    _exposeContext={false}
-    error={false}
-  >
+  <FormGroup>
     <div
       className="nhsuk-form-group"
     >
+      <LabelBlock
+        elementId="testInput"
+      />
       <div
         className="nhsuk-date-input"
         id="testInput"
       >
-        <DayInput>
+        <DateInput.Day>
           <IndividualDateInput
             inputMode="numeric"
             inputType="day"
@@ -61,8 +61,8 @@ exports[`DateInput matches snapshot 1`] = `
               </div>
             </div>
           </IndividualDateInput>
-        </DayInput>
-        <MonthInput>
+        </DateInput.Day>
+        <DateInput.Month>
           <IndividualDateInput
             inputMode="numeric"
             inputType="month"
@@ -107,8 +107,8 @@ exports[`DateInput matches snapshot 1`] = `
               </div>
             </div>
           </IndividualDateInput>
-        </MonthInput>
-        <YearInput>
+        </DateInput.Month>
+        <DateInput.Year>
           <IndividualDateInput
             inputMode="numeric"
             inputType="year"
@@ -153,7 +153,7 @@ exports[`DateInput matches snapshot 1`] = `
               </div>
             </div>
           </IndividualDateInput>
-        </YearInput>
+        </DateInput.Year>
       </div>
     </div>
   </FormGroup>
