@@ -63,7 +63,7 @@ import { Button, Panel, Promo } from "nhsuk-react-components";
 
 // New Imports
 import { Button } from "nhsuk-react-components";
-import { Panel, Promo } from "nhsuk-react-components/deprecated";
+import { Panel, Promo } from "nhsuk-react-components/dist/deprecated";
 ```
 
 A warning is printed to the console in dev environments when using these components, as they are set to be removed in the next major release.
