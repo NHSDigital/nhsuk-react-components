@@ -1,7 +1,7 @@
-import React, { HTMLProps, createContext, useContext } from 'react';
 import classNames from 'classnames';
-import { CareCardType } from '../../util/types/NHSUKTypes';
+import React, { createContext, HTMLProps, useContext } from 'react';
 import HeadingLevel, { HeadingLevelType } from '../../util/HeadingLevel';
+import { CareCardType } from '../../util/types/NHSUKTypes';
 
 interface CareCardProps extends HTMLProps<HTMLDivElement> {
   type: CareCardType;
@@ -65,13 +65,16 @@ CareCardHeading.defaultProps = {
   role: 'text',
 };
 
-interface CareCard extends React.FC<CareCardProps> {
-  Content: React.FC<HTMLProps<HTMLDivElement>>;
-  Heading: React.FC<CareCardHeadingProps>;
-}
+type CareCardChildComponents = {
+  Content: typeof CareCardContent;
+  Heading: typeof CareCardHeading;
+};
 
-const CareCard: CareCard = ({
-  className, type, children, ...rest
+const CareCard: React.FC<CareCardProps> & CareCardChildComponents = ({
+  className,
+  type,
+  children,
+  ...rest
 }) => (
   <div className={classNames('nhsuk-care-card', `nhsuk-care-card--${type}`, className)} {...rest}>
     <CareCardContext.Provider value={type}>{children}</CareCardContext.Provider>

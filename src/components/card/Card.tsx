@@ -1,20 +1,20 @@
-import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
+import React, { HTMLProps } from 'react';
 import CardContext from './CardContext';
 import CardContent from './components/CardContent';
 import CardDescription from './components/CardDescription';
-import CardImage from './components/CardImage';
-import CardLink from './components/CardLink';
-import CardHeading from './components/CardHeading';
 import CardGroup from './components/CardGroup';
 import CardGroupItem from './components/CardGroupItem';
+import CardHeading from './components/CardHeading';
+import CardImage from './components/CardImage';
+import CardLink from './components/CardLink';
 
 interface CardProps extends HTMLProps<HTMLDivElement> {
   clickable?: boolean;
   feature?: boolean;
 }
 
-interface ICard extends React.FC<CardProps> {
+type CardChildComponents = {
   Content: typeof CardContent;
   Description: typeof CardDescription;
   Image: typeof CardImage;
@@ -22,10 +22,14 @@ interface ICard extends React.FC<CardProps> {
   Heading: typeof CardHeading;
   Group: typeof CardGroup;
   GroupItem: typeof CardGroupItem;
-}
+};
 
-const Card: ICard = ({
-  className, clickable, children, feature, ...rest
+const Card: React.FC<CardProps> & CardChildComponents = ({
+  className,
+  clickable,
+  children,
+  feature,
+  ...rest
 }) => (
   <div
     className={classNames(

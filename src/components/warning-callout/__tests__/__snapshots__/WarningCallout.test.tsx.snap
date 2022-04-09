@@ -5,7 +5,7 @@ exports[`WarningCallout matches snapshot 1`] = `
   <div
     className="nhsuk-warning-callout"
   >
-    <WarningCalloutLabel
+    <WarningCallout.Label
       visuallyHiddenText="Important: "
     >
       <HeadingLevel
@@ -27,7 +27,7 @@ exports[`WarningCallout matches snapshot 1`] = `
           </span>
         </h3>
       </HeadingLevel>
-    </WarningCalloutLabel>
+    </WarningCallout.Label>
     <p>
       Stay away from school, nursery or work until all the spots have crusted over. This is usually 5 days after the spots first appeared.
     </p>

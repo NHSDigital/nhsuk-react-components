@@ -1,12 +1,10 @@
-import React, { HTMLProps, useContext } from 'react';
 import classNames from 'classnames';
-import { Container } from '../../layout';
+import React, { HTMLProps, useContext } from 'react';
 import { Close as CloseIcon } from '../../icons';
+import { Container } from '../../layout';
 import HeaderContext, { IHeaderContext } from '../HeaderContext';
 
-const Nav: React.FC<HTMLProps<HTMLDivElement>> = ({
-  className, children, open, ...rest
-}) => {
+const HeaderNav: React.FC<HTMLProps<HTMLDivElement>> = ({ className, children, open, ...rest }) => {
   const { menuOpen, toggleMenu } = useContext<IHeaderContext>(HeaderContext);
 
   return (
@@ -31,5 +29,6 @@ const Nav: React.FC<HTMLProps<HTMLDivElement>> = ({
     </nav>
   );
 };
+HeaderNav.displayName = 'Header.Nav';
 
-export default Nav;
+export default HeaderNav;

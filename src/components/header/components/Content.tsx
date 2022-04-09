@@ -1,8 +1,8 @@
-import React, { HTMLProps, useContext } from 'react';
 import classNames from 'classnames';
+import React, { HTMLProps, useContext } from 'react';
 import HeaderContext, { IHeaderContext } from '../HeaderContext';
 
-const Content: React.FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => {
+const HeaderContent: React.FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => {
   const { searchOpen } = useContext<IHeaderContext>(HeaderContext);
   return (
     <div
@@ -11,4 +11,6 @@ const Content: React.FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) =>
     />
   );
 };
-export default Content;
+HeaderContent.displayName = 'Header.Content';
+
+export default HeaderContent;

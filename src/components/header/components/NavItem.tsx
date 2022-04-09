@@ -1,13 +1,13 @@
-import React from 'react';
 import classNames from 'classnames';
-import { ChevronRight as ChevronRightIcon } from '../../icons';
+import React from 'react';
 import type { AsElementLink } from '../../../util/types/LinkTypes';
+import { ChevronRight as ChevronRightIcon } from '../../icons';
 
 export interface NavItemProps extends AsElementLink<HTMLAnchorElement> {
   mobileOnly?: boolean;
 }
 
-const NavItem: React.FC<NavItemProps> = ({
+const HeaderNavItem: React.FC<NavItemProps> = ({
   mobileOnly,
   className,
   children,
@@ -27,5 +27,6 @@ const NavItem: React.FC<NavItemProps> = ({
     </Component>
   </li>
 );
+HeaderNavItem.displayName = 'Header.NavItem';
 
-export default NavItem;
+export default HeaderNavItem;

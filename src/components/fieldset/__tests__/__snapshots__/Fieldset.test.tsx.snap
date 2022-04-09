@@ -9,19 +9,9 @@ exports[`Fieldset Fieldset.Legend matches snapshot: FieldsetLegend 1`] = `
 `;
 
 exports[`Fieldset matches snapshot: Fieldset 1`] = `
-<ContextProvider
-  value={
-    Object {
-      "isFieldset": true,
-      "passError": [Function],
-      "registerComponent": [Function],
-    }
-  }
+<fieldset
+  className="nhsuk-fieldset"
 >
-  <fieldset
-    className="nhsuk-fieldset"
-  >
-    Text
-  </fieldset>
-</ContextProvider>
+  Text
+</fieldset>
 `;

@@ -1,22 +1,21 @@
-import React, {
-  HTMLProps, useContext, ReactNode, useEffect, useState,
-} from 'react';
 import classNames from 'classnames';
-import { RadiosContext, IRadiosContext } from '../RadioContext';
-import Hint, { HintProps } from '../../hint/Hint';
-import Label, { LabelProps } from '../../label/Label';
+import React, { HTMLProps, ReactNode, useContext, useEffect, useMemo } from 'react';
+import LabelBlock from '../../../util/LabelBlock';
+import Hint from '../../hint/Hint';
+import Label from '../../label/Label';
+import { IRadiosContext, RadiosContext } from '../RadioContext';
 
 export interface RadioProps extends HTMLProps<HTMLInputElement> {
   hint?: string;
-  hintProps?: HintProps;
-  labelProps?: LabelProps;
+  hintProps?: React.ComponentProps<typeof Hint>;
+  labelProps?: React.ComponentProps<typeof Label>;
   conditional?: ReactNode;
   forceShowConditional?: boolean;
   conditionalWrapperProps?: HTMLProps<HTMLDivElement>;
   inputRef?: (inputRef: HTMLInputElement | null) => void;
 }
 
-const Radio: React.FC<RadioProps> = ({
+const RadiosRadio: React.FC<RadioProps> = ({
   className,
   children,
   id,
@@ -41,18 +40,22 @@ const Radio: React.FC<RadioProps> = ({
     leaseReference,
     unleaseReference,
   } = useContext<IRadiosContext>(RadiosContext);
-  const [radioReference] = useState<string>(leaseReference());
+
+  const radioReference = useMemo(leaseReference, []);
   const inputID = id || getRadioId(radioReference);
   const shouldShowConditional = selectedRadio === radioReference && checked !== false;
-
-  useEffect(() => () => unleaseReference(radioReference));
+  const isChecked = typeof checked === 'boolean' ? checked : selectedRadio === radioReference;
 
   useEffect(() => {
     if (defaultChecked) setSelected(radioReference);
+    return () => unleaseReference(radioReference);
   }, []);
 
   useEffect(() => {
     if (checked) setSelected(radioReference);
+    if (checked === false && selectedRadio === radioReference) {
+      setSelected(null);
+    }
   }, [checked]);
 
   useEffect(() => {
@@ -73,26 +76,18 @@ const Radio: React.FC<RadioProps> = ({
           name={name}
           aria-labelledby={children ? `${inputID}--label` : undefined}
           aria-describedby={hint ? `${inputID}--hint` : undefined}
-          checked={checked}
+          checked={isChecked}
           defaultChecked={defaultChecked}
           ref={inputRef}
           {...rest}
         />
-        {children ? (
-          <Label
-            className="nhsuk-radios__label"
-            id={`${inputID}--label`}
-            htmlFor={inputID}
-            {...labelProps}
-          >
-            {children}
-          </Label>
-        ) : null}
-        {hint ? (
-          <Hint className="nhsuk-radios__hint" id={`${inputID}--hint`} {...hintProps}>
-            {hint}
-          </Hint>
-        ) : null}
+        <LabelBlock
+          elementId={inputID}
+          label={children}
+          labelProps={{ ...labelProps, className: 'nhsuk-radios__label' }}
+          hint={hint}
+          hintProps={{ ...hintProps, className: 'nhsuk-radios__hint' }}
+        />
       </div>
       {conditional && (shouldShowConditional || forceShowConditional) ? (
         <div
@@ -107,8 +102,9 @@ const Radio: React.FC<RadioProps> = ({
   );
 };
 
-Radio.defaultProps = {
+RadiosRadio.displayName = 'Radios.Radio';
+RadiosRadio.defaultProps = {
   type: 'radio',
 };
 
-export default Radio;
+export default RadiosRadio;

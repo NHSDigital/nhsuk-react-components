@@ -1,5 +1,5 @@
-import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
+import React, { HTMLProps } from 'react';
 import { ArrowLeft, ArrowRight } from '../icons';
 
 interface PaginationLinkProps extends HTMLProps<HTMLAnchorElement> {
@@ -41,11 +41,15 @@ const PaginationLink: React.FC<PaginationLinkProps> = ({
   </li>
 );
 
-interface Pagination extends React.FC<HTMLProps<HTMLDivElement>> {
+type PaginationChildComponents = {
   Link: React.FC<PaginationLinkProps>;
-}
+};
 
-const Pagination: Pagination = ({ className, children, ...rest }) => (
+const Pagination: React.FC<HTMLProps<HTMLDivElement>> & PaginationChildComponents = ({
+  className,
+  children,
+  ...rest
+}) => (
   <nav className={classNames('nhsuk-pagination', className)} {...rest}>
     <ul className="nhsuk-list nhsuk-pagination__list">{children}</ul>
   </nav>

@@ -1,36 +1,28 @@
-import React, { HTMLProps, MutableRefObject } from 'react';
-
 import classNames from 'classnames';
-import { FormElementProps } from '../../util/types/FormTypes';
-import FormGroup from '../../util/FormGroup';
+import React from 'react';
+import useFormGroup from '../../util/hooks/UseFormGroup';
+import LabelBlock from '../../util/LabelBlock';
+import { FormElementProps, InputType } from '../../util/types/FormTypes';
 
-//  SelectProps = HTMLProps<HTMLSelectElement> & FormElementProps;
-interface ISelectProps extends HTMLProps<HTMLSelectElement>, FormElementProps {
-  selectRef?: MutableRefObject<HTMLSelectElement | null>;
-}
+const Select = React.forwardRef<HTMLSelectElement, FormElementProps<HTMLSelectElement>>(
+  (props, ref) => {
+    const { FormGroup, renderProps } = useFormGroup(InputType.SELECT, props);
 
-interface ISelect extends React.FC<ISelectProps> {
-  Option: React.FC<HTMLProps<HTMLOptionElement>>;
-}
+    const { id, className, error, ...rest } = renderProps;
 
-const Select: ISelect = ({ children, ...rest }) => (
-  <FormGroup<ISelectProps> inputType="select" {...rest}>
-    {({
-      className, error, selectRef, ...restRenderProps
-    }) => (
-      <select
-        className={classNames('nhsuk-select', { 'nhsuk-select--error': error }, className)}
-        ref={selectRef}
-        {...restRenderProps}
-      >
-        {children}
-      </select>
-    )}
-  </FormGroup>
+    return (
+      <FormGroup error={Boolean(error)}>
+        <LabelBlock elementId={id} error={error} {...rest} />
+        <select
+          {...rest}
+          id={id}
+          className={classNames('nhsuk-select', { 'nhsuk-select--error': error }, className)}
+          ref={ref}
+        />
+      </FormGroup>
+    );
+  },
 );
-
-const Option: React.FC<HTMLProps<HTMLOptionElement>> = (props) => <option {...props} />;
-
-Select.Option = Option;
+Select.displayName = 'Select';
 
 export default Select;

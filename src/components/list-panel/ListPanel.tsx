@@ -1,5 +1,5 @@
-import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
+import React, { HTMLProps } from 'react';
 import type { AsElementLink } from '../../util/types/LinkTypes';
 
 interface PanelProps extends HTMLProps<HTMLDivElement> {
@@ -68,7 +68,11 @@ const PanelItem: React.FC<HTMLProps<HTMLLIElement>> = ({ className, ...rest }) =
   <li className={classNames('nhsuk-list-panel__item', className)} {...rest} />
 );
 
-const PanelLinkItem: React.FC<AsElementLink<HTMLAnchorElement>> = ({ className, asElement: Component = 'a', ...rest }) => (
+const PanelLinkItem: React.FC<AsElementLink<HTMLAnchorElement>> = ({
+  className,
+  asElement: Component = 'a',
+  ...rest
+}) => (
   <PanelItem>
     <Component className={classNames('nhsuk-list-panel__link', className)} {...rest} />
   </PanelItem>
@@ -78,13 +82,17 @@ interface ListPanelProps extends HTMLProps<HTMLOListElement> {
   type?: 'a' | 'i' | '1' | 'A' | 'I' | undefined;
 }
 
-interface ListPanel extends React.FC<ListPanelProps> {
-  LinkItem: React.FC<HTMLProps<HTMLAnchorElement>>;
-  Item: React.FC<HTMLProps<HTMLLIElement>>;
-  Panel: React.FC<PanelProps>;
-}
+type ListPanelChildComponents = {
+  LinkItem: typeof PanelLinkItem;
+  Item: typeof PanelItem;
+  Panel: typeof Panel;
+};
 
-const ListPanel: ListPanel = ({ className, children, ...rest }) => (
+const ListPanel: React.FC<ListPanelProps> & ListPanelChildComponents = ({
+  className,
+  children,
+  ...rest
+}) => (
   <ol className={classNames('nhsuk-list', className)} {...rest}>
     {children}
   </ol>
