@@ -1,7 +1,5 @@
 import React, { MouseEvent } from 'react';
-import {
-  Radios, Fieldset, Button, Input, Checkboxes,
-} from '../src';
+import { Button, Checkboxes, Fieldset, Input, Radios } from '../src';
 
 export const StandardRadios = (): JSX.Element => (
   <Fieldset>
@@ -137,10 +135,8 @@ export const RadiosWithErrorBoolean = (): JSX.Element => {
           error={error}
           hint="This includes changing your last name or spelling your name differently."
         >
-          <Radios.Radio id="example-1" value="yes">
-            Yes
-          </Radios.Radio>
-          <Radios.Radio id="example-2" value="no" checked>
+          <Radios.Radio value="yes">Yes</Radios.Radio>
+          <Radios.Radio value="no" checked>
             No
           </Radios.Radio>
         </Radios>
@@ -165,14 +161,13 @@ export const RadiosWithErrorString = (): JSX.Element => {
       <Fieldset>
         <Fieldset.Legend>Have you changed your name?</Fieldset.Legend>
         <Radios
+          id="example-error-string"
           name="example"
           error={error}
           hint="This includes changing your last name or spelling your name differently."
         >
-          <Radios.Radio id="example-1" value="yes">
-            Yes
-          </Radios.Radio>
-          <Radios.Radio id="example-2" value="no" checked>
+          <Radios.Radio value="yes">Yes</Radios.Radio>
+          <Radios.Radio value="no" checked>
             No
           </Radios.Radio>
         </Radios>

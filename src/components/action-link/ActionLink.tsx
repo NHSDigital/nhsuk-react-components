@@ -1,11 +1,11 @@
-import React from 'react';
 import classNames from 'classnames';
-import { ArrowRightCircle } from '../icons';
+import React from 'react';
 import type { AsElementLink } from '../../util/types/LinkTypes';
+import { ArrowRightCircle } from '../icons';
 
 const ActionLink: React.FC<AsElementLink<HTMLAnchorElement>> = ({
   children,
-  asElement: Component = 'a',
+  asElement: Component,
   className,
   ...rest
 }) => (
@@ -16,5 +16,9 @@ const ActionLink: React.FC<AsElementLink<HTMLAnchorElement>> = ({
     </Component>
   </div>
 );
+
+ActionLink.defaultProps = {
+  asElement: 'a',
+};
 
 export default ActionLink;

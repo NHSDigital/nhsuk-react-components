@@ -1,114 +1,43 @@
-import React, {
-  HTMLProps, useContext, ReactNode, useEffect, useState,
-} from 'react';
 import classNames from 'classnames';
-import { RadiosContext, IRadiosContext } from '../RadioContext';
-import Hint, { HintProps } from '../../hint/Hint';
-import Label, { LabelProps } from '../../label/Label';
+import React, { HTMLProps, ReactNode, useMemo } from 'react';
+import { useFormChild } from '../../../util/hooks/UseFormChildren';
+import Hint from '../../hint';
+import Label from '../../label';
 
-export interface RadioProps extends HTMLProps<HTMLInputElement> {
-  hint?: string;
-  hintProps?: HintProps;
-  labelProps?: LabelProps;
-  conditional?: ReactNode;
-  forceShowConditional?: boolean;
-  conditionalWrapperProps?: HTMLProps<HTMLDivElement>;
-  inputRef?: (inputRef: HTMLInputElement | null) => void;
+interface IRadioProps extends HTMLProps<HTMLInputElement> {
+  hint?: ReactNode;
 }
 
-const Radio: React.FC<RadioProps> = ({
-  className,
-  children,
-  id,
-  hint,
-  hintProps,
-  labelProps,
-  conditional,
-  forceShowConditional,
-  conditionalWrapperProps,
-  checked,
-  defaultChecked,
-  onChange,
-  inputRef,
-  ...rest
-}) => {
-  const {
-    name,
-    getRadioId,
-    setConditional,
-    setSelected,
-    selectedRadio,
-    leaseReference,
-    unleaseReference,
-  } = useContext<IRadiosContext>(RadiosContext);
-  const [radioReference] = useState<string>(leaseReference());
-  const inputID = id || getRadioId(radioReference);
-  const shouldShowConditional = selectedRadio === radioReference && checked !== false;
+const RadioItem = React.forwardRef<HTMLInputElement, IRadioProps>((props, ref) => {
+  const { register, getData } = useFormChild();
 
-  useEffect(() => () => unleaseReference(radioReference));
+  const reference = useMemo(() => register(props), [props]);
+  const data = getData(reference);
 
-  useEffect(() => {
-    if (defaultChecked) setSelected(radioReference);
-  }, []);
-
-  useEffect(() => {
-    if (checked) setSelected(radioReference);
-  }, [checked]);
-
-  useEffect(() => {
-    setConditional(radioReference, Boolean(conditional));
-    return () => setConditional(radioReference, false);
-  }, [conditional]);
+  const { className, hint, children, ...rest } = props;
 
   return (
-    <>
-      <div className="nhsuk-radios__item">
-        <input
-          onChange={(e) => {
-            setSelected(radioReference);
-            if (onChange) onChange(e);
-          }}
-          className={classNames('nhsuk-radios__input', className)}
-          id={inputID}
-          name={name}
-          aria-labelledby={children ? `${inputID}--label` : undefined}
-          aria-describedby={hint ? `${inputID}--hint` : undefined}
-          checked={checked}
-          defaultChecked={defaultChecked}
-          ref={inputRef}
-          {...rest}
-        />
-        {children ? (
-          <Label
-            className="nhsuk-radios__label"
-            id={`${inputID}--label`}
-            htmlFor={inputID}
-            {...labelProps}
-          >
-            {children}
-          </Label>
-        ) : null}
-        {hint ? (
-          <Hint className="nhsuk-radios__hint" id={`${inputID}--hint`} {...hintProps}>
-            {hint}
-          </Hint>
-        ) : null}
-      </div>
-      {conditional && (shouldShowConditional || forceShowConditional) ? (
-        <div
-          className="nhsuk-radios__conditional"
-          id={`${inputID}--conditional`}
-          {...conditionalWrapperProps}
-        >
-          {conditional}
-        </div>
-      ) : null}
-    </>
+    <div className="nhsuk-radios__item">
+      <input
+        className={classNames('nhsuk-radios__input', className)}
+        type="radio"
+        id={data.id}
+        name={data.name}
+        aria-describedby={hint !== undefined ? `${data.id}--hint` : undefined}
+        {...rest}
+        ref={ref}
+      />
+      <Label className="nhsuk-radios__label" htmlFor={data.id}>
+        {children}
+      </Label>
+      {hint !== undefined && (
+        <Hint className="nhsuk-radios__hint" id={`${data.id}--hint`}>
+          {hint}
+        </Hint>
+      )}
+    </div>
   );
-};
+});
+RadioItem.displayName = 'Radios.Radio';
 
-Radio.defaultProps = {
-  type: 'radio',
-};
-
-export default Radio;
+export default RadioItem;

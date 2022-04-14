@@ -1,12 +1,11 @@
-import React, { HTMLProps, useContext } from 'react';
 import classNames from 'classnames';
-import { Container } from '../../layout';
+import React, { HTMLProps, useContext } from 'react';
 import { Close as CloseIcon } from '../../icons';
+import { Container } from '../../layout';
+import VisuallyHidden from '../../visually-hidden';
 import HeaderContext, { IHeaderContext } from '../HeaderContext';
 
-const Nav: React.FC<HTMLProps<HTMLDivElement>> = ({
-  className, children, open, ...rest
-}) => {
+const Nav: React.FC<HTMLProps<HTMLDivElement>> = ({ className, children, open, ...rest }) => {
   const { menuOpen, toggleMenu } = useContext<IHeaderContext>(HeaderContext);
 
   return (
@@ -23,7 +22,7 @@ const Nav: React.FC<HTMLProps<HTMLDivElement>> = ({
           <span>Menu</span>
           <button className="nhsuk-header__navigation-close" type="button" onClick={toggleMenu}>
             <CloseIcon />
-            <span className="nhsuk-u-visually-hidden">Close menu</span>
+            <VisuallyHidden>Close menu</VisuallyHidden>
           </button>
         </p>
         <ul className="nhsuk-header__navigation-list">{children}</ul>

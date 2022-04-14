@@ -1,6 +1,7 @@
-import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
+import React, { HTMLProps } from 'react';
 import HeadingLevel, { HeadingLevelType } from '../../util/HeadingLevel';
+import VisuallyHidden from '../visually-hidden';
 
 interface WarningCalloutLabelProps extends HTMLProps<HTMLHeadingElement> {
   headingLevel?: HeadingLevelType;
@@ -16,7 +17,7 @@ const WarningCalloutLabel: React.FC<WarningCalloutLabelProps> = ({
   <HeadingLevel className={classNames('nhsuk-warning-callout__label', className)} {...rest}>
     {/* eslint-disable-next-line jsx-a11y/aria-role */}
     <span role="text">
-      {visuallyHiddenText && <span className="nhsuk-u-visually-hidden">{visuallyHiddenText}</span>}
+      {visuallyHiddenText && <VisuallyHidden>{visuallyHiddenText}</VisuallyHidden>}
       {children}
     </span>
   </HeadingLevel>

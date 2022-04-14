@@ -1,19 +1,30 @@
-import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
-import { FormElementProps } from '../../util/types/FormTypes';
-import FormGroup from '../../util/FormGroup';
+import React from 'react';
+import ConditionalFormGroup from '../../util/ConditionalFormGroup';
+import useFormComponent, { FormElementProps, InputType } from '../../util/hooks/UseFormComponent';
+import LabelBlock from '../../util/LabelBlock';
 
-type TextareaProps = HTMLProps<HTMLTextAreaElement> & FormElementProps;
+const Textarea = React.forwardRef<HTMLTextAreaElement, FormElementProps<HTMLTextAreaElement>>(
+  (props, ref) => {
+    const { renderProps, labelBlockProps } = useFormComponent(InputType.TEXTAREA, props);
+    const { className, ...rest } = renderProps;
 
-const Textarea: React.FC<TextareaProps> = (props) => (
-  <FormGroup<TextareaProps> inputType="textarea" {...props}>
-    {({ className, error, ...rest }) => (
-      <textarea
-        className={classNames('nhsuk-textarea', { 'nhsuk-textarea--error': error }, className)}
-        {...rest}
-      />
-    )}
-  </FormGroup>
+    return (
+      <ConditionalFormGroup>
+        <LabelBlock {...labelBlockProps} />
+        <textarea
+          className={classNames(
+            'nhsuk-textarea',
+            { 'nhsuk-textarea--error': props.error },
+            className,
+          )}
+          {...rest}
+          ref={ref}
+        />
+      </ConditionalFormGroup>
+    );
+  },
 );
+Textarea.displayName = 'Textarea';
 
 export default Textarea;
