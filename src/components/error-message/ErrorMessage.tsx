@@ -1,5 +1,6 @@
-import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
+import React, { HTMLProps } from 'react';
+import VisuallyHidden from '../visually-hidden';
 
 export interface ErrorMessageProps extends HTMLProps<HTMLSpanElement> {
   visuallyHiddenText?: false | string;
@@ -12,9 +13,7 @@ const ErrorMessage: React.FC<ErrorMessageProps> = ({
   ...rest
 }) => (
   <span className={classNames('nhsuk-error-message', className)} {...rest}>
-    {visuallyHiddenText !== false ? (
-      <span className="nhsuk-u-visually-hidden">{visuallyHiddenText}</span>
-    ) : null}
+    {visuallyHiddenText !== false ? <VisuallyHidden>{visuallyHiddenText}</VisuallyHidden> : null}
     {children}
   </span>
 );

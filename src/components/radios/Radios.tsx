@@ -1,133 +1,38 @@
-import React, { HTMLProps, PureComponent } from 'react';
 import classNames from 'classnames';
-import { FormElementProps } from '../../util/types/FormTypes';
-import { RadiosContext, IRadiosContext } from './RadioContext';
-import FormGroup from '../../util/FormGroup';
+import React, { HTMLProps } from 'react';
+import { useFormChildren } from '../../util/hooks/UseFormChildren';
+import useFormComponent, { InputType } from '../../util/hooks/UseFormComponent';
+import LabelBlock from '../../util/LabelBlock';
 import Divider from './components/Divider';
 import Radio from './components/Radio';
-import { generateRandomName } from '../../util/RandomID';
 
-interface RadiosProps extends HTMLProps<HTMLDivElement>, FormElementProps {
+interface IRadiosProps extends HTMLProps<HTMLDivElement> {
   inline?: boolean;
-  idPrefix?: string;
 }
 
-type RadiosState = {
-  conditionalRadios: Array<string>;
-  selectedRadio: string;
+interface IRadios extends React.FC<IRadiosProps> {
+  Radio: typeof Radio;
+  Divider: typeof Divider;
+}
+
+const Radios: IRadios = (props) => {
+  const { renderProps, labelBlockProps } = useFormComponent(InputType.RADIOS, props);
+  const { Provider } = useFormChildren(renderProps.id, renderProps.name);
+
+  const { className, children, inline, ...rest } = renderProps;
+
+  return (
+    <div
+      className={classNames('nhsuk-radios', { 'nhsuk-radios--inline': inline }, className)}
+      {...rest}
+    >
+      <LabelBlock {...labelBlockProps} />
+      <Provider>{children}</Provider>
+    </div>
+  );
 };
 
-class Radios extends PureComponent<RadiosProps, RadiosState> {
-  private radioCount = 0;
-
-  private radioReferences: Array<string> = [];
-
-  private radioIds: Record<string, string> = {};
-
-  static Divider = Divider;
-
-  static Radio = Radio;
-
-  static defaultProps = {
-    role: 'radiogroup',
-  };
-
-  constructor(props: RadiosProps) {
-    super(props);
-    this.state = {
-      conditionalRadios: [],
-      selectedRadio: '',
-    };
-  }
-
-  getRadioId = (id: string, reference: string): string => {
-    const { idPrefix } = this.props;
-    if (reference in this.radioIds) {
-      return this.radioIds[reference];
-    }
-    this.radioCount += 1;
-    this.radioIds[reference] = `${idPrefix || id}-${this.radioCount}`;
-    return this.radioIds[reference];
-  };
-
-  leaseReference = (): string => {
-    const reference = generateRandomName();
-    if (this.radioReferences.includes(reference)) {
-      return this.leaseReference();
-    }
-    this.radioReferences.push(reference);
-    return reference;
-  };
-
-  unleaseReference = (reference: string): void => {
-    this.radioReferences = this.radioReferences.filter((ref) => ref !== reference);
-  };
-
-  setConditional = (radioReference: string, hasConditional: boolean): void => {
-    this.setState((state) => {
-      const currentHasConditional = state.conditionalRadios.includes(radioReference);
-      if (currentHasConditional && hasConditional === false) {
-        return {
-          ...state,
-          conditionalRadios: state.conditionalRadios.filter((ref) => ref !== radioReference),
-        };
-      }
-      if (!currentHasConditional && hasConditional === true) {
-        return {
-          ...state,
-          conditionalRadios: [...state.conditionalRadios, radioReference],
-        };
-      }
-      return state;
-    });
-  };
-
-  setSelected = (radioReference: string): void => {
-    this.setState({
-      selectedRadio: radioReference,
-    });
-  };
-
-  resetRadioIds = (): void => {
-    this.radioCount = 0;
-    this.radioIds = {};
-  };
-
-  render(): JSX.Element {
-    const { children, ...rest } = this.props;
-    return (
-      <FormGroup<RadiosProps> inputType="radios" {...rest}>
-        {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
-        {({ className, inline, name, id, error, ...restRenderProps }) => {
-          this.resetRadioIds();
-          const contextValue: IRadiosContext = {
-            getRadioId: (reference) => this.getRadioId(id, reference),
-            selectedRadio: this.state.selectedRadio,
-            setConditional: this.setConditional,
-            setSelected: this.setSelected,
-            leaseReference: this.leaseReference,
-            unleaseReference: this.unleaseReference,
-            name,
-          };
-          const containsConditional = this.state.conditionalRadios.length > 0;
-          return (
-            <div
-              className={classNames(
-                'nhsuk-radios',
-                { 'nhsuk-radios--inline': inline },
-                { 'nhsuk-radios--conditional': containsConditional },
-                className,
-              )}
-              id={id}
-              {...restRenderProps}
-            >
-              <RadiosContext.Provider value={contextValue}>{children}</RadiosContext.Provider>
-            </div>
-          );
-        }}
-      </FormGroup>
-    );
-  }
-}
+Radios.Radio = Radio;
+Radios.Divider = Divider;
 
 export default Radios;

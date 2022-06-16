@@ -1,20 +1,20 @@
-import React from 'react';
-import Hint, { HintProps } from '../components/hint/Hint';
-import Label, { LabelProps } from '../components/label/Label';
-import ErrorMessage, { ErrorMessageProps } from '../components/error-message/ErrorMessage';
+import React, { ComponentProps, ReactNode } from 'react';
+import ErrorMessage from '../components/error-message/ErrorMessage';
+import Hint from '../components/hint/Hint';
+import Label from '../components/label/Label';
 
-interface LabelBlockProps {
-  elementId?: string;
-  label?: string;
-  labelProps?: LabelProps;
-  hint?: string;
-  hintProps?: HintProps;
-  error?: string | boolean;
-  errorProps?: ErrorMessageProps;
+export interface LabelBlockProps {
+  elementID: string;
+  label?: ReactNode;
+  labelProps?: ComponentProps<typeof Label>;
+  hint?: ReactNode;
+  hintProps?: ComponentProps<typeof Hint>;
+  error?: ReactNode;
+  errorProps?: ComponentProps<typeof ErrorMessage>;
 }
 
 const LabelBlock: React.FC<LabelBlockProps> = ({
-  elementId,
+  elementID,
   label,
   labelProps,
   hint,
@@ -24,17 +24,17 @@ const LabelBlock: React.FC<LabelBlockProps> = ({
 }) => (
   <>
     {label ? (
-      <Label id={elementId ? `${elementId}--label` : undefined} htmlFor={elementId} {...labelProps}>
+      <Label id={elementID ? `${elementID}--label` : undefined} htmlFor={elementID} {...labelProps}>
         {label}
       </Label>
     ) : null}
     {hint ? (
-      <Hint id={elementId ? `${elementId}--hint` : undefined} {...hintProps}>
+      <Hint id={elementID ? `${elementID}--hint` : undefined} {...hintProps}>
         {hint}
       </Hint>
     ) : null}
     {error && typeof error === 'string' ? (
-      <ErrorMessage id={elementId ? `${elementId}--error-message` : undefined} {...errorProps}>
+      <ErrorMessage id={elementID ? `${elementID}--error-message` : undefined} {...errorProps}>
         {error}
       </ErrorMessage>
     ) : null}

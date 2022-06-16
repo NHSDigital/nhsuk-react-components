@@ -1,8 +1,9 @@
-import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
+import React, { HTMLProps } from 'react';
 
-const Divider: React.FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => (
+const RadiosDivider: React.FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => (
   <div className={classNames('nhsuk-radios__divider', className)} {...rest} />
 );
+RadiosDivider.displayName = 'Radios.Divider';
 
-export default Divider;
+export default RadiosDivider;

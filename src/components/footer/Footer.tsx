@@ -1,6 +1,7 @@
-import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
+import React, { HTMLProps } from 'react';
 import { Container } from '../layout';
+import VisuallyHidden from '../visually-hidden';
 
 interface FooterListProps extends HTMLProps<HTMLOListElement> {
   columns?: boolean;
@@ -37,14 +38,12 @@ interface Footer extends React.FC<FooterProps> {
   Copyright: React.FC<HTMLProps<HTMLParagraphElement>>;
 }
 
-const Footer: Footer = ({
-  className, children, visuallyHiddenText, ...rest
-}) => (
+const Footer: Footer = ({ className, children, visuallyHiddenText, ...rest }) => (
   <footer {...rest}>
     <div className={classNames('nhsuk-footer', className)}>
       <Container>
         {visuallyHiddenText ? (
-          <h2 className="nhsuk-u-visually-hidden">{visuallyHiddenText}</h2>
+          <VisuallyHidden asElement="h2">{visuallyHiddenText}</VisuallyHidden>
         ) : null}
         {children}
       </Container>

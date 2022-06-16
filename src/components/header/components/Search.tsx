@@ -1,15 +1,14 @@
-import React, { HTMLProps, useContext, useEffect } from 'react';
 import classNames from 'classnames';
-import { Search as SearchIcon, Close as CloseIcon } from '../../icons';
+import React, { HTMLProps, useContext, useEffect } from 'react';
+import { Close as CloseIcon, Search as SearchIcon } from '../../icons';
+import VisuallyHidden from '../../visually-hidden';
 import HeaderContext, { IHeaderContext } from '../HeaderContext';
 
 export interface SearchProps extends HTMLProps<HTMLInputElement> {
   visuallyHiddenText?: string;
 }
 
-const Search: React.FC<SearchProps> = ({
-  action, method, id, visuallyHiddenText, ...rest
-}) => {
+const Search: React.FC<SearchProps> = ({ action, method, id, visuallyHiddenText, ...rest }) => {
   const { setSearch, toggleSearch, searchOpen } = useContext<IHeaderContext>(HeaderContext);
   useEffect(() => {
     setSearch(true);
@@ -24,21 +23,21 @@ const Search: React.FC<SearchProps> = ({
         onClick={toggleSearch}
       >
         <SearchIcon />
-        <span className="nhsuk-u-visually-hidden">Search</span>
+        <VisuallyHidden>Search</VisuallyHidden>
       </button>
       <div className={classNames('nhsuk-header__search-wrap', { 'js-show': searchOpen })}>
         <form className="nhsuk-header__search-form" action={action} method={method} role="search">
-          <label className="nhsuk-u-visually-hidden" htmlFor={id}>
+          <VisuallyHidden asElement="label" htmlFor={id}>
             {visuallyHiddenText}
-          </label>
+          </VisuallyHidden>
           <input className="nhsuk-search__input" id={id} {...rest} />
           <button className="nhsuk-search__submit" type="submit">
             <SearchIcon />
-            <span className="nhsuk-u-visually-hidden">Search</span>
+            <VisuallyHidden>Search</VisuallyHidden>
           </button>
           <button className="nhsuk-search__close">
             <CloseIcon />
-            <span className="nhsuk-u-visually-hidden">Close search</span>
+            <VisuallyHidden>Close search</VisuallyHidden>
           </button>
         </form>
       </div>

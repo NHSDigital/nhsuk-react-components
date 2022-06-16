@@ -1,7 +1,8 @@
-import React, { HTMLProps, createContext, useContext } from 'react';
 import classNames from 'classnames';
-import { CareCardType } from '../../util/types/NHSUKTypes';
+import React, { createContext, HTMLProps, useContext } from 'react';
 import HeadingLevel, { HeadingLevelType } from '../../util/HeadingLevel';
+import { CareCardType } from '../../util/types/NHSUKTypes';
+import VisuallyHidden from '../visually-hidden';
 
 interface CareCardProps extends HTMLProps<HTMLDivElement> {
   type: CareCardType;
@@ -49,9 +50,7 @@ const CareCardHeading: React.FC<CareCardHeadingProps> = ({
       >
         <span role={role}>
           {visuallyHiddenText !== false ? (
-            <span className="nhsuk-u-visually-hidden">
-              {visuallyHiddenText || genHiddenText(cardType)}
-            </span>
+            <VisuallyHidden>{visuallyHiddenText || genHiddenText(cardType)}</VisuallyHidden>
           ) : null}
           {children}
         </span>
@@ -70,9 +69,7 @@ interface CareCard extends React.FC<CareCardProps> {
   Heading: React.FC<CareCardHeadingProps>;
 }
 
-const CareCard: CareCard = ({
-  className, type, children, ...rest
-}) => (
+const CareCard: CareCard = ({ className, type, children, ...rest }) => (
   <div className={classNames('nhsuk-care-card', `nhsuk-care-card--${type}`, className)} {...rest}>
     <CareCardContext.Provider value={type}>{children}</CareCardContext.Provider>
   </div>

@@ -1,6 +1,7 @@
-import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
+import React, { HTMLProps } from 'react';
 import { ArrowLeft, ArrowRight } from '../icons';
+import VisuallyHidden from '../visually-hidden';
 
 interface PaginationLinkProps extends HTMLProps<HTMLAnchorElement> {
   previous?: boolean;
@@ -33,7 +34,7 @@ const PaginationLink: React.FC<PaginationLinkProps> = ({
         {previous ? 'Previous' : null}
         {next ? 'Next' : null}
       </span>
-      <span className="nhsuk-u-visually-hidden">:</span>
+      <VisuallyHidden>:</VisuallyHidden>
       <span className="nhsuk-pagination__page">{children}</span>
       {previous ? <ArrowLeft /> : null}
       {next ? <ArrowRight /> : null}

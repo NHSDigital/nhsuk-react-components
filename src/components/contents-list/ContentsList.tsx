@@ -1,5 +1,6 @@
-import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
+import React, { HTMLProps } from 'react';
+import VisuallyHidden from '../visually-hidden';
 
 interface ContentsListItemProps extends HTMLProps<HTMLAnchorElement> {
   current?: boolean;
@@ -23,12 +24,10 @@ interface ContentsList extends React.FC<ContentsListProps> {
   Item: React.FC<ContentsListItemProps>;
 }
 
-const ContentsList: ContentsList = ({
-  className, children, visuallyHiddenText, ...rest
-}) => (
+const ContentsList: ContentsList = ({ className, children, visuallyHiddenText, ...rest }) => (
   <nav className={classNames('nhsuk-contents-list', className)} {...rest}>
     {visuallyHiddenText !== false ? (
-      <h2 className="nhsuk-u-visually-hidden">{visuallyHiddenText}</h2>
+      <VisuallyHidden asElement="h2">{visuallyHiddenText}</VisuallyHidden>
     ) : null}
     <ol className="nhsuk-contents-list__list">{children}</ol>
   </nav>
