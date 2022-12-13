@@ -28,9 +28,6 @@ class Radios extends PureComponent<RadiosProps, RadiosState> {
 
   static Radio = Radio;
 
-  static defaultProps = {
-    role: 'radiogroup',
-  };
 
   constructor(props: RadiosProps) {
     super(props);
