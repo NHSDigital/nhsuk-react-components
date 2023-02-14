@@ -12,7 +12,8 @@
         "types": ["react", "jest", "node"],
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
-        "skipLibCheck": true
+        "skipLibCheck": true,
+        "strictNullChecks": true
     },
     "include": ["src/**/*"],
     "exclude": [
