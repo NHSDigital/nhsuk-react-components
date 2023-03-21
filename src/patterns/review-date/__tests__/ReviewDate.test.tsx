@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import ReviewDate from '../index';
+import ReviewDate from '..';
 
 describe('ReviewDate', () => {
   it('matches snapshot', () => {
