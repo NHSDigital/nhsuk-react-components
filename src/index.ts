@@ -42,7 +42,6 @@ export { default as ListPanel } from './components/list-panel';
 export { default as NavAZ } from './components/nav-a-z';
 export { default as Pagination } from './components/pagination';
 export { default as Radios } from './components/radios';
-export { default as ReviewDate } from './patterns/review-date';
 export { default as Select } from './components/select';
 export { default as SkipLink } from './components/skip-link';
 export { default as SummaryList } from './components/summary-list';
@@ -53,3 +52,5 @@ export { LedeText, BodyText } from './components/typography';
 export { default as WarningCallout } from './components/warning-callout';
 export { default as Clearfix } from './components/utils/Clearfix';
 export { default as ReadingWidth } from './components/utils/ReadingWidth';
+
+export { default as ReviewDate } from './patterns/review-date';
