@@ -1,21 +1,16 @@
-import React from 'react';
 import { ErrorMessage } from '../src';
+import { Meta, StoryObj } from '@storybook/react';
 
-export const Standard = (): JSX.Element => (
-  <ErrorMessage>Error message about full name goes here</ErrorMessage>
-);
-
-export const NoVisuallyHiddenText = (): JSX.Element => (
-  <ErrorMessage visuallyHiddenText={false}>Error message about full name goes here</ErrorMessage>
-);
-
-export const CustomVisuallyHiddenText = (): JSX.Element => (
-  <ErrorMessage visuallyHiddenText="Custom Text">
-    Error message about full name goes here
-  </ErrorMessage>
-);
-
-export default {
+const meta: Meta<typeof ErrorMessage> = {
   title: 'Components/ErrorMessage',
   component: ErrorMessage,
+  args: {
+    children: 'Error message about full name goes here',
+  },
 };
+export default meta;
+type Story = StoryObj<typeof ErrorMessage>;
+
+export const Standard: Story = {};
+export const NoVisuallyHiddenText: Story = { args: { visuallyHiddenText: false } };
+export const CustomVisuallyHiddenText: Story = { args: { visuallyHiddenText: 'Custom Text' } };

@@ -1,15 +1,18 @@
-import React from 'react';
 import { BackLink } from '../src';
+import { Meta, StoryObj } from '@storybook/react';
 
-export const StandardLink = (): JSX.Element => <BackLink href="/">Link</BackLink>;
-
-export const OpenInNewTabLink = (): JSX.Element => (
-  <BackLink target="_blank" rel="noopener noreferrer" href="/">
-    Link
-  </BackLink>
-);
-
-export default {
+const meta: Meta<typeof BackLink> = {
   title: 'Components/BackLink',
   component: BackLink,
+  args: { children: 'Link', href: '/', asElement: 'a' },
+};
+export default meta;
+type Story = StoryObj<typeof BackLink>;
+
+export const StandardLink: Story = {};
+export const OpenInNewTabLink: Story = {
+  args: {
+    target: '_blank',
+    rel: 'noopener noreferrer',
+  },
 };

@@ -1,15 +1,19 @@
-import React from 'react';
 import { ActionLink } from '../src';
+import { Meta, StoryObj } from '@storybook/react';
 
-export const StandardLink = (): JSX.Element => <ActionLink href="/">Link</ActionLink>;
-
-export const OpenInNewTabLink = (): JSX.Element => (
-  <ActionLink target="_blank" rel="noopener noreferrer" href="/">
-    Link
-  </ActionLink>
-);
-
-export default {
+const meta: Meta<typeof ActionLink> = {
   title: 'Components/ActionLink',
   component: ActionLink,
+  args: { children: 'Link', asElement: 'a', href: '/' },
+};
+export default meta;
+type Story = StoryObj<typeof ActionLink>;
+
+export const StandardLink: Story = {};
+
+export const OpenLinkInNewTab: Story = {
+  args: {
+    target: '_blank',
+    rel: 'noopener noreferrer',
+  },
 };

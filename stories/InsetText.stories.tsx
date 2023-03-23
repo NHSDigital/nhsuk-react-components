@@ -1,46 +1,33 @@
 import React from 'react';
 import { InsetText } from '../src';
+import { Meta, StoryObj } from '@storybook/react';
 
-export const Standard = (): JSX.Element => (
-  <InsetText>
-    <p>
-      You can report any suspected side effect to the
-      {' '}
-      <a href="https://yellowcard.mhra.gov.uk/" title="External website">
-        UK safety scheme
-      </a>
-      .
-    </p>
-  </InsetText>
-);
-
-export const WithCustomHiddenText = (): JSX.Element => (
-  <InsetText visuallyHiddenText="Hidden Text: ">
-    <p>
-      You can report any suspected side effect to the
-      {' '}
-      <a href="https://yellowcard.mhra.gov.uk/" title="External website">
-        UK safety scheme
-      </a>
-      .
-    </p>
-  </InsetText>
-);
-
-export const WithDisabledHiddenText = (): JSX.Element => (
-  <InsetText visuallyHiddenText={false}>
-    <p>
-      You can report any suspected side effect to the
-      {' '}
-      <a href="https://yellowcard.mhra.gov.uk/" title="External website">
-        UK safety scheme
-      </a>
-      .
-    </p>
-  </InsetText>
-);
-
-export default {
+const meta: Meta<typeof InsetText> = {
   title: 'Components/InsetText',
   component: InsetText,
+  render: (args) => (
+    <InsetText {...args}>
+      <p>
+        You can report any suspected side effect to the{' '}
+        <a href="https://yellowcard.mhra.gov.uk/" title="External website">
+          UK safety scheme
+        </a>
+        .
+      </p>
+    </InsetText>
+  ),
+};
+export default meta;
+type Story = StoryObj<typeof InsetText>;
+
+export const Standard: Story = {};
+export const WithCustomHiddenText: Story = {
+  args: {
+    visuallyHiddenText: 'Hidden Text: ',
+  },
+};
+export const WithDisabledHiddenText: Story = {
+  args: {
+    visuallyHiddenText: false,
+  },
 };

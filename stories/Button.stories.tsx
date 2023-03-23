@@ -1,23 +1,17 @@
-import React from 'react';
 import { Button } from '../src';
+import { Meta, StoryObj } from '@storybook/react';
 
-export const Primary = (): JSX.Element => <Button>Primary</Button>;
-
-export const Secondary = (): JSX.Element => <Button secondary>Secondary</Button>;
-
-export const Reverse = (): JSX.Element => <Button reverse>Reverse</Button>;
-
-export const Disabled = (): JSX.Element => <Button disabled>Disabled</Button>;
-
-export const LinkButton = (): JSX.Element => <Button href="/">As a Link</Button>;
-
-export const ForceButton = (): JSX.Element => <Button as="button">As a Button</Button>;
-ForceButton.storyName = 'Button Element Forced';
-
-export const ForceAnchor = (): JSX.Element => <Button as="a">As an Anchor</Button>;
-ForceAnchor.storyName = 'Anchor Element Forced';
-
-export default {
+const meta: Meta<typeof Button> = {
   title: 'Components/Button',
   component: Button,
 };
+export default meta;
+type Story = StoryObj<typeof Button>;
+
+export const Primary: Story = { args: { children: 'Primary' } };
+export const Secondary: Story = { args: { secondary: true, children: 'Secondary' } };
+export const Reverse: Story = { args: { reverse: true, children: 'Reverse' } };
+export const Disabled: Story = { args: { disabled: true, children: 'Disabled' } };
+export const LinkButton: Story = { args: { href: '/', children: 'As a Link' } };
+export const ForceButton: Story = { args: { as: 'button', children: 'As a Button' } };
+export const ForceAnchor: Story = { args: { as: 'a', children: 'As an Anchor' } };

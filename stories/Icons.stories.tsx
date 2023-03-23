@@ -14,21 +14,24 @@ import {
   SearchIcon,
   TickIcon,
 } from '../src';
+import { Meta, StoryObj } from '@storybook/react';
 
-export const ArrowLeft = (): JSX.Element => <ArrowLeftIcon />;
-export const ArrowRight = (): JSX.Element => <ArrowRightIcon />;
-export const ArrowRightCircle = (): JSX.Element => <ArrowRightCircleIcon />;
-export const ChevronLeft = (): JSX.Element => <ChevronLeftIcon />;
-export const ChevronRight = (): JSX.Element => <ChevronRightIcon />;
-export const Close = (): JSX.Element => <CloseIcon />;
-export const Cross = (): JSX.Element => <CrossIcon />;
-export const SmallEmdash = (): JSX.Element => <SmallEmdashIcon />;
-export const Emdash = (): JSX.Element => <EmdashIcon />;
-export const Minus = (): JSX.Element => <MinusIcon />;
-export const Plus = (): JSX.Element => <PlusIcon />;
-export const Search = (): JSX.Element => <SearchIcon />;
-export const Tick = (): JSX.Element => <TickIcon />;
-
-export default {
+const meta: Meta = {
   title: 'Components/Icons',
 };
+export default meta;
+type Story = StoryObj<Element>;
+
+export const ArrowLeft: Story = { render: () => <ArrowLeftIcon /> };
+export const ArrowRight: Story = { render: () => <ArrowRightIcon /> };
+export const ArrowRightCircle: Story = { render: () => <ArrowRightCircleIcon /> };
+export const ChevronLeft: Story = { render: () => <ChevronLeftIcon /> };
+export const ChevronRight: Story = { render: () => <ChevronRightIcon /> };
+export const Close: Story = { render: () => <CloseIcon /> };
+export const Cross: Story = { render: () => <CrossIcon /> };
+export const SmallEmdash: Story = { render: () => <SmallEmdashIcon /> };
+export const Emdash: Story = { render: () => <EmdashIcon /> };
+export const Minus: Story = { render: () => <MinusIcon /> };
+export const Plus: Story = { render: () => <PlusIcon /> };
+export const Search: Story = { render: () => <SearchIcon /> };
+export const Tick: Story = { render: () => <TickIcon /> };
