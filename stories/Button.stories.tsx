@@ -1,14 +1,28 @@
-import { Button } from '../src';
+import React from 'react';
+import { Button as LibButton } from '../src';
 import { Meta, StoryObj } from '@storybook/react';
 
-const meta: Meta<typeof Button> = {
+const meta: Meta<typeof LibButton> = {
   title: 'Components/Button',
-  component: Button,
+  component: LibButton,
+  render: (args) => <Button {...args} />,
 };
-export default meta;
-type Story = StoryObj<typeof Button>;
 
-export const Primary: Story = { args: { children: 'Primary' } };
+/**
+ * There might be a better way to do this, but this is the only way I could get storybook not to use the name of the default exported component
+ * which in this case is <ButtonWrapper> and not <Button>
+ */
+function Button(props) {
+  return <LibButton {...props} />;
+}
+
+export default meta;
+type Story = StoryObj<typeof LibButton>;
+
+export const Primary: Story = {
+  args: { children: 'Primary' },
+  render: (args) => <Button {...args} />,
+};
 export const Secondary: Story = { args: { secondary: true, children: 'Secondary' } };
 export const Reverse: Story = { args: { reverse: true, children: 'Reverse' } };
 export const Disabled: Story = { args: { disabled: true, children: 'Disabled' } };

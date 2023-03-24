@@ -4,7 +4,7 @@ import { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof ActionLink> = {
   title: 'Components/ActionLink',
   component: ActionLink,
-  args: { children: 'Link', asElement: 'a', href: '/' },
+  args: { children: 'Link', asElement: 'a', href: '#' },
 };
 export default meta;
 type Story = StoryObj<typeof ActionLink>;
