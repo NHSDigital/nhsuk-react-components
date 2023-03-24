@@ -10,6 +10,9 @@ export default meta;
 type Story = StoryObj<typeof ListPanel>;
 
 export const Standard: Story = {
+  argTypes: {
+    type: { table: { disable: true } },
+  },
   render: () => (
     <ListPanel>
       <ListPanel.Panel label="A" labelProps={{ id: 'A' }} backToTop backToTopLink="#">

@@ -66,8 +66,9 @@ export const TablePanel: Story = {
 };
 
 export const ResponsiveTable: Story = {
-  render: () => (
-    <Table responsive caption="Ibuprofen syrup dosages for children">
+  args: { responsive: true },
+  render: ({ responsive }) => (
+    <Table responsive={responsive} caption="Ibuprofen syrup dosages for children">
       <Table.Head role="rowgroup">
         <Table.Row>
           <Table.Cell>Age</Table.Cell>

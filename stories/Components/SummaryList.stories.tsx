@@ -11,8 +11,15 @@ export default meta;
 type Story = StoryObj<typeof SummaryList>;
 
 export const Standard: Story = {
-  render: () => (
-    <SummaryList>
+  argTypes: {
+    noBorder: {
+      type: 'boolean',
+      defaultValue: false,
+    },
+  },
+  args: { noBorder: false },
+  render: ({ noBorder }) => (
+    <SummaryList noBorder={noBorder}>
       <SummaryList.Row>
         <SummaryList.Key>Name</SummaryList.Key>
         <SummaryList.Value>Sarah Philips</SummaryList.Value>
@@ -55,8 +62,9 @@ export const Standard: Story = {
 };
 
 export const SummaryListWithoutActions: Story = {
-  render: () => (
-    <SummaryList>
+  args: { noBorder: false },
+  render: ({ noBorder }) => (
+    <SummaryList noBorder={noBorder}>
       <SummaryList.Row>
         <SummaryList.Key>Name</SummaryList.Key>
         <SummaryList.Value>Sarah Philips</SummaryList.Value>
@@ -87,8 +95,11 @@ export const SummaryListWithoutActions: Story = {
 };
 
 export const SummaryListWithoutBorder: Story = {
-  render: () => (
-    <SummaryList noBorder>
+  args: {
+    noBorder: true,
+  },
+  render: ({ noBorder }) => (
+    <SummaryList noBorder={noBorder}>
       <SummaryList.Row>
         <SummaryList.Key>Name</SummaryList.Key>
         <SummaryList.Value>Sarah Philips</SummaryList.Value>

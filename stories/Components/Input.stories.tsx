@@ -9,6 +9,9 @@ const meta: Meta<typeof Input> = {
     name: 'test-name',
     label: 'National Insurance Number',
   },
+  argTypes: {
+    inputRef: { table: { disable: true } },
+  },
 };
 
 export default meta;

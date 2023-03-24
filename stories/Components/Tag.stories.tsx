@@ -9,7 +9,7 @@ const meta: Meta<typeof Tag> = {
 export default meta;
 type Story = StoryObj<typeof Tag>;
 
-export const StandardTag: Story = {};
+export const StandardTag: Story = { args: { children: 'Standard' } };
 
 export const AllColours: Story = {
   render: () => (

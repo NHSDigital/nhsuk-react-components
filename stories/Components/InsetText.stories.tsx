@@ -20,7 +20,7 @@ const meta: Meta<typeof InsetText> = {
 export default meta;
 type Story = StoryObj<typeof InsetText>;
 
-export const Standard: Story = {};
+export const Standard: Story = { argTypes: { visuallyHiddenText: { table: { disable: true } } } };
 export const WithCustomHiddenText: Story = {
   args: {
     visuallyHiddenText: 'Hidden Text: ',

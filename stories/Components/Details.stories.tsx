@@ -2,6 +2,47 @@ import React from 'react';
 import { Details } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
+/**
+ * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/master/packages/components/contents-list" target="_blank">here</a>.
+ *
+ * ## Implementation Notes
+ *
+ * The `Details` component has three subcomponents:
+ *
+ * - `Details.Summary`
+ * - `Details.Text`
+ * - `Details.ExpanderGroup`
+ *
+ * ## Usage
+ *
+ * ### Standard
+ *
+ * ```jsx
+ * import { Details } from "nhsuk-react-components";
+ *
+ * const Element = () => {
+ *     return (
+ *         <Details>
+ *             <Details.Summary>Where can I find my NHS number?</Details.Summary>
+ *             <Details.Text>
+ *                 <p>An NHS number is a 10 digit number, like 485 777 3456.</p>
+ *                 <p>
+ *                 You can find your NHS number on any document sent to you by the NHS. This may include:
+ *                 </p>
+ *                 <ul>
+ *                     <li>prescriptions</li>
+ *                     <li>test results</li>
+ *                     <li>hospital referral letters</li>
+ *                     <li>appointment letters</li>
+ *                     <li>your NHS medical card</li>
+ *                 </ul>
+ *                 <p>Ask your GP practice for help if you can't find your NHS number.</p>
+ *             </Details.Text>
+ *         </Details>
+ *     );
+ * }
+ * ```
+ */
 const meta: Meta<typeof Details> = {
   title: 'Components/Details',
   component: Details,
@@ -10,8 +51,9 @@ export default meta;
 type Story = StoryObj<typeof Details>;
 
 export const Standard: Story = {
-  render: () => (
-    <Details>
+  argTypes: { expander: { table: { disable: true } } },
+  render: ({ expander }) => (
+    <Details expander={expander}>
       <Details.Summary>Where can I find my NHS number?</Details.Summary>
       <Details.Text>
         <p>An NHS number is a 10 digit number, like 485 777 3456.</p>
@@ -32,8 +74,9 @@ export const Standard: Story = {
 };
 
 export const Expander: Story = {
-  render: () => (
-    <Details expander>
+  args: { expander: true },
+  render: ({ expander }) => (
+    <Details expander={expander}>
       <Details.Summary>Opening times</Details.Summary>
       <Details.Text>
         <table>
