@@ -48,7 +48,7 @@ describe('Footer', () => {
 
     it('has dev warning when columns', () => {
       const element = mount(<Footer.List columns />);
-      expect(console.warn).toHaveBeenCalled();
+      expect(console.warn).toHaveBeenCalledTimes(1);
       expect((console.warn as jest.Mock).mock.calls[0][0]).toBe(
         NHSUKFrontendV5UpgradeWarnings.FooterColumns,
       );

@@ -6,7 +6,9 @@ export const PanelDeprecationWarning =
 
 export const NHSUKFrontendV5UpgradeWarnings = {
   FooterColumns:
-    'The footer columns prop is deprecated and will be removed in the next major release, as this has been removed from the NHS.UK frontend library.',
+    'The footer columns prop is deprecated and will be removed in the next major release, as this has been removed from the NHS.UK frontend library v5.',
   DoDontListPrefix:
-    "Items with a `type` of `dont` will automatically have a 'do not' prefix text added in the next major release to align with the NHS.UK frontend library.",
+    "Items with a `type` of `dont` will automatically have a 'do not' prefix text added in the next major release to align with the NHS.UK frontend library v5.",
+  TransactionalServiceNameLongVariantRemoved:
+    'The `long` variant of the `TransactionalServiceName` component will be removed in the next major release to align with the NHS.UK frontend library v5.',
 } as const;
