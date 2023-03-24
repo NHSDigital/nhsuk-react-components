@@ -81,17 +81,6 @@ export const TransactionalHeaderWithServiceName = (): JSX.Element => (
   </Header>
 );
 
-export const TransactionalHeaderWithALongServiceName = (): JSX.Element => (
-  <Header transactional>
-    <Header.Container>
-      <Header.Logo href="/" />
-      <Header.ServiceName href="/" long>
-        Find out why your NHS data matters
-      </Header.ServiceName>
-    </Header.Container>
-  </Header>
-);
-
 export const OrganisationalHeader = (): JSX.Element => (
   <Header orgName="Anytown Anyplace" orgSplit="Anywhere" orgDescriptor="NHS Foundation Trust">
     <Header.Container>
