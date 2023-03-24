@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Footer from '..';
-import { FooterDeprecationWarning } from '../Footer';
+import { NHSUKFrontendV5UpgradeWarnings } from '../../../deprecated/warnings';
 
 jest.spyOn(console, 'warn').mockImplementation();
 
@@ -49,7 +49,9 @@ describe('Footer', () => {
     it('has dev warning when columns', () => {
       const element = mount(<Footer.List columns />);
       expect(console.warn).toHaveBeenCalled();
-      expect((console.warn as jest.Mock).mock.calls[0][0]).toBe(FooterDeprecationWarning);
+      expect((console.warn as jest.Mock).mock.calls[0][0]).toBe(
+        NHSUKFrontendV5UpgradeWarnings.FooterColumns,
+      );
       element.unmount();
     });
 

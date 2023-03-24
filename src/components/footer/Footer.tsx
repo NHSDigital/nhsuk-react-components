@@ -2,16 +2,14 @@ import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
 import { Container } from '../layout';
 import useDevWarning from '../../util/hooks/UseDevWarning';
-
-export const FooterDeprecationWarning =
-  'The footer columns prop is deprecated and will be removed in the next major release, as this has been removed from the NHS.UK frontend library.';
+import { NHSUKFrontendV5UpgradeWarnings } from '../../deprecated/warnings';
 
 interface FooterListProps extends HTMLProps<HTMLOListElement> {
   columns?: boolean;
 }
 
 const FooterList: React.FC<FooterListProps> = ({ className, columns, ...rest }) => {
-  useDevWarning(FooterDeprecationWarning, () => columns);
+  useDevWarning(NHSUKFrontendV5UpgradeWarnings.FooterColumns, () => columns);
   return (
     <ul
       className={classNames(
