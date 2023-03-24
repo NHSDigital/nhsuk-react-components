@@ -15,11 +15,11 @@ export const Do = (): JSX.Element => (
 
 export const Dont = (): JSX.Element => (
   <DoDontList listType="dont">
-    <DoDontList.Item>do not burst a blister yourself</DoDontList.Item>
-    <DoDontList.Item>do not peel the skin off a burst blister</DoDontList.Item>
-    <DoDontList.Item>do not pick at the edges of the remaining skin</DoDontList.Item>
+    <DoDontList.Item>burst a blister yourself</DoDontList.Item>
+    <DoDontList.Item>peel the skin off a burst blister</DoDontList.Item>
+    <DoDontList.Item>pick at the edges of the remaining skin</DoDontList.Item>
     <DoDontList.Item>
-      do not wear the shoes or use the equipment that caused your blister until it heals
+      wear the shoes or use the equipment that caused your blister until it heals
     </DoDontList.Item>
   </DoDontList>
 );

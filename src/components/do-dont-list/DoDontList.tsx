@@ -49,7 +49,14 @@ const DoDontItem: React.FC<DoDontItemProps> = ({ children, listItemType, ...rest
   const listItem = useContext(DoDontListContext);
   return (
     <li {...rest}>
-      {(listItemType || listItem) === 'do' ? <Tick /> : <Cross />}
+      {(listItemType || listItem) === 'do' ? (
+        <Tick />
+      ) : (
+        <>
+          <Cross />
+          do not{' '}
+        </>
+      )}
       {children}
     </li>
   );

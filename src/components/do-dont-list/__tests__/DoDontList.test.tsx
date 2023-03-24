@@ -63,5 +63,15 @@ describe('DoDontList', () => {
       doList.unmount();
       dontList.unmount();
     });
+
+    it("dont item includes 'do not'", () => {
+      const dontList = mount(
+        <DoDontList listType="dont">
+          <DoDontList.Item>do something bad</DoDontList.Item>
+        </DoDontList>,
+      );
+      expect(dontList.find('.nhsuk-list--cross').text()).toEqual('do not do something bad');
+      dontList.unmount();
+    });
   });
 });
