@@ -2,6 +2,8 @@ import React, { HTMLProps, createContext, useContext } from 'react';
 import classNames from 'classnames';
 import { Tick, Cross } from '../icons';
 import HeadingLevel, { HeadingLevelType } from '../../util/HeadingLevel';
+import useDevWarning from '../../util/hooks/UseDevWarning';
+import { NHSUKFrontendV5UpgradeWarnings } from '../../deprecated/warnings';
 
 type ListType = 'do' | 'dont';
 
@@ -24,22 +26,25 @@ const DoDontList: DoDontList = ({
   heading,
   headingLevel,
   ...rest
-}) => (
-  <div className={classNames('nhsuk-do-dont-list', className)} {...rest}>
-    <HeadingLevel className="nhsuk-do-dont-list__label" headingLevel={headingLevel}>
-      {heading || (listType === 'do' ? 'Do' : "Don't")}
-    </HeadingLevel>
-    <ul
-      className={classNames(
-        'nhsuk-list',
-        { 'nhsuk-list--tick': listType === 'do' },
-        { 'nhsuk-list--cross': listType === 'dont' },
-      )}
-    >
-      <DoDontListContext.Provider value={listType}>{children}</DoDontListContext.Provider>
-    </ul>
-  </div>
-);
+}) => {
+  useDevWarning(NHSUKFrontendV5UpgradeWarnings.DoDontListPrefix, () => listType === 'dont');
+  return (
+    <div className={classNames('nhsuk-do-dont-list', className)} {...rest}>
+      <HeadingLevel className="nhsuk-do-dont-list__label" headingLevel={headingLevel}>
+        {heading || (listType === 'do' ? 'Do' : "Don't")}
+      </HeadingLevel>
+      <ul
+        className={classNames(
+          'nhsuk-list',
+          { 'nhsuk-list--tick': listType === 'do' },
+          { 'nhsuk-list--cross': listType === 'dont' },
+        )}
+      >
+        <DoDontListContext.Provider value={listType}>{children}</DoDontListContext.Provider>
+      </ul>
+    </div>
+  );
+};
 
 interface DoDontItemProps extends HTMLProps<HTMLLIElement> {
   listItemType?: ListType;
