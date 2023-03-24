@@ -2,19 +2,10 @@ import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
 import { Container } from '../layout';
 
-interface FooterListProps extends HTMLProps<HTMLOListElement> {
-  columns?: boolean;
-}
+type FooterListProps = HTMLProps<HTMLOListElement>;
 
-const FooterList: React.FC<FooterListProps> = ({ className, columns, ...rest }) => (
-  <ul
-    className={classNames(
-      'nhsuk-footer__list',
-      { 'nhsuk-footer__list--three-columns': columns },
-      className,
-    )}
-    {...rest}
-  />
+const FooterList: React.FC<FooterListProps> = ({ className, ...rest }) => (
+  <ul className={classNames('nhsuk-footer__list', className)} {...rest} />
 );
 
 const FooterListItem: React.FC<HTMLProps<HTMLAnchorElement>> = ({ className, ...rest }) => (
@@ -37,9 +28,7 @@ interface Footer extends React.FC<FooterProps> {
   Copyright: React.FC<HTMLProps<HTMLParagraphElement>>;
 }
 
-const Footer: Footer = ({
-  className, children, visuallyHiddenText, ...rest
-}) => (
+const Footer: Footer = ({ className, children, visuallyHiddenText, ...rest }) => (
   <footer {...rest}>
     <div className={classNames('nhsuk-footer', className)}>
       <Container>
