@@ -18,6 +18,6 @@ jobs:
         run: yarn install
 
       - name: Deploy Storybook
-        run: yarn storybook-to-ghpages --ci
+        run: mkdir -p storybook-build && touch storybook-build/.nojekyll && yarn storybook-to-ghpages --ci --out storybook-build
         env:
           GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
