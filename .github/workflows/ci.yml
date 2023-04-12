@@ -17,4 +17,4 @@ jobs:
       - name: Typescript build
         run: yarn build
       - name: Storybook build
-        run: yarn storybook-to-ghpages --dry-run --ci
+        run: yarn build-storybook
