@@ -18,8 +18,8 @@ export type HeadingLevelType =
   | 'H5'
   | 'H6';
 
-const HeadingLevel: React.FC<HeadingLevelProps> = ({ headingLevel, ...rest }) => {
-  switch (headingLevel?.toLowerCase()) {
+const HeadingLevel: React.FC<HeadingLevelProps> = ({ headingLevel='h3', ...rest }) => {
+  switch (headingLevel.toLowerCase()) {
     case 'h1':
       return <h1 {...rest} />;
     case 'h2':
@@ -33,11 +33,8 @@ const HeadingLevel: React.FC<HeadingLevelProps> = ({ headingLevel, ...rest }) =>
     case 'h6':
       return <h6 {...rest} />;
     default:
-      return <h3 {...rest} />;
+      throw new Error(`HeadingLevel: Invalid headingLevel prop.`);
   }
-};
-HeadingLevel.defaultProps = {
-  headingLevel: 'h3',
 };
 
 export default HeadingLevel;

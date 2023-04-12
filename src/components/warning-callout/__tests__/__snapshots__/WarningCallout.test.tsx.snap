@@ -10,7 +10,6 @@ exports[`WarningCallout matches snapshot 1`] = `
     >
       <HeadingLevel
         className="nhsuk-warning-callout__label"
-        headingLevel="h3"
       >
         <h3
           className="nhsuk-warning-callout__label"
