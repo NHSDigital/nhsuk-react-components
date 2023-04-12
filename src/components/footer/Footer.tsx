@@ -1,21 +1,26 @@
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
 import { Container } from '../layout';
+import useDevWarning from '../../util/hooks/UseDevWarning';
+import { NHSUKFrontendV5UpgradeWarnings } from '../../deprecated/warnings';
 
 interface FooterListProps extends HTMLProps<HTMLOListElement> {
   columns?: boolean;
 }
 
-const FooterList: React.FC<FooterListProps> = ({ className, columns, ...rest }) => (
-  <ul
-    className={classNames(
-      'nhsuk-footer__list',
-      { 'nhsuk-footer__list--three-columns': columns },
-      className,
-    )}
-    {...rest}
-  />
-);
+const FooterList: React.FC<FooterListProps> = ({ className, columns, ...rest }) => {
+  useDevWarning(NHSUKFrontendV5UpgradeWarnings.FooterColumns, () => columns);
+  return (
+    <ul
+      className={classNames(
+        'nhsuk-footer__list',
+        { 'nhsuk-footer__list--three-columns': columns },
+        className,
+      )}
+      {...rest}
+    />
+  );
+};
 
 const FooterListItem: React.FC<HTMLProps<HTMLAnchorElement>> = ({ className, ...rest }) => (
   <li className="nhsuk-footer__list-item">
@@ -37,9 +42,7 @@ interface Footer extends React.FC<FooterProps> {
   Copyright: React.FC<HTMLProps<HTMLParagraphElement>>;
 }
 
-const Footer: Footer = ({
-  className, children, visuallyHiddenText, ...rest
-}) => (
+const Footer: Footer = ({ className, children, visuallyHiddenText, ...rest }) => (
   <footer {...rest}>
     <div className={classNames('nhsuk-footer', className)}>
       <Container>
