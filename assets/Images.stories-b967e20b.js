@@ -1,0 +1,6 @@
+import{u as n}from"./ReadingWidth-6be229f5.js";import"./UseDevWarning-60f7660b.js";import"./jsx-runtime-953c45a8.js";import"./index-6f814c40.js";import"./_commonjsHelpers-042e6b4d.js";const d={title:"Components/Images",component:n,args:{src:"https://assets.nhs.uk/prod/images/S_1017_allergic-conjunctivitis_M15.2e16d0ba.fill-320x213.jpg",alt:"Picture of allergic conjunctivitis",sizes:"(min-width: 1020px) 320px, (min-width: 768px) 50vw, 100vw",srcSet:"https://assets.nhs.uk/prod/images/S_1017_allergic-conjunctivitis_M15.2e16d0ba.fill-640x427.jpg 640w, https://assets.nhs.uk/prod/images/S_1017_allergic-conjunctivitis_M15.2e16d0ba.fill-767x511.jpg 767w"}},t={args:{caption:"Caption for image"}},s={};var a,e,i;t.parameters={...t.parameters,docs:{...(a=t.parameters)==null?void 0:a.docs,source:{originalSource:`{
+  args: {
+    caption: 'Caption for image'
+  }
+}`,...(i=(e=t.parameters)==null?void 0:e.docs)==null?void 0:i.source}}};var o,r,p;s.parameters={...s.parameters,docs:{...(o=s.parameters)==null?void 0:o.docs,source:{originalSource:"{}",...(p=(r=s.parameters)==null?void 0:r.docs)==null?void 0:p.source}}};const h=["ImageWithCaption","ImageWithoutCaption"];export{t as ImageWithCaption,s as ImageWithoutCaption,h as __namedExportsOrder,d as default};
+//# sourceMappingURL=Images.stories-b967e20b.js.map
