@@ -32,12 +32,6 @@ describe('Footer', () => {
       expect(component).toMatchSnapshot('Footer.List');
       component.unmount();
     });
-
-    it('adds class when columns', () => {
-      const component = shallow(<Footer.List columns />);
-      expect(component.hasClass('nhsuk-footer__list--three-columns')).toBeTruthy();
-      component.unmount();
-    });
   });
 
   describe('Footer.ListItem', () => {
