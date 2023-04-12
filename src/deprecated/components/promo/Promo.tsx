@@ -83,7 +83,7 @@ const PromoGroup: React.FC<HTMLProps<HTMLDivElement>> = ({ className, children, 
 interface Promo extends React.FC<BasePromoProps> {
   Group: React.FC<HTMLProps<HTMLDivElement>>;
   Description: React.FC<HTMLProps<HTMLParagraphElement>>;
-  Heading: React.FC<HTMLProps<HTMLHeadingElement>>;
+  Heading: React.FC<PromoHeadingProps>;
 }
 const Promo: Promo = (props) => {
   const { isGroup, promoCount } = useContext<PromoContextType>(PromoContext);

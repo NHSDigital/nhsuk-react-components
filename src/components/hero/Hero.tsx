@@ -49,13 +49,11 @@ interface HeroProps extends HTMLProps<HTMLDivElement> {
 }
 
 interface Hero extends React.FC<HeroProps> {
-  Heading: React.FC<HTMLProps<HTMLHeadingElement>>;
+  Heading: React.FC<HeroHeadingProps>;
   Text: React.FC<HTMLProps<HTMLParagraphElement>>;
 }
 
-const Hero: Hero = ({
-  className, children, imageSrc, ...rest
-}) => (
+const Hero: Hero = ({ className, children, imageSrc, ...rest }) => (
   <section
     className={classNames(
       'nhsuk-hero',

@@ -1,5 +1,5 @@
 import { create } from "@storybook/theming/create";
-const version = require("../package.json").version;
+import {version}= from "../package.json").version;
 
 export default create({
   base: "light",
