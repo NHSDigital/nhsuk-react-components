@@ -19,7 +19,7 @@ If you're coming from versions of the library prior to 1.0.0, please give [this 
 
 ## Upgrading to 2.0
 
-If you're upgrading to 2.0, please be aware we have made some breaking changes.  [This doc](/docs/upgrade-to-2.0.md) has the details.
+If you're upgrading to 2.0, please be aware we have made some breaking changes. [This doc](/docs/upgrade-to-2.0.md) has the details.
 
 ## Installation
 
@@ -51,7 +51,7 @@ class GetStartedButton extends PureComponent {
 
 ### Storybook
 
-A storybook containing all of the components and their usage can be found [here](https://nhsdigital.github.io/nhsuk-react-components).
+A storybook containing all of the components and their usage can be found [here](https://main--6422e711d7f854c1b681c505.chromatic.com).
 
 ## Maintainers
 
@@ -61,6 +61,7 @@ A storybook containing all of the components and their usage can be found [here]
 - Sam Brown ([GitHub](https://github.com/samueldavidbrown))
 - Luke Pearson ([GitHub](https://github.com/lukepearson))
 - Kevin Kuszyk ([GitHub](https://github.com/kevinkuszyk))
+- Kai Spencer ([GitHub](https://github.com/KaiSpencer))
 
 ## Preparing Releases
 
@@ -72,3 +73,9 @@ To prepare a release create a new release TAG in github with your release versio
 
 - Create a new release with a tag like `major.minor.patch` against main.
 - If the change is a `beta` then select `pre-release` as true, this will make the `tag` point at `beta`. Otherwise the tag will be `latest`.
+
+## Thanks
+
+<a href="https://www.chromatic.com/"><img src="https://user-images.githubusercontent.com/321738/84662277-e3db4f80-af1b-11ea-88f5-91d67a5e59f6.png" width="153" height="30" alt="Chromatic" /></a>
+
+Thanks to [Chromatic](https://www.chromatic.com/) for providing the visual testing platform that helps us review UI changes and catch visual regressions.
