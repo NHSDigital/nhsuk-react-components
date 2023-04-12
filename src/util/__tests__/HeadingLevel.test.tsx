@@ -43,4 +43,15 @@ describe('HeadingLevel', () => {
     h6Element.unmount();
     H6Element.unmount();
   });
+
+  it("console.warn when headingLevel is invalid", () => {
+    // eslint-disable-next-line @typescript-eslint/no-empty-function
+    const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+    // @ts-expect-error - testing invalid prop
+    shallow(<HeadingLevel headingLevel="h7" />);
+    expect(consoleSpy).toHaveBeenCalledTimes(1);
+    expect(consoleSpy).toHaveBeenCalledWith(
+      `HeadingLevel: Invalid headingLevel prop.`);
+    consoleSpy.mockRestore();
+  });
 });
