@@ -1,5 +1,7 @@
 # Upgrading to 3.0
 
+> v3.0 is an upcoming release, this page is a work in progress.
+
 There are some breaking changes you'll need to be aware of when upgrading to v3.  These are mostly related to us upgrading our dependency on [nhsuk-frontend to v5](https://github.com/nhsuk/nhsuk-frontend/blob/main/CHANGELOG.md#500---16-march-2021) which also includes some breaking changes.
 
 ## Review Date component is now a pattern
