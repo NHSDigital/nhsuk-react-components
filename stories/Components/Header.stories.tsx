@@ -101,19 +101,6 @@ export const TransactionalHeaderWithServiceName: Story = {
   ),
 };
 
-export const TransactionalHeaderWithALongServiceName: Story = {
-  render: () => (
-    <Header transactional>
-      <Header.Container>
-        <Header.Logo href="/" />
-        <Header.ServiceName href="/" long>
-          Find out why your NHS data matters
-        </Header.ServiceName>
-      </Header.Container>
-    </Header>
-  ),
-};
-
 export const OrganisationalHeader: Story = {
   render: () => (
     <Header orgName="Anytown Anyplace" orgSplit="Anywhere" orgDescriptor="NHS Foundation Trust">
