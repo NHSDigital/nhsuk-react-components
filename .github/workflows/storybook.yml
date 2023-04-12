@@ -4,20 +4,20 @@ on:
   push:
     branches:
       - main
+      - feature/chromaticHosting
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@master
-        with:
-          persist-credentials: false
+        uses: actions/checkout@v3
 
       - name: Yarn Install
         run: yarn install
 
       - name: Deploy Storybook
-        run: mkdir -p storybook-build && touch storybook-build/.nojekyll && yarn storybook-to-ghpages --ci --out storybook-build
-        env:
-          GH_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
