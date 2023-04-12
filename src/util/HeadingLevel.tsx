@@ -33,7 +33,7 @@ const HeadingLevel: React.FC<HeadingLevelProps> = ({ headingLevel='h3', ...rest 
     case 'h6':
       return <h6 {...rest} />;
     default:
-      console.error(`HeadingLevel: Invalid headingLevel prop.`);
+      console.error(`HeadingLevel: Invalid headingLevel prop: ${headingLevel}`);
       return <h3 {...rest} />;
   }
 };

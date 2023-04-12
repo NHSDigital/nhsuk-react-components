@@ -51,7 +51,7 @@ describe('HeadingLevel', () => {
     shallow(<HeadingLevel headingLevel="h7" />);
     expect(consoleSpy).toHaveBeenCalledTimes(1);
     expect(consoleSpy).toHaveBeenCalledWith(
-      `HeadingLevel: Invalid headingLevel prop.`);
+      'HeadingLevel: Invalid headingLevel prop: h7');
     consoleSpy.mockRestore();
   });
 });
