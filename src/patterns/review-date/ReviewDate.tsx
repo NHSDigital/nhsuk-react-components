@@ -12,13 +12,17 @@ const ReviewDate: React.FC<ReviewDateProps> = ({
   nextReview,
   ...rest
 }) => (
-  <div className={classNames('nhsuk-review-date', className)} {...rest}>
-    <p className="nhsuk-body-s">
-      {lastReviewed ? `Page last reviewed: ${lastReviewed}` : null}
-      {lastReviewed && nextReview ? <br /> : null}
-      {nextReview ? `Next review due: ${nextReview}` : null}
-    </p>
-  </div>
+  <p
+    className={classNames(
+      'nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-top-7',
+      className,
+    )}
+    {...rest}
+  >
+    {lastReviewed ? `Page last reviewed: ${lastReviewed}` : null}
+    {lastReviewed && nextReview ? <br /> : null}
+    {nextReview ? `Next review due: ${nextReview}` : null}
+  </p>
 );
 
 export default ReviewDate;
