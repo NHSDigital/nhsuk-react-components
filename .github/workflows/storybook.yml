@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - feature/chromaticHosting
 
 jobs:
   build-and-deploy:
