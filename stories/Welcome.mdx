@@ -1,0 +1,47 @@
+import { Meta } from '@storybook/blocks';
+
+<Meta title="Welcome" />
+
+# NHS.UK React Components
+
+NHS.UK Frontend ported to React
+
+[![CD Build and Publish to NPM](https://github.com/NHSDigital/nhsuk-react-components/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/NHSDigital/nhsuk-react-components/actions/workflows/release.yml)
+[![Bundle Size](https://img.shields.io/bundlephobia/minzip/nhsuk-react-components.svg)](https://bundlephobia.com/result?p=nhsuk-react-components)
+
+
+## Installation
+
+You can install this package using either `yarn` or `npm`.
+
+```bash
+npm install --save nhsuk-react-components
+# Or
+yarn add nhsuk-react-components
+```
+
+## Migration
+
+If you are coming from older versions, please see the migration guides below:
+
+[0.x To v1](/docs/migration-guides-upgrade-to-1-0--docs#upgrading-to-10)
+
+[1.x To v2](/docs/migration-guides-upgrade-to-2-0--docs#upgrading-to-20)
+
+## Usage
+
+```jsx
+import React, { PureComponent } from 'react';
+
+// You can import components from the global module
+import { Button } from 'nhsuk-react-components';
+
+// Or you can import components directly
+import Button from 'nhsuk-react-components/lib/components/button';
+
+function GetStartedButton(){
+    return (
+        <Button href="/get-started">Get Started</Button>
+    );
+}
+```
