@@ -4,13 +4,11 @@ exports[`Radios matches snapshot 1`] = `
 <Radios
   id="example"
   name="example"
-  role="radiogroup"
 >
   <FormGroup
     id="example"
     inputType="radios"
     name="example"
-    role="radiogroup"
   >
     <div
       className="nhsuk-form-group"
@@ -18,7 +16,6 @@ exports[`Radios matches snapshot 1`] = `
       <div
         className="nhsuk-radios"
         id="example"
-        role="radiogroup"
       >
         <Radio
           id="example-1"
