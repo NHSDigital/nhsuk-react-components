@@ -19,7 +19,7 @@ If you're coming from versions of the library prior to 1.0.0, please give [this 
 
 ## Upgrading to 2.0
 
-If you're upgrading to 2.0, please be aware we have made some breaking changes.  [This doc](/docs/upgrade-to-2.0.md) has the details.
+If you're upgrading to 2.0, please be aware we have made some breaking changes. [This doc](/docs/upgrade-to-2.0.md) has the details.
 
 ## Installation
 
@@ -51,7 +51,7 @@ class GetStartedButton extends PureComponent {
 
 ### Storybook
 
-A storybook containing all of the components and their usage can be found [here](https://nhsdigital.github.io/nhsuk-react-components).
+A storybook containing all of the components and their usage can be found [here](https://main--6422e711d7f854c1b681c505.chromatic.com).
 
 ## Maintainers
 
@@ -61,6 +61,7 @@ A storybook containing all of the components and their usage can be found [here]
 - Sam Brown ([GitHub](https://github.com/samueldavidbrown))
 - Luke Pearson ([GitHub](https://github.com/lukepearson))
 - Kevin Kuszyk ([GitHub](https://github.com/kevinkuszyk))
+- Kai Spencer ([GitHub](https://github.com/KaiSpencer))
 
 ## Preparing Releases
 
