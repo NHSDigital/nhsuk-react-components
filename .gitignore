@@ -110,3 +110,6 @@ dist
 lib/
 yarn-error.log
 storybook-static/
+
+# IDEA files
+.idea/
