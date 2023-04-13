@@ -1,5 +1,5 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import ListPanel from '..';
 
 describe('ListPanel', () => {
@@ -35,7 +35,7 @@ describe('ListPanel', () => {
     });
 
     it('renders back to top button with custom text', () => {
-      const component = shallow(<ListPanel.Panel backToTop backToTopButtonText="Custom" />);
+      const component = mount(<ListPanel.Panel backToTop backToTopButtonText="Custom" />);
       expect(component.find('.nhsuk-back-to-top__link').text()).toBe('Custom');
       component.unmount();
     });

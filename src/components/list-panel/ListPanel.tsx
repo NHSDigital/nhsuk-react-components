@@ -1,6 +1,7 @@
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
 import type { AsElementLink } from '../../util/types/LinkTypes';
+import { ArrowRightIcon } from '../..';
 
 interface PanelProps extends HTMLProps<HTMLDivElement> {
   labelProps?: HTMLProps<HTMLHeadingElement>;
@@ -48,14 +49,7 @@ const Panel: React.FC<PanelProps> = ({
       {backToTop ? (
         <div className="nhsuk-back-to-top">
           <a className="nhsuk-back-to-top__link" href={backToTopLink}>
-            <svg
-              className="nhsuk-icon nhsuk-icon__arrow-right"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              aria-hidden="true"
-            >
-              <path d="M19.6 11.66l-2.73-3A.51.51 0 0 0 16 9v2H5a1 1 0 0 0 0 2h11v2a.5.5 0 0 0 .32.46.39.39 0 0 0 .18 0 .52.52 0 0 0 .37-.16l2.73-3a.5.5 0 0 0 0-.64z" />
-            </svg>
+            <ArrowRightIcon width={19} height={19} />
             {backToTopButtonText || 'Back to top'}
           </a>
         </div>
@@ -68,7 +62,11 @@ const PanelItem: React.FC<HTMLProps<HTMLLIElement>> = ({ className, ...rest }) =
   <li className={classNames('nhsuk-list-panel__item', className)} {...rest} />
 );
 
-const PanelLinkItem: React.FC<AsElementLink<HTMLAnchorElement>> = ({ className, asElement: Component = 'a', ...rest }) => (
+const PanelLinkItem: React.FC<AsElementLink<HTMLAnchorElement>> = ({
+  className,
+  asElement: Component = 'a',
+  ...rest
+}) => (
   <PanelItem>
     <Component className={classNames('nhsuk-list-panel__link', className)} {...rest} />
   </PanelItem>
