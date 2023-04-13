@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import DoDontList from '..';
-import { NHSUKFrontendV5UpgradeWarnings } from '../../../deprecated/warnings';
 
 describe('DoDontList', () => {
   it('matches snapshot', () => {
