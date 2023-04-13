@@ -75,7 +75,7 @@ describe('DoDontList', () => {
       dontList.unmount();
     });
 
-    it("items render custom prefix text", () => {
+    it('items render custom prefix text', () => {
       const doList = mount(
         <DoDontList listType="do">
           <DoDontList.Item prefixText="do ">something good 1</DoDontList.Item>
@@ -89,7 +89,9 @@ describe('DoDontList', () => {
         <DoDontList listType="dont">
           <DoDontList.Item prefixText="do not ">do something bad 1</DoDontList.Item>
           <DoDontList.Item>do something bad 2</DoDontList.Item>
-          <DoDontList.Item prefixText={<span>don&apos;t do </span>}>something bad 3</DoDontList.Item>
+          <DoDontList.Item prefixText={<span>don&apos;t do </span>}>
+            something bad 3
+          </DoDontList.Item>
           <DoDontList.Item prefixText={undefined}>something bad 4</DoDontList.Item>
           <DoDontList.Item prefixText={null}>something bad 5</DoDontList.Item>
         </DoDontList>,
@@ -100,35 +102,20 @@ describe('DoDontList', () => {
       expect(doList.find('.nhsuk-list--tick').childAt(3).text()).toBe('something good 4');
       expect(doList.find('.nhsuk-list--tick').childAt(4).text()).toBe('something good 5');
 
-      expect(dontList.find('.nhsuk-list--cross').childAt(0).text()).toBe('do not do something bad 1');
-      expect(dontList.find('.nhsuk-list--cross').childAt(1).text()).toBe('do not do something bad 2');
-      expect(dontList.find('.nhsuk-list--cross').childAt(2).text()).toBe('don\'t do something bad 3');
+      expect(dontList.find('.nhsuk-list--cross').childAt(0).text()).toBe(
+        'do not do something bad 1',
+      );
+      expect(dontList.find('.nhsuk-list--cross').childAt(1).text()).toBe(
+        'do not do something bad 2',
+      );
+      expect(dontList.find('.nhsuk-list--cross').childAt(2).text()).toBe(
+        "don't do something bad 3",
+      );
       expect(dontList.find('.nhsuk-list--cross').childAt(3).text()).toBe('do not something bad 4');
       expect(dontList.find('.nhsuk-list--cross').childAt(4).text()).toBe('something bad 5');
 
       doList.unmount();
       dontList.unmount();
-    })
-  });
-});
-
-describe('dont list dev warning', () => {
-  jest.spyOn(console, 'warn').mockImplementation();
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
-
-  it('should warn when using dont list', () => {
-    const element = mount(<DoDontList listType="dont" />);
-    expect(console.warn).toHaveBeenCalled();
-    expect((console.warn as jest.Mock).mock.calls[0][0]).toBe(
-      NHSUKFrontendV5UpgradeWarnings.DoDontListPrefix,
-    );
-    element.unmount();
-  });
-  it('should not warn when using do list', () => {
-    const element = mount(<DoDontList listType="do" />);
-    expect(console.warn).not.toHaveBeenCalled();
-    element.unmount();
+    });
   });
 });
