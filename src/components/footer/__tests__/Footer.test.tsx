@@ -1,9 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Footer from '..';
-import { NHSUKFrontendV5UpgradeWarnings } from '../../../deprecated/warnings';
-
-jest.spyOn(console, 'warn').mockImplementation();
 
 describe('Footer', () => {
   it('matches snapshot', () => {
@@ -30,10 +27,6 @@ describe('Footer', () => {
   });
 
   describe('Footer.List', () => {
-    afterEach(() => {
-      jest.clearAllMocks();
-    });
-
     it('matches snapshot', () => {
       const component = shallow(<Footer.List />);
       expect(component).toMatchSnapshot('Footer.List');
