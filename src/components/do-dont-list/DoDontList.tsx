@@ -1,4 +1,4 @@
-import React, {HTMLProps, createContext, useContext, ReactNode} from 'react';
+import React, { HTMLProps, createContext, useContext, ReactNode } from 'react';
 import classNames from 'classnames';
 import { Tick, Cross } from '../icons';
 import HeadingLevel, { HeadingLevelType } from '../../util/HeadingLevel';
@@ -43,10 +43,10 @@ const DoDontList: DoDontList = ({
 
 interface DoDontItemProps extends HTMLProps<HTMLLIElement> {
   listItemType?: ListType;
-  prefixText?: ReactNode
+  prefixText?: ReactNode;
 }
 
-const DoDontItem: React.FC<DoDontItemProps> = ({prefixText, listItemType,children, ...rest }) => {
+const DoDontItem: React.FC<DoDontItemProps> = ({ prefixText, listItemType, children, ...rest }) => {
   const listItem = useContext(DoDontListContext);
   const defaultPrefix = (listItemType || listItem) === 'do' ? null : 'do not ';
   const actualPrefix = prefixText === undefined ? defaultPrefix : prefixText;

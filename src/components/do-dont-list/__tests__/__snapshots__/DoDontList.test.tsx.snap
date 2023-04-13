@@ -13,7 +13,6 @@ exports[`DoDontList matches snapshot: DoDontList-Do 1`] = `
 >
   <HeadingLevel
     className="nhsuk-do-dont-list__label"
-    headingLevel="h3"
   >
     Do
   </HeadingLevel>
@@ -33,7 +32,6 @@ exports[`DoDontList matches snapshot: DoDontList-Dont 1`] = `
 >
   <HeadingLevel
     className="nhsuk-do-dont-list__label"
-    headingLevel="h3"
   >
     Don't
   </HeadingLevel>
