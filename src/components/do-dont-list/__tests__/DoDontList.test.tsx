@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import DoDontList from '..';
-import { NHSUKFrontendV5UpgradeWarnings } from '../../../deprecated/warnings';
 
 describe('DoDontList', () => {
   it('matches snapshot', () => {
@@ -117,26 +116,5 @@ describe('DoDontList', () => {
       doList.unmount();
       dontList.unmount();
     });
-  });
-});
-
-describe('dont list dev warning', () => {
-  jest.spyOn(console, 'warn').mockImplementation();
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
-
-  it('should warn when using dont list', () => {
-    const element = mount(<DoDontList listType="dont" />);
-    expect(console.warn).toHaveBeenCalled();
-    expect((console.warn as jest.Mock).mock.calls[0][0]).toBe(
-      NHSUKFrontendV5UpgradeWarnings.DoDontListPrefix,
-    );
-    element.unmount();
-  });
-  it('should not warn when using do list', () => {
-    const element = mount(<DoDontList listType="do" />);
-    expect(console.warn).not.toHaveBeenCalled();
-    element.unmount();
   });
 });
