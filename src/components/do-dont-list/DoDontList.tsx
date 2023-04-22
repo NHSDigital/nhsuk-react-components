@@ -24,24 +24,23 @@ const DoDontList: DoDontList = ({
   heading,
   headingLevel,
   ...rest
-}) => {
-  return (
-    <div className={classNames('nhsuk-do-dont-list', className)} {...rest}>
-      <HeadingLevel className="nhsuk-do-dont-list__label" headingLevel={headingLevel}>
-        {heading || (listType === 'do' ? 'Do' : "Don't")}
-      </HeadingLevel>
-      <ul
-        className={classNames(
-          'nhsuk-list',
-          { 'nhsuk-list--tick': listType === 'do' },
-          { 'nhsuk-list--cross': listType === 'dont' },
-        )}
-      >
-        <DoDontListContext.Provider value={listType}>{children}</DoDontListContext.Provider>
-      </ul>
-    </div>
-  );
-};
+}) => (
+  <div className={classNames('nhsuk-do-dont-list', className)} {...rest}>
+    <HeadingLevel className="nhsuk-do-dont-list__label" headingLevel={headingLevel}>
+      {heading || (listType === 'do' ? 'Do' : "Don't")}
+    </HeadingLevel>
+    <ul
+      className={classNames(
+        'nhsuk-list',
+        { 'nhsuk-list--tick': listType === 'do' },
+        { 'nhsuk-list--cross': listType === 'dont' },
+      )}
+    >
+      <DoDontListContext.Provider value={listType}>{children}</DoDontListContext.Provider>
+    </ul>
+  </div>
+);
+
 
 interface DoDontItemProps extends HTMLProps<HTMLLIElement> {
   listItemType?: ListType;
