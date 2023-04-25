@@ -1,6 +1,7 @@
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
 import { Container } from '../layout';
+
 type FooterListProps = HTMLProps<HTMLOListElement>;
 
 const FooterList: React.FC<FooterListProps> = ({ className, ...rest }) => (
