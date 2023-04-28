@@ -8,13 +8,15 @@ interface InputProps extends HTMLProps<HTMLInputElement>, FormElementProps {
   inputRef?: MutableRefObject<HTMLInputElement | null>;
   width?: InputWidth;
   disableErrorLine?: boolean;
+  suffix?: string;
 }
 
 const Input: React.FC<InputProps> = (props) => (
   <FormGroup<InputProps> {...props} inputType="input">
     {({
-      width, className, error, inputRef, ...rest
+      width, className, error, inputRef, suffix, ...rest
     }) => (
+    <>
       <input
         className={classNames(
           'nhsuk-input',
@@ -25,6 +27,8 @@ const Input: React.FC<InputProps> = (props) => (
         ref={inputRef}
         {...rest}
       />
+      <span className={"nhsuk-u-margin-left-2"}>{suffix}</span>
+    </>
     )}
   </FormGroup>
 );
