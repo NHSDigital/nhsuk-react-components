@@ -27,7 +27,9 @@ const Input: React.FC<InputProps> = (props) => (
         ref={inputRef}
         {...rest}
       />
-      <span className={"nhsuk-u-margin-left-2"}>{suffix}</span>
+      {suffix &&
+        <span className={"nhsuk-u-margin-left-2"}>{suffix}</span>
+      }
     </>
     )}
   </FormGroup>
