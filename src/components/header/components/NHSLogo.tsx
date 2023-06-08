@@ -39,6 +39,8 @@ const NHSLogo: React.FC<NHSLogoNavProps> = ({
           role="img"
           focusable="false"
           viewBox="0 0 40 16"
+          height="40" 
+          width="100"
           aria-labelledby="nhsuk-logo_title"
         >
           <title id="nhsuk-logo_title">{alt}</title>
