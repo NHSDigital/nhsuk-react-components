@@ -3,12 +3,13 @@ import classNames from 'classnames';
 import { Container } from '../layout';
 import useDevWarning from '../../util/hooks/UseDevWarning';
 import { NHSUKFrontendV5UpgradeWarnings } from '../../deprecated/warnings';
+import type { AsElementLink } from '../../util/types/LinkTypes';
 
 interface FooterListProps extends HTMLProps<HTMLOListElement> {
   columns?: boolean;
 }
 
-const FooterList: React.FC<FooterListProps> = ({ className, columns, ...rest }) => {
+const FooterList: React.FC<FooterListProps> = ({ className, columns = false, ...rest }) => {
   useDevWarning(NHSUKFrontendV5UpgradeWarnings.FooterColumns, () => columns);
   return (
     <ul
@@ -22,9 +23,16 @@ const FooterList: React.FC<FooterListProps> = ({ className, columns, ...rest }) 
   );
 };
 
-const FooterListItem: React.FC<HTMLProps<HTMLAnchorElement>> = ({ className, ...rest }) => (
+const FooterListItem: React.FC<AsElementLink<HTMLAnchorElement>> = ({
+  children,
+  className,
+  asElement: Component = 'a',
+  ...rest
+}) => (
   <li className="nhsuk-footer__list-item">
-    <a className={classNames('nhsuk-footer__list-item-link', className)} {...rest} />
+    <Component className={classNames('nhsuk-footer__list-item-link', className)} {...rest}>
+      {children}
+    </Component>
   </li>
 );
 
