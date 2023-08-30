@@ -64,7 +64,7 @@
     "vite": "^4.2.1"
   },
   "peerDependencies": {
-    "nhsuk-frontend": ">=4.0.0",
+    "nhsuk-frontend": ">=4.0.0<5",
     "react": ">=16.8.0",
     "react-dom": ">=16.8.0"
   },
