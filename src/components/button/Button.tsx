@@ -38,10 +38,6 @@ export const Button: React.FC<ButtonProps> = ({
   />
 );
 
-Button.defaultProps = {
-  type: 'submit',
-};
-
 export const ButtonLink: React.FC<ButtonLinkProps> = ({
   className,
   role,
@@ -50,6 +46,7 @@ export const ButtonLink: React.FC<ButtonLinkProps> = ({
   disabled,
   secondary,
   reverse,
+  type = 'submit',
   ...rest
 }) => (
   <a
@@ -60,6 +57,7 @@ export const ButtonLink: React.FC<ButtonLinkProps> = ({
       { 'nhsuk-button--reverse': reverse },
       className,
     )}
+    type={type}
     role={role}
     aria-disabled={disabled ? 'true' : 'false'}
     draggable={draggable}
@@ -69,22 +67,28 @@ export const ButtonLink: React.FC<ButtonLinkProps> = ({
   </a>
 );
 
-ButtonLink.defaultProps = {
-  role: 'button',
-  draggable: false,
-};
-
-const ButtonWrapper: React.FC<ButtonLinkProps | ButtonProps> = ({ href, as, ...rest }) => {
+const ButtonWrapper: React.FC<ButtonLinkProps | ButtonProps> = ({
+  href,
+  as,
+  role = 'button',
+  draggable = false,
+  ...rest
+}) => {
+  const buttonProps = { type: 'submit', ...rest } as ButtonProps;
   if (as === 'a') {
-    return <ButtonLink href={href} {...(rest as ButtonLinkProps)} />;
+    return (
+      <ButtonLink role={role} draggable={draggable} href={href} {...(rest as ButtonLinkProps)} />
+    );
   }
   if (as === 'button') {
-    return <Button {...(rest as ButtonProps)} />;
+    return <Button {...buttonProps} />;
   }
   if (href) {
-    return <ButtonLink href={href} {...(rest as ButtonLinkProps)} />;
+    return (
+      <ButtonLink role={role} draggable={draggable} href={href} {...(rest as ButtonLinkProps)} />
+    );
   }
-  return <Button {...(rest as ButtonProps)} />;
+  return <Button {...buttonProps} />;
 };
 
 export default ButtonWrapper;

@@ -14,8 +14,8 @@ export interface TableCellProps extends HTMLProps<HTMLTableCellElement> {
 
 const TableCell: React.FC<TableCellProps> = ({
   className,
-  _responsive,
-  _responsiveHeading,
+  _responsive = false,
+  _responsiveHeading = '',
   isNumeric,
   children,
   ...rest
@@ -38,11 +38,7 @@ const TableCell: React.FC<TableCellProps> = ({
     case TableSection.NONE:
     default:
       return (
-        <td
-          className={classes}
-          role={_responsive ? 'cell' : undefined}
-          {...rest}
-        >
+        <td className={classes} role={_responsive ? 'cell' : undefined} {...rest}>
           {_responsive && (
             <span className="nhsuk-table-responsive__heading">{_responsiveHeading}</span>
           )}
@@ -53,9 +49,5 @@ const TableCell: React.FC<TableCellProps> = ({
 };
 
 TableCell.displayName = 'Table.Cell';
-TableCell.defaultProps = {
-  _responsive: false,
-  _responsiveHeading: '',
-};
 
 export default TableCell;

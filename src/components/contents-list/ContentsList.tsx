@@ -24,20 +24,19 @@ interface ContentsList extends React.FC<ContentsListProps> {
 }
 
 const ContentsList: ContentsList = ({
-  className, children, visuallyHiddenText, ...rest
+  className,
+  children,
+  visuallyHiddenText = 'Contents',
+  role = 'navigation',
+  ...rest
 }) => (
-  <nav className={classNames('nhsuk-contents-list', className)} {...rest}>
+  <nav className={classNames('nhsuk-contents-list', className)} role={role} {...rest}>
     {visuallyHiddenText !== false ? (
       <h2 className="nhsuk-u-visually-hidden">{visuallyHiddenText}</h2>
     ) : null}
     <ol className="nhsuk-contents-list__list">{children}</ol>
   </nav>
 );
-
-ContentsList.defaultProps = {
-  role: 'navigation',
-  visuallyHiddenText: 'Contents',
-};
 
 ContentsList.Item = ContentsListItem;
 
