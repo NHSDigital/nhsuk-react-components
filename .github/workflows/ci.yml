@@ -1,6 +1,9 @@
 name: CI Build
 
-on: [push, pull_request]
+on: 
+  push:
+    branches: main
+  pull_request: 
 
 jobs:
   build:
@@ -17,4 +20,4 @@ jobs:
       - name: Typescript build
         run: yarn build
       - name: Storybook build
-        run: yarn storybook-to-ghpages --dry-run --ci
+        run: yarn build-storybook

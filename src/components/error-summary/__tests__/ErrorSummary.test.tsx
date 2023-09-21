@@ -1,11 +1,18 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import ErrorSummary from '..';
 
 describe('ErrorSummary', () => {
   it('matches snapshot', () => {
     const element = shallow(<ErrorSummary />);
     expect(element).toMatchSnapshot('ErrorSummary');
+    element.unmount();
+  });
+
+  it('forwards refs', () => {
+    const ref = React.createRef<HTMLDivElement>();
+    const element = mount(<ErrorSummary ref={ref}/>);
+    expect(ref.current).not.toBeNull();
     element.unmount();
   });
 
