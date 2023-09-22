@@ -19,10 +19,7 @@ exports[`DateInput matches snapshot 1`] = `
       >
         <DayInput>
           <IndividualDateInput
-            inputMode="numeric"
             inputType="day"
-            pattern="[0-9]*"
-            type="text"
           >
             <div
               className="nhsuk-date-input__item"
@@ -65,10 +62,7 @@ exports[`DateInput matches snapshot 1`] = `
         </DayInput>
         <MonthInput>
           <IndividualDateInput
-            inputMode="numeric"
             inputType="month"
-            pattern="[0-9]*"
-            type="text"
           >
             <div
               className="nhsuk-date-input__item"
@@ -111,10 +105,7 @@ exports[`DateInput matches snapshot 1`] = `
         </MonthInput>
         <YearInput>
           <IndividualDateInput
-            inputMode="numeric"
             inputType="year"
-            pattern="[0-9]*"
-            type="text"
           >
             <div
               className="nhsuk-date-input__item"

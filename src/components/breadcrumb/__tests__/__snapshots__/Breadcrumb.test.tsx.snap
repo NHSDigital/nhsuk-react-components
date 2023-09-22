@@ -14,9 +14,7 @@ exports[`Breadcrumb base element matches snapshot: BaseBreadcrumbs 1`] = `
 `;
 
 exports[`Breadcrumb renders with children: BreadcrumbWithChildren 1`] = `
-<Breadcrumb
-  aria-label="Breadcrumb"
->
+<Breadcrumb>
   <nav
     aria-label="Breadcrumb"
     className="nhsuk-breadcrumb"

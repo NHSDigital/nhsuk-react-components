@@ -19,7 +19,6 @@ exports[`Radios matches snapshot 1`] = `
       >
         <Radio
           id="example-1"
-          type="radio"
           value="yes"
         >
           <div
@@ -57,7 +56,6 @@ exports[`Radios matches snapshot 1`] = `
         </Radio>
         <Radio
           id="example-2"
-          type="radio"
           value="no"
         >
           <div

@@ -21,10 +21,12 @@ export const Button: React.FC<ButtonProps> = ({
   disabled,
   secondary,
   reverse,
+  type = 'submit',
   ...rest
 }) => (
   // eslint-disable-next-line react/button-has-type
   <button
+    type={type}
     className={classNames(
       'nhsuk-button',
       { 'nhsuk-button--disabled': disabled },
@@ -40,13 +42,12 @@ export const Button: React.FC<ButtonProps> = ({
 
 export const ButtonLink: React.FC<ButtonLinkProps> = ({
   className,
-  role,
-  draggable,
+  role = 'button',
+  draggable = false,
   children,
   disabled,
   secondary,
   reverse,
-  type = 'submit',
   ...rest
 }) => (
   <a
@@ -57,7 +58,6 @@ export const ButtonLink: React.FC<ButtonLinkProps> = ({
       { 'nhsuk-button--reverse': reverse },
       className,
     )}
-    type={type}
     role={role}
     aria-disabled={disabled ? 'true' : 'false'}
     draggable={draggable}
@@ -67,26 +67,16 @@ export const ButtonLink: React.FC<ButtonLinkProps> = ({
   </a>
 );
 
-const ButtonWrapper: React.FC<ButtonLinkProps | ButtonProps> = ({
-  href,
-  as,
-  role = 'button',
-  draggable = false,
-  ...rest
-}) => {
+const ButtonWrapper: React.FC<ButtonLinkProps | ButtonProps> = ({ href, as, ...rest }) => {
   const buttonProps = { type: 'submit', ...rest } as ButtonProps;
   if (as === 'a') {
-    return (
-      <ButtonLink role={role} draggable={draggable} href={href} {...(rest as ButtonLinkProps)} />
-    );
+    return <ButtonLink href={href} {...(rest as ButtonLinkProps)} />;
   }
   if (as === 'button') {
     return <Button {...buttonProps} />;
   }
   if (href) {
-    return (
-      <ButtonLink role={role} draggable={draggable} href={href} {...(rest as ButtonLinkProps)} />
-    );
+    return <ButtonLink href={href} {...(rest as ButtonLinkProps)} />;
   }
   return <Button {...buttonProps} />;
 };

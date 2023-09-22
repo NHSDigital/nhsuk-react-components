@@ -34,7 +34,7 @@ const Card: ICard = ({ className, clickable, children, feature = false, ...rest 
     )}
     {...rest}
   >
-    <CardContext.Provider value={{ feature: Boolean(feature) }}>{children}</CardContext.Provider>
+    <CardContext.Provider value={{ feature: feature }}>{children}</CardContext.Provider>
   </div>
 );
 

@@ -12,8 +12,6 @@ const PaginationLink: React.FC<PaginationLinkProps> = ({
   children,
   previous,
   next,
-  role = 'navigation',
-  'aria-label': ariaLabel = 'Pagination',
   ...rest
 }) => (
   <li
@@ -23,14 +21,12 @@ const PaginationLink: React.FC<PaginationLinkProps> = ({
     )}
   >
     <a
-      role={role}
       className={classNames(
         'nhsuk-pagination__link',
         { 'nhsuk-pagination__link--prev': previous },
         { 'nhsuk-pagination__link--next': next },
         className,
       )}
-      aria-label={ariaLabel}
       {...rest}
     >
       <span className="nhsuk-pagination__title">
@@ -49,8 +45,19 @@ interface Pagination extends React.FC<HTMLProps<HTMLDivElement>> {
   Link: React.FC<PaginationLinkProps>;
 }
 
-const Pagination: Pagination = ({ className, children, ...rest }) => (
-  <nav className={classNames('nhsuk-pagination', className)} {...rest}>
+const Pagination: Pagination = ({
+  className,
+  children,
+  role = 'navigation',
+  'aria-label': ariaLabel = 'Pagination',
+  ...rest
+}) => (
+  <nav
+    className={classNames('nhsuk-pagination', className)}
+    role={role}
+    aria-label={ariaLabel}
+    {...rest}
+  >
     <ul className="nhsuk-list nhsuk-pagination__list">{children}</ul>
   </nav>
 );
