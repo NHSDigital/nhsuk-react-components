@@ -18,9 +18,7 @@ exports[`Card Card.Group matches snapshot 1`] = `
           <div
             className="nhsuk-grid-column-one-half nhsuk-card-group__item"
           >
-            <Card
-              feature={false}
-            >
+            <Card>
               <div
                 className="nhsuk-card"
               >
@@ -28,9 +26,7 @@ exports[`Card Card.Group matches snapshot 1`] = `
                   <div
                     className="nhsuk-card__content"
                   >
-                    <CardHeading
-                      headingLevel="h2"
-                    >
+                    <CardHeading>
                       <HeadingLevel
                         className="nhsuk-card__heading"
                         headingLevel="h2"
@@ -66,9 +62,7 @@ exports[`Card Card.Group matches snapshot 1`] = `
           <div
             className="nhsuk-grid-column-one-half nhsuk-card-group__item"
           >
-            <Card
-              feature={false}
-            >
+            <Card>
               <div
                 className="nhsuk-card"
               >
@@ -76,9 +70,7 @@ exports[`Card Card.Group matches snapshot 1`] = `
                   <div
                     className="nhsuk-card__content"
                   >
-                    <CardHeading
-                      headingLevel="h2"
-                    >
+                    <CardHeading>
                       <HeadingLevel
                         className="nhsuk-card__heading"
                         headingLevel="h2"
@@ -110,9 +102,7 @@ exports[`Card Card.Group matches snapshot 1`] = `
 `;
 
 exports[`Card matches snapshot 1`] = `
-<Card
-  feature={false}
->
+<Card>
   <div
     className="nhsuk-card"
   >
@@ -130,9 +120,7 @@ exports[`Card matches snapshot 1`] = `
       <div
         className="nhsuk-card__content"
       >
-        <CardHeading
-          headingLevel="h2"
-        >
+        <CardHeading>
           <HeadingLevel
             className="nhsuk-card__heading"
             headingLevel="h2"

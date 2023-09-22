@@ -9,9 +9,9 @@ interface BaseIconSVGProps extends HTMLProps<SVGSVGElement> {
 export const BaseIconSVG: React.FC<BaseIconSVGProps> = ({
   className,
   children,
-  height,
-  width,
   iconType,
+  height = 32,
+  width = 32,
   ...rest
 }) => (
   <svg
@@ -26,11 +26,6 @@ export const BaseIconSVG: React.FC<BaseIconSVGProps> = ({
     {children}
   </svg>
 );
-
-BaseIconSVG.defaultProps = {
-  height: 32,
-  width: 32,
-};
 
 export const ArrowLeft: React.FC<BaseIconSVGProps> = (props) => (
   <BaseIconSVG iconType="nhsuk-icon__arrow-left" {...props}>

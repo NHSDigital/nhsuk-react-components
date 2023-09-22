@@ -8,7 +8,15 @@ export interface SearchProps extends HTMLProps<HTMLInputElement> {
 }
 
 const Search: React.FC<SearchProps> = ({
-  action, method, id, visuallyHiddenText, ...rest
+  action,
+  method = 'get',
+  id = 'search-field',
+  visuallyHiddenText = 'Search the NHS website',
+  role = 'search',
+  type = 'search',
+  autoComplete = 'off',
+  placeholder = 'Search',
+  ...rest
 }) => {
   const { setSearch, toggleSearch, searchOpen } = useContext<IHeaderContext>(HeaderContext);
   useEffect(() => {
@@ -31,7 +39,15 @@ const Search: React.FC<SearchProps> = ({
           <label className="nhsuk-u-visually-hidden" htmlFor={id}>
             {visuallyHiddenText}
           </label>
-          <input className="nhsuk-search__input" id={id} {...rest} />
+          <input
+            className="nhsuk-search__input"
+            id={id}
+            role={role}
+            type={type}
+            autoComplete={autoComplete}
+            placeholder={placeholder}
+            {...rest}
+          />
           <button className="nhsuk-search__submit" type="submit">
             <SearchIcon />
             <span className="nhsuk-u-visually-hidden">Search</span>
@@ -44,16 +60,6 @@ const Search: React.FC<SearchProps> = ({
       </div>
     </div>
   );
-};
-
-Search.defaultProps = {
-  method: 'get',
-  role: 'search',
-  id: 'search-field',
-  visuallyHiddenText: 'Search the NHS website',
-  type: 'search',
-  autoComplete: 'off',
-  placeholder: 'Search',
 };
 
 export default Search;

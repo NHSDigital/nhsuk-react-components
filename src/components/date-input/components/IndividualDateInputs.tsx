@@ -28,6 +28,9 @@ const IndividualDateInput: React.FC<IndividualDateInputProps> = ({
   error,
   value,
   defaultValue,
+  pattern = '[0-9]*',
+  inputMode = 'numeric',
+  type = 'text',
   ...rest
 }) => {
   const {
@@ -45,7 +48,8 @@ const IndividualDateInput: React.FC<IndividualDateInputProps> = ({
   const inputID = id || `${ctxId}-${inputType}`;
   const inputName = name || `${ctxName}-${inputType}`;
   const inputValue = value !== undefined ? value : ctxValue?.[inputType];
-  const inputDefaultValue = defaultValue !== undefined ? defaultValue : ctxDefaultValue?.[inputType];
+  const inputDefaultValue =
+    defaultValue !== undefined ? defaultValue : ctxDefaultValue?.[inputType];
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.persist();
@@ -86,17 +90,14 @@ const IndividualDateInput: React.FC<IndividualDateInputProps> = ({
           name={inputName}
           onChange={handleChange}
           ref={refCallback}
+          pattern={pattern}
+          inputMode={inputMode}
+          type={type}
           {...rest}
         />
       </div>
     </div>
   );
-};
-
-IndividualDateInput.defaultProps = {
-  pattern: '[0-9]*',
-  inputMode: 'numeric',
-  type: 'text',
 };
 
 export const DayInput: React.FC<Omit<IndividualDateInputProps, 'inputType'>> = (props) => (

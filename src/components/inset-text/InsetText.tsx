@@ -8,7 +8,7 @@ interface InsetTextProps extends HTMLProps<HTMLDivElement> {
 const InsetText: React.FC<InsetTextProps> = ({
   className,
   children,
-  visuallyHiddenText,
+  visuallyHiddenText = 'Information: ',
   ...rest
 }) => (
   <div className={classNames('nhsuk-inset-text', className)} {...rest}>
@@ -18,9 +18,5 @@ const InsetText: React.FC<InsetTextProps> = ({
     {children}
   </div>
 );
-
-InsetText.defaultProps = {
-  visuallyHiddenText: 'Information: ',
-};
 
 export default InsetText;

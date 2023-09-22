@@ -14,7 +14,7 @@ const Legend: React.FC<LegendProps> = ({
   className,
   children,
   isPageHeading,
-  headingLevel,
+  headingLevel = 'h1',
   size,
   ...rest
 }) => (
@@ -38,10 +38,6 @@ const Legend: React.FC<LegendProps> = ({
     )}
   </legend>
 );
-
-Legend.defaultProps = {
-  headingLevel: 'h1',
-};
 
 interface FieldsetProps extends HTMLProps<HTMLFieldSetElement> {
   disableErrorLine?: boolean;

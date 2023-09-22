@@ -21,10 +21,12 @@ export const Button: React.FC<ButtonProps> = ({
   disabled,
   secondary,
   reverse,
+  type = 'submit',
   ...rest
 }) => (
   // eslint-disable-next-line react/button-has-type
   <button
+    type={type}
     className={classNames(
       'nhsuk-button',
       { 'nhsuk-button--disabled': disabled },
@@ -38,14 +40,10 @@ export const Button: React.FC<ButtonProps> = ({
   />
 );
 
-Button.defaultProps = {
-  type: 'submit',
-};
-
 export const ButtonLink: React.FC<ButtonLinkProps> = ({
   className,
-  role,
-  draggable,
+  role = 'button',
+  draggable = false,
   children,
   disabled,
   secondary,
@@ -69,22 +67,18 @@ export const ButtonLink: React.FC<ButtonLinkProps> = ({
   </a>
 );
 
-ButtonLink.defaultProps = {
-  role: 'button',
-  draggable: false,
-};
-
 const ButtonWrapper: React.FC<ButtonLinkProps | ButtonProps> = ({ href, as, ...rest }) => {
+  const buttonProps = { type: 'submit', ...rest } as ButtonProps;
   if (as === 'a') {
     return <ButtonLink href={href} {...(rest as ButtonLinkProps)} />;
   }
   if (as === 'button') {
-    return <Button {...(rest as ButtonProps)} />;
+    return <Button {...buttonProps} />;
   }
   if (href) {
     return <ButtonLink href={href} {...(rest as ButtonLinkProps)} />;
   }
-  return <Button {...(rest as ButtonProps)} />;
+  return <Button {...buttonProps} />;
 };
 
 export default ButtonWrapper;

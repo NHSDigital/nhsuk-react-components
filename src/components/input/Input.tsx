@@ -12,10 +12,9 @@ interface InputProps extends HTMLProps<HTMLInputElement>, FormElementProps {
 
 const Input: React.FC<InputProps> = (props) => (
   <FormGroup<InputProps> {...props} inputType="input">
-    {({
-      width, className, error, inputRef, ...rest
-    }) => (
+    {({ width, className, error, inputRef, type = 'text', ...rest }) => (
       <input
+        type={type}
         className={classNames(
           'nhsuk-input',
           { [`nhsuk-input--width-${width}`]: width },
@@ -28,9 +27,5 @@ const Input: React.FC<InputProps> = (props) => (
     )}
   </FormGroup>
 );
-
-Input.defaultProps = {
-  type: 'text',
-};
 
 export default Input;

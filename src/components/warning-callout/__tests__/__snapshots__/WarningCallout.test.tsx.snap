@@ -5,9 +5,7 @@ exports[`WarningCallout matches snapshot 1`] = `
   <div
     className="nhsuk-warning-callout"
   >
-    <WarningCalloutLabel
-      visuallyHiddenText="Important: "
-    >
+    <WarningCalloutLabel>
       <HeadingLevel
         className="nhsuk-warning-callout__label"
       >

@@ -34,6 +34,7 @@ const Box: React.FC<BoxProps> = ({
   inputRef,
   forceShowConditional,
   conditionalWrapperProps,
+  type = 'checkbox',
   ...rest
 }) => {
   const { getBoxId, name, setConditional, unleaseReference, leaseReference } =
@@ -75,6 +76,7 @@ const Box: React.FC<BoxProps> = ({
           checked={checked}
           defaultChecked={defaultChecked}
           ref={inputRef}
+          type={type}
           {...rest}
         />
         {children ? (
@@ -104,10 +106,6 @@ const Box: React.FC<BoxProps> = ({
       ) : null}
     </>
   );
-};
-
-Box.defaultProps = {
-  type: 'checkbox',
 };
 
 export default Box;

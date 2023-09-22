@@ -9,7 +9,7 @@ interface WarningCalloutLabelProps extends HTMLProps<HTMLHeadingElement> {
 
 const WarningCalloutLabel: React.FC<WarningCalloutLabelProps> = ({
   className,
-  visuallyHiddenText,
+  visuallyHiddenText = 'Important: ',
   children,
   ...rest
 }) => (
@@ -21,10 +21,6 @@ const WarningCalloutLabel: React.FC<WarningCalloutLabelProps> = ({
     </span>
   </HeadingLevel>
 );
-
-WarningCalloutLabel.defaultProps = {
-  visuallyHiddenText: 'Important: ',
-};
 
 interface IWarningCallout extends React.FC<HTMLProps<HTMLDivElement>> {
   Label: typeof WarningCalloutLabel;
