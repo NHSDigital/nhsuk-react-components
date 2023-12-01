@@ -38,10 +38,11 @@ export default meta;
 type Story = StoryObj<typeof Checkboxes>;
 
 export const Standard: Story = {
-  render: () => (
+  render: (args) => (
     <Fieldset aria-describedby="nationality--hint">
       <Fieldset.Legend>What is your nationality?</Fieldset.Legend>
       <Checkboxes
+        idPrefix={args.idPrefix}
         name="nationality"
         id="nationality"
         hint="If you have more than 1 nationality, select all options that are relevant to you."
@@ -55,7 +56,7 @@ export const Standard: Story = {
 };
 
 export const WithHintText: Story = {
-  render: () => (
+  render: (args) => (
     <Fieldset>
       <Fieldset.Legend isPageHeading>How do you want to sign in?</Fieldset.Legend>
       <Checkboxes>
@@ -82,7 +83,7 @@ export const WithHintText: Story = {
 };
 
 export const WithDisabledItem: Story = {
-  render: () => (
+  render: (args) => (
     <Checkboxes id="colours" name="colours">
       <Checkboxes.Box value="red">Red</Checkboxes.Box>
       <Checkboxes.Box value="green">Green</Checkboxes.Box>
@@ -94,7 +95,7 @@ export const WithDisabledItem: Story = {
 };
 
 export const WithConditionalContent: Story = {
-  render: () => (
+  render: (args) => (
     <Fieldset aria-describedby="waste--hint">
       <Fieldset.Legend isPageHeading>
         Which types of waste do you transport regularly?
@@ -109,7 +110,7 @@ export const WithConditionalContent: Story = {
 };
 
 export const WithLegendAsPageHeading: Story = {
-  render: () => (
+  render: (args) => (
     <Fieldset aria-describedby="waste--hint">
       <Fieldset.Legend isPageHeading>
         Which types of waste do you transport regularly?
@@ -124,7 +125,7 @@ export const WithLegendAsPageHeading: Story = {
 };
 
 export const WithErrorBoolean: Story = {
-  render: function WithErrorBooleanRender() {
+  render: (args) => {
     const [errorToggle, setErrorToggle] = React.useState(true);
     return (
       <>
@@ -154,7 +155,7 @@ export const WithErrorBoolean: Story = {
 };
 
 export const WithErrorString: Story = {
-  render: function WithErrorStringRender() {
+  render: (args) => {
     const [error, setError] = React.useState('Please select an option');
     return (
       <>
@@ -176,6 +177,5 @@ export const WithErrorString: Story = {
       </>
     );
   },
-
   name: 'With Error (String)',
 };

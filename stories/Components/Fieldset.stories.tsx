@@ -40,7 +40,7 @@ type Story = StoryObj<typeof Fieldset>;
 export const Standard: Story = {};
 
 export const AsAPageHeading: Story = {
-  render: () => (
+  render: (args) => (
     <Fieldset>
       <Fieldset.Legend isPageHeading>What is your address?</Fieldset.Legend>
     </Fieldset>
@@ -48,7 +48,7 @@ export const AsAPageHeading: Story = {
 };
 
 export const WithCustomLegendSize: Story = {
-  render: () => (
+  render: (args) => (
     <Fieldset>
       <Fieldset.Legend size="m">What is your address?</Fieldset.Legend>
     </Fieldset>

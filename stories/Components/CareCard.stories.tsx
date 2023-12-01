@@ -48,10 +48,12 @@ const meta: Meta<typeof CareCard> = {
   component: CareCard,
 };
 export default meta;
+
 type Story = StoryObj<typeof CareCard>;
 export const NonUrgent: Story = {
-  render: (): JSX.Element => (
-    <CareCard type="non-urgent">
+  args: { type: 'non-urgent' },
+  render: (args): JSX.Element => (
+    <CareCard type={args.type}>
       <CareCard.Heading>Speak to a GP if:</CareCard.Heading>
       <CareCard.Content>
         <ul>
@@ -69,8 +71,9 @@ export const NonUrgent: Story = {
 };
 
 export const Urgent: Story = {
-  render: () => (
-    <CareCard type="urgent">
+  args: { type: 'urgent' },
+  render: (args) => (
+    <CareCard type={args.type}>
       <CareCard.Heading>Ask for an urgent GP appointment if:</CareCard.Heading>
       <CareCard.Content>
         <ul>
@@ -94,8 +97,9 @@ export const Urgent: Story = {
 };
 
 export const Immediate: Story = {
-  render: () => (
-    <CareCard type="immediate">
+  args: { type: 'immediate' },
+  render: (args) => (
+    <CareCard type={args.type}>
       <CareCard.Heading>Call 999 if you have sudden chest pain that:</CareCard.Heading>
       <CareCard.Content>
         <ul>
@@ -113,8 +117,11 @@ export const Immediate: Story = {
 };
 
 export const WithoutVisuallyHiddenText: Story = {
-  render: () => (
-    <CareCard type="non-urgent">
+  args: {
+    type: 'non-urgent',
+  },
+  render: (args) => (
+    <CareCard type={args.type}>
       <CareCard.Heading visuallyHiddenText={false}>Speak to a GP if:</CareCard.Heading>
       <CareCard.Content>
         <ul>
@@ -135,8 +142,11 @@ export const WithoutVisuallyHiddenText: Story = {
 };
 
 export const WithCustomVisuallyHiddenText: Story = {
-  render: () => (
-    <CareCard type="non-urgent">
+  args: {
+    type: 'non-urgent',
+  },
+  render: (args) => (
+    <CareCard type={args.type}>
       <CareCard.Heading visuallyHiddenText="Custom Hidden Text">Speak to a GP if:</CareCard.Heading>
       <CareCard.Content>
         <ul>

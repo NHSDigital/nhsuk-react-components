@@ -12,7 +12,7 @@ export default meta;
 type Story = StoryObj<typeof Card>;
 
 export const Standard: Story = {
-  render: () => (
+  render: (args) => (
     <Card>
       <Card.Content>
         <Card.Heading>If you need help now but it&apos;s not an emergency</Card.Heading>

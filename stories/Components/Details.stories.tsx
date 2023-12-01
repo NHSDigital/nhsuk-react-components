@@ -125,7 +125,7 @@ export const Expander: Story = {
 };
 
 export const ExpanderGroup: Story = {
-  render: () => (
+  render: (args) => (
     <Details.ExpanderGroup>
       <Details expander>
         <Details.Summary>How to measure your blood glucose levels</Details.Summary>

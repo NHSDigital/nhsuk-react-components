@@ -41,7 +41,7 @@ export default meta;
 type Story = StoryObj<typeof DoDontList>;
 
 export const Do: Story = {
-  render: () => (
+  render: (args) => (
     <DoDontList listType="do">
       <DoDontList.Item>
         cover blisters that are likely to burst with a soft plaster or dressing
@@ -55,7 +55,7 @@ export const Do: Story = {
 };
 
 export const Dont: Story = {
-  render: () => (
+  render: (args) => (
     <DoDontList listType="dont">
       <DoDontList.Item>do not burst a blister yourself</DoDontList.Item>
       <DoDontList.Item>do not peel the skin off a burst blister</DoDontList.Item>

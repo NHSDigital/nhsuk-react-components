@@ -49,7 +49,7 @@ export default meta;
 type Story = StoryObj<typeof ErrorSummary>;
 
 export const Standard: Story = {
-  render: () => (
+  render: (args) => (
     <ErrorSummary aria-labelledby="error-summary-title" role="alert" tabIndex={-1}>
       <ErrorSummary.Title id="error-summary-title">There is a problem</ErrorSummary.Title>
       <ErrorSummary.Body>

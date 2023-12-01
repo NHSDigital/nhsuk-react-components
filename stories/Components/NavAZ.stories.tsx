@@ -16,7 +16,7 @@ export default meta;
 type Story = StoryObj<typeof NavAZ>;
 
 export const Basic: Story = {
-  render: () => (
+  render: (args) => (
     <NavAZ>
       <NavAZ.LinkItem href="#A">A</NavAZ.LinkItem>
       <NavAZ.LinkItem href="#B">B</NavAZ.LinkItem>

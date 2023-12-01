@@ -10,7 +10,7 @@ export default meta;
 type Story = StoryObj<typeof Table>;
 
 export const StandardTable: Story = {
-  render: () => (
+  render: (args) => (
     <Table caption="Skin symptoms and possible causes">
       <Table.Head>
         <Table.Row>
@@ -37,7 +37,7 @@ export const StandardTable: Story = {
 };
 
 export const TablePanel: Story = {
-  render: () => (
+  render: (args) => (
     <Table.Panel heading="Conditions similar to impetigo">
       <Table caption="Other possible causes of your symptoms">
         <Table.Head>
@@ -98,7 +98,7 @@ export const ResponsiveTable: Story = {
 };
 
 export const NumericCells: Story = {
-  render: () => (
+  render: (args) => (
     <Row>
       <Col width="one-half">
         <Hint>Right-aligned cells are used for numeric values</Hint>

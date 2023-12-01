@@ -13,7 +13,7 @@ export const Standard: Story = {
   argTypes: {
     type: { table: { disable: true } },
   },
-  render: () => (
+  render: (args) => (
     <ListPanel>
       <ListPanel.Panel label="A" labelProps={{ id: 'A' }} backToTop backToTopLink="#">
         <ListPanel.LinkItem href="/conditions/abdominal-aortic-aneurysm/">AAA</ListPanel.LinkItem>

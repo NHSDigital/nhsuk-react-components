@@ -10,7 +10,7 @@ export default meta;
 type Story = StoryObj<typeof Footer>;
 
 export const Standard: Story = {
-  render: () => (
+  render: (args) => (
     <>
       <div id="restOfThePage" style={{ height: '60vh' }} />
       <Footer>
@@ -28,7 +28,7 @@ export const Standard: Story = {
 };
 
 export const WithThreeColumns: Story = {
-  render: () => (
+  render: (args) => (
     <>
       <div id="restOfThePage" style={{ height: '60vh' }} />
       <Footer>

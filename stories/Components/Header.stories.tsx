@@ -11,7 +11,7 @@ export default meta;
 type Story = StoryObj<typeof Header>;
 
 export const BasicHeader: Story = {
-  render: () => (
+  render: (args) => (
     <Header>
       <Header.Container>
         <Header.Logo href="/" />
@@ -35,7 +35,7 @@ export const BasicHeader: Story = {
 };
 
 export const HeaderWithNavigation: Story = {
-  render: () => (
+  render: (args) => (
     <Header>
       <Header.Container>
         <Header.Logo href="/" />
@@ -58,7 +58,7 @@ export const HeaderWithNavigation: Story = {
 };
 
 export const HeaderWithSearch: Story = {
-  render: () => (
+  render: (args) => (
     <Header>
       <Header.Container>
         <Header.Logo href="/" />
@@ -71,7 +71,7 @@ export const HeaderWithSearch: Story = {
 };
 
 export const HeaderWithLogo: Story = {
-  render: () => (
+  render: (args) => (
     <Header>
       <Header.Container>
         <Header.Logo href="/" />
@@ -81,7 +81,7 @@ export const HeaderWithLogo: Story = {
 };
 
 export const TransactionalHeader: Story = {
-  render: () => (
+  render: (args) => (
     <Header transactional>
       <Header.Container>
         <Header.Logo href="/" />
@@ -91,7 +91,7 @@ export const TransactionalHeader: Story = {
 };
 
 export const TransactionalHeaderWithServiceName: Story = {
-  render: () => (
+  render: (args) => (
     <Header transactional>
       <Header.Container>
         <Header.Logo href="/" />
@@ -102,7 +102,7 @@ export const TransactionalHeaderWithServiceName: Story = {
 };
 
 export const TransactionalHeaderWithALongServiceName: Story = {
-  render: () => (
+  render: (args) => (
     <Header transactional>
       <Header.Container>
         <Header.Logo href="/" />
@@ -115,7 +115,7 @@ export const TransactionalHeaderWithALongServiceName: Story = {
 };
 
 export const OrganisationalHeader: Story = {
-  render: () => (
+  render: (args) => (
     <Header orgName="Anytown Anyplace" orgSplit="Anywhere" orgDescriptor="NHS Foundation Trust">
       <Header.Container>
         <Header.Logo href="/" />
@@ -139,7 +139,7 @@ export const OrganisationalHeader: Story = {
 };
 
 export const OrganisationalHeaderWithWhiteHeader: Story = {
-  render: () => (
+  render: (args) => (
     <Header
       orgName="Anytown Anyplace"
       orgSplit="Anywhere"
@@ -168,7 +168,7 @@ export const OrganisationalHeaderWithWhiteHeader: Story = {
 };
 
 export const HeaderWithCustomNavItemComponent: Story = {
-  render: () => {
+  render: (args) => {
     const customElement = (props: AsElementLink<HTMLDivElement>) => <div {...props} />;
 
     return (
@@ -198,7 +198,7 @@ export const HeaderWithCustomNavItemComponent: Story = {
 };
 
 export const HeaderWithCustomNavMenuCloseAndNavItemListComponent: Story = {
-  render: () => (
+  render: (args) => (
     <Header
       orgName="Anytown Anyplace"
       orgSplit="Anywhere"
