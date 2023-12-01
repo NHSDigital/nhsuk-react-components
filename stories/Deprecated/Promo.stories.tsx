@@ -9,6 +9,9 @@ const meta: Meta<typeof Promo> = {
 export default meta;
 type Story = StoryObj<typeof Promo>;
 
+Promo.Heading.displayName = 'Promo.Heading';
+Promo.Description.displayName = 'Promo.Description';
+
 export const Standard: Story = {
   render: (args) => (
     <Promo href="#">

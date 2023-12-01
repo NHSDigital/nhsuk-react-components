@@ -9,6 +9,8 @@ const meta: Meta<typeof Pagination> = {
 export default meta;
 type Story = StoryObj<typeof Pagination>;
 
+Pagination.Link.displayName = 'Pagination.Link';
+
 export const Standard: Story = {
   render: (args) => (
     <Pagination>

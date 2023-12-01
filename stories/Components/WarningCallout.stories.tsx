@@ -9,6 +9,8 @@ const meta: Meta<typeof WarningCallout> = {
 export default meta;
 type Story = StoryObj<typeof WarningCallout>;
 
+WarningCallout.Label.displayName = 'WarningCallout.Label';
+
 export const StandardWarningCallout: Story = {
   render: (args) => (
     <WarningCallout>

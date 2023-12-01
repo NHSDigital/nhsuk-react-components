@@ -37,6 +37,8 @@ const meta: Meta<typeof Checkboxes> = {
 export default meta;
 type Story = StoryObj<typeof Checkboxes>;
 
+Checkboxes.Box.displayName = 'Checkboxes.Box';
+
 export const Standard: Story = {
   render: (args) => (
     <Fieldset aria-describedby="nationality--hint">

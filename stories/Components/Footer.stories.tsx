@@ -9,6 +9,10 @@ const meta: Meta<typeof Footer> = {
 export default meta;
 type Story = StoryObj<typeof Footer>;
 
+Footer.List.displayName = 'Footer.List';
+Footer.ListItem.displayName = 'Footer.ListItem';
+Footer.Copyright.displayName = 'Footer.Copyright';
+
 export const Standard: Story = {
   render: (args) => (
     <>

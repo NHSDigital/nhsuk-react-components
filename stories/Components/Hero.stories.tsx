@@ -9,6 +9,9 @@ const meta: Meta<typeof Hero> = {
 export default meta;
 type Story = StoryObj<typeof Hero>;
 
+Hero.Heading.displayName = 'Hero.Heading';
+Hero.Text.displayName = 'Hero.Text';
+
 export const HeroWithHeadingAndContent: Story = {
   render: (args) => (
     <Hero>

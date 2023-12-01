@@ -9,6 +9,9 @@ const meta: Meta<typeof ListPanel> = {
 export default meta;
 type Story = StoryObj<typeof ListPanel>;
 
+ListPanel.Panel.displayName = 'ListPanel.Panel';
+ListPanel.LinkItem.displayName = 'ListPanel.LinkItem';
+
 export const Standard: Story = {
   argTypes: {
     type: { table: { disable: true } },

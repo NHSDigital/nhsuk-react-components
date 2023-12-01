@@ -48,6 +48,11 @@ const meta: Meta<typeof ErrorSummary> = {
 export default meta;
 type Story = StoryObj<typeof ErrorSummary>;
 
+ErrorSummary.Title.displayName = 'ErrorSummary.Title';
+ErrorSummary.Body.displayName = 'ErrorSummary.Body';
+ErrorSummary.List.displayName = 'ErrorSummary.List';
+ErrorSummary.Item.displayName = 'ErrorSummary.Item';
+
 export const Standard: Story = {
   render: (args) => (
     <ErrorSummary aria-labelledby="error-summary-title" role="alert" tabIndex={-1}>

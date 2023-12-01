@@ -40,6 +40,8 @@ const meta: Meta<typeof DoDontList> = {
 export default meta;
 type Story = StoryObj<typeof DoDontList>;
 
+DoDontList.Item.displayName = 'DoDontList.Item';
+
 export const Do: Story = {
   render: (args) => (
     <DoDontList listType="do">

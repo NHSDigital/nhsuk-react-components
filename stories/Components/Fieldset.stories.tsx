@@ -37,6 +37,8 @@ const meta: Meta<typeof Fieldset> = {
 export default meta;
 type Story = StoryObj<typeof Fieldset>;
 
+Fieldset.Legend.displayName = 'Fieldset.Legend';
+
 export const Standard: Story = {};
 
 export const AsAPageHeading: Story = {

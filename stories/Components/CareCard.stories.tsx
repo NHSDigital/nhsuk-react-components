@@ -49,6 +49,9 @@ const meta: Meta<typeof CareCard> = {
 };
 export default meta;
 
+CareCard.Heading.displayName = 'CareCard.Heading';
+CareCard.Content.displayName = 'CareCard.Content';
+
 type Story = StoryObj<typeof CareCard>;
 export const NonUrgent: Story = {
   args: { type: 'non-urgent' },

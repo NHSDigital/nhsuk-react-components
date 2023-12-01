@@ -10,6 +10,19 @@ const meta: Meta<typeof Header> = {
 export default meta;
 type Story = StoryObj<typeof Header>;
 
+Header.Logo.displayName = 'Header.Logo';
+Header.Container.displayName = 'Header.Container';
+Header.Content.displayName = 'Header.Content';
+Header.MenuToggle.displayName = 'Header.MenuToggle';
+Header.Search.displayName = 'Header.Search';
+Header.Nav.displayName = 'Header.Nav';
+Header.NavItem.displayName = 'Header.NavItem';
+Header.ServiceName.displayName = 'Header.ServiceName';
+Header.NavContainer.displayName = 'Header.NavContainer';
+Header.NavTitle.displayName = 'Header.NavTitle';
+Header.NavMenuClose.displayName = 'Header.NavMenuClose';
+Header.NavItemList.displayName = 'Header.NavItemList';
+
 export const BasicHeader: Story = {
   render: (args) => (
     <Header>

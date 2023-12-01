@@ -9,6 +9,8 @@ const meta: Meta<typeof Select> = {
 export default meta;
 type Story = StoryObj<typeof Select>;
 
+Select.Option.displayName = 'Select.Option';
+
 export const Standard: Story = {
   render: (args) => (
     <Select id="select-1" label="Label text goes here">
