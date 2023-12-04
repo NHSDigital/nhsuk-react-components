@@ -24,4 +24,18 @@ import { ReviewDate } from "nhsuk-react-components";
 import ReviewDate  from "nhsuk-react-components/lib/patterns/review-date";
 ```
 
+## NHS Logo PNG Fallback Removed
 
+The .png fallback for the NHS Logo in the header has been removed. This was to support older versions of Internet Explorer, and is no longer required.
+
+## The "Three Columns" option for the Footer component has been removed
+
+This has been removed due to causing accessibility issues in Safari (see the [upstream issue](https://github.com/nhsuk/nhsuk-frontend/issues/575)).
+
+## The `long` variant of the Transactional Service Name component has been removed
+
+In NHS.UK Frontend v5 and above, the header text now defaults to wrapping underneath the logo without the need for a modifier. It is safe to remove the `long` prop from the `<Header.ServiceName>` component.
+
+## The `prefixText` prop has been added to the `DoDontList.Item` component
+
+You can now add prefixed text to each `DoDontList.Item` component by supplying the `prefixText` prop.
