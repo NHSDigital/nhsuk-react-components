@@ -38,4 +38,4 @@ In NHS.UK Frontend v5 and above, the header text now defaults to wrapping undern
 
 ## The `prefixText` prop has been added to the `DoDontList.Item` component
 
-You can now add prefixed text to each `DoDontList.Item` component by supplying the `prefixText` prop.
+You can now add prefixed text to each `DoDontList.Item` component by supplying the `prefixText` prop. Items with a `type` of `dont` will automatically have a 'do not' prefix text added in the next major release to align with the NHS.UK frontend library v5.

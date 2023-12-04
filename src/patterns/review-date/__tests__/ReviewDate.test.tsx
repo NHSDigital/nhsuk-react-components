@@ -20,13 +20,3 @@ describe('ReviewDate', () => {
     element.unmount();
   });
 });
-
-describe('dev warnings', () => {
-  jest.spyOn(console, 'warn');
-  it('warns when ReviewDate is used', () => {
-    const spy = jest.spyOn(console, 'warn');
-    const component = mount(<ReviewDate />);
-    expect(spy).toHaveBeenCalled();
-    component.unmount();
-  });
-});

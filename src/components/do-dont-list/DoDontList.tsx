@@ -2,8 +2,6 @@ import React, { HTMLProps, createContext, useContext, ReactNode } from 'react';
 import classNames from 'classnames';
 import { Tick, Cross } from '../icons';
 import HeadingLevel, { HeadingLevelType } from '../../util/HeadingLevel';
-import useDevWarning from '../../util/hooks/UseDevWarning';
-import { NHSUKFrontendV5UpgradeWarnings } from '../../deprecated/warnings';
 
 type ListType = 'do' | 'dont';
 
@@ -27,7 +25,6 @@ const DoDontList: DoDontList = ({
   headingLevel,
   ...rest
 }) => {
-  useDevWarning(NHSUKFrontendV5UpgradeWarnings.DoDontListPrefix, () => listType === 'dont');
   return (
     <div className={classNames('nhsuk-do-dont-list', className)} {...rest}>
       <HeadingLevel className="nhsuk-do-dont-list__label" headingLevel={headingLevel}>

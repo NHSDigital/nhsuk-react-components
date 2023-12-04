@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Footer from '..';
-import { NHSUKFrontendV5UpgradeWarnings } from '../../../deprecated/warnings';
 
 jest.spyOn(console, 'warn').mockImplementation();
 
