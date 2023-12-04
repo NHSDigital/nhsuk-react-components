@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { Card } from '../../src';
-import { Meta, StoryObj, ArgTypes } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react';
 import { ColWidth } from '../../src/util/types/NHSUKTypes';
 
 const meta: Meta<typeof Card> = {

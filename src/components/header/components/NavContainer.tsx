@@ -7,6 +7,7 @@ const NavContainer: React.FC<HTMLProps<HTMLDivElement>> = ({
   className,
   children,
   open,
+  id = 'header-navigation',
   ...rest
 }) => {
   const { menuOpen } = useContext<IHeaderContext>(HeaderContext);
@@ -18,11 +19,10 @@ const NavContainer: React.FC<HTMLProps<HTMLDivElement>> = ({
         { 'js-show': open !== undefined ? open : menuOpen },
         className,
       )}
+      id={id}
       {...rest}
     >
-      <Container>
-        {children}
-      </Container>
+      <Container>{children}</Container>
     </nav>
   );
 };
