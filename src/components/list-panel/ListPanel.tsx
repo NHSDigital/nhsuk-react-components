@@ -1,7 +1,7 @@
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
 import type { AsElementLink } from '../../util/types/LinkTypes';
-import { ArrowRightIcon } from '../..';
+import { ArrowRight } from '../../components/icons';
 
 interface PanelProps extends HTMLProps<HTMLDivElement> {
   labelProps?: HTMLProps<HTMLHeadingElement>;
@@ -49,7 +49,7 @@ const Panel: React.FC<PanelProps> = ({
       {backToTop ? (
         <div className="nhsuk-back-to-top">
           <a className="nhsuk-back-to-top__link" href={backToTopLink}>
-            <ArrowRightIcon width={19} height={19} />
+            <ArrowRight width={19} height={19} />
             {backToTopButtonText || 'Back to top'}
           </a>
         </div>
