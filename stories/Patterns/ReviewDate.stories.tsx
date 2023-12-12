@@ -2,7 +2,7 @@ import { ReviewDate } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof ReviewDate> = {
-  title: 'Components/ReviewDate',
+  title: 'Patterns/ReviewDate',
   component: ReviewDate,
 };
 export default meta;
