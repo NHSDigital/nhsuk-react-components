@@ -128,6 +128,7 @@ export const WithLegendAsPageHeading: Story = {
 
 export const WithErrorBoolean: Story = {
   render: (args) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [errorToggle, setErrorToggle] = React.useState(true);
     return (
       <>
@@ -158,6 +159,7 @@ export const WithErrorBoolean: Story = {
 
 export const WithErrorString: Story = {
   render: (args) => {
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     const [error, setError] = React.useState('Please select an option');
     return (
       <>
