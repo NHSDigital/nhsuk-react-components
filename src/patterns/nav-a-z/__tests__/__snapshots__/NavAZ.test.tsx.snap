@@ -2,10 +2,12 @@
 
 exports[`NavAZ matches snapshot: NavAZ 1`] = `
 <nav
-  className="nhsuk-nav-a-z"
+  aria-label="A to Z Navigation"
+  className="nhsuk-u-margin-bottom-4 nhsuk-u-margin-top-4"
+  role="navigation"
 >
   <ol
-    className="nhsuk-nav-a-z__list"
+    className="nhsuk-list nhsuk-u-clear nhsuk-u-margin-0"
   />
 </nav>
 `;
