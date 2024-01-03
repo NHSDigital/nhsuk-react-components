@@ -55,10 +55,17 @@ const NavAZ: NavAZ = ({
   removedLetters,
   disabledLetters,
   letters,
+  role = 'navigation',
+  "aria-label": ariaLabel = 'A to Z Navigation',
   ...rest
 }) => (
-  <nav className={classNames('nhsuk-nav-a-z', className)} {...rest}>
-    <ol className="nhsuk-nav-a-z__list">
+  <nav
+    className={classNames('nhsuk-u-margin-bottom-4 nhsuk-u-margin-top-4', className)}
+    role={role}
+    aria-label={ariaLabel}
+    {...rest}
+  >
+    <ol className="nhsuk-list nhsuk-u-clear nhsuk-u-margin-0">
       {processLetters(children, fullAlphabet, removedLetters, disabledLetters, letters)}
     </ol>
   </nav>
@@ -69,18 +76,21 @@ const LinkItem: React.FC<AsElementLink<HTMLAnchorElement>> = ({
   asElement: Component = 'a',
   ...rest
 }) => (
-  <li className="nhsuk-nav-a-z__item">
-    <Component className={classNames('nhsuk-nav-a-z__link', className)} {...rest} />
+  <li className="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1">
+    <Component className={classNames('nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block', className)} {...rest} />
   </li>
 );
 
 const DisabledItem: React.FC<HTMLProps<HTMLSpanElement>> = ({ className, ...rest }) => (
-  <li className="nhsuk-nav-a-z__item">
-    <span className={classNames('nhsuk-nav-a-z__link--disabled', className)} {...rest} />
+  <li className="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1">
+    <span className={classNames('nhsuk-u-font-size-22 nhsuk-u-padding-2 nhsuk-u-display-block nhsuk-u-secondary-text-color', className)} {...rest} />
   </li>
 );
 
 NavAZ.LinkItem = LinkItem;
 NavAZ.DisabledItem = DisabledItem;
+
+NavAZ.LinkItem.displayName = 'NavAZ.LinkItem';
+NavAZ.DisabledItem.displayName = 'NavAZ.DisabledItem';
 
 export default NavAZ;
