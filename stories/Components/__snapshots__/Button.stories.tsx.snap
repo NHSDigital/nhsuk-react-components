@@ -1,0 +1,68 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/Button Disabled smoke-test 1`] = `
+<button class="nhsuk-button nhsuk-button--disabled"
+        disabled
+        aria-disabled="true"
+        type="submit"
+>
+  Disabled
+</button>
+`;
+
+exports[`Components/Button ForceAnchor smoke-test 1`] = `
+<a class="nhsuk-button"
+   role="button"
+   aria-disabled="false"
+   draggable="false"
+>
+  As an Anchor
+</a>
+`;
+
+exports[`Components/Button ForceButton smoke-test 1`] = `
+<button class="nhsuk-button"
+        aria-disabled="false"
+        type="submit"
+>
+  As a Button
+</button>
+`;
+
+exports[`Components/Button LinkButton smoke-test 1`] = `
+<a class="nhsuk-button"
+   role="button"
+   aria-disabled="false"
+   draggable="false"
+   href="/"
+>
+  As a Link
+</a>
+`;
+
+exports[`Components/Button Primary smoke-test 1`] = `
+<button class="nhsuk-button"
+        aria-disabled="false"
+        type="submit"
+>
+  Primary
+</button>
+`;
+
+exports[`Components/Button Reverse smoke-test 1`] = `
+<button class="nhsuk-button nhsuk-button--reverse"
+        aria-disabled="false"
+        type="submit"
+>
+  Reverse
+</button>
+`;
+
+exports[`Components/Button Secondary smoke-test 1`] = `
+<button class="nhsuk-button nhsuk-button--secondary"
+        aria-disabled="false"
+        type="submit"
+>
+  Secondary
+</button>
+`;

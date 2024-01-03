@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Patterns/ReviewDate JustLastReview smoke-test 1`] = `
+<p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-top-7">
+  Page last reviewed: 12 Feburary 2016
+</p>
+`;
+
+exports[`Patterns/ReviewDate JustNextReview smoke-test 1`] = `
+<p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-top-7">
+  Next review due: 1 Feburary 2019
+</p>
+`;
+
+exports[`Patterns/ReviewDate Standard smoke-test 1`] = `
+<p class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-top-7">
+  Page last reviewed: 12 Feburary 2016
+  <br>
+  Next review due: 1 Feburary 2019
+</p>
+`;

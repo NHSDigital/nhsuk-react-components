@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/Tag AllColours smoke-test 1`] = `
+<div class="tag-wrapper">
+  <strong class="nhsuk-tag nhsuk-tag--white">
+    Started
+  </strong>
+  <strong class="nhsuk-tag nhsuk-tag--grey">
+    Not started
+  </strong>
+  <strong class="nhsuk-tag nhsuk-tag--green">
+    New
+  </strong>
+  <strong class="nhsuk-tag nhsuk-tag--aqua-green">
+    Active
+  </strong>
+  <strong class="nhsuk-tag nhsuk-tag--blue">
+    Pending
+  </strong>
+  <strong class="nhsuk-tag nhsuk-tag--purple">
+    Received
+  </strong>
+  <strong class="nhsuk-tag nhsuk-tag--pink">
+    Sent
+  </strong>
+  <strong class="nhsuk-tag nhsuk-tag--red">
+    Rejected
+  </strong>
+  <strong class="nhsuk-tag nhsuk-tag--orange">
+    Declined
+  </strong>
+  <strong class="nhsuk-tag nhsuk-tag--yellow">
+    Delayed
+  </strong>
+</div>
+`;
+
+exports[`Components/Tag StandardTag smoke-test 1`] = `
+<strong class="nhsuk-tag">
+  Standard
+</strong>
+`;

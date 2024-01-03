@@ -1,0 +1,714 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FormBehaviour/DateInput ChangeableControlledElement smoke-test 1`] = `
+<div style="padding: 20px;">
+  <h5>
+    Component
+  </h5>
+  <div class="nhsuk-form-group">
+    <label class="nhsuk-label"
+           id="dateinput_mitki--label"
+           for="dateinput_mitki"
+    >
+      Test label
+    </label>
+    <div class="nhsuk-hint"
+         id="dateinput_mitki--hint"
+    >
+      Test hint
+    </div>
+    <div class="nhsuk-date-input"
+         aria-describedby="dateinput_mitki--hint"
+         aria-labelledby="dateinput_mitki--label"
+         id="dateinput_mitki"
+    >
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label"
+                 id="dateinput_mitki-day--label"
+                 for="dateinput_mitki-day"
+          >
+            Day
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                 id="dateinput_mitki-day"
+                 aria-labelledby="dateinput_mitki-day--label"
+                 name="dateinput_mitki-day"
+                 pattern="[0-9]*"
+                 inputmode="numeric"
+                 type="text"
+                 value="20"
+          >
+        </div>
+      </div>
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label"
+                 id="dateinput_mitki-month--label"
+                 for="dateinput_mitki-month"
+          >
+            Month
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                 id="dateinput_mitki-month"
+                 aria-labelledby="dateinput_mitki-month--label"
+                 name="dateinput_mitki-month"
+                 pattern="[0-9]*"
+                 inputmode="numeric"
+                 type="text"
+                 value="09"
+          >
+        </div>
+      </div>
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label"
+                 id="dateinput_mitki-year--label"
+                 for="dateinput_mitki-year"
+          >
+            Year
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
+                 id="dateinput_mitki-year"
+                 aria-labelledby="dateinput_mitki-year--label"
+                 name="dateinput_mitki-year"
+                 pattern="[0-9]*"
+                 inputmode="numeric"
+                 type="text"
+                 value="1996"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`FormBehaviour/DateInput ControlledElementIndividualComponents smoke-test 1`] = `
+<div style="padding: 20px;">
+  <h5>
+    Component
+  </h5>
+  <div class="nhsuk-form-group">
+    <label class="nhsuk-label"
+           id="dateinput_t0hn7--label"
+           for="dateinput_t0hn7"
+    >
+      Test label
+    </label>
+    <div class="nhsuk-hint"
+         id="dateinput_t0hn7--hint"
+    >
+      Test hint
+    </div>
+    <div class="nhsuk-date-input"
+         aria-describedby="dateinput_t0hn7--hint"
+         aria-labelledby="dateinput_t0hn7--label"
+         id="dateinput_t0hn7"
+    >
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label"
+                 id="dateinput_t0hn7-day--label"
+                 for="dateinput_t0hn7-day"
+          >
+            Day
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                 id="dateinput_t0hn7-day"
+                 aria-labelledby="dateinput_t0hn7-day--label"
+                 name="dateinput_t0hn7-day"
+                 pattern="[0-9]*"
+                 inputmode="numeric"
+                 type="text"
+                 value="20"
+          >
+        </div>
+      </div>
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label"
+                 id="dateinput_t0hn7-month--label"
+                 for="dateinput_t0hn7-month"
+          >
+            Month
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                 id="dateinput_t0hn7-month"
+                 aria-labelledby="dateinput_t0hn7-month--label"
+                 name="dateinput_t0hn7-month"
+                 pattern="[0-9]*"
+                 inputmode="numeric"
+                 type="text"
+                 value="09"
+          >
+        </div>
+      </div>
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label"
+                 id="dateinput_t0hn7-year--label"
+                 for="dateinput_t0hn7-year"
+          >
+            Year
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
+                 id="dateinput_t0hn7-year"
+                 aria-labelledby="dateinput_t0hn7-year--label"
+                 name="dateinput_t0hn7-year"
+                 pattern="[0-9]*"
+                 inputmode="numeric"
+                 type="text"
+                 value="1996"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`FormBehaviour/DateInput ControlledElementWrapper smoke-test 1`] = `
+<div style="padding: 20px;">
+  <h5>
+    Component
+  </h5>
+  <div class="nhsuk-form-group">
+    <label class="nhsuk-label"
+           id="dateinput_wq8qv--label"
+           for="dateinput_wq8qv"
+    >
+      Test label
+    </label>
+    <div class="nhsuk-hint"
+         id="dateinput_wq8qv--hint"
+    >
+      Test hint
+    </div>
+    <div class="nhsuk-date-input"
+         aria-describedby="dateinput_wq8qv--hint"
+         aria-labelledby="dateinput_wq8qv--label"
+         id="dateinput_wq8qv"
+    >
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label"
+                 id="dateinput_wq8qv-day--label"
+                 for="dateinput_wq8qv-day"
+          >
+            Day
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                 id="dateinput_wq8qv-day"
+                 aria-labelledby="dateinput_wq8qv-day--label"
+                 name="dateinput_wq8qv-day"
+                 pattern="[0-9]*"
+                 inputmode="numeric"
+                 type="text"
+                 value="20"
+          >
+        </div>
+      </div>
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label"
+                 id="dateinput_wq8qv-month--label"
+                 for="dateinput_wq8qv-month"
+          >
+            Month
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                 id="dateinput_wq8qv-month"
+                 aria-labelledby="dateinput_wq8qv-month--label"
+                 name="dateinput_wq8qv-month"
+                 pattern="[0-9]*"
+                 inputmode="numeric"
+                 type="text"
+                 value="09"
+          >
+        </div>
+      </div>
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label"
+                 id="dateinput_wq8qv-year--label"
+                 for="dateinput_wq8qv-year"
+          >
+            Year
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
+                 id="dateinput_wq8qv-year"
+                 aria-labelledby="dateinput_wq8qv-year--label"
+                 name="dateinput_wq8qv-year"
+                 pattern="[0-9]*"
+                 inputmode="numeric"
+                 type="text"
+                 value="1996"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`FormBehaviour/DateInput PrePopulatedIndividualComponents smoke-test 1`] = `
+<div style="padding: 20px;">
+  <h5>
+    Component
+  </h5>
+  <div class="nhsuk-form-group">
+    <label class="nhsuk-label"
+           id="dateinput_rr8e2--label"
+           for="dateinput_rr8e2"
+    >
+      Test label
+    </label>
+    <div class="nhsuk-hint"
+         id="dateinput_rr8e2--hint"
+    >
+      Test hint
+    </div>
+    <div class="nhsuk-date-input"
+         aria-describedby="dateinput_rr8e2--hint"
+         aria-labelledby="dateinput_rr8e2--label"
+         id="dateinput_rr8e2"
+    >
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label"
+                 id="dateinput_rr8e2-day--label"
+                 for="dateinput_rr8e2-day"
+          >
+            Day
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                 id="dateinput_rr8e2-day"
+                 aria-labelledby="dateinput_rr8e2-day--label"
+                 name="dateinput_rr8e2-day"
+                 pattern="[0-9]*"
+                 inputmode="numeric"
+                 type="text"
+                 value="20"
+          >
+        </div>
+      </div>
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label"
+                 id="dateinput_rr8e2-month--label"
+                 for="dateinput_rr8e2-month"
+          >
+            Month
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                 id="dateinput_rr8e2-month"
+                 aria-labelledby="dateinput_rr8e2-month--label"
+                 name="dateinput_rr8e2-month"
+                 pattern="[0-9]*"
+                 inputmode="numeric"
+                 type="text"
+                 value="09"
+          >
+        </div>
+      </div>
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label"
+                 id="dateinput_rr8e2-year--label"
+                 for="dateinput_rr8e2-year"
+          >
+            Year
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
+                 id="dateinput_rr8e2-year"
+                 aria-labelledby="dateinput_rr8e2-year--label"
+                 name="dateinput_rr8e2-year"
+                 pattern="[0-9]*"
+                 inputmode="numeric"
+                 type="text"
+                 value="1996"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`FormBehaviour/DateInput PrePopulatedWrapper smoke-test 1`] = `
+<div style="padding: 20px;">
+  <h5>
+    Component
+  </h5>
+  <div class="nhsuk-form-group">
+    <label class="nhsuk-label"
+           id="dateinput_7o538--label"
+           for="dateinput_7o538"
+    >
+      Test label
+    </label>
+    <div class="nhsuk-hint"
+         id="dateinput_7o538--hint"
+    >
+      Test hint
+    </div>
+    <div class="nhsuk-date-input"
+         aria-describedby="dateinput_7o538--hint"
+         aria-labelledby="dateinput_7o538--label"
+         id="dateinput_7o538"
+    >
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label"
+                 id="dateinput_7o538-day--label"
+                 for="dateinput_7o538-day"
+          >
+            Day
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                 id="dateinput_7o538-day"
+                 aria-labelledby="dateinput_7o538-day--label"
+                 name="dateinput_7o538-day"
+                 pattern="[0-9]*"
+                 inputmode="numeric"
+                 type="text"
+                 value="20"
+          >
+        </div>
+      </div>
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label"
+                 id="dateinput_7o538-month--label"
+                 for="dateinput_7o538-month"
+          >
+            Month
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                 id="dateinput_7o538-month"
+                 aria-labelledby="dateinput_7o538-month--label"
+                 name="dateinput_7o538-month"
+                 pattern="[0-9]*"
+                 inputmode="numeric"
+                 type="text"
+                 value="09"
+          >
+        </div>
+      </div>
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label"
+                 id="dateinput_7o538-year--label"
+                 for="dateinput_7o538-year"
+          >
+            Year
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
+                 id="dateinput_7o538-year"
+                 aria-labelledby="dateinput_7o538-year--label"
+                 name="dateinput_7o538-year"
+                 pattern="[0-9]*"
+                 inputmode="numeric"
+                 type="text"
+                 value="1996"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`FormBehaviour/DateInput Standard smoke-test 1`] = `
+<div style="padding: 20px;">
+  <h2>
+    Scenario: onChange and onInput handlers are bound without any other props
+  </h2>
+  <h5>
+    Expected Behaviour
+  </h5>
+  <ul class="nhsuk-hint">
+    <li>
+      OnChange Handlers are fired using the generated IDs and Names
+    </li>
+    <li>
+      The value is passed through
+    </li>
+  </ul>
+  <h5>
+    Component
+  </h5>
+  <div class="nhsuk-form-group">
+    <label class="nhsuk-label"
+           id="dateinput_fslew--label"
+           for="dateinput_fslew"
+    >
+      Test label
+    </label>
+    <div class="nhsuk-hint"
+         id="dateinput_fslew--hint"
+    >
+      Test hint
+    </div>
+    <div class="nhsuk-date-input"
+         aria-describedby="dateinput_fslew--hint"
+         aria-labelledby="dateinput_fslew--label"
+         id="dateinput_fslew"
+    >
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label"
+                 id="dateinput_fslew-day--label"
+                 for="dateinput_fslew-day"
+          >
+            Day
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                 id="dateinput_fslew-day"
+                 aria-labelledby="dateinput_fslew-day--label"
+                 name="dateinput_fslew-day"
+                 pattern="[0-9]*"
+                 inputmode="numeric"
+                 type="text"
+                 value
+          >
+        </div>
+      </div>
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label"
+                 id="dateinput_fslew-month--label"
+                 for="dateinput_fslew-month"
+          >
+            Month
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                 id="dateinput_fslew-month"
+                 aria-labelledby="dateinput_fslew-month--label"
+                 name="dateinput_fslew-month"
+                 pattern="[0-9]*"
+                 inputmode="numeric"
+                 type="text"
+                 value
+          >
+        </div>
+      </div>
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label"
+                 id="dateinput_fslew-year--label"
+                 for="dateinput_fslew-year"
+          >
+            Year
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
+                 id="dateinput_fslew-year"
+                 aria-labelledby="dateinput_fslew-year--label"
+                 name="dateinput_fslew-year"
+                 pattern="[0-9]*"
+                 inputmode="numeric"
+                 type="text"
+                 value
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`FormBehaviour/DateInput StandardWithError smoke-test 1`] = `
+<div style="padding: 20px;">
+  <h2>
+    Scenario: onChange and onInput handlers are bound without any other props
+  </h2>
+  <h5>
+    Expected Behaviour
+  </h5>
+  <ul class="nhsuk-hint">
+    <li>
+      OnChange Handlers are fired using the generated IDs and Names
+    </li>
+    <li>
+      The value is passed through
+    </li>
+  </ul>
+  <h5>
+    Component
+  </h5>
+  <div class="nhsuk-form-group nhsuk-form-group--error">
+    <label class="nhsuk-label"
+           id="dateinput_icdfq--label"
+           for="dateinput_icdfq"
+    >
+      Test label
+    </label>
+    <div class="nhsuk-hint"
+         id="dateinput_icdfq--hint"
+    >
+      Test hint
+    </div>
+    <span class="nhsuk-error-message"
+          id="dateinput_icdfq--error-message"
+          role="alert"
+    >
+      <span class="nhsuk-u-visually-hidden">
+        Error:
+      </span>
+      Test Error
+    </span>
+    <div class="nhsuk-date-input"
+         aria-describedby="dateinput_icdfq--hint"
+         aria-labelledby="dateinput_icdfq--label"
+         id="dateinput_icdfq"
+    >
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label"
+                 id="dateinput_icdfq-day--label"
+                 for="dateinput_icdfq-day"
+          >
+            Day
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 nhsuk-input--error"
+                 id="dateinput_icdfq-day"
+                 aria-labelledby="dateinput_icdfq-day--label"
+                 name="dateinput_icdfq-day"
+                 pattern="[0-9]*"
+                 inputmode="numeric"
+                 type="text"
+                 value
+          >
+        </div>
+      </div>
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label"
+                 id="dateinput_icdfq-month--label"
+                 for="dateinput_icdfq-month"
+          >
+            Month
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 nhsuk-input--error"
+                 id="dateinput_icdfq-month"
+                 aria-labelledby="dateinput_icdfq-month--label"
+                 name="dateinput_icdfq-month"
+                 pattern="[0-9]*"
+                 inputmode="numeric"
+                 type="text"
+                 value
+          >
+        </div>
+      </div>
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label"
+                 id="dateinput_icdfq-year--label"
+                 for="dateinput_icdfq-year"
+          >
+            Year
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4 nhsuk-input--error"
+                 id="dateinput_icdfq-year"
+                 aria-labelledby="dateinput_icdfq-year--label"
+                 name="dateinput_icdfq-year"
+                 pattern="[0-9]*"
+                 inputmode="numeric"
+                 type="text"
+                 value
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+  <h5>
+    Component with specific field errors
+  </h5>
+  <div class="nhsuk-form-group nhsuk-form-group--error">
+    <label class="nhsuk-label"
+           id="dateinput_33pmg--label"
+           for="dateinput_33pmg"
+    >
+      Test label
+    </label>
+    <div class="nhsuk-hint"
+         id="dateinput_33pmg--hint"
+    >
+      Test hint
+    </div>
+    <span class="nhsuk-error-message"
+          id="dateinput_33pmg--error-message"
+          role="alert"
+    >
+      <span class="nhsuk-u-visually-hidden">
+        Error:
+      </span>
+      Test Error
+    </span>
+    <div class="nhsuk-date-input"
+         aria-describedby="dateinput_33pmg--hint"
+         aria-labelledby="dateinput_33pmg--label"
+         id="dateinput_33pmg"
+    >
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label"
+                 id="dateinput_33pmg-day--label"
+                 for="dateinput_33pmg-day"
+          >
+            Day
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+                 id="dateinput_33pmg-day"
+                 aria-labelledby="dateinput_33pmg-day--label"
+                 name="dateinput_33pmg-day"
+                 pattern="[0-9]*"
+                 inputmode="numeric"
+                 type="text"
+                 value
+          >
+        </div>
+      </div>
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label"
+                 id="dateinput_33pmg-month--label"
+                 for="dateinput_33pmg-month"
+          >
+            Month
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 nhsuk-input--error"
+                 id="dateinput_33pmg-month"
+                 aria-labelledby="dateinput_33pmg-month--label"
+                 name="dateinput_33pmg-month"
+                 pattern="[0-9]*"
+                 inputmode="numeric"
+                 type="text"
+                 value
+          >
+        </div>
+      </div>
+      <div class="nhsuk-date-input__item">
+        <div class="nhsuk-form-group">
+          <label class="nhsuk-label nhsuk-date-input__label"
+                 id="dateinput_33pmg-year--label"
+                 for="dateinput_33pmg-year"
+          >
+            Year
+          </label>
+          <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4 nhsuk-input--error"
+                 id="dateinput_33pmg-year"
+                 aria-labelledby="dateinput_33pmg-year--label"
+                 name="dateinput_33pmg-year"
+                 pattern="[0-9]*"
+                 inputmode="numeric"
+                 type="text"
+                 value
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

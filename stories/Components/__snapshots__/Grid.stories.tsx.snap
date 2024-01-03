@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/Grid Grid smoke-test 1`] = `
+<div class="nhsuk-width-container">
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-full">
+      <div class="nhsuk-card">
+        full column
+      </div>
+    </div>
+  </div>
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-one-half">
+      <div class="nhsuk-card">
+        one-half column
+      </div>
+    </div>
+    <div class="nhsuk-grid-column-one-half">
+      <div class="nhsuk-card">
+        one-half column
+      </div>
+    </div>
+  </div>
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-one-third">
+      <div class="nhsuk-card">
+        one-third column
+      </div>
+    </div>
+    <div class="nhsuk-grid-column-one-third">
+      <div class="nhsuk-card">
+        one-third column
+      </div>
+    </div>
+    <div class="nhsuk-grid-column-one-third">
+      <div class="nhsuk-card">
+        one-third column
+      </div>
+    </div>
+  </div>
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-one-quarter">
+      <div class="nhsuk-card">
+        one-quarter column
+      </div>
+    </div>
+    <div class="nhsuk-grid-column-one-quarter">
+      <div class="nhsuk-card">
+        one-quarter column
+      </div>
+    </div>
+    <div class="nhsuk-grid-column-one-quarter">
+      <div class="nhsuk-card">
+        one-quarter column
+      </div>
+    </div>
+    <div class="nhsuk-grid-column-one-quarter">
+      <div class="nhsuk-card">
+        one-quarter column
+      </div>
+    </div>
+  </div>
+</div>
+`;

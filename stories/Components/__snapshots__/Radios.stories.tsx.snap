@@ -1,0 +1,518 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/Radios DisabledRadios smoke-test 1`] = `
+<div class="nhsuk-form-group">
+  <fieldset class="nhsuk-fieldset">
+    <legend class="nhsuk-fieldset__legend">
+      Have you changed your name?
+    </legend>
+    <div class="nhsuk-form-group">
+      <div class="nhsuk-hint"
+           id="disabled-example--hint"
+      >
+        This includes changing your last name or spelling your name differently.
+      </div>
+      <div class="nhsuk-radios"
+           id="disabled-example"
+           aria-describedby="disabled-example--hint"
+      >
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input"
+                 id="disabled-example-1"
+                 name="example"
+                 aria-labelledby="disabled-example-1--label"
+                 disabled
+                 type="radio"
+                 value="yes"
+          >
+          <label class="nhsuk-label nhsuk-radios__label"
+                 id="disabled-example-1--label"
+                 for="disabled-example-1"
+          >
+            Yes
+          </label>
+        </div>
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input"
+                 id="disabled-example-2"
+                 name="example"
+                 aria-labelledby="disabled-example-2--label"
+                 disabled
+                 type="radio"
+                 value="no"
+          >
+          <label class="nhsuk-label nhsuk-radios__label"
+                 id="disabled-example-2--label"
+                 for="disabled-example-2"
+          >
+            No
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`Components/Radios InlineRadios smoke-test 1`] = `
+<div class="nhsuk-form-group">
+  <fieldset class="nhsuk-fieldset">
+    <legend class="nhsuk-fieldset__legend">
+      Have you changed your name?
+    </legend>
+    <div class="nhsuk-form-group">
+      <div class="nhsuk-hint"
+           id="inline-example--hint"
+      >
+        This includes changing your last name or spelling your name differently.
+      </div>
+      <div class="nhsuk-radios nhsuk-radios--inline"
+           id="inline-example"
+           aria-describedby="inline-example--hint"
+      >
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input"
+                 id="inline-example-1"
+                 name="example"
+                 aria-labelledby="inline-example-1--label"
+                 type="radio"
+                 value="yes"
+          >
+          <label class="nhsuk-label nhsuk-radios__label"
+                 id="inline-example-1--label"
+                 for="inline-example-1"
+          >
+            Yes
+          </label>
+        </div>
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input"
+                 id="inline-example-2"
+                 name="example"
+                 aria-labelledby="inline-example-2--label"
+                 type="radio"
+                 value="no"
+                 checked
+          >
+          <label class="nhsuk-label nhsuk-radios__label"
+                 id="inline-example-2--label"
+                 for="inline-example-2"
+          >
+            No
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`Components/Radios RadiosWithADivider smoke-test 1`] = `
+<div class="nhsuk-form-group">
+  <fieldset class="nhsuk-fieldset">
+    <legend class="nhsuk-fieldset__legend">
+      How do you want to sign in?
+    </legend>
+    <div class="nhsuk-form-group">
+      <div class="nhsuk-radios"
+           id="example-divider"
+      >
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input"
+                 id="example-divider-1"
+                 name="example"
+                 aria-labelledby="example-divider-1--label"
+                 type="radio"
+                 value="government-gateway"
+          >
+          <label class="nhsuk-label nhsuk-radios__label"
+                 id="example-divider-1--label"
+                 for="example-divider-1"
+          >
+            Use Government Gateway
+          </label>
+        </div>
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input"
+                 id="example-divider-2"
+                 name="example"
+                 aria-labelledby="example-divider-2--label"
+                 type="radio"
+                 value="nhsuk-login"
+          >
+          <label class="nhsuk-label nhsuk-radios__label"
+                 id="example-divider-2--label"
+                 for="example-divider-2"
+          >
+            Use NHS.UK login
+          </label>
+        </div>
+        <div class="nhsuk-radios__divider">
+          or
+        </div>
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input"
+                 id="example-divider-3"
+                 name="example"
+                 aria-labelledby="example-divider-3--label"
+                 type="radio"
+                 value="create-account"
+          >
+          <label class="nhsuk-label nhsuk-radios__label"
+                 id="example-divider-3--label"
+                 for="example-divider-3"
+          >
+            Create an account
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`Components/Radios RadiosWithConditionalContent smoke-test 1`] = `
+<div class="nhsuk-form-group">
+  <fieldset class="nhsuk-fieldset">
+    <legend class="nhsuk-fieldset__legend">
+      Impairment requirement
+    </legend>
+    <div class="nhsuk-form-group">
+      <div class="nhsuk-hint"
+           id="example-conditional--hint"
+      >
+        Select relevant options.
+      </div>
+      <div class="nhsuk-radios nhsuk-radios--conditional"
+           id="example-conditional"
+           aria-describedby="example-conditional--hint"
+      >
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input"
+                 id="hello1"
+                 name="example"
+                 aria-labelledby="hello1--label"
+                 type="radio"
+                 value="yes"
+          >
+          <label class="nhsuk-label nhsuk-radios__label"
+                 id="hello1--label"
+                 for="hello1"
+          >
+            Patient requires an impairment to be added
+          </label>
+        </div>
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input"
+                 id="hello2"
+                 name="example"
+                 aria-labelledby="hello2--label"
+                 type="radio"
+                 value="no"
+          >
+          <label class="nhsuk-label nhsuk-radios__label"
+                 id="hello2--label"
+                 for="hello2"
+          >
+            Patient would prefer not to say
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`Components/Radios RadiosWithErrorBoolean smoke-test 1`] = `
+<div class="nhsuk-form-group nhsuk-form-group--error">
+  <fieldset class="nhsuk-fieldset">
+    <legend class="nhsuk-fieldset__legend">
+      Have you changed your name?
+    </legend>
+    <div class="nhsuk-form-group nhsuk-form-group--error">
+      <div class="nhsuk-hint"
+           id="radios_8k2d0--hint"
+      >
+        This includes changing your last name or spelling your name differently.
+      </div>
+      <div class="nhsuk-radios"
+           id="radios_8k2d0"
+           aria-describedby="radios_8k2d0--hint"
+      >
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input"
+                 id="example-1"
+                 name="example"
+                 aria-labelledby="example-1--label"
+                 type="radio"
+                 value="yes"
+          >
+          <label class="nhsuk-label nhsuk-radios__label"
+                 id="example-1--label"
+                 for="example-1"
+          >
+            Yes
+          </label>
+        </div>
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input"
+                 id="example-2"
+                 name="example"
+                 aria-labelledby="example-2--label"
+                 type="radio"
+                 value="no"
+                 checked
+          >
+          <label class="nhsuk-label nhsuk-radios__label"
+                 id="example-2--label"
+                 for="example-2"
+          >
+            No
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+<button class="nhsuk-button"
+        aria-disabled="false"
+        type="submit"
+>
+  Toggle Error
+</button>
+`;
+
+exports[`Components/Radios RadiosWithErrorString smoke-test 1`] = `
+<div class="nhsuk-form-group nhsuk-form-group--error">
+  <fieldset class="nhsuk-fieldset">
+    <legend class="nhsuk-fieldset__legend">
+      Have you changed your name?
+    </legend>
+    <div class="nhsuk-form-group nhsuk-form-group--error">
+      <div class="nhsuk-hint"
+           id="radios_2zqnn--hint"
+      >
+        This includes changing your last name or spelling your name differently.
+      </div>
+      <span class="nhsuk-error-message"
+            id="radios_2zqnn--error-message"
+            role="alert"
+      >
+        <span class="nhsuk-u-visually-hidden">
+          Error:
+        </span>
+        Please select an option
+      </span>
+      <div class="nhsuk-radios"
+           id="radios_2zqnn"
+           aria-describedby="radios_2zqnn--hint"
+      >
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input"
+                 id="example-1"
+                 name="example"
+                 aria-labelledby="example-1--label"
+                 type="radio"
+                 value="yes"
+          >
+          <label class="nhsuk-label nhsuk-radios__label"
+                 id="example-1--label"
+                 for="example-1"
+          >
+            Yes
+          </label>
+        </div>
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input"
+                 id="example-2"
+                 name="example"
+                 aria-labelledby="example-2--label"
+                 type="radio"
+                 value="no"
+                 checked
+          >
+          <label class="nhsuk-label nhsuk-radios__label"
+                 id="example-2--label"
+                 for="example-2"
+          >
+            No
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+<div class="nhsuk-form-group">
+  <input class="nhsuk-input"
+         name="input_9ktmn"
+         id="input_9ktmn"
+         type="text"
+         value="Please select an option"
+  >
+</div>
+`;
+
+exports[`Components/Radios RadiosWithHintsOnItems smoke-test 1`] = `
+<div class="nhsuk-form-group">
+  <fieldset class="nhsuk-fieldset">
+    <legend class="nhsuk-fieldset__legend">
+      How do you want to sign in?
+    </legend>
+    <div class="nhsuk-form-group">
+      <div class="nhsuk-radios"
+           id="example-divider"
+      >
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input"
+                 id="example-divider-1"
+                 name="example"
+                 aria-labelledby="example-divider-1--label"
+                 aria-describedby="example-divider-1--hint"
+                 type="radio"
+                 value="government-gateway"
+          >
+          <label class="nhsuk-label nhsuk-radios__label"
+                 id="example-divider-1--label"
+                 for="example-divider-1"
+          >
+            Use Government Gateway
+          </label>
+          <div class="nhsuk-hint nhsuk-radios__hint"
+               id="example-divider-1--hint"
+          >
+            You'll have a user ID if you've registered for self-assessment or filed a tax return online before.
+          </div>
+        </div>
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input"
+                 id="example-divider-2"
+                 name="example"
+                 aria-labelledby="example-divider-2--label"
+                 aria-describedby="example-divider-2--hint"
+                 type="radio"
+                 value="nhsuk-login"
+          >
+          <label class="nhsuk-label nhsuk-radios__label"
+                 id="example-divider-2--label"
+                 for="example-divider-2"
+          >
+            Use NHS.UK login
+          </label>
+          <div class="nhsuk-hint nhsuk-radios__hint"
+               id="example-divider-2--hint"
+          >
+            You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.
+          </div>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+`;
+
+exports[`Components/Radios RadiosWithoutFieldset smoke-test 1`] = `
+<div class="nhsuk-form-group">
+  <div class="nhsuk-radios"
+       id="colours"
+  >
+    <div class="nhsuk-radios__item">
+      <input class="nhsuk-radios__input"
+             id="colours-1"
+             name="colours"
+             aria-labelledby="colours-1--label"
+             type="radio"
+             value="red"
+      >
+      <label class="nhsuk-label nhsuk-radios__label"
+             id="colours-1--label"
+             for="colours-1"
+      >
+        Red
+      </label>
+    </div>
+    <div class="nhsuk-radios__item">
+      <input class="nhsuk-radios__input"
+             id="colours-2"
+             name="colours"
+             aria-labelledby="colours-2--label"
+             type="radio"
+             value="green"
+      >
+      <label class="nhsuk-label nhsuk-radios__label"
+             id="colours-2--label"
+             for="colours-2"
+      >
+        Green
+      </label>
+    </div>
+    <div class="nhsuk-radios__item">
+      <input class="nhsuk-radios__input"
+             id="colours-3"
+             name="colours"
+             aria-labelledby="colours-3--label"
+             type="radio"
+             value="blue"
+      >
+      <label class="nhsuk-label nhsuk-radios__label"
+             id="colours-3--label"
+             for="colours-3"
+      >
+        Blue
+      </label>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/Radios StandardRadios smoke-test 1`] = `
+<div class="nhsuk-form-group">
+  <fieldset class="nhsuk-fieldset">
+    <legend class="nhsuk-fieldset__legend">
+      Have you changed your name?
+    </legend>
+    <div class="nhsuk-form-group">
+      <div class="nhsuk-hint"
+           id="standard-example--hint"
+      >
+        This includes changing your last name or spelling your name differently.
+      </div>
+      <div class="nhsuk-radios"
+           id="standard-example"
+           aria-describedby="standard-example--hint"
+      >
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input"
+                 id="standard-example-1"
+                 name="example"
+                 aria-labelledby="standard-example-1--label"
+                 type="radio"
+                 value="yes"
+          >
+          <label class="nhsuk-label nhsuk-radios__label"
+                 id="standard-example-1--label"
+                 for="standard-example-1"
+          >
+            Yes
+          </label>
+        </div>
+        <div class="nhsuk-radios__item">
+          <input class="nhsuk-radios__input"
+                 id="standard-example-2"
+                 name="example"
+                 aria-labelledby="standard-example-2--label"
+                 type="radio"
+                 value="no"
+                 checked
+          >
+          <label class="nhsuk-label nhsuk-radios__label"
+                 id="standard-example-2--label"
+                 for="standard-example-2"
+          >
+            No
+          </label>
+        </div>
+      </div>
+    </div>
+  </fieldset>
+</div>
+`;

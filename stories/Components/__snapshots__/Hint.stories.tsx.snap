@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/Hint Standard smoke-test 1`] = `
+<div class="nhsuk-hint">
+  It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.
+</div>
+`;
