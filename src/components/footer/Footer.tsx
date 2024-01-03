@@ -1,27 +1,13 @@
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
 import { Container } from '../layout';
-import useDevWarning from '../../util/hooks/UseDevWarning';
-import { NHSUKFrontendV5UpgradeWarnings } from '../../deprecated/warnings';
 import type { AsElementLink } from '../../util/types/LinkTypes';
 
-interface FooterListProps extends HTMLProps<HTMLOListElement> {
-  columns?: boolean;
-}
+type FooterListProps = HTMLProps<HTMLOListElement>;
 
-const FooterList: React.FC<FooterListProps> = ({ className, columns = false, ...rest }) => {
-  useDevWarning(NHSUKFrontendV5UpgradeWarnings.FooterColumns, () => columns);
-  return (
-    <ul
-      className={classNames(
-        'nhsuk-footer__list',
-        { 'nhsuk-footer__list--three-columns': columns },
-        className,
-      )}
-      {...rest}
-    />
-  );
-};
+const FooterList: React.FC<FooterListProps> = ({ className, ...rest }) => (
+  <ul className={classNames('nhsuk-footer__list', className)} {...rest} />
+);
 
 const FooterListItem: React.FC<AsElementLink<HTMLAnchorElement>> = ({
   children,

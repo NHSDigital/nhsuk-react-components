@@ -9,11 +9,14 @@ const meta: Meta<typeof ListPanel> = {
 export default meta;
 type Story = StoryObj<typeof ListPanel>;
 
+ListPanel.Panel.displayName = 'ListPanel.Panel';
+ListPanel.LinkItem.displayName = 'ListPanel.LinkItem';
+
 export const Standard: Story = {
   argTypes: {
     type: { table: { disable: true } },
   },
-  render: () => (
+  render: (args) => (
     <ListPanel>
       <ListPanel.Panel label="A" labelProps={{ id: 'A' }} backToTop backToTopLink="#">
         <ListPanel.LinkItem href="/conditions/abdominal-aortic-aneurysm/">AAA</ListPanel.LinkItem>

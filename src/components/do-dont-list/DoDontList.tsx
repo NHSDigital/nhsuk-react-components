@@ -1,9 +1,7 @@
-import React, { HTMLProps, createContext, useContext } from 'react';
+import React, { HTMLProps, createContext, useContext, ReactNode } from 'react';
 import classNames from 'classnames';
 import { Tick, Cross } from '../icons';
 import HeadingLevel, { HeadingLevelType } from '../../util/HeadingLevel';
-import useDevWarning from '../../util/hooks/UseDevWarning';
-import { NHSUKFrontendV5UpgradeWarnings } from '../../deprecated/warnings';
 
 type ListType = 'do' | 'dont';
 
@@ -27,7 +25,6 @@ const DoDontList: DoDontList = ({
   headingLevel,
   ...rest
 }) => {
-  useDevWarning(NHSUKFrontendV5UpgradeWarnings.DoDontListPrefix, () => listType === 'dont');
   return (
     <div className={classNames('nhsuk-do-dont-list', className)} {...rest}>
       <HeadingLevel className="nhsuk-do-dont-list__label" headingLevel={headingLevel}>
@@ -48,13 +45,26 @@ const DoDontList: DoDontList = ({
 
 interface DoDontItemProps extends HTMLProps<HTMLLIElement> {
   listItemType?: ListType;
+  prefixText?: ReactNode;
 }
 
-const DoDontItem: React.FC<DoDontItemProps> = ({ children, listItemType, ...rest }) => {
+const DoDontItem: React.FC<DoDontItemProps> = ({ prefixText, listItemType, children, ...rest }) => {
   const listItem = useContext(DoDontListContext);
+  const defaultPrefix = (listItemType || listItem) === 'do' ? null : 'do not ';
+  const actualPrefix = prefixText === undefined ? defaultPrefix : prefixText;
   return (
     <li {...rest}>
-      {(listItemType || listItem) === 'do' ? <Tick /> : <Cross />}
+      {(listItemType || listItem) === 'do' ? (
+        <>
+          <Tick />
+          {actualPrefix}
+        </>
+      ) : (
+        <>
+          <Cross />
+          {actualPrefix}
+        </>
+      )}
       {children}
     </li>
   );

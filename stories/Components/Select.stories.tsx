@@ -9,8 +9,10 @@ const meta: Meta<typeof Select> = {
 export default meta;
 type Story = StoryObj<typeof Select>;
 
+Select.Option.displayName = 'Select.Option';
+
 export const Standard: Story = {
-  render: () => (
+  render: (args) => (
     <Select id="select-1" label="Label text goes here">
       <Select.Option value="1">NHS.UK frontend option 1</Select.Option>
       <Select.Option value="2" selected>
@@ -24,7 +26,7 @@ export const Standard: Story = {
 };
 
 export const SelectWithHintText: Story = {
-  render: () => (
+  render: (args) => (
     <Select label="Label text goes here" hint="Hint text goes here">
       <Select.Option value="1">NHS.UK frontend option 1</Select.Option>
       <Select.Option value="2">NHS.UK frontend option 2</Select.Option>

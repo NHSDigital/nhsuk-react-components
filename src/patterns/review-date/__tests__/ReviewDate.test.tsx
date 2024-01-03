@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
+import { shallow } from 'enzyme';
 import ReviewDate from '..';
 
 describe('ReviewDate', () => {
@@ -18,15 +18,5 @@ describe('ReviewDate', () => {
       'Page last reviewed: 19 November 2019Next review due: 19 November 2020',
     );
     element.unmount();
-  });
-});
-
-describe('dev warnings', () => {
-  jest.spyOn(console, 'warn');
-  it('warns when ReviewDate is used', () => {
-    const spy = jest.spyOn(console, 'warn');
-    const component = mount(<ReviewDate />);
-    expect(spy).toHaveBeenCalled();
-    component.unmount();
   });
 });

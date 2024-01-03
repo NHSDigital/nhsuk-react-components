@@ -9,8 +9,11 @@ const meta: Meta<typeof Promo> = {
 export default meta;
 type Story = StoryObj<typeof Promo>;
 
+Promo.Heading.displayName = 'Promo.Heading';
+Promo.Description.displayName = 'Promo.Description';
+
 export const Standard: Story = {
-  render: () => (
+  render: (args) => (
     <Promo href="#">
       <Promo.Heading>Save a life: give blood</Promo.Heading>
       <Promo.Description>
@@ -21,7 +24,7 @@ export const Standard: Story = {
 };
 
 export const WithImage: Story = {
-  render: () => (
+  render: (args) => (
     <Promo
       href="https://www.nhs.uk"
       imageSrc="https://assets.nhs.uk/prod/images/MS_1018_give_blood.2e16d0ba.fill-2400x1350.jpg"
@@ -36,7 +39,7 @@ export const WithImage: Story = {
 };
 
 export const WithNoDescription: Story = {
-  render: () => (
+  render: (args) => (
     <Promo
       href="https://www.nhs.uk"
       imageSrc="https://assets.nhs.uk/prod/images/MS_1018_give_blood.2e16d0ba.fill-2400x1350.jpg"
@@ -48,7 +51,7 @@ export const WithNoDescription: Story = {
 };
 
 export const SmallPromo: Story = {
-  render: () => (
+  render: (args) => (
     <Promo
       small
       href="https://www.nhs.uk"
@@ -64,7 +67,7 @@ export const SmallPromo: Story = {
 };
 
 export const PromoGroup: Story = {
-  render: () => (
+  render: (args) => (
     <>
       <Promo.Group>
         <Promo

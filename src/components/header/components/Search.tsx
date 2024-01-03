@@ -7,9 +7,7 @@ export interface SearchProps extends HTMLProps<HTMLInputElement> {
   visuallyHiddenText?: string;
 }
 
-const Search: React.FC<SearchProps> = ({
-  action, method, id, visuallyHiddenText, ...rest
-}) => {
+const Search: React.FC<SearchProps> = ({ action, method, id, visuallyHiddenText, ...rest }) => {
   const { setSearch, toggleSearch, searchOpen } = useContext<IHeaderContext>(HeaderContext);
   useEffect(() => {
     setSearch(true);
@@ -23,7 +21,7 @@ const Search: React.FC<SearchProps> = ({
         aria-expanded={searchOpen ? 'true' : 'false'}
         onClick={toggleSearch}
       >
-        <SearchIcon />
+        <SearchIcon width={27} height={27} />
         <span className="nhsuk-u-visually-hidden">Search</span>
       </button>
       <div className={classNames('nhsuk-header__search-wrap', { 'js-show': searchOpen })}>
@@ -33,11 +31,11 @@ const Search: React.FC<SearchProps> = ({
           </label>
           <input className="nhsuk-search__input" id={id} {...rest} />
           <button className="nhsuk-search__submit" type="submit">
-            <SearchIcon />
+            <SearchIcon width={27} height={27} />
             <span className="nhsuk-u-visually-hidden">Search</span>
           </button>
           <button className="nhsuk-search__close">
-            <CloseIcon />
+            <CloseIcon width={27} height={27} />
             <span className="nhsuk-u-visually-hidden">Close search</span>
           </button>
         </form>

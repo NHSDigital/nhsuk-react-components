@@ -5,7 +5,11 @@ import { Close as CloseIcon } from '../../icons';
 import HeaderContext, { IHeaderContext } from '../HeaderContext';
 
 const Nav: React.FC<HTMLProps<HTMLDivElement>> = ({
-  className, children, open, ...rest
+  className,
+  children,
+  open,
+  id = 'header-navigation',
+  ...rest
 }) => {
   const { menuOpen, toggleMenu } = useContext<IHeaderContext>(HeaderContext);
 
@@ -16,6 +20,7 @@ const Nav: React.FC<HTMLProps<HTMLDivElement>> = ({
         { 'js-show': open !== undefined ? open : menuOpen },
         className,
       )}
+      id={id}
       {...rest}
     >
       <Container>

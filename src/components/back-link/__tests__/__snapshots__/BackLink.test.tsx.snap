@@ -8,7 +8,10 @@ exports[`BackLink matches snapshot: BackLink 1`] = `
     className="nhsuk-back-link__link"
     href="/back"
   >
-    <ChevronLeft />
+    <ChevronLeft
+      height={24}
+      width={24}
+    />
     Back
   </a>
 </div>

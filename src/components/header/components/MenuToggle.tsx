@@ -1,6 +1,4 @@
-import React, {
-  HTMLProps, useContext, useEffect, MouseEvent,
-} from 'react';
+import React, { HTMLProps, useContext, useEffect, MouseEvent } from 'react';
 import classNames from 'classnames';
 import HeaderContext, { IHeaderContext } from '../HeaderContext';
 
@@ -28,7 +26,7 @@ const MenuToggle: React.FC<MenuToggleProps> = ({ onClick, ...rest }) => {
     <div className="nhsuk-header__menu">
       <button
         className={classNames('nhsuk-header__menu-toggle', { 'is-active': menuOpen })}
-        aria-label="Open menu"
+        aria-controls="header-navigation"
         aria-expanded={menuOpen ? 'true' : 'false'}
         onClick={onToggleClick}
         {...rest}

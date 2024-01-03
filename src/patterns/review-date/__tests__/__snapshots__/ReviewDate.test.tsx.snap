@@ -1,11 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ReviewDate matches snapshot: ReviewDate 1`] = `
-<div
-  className="nhsuk-review-date"
->
-  <p
-    className="nhsuk-body-s"
-  />
-</div>
+<p
+  className="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-top-7"
+/>
 `;

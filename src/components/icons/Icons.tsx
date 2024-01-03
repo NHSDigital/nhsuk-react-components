@@ -9,8 +9,8 @@ interface BaseIconSVGProps extends HTMLProps<SVGSVGElement> {
 export const BaseIconSVG: React.FC<BaseIconSVGProps> = ({
   className,
   children,
-  height,
-  width,
+  height = 34,
+  width = 34,
   iconType,
   ...rest
 }) => (
@@ -26,11 +26,6 @@ export const BaseIconSVG: React.FC<BaseIconSVGProps> = ({
     {children}
   </svg>
 );
-
-BaseIconSVG.defaultProps = {
-  height: 32,
-  width: 32,
-};
 
 export const ArrowLeft: React.FC<BaseIconSVGProps> = (props) => (
   <BaseIconSVG iconType="nhsuk-icon__arrow-left" {...props}>
@@ -71,19 +66,25 @@ export const Close: React.FC<BaseIconSVGProps> = (props) => (
 
 export const Cross: React.FC<BaseIconSVGProps> = (props) => (
   <BaseIconSVG iconType="nhsuk-icon__cross" {...props}>
-    <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z" />
-    <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z" />
+    <path
+      d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+      fill="#d5281b"
+    />
+    <path
+      d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+      fill="#d5281b"
+    />
   </BaseIconSVG>
 );
 
-export const SmallEmdash: React.FC<BaseIconSVGProps> = ({ height, width, ...rest }) => (
-  <BaseIconSVG iconType="nhsuk-icon__emdash" height={height || 1} width={width || 16} {...rest}>
+export const SmallEmdash: React.FC<BaseIconSVGProps> = ({ height = 1, width = 16, ...rest }) => (
+  <BaseIconSVG iconType="nhsuk-icon__emdash" height={height} width={width} {...rest}>
     <path d="M0 0h16v1H0z" />
   </BaseIconSVG>
 );
 
-export const Emdash: React.FC<BaseIconSVGProps> = ({ height, width, ...rest }) => (
-  <BaseIconSVG iconType="nhsuk-icon__emdash" height={height || 1} width={width || 19} {...rest}>
+export const Emdash: React.FC<BaseIconSVGProps> = ({ height = 1, width = 19, ...rest }) => (
+  <BaseIconSVG iconType="nhsuk-icon__emdash" height={height} width={width} {...rest}>
     <path d="M0 0h19v1H0z" />
   </BaseIconSVG>
 );

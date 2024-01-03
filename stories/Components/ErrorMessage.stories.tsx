@@ -32,7 +32,9 @@ const meta: Meta<typeof ErrorMessage> = {
 export default meta;
 type Story = StoryObj<typeof ErrorMessage>;
 
-export const Standard: Story = { argTypes: { visuallyHiddenText: { control: false } } };
+export const Standard: Story = {
+  argTypes: { visuallyHiddenText: { control: false } },
+};
 export const NoVisuallyHiddenText: Story = {
   args: { visuallyHiddenText: false },
   argTypes: { visuallyHiddenText: { control: false } },

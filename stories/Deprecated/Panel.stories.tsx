@@ -10,7 +10,7 @@ export default meta;
 type Story = StoryObj<typeof Panel>;
 
 export const Standard: Story = {
-  render: () => (
+  render: (args) => (
     <Panel>
       <h3>Live Well</h3>
       <p>
@@ -21,7 +21,7 @@ export const Standard: Story = {
 };
 
 export const WithLabel: Story = {
-  render: () => (
+  render: (args) => (
     <Panel label="Live well">
       <p>
         Advice, tips and tools to help you make the best choices about your health and wellbeing
@@ -31,7 +31,7 @@ export const WithLabel: Story = {
 };
 
 export const GreyPanel: Story = {
-  render: () => (
+  render: (args) => (
     <Panel grey>
       <p>
         Advice, tips and tools to help you make the best choices about your health and wellbeing
@@ -41,7 +41,7 @@ export const GreyPanel: Story = {
 };
 
 export const PanelGroup: Story = {
-  render: () => (
+  render: (args) => (
     <>
       <Panel.Group>
         <Panel>

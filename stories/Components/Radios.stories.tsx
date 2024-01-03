@@ -9,8 +9,11 @@ const meta: Meta<typeof Radios> = {
 export default meta;
 type Story = StoryObj<typeof Radios>;
 
+Radios.Radio.displayName = 'Radios.Radio';
+Radios.Divider.displayName = 'Radios.Divider';
+
 export const StandardRadios: Story = {
-  render: () => (
+  render: (args) => (
     <Fieldset>
       <Fieldset.Legend>Have you changed your name?</Fieldset.Legend>
       <Radios
@@ -28,7 +31,7 @@ export const StandardRadios: Story = {
 };
 
 export const InlineRadios: Story = {
-  render: () => (
+  render: (args) => (
     <Fieldset>
       <Fieldset.Legend>Have you changed your name?</Fieldset.Legend>
       <Radios
@@ -47,7 +50,7 @@ export const InlineRadios: Story = {
 };
 
 export const DisabledRadios: Story = {
-  render: () => (
+  render: (args) => (
     <Fieldset>
       <Fieldset.Legend>Have you changed your name?</Fieldset.Legend>
       <Radios
@@ -67,7 +70,7 @@ export const DisabledRadios: Story = {
 };
 
 export const RadiosWithConditionalContent: Story = {
-  render: () => {
+  render: (args) => {
     const impairmentsForm = (
       <Checkboxes name="impairments" id="impairments">
         <Checkboxes.Box value="autism">Autism</Checkboxes.Box>
@@ -102,7 +105,7 @@ export const RadiosWithConditionalContent: Story = {
 };
 
 export const RadiosWithADivider: Story = {
-  render: () => (
+  render: (args) => (
     <Fieldset>
       <Fieldset.Legend>How do you want to sign in?</Fieldset.Legend>
       <Radios name="example" id="example-divider">
@@ -116,7 +119,7 @@ export const RadiosWithADivider: Story = {
 };
 
 export const RadiosWithHintsOnItems: Story = {
-  render: () => (
+  render: (args) => (
     <Fieldset>
       <Fieldset.Legend>How do you want to sign in?</Fieldset.Legend>
       <Radios name="example" id="example-divider">
@@ -138,7 +141,7 @@ export const RadiosWithHintsOnItems: Story = {
 };
 
 export const RadiosWithoutFieldset: Story = {
-  render: () => (
+  render: (args) => (
     <Radios name="colours" id="colours">
       <Radios.Radio value="red">Red</Radios.Radio>
       <Radios.Radio value="green">Green</Radios.Radio>
