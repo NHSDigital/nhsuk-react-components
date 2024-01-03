@@ -11,8 +11,16 @@ const meta: Meta<typeof Card> = {
 export default meta;
 type Story = StoryObj<typeof Card>;
 
+Card.Content.displayName = 'Card.Content';
+Card.Heading.displayName = 'Card.Heading';
+Card.Description.displayName = 'Card.Description';
+Card.Link.displayName = 'Card.Link';
+Card.Image.displayName = 'Card.Image';
+Card.Group.displayName = 'Card.Group';
+Card.GroupItem.displayName = 'Card.GroupItem';
+
 export const Standard: Story = {
-  render: () => (
+  render: (args) => (
     <Card>
       <Card.Content>
         <Card.Heading>If you need help now but it&apos;s not an emergency</Card.Heading>

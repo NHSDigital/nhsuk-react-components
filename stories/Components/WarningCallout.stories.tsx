@@ -9,8 +9,10 @@ const meta: Meta<typeof WarningCallout> = {
 export default meta;
 type Story = StoryObj<typeof WarningCallout>;
 
+WarningCallout.Label.displayName = 'WarningCallout.Label';
+
 export const StandardWarningCallout: Story = {
-  render: () => (
+  render: (args) => (
     <WarningCallout>
       <WarningCallout.Label>School, nursery or work</WarningCallout.Label>
       <p>
@@ -24,7 +26,7 @@ export const StandardWarningCallout: Story = {
 };
 
 export const WarningCalloutWithCustomVisuallyHiddenText: Story = {
-  render: () => (
+  render: (args) => (
     <WarningCallout>
       <WarningCallout.Label visuallyHiddenText="Not Important: ">
         School, nursery or work
@@ -38,7 +40,7 @@ export const WarningCalloutWithCustomVisuallyHiddenText: Story = {
 };
 
 export const WarningCalloutWithDisabledVisuallyHiddenText: Story = {
-  render: () => (
+  render: (args) => (
     <WarningCallout>
       <WarningCallout.Label visuallyHiddenText={false}>
         School, nursery or work
@@ -52,7 +54,7 @@ export const WarningCalloutWithDisabledVisuallyHiddenText: Story = {
 };
 
 export const WarningCalloutWithoutLabel: Story = {
-  render: () => (
+  render: (args) => (
     <WarningCallout>
       <p>
         Stay away from school, nursery or work until all the spots have crusted over. This is

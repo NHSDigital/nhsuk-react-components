@@ -12,7 +12,7 @@ type Story = StoryObj<typeof Tag>;
 export const StandardTag: Story = { args: { children: 'Standard' } };
 
 export const AllColours: Story = {
-  render: () => (
+  render: (args) => (
     <div className="tag-wrapper">
       <Tag color="white">Started</Tag>
       <Tag color="grey">Not started</Tag>
