@@ -1,5 +1,6 @@
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
+import type { AsElementLink } from '../../util/types/LinkTypes';
 
 interface ButtonProps extends HTMLProps<HTMLButtonElement> {
   type?: 'button' | 'submit' | 'reset';
@@ -9,7 +10,7 @@ interface ButtonProps extends HTMLProps<HTMLButtonElement> {
   as?: 'button';
 }
 
-interface ButtonLinkProps extends HTMLProps<HTMLAnchorElement> {
+interface ButtonLinkProps extends AsElementLink<HTMLAnchorElement> {
   disabled?: boolean;
   secondary?: boolean;
   reverse?: boolean;
@@ -50,9 +51,10 @@ export const ButtonLink: React.FC<ButtonLinkProps> = ({
   disabled,
   secondary,
   reverse,
+  asElement: Component = 'a',
   ...rest
 }) => (
-  <a
+  <Component
     className={classNames(
       'nhsuk-button',
       { 'nhsuk-button--disabled': disabled },
@@ -66,7 +68,7 @@ export const ButtonLink: React.FC<ButtonLinkProps> = ({
     {...rest}
   >
     {children}
-  </a>
+  </Component>
 );
 
 ButtonLink.defaultProps = {

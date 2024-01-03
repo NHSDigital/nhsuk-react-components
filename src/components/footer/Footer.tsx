@@ -1,6 +1,7 @@
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
 import { Container } from '../layout';
+import type { AsElementLink } from '../../util/types/LinkTypes';
 
 type FooterListProps = HTMLProps<HTMLOListElement>;
 
@@ -8,9 +9,16 @@ const FooterList: React.FC<FooterListProps> = ({ className, ...rest }) => (
   <ul className={classNames('nhsuk-footer__list', className)} {...rest} />
 );
 
-const FooterListItem: React.FC<HTMLProps<HTMLAnchorElement>> = ({ className, ...rest }) => (
+const FooterListItem: React.FC<AsElementLink<HTMLAnchorElement>> = ({
+  children,
+  className,
+  asElement: Component = 'a',
+  ...rest
+}) => (
   <li className="nhsuk-footer__list-item">
-    <a className={classNames('nhsuk-footer__list-item-link', className)} {...rest} />
+    <Component className={classNames('nhsuk-footer__list-item-link', className)} {...rest}>
+      {children}
+    </Component>
   </li>
 );
 
