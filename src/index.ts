@@ -3,7 +3,6 @@ export { default as BackLink } from './components/back-link';
 export { default as Breadcrumb } from './components/breadcrumb';
 export { default as Button, Button as DefaultButton, ButtonLink } from './components/button';
 export { default as Card } from './components/card';
-export { default as CareCard } from './components/care-card';
 export { default as Checkboxes } from './components/checkboxes';
 export { default as ContentsList } from './components/contents-list';
 export { default as DateInput } from './components/date-input';
@@ -54,3 +53,4 @@ export { default as Clearfix } from './components/utils/Clearfix';
 export { default as ReadingWidth } from './components/utils/ReadingWidth';
 
 export { default as ReviewDate } from './patterns/review-date';
+export { default as CareCard } from "./patterns/care-card"
