@@ -18,6 +18,7 @@ exports[`DoDontList matches snapshot: DoDontList-Do 1`] = `
   </HeadingLevel>
   <ul
     className="nhsuk-list nhsuk-list--tick"
+    role="list"
   >
     <ContextProvider
       value="do"
@@ -37,6 +38,7 @@ exports[`DoDontList matches snapshot: DoDontList-Dont 1`] = `
   </HeadingLevel>
   <ul
     className="nhsuk-list nhsuk-list--cross"
+    role="list"
   >
     <ContextProvider
       value="dont"
