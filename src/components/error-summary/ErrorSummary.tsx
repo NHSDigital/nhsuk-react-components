@@ -9,8 +9,12 @@ const ErrorSummaryBody: React.FC<HTMLProps<HTMLDivElement>> = ({ className, ...r
   <div className={classNames('nhsuk-error-summary__body', className)} {...rest} />
 );
 
-const ErrorSummaryList: React.FC<HTMLProps<HTMLUListElement>> = ({ className, ...rest }) => (
-  <ul className={classNames('nhsuk-list', 'nhsuk-error-summary__list', className)} {...rest} />
+const ErrorSummaryList: React.FC<HTMLProps<HTMLUListElement>> = ({
+  className,
+  role = 'list',
+  ...rest
+}) => (
+  <ul className={classNames('nhsuk-list', 'nhsuk-error-summary__list', className)} role={role} {...rest} />
 );
 
 const ErrorSummaryListItem: React.FC<HTMLProps<HTMLAnchorElement>> = (props) => (

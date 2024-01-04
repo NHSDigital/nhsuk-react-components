@@ -11,6 +11,7 @@ exports[`ErrorSummary ErrorSummary.Body matches snapshot: ErrorSummary.Body 1`] 
 exports[`ErrorSummary ErrorSummary.List matches snapshot: ErrorSummary.List 1`] = `
 <ul
   className="nhsuk-list nhsuk-error-summary__list"
+  role="list"
 >
   List
 </ul>

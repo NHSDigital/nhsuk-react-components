@@ -8319,10 +8319,10 @@ neo-async@^2.5.0, neo-async@^2.6.0, neo-async@^2.6.1:
     accessible-autocomplete "^2.0.2"
     sass-mq "^5.0.1"
 
-nhsuk-frontend@5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/nhsuk-frontend/-/nhsuk-frontend-5.0.0.tgz#21d000494ea4166983e9b2808b1bc581dc1c52e9"
-  integrity sha512-QOTrASBm6Vv2PnGSuEhJhCRsYZ3gCnFovLkv6CGXfafHgG1uArBtOXfAjMjySlw2GULVz+vQv//fCIT/Muuswg==
+nhsuk-frontend@6.2.0:
+  version "6.2.0"
+  resolved "https://registry.yarnpkg.com/nhsuk-frontend/-/nhsuk-frontend-6.2.0.tgz#4bb6d46844d7feba6938bb7c9dbfeaebcaf03983"
+  integrity sha512-02eF0+LkqjxZy7wB2iQSkssoA6LgSey4r+fPgj20KWqDUVEpy2Zi4bmRUNdda5oFsJR6PHtr/G+9Rn0dBgsOMw==
 
 nice-try@^1.0.4:
   version "1.0.5"

@@ -3,7 +3,7 @@ import { CareCard } from '../../src';
 import type { Meta, StoryObj } from '@storybook/react';
 
 /**
- * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/master/packages/components/care-card" target="_blank" rel="noopener noreferrer">here</a>.
+ * This component has been moved into a pattern. More information about how and when to use this component can be found in the [NHS digital service manual](https://service-manual.nhs.uk/design-system/patterns/help-users-decide-when-and-where-to-get-care).
  *
  * ## Implementation Notes
  *
@@ -11,7 +11,7 @@ import type { Meta, StoryObj } from '@storybook/react';
  *
  * - ("non-urgent") Non-urgent advice:
  * - ("urgent") Urgent advice:
- * - ("immediate") Immediate action required:
+ * - ("emergency") Immediate action required:
  *
  * If you wish to disable this behaviour, pass the prop `visuallyHiddenText={false}` to the `CareCard.Heading` component or specify your own visually hidden text by using `visuallyHiddenText="Custom"`.
  *
@@ -44,7 +44,7 @@ import type { Meta, StoryObj } from '@storybook/react';
  * ```
  */
 const meta: Meta<typeof CareCard> = {
-  title: 'Components/CareCard',
+  title: 'Patterns/CareCard',
   component: CareCard,
 };
 export default meta;
@@ -99,8 +99,8 @@ export const Urgent: Story = {
   ),
 };
 
-export const Immediate: Story = {
-  args: { type: 'immediate' },
+export const Emergency: Story = {
+  args: { type: 'emergency' },
   render: (args) => (
     <CareCard type={args.type}>
       <CareCard.Heading>Call 999 if you have sudden chest pain that:</CareCard.Heading>
