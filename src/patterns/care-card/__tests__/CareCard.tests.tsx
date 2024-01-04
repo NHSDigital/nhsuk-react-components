@@ -21,19 +21,19 @@ describe('CareCard', () => {
       </CareCard>,
     );
     const immediateCard = mount(
-      <CareCard type="immediate">
+      <CareCard type="emergency">
         <CareCard.Heading>Heading</CareCard.Heading>
       </CareCard>,
     );
 
     const withoutHiddenText = mount(
-      <CareCard type="immediate">
+      <CareCard type="emergency">
         <CareCard.Heading visuallyHiddenText={false}>Heading</CareCard.Heading>
       </CareCard>,
     );
 
     const withCustomHiddentext = mount(
-      <CareCard type="immediate">
+      <CareCard type="emergency">
         <CareCard.Heading visuallyHiddenText="Custom">Heading</CareCard.Heading>
       </CareCard>,
     );
@@ -56,11 +56,11 @@ describe('CareCard', () => {
   it('renders with correct classNames', () => {
     const nonUrgentCard = shallow(<CareCard type="non-urgent" />);
     const urgentCard = shallow(<CareCard type="urgent" />);
-    const immediateCard = shallow(<CareCard type="immediate" />);
+    const immediateCard = shallow(<CareCard type="emergency" />);
 
-    expect(nonUrgentCard.hasClass('nhsuk-care-card--non-urgent')).toBeTruthy();
-    expect(urgentCard.hasClass('nhsuk-care-card--urgent')).toBeTruthy();
-    expect(immediateCard.hasClass('nhsuk-care-card--immediate')).toBeTruthy();
+    expect(nonUrgentCard.hasClass('nhsuk-card--care--non-urgent')).toBeTruthy();
+    expect(urgentCard.hasClass('nhsuk-card--care--urgent')).toBeTruthy();
+    expect(immediateCard.hasClass('nhsuk-card--care--emergency')).toBeTruthy();
 
     nonUrgentCard.unmount();
     urgentCard.unmount();
@@ -73,7 +73,7 @@ describe('CareCard', () => {
         <CareCard.Content>Test Content</CareCard.Content>
       </CareCard>,
     );
-    expect(component.find('.nhsuk-care-card__content').text()).toEqual('Test Content');
+    expect(component.find('.nhsuk-card__content').text()).toEqual('Test Content');
     component.unmount();
   });
 });

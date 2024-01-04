@@ -2,8 +2,11 @@ import React from 'react';
 import { NavAZ } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
+/**
+ * This component has been moved into a pattern. More information about how and when to use this component can be found in the [NHS digital service manual](https://service-manual.nhs.uk/design-system/patterns/a-to-z-page).
+ **/
 const meta: Meta<typeof NavAZ> = {
-  title: 'Components/NavAZ',
+  title: 'Patterns/NavAZ',
   component: NavAZ,
   args: {
     fullAlphabet: false,
@@ -21,7 +24,7 @@ export const Basic: Story = {
   render: (args) => (
     <NavAZ>
       <NavAZ.LinkItem href="#A">A</NavAZ.LinkItem>
-      <NavAZ.LinkItem href="#B">B</NavAZ.LinkItem>
+      <NavAZ.DisabledItem>B</NavAZ.DisabledItem>
       <NavAZ.LinkItem href="#C">C</NavAZ.LinkItem>
       <NavAZ.LinkItem href="#D">D</NavAZ.LinkItem>
       <NavAZ.LinkItem href="#E">E</NavAZ.LinkItem>

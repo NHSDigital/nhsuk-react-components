@@ -3,7 +3,6 @@ export { default as BackLink } from './components/back-link';
 export { default as Breadcrumb } from './components/breadcrumb';
 export { default as Button, Button as DefaultButton, ButtonLink } from './components/button';
 export { default as Card } from './components/card';
-export { default as CareCard } from './components/care-card';
 export { default as Checkboxes } from './components/checkboxes';
 export { default as ContentsList } from './components/contents-list';
 export { default as DateInput } from './components/date-input';
@@ -38,7 +37,6 @@ export { default as Input } from './components/input';
 export { default as InsetText } from './components/inset-text';
 export { default as Label } from './components/label';
 export { Container, Col, Row } from './components/layout';
-export { default as NavAZ } from './components/nav-a-z';
 export { default as Pagination } from './components/pagination';
 export { default as Radios } from './components/radios';
 export { default as Select } from './components/select';
@@ -54,3 +52,5 @@ export { default as ReadingWidth } from './components/utils/ReadingWidth';
 
 export { default as ReviewDate } from './patterns/review-date';
 export { default as ListPanel } from './patterns/list-panel';
+export { default as CareCard } from "./patterns/care-card"
+export { default as NavAZ } from './patterns/nav-a-z';

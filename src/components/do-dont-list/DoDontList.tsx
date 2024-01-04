@@ -23,6 +23,7 @@ const DoDontList: DoDontList = ({
   children,
   heading,
   headingLevel,
+  role = 'list',
   ...rest
 }) => {
   return (
@@ -36,6 +37,7 @@ const DoDontList: DoDontList = ({
           { 'nhsuk-list--tick': listType === 'do' },
           { 'nhsuk-list--cross': listType === 'dont' },
         )}
+        role={role}
       >
         <DoDontListContext.Provider value={listType}>{children}</DoDontListContext.Provider>
       </ul>
