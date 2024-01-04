@@ -39,7 +39,6 @@ export { default as InsetText } from './components/inset-text';
 export { default as Label } from './components/label';
 export { Container, Col, Row } from './components/layout';
 export { default as ListPanel } from './components/list-panel';
-export { default as NavAZ } from './components/nav-a-z';
 export { default as Pagination } from './components/pagination';
 export { default as Radios } from './components/radios';
 export { default as Select } from './components/select';
@@ -54,3 +53,4 @@ export { default as Clearfix } from './components/utils/Clearfix';
 export { default as ReadingWidth } from './components/utils/ReadingWidth';
 
 export { default as ReviewDate } from './patterns/review-date';
+export { default as NavAZ } from './patterns/nav-a-z';
