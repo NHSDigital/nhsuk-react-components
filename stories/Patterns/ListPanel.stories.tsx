@@ -13,10 +13,7 @@ export default meta;
 type Story = StoryObj<typeof ListPanel>;
 
 export const Standard: Story = {
-  argTypes: {
-    type: { table: { disable: true } },
-  },
-  render: () => (
+  render: (args) => (
     <>
       <ListPanel>
         <ListPanel.Heading id="A">A</ListPanel.Heading>
