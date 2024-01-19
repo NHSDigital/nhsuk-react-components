@@ -1,9 +1,11 @@
 {
+  "_id": "nhsuk-react-components@3.0.0",
   "name": "nhsuk-react-components",
   "version": "3.0.0",
+  "readme": "README.md",
   "author": {
-    "email": "thomas.judd-cooper1@nhs.net",
     "name": "Thomas Judd-Cooper",
+    "email": "thomas.judd-cooper1@nhs.net",
     "url": "https://tomjuddcooper.co.uk"
   },
   "license": "MIT",
@@ -33,7 +35,7 @@
     "@typescript-eslint/eslint-plugin": "^4.23.0",
     "@typescript-eslint/parser": "^4.23.0",
     "babel-loader": "^8.2.2",
-    "chromatic": "^6.17.3",
+    "chromatic": "^10.3.1",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
     "enzyme-to-json": "^3.6.2",
