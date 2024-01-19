@@ -1,9 +1,11 @@
 {
+  "_id": "nhsuk-react-components@3.0.0",
   "name": "nhsuk-react-components",
   "version": "3.0.0",
+  "readme": "README.md",
   "author": {
-    "email": "thomas.judd-cooper1@nhs.net",
     "name": "Thomas Judd-Cooper",
+    "email": "thomas.judd-cooper1@nhs.net",
     "url": "https://tomjuddcooper.co.uk"
   },
   "license": "MIT",
@@ -85,7 +87,8 @@
     "lint": "eslint 'src/**/*.{js,ts,tsx}' 'stories/**/*.{js,ts,tsx}' --fix",
     "lint:ci": "eslint 'src/**/*.{js,ts,tsx}' 'stories/**/*.{js,ts,tsx}'",
     "build-storybook": "storybook build",
-    "prepublishOnly": "yarn lint:ci && yarn test:ci && yarn storybook --smoke-test"
+    "prepublishOnly": "yarn lint:ci && yarn test:ci && yarn storybook --smoke-test",
+    "chromatic": "npx chromatic --exit-zero-on-changes"
   },
   "files": [
     "dist",
