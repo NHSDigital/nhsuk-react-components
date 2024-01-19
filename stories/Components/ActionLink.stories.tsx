@@ -1,7 +1,5 @@
 import { ActionLink } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
-import { expect } from '@storybook/jest';
-import { within, userEvent } from '@storybook/testing-library';
 
 const meta: Meta<typeof ActionLink> = {
   title: 'Components/ActionLink',
