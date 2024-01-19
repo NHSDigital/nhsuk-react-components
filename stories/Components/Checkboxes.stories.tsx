@@ -33,7 +33,6 @@ import { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof Checkboxes> = {
   title: 'Components/Checkboxes',
   component: Checkboxes,
-  tags: ['no-test'],
 };
 export default meta;
 type Story = StoryObj<typeof Checkboxes>;
@@ -62,7 +61,7 @@ export const WithHintText: Story = {
   render: (args) => (
     <Fieldset>
       <Fieldset.Legend isPageHeading>How do you want to sign in?</Fieldset.Legend>
-      <Checkboxes>
+      <Checkboxes id="sign-in">
         <Checkboxes.Box
           id="government-gateway"
           name="gateway"
@@ -177,6 +176,7 @@ export const WithErrorString: Story = {
         <Input
           label="Error Value"
           value={error}
+          id="error-value"
           onChange={(e) => setError(e.currentTarget.value)}
         />
       </>

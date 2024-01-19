@@ -5,7 +5,6 @@ import { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof Radios> = {
   title: 'Components/Radios',
   component: Radios,
-  tags: ['no-test'],
 };
 export default meta;
 type Story = StoryObj<typeof Radios>;
@@ -159,6 +158,7 @@ export const RadiosWithErrorBoolean: Story = {
         <Fieldset>
           <Fieldset.Legend>Have you changed your name?</Fieldset.Legend>
           <Radios
+            id="example"
             name="example"
             error={error}
             hint="This includes changing your last name or spelling your name differently."
@@ -194,6 +194,7 @@ export const RadiosWithErrorString: Story = {
         <Fieldset>
           <Fieldset.Legend>Have you changed your name?</Fieldset.Legend>
           <Radios
+            id="example"
             name="example"
             error={error}
             hint="This includes changing your last name or spelling your name differently."
@@ -206,7 +207,7 @@ export const RadiosWithErrorString: Story = {
             </Radios.Radio>
           </Radios>
         </Fieldset>
-        <Input value={error} onChange={(e) => setError(e.currentTarget.value)} />
+        <Input id="error-input" value={error} onChange={(e) => setError(e.currentTarget.value)} />
       </>
     );
   },

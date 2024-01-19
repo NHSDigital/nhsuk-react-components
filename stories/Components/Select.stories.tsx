@@ -5,7 +5,6 @@ import { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof Select> = {
   title: 'Components/Select',
   component: Select,
-  tags: ['no-test'],
 };
 export default meta;
 type Story = StoryObj<typeof Select>;
@@ -28,7 +27,7 @@ export const Standard: Story = {
 
 export const SelectWithHintText: Story = {
   render: (args) => (
-    <Select label="Label text goes here" hint="Hint text goes here">
+    <Select label="Label text goes here" hint="Hint text goes here" id="with-hint-text">
       <Select.Option value="1">NHS.UK frontend option 1</Select.Option>
       <Select.Option value="2">NHS.UK frontend option 2</Select.Option>
       <Select.Option value="3">NHS.UK frontend option 3</Select.Option>
@@ -41,7 +40,7 @@ export const SelectWithErrorBoolean: Story = {
     const [error, setError] = React.useState<boolean>(true);
     return (
       <>
-        <Select error={error} label="Label text goes here">
+        <Select error={error} label="Label text goes here" id="error-boolean">
           <Select.Option value="1">NHS.UK frontend option 1</Select.Option>
           <Select.Option value="2">NHS.UK frontend option 2</Select.Option>
           <Select.Option value="3">NHS.UK frontend option 3</Select.Option>
@@ -66,12 +65,16 @@ export const SelectWithErrorString: Story = {
     const [error, setError] = React.useState<string>('Error message goes here');
     return (
       <>
-        <Select error={error} label="Label text goes here">
+        <Select error={error} label="Label text goes here" id="error-string">
           <Select.Option value="1">NHS.UK frontend option 1</Select.Option>
           <Select.Option value="2">NHS.UK frontend option 2</Select.Option>
           <Select.Option value="3">NHS.UK frontend option 3</Select.Option>
         </Select>
-        <Input onChange={(e) => setError(e.currentTarget.value)} value={error} />
+        <Input
+          id="error-string-input"
+          onChange={(e) => setError(e.currentTarget.value)}
+          value={error}
+        />
       </>
     );
   },

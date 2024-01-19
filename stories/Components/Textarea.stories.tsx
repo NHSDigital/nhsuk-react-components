@@ -54,7 +54,6 @@ export const TextareaWithErrorBoolean: Story = {
 };
 
 export const TextareaWithErrorString: Story = {
-  tags: ['no-test'],
   render: function TextareaWithErrorStringRender() {
     const [error, setError] = useState<string>('You must provide an explanation');
     return (
@@ -66,7 +65,12 @@ export const TextareaWithErrorString: Story = {
           rows={5}
           label="Why can&#39;t you provide a National Insurance number?"
         />
-        <Input onChange={(e) => setError(e.currentTarget.value)} value={error} />
+        <Input
+          id="no-ni-reason-input"
+          name="no-ni-reason-input"
+          onChange={(e) => setError(e.currentTarget.value)}
+          value={error}
+        />
       </>
     );
   },
