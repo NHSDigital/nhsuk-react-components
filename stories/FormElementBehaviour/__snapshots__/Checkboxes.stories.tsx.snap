@@ -47,7 +47,7 @@ exports[`FormBehaviour/Checkboxes IDPrefixAndNameSupplied smoke-test 1`] = `
   </h5>
   <div class="nhsuk-form-group">
     <div class="nhsuk-checkboxes"
-         id="checkboxes_gc21p"
+         id="checkboxes_qr2rn"
     >
       <div class="nhsuk-checkboxes__item">
         <input class="nhsuk-checkboxes__input"
@@ -126,13 +126,13 @@ exports[`FormBehaviour/Checkboxes IDPrefixSupplied smoke-test 1`] = `
       Box 3 ID:idprefix-3
     </li>
     <li>
-      Box 1 Name:checkboxes_jvof4
+      Box 1 Name:checkboxes_uilvo
     </li>
     <li>
-      Box 2 Name:checkboxes_jvof4
+      Box 2 Name:checkboxes_uilvo
     </li>
     <li>
-      Box 3 Name:checkboxes_jvof4
+      Box 3 Name:checkboxes_uilvo
     </li>
   </ul>
   <h5>
@@ -140,11 +140,11 @@ exports[`FormBehaviour/Checkboxes IDPrefixSupplied smoke-test 1`] = `
   </h5>
   <div class="nhsuk-form-group">
     <div class="nhsuk-checkboxes"
-         id="checkboxes_jvof4"
+         id="checkboxes_uilvo"
     >
       <div class="nhsuk-checkboxes__item">
         <input class="nhsuk-checkboxes__input"
-               name="checkboxes_jvof4"
+               name="checkboxes_uilvo"
                id="idprefix-1"
                type="checkbox"
         >
@@ -157,7 +157,7 @@ exports[`FormBehaviour/Checkboxes IDPrefixSupplied smoke-test 1`] = `
       </div>
       <div class="nhsuk-checkboxes__item">
         <input class="nhsuk-checkboxes__input"
-               name="checkboxes_jvof4"
+               name="checkboxes_uilvo"
                id="idprefix-2"
                type="checkbox"
         >
@@ -170,7 +170,7 @@ exports[`FormBehaviour/Checkboxes IDPrefixSupplied smoke-test 1`] = `
       </div>
       <div class="nhsuk-checkboxes__item">
         <input class="nhsuk-checkboxes__input"
-               name="checkboxes_jvof4"
+               name="checkboxes_uilvo"
                id="idprefix-3"
                type="checkbox"
         >
@@ -207,13 +207,13 @@ exports[`FormBehaviour/Checkboxes NameSupplied smoke-test 1`] = `
   </h5>
   <ul class="nhsuk-hint">
     <li>
-      Box 1 ID:checkboxes_7ct2c-1
+      Box 1 ID:checkboxes_nuwkl-1
     </li>
     <li>
-      Box 2 ID:checkboxes_7ct2c-2
+      Box 2 ID:checkboxes_nuwkl-2
     </li>
     <li>
-      Box 3 ID:checkboxes_7ct2c-3
+      Box 3 ID:checkboxes_nuwkl-3
     </li>
     <li>
       Box 1 Name:name-supplied
@@ -230,17 +230,17 @@ exports[`FormBehaviour/Checkboxes NameSupplied smoke-test 1`] = `
   </h5>
   <div class="nhsuk-form-group">
     <div class="nhsuk-checkboxes"
-         id="checkboxes_7ct2c"
+         id="checkboxes_nuwkl"
     >
       <div class="nhsuk-checkboxes__item">
         <input class="nhsuk-checkboxes__input"
                name="name-supplied"
-               id="checkboxes_7ct2c-1"
+               id="checkboxes_nuwkl-1"
                type="checkbox"
         >
         <label class="nhsuk-label nhsuk-checkboxes__label"
-               id="checkboxes_7ct2c-1--label"
-               for="checkboxes_7ct2c-1"
+               id="checkboxes_nuwkl-1--label"
+               for="checkboxes_nuwkl-1"
         >
           Box 1
         </label>
@@ -248,12 +248,12 @@ exports[`FormBehaviour/Checkboxes NameSupplied smoke-test 1`] = `
       <div class="nhsuk-checkboxes__item">
         <input class="nhsuk-checkboxes__input"
                name="name-supplied"
-               id="checkboxes_7ct2c-2"
+               id="checkboxes_nuwkl-2"
                type="checkbox"
         >
         <label class="nhsuk-label nhsuk-checkboxes__label"
-               id="checkboxes_7ct2c-2--label"
-               for="checkboxes_7ct2c-2"
+               id="checkboxes_nuwkl-2--label"
+               for="checkboxes_nuwkl-2"
         >
           Box 2
         </label>
@@ -261,12 +261,12 @@ exports[`FormBehaviour/Checkboxes NameSupplied smoke-test 1`] = `
       <div class="nhsuk-checkboxes__item">
         <input class="nhsuk-checkboxes__input"
                name="name-supplied"
-               id="checkboxes_7ct2c-3"
+               id="checkboxes_nuwkl-3"
                type="checkbox"
         >
         <label class="nhsuk-label nhsuk-checkboxes__label"
-               id="checkboxes_7ct2c-3--label"
-               for="checkboxes_7ct2c-3"
+               id="checkboxes_nuwkl-3--label"
+               for="checkboxes_nuwkl-3"
         >
           Box 3
         </label>
@@ -297,22 +297,22 @@ exports[`FormBehaviour/Checkboxes NoIDSupplied smoke-test 1`] = `
   </h5>
   <ul class="nhsuk-hint">
     <li>
-      Box 1 ID:checkboxes_1tugv-1
+      Box 1 ID:checkboxes_f1vbb-1
     </li>
     <li>
-      Box 2 ID:checkboxes_1tugv-2
+      Box 2 ID:checkboxes_f1vbb-2
     </li>
     <li>
-      Box 3 ID:checkboxes_1tugv-3
+      Box 3 ID:checkboxes_f1vbb-3
     </li>
     <li>
-      Box 1 Name:checkboxes_1tugv
+      Box 1 Name:checkboxes_f1vbb
     </li>
     <li>
-      Box 2 Name:checkboxes_1tugv
+      Box 2 Name:checkboxes_f1vbb
     </li>
     <li>
-      Box 3 Name:checkboxes_1tugv
+      Box 3 Name:checkboxes_f1vbb
     </li>
   </ul>
   <h5>
@@ -320,43 +320,43 @@ exports[`FormBehaviour/Checkboxes NoIDSupplied smoke-test 1`] = `
   </h5>
   <div class="nhsuk-form-group">
     <div class="nhsuk-checkboxes"
-         id="checkboxes_1tugv"
+         id="checkboxes_f1vbb"
     >
       <div class="nhsuk-checkboxes__item">
         <input class="nhsuk-checkboxes__input"
-               name="checkboxes_1tugv"
-               id="checkboxes_1tugv-1"
+               name="checkboxes_f1vbb"
+               id="checkboxes_f1vbb-1"
                type="checkbox"
         >
         <label class="nhsuk-label nhsuk-checkboxes__label"
-               id="checkboxes_1tugv-1--label"
-               for="checkboxes_1tugv-1"
+               id="checkboxes_f1vbb-1--label"
+               for="checkboxes_f1vbb-1"
         >
           Box 1
         </label>
       </div>
       <div class="nhsuk-checkboxes__item">
         <input class="nhsuk-checkboxes__input"
-               name="checkboxes_1tugv"
-               id="checkboxes_1tugv-2"
+               name="checkboxes_f1vbb"
+               id="checkboxes_f1vbb-2"
                type="checkbox"
         >
         <label class="nhsuk-label nhsuk-checkboxes__label"
-               id="checkboxes_1tugv-2--label"
-               for="checkboxes_1tugv-2"
+               id="checkboxes_f1vbb-2--label"
+               for="checkboxes_f1vbb-2"
         >
           Box 2
         </label>
       </div>
       <div class="nhsuk-checkboxes__item">
         <input class="nhsuk-checkboxes__input"
-               name="checkboxes_1tugv"
-               id="checkboxes_1tugv-3"
+               name="checkboxes_f1vbb"
+               id="checkboxes_f1vbb-3"
                type="checkbox"
         >
         <label class="nhsuk-label nhsuk-checkboxes__label"
-               id="checkboxes_1tugv-3--label"
-               for="checkboxes_1tugv-3"
+               id="checkboxes_f1vbb-3--label"
+               for="checkboxes_f1vbb-3"
         >
           Box 3
         </label>
@@ -387,46 +387,46 @@ exports[`FormBehaviour/Checkboxes OnChangeAndOnInputHandlers smoke-test 1`] = `
   </h5>
   <div class="nhsuk-form-group">
     <div class="nhsuk-checkboxes"
-         id="checkboxes_6smp1"
+         id="checkboxes_7h4nb"
     >
       <div class="nhsuk-checkboxes__item">
         <input class="nhsuk-checkboxes__input"
-               name="checkboxes_6smp1"
-               id="checkboxes_6smp1-1"
+               name="checkboxes_7h4nb"
+               id="checkboxes_7h4nb-1"
                type="checkbox"
                value="1"
         >
         <label class="nhsuk-label nhsuk-checkboxes__label"
-               id="checkboxes_6smp1-1--label"
-               for="checkboxes_6smp1-1"
+               id="checkboxes_7h4nb-1--label"
+               for="checkboxes_7h4nb-1"
         >
           Box 1
         </label>
       </div>
       <div class="nhsuk-checkboxes__item">
         <input class="nhsuk-checkboxes__input"
-               name="checkboxes_6smp1"
-               id="checkboxes_6smp1-2"
+               name="checkboxes_7h4nb"
+               id="checkboxes_7h4nb-2"
                type="checkbox"
                value="2"
         >
         <label class="nhsuk-label nhsuk-checkboxes__label"
-               id="checkboxes_6smp1-2--label"
-               for="checkboxes_6smp1-2"
+               id="checkboxes_7h4nb-2--label"
+               for="checkboxes_7h4nb-2"
         >
           Box 2
         </label>
       </div>
       <div class="nhsuk-checkboxes__item">
         <input class="nhsuk-checkboxes__input"
-               name="checkboxes_6smp1"
-               id="checkboxes_6smp1-3"
+               name="checkboxes_7h4nb"
+               id="checkboxes_7h4nb-3"
                type="checkbox"
                value="3"
         >
         <label class="nhsuk-label nhsuk-checkboxes__label"
-               id="checkboxes_6smp1-3--label"
-               for="checkboxes_6smp1-3"
+               id="checkboxes_7h4nb-3--label"
+               for="checkboxes_7h4nb-3"
         >
           Box 3
         </label>

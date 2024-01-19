@@ -309,15 +309,15 @@ exports[`Components/Checkboxes WithErrorString smoke-test 1`] = `
 </div>
 <div class="nhsuk-form-group">
   <label class="nhsuk-label"
-         id="input_ojvrm--label"
-         for="input_ojvrm"
+         id="input_71k7g--label"
+         for="input_71k7g"
   >
     Error Value
   </label>
   <input class="nhsuk-input"
-         aria-labelledby="input_ojvrm--label"
-         name="input_ojvrm"
-         id="input_ojvrm"
+         aria-labelledby="input_71k7g--label"
+         name="input_71k7g"
+         id="input_71k7g"
          type="text"
          value="Please select an option"
   >
@@ -334,7 +334,7 @@ exports[`Components/Checkboxes WithHintText smoke-test 1`] = `
     </legend>
     <div class="nhsuk-form-group">
       <div class="nhsuk-checkboxes"
-           id="checkboxes_80m60"
+           id="checkboxes_1oqwu"
       >
         <div class="nhsuk-checkboxes__item">
           <input class="nhsuk-checkboxes__input"

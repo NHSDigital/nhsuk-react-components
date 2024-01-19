@@ -5,6 +5,7 @@ import { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof Checkboxes> = {
   title: 'FormBehaviour/Checkboxes',
   component: Checkboxes,
+  tags: ['no-test'],
 };
 export default meta;
 type Story = StoryObj<typeof Checkboxes>;

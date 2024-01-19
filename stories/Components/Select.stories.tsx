@@ -5,6 +5,7 @@ import { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof Select> = {
   title: 'Components/Select',
   component: Select,
+  tags: ['no-test'],
 };
 export default meta;
 type Story = StoryObj<typeof Select>;

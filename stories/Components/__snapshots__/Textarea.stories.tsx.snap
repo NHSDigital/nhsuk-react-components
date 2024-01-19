@@ -100,8 +100,8 @@ exports[`Components/Textarea TextareaWithErrorString smoke-test 1`] = `
 </div>
 <div class="nhsuk-form-group">
   <input class="nhsuk-input"
-         name="input_4j6yz"
-         id="input_4j6yz"
+         name="input_6qfuz"
+         id="input_6qfuz"
          type="text"
          value="You must provide an explanation"
   >

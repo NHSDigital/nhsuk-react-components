@@ -231,13 +231,13 @@ exports[`Components/Radios RadiosWithErrorBoolean smoke-test 1`] = `
     </legend>
     <div class="nhsuk-form-group nhsuk-form-group--error">
       <div class="nhsuk-hint"
-           id="radios_8k2d0--hint"
+           id="radios_zsg9m--hint"
       >
         This includes changing your last name or spelling your name differently.
       </div>
       <div class="nhsuk-radios"
-           id="radios_8k2d0"
-           aria-describedby="radios_8k2d0--hint"
+           id="radios_zsg9m"
+           aria-describedby="radios_zsg9m--hint"
       >
         <div class="nhsuk-radios__item">
           <input class="nhsuk-radios__input"
@@ -290,12 +290,12 @@ exports[`Components/Radios RadiosWithErrorString smoke-test 1`] = `
     </legend>
     <div class="nhsuk-form-group nhsuk-form-group--error">
       <div class="nhsuk-hint"
-           id="radios_2zqnn--hint"
+           id="radios_r2a90--hint"
       >
         This includes changing your last name or spelling your name differently.
       </div>
       <span class="nhsuk-error-message"
-            id="radios_2zqnn--error-message"
+            id="radios_r2a90--error-message"
             role="alert"
       >
         <span class="nhsuk-u-visually-hidden">
@@ -304,8 +304,8 @@ exports[`Components/Radios RadiosWithErrorString smoke-test 1`] = `
         Please select an option
       </span>
       <div class="nhsuk-radios"
-           id="radios_2zqnn"
-           aria-describedby="radios_2zqnn--hint"
+           id="radios_r2a90"
+           aria-describedby="radios_r2a90--hint"
       >
         <div class="nhsuk-radios__item">
           <input class="nhsuk-radios__input"
@@ -344,8 +344,8 @@ exports[`Components/Radios RadiosWithErrorString smoke-test 1`] = `
 </div>
 <div class="nhsuk-form-group">
   <input class="nhsuk-input"
-         name="input_9ktmn"
-         id="input_9ktmn"
+         name="input_gmf03"
+         id="input_gmf03"
          type="text"
          value="Please select an option"
   >

@@ -5,6 +5,7 @@ import { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof Radios> = {
   title: 'Components/Radios',
   component: Radios,
+  tags: ['no-test'],
 };
 export default meta;
 type Story = StoryObj<typeof Radios>;

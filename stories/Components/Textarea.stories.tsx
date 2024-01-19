@@ -54,6 +54,7 @@ export const TextareaWithErrorBoolean: Story = {
 };
 
 export const TextareaWithErrorString: Story = {
+  tags: ['no-test'],
   render: function TextareaWithErrorStringRender() {
     const [error, setError] = useState<string>('You must provide an explanation');
     return (

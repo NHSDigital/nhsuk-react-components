@@ -3,15 +3,15 @@
 exports[`Components/Select SelectWithErrorBoolean smoke-test 1`] = `
 <div class="nhsuk-form-group nhsuk-form-group--error">
   <label class="nhsuk-label"
-         id="select_l8273--label"
-         for="select_l8273"
+         id="select_h9ihn--label"
+         for="select_h9ihn"
   >
     Label text goes here
   </label>
   <select class="nhsuk-select nhsuk-select--error"
-          aria-labelledby="select_l8273--label"
-          name="select_l8273"
-          id="select_l8273"
+          aria-labelledby="select_h9ihn--label"
+          name="select_h9ihn"
+          id="select_h9ihn"
   >
     <option value="1">
       NHS.UK frontend option 1
@@ -35,13 +35,13 @@ exports[`Components/Select SelectWithErrorBoolean smoke-test 1`] = `
 exports[`Components/Select SelectWithErrorString smoke-test 1`] = `
 <div class="nhsuk-form-group nhsuk-form-group--error">
   <label class="nhsuk-label"
-         id="select_c60xf--label"
-         for="select_c60xf"
+         id="select_ae0zc--label"
+         for="select_ae0zc"
   >
     Label text goes here
   </label>
   <span class="nhsuk-error-message"
-        id="select_c60xf--error-message"
+        id="select_ae0zc--error-message"
         role="alert"
   >
     <span class="nhsuk-u-visually-hidden">
@@ -50,9 +50,9 @@ exports[`Components/Select SelectWithErrorString smoke-test 1`] = `
     Error message goes here
   </span>
   <select class="nhsuk-select nhsuk-select--error"
-          aria-labelledby="select_c60xf--label"
-          name="select_c60xf"
-          id="select_c60xf"
+          aria-labelledby="select_ae0zc--label"
+          name="select_ae0zc"
+          id="select_ae0zc"
   >
     <option value="1">
       NHS.UK frontend option 1
@@ -67,8 +67,8 @@ exports[`Components/Select SelectWithErrorString smoke-test 1`] = `
 </div>
 <div class="nhsuk-form-group">
   <input class="nhsuk-input"
-         name="input_6yn25"
-         id="input_6yn25"
+         name="input_1txv8"
+         id="input_1txv8"
          type="text"
          value="Error message goes here"
   >
@@ -78,21 +78,21 @@ exports[`Components/Select SelectWithErrorString smoke-test 1`] = `
 exports[`Components/Select SelectWithHintText smoke-test 1`] = `
 <div class="nhsuk-form-group">
   <label class="nhsuk-label"
-         id="select_1v1mf--label"
-         for="select_1v1mf"
+         id="select_3twao--label"
+         for="select_3twao"
   >
     Label text goes here
   </label>
   <div class="nhsuk-hint"
-       id="select_1v1mf--hint"
+       id="select_3twao--hint"
   >
     Hint text goes here
   </div>
   <select class="nhsuk-select"
-          aria-describedby="select_1v1mf--hint"
-          aria-labelledby="select_1v1mf--label"
-          name="select_1v1mf"
-          id="select_1v1mf"
+          aria-describedby="select_3twao--hint"
+          aria-labelledby="select_3twao--label"
+          name="select_3twao"
+          id="select_3twao"
   >
     <option value="1">
       NHS.UK frontend option 1
