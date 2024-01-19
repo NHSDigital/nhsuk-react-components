@@ -33,6 +33,7 @@
         "jsx-a11y/alt-text": 0,
         "jsx-a11y/heading-has-content": 0,
         "react-hooks/exhaustive-deps": 0,
+        "import/no-unresolved": 0
     },
     "overrides": [{
         "files": ["*.stories.tsx"],

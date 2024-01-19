@@ -35,7 +35,7 @@
     "@typescript-eslint/eslint-plugin": "^4.23.0",
     "@typescript-eslint/parser": "^4.23.0",
     "babel-loader": "^8.2.2",
-    "chromatic": "^6.17.3",
+    "chromatic": "^10.3.1",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
     "enzyme-to-json": "^3.6.2",
@@ -87,8 +87,7 @@
     "lint": "eslint 'src/**/*.{js,ts,tsx}' 'stories/**/*.{js,ts,tsx}' --fix",
     "lint:ci": "eslint 'src/**/*.{js,ts,tsx}' 'stories/**/*.{js,ts,tsx}'",
     "build-storybook": "storybook build",
-    "prepublishOnly": "yarn lint:ci && yarn test:ci && yarn storybook --smoke-test",
-    "chromatic": "npx chromatic --exit-zero-on-changes"
+    "prepublishOnly": "yarn lint:ci && yarn test:ci && yarn storybook --smoke-test"
   },
   "files": [
     "dist",
