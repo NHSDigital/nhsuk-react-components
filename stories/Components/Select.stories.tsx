@@ -72,6 +72,7 @@ export const SelectWithErrorString: Story = {
         </Select>
         <Input
           id="error-string-input"
+          label="Use this input to change the error message"
           onChange={(e) => setError(e.currentTarget.value)}
           value={error}
         />

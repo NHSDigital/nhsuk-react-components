@@ -46,7 +46,6 @@ const Search: React.FC<SearchProps> = ({ action, method, id, visuallyHiddenText,
 
 Search.defaultProps = {
   method: 'get',
-  role: 'search',
   id: 'search-field',
   visuallyHiddenText: 'Search the NHS website',
   type: 'search',

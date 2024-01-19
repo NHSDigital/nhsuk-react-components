@@ -99,7 +99,14 @@ exports[`Components/Textarea TextareaWithErrorString smoke-test 1`] = `
   </textarea>
 </div>
 <div class="nhsuk-form-group">
+  <label class="nhsuk-label"
+         id="no-ni-reason-input--label"
+         for="no-ni-reason-input"
+  >
+    Use this input to change the error message
+  </label>
   <input class="nhsuk-input"
+         aria-labelledby="no-ni-reason-input--label"
          name="no-ni-reason-input"
          id="no-ni-reason-input"
          type="text"

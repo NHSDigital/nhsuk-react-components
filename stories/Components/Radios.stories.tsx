@@ -207,7 +207,12 @@ export const RadiosWithErrorString: Story = {
             </Radios.Radio>
           </Radios>
         </Fieldset>
-        <Input id="error-input" value={error} onChange={(e) => setError(e.currentTarget.value)} />
+        <Input
+          id="error-input"
+          value={error}
+          onChange={(e) => setError(e.currentTarget.value)}
+          label="Use this input to set the error message"
+        />
       </>
     );
   },
