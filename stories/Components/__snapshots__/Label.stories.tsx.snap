@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/Label BoldLabel smoke-test 1`] = `
+<label class="nhsuk-label nhsuk-label--s">
+  National Insurance Number
+</label>
+`;
+
+exports[`Components/Label CustomSizeLabel smoke-test 1`] = `
+<label class="nhsuk-label nhsuk-label--m">
+  National Insurance Number
+</label>
+`;
+
+exports[`Components/Label PageHeadingLabel smoke-test 1`] = `
+<h1 class="nhsuk-label-wrapper">
+  <label class="nhsuk-label nhsuk-label--xl">
+    National Insurance Number
+  </label>
+</h1>
+`;
+
+exports[`Components/Label Standard smoke-test 1`] = `
+<label class="nhsuk-label">
+  National Insurance Number
+</label>
+`;

@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/WarningCallout StandardWarningCallout smoke-test 1`] = `
+<div class="nhsuk-warning-callout">
+  <h3 class="nhsuk-warning-callout__label">
+    <span role="text">
+      <span class="nhsuk-u-visually-hidden">
+        Important:
+      </span>
+      School, nursery or work
+    </span>
+  </h3>
+  <p>
+    Stay away from school, nursery or work until all the spots have crusted over. This is usually 5 days after the spots first appeared.
+  </p>
+</div>
+`;
+
+exports[`Components/WarningCallout WarningCalloutWithCustomVisuallyHiddenText smoke-test 1`] = `
+<div class="nhsuk-warning-callout">
+  <h3 class="nhsuk-warning-callout__label">
+    <span role="text">
+      <span class="nhsuk-u-visually-hidden">
+        Not Important:
+      </span>
+      School, nursery or work
+    </span>
+  </h3>
+  <p>
+    Stay away from school, nursery or work until all the spots have crusted over. This is usually 5 days after the spots first appeared.
+  </p>
+</div>
+`;
+
+exports[`Components/WarningCallout WarningCalloutWithDisabledVisuallyHiddenText smoke-test 1`] = `
+<div class="nhsuk-warning-callout">
+  <h3 class="nhsuk-warning-callout__label">
+    <span role="text">
+      School, nursery or work
+    </span>
+  </h3>
+  <p>
+    Stay away from school, nursery or work until all the spots have crusted over. This is usually 5 days after the spots first appeared.
+  </p>
+</div>
+`;
+
+exports[`Components/WarningCallout WarningCalloutWithoutLabel smoke-test 1`] = `
+<div class="nhsuk-warning-callout">
+  <p>
+    Stay away from school, nursery or work until all the spots have crusted over. This is usually 5 days after the spots first appeared.
+  </p>
+</div>
+`;

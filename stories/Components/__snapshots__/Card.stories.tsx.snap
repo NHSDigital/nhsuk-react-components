@@ -1,0 +1,141 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/Card CardGroup smoke-test 1`] = `
+<div class="nhsuk-grid-row nhsuk-card-group">
+  <div class="nhsuk-grid-column-one-half nhsuk-card-group__item">
+    <div class="nhsuk-card nhsuk-card--clickable">
+      <div class="nhsuk-card__content">
+        <h2 class="nhsuk-card__heading nhsuk-heading-m">
+          <a class="nhsuk-card__link"
+             href="#"
+          >
+            Introduction to care and support
+          </a>
+        </h2>
+        <p class="nhsuk-card__description">
+          A quick guide for people who have care and support needs and their carers
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="nhsuk-grid-column-one-half nhsuk-card-group__item">
+    <div class="nhsuk-card nhsuk-card--clickable">
+      <div class="nhsuk-card__content">
+        <h2 class="nhsuk-card__heading nhsuk-heading-m">
+          <a class="nhsuk-card__link"
+             href="#"
+          >
+            Help from social services and charities
+          </a>
+        </h2>
+        <p class="nhsuk-card__description">
+          Includes helplines, needs assessments, advocacy and reporting abuse
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="nhsuk-grid-column-one-half nhsuk-card-group__item">
+    <div class="nhsuk-card nhsuk-card--clickable">
+      <div class="nhsuk-card__content">
+        <h2 class="nhsuk-card__heading nhsuk-heading-m">
+          <a class="nhsuk-card__link"
+             href="#"
+          >
+            Money, work and benefits
+          </a>
+        </h2>
+        <p class="nhsuk-card__description">
+          How to pay for care and support, and where you can get help with costs
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="nhsuk-grid-column-one-half nhsuk-card-group__item">
+    <div class="nhsuk-card nhsuk-card--clickable">
+      <div class="nhsuk-card__content">
+        <h2 class="nhsuk-card__heading nhsuk-heading-m">
+          <a class="nhsuk-card__link"
+             href="#"
+          >
+            Care after a hospital stay
+          </a>
+        </h2>
+        <p class="nhsuk-card__description">
+          Includes hospital discharge and care and support afterwards
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Components/Card CardWithImage smoke-test 1`] = `
+<div class="nhsuk-card nhsuk-card--clickable">
+  <img class="nhsuk-card__img"
+       alt
+       src="https://assets.nhs.uk/prod/images/A_0218_exercise-main_FKW1X7.width-690.jpg"
+  >
+  <div class="nhsuk-card__content">
+    <h2 class="nhsuk-card__heading nhsuk-heading-m">
+      <a class="nhsuk-card__link"
+         href="#"
+      >
+        Exercise
+      </a>
+    </h2>
+    <p class="nhsuk-card__description">
+      Programmes, workouts and tips to get you moving and improve your fitness and wellbeing
+    </p>
+  </div>
+</div>
+`;
+
+exports[`Components/Card ClickableCard smoke-test 1`] = `
+<div class="nhsuk-card nhsuk-card--clickable">
+  <div class="nhsuk-card__content">
+    <h2 class="nhsuk-card__heading nhsuk-heading-m">
+      <a class="nhsuk-card__link"
+         href="#"
+      >
+        Introduction to care and support
+      </a>
+    </h2>
+    <p class="nhsuk-card__description">
+      A quick guide for people who have care and support needs and their carers
+    </p>
+  </div>
+</div>
+`;
+
+exports[`Components/Card FeatureCard smoke-test 1`] = `
+<div class="nhsuk-card nhsuk-card--feature">
+  <div class="nhsuk-card__content nhsuk-card__content--feature">
+    <h2 class="nhsuk-card__heading nhsuk-card__heading--feature">
+      Feature card heading
+    </h2>
+    <p class="nhsuk-card__description">
+      Feature card description
+    </p>
+  </div>
+</div>
+`;
+
+exports[`Components/Card Standard smoke-test 1`] = `
+<div class="nhsuk-card">
+  <div class="nhsuk-card__content">
+    <h2 class="nhsuk-card__heading">
+      If you need help now but it's not an emergency
+    </h2>
+    <p class="nhsuk-card__description">
+      Go to
+      <a href="stories#">
+        111.nhs.uk
+      </a>
+      or
+      <a href="stories#">
+        call 111
+      </a>
+    </p>
+  </div>
+</div>
+`;

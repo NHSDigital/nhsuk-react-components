@@ -1,0 +1,79 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/Breadcrumb OverrideAriaLabel smoke-test 1`] = `
+<nav class="nhsuk-breadcrumb"
+     aria-label="custom-aria-label"
+>
+  <div class="nhsuk-width-container">
+    <ol class="nhsuk-breadcrumb__list">
+      <li class="nhsuk-breadcrumb__item">
+        <a class="nhsuk-breadcrumb__link"
+           href="/level/one"
+        >
+          Level One
+        </a>
+      </li>
+      <li class="nhsuk-breadcrumb__item">
+        <a class="nhsuk-breadcrumb__link"
+           href="/level/two"
+        >
+          Level Two
+        </a>
+      </li>
+      <li class="nhsuk-breadcrumb__item">
+        <a class="nhsuk-breadcrumb__link"
+           href="/level/three"
+        >
+          Level Three
+        </a>
+      </li>
+    </ol>
+    <p class="nhsuk-breadcrumb__back">
+      <a class="nhsuk-breadcrumb__backlink"
+         href="/level/three"
+      >
+        Back to Level Three
+      </a>
+    </p>
+  </div>
+</nav>
+`;
+
+exports[`Components/Breadcrumb Standard smoke-test 1`] = `
+<nav class="nhsuk-breadcrumb"
+     aria-label="Breadcrumb"
+>
+  <div class="nhsuk-width-container">
+    <ol class="nhsuk-breadcrumb__list">
+      <li class="nhsuk-breadcrumb__item">
+        <a class="nhsuk-breadcrumb__link"
+           href="/level/one"
+        >
+          Level One
+        </a>
+      </li>
+      <li class="nhsuk-breadcrumb__item">
+        <a class="nhsuk-breadcrumb__link"
+           href="/level/two"
+        >
+          Level Two
+        </a>
+      </li>
+      <li class="nhsuk-breadcrumb__item">
+        <a class="nhsuk-breadcrumb__link"
+           href="/level/three"
+        >
+          Level Three
+        </a>
+      </li>
+    </ol>
+    <p class="nhsuk-breadcrumb__back">
+      <a class="nhsuk-breadcrumb__backlink"
+         href="/level/three"
+      >
+        Back to Level Three
+      </a>
+    </p>
+  </div>
+</nav>
+`;

@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/Fieldset AsAPageHeading smoke-test 1`] = `
+<fieldset class="nhsuk-fieldset">
+  <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+    <h1 class="nhsuk-fieldset__heading">
+      What is your address?
+    </h1>
+  </legend>
+</fieldset>
+`;
+
+exports[`Components/Fieldset Standard smoke-test 1`] = `
+<fieldset class="nhsuk-fieldset">
+  What is your address?
+</fieldset>
+`;
+
+exports[`Components/Fieldset WithCustomLegendSize smoke-test 1`] = `
+<fieldset class="nhsuk-fieldset">
+  <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+    What is your address?
+  </legend>
+</fieldset>
+`;

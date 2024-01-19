@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/InsetText Standard smoke-test 1`] = `
+<div class="nhsuk-inset-text">
+  <span class="nhsuk-u-visually-hidden">
+    Information:
+  </span>
+  <p>
+    You can report any suspected side effect to the
+    <a href="https://yellowcard.mhra.gov.uk/"
+       title="External website"
+    >
+      UK safety scheme
+    </a>
+    .
+  </p>
+</div>
+`;
+
+exports[`Components/InsetText WithCustomHiddenText smoke-test 1`] = `
+<div class="nhsuk-inset-text">
+  <span class="nhsuk-u-visually-hidden">
+    Hidden Text:
+  </span>
+  <p>
+    You can report any suspected side effect to the
+    <a href="https://yellowcard.mhra.gov.uk/"
+       title="External website"
+    >
+      UK safety scheme
+    </a>
+    .
+  </p>
+</div>
+`;
+
+exports[`Components/InsetText WithDisabledHiddenText smoke-test 1`] = `
+<div class="nhsuk-inset-text">
+  <p>
+    You can report any suspected side effect to the
+    <a href="https://yellowcard.mhra.gov.uk/"
+       title="External website"
+    >
+      UK safety scheme
+    </a>
+    .
+  </p>
+</div>
+`;

@@ -1,0 +1,266 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/Table NumericCells smoke-test 1`] = `
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-one-half">
+    <div class="nhsuk-hint">
+      Right-aligned cells are used for numeric values
+    </div>
+    <table class="nhsuk-table">
+      <caption class="nhsuk-table__caption">
+        Number of cases
+      </caption>
+      <thead class="nhsuk-table__head">
+        <tr class="nhsuk-table__row">
+          <th class="nhsuk-table__header"
+              scope="col"
+          >
+            Location
+          </th>
+          <th class="nhsuk-table__header nhsuk-table__header--numeric"
+              scope="col"
+          >
+            Number of cases
+          </th>
+        </tr>
+      </thead>
+      <tbody class="nhsuk-table__body">
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            England
+          </td>
+          <td class="nhsuk-table__cell nhsuk-table__cell--numeric">
+            4,000
+          </td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            Wales
+          </td>
+          <td class="nhsuk-table__cell nhsuk-table__cell--numeric">
+            2,500
+          </td>
+        </tr>
+        <tr class="nhsuk-table__row">
+          <td class="nhsuk-table__cell">
+            Scotland
+          </td>
+          <td class="nhsuk-table__cell nhsuk-table__cell--numeric">
+            600
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`Components/Table ResponsiveTable smoke-test 1`] = `
+<table class="nhsuk-table-responsive">
+  <caption class="nhsuk-table__caption">
+    Ibuprofen syrup dosages for children
+  </caption>
+  <thead class="nhsuk-table__head"
+         role="rowgroup"
+  >
+    <tr class="nhsuk-table__row">
+      <th class="nhsuk-table__header"
+          scope="col"
+      >
+        Age
+      </th>
+      <th class="nhsuk-table__header"
+          scope="col"
+      >
+        How much?
+      </th>
+      <th class="nhsuk-table__header"
+          scope="col"
+      >
+        How often?
+      </th>
+    </tr>
+  </thead>
+  <tbody class="nhsuk-table__body">
+    <tr class="nhsuk-table__row">
+      <td class="nhsuk-table__cell"
+          role="cell"
+      >
+        <span class="nhsuk-table-responsive__heading">
+          Age
+        </span>
+        3 to 5 months (weighing more than 5kg)
+      </td>
+      <td class="nhsuk-table__cell"
+          role="cell"
+      >
+        <span class="nhsuk-table-responsive__heading">
+          How much?
+        </span>
+        2.5ml
+      </td>
+      <td class="nhsuk-table__cell"
+          role="cell"
+      >
+        <span class="nhsuk-table-responsive__heading">
+          How often?
+        </span>
+        Max 3 times in 24 hours
+      </td>
+    </tr>
+    <tr class="nhsuk-table__row">
+      <td class="nhsuk-table__cell"
+          role="cell"
+      >
+        <span class="nhsuk-table-responsive__heading">
+          Age
+        </span>
+        6 to 11 months
+      </td>
+      <td class="nhsuk-table__cell"
+          role="cell"
+      >
+        <span class="nhsuk-table-responsive__heading">
+          How much?
+        </span>
+        2.5ml
+      </td>
+      <td class="nhsuk-table__cell"
+          role="cell"
+      >
+        <span class="nhsuk-table-responsive__heading">
+          How often?
+        </span>
+        Max 3 to 4 times in 24 hours
+      </td>
+    </tr>
+    <tr class="nhsuk-table__row">
+      <td class="nhsuk-table__cell"
+          role="cell"
+      >
+        <span class="nhsuk-table-responsive__heading">
+          Age
+        </span>
+        1 to 3 years
+      </td>
+      <td class="nhsuk-table__cell"
+          role="cell"
+      >
+        <span class="nhsuk-table-responsive__heading">
+          How much?
+        </span>
+        5ml
+      </td>
+      <td class="nhsuk-table__cell"
+          role="cell"
+      >
+        <span class="nhsuk-table-responsive__heading">
+          How often?
+        </span>
+        Max 3 times in 24 hours
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`Components/Table StandardTable smoke-test 1`] = `
+<table class="nhsuk-table">
+  <caption class="nhsuk-table__caption">
+    Skin symptoms and possible causes
+  </caption>
+  <thead class="nhsuk-table__head">
+    <tr class="nhsuk-table__row">
+      <th class="nhsuk-table__header"
+          scope="col"
+      >
+        Skin Symptoms
+      </th>
+      <th class="nhsuk-table__header"
+          scope="col"
+      >
+        Possible cause
+      </th>
+    </tr>
+  </thead>
+  <tbody class="nhsuk-table__body">
+    <tr class="nhsuk-table__row">
+      <td class="nhsuk-table__cell">
+        Blisters on lips or around the mouth
+      </td>
+      <td class="nhsuk-table__cell">
+        cold sores
+      </td>
+    </tr>
+    <tr class="nhsuk-table__row">
+      <td class="nhsuk-table__cell">
+        Itchy, dry, cracked, sore
+      </td>
+      <td class="nhsuk-table__cell">
+        eczema
+      </td>
+    </tr>
+    <tr class="nhsuk-table__row">
+      <td class="nhsuk-table__cell">
+        Itchy blisters
+      </td>
+      <td class="nhsuk-table__cell">
+        shingles, chickenpox
+      </td>
+    </tr>
+  </tbody>
+</table>
+`;
+
+exports[`Components/Table TablePanel smoke-test 1`] = `
+<div class="nhsuk-table__panel-with-heading-tab">
+  <h3 class="nhsuk-table__heading-tab">
+    Conditions similar to impetigo
+  </h3>
+  <table class="nhsuk-table">
+    <caption class="nhsuk-table__caption">
+      Other possible causes of your symptoms
+    </caption>
+    <thead class="nhsuk-table__head">
+      <tr class="nhsuk-table__row">
+        <th class="nhsuk-table__header"
+            scope="col"
+        >
+          Skin Symptoms
+        </th>
+        <th class="nhsuk-table__header"
+            scope="col"
+        >
+          Possible cause
+        </th>
+      </tr>
+    </thead>
+    <tbody class="nhsuk-table__body">
+      <tr class="nhsuk-table__row">
+        <td class="nhsuk-table__cell">
+          Blisters on lips or around the mouth
+        </td>
+        <td class="nhsuk-table__cell">
+          cold sores
+        </td>
+      </tr>
+      <tr class="nhsuk-table__row">
+        <td class="nhsuk-table__cell">
+          Itchy, dry, cracked, sore
+        </td>
+        <td class="nhsuk-table__cell">
+          eczema
+        </td>
+      </tr>
+      <tr class="nhsuk-table__row">
+        <td class="nhsuk-table__cell">
+          Itchy blisters
+        </td>
+        <td class="nhsuk-table__cell">
+          shingles, chickenpox
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

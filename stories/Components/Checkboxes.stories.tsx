@@ -61,7 +61,7 @@ export const WithHintText: Story = {
   render: (args) => (
     <Fieldset>
       <Fieldset.Legend isPageHeading>How do you want to sign in?</Fieldset.Legend>
-      <Checkboxes>
+      <Checkboxes id="sign-in">
         <Checkboxes.Box
           id="government-gateway"
           name="gateway"
@@ -176,6 +176,7 @@ export const WithErrorString: Story = {
         <Input
           label="Error Value"
           value={error}
+          id="error-value"
           onChange={(e) => setError(e.currentTarget.value)}
         />
       </>

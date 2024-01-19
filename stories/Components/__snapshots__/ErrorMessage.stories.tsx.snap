@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Components/ErrorMessage CustomVisuallyHiddenText smoke-test 1`] = `
+<span class="nhsuk-error-message"
+      role="alert"
+>
+  <span class="nhsuk-u-visually-hidden">
+    Custom Text
+  </span>
+  Error message about full name goes here
+</span>
+`;
+
+exports[`Components/ErrorMessage NoVisuallyHiddenText smoke-test 1`] = `
+<span class="nhsuk-error-message"
+      role="alert"
+>
+  Error message about full name goes here
+</span>
+`;
+
+exports[`Components/ErrorMessage Standard smoke-test 1`] = `
+<span class="nhsuk-error-message"
+      role="alert"
+>
+  <span class="nhsuk-u-visually-hidden">
+    Error:
+  </span>
+  Error message about full name goes here
+</span>
+`;

@@ -5,6 +5,7 @@ import { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof DateInput> = {
   title: 'FormBehaviour/DateInput',
   component: DateInput,
+  tags: ['no-test'],
 };
 export default meta;
 type Story = StoryObj<typeof DateInput>;
