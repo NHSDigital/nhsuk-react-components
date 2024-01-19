@@ -343,7 +343,14 @@ exports[`Components/Radios RadiosWithErrorString smoke-test 1`] = `
   </fieldset>
 </div>
 <div class="nhsuk-form-group">
+  <label class="nhsuk-label"
+         id="error-input--label"
+         for="error-input"
+  >
+    Use this input to set the error message
+  </label>
   <input class="nhsuk-input"
+         aria-labelledby="error-input--label"
          name="error-input"
          id="error-input"
          type="text"

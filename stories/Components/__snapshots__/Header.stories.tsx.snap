@@ -73,7 +73,6 @@ exports[`Components/Header BasicHeader smoke-test 1`] = `
             </label>
             <input class="nhsuk-search__input"
                    id="search-field"
-                   role="search"
                    type="search"
                    autocomplete="off"
                    placeholder="Search"
@@ -326,7 +325,6 @@ exports[`Components/Header HeaderWithCustomNavItemComponent smoke-test 1`] = `
             </label>
             <input class="nhsuk-search__input"
                    id="search-field"
-                   role="search"
                    type="search"
                    autocomplete="off"
                    placeholder="Search"
@@ -524,7 +522,6 @@ exports[`Components/Header HeaderWithCustomNavMenuCloseAndNavItemListComponent s
             </label>
             <input class="nhsuk-search__input"
                    id="search-field"
-                   role="search"
                    type="search"
                    autocomplete="off"
                    placeholder="Search"
@@ -982,7 +979,6 @@ exports[`Components/Header HeaderWithSearch smoke-test 1`] = `
             </label>
             <input class="nhsuk-search__input"
                    id="search-field"
-                   role="search"
                    type="search"
                    autocomplete="off"
                    placeholder="Search"
@@ -1103,7 +1099,6 @@ exports[`Components/Header OrganisationalHeader smoke-test 1`] = `
             </label>
             <input class="nhsuk-search__input"
                    id="search-field"
-                   role="search"
                    type="search"
                    autocomplete="off"
                    placeholder="Search"
@@ -1346,7 +1341,6 @@ exports[`Components/Header OrganisationalHeaderWithWhiteHeader smoke-test 1`] = 
             </label>
             <input class="nhsuk-search__input"
                    id="search-field"
-                   role="search"
                    type="search"
                    autocomplete="off"
                    placeholder="Search"

@@ -10,7 +10,6 @@ const CodeText: React.FC = (props) => (
       marginRight: 5,
       fontSize: 14,
       padding: 3,
-      backgroundColor: 'rgba(255, 0, 0, 0.15)',
       borderRadius: 5,
     }}
     {...props}
@@ -24,14 +23,14 @@ const meta: Meta<typeof SkipLink> = {
     focusTargetRef: { table: { disable: true } },
   },
   render: (args) => (
-    <>
+    <main id="maincontent">
       <Hint>
         Press
         <CodeText>tab</CodeText>
         to show the SkipLink
       </Hint>
       <SkipLink disableDefaultBehaviour={args.disableDefaultBehaviour} />
-    </>
+    </main>
   ),
 };
 export default meta;

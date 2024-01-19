@@ -66,7 +66,14 @@ exports[`Components/Select SelectWithErrorString smoke-test 1`] = `
   </select>
 </div>
 <div class="nhsuk-form-group">
+  <label class="nhsuk-label"
+         id="error-string-input--label"
+         for="error-string-input"
+  >
+    Use this input to change the error message
+  </label>
   <input class="nhsuk-input"
+         aria-labelledby="error-string-input--label"
          name="error-string-input"
          id="error-string-input"
          type="text"

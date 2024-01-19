@@ -68,6 +68,7 @@ export const TextareaWithErrorString: Story = {
         <Input
           id="no-ni-reason-input"
           name="no-ni-reason-input"
+          label="Use this input to change the error message"
           onChange={(e) => setError(e.currentTarget.value)}
           value={error}
         />
