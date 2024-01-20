@@ -10,7 +10,7 @@ export default meta;
 type Story = StoryObj<typeof Hint>;
 
 export const Standard: Story = {
-  render: () => (
+  render: (args) => (
     <Hint>
       It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34
       56 C’.

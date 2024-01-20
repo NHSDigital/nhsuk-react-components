@@ -1,7 +1,6 @@
 import React from 'react';
 import { shallow, mount } from 'enzyme';
 import Footer from '..';
-import { NHSUKFrontendV5UpgradeWarnings } from '../../../deprecated/warnings';
 
 jest.spyOn(console, 'warn').mockImplementation();
 
@@ -38,27 +37,6 @@ describe('Footer', () => {
       const component = shallow(<Footer.List />);
       expect(component).toMatchSnapshot('Footer.List');
       component.unmount();
-    });
-
-    it('adds class when columns', () => {
-      const component = shallow(<Footer.List columns />);
-      expect(component.hasClass('nhsuk-footer__list--three-columns')).toBeTruthy();
-      component.unmount();
-    });
-
-    it('has dev warning when columns', () => {
-      const element = mount(<Footer.List columns />);
-      expect(console.warn).toHaveBeenCalledTimes(1);
-      expect((console.warn as jest.Mock).mock.calls[0][0]).toBe(
-        NHSUKFrontendV5UpgradeWarnings.FooterColumns,
-      );
-      element.unmount();
-    });
-
-    it('no dev warning when columns is false', () => {
-      const element = mount(<Footer.List />);
-      expect(console.warn).not.toHaveBeenCalled();
-      element.unmount();
     });
   });
 

@@ -48,8 +48,10 @@ const meta: Meta<typeof ContentsList> = {
 export default meta;
 type Story = StoryObj<typeof ContentsList>;
 
+ContentsList.Item.displayName = 'ContentsList.Item';
+
 export const Standard: Story = {
-  render: () => (
+  render: (args) => (
     <ContentsList aria-label="Pages in this guide">
       <ContentsList.Item current aria-current="page">
         What is AMD?

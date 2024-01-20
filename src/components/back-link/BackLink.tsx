@@ -11,7 +11,7 @@ const BackLink: React.FC<AsElementLink<HTMLAnchorElement>> = ({
 }) => (
   <div className="nhsuk-back-link">
     <Component className={classNames('nhsuk-back-link__link', className)} {...rest}>
-      <ChevronLeft />
+      <ChevronLeft height={24} width={24} />
       {children}
     </Component>
   </div>

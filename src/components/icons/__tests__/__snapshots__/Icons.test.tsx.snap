@@ -3,16 +3,14 @@
 exports[`Icons all icons match snapshots: ArrowLeft 1`] = `
 <ArrowLeft>
   <BaseIconSVG
-    height={32}
     iconType="nhsuk-icon__arrow-left"
-    width={32}
   >
     <svg
       aria-hidden="true"
       className="nhsuk-icon nhsuk-icon__arrow-left"
-      height={32}
+      height={34}
       viewBox="0 0 24 24"
-      width={32}
+      width={34}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -26,16 +24,14 @@ exports[`Icons all icons match snapshots: ArrowLeft 1`] = `
 exports[`Icons all icons match snapshots: ArrowRight 1`] = `
 <ArrowRight>
   <BaseIconSVG
-    height={32}
     iconType="nhsuk-icon__arrow-right"
-    width={32}
   >
     <svg
       aria-hidden="true"
       className="nhsuk-icon nhsuk-icon__arrow-right"
-      height={32}
+      height={34}
       viewBox="0 0 24 24"
-      width={32}
+      width={34}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -49,16 +45,14 @@ exports[`Icons all icons match snapshots: ArrowRight 1`] = `
 exports[`Icons all icons match snapshots: ArrowRightCircle 1`] = `
 <ArrowRightCircle>
   <BaseIconSVG
-    height={32}
     iconType="nhsuk-icon__arrow-right-circle"
-    width={32}
   >
     <svg
       aria-hidden="true"
       className="nhsuk-icon nhsuk-icon__arrow-right-circle"
-      height={32}
+      height={34}
       viewBox="0 0 24 24"
-      width={32}
+      width={34}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -74,16 +68,13 @@ exports[`Icons all icons match snapshots: ArrowRightCircle 1`] = `
 `;
 
 exports[`Icons all icons match snapshots: BaseIconSVG 1`] = `
-<BaseIconSVG
-  height={32}
-  width={32}
->
+<BaseIconSVG>
   <svg
     aria-hidden="true"
     className="nhsuk-icon"
-    height={32}
+    height={34}
     viewBox="0 0 24 24"
-    width={32}
+    width={34}
     xmlns="http://www.w3.org/2000/svg"
   />
 </BaseIconSVG>
@@ -92,16 +83,14 @@ exports[`Icons all icons match snapshots: BaseIconSVG 1`] = `
 exports[`Icons all icons match snapshots: ChevronLeft 1`] = `
 <ChevronLeft>
   <BaseIconSVG
-    height={32}
     iconType="nhsuk-icon__chevron-left"
-    width={32}
   >
     <svg
       aria-hidden="true"
       className="nhsuk-icon nhsuk-icon__chevron-left"
-      height={32}
+      height={34}
       viewBox="0 0 24 24"
-      width={32}
+      width={34}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -115,16 +104,14 @@ exports[`Icons all icons match snapshots: ChevronLeft 1`] = `
 exports[`Icons all icons match snapshots: ChevronRight 1`] = `
 <ChevronRight>
   <BaseIconSVG
-    height={32}
     iconType="nhsuk-icon__chevron-right"
-    width={32}
   >
     <svg
       aria-hidden="true"
       className="nhsuk-icon nhsuk-icon__chevron-right"
-      height={32}
+      height={34}
       viewBox="0 0 24 24"
-      width={32}
+      width={34}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -138,16 +125,14 @@ exports[`Icons all icons match snapshots: ChevronRight 1`] = `
 exports[`Icons all icons match snapshots: Close 1`] = `
 <Close>
   <BaseIconSVG
-    height={32}
     iconType="nhsuk-icon__close"
-    width={32}
   >
     <svg
       aria-hidden="true"
       className="nhsuk-icon nhsuk-icon__close"
-      height={32}
+      height={34}
       viewBox="0 0 24 24"
-      width={32}
+      width={34}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -161,23 +146,23 @@ exports[`Icons all icons match snapshots: Close 1`] = `
 exports[`Icons all icons match snapshots: Cross 1`] = `
 <Cross>
   <BaseIconSVG
-    height={32}
     iconType="nhsuk-icon__cross"
-    width={32}
   >
     <svg
       aria-hidden="true"
       className="nhsuk-icon nhsuk-icon__cross"
-      height={32}
+      height={34}
       viewBox="0 0 24 24"
-      width={32}
+      width={34}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
         d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"
+        fill="#d5281b"
       />
       <path
         d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"
+        fill="#d5281b"
       />
     </svg>
   </BaseIconSVG>
@@ -210,16 +195,14 @@ exports[`Icons all icons match snapshots: Emdash 1`] = `
 exports[`Icons all icons match snapshots: Minus 1`] = `
 <Minus>
   <BaseIconSVG
-    height={32}
     iconType="nhsuk-icon__minus"
-    width={32}
   >
     <svg
       aria-hidden="true"
       className="nhsuk-icon nhsuk-icon__minus"
-      height={32}
+      height={34}
       viewBox="0 0 24 24"
-      width={32}
+      width={34}
       xmlns="http://www.w3.org/2000/svg"
     >
       <circle
@@ -243,16 +226,14 @@ exports[`Icons all icons match snapshots: Minus 1`] = `
 exports[`Icons all icons match snapshots: Plus 1`] = `
 <Plus>
   <BaseIconSVG
-    height={32}
     iconType="nhsuk-icon__minus"
-    width={32}
   >
     <svg
       aria-hidden="true"
       className="nhsuk-icon nhsuk-icon__minus"
-      height={32}
+      height={34}
       viewBox="0 0 24 24"
-      width={32}
+      width={34}
       xmlns="http://www.w3.org/2000/svg"
     >
       <circle
@@ -276,16 +257,14 @@ exports[`Icons all icons match snapshots: Plus 1`] = `
 exports[`Icons all icons match snapshots: Search 1`] = `
 <Search>
   <BaseIconSVG
-    height={32}
     iconType="nhsuk-icon__search"
-    width={32}
   >
     <svg
       aria-hidden="true"
       className="nhsuk-icon nhsuk-icon__search"
-      height={32}
+      height={34}
       viewBox="0 0 24 24"
-      width={32}
+      width={34}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -322,16 +301,14 @@ exports[`Icons all icons match snapshots: SmallEmdash 1`] = `
 exports[`Icons all icons match snapshots: Tick 1`] = `
 <Tick>
   <BaseIconSVG
-    height={32}
     iconType="nhsuk-icon__tick"
-    width={32}
   >
     <svg
       aria-hidden="true"
       className="nhsuk-icon nhsuk-icon__tick"
-      height={32}
+      height={34}
       viewBox="0 0 24 24"
-      width={32}
+      width={34}
       xmlns="http://www.w3.org/2000/svg"
     >
       <path

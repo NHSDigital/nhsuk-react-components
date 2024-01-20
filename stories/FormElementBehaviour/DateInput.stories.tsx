@@ -10,7 +10,7 @@ export default meta;
 type Story = StoryObj<typeof DateInput>;
 
 export const Standard: Story = {
-  render: () => (
+  render: (args) => (
     <div style={{ padding: 20 }}>
       <h2>Scenario: onChange and onInput handlers are bound without any other props</h2>
       <h5>Expected Behaviour</h5>
@@ -29,7 +29,7 @@ export const Standard: Story = {
 };
 
 export const StandardWithError: Story = {
-  render: () => (
+  render: (args) => (
     <div style={{ padding: 20 }}>
       <h2>Scenario: onChange and onInput handlers are bound without any other props</h2>
       <h5>Expected Behaviour</h5>
@@ -61,7 +61,7 @@ export const StandardWithError: Story = {
 };
 
 export const PrePopulatedIndividualComponents: Story = {
-  render: () => {
+  render: (args) => {
     const defaultValue = { day: '20', month: '09', year: '1996' };
     return (
       <div style={{ padding: 20 }}>
@@ -77,7 +77,7 @@ export const PrePopulatedIndividualComponents: Story = {
 };
 
 export const PrePopulatedWrapper: Story = {
-  render: () => {
+  render: (args) => {
     const defaultValue = { day: '20', month: '09', year: '1996' };
     return (
       <div style={{ padding: 20 }}>
@@ -89,7 +89,7 @@ export const PrePopulatedWrapper: Story = {
 };
 
 export const ControlledElementIndividualComponents: Story = {
-  render: () => {
+  render: (args) => {
     const value = { day: '20', month: '09', year: '1996' };
     return (
       <div style={{ padding: 20 }}>
@@ -105,7 +105,7 @@ export const ControlledElementIndividualComponents: Story = {
 };
 
 export const ControlledElementWrapper: Story = {
-  render: () => {
+  render: (args) => {
     const value = { day: '20', month: '09', year: '1996' };
     return (
       <div style={{ padding: 20 }}>

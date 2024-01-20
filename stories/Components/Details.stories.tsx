@@ -50,6 +50,10 @@ const meta: Meta<typeof Details> = {
 export default meta;
 type Story = StoryObj<typeof Details>;
 
+Details.Summary.displayName = 'Details.Summary';
+Details.Text.displayName = 'Details.Text';
+Details.ExpanderGroup.displayName = 'Details.ExpanderGroup';
+
 export const Standard: Story = {
   argTypes: { expander: { table: { disable: true } } },
   render: ({ expander }) => (
@@ -125,7 +129,7 @@ export const Expander: Story = {
 };
 
 export const ExpanderGroup: Story = {
-  render: () => (
+  render: (args) => (
     <Details.ExpanderGroup>
       <Details expander>
         <Details.Summary>How to measure your blood glucose levels</Details.Summary>

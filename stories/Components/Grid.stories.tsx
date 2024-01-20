@@ -8,7 +8,7 @@ const meta: Meta = {
 export default meta;
 
 export const Grid: StoryObj = {
-  render: () => (
+  render: (args) => (
     <Container>
       <Row>
         <Col width="full">
