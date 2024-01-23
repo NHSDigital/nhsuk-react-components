@@ -58,9 +58,9 @@ describe('CareCard', () => {
     const urgentCard = shallow(<CareCard type="urgent" />);
     const immediateCard = shallow(<CareCard type="immediate" />);
 
-    expect(nonUrgentCard.hasClass('nhsuk-care-card--non-urgent')).toBeTruthy();
-    expect(urgentCard.hasClass('nhsuk-care-card--urgent')).toBeTruthy();
-    expect(immediateCard.hasClass('nhsuk-care-card--immediate')).toBeTruthy();
+    expect(nonUrgentCard.hasClass('nhsuk-card--care--non-urgent')).toBeTruthy();
+    expect(urgentCard.hasClass('nhsuk-card--care--urgent')).toBeTruthy();
+    expect(immediateCard.hasClass('nhsuk-card--care--immediate')).toBeTruthy();
 
     nonUrgentCard.unmount();
     urgentCard.unmount();
@@ -73,7 +73,7 @@ describe('CareCard', () => {
         <CareCard.Content>Test Content</CareCard.Content>
       </CareCard>,
     );
-    expect(component.find('.nhsuk-care-card__content').text()).toEqual('Test Content');
+    expect(component.find('.nhsuk-card__content').text()).toEqual('Test Content');
     component.unmount();
   });
 });
