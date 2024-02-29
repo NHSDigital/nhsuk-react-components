@@ -9,7 +9,6 @@ NHS.UK Frontend ported to React
 [![CD Build and Publish to NPM](https://github.com/NHSDigital/nhsuk-react-components/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/NHSDigital/nhsuk-react-components/actions/workflows/release.yml)
 [![Bundle Size](https://img.shields.io/bundlephobia/minzip/nhsuk-react-components.svg)](https://bundlephobia.com/result?p=nhsuk-react-components)
 
-
 ## Installation
 
 You can install this package using either `yarn` or `npm`.
@@ -28,6 +27,10 @@ If you are coming from older versions, please see the migration guides below:
 
 [1.x To v2](/docs/migration-guides-upgrade-to-2-0--docs#upgrading-to-20)
 
+[2.x To v3](/docs/migration-guides-upgrade-to-3-0--docs#upgrading-to-30)
+
+[3.x To v4](/docs/migration-guides-upgrade-to-4-0--docs#upgrading-to-40)
+
 ## Usage
 
 ```jsx
@@ -39,9 +42,7 @@ import { Button } from 'nhsuk-react-components';
 // Or you can import components directly
 import Button from 'nhsuk-react-components/lib/components/button';
 
-function GetStartedButton(){
-    return (
-        <Button href="/get-started">Get Started</Button>
-    );
+function GetStartedButton() {
+  return <Button href="/get-started">Get Started</Button>;
 }
 ```

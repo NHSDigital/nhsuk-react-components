@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "jsx": "react",
+    "target": "es6",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "types": ["jest", "node"],
+    "sourceMap": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "outDir": "./dist",
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@content-presentation/*": ["src/components/content-presentation/*"],
+      "@form-elements/*": ["src/components/form-elements/*"],
+      "@navigation/*": ["src/components/navigation/*"],
+      "@typography/*": ["src/components/typography/*"],
+      "@util/*": ["src/util/*"],
+      "@patterns/*": ["src/patterns/*"],
+      "@resources/*": ["src/resources/*"]
+    }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules", "**/__tests__", "src/setupTests.ts"]
+}

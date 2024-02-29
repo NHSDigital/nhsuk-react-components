@@ -1,17 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`FormGroup matches snapshot 1`] = `
-<FormGroup
-  id="testID"
-  inputType="input"
->
+<div>
   <div
-    className="nhsuk-form-group"
+    class="nhsuk-form-group"
   >
     <input
-      id="testID"
-      name="testID"
+      id="testId"
+      name="testId"
     />
   </div>
-</FormGroup>
+</div>
 `;
