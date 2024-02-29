@@ -1,13 +1,18 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import LedeText from '../LedeText';
 
 describe('LedeText', () => {
   it('matches snapshot', () => {
-    const element = shallow(<LedeText>Text</LedeText>);
-    expect(element.text()).toBe('Text');
-    expect(element).toMatchSnapshot();
-    expect(element.hasClass('nhsuk-lede-text')).toBeTruthy();
-    element.unmount();
+    const { container } = render(<LedeText>Text</LedeText>);
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('renders children', () => {
+    const { container } = render(<LedeText>Text</LedeText>);
+
+    expect(container.textContent).toBe('Text');
+    expect(container.querySelector('.nhsuk-lede-text')).toBeTruthy();
   });
 });
