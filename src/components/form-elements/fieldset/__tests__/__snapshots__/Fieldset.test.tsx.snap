@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Fieldset Fieldset.Legend matches snapshot: FieldsetLegend 1`] = `
+<div>
+  <legend
+    class="nhsuk-fieldset__legend"
+  >
+    Text
+  </legend>
+</div>
+`;
+
+exports[`Fieldset matches snapshot: Fieldset 1`] = `
+<div>
+  <fieldset
+    class="nhsuk-fieldset"
+  >
+    Text
+  </fieldset>
+</div>
+`;

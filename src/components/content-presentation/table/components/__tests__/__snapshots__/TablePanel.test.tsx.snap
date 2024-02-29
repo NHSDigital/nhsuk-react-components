@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table.Panel matches snapshot 1`] = `
+<div>
+  <div
+    class="nhsuk-table__panel-with-heading-tab"
+  />
+</div>
+`;
+
+exports[`Table.Panel matches snapshot when rendering a h2 heading 1`] = `
+<div>
+  <div
+    class="nhsuk-table__panel-with-heading-tab"
+  >
+    <h2
+      class="nhsuk-table__heading-tab"
+    >
+      TestHeading
+    </h2>
+  </div>
+</div>
+`;

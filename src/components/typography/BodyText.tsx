@@ -1,7 +1,7 @@
-import React, { HTMLProps } from 'react';
+import React, { FC, HTMLProps } from 'react';
 import classNames from 'classnames';
 
-const BodyText: React.FC<HTMLProps<HTMLParagraphElement>> = ({ className, ...rest }) => (
+const BodyText: FC<HTMLProps<HTMLParagraphElement>> = ({ className, ...rest }) => (
   <p className={classNames('nhsuk-body', className)} {...rest} />
 );
 
