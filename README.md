@@ -3,6 +3,8 @@
 - [NHS.UK React Components](#nhsuk-react-components)
   - [Coming from 0.x?](#coming-from-0x)
   - [Upgrading to 2.0](#upgrading-to-20)
+  - [Upgrading to 3.0](#upgrading-to-30)
+  - [Upgrading to 4.0](#upgrading-to-40)
   - [Installation](#installation)
   - [Usage](#usage)
     - [Storybook](#storybook)
@@ -20,6 +22,14 @@ If you're coming from versions of the library prior to 1.0.0, please give [this 
 ## Upgrading to 2.0
 
 If you're upgrading to 2.0, please be aware we have made some breaking changes. [This doc](/docs/upgrade-to-2.0.md) has the details.
+
+## Upgrading to 3.0
+
+If you're upgrading to 3.0, please be aware we have made some breaking changes. [This doc](/docs/upgrade-to-3.0.md) has the details.
+
+## Upgrading to 4.0
+
+If you're upgrading to 4.0, please be aware we have made some breaking changes. [This doc](/docs/upgrade-to-4.0.md) has the details.
 
 ## Installation
 

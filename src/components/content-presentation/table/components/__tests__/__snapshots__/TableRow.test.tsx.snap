@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table.Row matches snapshot 1`] = `
+<div>
+  <table>
+    <tbody>
+      <tr
+        class="nhsuk-table__row"
+      />
+    </tbody>
+  </table>
+</div>
+`;

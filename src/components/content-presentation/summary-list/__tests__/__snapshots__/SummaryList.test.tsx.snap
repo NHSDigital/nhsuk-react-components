@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SummaryList SummaryList.Actions matches snapshot 1`] = `
+<div>
+  <dd
+    class="nhsuk-summary-list__actions"
+  >
+    Actions
+  </dd>
+</div>
+`;
+
+exports[`SummaryList SummaryList.Key matches snapshot 1`] = `
+<div>
+  <dt
+    class="nhsuk-summary-list__key"
+  >
+    Key
+  </dt>
+</div>
+`;
+
+exports[`SummaryList SummaryList.Row matches snapshot 1`] = `
+<div>
+  <div
+    class="nhsuk-summary-list__row"
+  >
+    Row
+  </div>
+</div>
+`;
+
+exports[`SummaryList SummaryList.Value matches snapshot 1`] = `
+<div>
+  <dd
+    class="nhsuk-summary-list__value"
+  >
+    Value
+  </dd>
+</div>
+`;
+
+exports[`SummaryList matches snapshot: SummaryList 1`] = `
+<div>
+  <dl
+    class="nhsuk-summary-list"
+  />
+</div>
+`;
