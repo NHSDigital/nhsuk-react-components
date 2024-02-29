@@ -3,7 +3,6 @@ export { default as BackLink } from './components/navigation/back-link';
 export { default as Breadcrumb } from './components/navigation/breadcrumb';
 export { default as Button, Button as DefaultButton, ButtonLink } from './components/form-elements/button';
 export { default as Card } from './components/navigation/card';
-// export { default as CareCard } from './components/care-card';
 export { default as Checkboxes } from './components/form-elements/checkboxes';
 export { default as ContentsList } from './components/navigation/contents-list';
 export { default as DateInput } from './components/form-elements/date-input';
@@ -13,10 +12,10 @@ export { default as ErrorMessage } from './components/form-elements/error-messag
 export { default as ErrorSummary } from './components/form-elements/error-summary';
 export { default as Fieldset } from './components/form-elements/fieldset';
 export { default as Footer } from './components/navigation/footer';
-export { default as Form, useFormContext } from './components/form';
+export { default as Form, useFormContext } from './components/form-elements/form';
 export { default as Header } from './components/navigation/header';
 export { default as Hero } from './components/hero';
-export { default as Hint } from './components/form-elements/hint-text';
+export { default as HintText } from './components/form-elements/hint-text';
 export {
     ArrowLeft as ArrowLeftIcon,
   ArrowRight as ArrowRightIcon,
@@ -35,7 +34,7 @@ export {
 export { default as Images } from './components/content-presentation/images';
 export { default as TextInput } from './components/form-elements/text-input';
 export { default as InsetText } from './components/content-presentation/inset-text';
-export { default as Label } from './components/label';
+export { default as Label } from './components/form-elements/label';
 export { Container, Col, Row } from './components/layout';
 export { default as ListPanel } from './components/list-panel';
 export { default as NavAZ } from './patterns/nav-a-z';

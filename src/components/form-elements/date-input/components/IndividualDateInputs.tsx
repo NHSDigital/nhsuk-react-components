@@ -1,6 +1,6 @@
 import React, { HTMLProps, useContext, ChangeEvent } from 'react';
 import classNames from 'classnames';
-import Label, { LabelProps } from '../../../label/Label';
+import Label, { LabelProps } from '../../label/Label';
 import DateInputContext, { IDateInputContext } from '../DateInputContext';
 
 export interface IndividualDateInputProps extends HTMLProps<HTMLInputElement> {
@@ -28,6 +28,9 @@ const IndividualDateInput: React.FC<IndividualDateInputProps> = ({
   error,
   value,
   defaultValue,
+  pattern = '[0-9]*',
+  inputMode = 'numeric',
+  type = 'text',
   ...rest
 }) => {
   const {
@@ -86,17 +89,14 @@ const IndividualDateInput: React.FC<IndividualDateInputProps> = ({
           name={inputName}
           onChange={handleChange}
           ref={refCallback}
+          pattern={pattern}
+          inputMode={inputMode}
+          type={type}
           {...rest}
         />
       </div>
     </div>
   );
-};
-
-IndividualDateInput.defaultProps = {
-  pattern: '[0-9]*',
-  inputMode: 'numeric',
-  type: 'text',
 };
 
 export const DayInput: React.FC<Omit<IndividualDateInputProps, 'inputType'>> = (props) => (

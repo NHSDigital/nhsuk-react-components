@@ -21,6 +21,7 @@ export const Button: React.FC<ButtonProps> = ({
   disabled,
   secondary,
   reverse,
+  type = 'submit',
   ...rest
 }) => (
   // eslint-disable-next-line react/button-has-type
@@ -34,18 +35,15 @@ export const Button: React.FC<ButtonProps> = ({
     )}
     disabled={disabled}
     aria-disabled={disabled ? 'true' : 'false'}
+    type={type}
     {...rest}
   />
 );
 
-Button.defaultProps = {
-  type: 'submit',
-};
-
 export const ButtonLink: React.FC<ButtonLinkProps> = ({
   className,
-  role,
-  draggable,
+  role = 'button',
+  draggable = false,
   children,
   disabled,
   secondary,
@@ -68,11 +66,6 @@ export const ButtonLink: React.FC<ButtonLinkProps> = ({
     {children}
   </a>
 );
-
-ButtonLink.defaultProps = {
-  role: 'button',
-  draggable: false,
-};
 
 const ButtonWrapper: React.FC<ButtonLinkProps | ButtonProps> = ({ href, as, ...rest }) => {
   if (as === 'a') {

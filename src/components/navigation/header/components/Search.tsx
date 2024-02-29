@@ -7,7 +7,17 @@ export interface SearchProps extends HTMLProps<HTMLInputElement> {
   visuallyHiddenText?: string;
 }
 
-const Search: React.FC<SearchProps> = ({ action, method, id, visuallyHiddenText, ...rest }) => {
+const Search: React.FC<SearchProps> = ({
+  action,
+  method = 'get',
+  type = 'search',
+  id = 'search-field',
+  visuallyHiddenText = 'Search the NHS website',
+  autoComplete = 'off',
+  role = 'search',
+  placeholder = 'Search',
+  ...rest
+}) => {
   const { setSearch, toggleSearch, searchOpen } = useContext<IHeaderContext>(HeaderContext);
   useEffect(() => {
     setSearch(true);
@@ -29,7 +39,15 @@ const Search: React.FC<SearchProps> = ({ action, method, id, visuallyHiddenText,
           <label className="nhsuk-u-visually-hidden" htmlFor={id}>
             {visuallyHiddenText}
           </label>
-          <input className="nhsuk-search__input" id={id} {...rest} />
+          <input
+            className="nhsuk-search__input"
+            id={id}
+            type={type}
+            autoComplete={autoComplete}
+            role={role}
+            placeholder={placeholder}
+            {...rest}
+          />
           <button className="nhsuk-search__submit" type="submit">
             <SearchIcon width={27} height={27} />
             <span className="nhsuk-u-visually-hidden">Search</span>
@@ -42,16 +60,6 @@ const Search: React.FC<SearchProps> = ({ action, method, id, visuallyHiddenText,
       </div>
     </div>
   );
-};
-
-Search.defaultProps = {
-  method: 'get',
-  role: 'search',
-  id: 'search-field',
-  visuallyHiddenText: 'Search the NHS website',
-  type: 'search',
-  autoComplete: 'off',
-  placeholder: 'Search',
 };
 
 export default Search;

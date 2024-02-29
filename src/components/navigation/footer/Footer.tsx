@@ -28,7 +28,7 @@ interface Footer extends React.FC<FooterProps> {
   Copyright: React.FC<HTMLProps<HTMLParagraphElement>>;
 }
 
-const Footer: Footer = ({ className, children, visuallyHiddenText, ...rest }) => (
+const Footer: Footer = ({ className, children, visuallyHiddenText = 'Support links', ...rest }) => (
   <footer {...rest}>
     <div className={classNames('nhsuk-footer', className)}>
       <Container>
@@ -40,10 +40,6 @@ const Footer: Footer = ({ className, children, visuallyHiddenText, ...rest }) =>
     </div>
   </footer>
 );
-
-Footer.defaultProps = {
-  visuallyHiddenText: 'Support links',
-};
 
 Footer.List = FooterList;
 Footer.ListItem = FooterListItem;

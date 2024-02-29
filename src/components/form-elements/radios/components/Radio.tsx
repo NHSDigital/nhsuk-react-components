@@ -3,12 +3,12 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 import { RadiosContext, IRadiosContext } from '../RadioContext';
-import Hint, { HintProps } from '../../hint-text/HintText';
-import Label, { LabelProps } from '../../../label/Label';
+import HintText, { HintTextProps } from '../../hint-text/HintText';
+import Label, { LabelProps } from '../../label/Label';
 
 export interface RadioProps extends HTMLProps<HTMLInputElement> {
   hint?: string;
-  hintProps?: HintProps;
+  hintProps?: HintTextProps;
   labelProps?: LabelProps;
   conditional?: ReactNode;
   forceShowConditional?: boolean;
@@ -30,6 +30,7 @@ const Radio: React.FC<RadioProps> = ({
   defaultChecked,
   onChange,
   inputRef,
+  type = 'radio',
   ...rest
 }) => {
   const {
@@ -76,6 +77,7 @@ const Radio: React.FC<RadioProps> = ({
           checked={checked}
           defaultChecked={defaultChecked}
           ref={inputRef}
+          type={type}
           {...rest}
         />
         {children ? (
@@ -89,9 +91,9 @@ const Radio: React.FC<RadioProps> = ({
           </Label>
         ) : null}
         {hint ? (
-          <Hint className="nhsuk-radios__hint" id={`${inputID}--hint`} {...hintProps}>
+          <HintText className="nhsuk-radios__hint" id={`${inputID}--hint`} {...hintProps}>
             {hint}
-          </Hint>
+          </HintText>
         ) : null}
       </div>
       {conditional && (shouldShowConditional || forceShowConditional) ? (
@@ -105,10 +107,6 @@ const Radio: React.FC<RadioProps> = ({
       ) : null}
     </>
   );
-};
-
-Radio.defaultProps = {
-  type: 'radio',
 };
 
 export default Radio;

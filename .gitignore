@@ -113,3 +113,5 @@ storybook-static/
 
 # IDEA files
 .idea/
+
+.DS_Store

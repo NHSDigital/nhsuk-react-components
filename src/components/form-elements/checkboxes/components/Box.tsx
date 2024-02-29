@@ -8,13 +8,13 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 import CheckboxContext, { ICheckboxContext } from '../CheckboxContext';
-import Label, { LabelProps } from '../../../label/Label';
-import Hint, { HintProps } from '../../hint-text/HintText';
+import Label, { LabelProps } from '../../label/Label';
+import HintText, { HintTextProps } from '../../hint-text/HintText';
 
 type BoxProps = Omit<HTMLProps<HTMLInputElement>, 'label'> & {
   labelProps?: LabelProps;
   hint?: string;
-  hintProps?: HintProps;
+  hintProps?: HintTextProps;
   conditional?: ReactNode;
   forceShowConditional?: boolean;
   conditionalWrapperProps?: HTMLProps<HTMLDivElement>;
@@ -34,6 +34,7 @@ const Box: React.FC<BoxProps> = ({
   inputRef,
   forceShowConditional,
   conditionalWrapperProps,
+  type = 'checkbox',
   ...rest
 }) => {
   const { getBoxId, name, setConditional, unleaseReference, leaseReference } =
@@ -75,6 +76,7 @@ const Box: React.FC<BoxProps> = ({
           checked={checked}
           defaultChecked={defaultChecked}
           ref={inputRef}
+          type={type}
           {...rest}
         />
         {children ? (
@@ -88,9 +90,9 @@ const Box: React.FC<BoxProps> = ({
           </Label>
         ) : null}
         {hint ? (
-          <Hint className={classNames('nhsuk-checkboxes__hint', hintClassName)} {...restHintProps}>
+          <HintText className={classNames('nhsuk-checkboxes__hint', hintClassName)} {...restHintProps}>
             {hint}
-          </Hint>
+          </HintText>
         ) : null}
       </div>
       {conditional && (showConditional || forceShowConditional) ? (
@@ -104,10 +106,6 @@ const Box: React.FC<BoxProps> = ({
       ) : null}
     </>
   );
-};
-
-Box.defaultProps = {
-  type: 'checkbox',
 };
 
 export default Box;

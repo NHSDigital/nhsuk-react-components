@@ -14,8 +14,8 @@ export interface TableCellProps extends HTMLProps<HTMLTableCellElement> {
 
 const TableCell: React.FC<TableCellProps> = ({
   className,
-  _responsive,
-  _responsiveHeading,
+  _responsive = false,
+  _responsiveHeading = '',
   isNumeric,
   children,
   ...rest
@@ -53,9 +53,5 @@ const TableCell: React.FC<TableCellProps> = ({
 };
 
 TableCell.displayName = 'Table.Cell';
-TableCell.defaultProps = {
-  _responsive: false,
-  _responsiveHeading: '',
-};
 
 export default TableCell;

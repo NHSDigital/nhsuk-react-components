@@ -1,6 +1,6 @@
 import React from 'react';
-import Hint, { HintProps } from '../components/form-elements/hint-text/HintText';
-import Label, { LabelProps } from '../components/label/Label';
+import HintText, { HintTextProps } from '../components/form-elements/hint-text/HintText';
+import Label, { LabelProps } from '../components/form-elements/label/Label';
 import ErrorMessage, { ErrorMessageProps } from '../components/form-elements/error-message/ErrorMessage';
 
 interface LabelBlockProps {
@@ -8,7 +8,7 @@ interface LabelBlockProps {
   label?: string;
   labelProps?: LabelProps;
   hint?: string;
-  hintProps?: HintProps;
+  hintProps?: HintTextProps;
   error?: string | boolean;
   errorProps?: ErrorMessageProps;
 }
@@ -29,9 +29,9 @@ const LabelBlock: React.FC<LabelBlockProps> = ({
       </Label>
     ) : null}
     {hint ? (
-      <Hint id={elementId ? `${elementId}--hint` : undefined} {...hintProps}>
+      <HintText id={elementId ? `${elementId}--hint` : undefined} {...hintProps}>
         {hint}
-      </Hint>
+      </HintText>
     ) : null}
     {error && typeof error === 'string' ? (
       <ErrorMessage id={elementId ? `${elementId}--error-message` : undefined} {...errorProps}>

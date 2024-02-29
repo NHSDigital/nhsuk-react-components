@@ -45,16 +45,11 @@ interface Pagination extends React.FC<HTMLProps<HTMLDivElement>> {
   Link: React.FC<PaginationLinkProps>;
 }
 
-const Pagination: Pagination = ({ className, children, ...rest }) => (
-  <nav className={classNames('nhsuk-pagination', className)} {...rest}>
+const Pagination: Pagination = ({ className, children, role = 'navigation', 'aria-label': ariaLabel = 'Pagination', ...rest }) => (
+  <nav className={classNames('nhsuk-pagination', className)} role={role} aria-label={ariaLabel} {...rest}>
     <ul className="nhsuk-list nhsuk-pagination__list">{children}</ul>
   </nav>
 );
-
-Pagination.defaultProps = {
-  role: 'navigation',
-  'aria-label': 'Pagination',
-};
 
 Pagination.Link = PaginationLink;
 

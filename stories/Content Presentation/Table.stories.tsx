@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Hint, Row, Table } from '../../src';
+import { Col, HintText, Row, Table } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Table> = {
@@ -107,7 +107,7 @@ export const NumericCells: Story = {
   render: (args) => (
     <Row>
       <Col width="one-half">
-        <Hint>Right-aligned cells are used for numeric values</Hint>
+        <HintText>Right-aligned cells are used for numeric values</HintText>
         <Table caption="Number of cases">
           <Table.Head>
             <Table.Row>

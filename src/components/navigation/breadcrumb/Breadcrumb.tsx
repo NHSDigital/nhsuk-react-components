@@ -31,7 +31,7 @@ type SplitChildren = {
   OtherChildren: Array<ReactNode>;
 };
 
-const Breadcrumb: Breadcrumb = ({ className, children, ...rest }) => {
+const Breadcrumb: Breadcrumb = ({ className, children, "aria-label": ariaLabel = 'Breadcrumb', ...rest }) => {
   // Split off any "Item" components
   const { ItemChildren, OtherChildren } = React.Children.toArray(children).reduce<SplitChildren>(
     (prev, child) => {
@@ -49,7 +49,7 @@ const Breadcrumb: Breadcrumb = ({ className, children, ...rest }) => {
   );
 
   return (
-    <nav className={classNames('nhsuk-breadcrumb', className)} {...rest}>
+    <nav className={classNames('nhsuk-breadcrumb', className)} aria-label={ariaLabel} {...rest}>
       <Container>
         <ol className="nhsuk-breadcrumb__list">{ItemChildren}</ol>
         {OtherChildren}
@@ -60,9 +60,5 @@ const Breadcrumb: Breadcrumb = ({ className, children, ...rest }) => {
 
 Breadcrumb.Item = Item;
 Breadcrumb.Back = Back;
-
-Breadcrumb.defaultProps = {
-  'aria-label': 'Breadcrumb',
-};
 
 export default Breadcrumb;

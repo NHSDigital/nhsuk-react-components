@@ -7,7 +7,7 @@ interface CardHeadingProps extends HTMLProps<HTMLHeadingElement> {
   headingLevel?: HeadingLevelType;
 }
 
-const CardHeading: React.FC<CardHeadingProps> = ({ className, ...rest }) => {
+const CardHeading: React.FC<CardHeadingProps> = ({ className, headingLevel = 'h2', ...rest }) => {
   const { feature } = useContext(CardContext);
   return (
     <HeadingLevel
@@ -16,13 +16,10 @@ const CardHeading: React.FC<CardHeadingProps> = ({ className, ...rest }) => {
         { 'nhsuk-card__heading--feature': feature },
         className,
       )}
+      headingLevel={headingLevel}
       {...rest}
     />
   );
-};
-
-CardHeading.defaultProps = {
-  headingLevel: 'h2',
 };
 
 export default CardHeading;

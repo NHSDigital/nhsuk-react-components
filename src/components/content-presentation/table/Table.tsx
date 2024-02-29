@@ -19,6 +19,7 @@ interface TableState {
   headings: string[];
 }
 
+// TODO - turn into functional component
 class Table extends React.PureComponent<TableProps, TableState> {
   static defaultProps = {
     responsive: false,

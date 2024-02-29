@@ -1,14 +1,14 @@
-export { ArrowLeft } from './elements/ArrowLeft';
-export { ArrowRight } from './elements/ArrowRight';
-export { ArrowRightCircle } from './elements/ArrowRightCircle';
-export { ChevronLeft } from './elements/ChevronLeft';
-export { ChevronRight } from './elements/ChevronRight';
-export { Close } from './elements/Close';
-export { Cross } from './elements/Cross';
-export { SmallEmdash } from './elements/SmallEmdash';
-export { Emdash } from './elements/Emdash';
-export { Minus } from './elements/Minus';
-export { Plus } from './elements/Plus';
-export { Search } from './elements/Search';
-export { Tick } from './elements/Tick';
+export { ArrowLeft } from './individual/ArrowLeft';
+export { ArrowRight } from './individual/ArrowRight';
+export { ArrowRightCircle } from './individual/ArrowRightCircle';
+export { ChevronLeft } from './individual/ChevronLeft';
+export { ChevronRight } from './individual/ChevronRight';
+export { Close } from './individual/Close';
+export { Cross } from './individual/Cross';
+export { SmallEmdash } from './individual/SmallEmdash';
+export { Emdash } from './individual/Emdash';
+export { Minus } from './individual/Minus';
+export { Plus } from './individual/Plus';
+export { Search } from './individual/Search';
+export { Tick } from './individual/Tick';
 

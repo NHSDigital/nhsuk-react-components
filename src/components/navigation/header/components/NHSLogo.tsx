@@ -13,8 +13,9 @@ const SVGImageWithSrc: React.FC<SVGImageWithSrc> = (props) => <image {...props} 
 
 const NHSLogo: React.FC<NHSLogoNavProps> = ({
   className,
-  alt,
+  alt = 'NHS Logo',
   asElement: Component = 'a',
+  'aria-label': ariaLabel = 'NHS homepage',
   ...rest
 }) => {
   const { serviceName, hasMenuToggle, hasSearch } = useContext<IHeaderContext>(HeaderContext);
@@ -30,6 +31,7 @@ const NHSLogo: React.FC<NHSLogoNavProps> = ({
           { 'nhsuk-header__link--service': serviceName },
           className,
         )}
+        aria-label={ariaLabel}
         {...rest}
       >
         <svg
@@ -52,11 +54,6 @@ const NHSLogo: React.FC<NHSLogoNavProps> = ({
       </Component>
     </div>
   );
-};
-
-NHSLogo.defaultProps = {
-  'aria-label': 'NHS homepage',
-  alt: 'NHS Logo',
 };
 
 export default NHSLogo;

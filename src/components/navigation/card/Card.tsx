@@ -25,7 +25,7 @@ interface ICard extends React.FC<CardProps> {
 }
 
 const Card: ICard = ({
-  className, clickable, children, feature, ...rest
+  className, clickable, children, feature = false, ...rest
 }) => (
   <div
     className={classNames(
@@ -39,10 +39,6 @@ const Card: ICard = ({
     <CardContext.Provider value={{ feature: Boolean(feature) }}>{children}</CardContext.Provider>
   </div>
 );
-
-Card.defaultProps = {
-  feature: false,
-};
 
 Card.Heading = CardHeading;
 Card.Description = CardDescription;

@@ -13,7 +13,7 @@ interface TextInputProps extends HTMLProps<HTMLInputElement>, FormElementProps {
 const TextInput: React.FC<TextInputProps> = (props) => (
   <FormGroup<TextInputProps> {...props} inputType="input">
     {({
-      width, className, error, inputRef, ...rest
+      width, className, error, inputRef, type = 'text', ...rest
     }) => (
       <input
         className={classNames(
@@ -23,14 +23,11 @@ const TextInput: React.FC<TextInputProps> = (props) => (
           className,
         )}
         ref={inputRef}
+        type={type}
         {...rest}
       />
     )}
   </FormGroup>
 );
-
-TextInput.defaultProps = {
-  type: 'text',
-};
 
 export default TextInput;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { SkipLink, Hint } from '../../src';
+import { SkipLink, HintText } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
 const CodeText: React.FC = (props) => (
@@ -25,11 +25,11 @@ const meta: Meta<typeof SkipLink> = {
   },
   render: (args) => (
     <>
-      <Hint>
+      <HintText>
         Press
         <CodeText>tab</CodeText>
         to show the SkipLink
-      </Hint>
+      </HintText>
       <SkipLink disableDefaultBehaviour={args.disableDefaultBehaviour} />
     </>
   ),

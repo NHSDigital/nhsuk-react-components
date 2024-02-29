@@ -7,21 +7,17 @@ export interface ErrorMessageProps extends HTMLProps<HTMLSpanElement> {
 
 const ErrorMessage: React.FC<ErrorMessageProps> = ({
   className,
-  visuallyHiddenText,
+  visuallyHiddenText = 'Error: ',
   children,
+  role = 'alert',
   ...rest
 }) => (
-  <span className={classNames('nhsuk-error-message', className)} {...rest}>
+  <span className={classNames('nhsuk-error-message', className)} role={role} {...rest}>
     {visuallyHiddenText !== false ? (
       <span className="nhsuk-u-visually-hidden">{visuallyHiddenText}</span>
     ) : null}
     {children}
   </span>
 );
-
-ErrorMessage.defaultProps = {
-  visuallyHiddenText: 'Error: ',
-  role: 'alert',
-};
 
 export default ErrorMessage;
