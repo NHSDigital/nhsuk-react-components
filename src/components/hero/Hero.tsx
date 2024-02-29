@@ -33,12 +33,9 @@ interface HeroHeadingProps extends HTMLProps<HTMLHeadingElement> {
   headingLevel: HeadingLevelType;
 }
 
-const HeroHeading: React.FC<HeroHeadingProps> = ({ className, ...rest }) => (
-  <HeadingLevel className={classNames('nhsuk-u-margin-bottom-3', className)} {...rest} />
+const HeroHeading: React.FC<HeroHeadingProps> = ({ className, headingLevel = 'h1', ...rest }) => (
+  <HeadingLevel className={classNames('nhsuk-u-margin-bottom-3', className)} headingLevel={headingLevel} {...rest} />
 );
-HeroHeading.defaultProps = {
-  headingLevel: 'h1',
-};
 
 const HeroText: React.FC<HTMLProps<HTMLParagraphElement>> = ({ className, ...rest }) => (
   <p className={classNames('nhsuk-body-l nhsuk-u-margin-bottom-0', className)} {...rest} />
@@ -49,7 +46,7 @@ interface HeroProps extends HTMLProps<HTMLDivElement> {
 }
 
 interface Hero extends React.FC<HeroProps> {
-  Heading: React.FC<HTMLProps<HTMLHeadingElement>>;
+  Heading: React.FC<HeroHeadingProps>;
   Text: React.FC<HTMLProps<HTMLParagraphElement>>;
 }
 

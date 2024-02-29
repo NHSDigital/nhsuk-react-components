@@ -1,6 +1,6 @@
 import React from 'react';
-import { Fieldset, Checkboxes, Input } from '../../src';
-import { Button } from '../../src/components/button';
+import { Fieldset, Checkboxes, TextInput } from '../../src';
+import { Button } from '../../src/components/form-elements/button';
 import { Meta, StoryObj } from '@storybook/react';
 
 /**
@@ -173,7 +173,7 @@ export const WithErrorString: Story = {
             <Checkboxes.Box value="farm">Farm or agricultural waste</Checkboxes.Box>
           </Checkboxes>
         </Fieldset>
-        <Input
+        <TextInput
           label="Error Value"
           value={error}
           onChange={(e) => setError(e.currentTarget.value)}

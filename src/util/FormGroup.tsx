@@ -1,12 +1,12 @@
 import React, { ReactNode, useState, useEffect, HTMLProps, useContext } from 'react';
 import classNames from 'classnames';
-import Hint from '../components/hint/Hint';
-import ErrorMessage from '../components/error-message/ErrorMessage';
+import HintText from '../components/form-elements/hint-text/HintText';
+import ErrorMessage from '../components/form-elements/error-message/ErrorMessage';
 import { generateRandomID } from './RandomID';
-import Label from '../components/label/Label';
+import Label from '../components/form-elements/label/Label';
 import { FormElementProps } from './types/FormTypes';
-import FieldsetContext, { IFieldsetContext } from '../components/fieldset/FieldsetContext';
-import { useFormContext } from '../components/form';
+import FieldsetContext, { IFieldsetContext } from '../components/form-elements/fieldset/FieldsetContext';
+import { useFormContext } from '../components/form-elements/form';
 
 type ExcludedProps =
   | 'hint'
@@ -98,9 +98,9 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
         </Label>
       ) : null}
       {hint ? (
-        <Hint id={hintID} {...hintProps}>
+        <HintText id={hintID} {...hintProps}>
           {hint}
-        </Hint>
+        </HintText>
       ) : null}
       {error && typeof error === 'string' ? (
         <ErrorMessage id={errorID} {...errorProps}>
