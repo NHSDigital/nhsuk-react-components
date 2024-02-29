@@ -41,7 +41,7 @@ describe('Index', () => {
         'SearchIcon',
         'TickIcon',
         'Images',
-        'Input',
+        'TextInput',
         'InsetText',
         'Label',
         'Container',

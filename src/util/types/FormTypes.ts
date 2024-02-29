@@ -1,6 +1,6 @@
 import { HTMLProps } from 'react';
-import { ErrorMessageProps } from '../../components/error-message/ErrorMessage';
-import { HintProps } from '../../components/hint/Hint';
+import { ErrorMessageProps } from '../../components/form-elements/error-message/ErrorMessage';
+import { HintProps } from '../../components/form-elements/hint-text/HintText';
 import { LabelProps } from '../../components/label/Label';
 
 export interface FormElementProps {

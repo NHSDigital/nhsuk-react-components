@@ -1,7 +1,7 @@
 import React from 'react';
-import Hint, { HintProps } from '../components/hint/Hint';
+import Hint, { HintProps } from '../components/form-elements/hint-text/HintText';
 import Label, { LabelProps } from '../components/label/Label';
-import ErrorMessage, { ErrorMessageProps } from '../components/error-message/ErrorMessage';
+import ErrorMessage, { ErrorMessageProps } from '../components/form-elements/error-message/ErrorMessage';
 
 interface LabelBlockProps {
   elementId?: string;
