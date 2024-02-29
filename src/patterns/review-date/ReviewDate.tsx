@@ -1,4 +1,4 @@
-import React, { HTMLProps } from 'react';
+import React, { FC, HTMLProps } from 'react';
 import classNames from 'classnames';
 
 interface ReviewDateProps extends HTMLProps<HTMLDivElement> {
@@ -6,12 +6,7 @@ interface ReviewDateProps extends HTMLProps<HTMLDivElement> {
   nextReview?: string;
 }
 
-const ReviewDate: React.FC<ReviewDateProps> = ({
-  className,
-  lastReviewed,
-  nextReview,
-  ...rest
-}) => (
+const ReviewDate: FC<ReviewDateProps> = ({ className, lastReviewed, nextReview, ...rest }) => (
   <p
     className={classNames(
       'nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-top-7',
