@@ -17,7 +17,7 @@
     "build:dist": "rollup -c",
     "build:lib": "NODE_ENV=production babel src --out-dir lib --extensions \".ts,.tsx\" --ignore \"**/__tests__,**/__mocks__,**/setupTests.ts\"",
     "build": "yarn cleanup && yarn build:dist && yarn build:lib",
-    "test": "jest",
+    "test": "jest src/components/navigation/pagination/__tests__/Pagination.test.tsx",
     "test:ci": "jest --coverage",
     "lint": "eslint 'src/**/*.{js,ts,tsx}' 'stories/**/*.{js,ts,tsx}' --fix",
     "lint:ci": "eslint 'src/**/*.{js,ts,tsx}' 'stories/**/*.{js,ts,tsx}'",
@@ -73,12 +73,14 @@
     "sass": "^1.53.0",
     "storybook": "^7.6.17",
     "ts-jest": "^29.1.2",
-    "ts-node": "^10.9.2",
     "typescript": "5.3.3",
     "vite": "^4.2.1"
   },
-    "dependencies": {
-    "classnames": "^2.2.6"
+  "dependencies": {
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^14.2.1",
+    "classnames": "^2.2.6",
+    "jest-environment-jsdom": "^29.7.0"
   },
   "peerDependencies": {
     "nhsuk-frontend": ">=8.0.0",

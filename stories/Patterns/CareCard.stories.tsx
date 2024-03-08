@@ -1,5 +1,5 @@
 import React from 'react';
-import { CareCard } from '../../src';
+import CareCard from '../../src/patterns/care-card/CareCard';
 import type { Meta, StoryObj } from '@storybook/react';
 
 /**

@@ -17,7 +17,7 @@ export { default as Header } from './components/navigation/header';
 export { default as Hero } from './components/hero';
 export { default as HintText } from './components/form-elements/hint-text';
 export {
-    ArrowLeft as ArrowLeftIcon,
+  ArrowLeft as ArrowLeftIcon,
   ArrowRight as ArrowRightIcon,
   ArrowRightCircle as ArrowRightCircleIcon,
   ChevronLeft as ChevronLeftIcon,

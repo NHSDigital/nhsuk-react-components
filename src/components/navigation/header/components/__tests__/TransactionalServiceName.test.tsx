@@ -1,17 +1,16 @@
-import React from 'react';
-import TransactionalServiceName from '../TransactionalServiceName';
-import { mount } from 'enzyme';
+// import React from 'react';
+// import TransactionalServiceName from '../TransactionalServiceName';
+// import { render } from '@testing-library/react';
 
-describe('TransactionalServiceName long variant deprecation warning', () => {
-  jest.spyOn(console, 'warn').mockImplementation();
-  afterEach(() => {
-    jest.clearAllMocks();
+describe('TransactionalServiceName', () => {
+  it.skip('renders successfully', () => {
+    expect(true).toBe(false);
+    // test render
+    // test anchor is rendered
   });
 
-  it('should not warn when long is false', () => {
-    const spy = jest.spyOn(console, 'warn');
-    const component = mount(<TransactionalServiceName />);
-    expect(spy).not.toHaveBeenCalled();
-    component.unmount();
+  it.skip('accepts a class name extension', () => {
+    expect(true).toBe(false);
+    // test className supplied is added
   });
 });

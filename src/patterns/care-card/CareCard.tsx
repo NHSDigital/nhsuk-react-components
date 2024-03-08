@@ -36,7 +36,7 @@ const CareCardHeading: React.FC<CareCardHeadingProps> = ({
   children,
   visuallyHiddenText,
   headingLevel,
-  role,
+  role = 'text',
   ...rest
 }) => {
   const cardType = useContext(CareCardContext);
@@ -59,10 +59,6 @@ const CareCardHeading: React.FC<CareCardHeadingProps> = ({
       <span className="nhsuk-care-card__arrow" aria-hidden="true" />
     </div>
   );
-};
-
-CareCardHeading.defaultProps = {
-  role: 'text',
 };
 
 interface CareCard extends React.FC<CareCardProps> {
