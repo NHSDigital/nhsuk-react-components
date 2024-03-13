@@ -1,20 +1,20 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import Images from '..';
+import { render } from '@testing-library/react';
+import Images from '../';
 
 describe('Images', () => {
   it('matches snapshot', () => {
-    const component = shallow(<Images />);
-    expect(component.hasClass('nhsuk-image')).toBeTruthy();
-    expect(component).toMatchSnapshot('Images');
-    component.unmount();
+    const { container } = render(<Images />);
+
+    expect(container.querySelector('.nhsuk-image')).toBeTruthy();
+    expect(container).toMatchSnapshot('Images');
   });
 
   it('renders caption', () => {
-    const component = shallow(<Images caption="Caption" />);
-    expect(component.find('figcaption').exists()).toBeTruthy();
-    expect(component.find('figcaption').hasClass('nhsuk-image__caption')).toBeTruthy();
-    expect(component.find('figcaption').text()).toBe('Caption');
-    component.unmount();
+    const { container } = render(<Images caption="Caption" />);
+
+    expect(container.querySelector('figcaption')).toBeTruthy();
+    expect(container.querySelector('figcaption.nhsuk-image__caption')).toBeTruthy();
+    expect(container.querySelector('figcaption')?.textContent).toBe('Caption');
   });
 });

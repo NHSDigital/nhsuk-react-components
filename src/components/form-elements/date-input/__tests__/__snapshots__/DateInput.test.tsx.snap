@@ -1,162 +1,90 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DateInput matches snapshot 1`] = `
-<DateInput
-  id="testInput"
-  name="testInput"
->
-  <FormGroup
-    id="testInput"
-    inputType="dateinput"
-    name="testInput"
+<div>
+  <div
+    class="nhsuk-form-group"
   >
     <div
-      className="nhsuk-form-group"
+      class="nhsuk-date-input"
+      id="testInput"
     >
       <div
-        className="nhsuk-date-input"
-        id="testInput"
+        class="nhsuk-date-input__item"
       >
-        <DayInput>
-          <IndividualDateInput
-            inputMode="numeric"
-            inputType="day"
+        <div
+          class="nhsuk-form-group"
+        >
+          <label
+            class="nhsuk-label nhsuk-date-input__label"
+            for="testInput-day"
+            id="testInput-day--label"
+          >
+            Day
+          </label>
+          <input
+            aria-labelledby="testInput-day--label"
+            class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+            id="testInput-day"
+            inputmode="numeric"
+            name="testInput-day"
             pattern="[0-9]*"
             type="text"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        class="nhsuk-date-input__item"
+      >
+        <div
+          class="nhsuk-form-group"
+        >
+          <label
+            class="nhsuk-label nhsuk-date-input__label"
+            for="testInput-month"
+            id="testInput-month--label"
           >
-            <div
-              className="nhsuk-date-input__item"
-            >
-              <div
-                className="nhsuk-form-group"
-              >
-                <Label
-                  className="nhsuk-date-input__label"
-                  htmlFor="testInput-day"
-                  id="testInput-day--label"
-                >
-                  <BaseLabel
-                    className="nhsuk-date-input__label"
-                    htmlFor="testInput-day"
-                    id="testInput-day--label"
-                  >
-                    <label
-                      className="nhsuk-label nhsuk-date-input__label"
-                      htmlFor="testInput-day"
-                      id="testInput-day--label"
-                    >
-                      Day
-                    </label>
-                  </BaseLabel>
-                </Label>
-                <input
-                  aria-labelledby="testInput-day--label"
-                  className="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
-                  id="testInput-day"
-                  inputMode="numeric"
-                  name="testInput-day"
-                  onChange={[Function]}
-                  pattern="[0-9]*"
-                  type="text"
-                />
-              </div>
-            </div>
-          </IndividualDateInput>
-        </DayInput>
-        <MonthInput>
-          <IndividualDateInput
-            inputMode="numeric"
-            inputType="month"
+            Month
+          </label>
+          <input
+            aria-labelledby="testInput-month--label"
+            class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+            id="testInput-month"
+            inputmode="numeric"
+            name="testInput-month"
             pattern="[0-9]*"
             type="text"
+            value=""
+          />
+        </div>
+      </div>
+      <div
+        class="nhsuk-date-input__item"
+      >
+        <div
+          class="nhsuk-form-group"
+        >
+          <label
+            class="nhsuk-label nhsuk-date-input__label"
+            for="testInput-year"
+            id="testInput-year--label"
           >
-            <div
-              className="nhsuk-date-input__item"
-            >
-              <div
-                className="nhsuk-form-group"
-              >
-                <Label
-                  className="nhsuk-date-input__label"
-                  htmlFor="testInput-month"
-                  id="testInput-month--label"
-                >
-                  <BaseLabel
-                    className="nhsuk-date-input__label"
-                    htmlFor="testInput-month"
-                    id="testInput-month--label"
-                  >
-                    <label
-                      className="nhsuk-label nhsuk-date-input__label"
-                      htmlFor="testInput-month"
-                      id="testInput-month--label"
-                    >
-                      Month
-                    </label>
-                  </BaseLabel>
-                </Label>
-                <input
-                  aria-labelledby="testInput-month--label"
-                  className="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
-                  id="testInput-month"
-                  inputMode="numeric"
-                  name="testInput-month"
-                  onChange={[Function]}
-                  pattern="[0-9]*"
-                  type="text"
-                />
-              </div>
-            </div>
-          </IndividualDateInput>
-        </MonthInput>
-        <YearInput>
-          <IndividualDateInput
-            inputMode="numeric"
-            inputType="year"
+            Year
+          </label>
+          <input
+            aria-labelledby="testInput-year--label"
+            class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
+            id="testInput-year"
+            inputmode="numeric"
+            name="testInput-year"
             pattern="[0-9]*"
             type="text"
-          >
-            <div
-              className="nhsuk-date-input__item"
-            >
-              <div
-                className="nhsuk-form-group"
-              >
-                <Label
-                  className="nhsuk-date-input__label"
-                  htmlFor="testInput-year"
-                  id="testInput-year--label"
-                >
-                  <BaseLabel
-                    className="nhsuk-date-input__label"
-                    htmlFor="testInput-year"
-                    id="testInput-year--label"
-                  >
-                    <label
-                      className="nhsuk-label nhsuk-date-input__label"
-                      htmlFor="testInput-year"
-                      id="testInput-year--label"
-                    >
-                      Year
-                    </label>
-                  </BaseLabel>
-                </Label>
-                <input
-                  aria-labelledby="testInput-year--label"
-                  className="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
-                  id="testInput-year"
-                  inputMode="numeric"
-                  name="testInput-year"
-                  onChange={[Function]}
-                  pattern="[0-9]*"
-                  type="text"
-                />
-              </div>
-            </div>
-          </IndividualDateInput>
-        </YearInput>
+            value=""
+          />
+        </div>
       </div>
     </div>
-  </FormGroup>
-</DateInput>
+  </div>
+</div>
 `;

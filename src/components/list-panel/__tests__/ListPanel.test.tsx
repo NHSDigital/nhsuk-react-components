@@ -1,59 +1,64 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
-import ListPanel from '..';
+import { render } from '@testing-library/react';
+import ListPanel from '../';
 
 describe('ListPanel', () => {
   it('matches snapshot', () => {
-    const component = shallow(<ListPanel />);
-    expect(component.hasClass('nhsuk-list')).toBeTruthy();
-    expect(component).toMatchSnapshot('ListPanel');
-    component.unmount();
+    const { container } = render(<ListPanel />);
+
+    expect(container).toMatchSnapshot('ListPanel');
+  });
+
+  it('renders a list', () => {
+    const { container } = render(<ListPanel />);
+
+    expect(container.querySelector('.nhsuk-list')).toBeTruthy();
   });
 
   describe('ListPanel.Panel', () => {
     it('matches snapshot', () => {
-      const component = shallow(<ListPanel.Panel />);
-      expect(component).toMatchSnapshot('ListPanel.Panel');
-      component.unmount();
+      const { container } = render(<ListPanel.Panel />);
+
+      expect(container).toMatchSnapshot('ListPanel.Panel');
     });
 
     it('renders label', () => {
-      const component = shallow(<ListPanel.Panel label="Label" />);
-      const label = component.find('.nhsuk-list-panel__label');
-      expect(label.exists()).toBeTruthy();
-      expect(label.text()).toBe('Label');
+      const { container } = render(<ListPanel.Panel label="Label" />);
+      const label = container.querySelector('.nhsuk-list-panel__label');
+
+      expect(label).toBeTruthy();
+      expect(label?.textContent).toBe('Label');
       expect(
-        component.find('.nhsuk-list-panel__list').hasClass('nhsuk-list-panel__list--with-label'),
+        container.querySelector('.nhsuk-list-panel__list.nhsuk-list-panel__list--with-label'),
       ).toBeTruthy();
-      component.unmount();
     });
 
     it('renders back to top button', () => {
-      const component = shallow(<ListPanel.Panel backToTop />);
-      expect(component.find('.nhsuk-back-to-top').exists()).toBeTruthy();
-      component.unmount();
+      const { container } = render(<ListPanel.Panel backToTop />);
+
+      expect(container.querySelector('.nhsuk-back-to-top')).toBeTruthy();
     });
 
     it('renders back to top button with custom text', () => {
-      const component = mount(<ListPanel.Panel backToTop backToTopButtonText="Custom" />);
-      expect(component.find('.nhsuk-back-to-top__link').text()).toBe('Custom');
-      component.unmount();
+      const { container } = render(<ListPanel.Panel backToTop backToTopButtonText="Custom" />);
+
+      expect(container.querySelector('.nhsuk-back-to-top__link')?.textContent).toBe('Custom');
     });
   });
 
   describe('ListPanel.Item', () => {
     it('matches snapshot', () => {
-      const component = shallow(<ListPanel.Item />);
-      expect(component).toMatchSnapshot('ListPanel.Item');
-      component.unmount();
+      const { container } = render(<ListPanel.Item />);
+
+      expect(container).toMatchSnapshot('ListPanel.Item');
     });
   });
 
   describe('ListPanel.LinkItem', () => {
     it('matches snapshot', () => {
-      const component = shallow(<ListPanel.LinkItem />);
-      expect(component).toMatchSnapshot('ListPanel.LinkItem');
-      component.unmount();
+      const { container } = render(<ListPanel.LinkItem />);
+
+      expect(container).toMatchSnapshot('ListPanel.LinkItem');
     });
   });
 });

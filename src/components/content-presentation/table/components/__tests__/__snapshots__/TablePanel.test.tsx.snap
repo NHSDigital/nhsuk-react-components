@@ -1,33 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Table.Panel adds header when prop added 1`] = `
-<TablePanel
-  heading="TestHeading"
-  headingProps={
-    Object {
-      "headingLevel": "h2",
-    }
-  }
->
+exports[`Table.Panel matches snapshot 1`] = `
+<div>
   <div
-    className="nhsuk-table__panel-with-heading-tab"
-  >
-    <HeadingLevel
-      className="nhsuk-table__heading-tab"
-      headingLevel="h2"
-    >
-      <h2
-        className="nhsuk-table__heading-tab"
-      >
-        TestHeading
-      </h2>
-    </HeadingLevel>
-  </div>
-</TablePanel>
+    class="nhsuk-table__panel-with-heading-tab"
+  />
+</div>
 `;
 
-exports[`Table.Panel matches snapshot 1`] = `
-<div
-  className="nhsuk-table__panel-with-heading-tab"
-/>
+exports[`Table.Panel matches snapshot when rendering a h2 heading 1`] = `
+<div>
+  <div
+    class="nhsuk-table__panel-with-heading-tab"
+  >
+    <h2
+      class="nhsuk-table__heading-tab"
+    >
+      TestHeading
+    </h2>
+  </div>
+</div>
 `;

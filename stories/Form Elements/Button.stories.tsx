@@ -1,6 +1,7 @@
 import React from 'react';
 import { Button as LibButton } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
+import { ButtonLinkProps, ButtonProps } from '../../src/components/form-elements/button/Button';
 
 /**
  *
@@ -50,7 +51,7 @@ const meta: Meta<typeof LibButton> = {
  * There might be a better way to do this, but this is the only way I could get storybook not to use the name of the default exported component
  * which in this case is <ButtonWrapper> and not <Button>
  */
-function Button(props) {
+function Button(props: ButtonLinkProps | ButtonProps) {
   return <LibButton {...props} />;
 }
 

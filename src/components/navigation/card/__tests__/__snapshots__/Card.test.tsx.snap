@@ -1,172 +1,93 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Card Card.Group matches snapshot 1`] = `
-<CardGroup>
-  <Row
-    className="nhsuk-card-group"
+<div>
+  <div
+    class="nhsuk-grid-row nhsuk-card-group"
   >
     <div
-      className="nhsuk-grid-row nhsuk-card-group"
+      class="nhsuk-grid-column-one-half nhsuk-card-group__item"
     >
-      <CardGroupItem
-        width="one-half"
+      <div
+        class="nhsuk-card"
       >
-        <Col
-          className="nhsuk-card-group__item"
-          width="one-half"
+        <div
+          class="nhsuk-card__content"
         >
-          <div
-            className="nhsuk-grid-column-one-half nhsuk-card-group__item"
+          <h2
+            class="nhsuk-card__heading"
           >
-            <Card
-              feature={false}
-            >
-              <div
-                className="nhsuk-card"
-              >
-                <CardContent>
-                  <div
-                    className="nhsuk-card__content"
-                  >
-                    <CardHeading
-                      headingLevel="h2"
-                    >
-                      <HeadingLevel
-                        className="nhsuk-card__heading"
-                        headingLevel="h2"
-                      >
-                        <h2
-                          className="nhsuk-card__heading"
-                        >
-                          Test Card 1
-                        </h2>
-                      </HeadingLevel>
-                    </CardHeading>
-                    <CardDescription>
-                      <p
-                        className="nhsuk-card__description"
-                      >
-                        Test Card 1 Description
-                      </p>
-                    </CardDescription>
-                  </div>
-                </CardContent>
-              </div>
-            </Card>
-          </div>
-        </Col>
-      </CardGroupItem>
-      <CardGroupItem
-        width="one-half"
-      >
-        <Col
-          className="nhsuk-card-group__item"
-          width="one-half"
-        >
-          <div
-            className="nhsuk-grid-column-one-half nhsuk-card-group__item"
+            Test Card 1
+          </h2>
+          <p
+            class="nhsuk-card__description"
           >
-            <Card
-              feature={false}
-            >
-              <div
-                className="nhsuk-card"
-              >
-                <CardContent>
-                  <div
-                    className="nhsuk-card__content"
-                  >
-                    <CardHeading
-                      headingLevel="h2"
-                    >
-                      <HeadingLevel
-                        className="nhsuk-card__heading"
-                        headingLevel="h2"
-                      >
-                        <h2
-                          className="nhsuk-card__heading"
-                        >
-                          Test Card 2
-                        </h2>
-                      </HeadingLevel>
-                    </CardHeading>
-                    <CardDescription>
-                      <p
-                        className="nhsuk-card__description"
-                      >
-                        Test Card 2 Description
-                      </p>
-                    </CardDescription>
-                  </div>
-                </CardContent>
-              </div>
-            </Card>
-          </div>
-        </Col>
-      </CardGroupItem>
+            Test Card 1 Description
+          </p>
+        </div>
+      </div>
     </div>
-  </Row>
-</CardGroup>
+    <div
+      class="nhsuk-grid-column-one-half nhsuk-card-group__item"
+    >
+      <div
+        class="nhsuk-card"
+      >
+        <div
+          class="nhsuk-card__content"
+        >
+          <h2
+            class="nhsuk-card__heading"
+          >
+            Test Card 2
+          </h2>
+          <p
+            class="nhsuk-card__description"
+          >
+            Test Card 2 Description
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 `;
 
 exports[`Card matches snapshot 1`] = `
-<Card
-  feature={false}
->
+<div>
   <div
-    className="nhsuk-card"
+    class="nhsuk-card"
   >
-    <CardImage
+    <img
       alt="imageAlt"
+      class="nhsuk-card__img"
       src="imageSrc"
+    />
+    <div
+      class="nhsuk-card__content"
     >
-      <img
-        alt="imageAlt"
-        className="nhsuk-card__img"
-        src="imageSrc"
-      />
-    </CardImage>
-    <CardContent>
-      <div
-        className="nhsuk-card__content"
+      <h2
+        class="nhsuk-card__heading"
       >
-        <CardHeading
-          headingLevel="h2"
+        If you need help now but it's not an emergency
+      </h2>
+      <p
+        class="nhsuk-card__description"
+      >
+        Go to 
+        <a
+          href="#"
         >
-          <HeadingLevel
-            className="nhsuk-card__heading"
-            headingLevel="h2"
-          >
-            <h2
-              className="nhsuk-card__heading"
-            >
-              If you need help now but it's not an emergency
-            </h2>
-          </HeadingLevel>
-        </CardHeading>
-        <CardDescription>
-          <p
-            className="nhsuk-card__description"
-          >
-            Go to
-             
-            <a
-              href="#"
-            >
-              111.nhs.uk
-            </a>
-             
-            or
-             
-            <a
-              href="#"
-            >
-              call 111
-            </a>
-          </p>
-        </CardDescription>
-      </div>
-    </CardContent>
+          111.nhs.uk
+        </a>
+         or 
+        <a
+          href="#"
+        >
+          call 111
+        </a>
+      </p>
+    </div>
   </div>
-</Card>
+</div>
 `;

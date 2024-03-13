@@ -1,11 +1,11 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import BackLink from '..';
+import { render } from '@testing-library/react';
+import BackLink from '../';
 
 describe('BackLink', () => {
   it('matches snapshot', () => {
-    const component = shallow(<BackLink href="/back">Back</BackLink>);
-    expect(component).toMatchSnapshot('BackLink');
-    component.unmount();
+    const { container } = render(<BackLink href="/back">Back</BackLink>);
+
+    expect(container).toMatchSnapshot('BackLink');
   });
 });

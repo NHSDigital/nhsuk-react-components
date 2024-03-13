@@ -3,15 +3,23 @@ const { compilerOptions } = require('./tsconfig.json');
 
 const jestConfig = {
   testEnvironment: 'jsdom',
-  moduleDirectories: ['node_modules'],
-  setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
-  collectCoverageFrom: ['<rootDir>/src/**/*.{ts,tsx}'],
+  rootDir: './src',
+  setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
+  collectCoverageFrom: ['<rootDir>/**/*.{ts,tsx}'],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
-    prefix: '<rootDir>/src/',
+    prefix: '<rootDir>',
   }),
   transform: {
-    '^.+\\.(t|j)sx?$': 'ts-jest',
+    '^.+\\.(t|j)sx?$': [
+      'ts-jest',
+      {
+        babelConfig: {
+          plugins: ['@babel/plugin-transform-modules-commonjs'],
+        },
+      },
+    ],
   },
+  transformIgnorePatterns: ['node_modules/(?!nhsuk-frontend/packages)'],
 };
 
 module.exports = jestConfig;

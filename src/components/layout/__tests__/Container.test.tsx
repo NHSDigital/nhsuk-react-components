@@ -1,18 +1,17 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import Container from '../Container';
 
 describe('Container', () => {
   it('matches snapshot', () => {
-    const component = shallow(<Container />);
-    expect(component.hasClass('nhsuk-width-container-fluid')).toBeFalsy();
-    expect(component).toMatchSnapshot();
-    component.unmount();
+    const { container } = render(<Container />);
+
+    expect(container).toMatchSnapshot();
   });
 
   it('adds fluid classes', () => {
-    const component = shallow(<Container fluid />);
-    expect(component.hasClass('nhsuk-width-container-fluid')).toBeTruthy();
-    component.unmount();
+    const { container } = render(<Container fluid />);
+
+    expect(container.querySelector('.nhsuk-width-container-fluid')).toBeTruthy();
   });
 });

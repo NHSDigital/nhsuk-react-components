@@ -1,54 +1,69 @@
 import React from 'react';
-import { mount, shallow } from 'enzyme';
-import ErrorSummary from '..';
+import { render } from '@testing-library/react';
+import ErrorSummary from '../';
 
 describe('ErrorSummary', () => {
   it('matches snapshot', () => {
-    const element = shallow(<ErrorSummary />);
-    expect(element).toMatchSnapshot('ErrorSummary');
-    element.unmount();
+    const { container } = render(<ErrorSummary />);
+
+    expect(container).toMatchSnapshot('ErrorSummary');
   });
 
   it('forwards refs', () => {
     const ref = React.createRef<HTMLDivElement>();
-    const element = mount(<ErrorSummary ref={ref}/>);
+    render(<ErrorSummary ref={ref} />);
+
     expect(ref.current).not.toBeNull();
-    element.unmount();
   });
 
   describe('ErrorSummary.Title', () => {
     it('matches snapshot', () => {
-      const element = shallow(<ErrorSummary.Title>Title</ErrorSummary.Title>);
-      expect(element.text()).toBe('Title');
-      expect(element).toMatchSnapshot('ErrorSummary.Title');
-      element.unmount();
+      const { container } = render(<ErrorSummary.Title>Title</ErrorSummary.Title>);
+
+      expect(container).toMatchSnapshot('ErrorSummary.Title');
+    });
+
+    it('renders a title', () => {
+      const { container } = render(<ErrorSummary.Title>Title</ErrorSummary.Title>);
+
+      expect(container.textContent).toBe('Title');
     });
   });
 
   describe('ErrorSummary.Body', () => {
     it('matches snapshot', () => {
-      const element = shallow(<ErrorSummary.Body>Body</ErrorSummary.Body>);
-      expect(element.text()).toBe('Body');
-      expect(element).toMatchSnapshot('ErrorSummary.Body');
-      element.unmount();
+      const { container } = render(<ErrorSummary.Body>Body</ErrorSummary.Body>);
+
+      expect(container.textContent).toBe('Body');
+      expect(container).toMatchSnapshot('ErrorSummary.Body');
     });
   });
 
   describe('ErrorSummary.List', () => {
     it('matches snapshot', () => {
-      const element = shallow(<ErrorSummary.List>List</ErrorSummary.List>);
-      expect(element.text()).toBe('List');
-      expect(element).toMatchSnapshot('ErrorSummary.List');
-      element.unmount();
+      const { container } = render(<ErrorSummary.List>List</ErrorSummary.List>);
+
+      expect(container).toMatchSnapshot('ErrorSummary.List');
+    });
+
+    it('renders children', () => {
+      const { container } = render(<ErrorSummary.List>List</ErrorSummary.List>);
+
+      expect(container.textContent).toBe('List');
     });
   });
 
   describe('ErrorSummary.ListItem', () => {
     it('matches snapshot', () => {
-      const element = shallow(<ErrorSummary.Item>ListItem</ErrorSummary.Item>);
-      expect(element.find('a').text()).toBe('ListItem');
-      expect(element).toMatchSnapshot('ErrorSummary.ListItem');
-      element.unmount();
+      const { container } = render(<ErrorSummary.Item>ListItem</ErrorSummary.Item>);
+
+      expect(container).toMatchSnapshot('ErrorSummary.ListItem');
+    });
+
+    it('renders children', () => {
+      const { container } = render(<ErrorSummary.Item>ListItem</ErrorSummary.Item>);
+
+      expect(container.querySelector('a')?.textContent).toBe('ListItem');
     });
   });
 });

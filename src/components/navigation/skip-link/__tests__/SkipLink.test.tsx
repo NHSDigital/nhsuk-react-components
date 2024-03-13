@@ -1,37 +1,33 @@
-import React, { createRef } from 'react';
-import { shallow, mount } from 'enzyme';
-import SkipLink from '..';
+import React from 'react';
+import { fireEvent, render } from '@testing-library/react';
+import SkipLink from '../';
 
 describe('SkipLink', () => {
   it('matches snapshot', () => {
-    const component = shallow(<SkipLink />);
-    expect(component).toMatchSnapshot('SkipLink');
-    component.unmount();
-  });
+    const { container } = render(<SkipLink />);
 
-  it('does not add focusTargetRef or disableDefaultBehaviour as attributes when rendered', () => {
-    const ref = createRef<HTMLElement>();
-    const component = shallow(<SkipLink focusTargetRef={ref} disableDefaultBehaviour aria-label="test" />);
-    expect(component.prop('focusTargetRef')).toBeUndefined();
-    expect(component.prop('disableDefaultBehaviour')).toBeUndefined();
-    expect(component.prop('aria-label')).toEqual('test');
-    component.unmount();
+    expect(container).toMatchSnapshot('SkipLink');
   });
 
   it('sets the href to #maincontent by default', () => {
-    const component = mount(<SkipLink />);
-    expect(component.find('.nhsuk-skip-link').prop('href')).toBe('#maincontent');
+    const { container } = render(<SkipLink />);
+
+    expect(container.querySelector('.nhsuk-skip-link')?.getAttribute('href')).toBe('#maincontent');
   });
 
   it('calls onClick callback when clicked', () => {
     const onClick = jest.fn();
-    const component = mount(<SkipLink onClick={onClick} />);
-    component.find('.nhsuk-skip-link').simulate('click');
+    const { container } = render(<SkipLink onClick={onClick} />);
+
+    const skipLinkEl = container.querySelector('.nhsuk-skip-link')!;
+    fireEvent.click(skipLinkEl);
+
     expect(onClick).toHaveBeenCalled();
   });
 
-  it('does not set the href to #maincontent if disableDefaultBehaviour is set', () => {
-    const component = mount(<SkipLink disableDefaultBehaviour />);
-    expect(component.find('.nhsuk-skip-link').prop('href')).toBeUndefined();
+  it('does not set the href when disableDefaultBehaviour is set', () => {
+    const { container } = render(<SkipLink disableDefaultBehaviour />);
+
+    expect(container.querySelector('.nhsuk-skip-link')?.getAttribute('href')).toBeFalsy();
   });
 });

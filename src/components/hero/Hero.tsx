@@ -30,11 +30,15 @@ const HeroContent: React.FC<HeroContentProps> = ({ children, hasImage }) => {
 };
 
 interface HeroHeadingProps extends HTMLProps<HTMLHeadingElement> {
-  headingLevel: HeadingLevelType;
+  headingLevel?: HeadingLevelType;
 }
 
 const HeroHeading: React.FC<HeroHeadingProps> = ({ className, headingLevel = 'h1', ...rest }) => (
-  <HeadingLevel className={classNames('nhsuk-u-margin-bottom-3', className)} headingLevel={headingLevel} {...rest} />
+  <HeadingLevel
+    className={classNames('nhsuk-u-margin-bottom-3', className)}
+    headingLevel={headingLevel}
+    {...rest}
+  />
 );
 
 const HeroText: React.FC<HTMLProps<HTMLParagraphElement>> = ({ className, ...rest }) => (
@@ -50,9 +54,7 @@ interface Hero extends React.FC<HeroProps> {
   Text: React.FC<HTMLProps<HTMLParagraphElement>>;
 }
 
-const Hero: Hero = ({
-  className, children, imageSrc, ...rest
-}) => (
+const Hero: Hero = ({ className, children, imageSrc, ...rest }) => (
   <section
     className={classNames(
       'nhsuk-hero',

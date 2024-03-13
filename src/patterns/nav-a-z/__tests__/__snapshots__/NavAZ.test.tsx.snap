@@ -1,11 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`NavAZ matches snapshot: NavAZ 1`] = `
-<nav
-  className="nhsuk-nav-a-z"
->
-  <ol
-    className="nhsuk-nav-a-z__list"
-  />
-</nav>
+<div>
+  <nav
+    aria-label="A to Z Navigation"
+    class="nhsuk-u-margin-bottom-4 nhsuk-u-margin-top-4"
+    role="navigation"
+  >
+    <ol
+      class="nhsuk-list nhsuk-u-clear nhsuk-u-margin-0"
+    />
+  </nav>
+</div>
 `;

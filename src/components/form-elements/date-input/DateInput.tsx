@@ -33,12 +33,10 @@ interface DateInputState {
   };
 }
 
-interface DateInput extends PureComponent<DateInputProps, DateInputState> {
+class DateInput extends PureComponent<DateInputProps, DateInputState> {
   monthRef: null | HTMLInputElement;
   yearRef: null | HTMLInputElement;
-}
 
-class DateInput extends PureComponent<DateInputProps, DateInputState> {
   static Day = DayInput;
 
   static Month = MonthInput;

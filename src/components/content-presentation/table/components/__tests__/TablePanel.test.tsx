@@ -1,28 +1,28 @@
-import { mount, shallow } from 'enzyme';
 import React from 'react';
+import { render } from '@testing-library/react';
 import TablePanel from '../TablePanel';
 
 describe('Table.Panel', () => {
   it('matches snapshot', () => {
-    const wrapper = shallow(<TablePanel />);
-    expect(wrapper).toMatchSnapshot();
-    expect(wrapper.find('HeadingLevel').exists()).toBeFalsy();
+    const { container } = render(<TablePanel />);
 
-    wrapper.unmount();
+    expect(container).toMatchSnapshot();
   });
 
-  it('adds header when prop added', () => {
-    const wrapper = mount(
+  it('matches snapshot when rendering a h2 heading', () => {
+    const { container } = render(
       <TablePanel heading="TestHeading" headingProps={{ headingLevel: 'h2' }} />,
     );
 
-    expect(wrapper).toMatchSnapshot();
-    const heading = wrapper.find('h2');
+    expect(container).toMatchSnapshot();
+  });
 
-    expect(heading.exists()).toBeTruthy();
-    expect(heading.prop('className')).toBe('nhsuk-table__heading-tab');
-    expect(heading.type()).toBe('h2');
+  it('adds header when prop added', () => {
+    const { container } = render(
+      <TablePanel heading="TestHeading" headingProps={{ headingLevel: 'h2' }} />,
+    );
+    const heading = container.querySelector('h2.nhsuk-table__heading-tab');
 
-    wrapper.unmount();
+    expect(heading).toBeTruthy();
   });
 });

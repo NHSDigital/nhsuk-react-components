@@ -1,75 +1,64 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable react/jsx-key */
 import React from 'react';
-import { shallow, mount } from 'enzyme';
-import NavAZ from '..';
+import { screen, render } from '@testing-library/react';
+import NavAZ from '../';
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 describe('NavAZ', () => {
   it('matches snapshot', () => {
-    const element = shallow(<NavAZ />);
-    expect(element).toMatchSnapshot('NavAZ');
-    element.unmount();
+    const { container } = render(<NavAZ />);
+
+    expect(container).toMatchSnapshot('NavAZ');
   });
 
   it('renders fullAlphabet', () => {
-    const element = mount(<NavAZ fullAlphabet />);
-    const expectedElements = alphabet.split('').map((letter) => (
-      <a key={letter} className="nhsuk-nav-a-z__link">
-        {letter}
-      </a>
-    ));
-    expect(element.containsAllMatchingElements(expectedElements)).toBeTruthy();
-    element.unmount();
+    render(<NavAZ fullAlphabet />);
+    const alphabetAsArr = alphabet.split('');
+
+    alphabetAsArr.forEach((letter) => {
+      expect(screen.getByRole('link', { name: letter })).toBeTruthy();
+    });
   });
 
   it('renders fullAlphabet with letters removed', () => {
-    const element = mount(<NavAZ fullAlphabet removedLetters={['A', 'B']} />);
-    expect(
-      element.containsAnyMatchingElements([
-        <a className="nhsuk-nav-a-z__link">A</a>,
-        <a className="nhsuk-nav-a-z__link">B</a>,
-      ]),
-    ).toBeFalsy();
-    element.unmount();
+    render(<NavAZ fullAlphabet removedLetters={['A', 'B']} />);
+
+    expect(screen.queryByText('A')).toBeNull();
+    expect(screen.queryByText('B')).toBeNull();
+    expect(screen.queryByText('C')).toBeTruthy();
   });
 
   it('renders fullAlphabet with letters disabled', () => {
-    const element = mount(<NavAZ fullAlphabet disabledLetters={['A', 'B']} />);
+    render(<NavAZ fullAlphabet disabledLetters={['A', 'B']} />);
+
     expect(
-      element.containsAnyMatchingElements([
-        <a className="nhsuk-nav-a-z__link">A</a>,
-        <a className="nhsuk-nav-a-z__link">B</a>,
-      ]),
-    ).toBeFalsy();
-    expect(
-      element.containsAllMatchingElements([
-        <span className="nhsuk-nav-a-z__link--disabled">A</span>,
-        <span className="nhsuk-nav-a-z__link--disabled">B</span>,
-      ]),
+      screen.queryByText('A')?.classList.contains('nhsuk-u-display-block--disabled'),
     ).toBeTruthy();
-    element.unmount();
+    expect(
+      screen.queryByText('B')?.classList.contains('nhsuk-u-display-block--disabled'),
+    ).toBeTruthy();
+    expect(
+      screen.queryByText('C')?.classList.contains('nhsuk-u-display-block--disabled'),
+    ).toBeFalsy();
   });
 
   it('passes through children', () => {
-    const element = mount(
+    const { container } = render(
       <NavAZ>
         <p id="child">Child</p>
       </NavAZ>,
     );
-    expect(element.containsMatchingElement(<p id="child">Child</p>)).toBeTruthy();
-    element.unmount();
+
+    expect(container.querySelector('#child')).toBeTruthy();
   });
 
   it('renders individual letters', () => {
-    const element = mount(<NavAZ letters={['A', 'B']} />);
-    expect(
-      element.containsAllMatchingElements([
-        <a className="nhsuk-nav-a-z__link">A</a>,
-        <a className="nhsuk-nav-a-z__link">B</a>,
-      ]),
-    ).toBeTruthy();
-    element.unmount();
+    const { container } = render(<NavAZ letters={['A', 'B']} />);
+
+    const navAzElements = container.querySelector('ol.nhsuk-list');
+
+    expect(navAzElements?.childNodes.length).toBe(2);
+    expect(navAzElements?.childNodes[0].textContent).toBe('A');
+    expect(navAzElements?.childNodes[1].textContent).toBe('B');
   });
 });

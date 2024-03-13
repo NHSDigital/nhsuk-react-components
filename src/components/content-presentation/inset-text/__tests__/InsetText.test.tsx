@@ -1,35 +1,35 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import InsetText from '..';
+import { render } from '@testing-library/react';
+import InsetText from '../';
 
 describe('InsetText', () => {
   it('matches snapshot', () => {
-    const component = shallow(<InsetText />);
-    expect(component).toMatchSnapshot('InsetText');
-    component.unmount();
+    const { container } = render(<InsetText />);
+
+    expect(container).toMatchSnapshot('InsetText');
   });
 
   it('has default visually hidden text', () => {
-    const component = shallow(<InsetText />);
-    expect(component.find('.nhsuk-u-visually-hidden').text()).toBe('Information: ');
-    component.unmount();
+    const { container } = render(<InsetText />);
+
+    expect(container.querySelector('.nhsuk-u-visually-hidden')?.textContent).toBe('Information: ');
   });
 
   it('has disabled visually hidden text', () => {
-    const component = shallow(<InsetText visuallyHiddenText={false} />);
-    expect(component.find('.nhsuk-u-visually-hidden').exists()).toBeFalsy();
-    component.unmount();
+    const { container } = render(<InsetText visuallyHiddenText={false} />);
+
+    expect(container.querySelector('.nhsuk-u-visually-hidden')).toBeFalsy();
   });
 
   it('has custom visually hidden text', () => {
-    const component = shallow(<InsetText visuallyHiddenText="Custom" />);
-    expect(component.find('.nhsuk-u-visually-hidden').text()).toBe('Custom');
-    component.unmount();
+    const { container } = render(<InsetText visuallyHiddenText="Custom" />);
+
+    expect(container.querySelector('.nhsuk-u-visually-hidden')?.textContent).toBe('Custom');
   });
 
   it('renders children', () => {
-    const component = shallow(<InsetText>Child</InsetText>);
-    expect(component.text()).toBe('Information: Child');
-    component.unmount();
+    const { container } = render(<InsetText>Child</InsetText>);
+
+    expect(container.textContent).toBe('Information: Child');
   });
 });

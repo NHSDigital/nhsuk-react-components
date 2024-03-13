@@ -1,73 +1,77 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
-import Hero from '..';
+import { render } from '@testing-library/react';
+import Hero from '../';
 
 describe('Hero', () => {
   it('matches snapshot', () => {
-    const component = shallow(<Hero />);
-    expect(component.hasClass('nhsuk-hero--image')).toBeFalsy();
-    expect(component).toMatchSnapshot('Hero');
-    component.unmount();
+    const { container } = render(<Hero />);
+
+    expect(container.querySelector('.nhsuk-hero--image')).toBeFalsy();
+    expect(container).toMatchSnapshot('Hero');
   });
 
   it('adds correct attributes when imageSrc is provided', () => {
-    const component = shallow(<Hero imageSrc="image.png" />);
-    expect(component.hasClass('nhsuk-hero--image')).toBeTruthy();
-    expect(component.prop('style')).toEqual({ backgroundImage: "url('image.png')" });
-    expect(component.find('.nhsuk-hero__overlay').exists()).toBeTruthy();
-    component.unmount();
+    const { container } = render(<Hero imageSrc="image.png" />);
+
+    expect(container.querySelector('.nhsuk-hero--image')).toBeTruthy();
+    expect(container.querySelector('.nhsuk-hero__overlay')).toBeTruthy();
+    expect(container.querySelector('.nhsuk-hero.nhsuk-hero--image')).toHaveStyle(
+      'background-image: url(image.png);',
+    );
   });
 
   it('adds correct attributes when imageSrc and children are provided', () => {
-    const component = shallow(<Hero imageSrc="image.png">Children</Hero>);
-    expect(component.hasClass('nhsuk-hero--image')).toBeTruthy();
-    expect(component.hasClass('nhsuk-hero--image-description')).toBeTruthy();
-    expect(component.prop('style')).toEqual({ backgroundImage: "url('image.png')" });
-    expect(component.find('.nhsuk-hero__overlay').exists()).toBeTruthy();
-    component.unmount();
+    const { container } = render(<Hero imageSrc="image.png">Children</Hero>);
+
+    expect(container.querySelector('.nhsuk-hero--image')).toBeTruthy();
+    expect(container.querySelector('.nhsuk-hero--image-description')).toBeTruthy();
+    expect(container.querySelector('.nhsuk-hero.nhsuk-hero--image')).toHaveStyle(
+      'background-image: url(image.png);',
+    );
+    expect(container.querySelector('.nhsuk-hero__overlay')).toBeTruthy();
   });
 
   it('renders HeroContent when there are children', () => {
-    const component = mount(<Hero>Children</Hero>);
-    expect(component.find('.nhsuk-width-container').exists()).toBeTruthy();
-    expect(component.find('.nhsuk-width-container').hasClass('nhsuk-hero--border')).toBeFalsy();
-    expect(component.find('.nhsuk-hero-content').exists()).toBeFalsy();
-    expect(component.find('.nhsuk-hero__arrow').exists()).toBeFalsy();
-    expect(component.find('.nhsuk-hero__wrapper').exists()).toBeTruthy();
-    component.unmount();
+    const { container } = render(<Hero>Children</Hero>);
+
+    expect(container.querySelector('.nhsuk-width-container')).toBeTruthy();
+    expect(container.querySelector('.nhsuk-width-container.nhsuk-hero--border')).toBeFalsy();
+    expect(container.querySelector('.nhsuk-hero-content')).toBeFalsy();
+    expect(container.querySelector('.nhsuk-hero__arrow')).toBeFalsy();
+    expect(container.querySelector('.nhsuk-hero__wrapper')).toBeTruthy();
   });
 
   it('renders HeroContent when there are children and imageSrc', () => {
-    const component = mount(<Hero imageSrc="image.png">Children</Hero>);
-    expect(component.find('.nhsuk-width-container').exists()).toBeTruthy();
-    expect(component.find('.nhsuk-width-container').hasClass('nhsuk-hero--border')).toBeTruthy();
-    expect(component.find('.nhsuk-hero-content').exists()).toBeTruthy();
-    expect(component.find('.nhsuk-hero__arrow').exists()).toBeTruthy();
-    expect(component.find('.nhsuk-hero__wrapper').exists()).toBeFalsy();
-    component.unmount();
+    const { container } = render(<Hero imageSrc="image.png">Children</Hero>);
+
+    expect(container.querySelector('.nhsuk-width-container')).toBeTruthy();
+    expect(container.querySelector('.nhsuk-width-container.nhsuk-hero--border')).toBeTruthy();
+    expect(container.querySelector('.nhsuk-hero-content')).toBeTruthy();
+    expect(container.querySelector('.nhsuk-hero__arrow')).toBeTruthy();
+    expect(container.querySelector('.nhsuk-hero__wrapper')).toBeFalsy();
   });
 
   it('HeroContent renders null with no children', () => {
-    const component = mount(<Hero />);
-    expect(component.find('.nhsuk-width-container').exists()).toBeFalsy();
-    component.unmount();
+    const { container } = render(<Hero />);
+
+    expect(container.querySelector('.nhsuk-width-container')).toBeFalsy();
   });
 
   describe('Hero.Text', () => {
     it('matches snapshot', () => {
-      const component = mount(<Hero.Text>Text</Hero.Text>);
-      expect(component.text()).toBe('Text');
-      expect(component).toMatchSnapshot('Hero.Text');
-      component.unmount();
+      const { container } = render(<Hero.Text>Text</Hero.Text>);
+
+      expect(container.textContent).toBe('Text');
+      expect(container).toMatchSnapshot('Hero.Text');
     });
   });
 
   describe('Hero.Heading', () => {
     it('matches snapshot', () => {
-      const component = mount(<Hero.Heading>Text</Hero.Heading>);
-      expect(component.text()).toBe('Text');
-      expect(component).toMatchSnapshot('Hero.Heading');
-      component.unmount();
+      const { container } = render(<Hero.Heading>Text</Hero.Heading>);
+
+      expect(container.textContent).toBe('Text');
+      expect(container).toMatchSnapshot('Hero.Heading');
     });
   });
 });

@@ -1,32 +1,32 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import Fieldset from '..';
+import { render } from '@testing-library/react';
+import Fieldset from '../';
 
 describe('Fieldset', () => {
   it('matches snapshot', () => {
-    const element = shallow(<Fieldset>Text</Fieldset>);
-    expect(element.text()).toBe('Text');
-    expect(element).toMatchSnapshot('Fieldset');
-    element.unmount();
+    const { container } = render(<Fieldset>Text</Fieldset>);
+
+    expect(container).toMatchSnapshot('Fieldset');
+  });
+
+  it('renders children', () => {
+    const { container } = render(<Fieldset>Text</Fieldset>);
+
+    expect(container.textContent).toBe('Text');
   });
 
   describe('Fieldset.Legend', () => {
     it('matches snapshot', () => {
-      const element = shallow(<Fieldset.Legend>Text</Fieldset.Legend>);
-      expect(element).toMatchSnapshot('FieldsetLegend');
-      element.unmount();
+      const { container } = render(<Fieldset.Legend>Text</Fieldset.Legend>);
+
+      expect(container).toMatchSnapshot('FieldsetLegend');
     });
 
     it('renders as page heading', () => {
-      const element = shallow(<Fieldset.Legend isPageHeading>Text</Fieldset.Legend>);
-      expect(element.hasClass('nhsuk-fieldset__legend--xl')).toBeTruthy();
-      expect(
-        element
-          .find('.nhsuk-fieldset__heading')
-          .render()
-          .text(),
-      ).toBe('Text');
-      element.unmount();
+      const { container } = render(<Fieldset.Legend isPageHeading>Text</Fieldset.Legend>);
+
+      expect(container.querySelector('.nhsuk-fieldset__legend--xl')).toBeTruthy();
+      expect(container.querySelector('.nhsuk-fieldset__heading')?.textContent).toBe('Text');
     });
   });
 });

@@ -1,5 +1,4 @@
 module.exports = {
-  // parser: '@typescript-eslint/parser',
   parserOptions: {
     project: './tsconfig.json',
     tsconfigRootDir: __dirname,
@@ -7,6 +6,11 @@ module.exports = {
   env: {
     browser: true,
     jest: true,
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
   },
   extends: [
     'plugin:react/recommended',

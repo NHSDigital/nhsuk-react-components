@@ -1,11 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`CareCard matches snapshot: BaseCareCard 1`] = `
-<CareCard
-  type="urgent"
->
+exports[`CareCard immediate matches snapshot: BaseCareCardImmediate 1`] = `
+<div>
   <div
-    className="nhsuk-care-card nhsuk-care-card--urgent"
+    class="nhsuk-care-card nhsuk-care-card--immediate"
   />
-</CareCard>
+</div>
+`;
+
+exports[`CareCard non-urgent matches snapshot: BaseCareCardNonUrgent 1`] = `
+<div>
+  <div
+    class="nhsuk-care-card nhsuk-care-card--non-urgent"
+  />
+</div>
+`;
+
+exports[`CareCard urgent matches snapshot: BaseCareCardUrgent 1`] = `
+<div>
+  <div
+    class="nhsuk-care-card nhsuk-care-card--urgent"
+  />
+</div>
 `;

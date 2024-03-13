@@ -2,6 +2,7 @@
 // import TransactionalServiceName from '../TransactionalServiceName';
 // import { render } from '@testing-library/react';
 
+// to be done as part of NUT-4646
 describe('TransactionalServiceName', () => {
   it.skip('renders successfully', () => {
     expect(true).toBe(false);

@@ -1,33 +1,43 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ListPanel ListPanel.Item matches snapshot: ListPanel.Item 1`] = `
-<li
-  className="nhsuk-list-panel__item"
-/>
+<div>
+  <li
+    class="nhsuk-list-panel__item"
+  />
+</div>
 `;
 
 exports[`ListPanel ListPanel.LinkItem matches snapshot: ListPanel.LinkItem 1`] = `
-<PanelItem>
-  <a
-    className="nhsuk-list-panel__link"
-  />
-</PanelItem>
+<div>
+  <li
+    class="nhsuk-list-panel__item"
+  >
+    <a
+      class="nhsuk-list-panel__link"
+    />
+  </li>
+</div>
 `;
 
 exports[`ListPanel ListPanel.Panel matches snapshot: ListPanel.Panel 1`] = `
-<li>
-  <div
-    className="nhsuk-list-panel"
-  >
-    <ul
-      className="nhsuk-list-panel__list"
-    />
-  </div>
-</li>
+<div>
+  <li>
+    <div
+      class="nhsuk-list-panel"
+    >
+      <ul
+        class="nhsuk-list-panel__list"
+      />
+    </div>
+  </li>
+</div>
 `;
 
 exports[`ListPanel matches snapshot: ListPanel 1`] = `
-<ol
-  className="nhsuk-list"
-/>
+<div>
+  <ol
+    class="nhsuk-list"
+  />
+</div>
 `;

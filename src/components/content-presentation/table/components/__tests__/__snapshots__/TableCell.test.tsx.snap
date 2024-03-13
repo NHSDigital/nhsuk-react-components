@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Table.Cell matches snapshot 1`] = `
-<td
-  className="nhsuk-table__cell"
-/>
+<div>
+  <td
+    class="nhsuk-table__cell"
+  />
+</div>
 `;

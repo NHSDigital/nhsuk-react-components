@@ -9,26 +9,37 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v1
-      
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18.x'
+
+      - name: Enable corepack
+        run: corepack enable
+
+      - name: Set Yarn version
+        run: yarn set version stable
+
       - name: Yarn Install
         run: yarn
-      
+
       - name: Lint
-        run: yarn lint
-      
+        run: yarn lint:ci
+
       - name: Jest Tests
         run: yarn test:ci
-      
+
       - name: Typescript build
         run: yarn build
-      
+
       - name: Set Version to Release Tag Name
         run: |
           yarn version --new-version ${{ github.event.release.tag_name }} --no-git-tag-version
-      
+
       - name: Publish to npm, publish pre-release as beta
-        uses: JS-DevTools/npm-publish@v1 
+        uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
           tag: ${{ github.event.release.prerelease && 'beta' || 'latest' }}
