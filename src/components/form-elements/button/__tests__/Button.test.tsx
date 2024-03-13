@@ -1,117 +1,186 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import ButtonWrapper, { ButtonLink, Button } from '../Button';
 
 describe('Button', () => {
   it('matches snapshot', () => {
-    const component = shallow(<Button>Submit</Button>);
-    expect(component).toMatchSnapshot('PlainButton');
-    expect(component.type()).toEqual('button');
-    expect(component.text()).toEqual('Submit');
-    component.unmount();
+    const { container } = render(<Button>Submit</Button>);
+
+    expect(container).toMatchSnapshot('PlainButton');
   });
 
-  it('adds correct classes for button types', () => {
-    const disabledButton = shallow(<Button disabled>Submit</Button>);
-    const secondaryButton = shallow(<Button secondary>Submit</Button>);
-    const reverseButton = shallow(<Button reverse>Submit</Button>);
+  it('renders child text as expected', () => {
+    const { container } = render(<Button>Submit</Button>);
 
-    expect(disabledButton).toMatchSnapshot('DisabledButton');
-    expect(secondaryButton).toMatchSnapshot('SecondaryButton');
-    expect(reverseButton).toMatchSnapshot('ReverseButton');
+    expect(container.querySelector('button')?.textContent).toEqual('Submit');
+  });
 
-    expect(disabledButton.hasClass('nhsuk-button--disabled')).toBeTruthy();
-    expect(secondaryButton.hasClass('nhsuk-button--secondary')).toBeTruthy();
-    expect(reverseButton.hasClass('nhsuk-button--reverse')).toBeTruthy();
+  describe('disabled', () => {
+    it('matches snapshot', () => {
+      const { container } = render(<Button disabled>Submit</Button>);
 
-    disabledButton.unmount();
-    secondaryButton.unmount();
-    reverseButton.unmount();
+      expect(container).toMatchSnapshot('DisabledButton');
+    });
+
+    it('adds correct classes for button type', () => {
+      const { container } = render(<Button disabled>Submit</Button>);
+
+      expect(container.querySelector('.nhsuk-button--disabled')).toBeTruthy();
+    });
+  });
+
+  describe('secondary', () => {
+    it('matches snapshot', () => {
+      const { container } = render(<Button secondary>Submit</Button>);
+
+      expect(container).toMatchSnapshot('SecondaryButton');
+    });
+
+    it('adds correct classes for button type', () => {
+      const { container } = render(<Button secondary>Submit</Button>);
+
+      expect(container.querySelector('.nhsuk-button--secondary')).toBeTruthy();
+    });
+  });
+
+  describe('reverse', () => {
+    it('matches snapshot', () => {
+      const { container } = render(<Button reverse>Submit</Button>);
+
+      expect(container).toMatchSnapshot('ReverseButton');
+    });
+
+    it('adds correct classes for button type', () => {
+      const { container } = render(<Button reverse>Submit</Button>);
+
+      expect(container.querySelector('.nhsuk-button--reverse')).toBeTruthy();
+    });
   });
 
   it('adds aria props and disabled to disabled button', () => {
-    const disabledButton = shallow(<Button disabled>Submit</Button>);
-    expect(disabledButton.props()).toEqual({
-      'aria-disabled': 'true',
-      children: 'Submit',
-      className: 'nhsuk-button nhsuk-button--disabled',
-      disabled: true,
-      type: 'submit',
-    });
-    disabledButton.unmount();
+    const { container } = render(<Button disabled>Submit</Button>);
+
+    expect(
+      container.querySelector('button.nhsuk-button.nhsuk-button--disabled')?.getAttribute('type'),
+    ).toBe('submit');
+    expect(
+      container
+        .querySelector('button.nhsuk-button.nhsuk-button--disabled')
+        ?.getAttribute('aria-disabled'),
+    ).toBe('true');
+    expect(container.querySelector('button.nhsuk-button.nhsuk-button--disabled')).toBeDisabled();
   });
 });
 
 describe('ButtonLink', () => {
   it('matches snapshot', () => {
-    const component = shallow(<ButtonLink href="/">Submit</ButtonLink>);
-    expect(component).toMatchSnapshot('PlainButton');
-    expect(component.type()).toEqual('a');
-    expect(component.text()).toEqual('Submit');
-    component.unmount();
+    const { container } = render(<ButtonLink href="/">Submit</ButtonLink>);
+
+    expect(container).toMatchSnapshot('PlainButton');
   });
 
-  it('adds correct classes for button types', () => {
-    const disabledButton = shallow(
-      <ButtonLink href="/" disabled>
-        Submit
-      </ButtonLink>,
-    );
-    const secondaryButton = shallow(
-      <ButtonLink href="/" secondary>
-        Submit
-      </ButtonLink>,
-    );
-    const reverseButton = shallow(
-      <ButtonLink href="/" reverse>
-        Submit
-      </ButtonLink>,
-    );
+  it('renders child text as expected', () => {
+    const { container } = render(<ButtonLink href="/">Submit</ButtonLink>);
 
-    expect(disabledButton).toMatchSnapshot('DisabledButton');
-    expect(secondaryButton).toMatchSnapshot('SecondaryButton');
-    expect(reverseButton).toMatchSnapshot('ReverseButton');
-
-    expect(disabledButton.hasClass('nhsuk-button--disabled')).toBeTruthy();
-    expect(secondaryButton.hasClass('nhsuk-button--secondary')).toBeTruthy();
-    expect(reverseButton.hasClass('nhsuk-button--reverse')).toBeTruthy();
-
-    disabledButton.unmount();
-    secondaryButton.unmount();
-    reverseButton.unmount();
+    expect(container.querySelector('a')?.textContent).toEqual('Submit');
   });
 
-  it('adds aria props and disabled to disabled button', () => {
-    const disabledButton = shallow(
-      <ButtonLink href="/" disabled>
-        Submit
-      </ButtonLink>,
-    );
-    expect(disabledButton.props()).toEqual({
-      'aria-disabled': 'true',
-      children: 'Submit',
-      className: 'nhsuk-button nhsuk-button--disabled',
-      draggable: false,
-      href: '/',
-      role: 'button',
+  describe('button types', () => {
+    describe('disabled', () => {
+      it('matches snapshot', () => {
+        const { container } = render(
+          <ButtonLink href="/" disabled>
+            Submit
+          </ButtonLink>,
+        );
+
+        expect(container).toMatchSnapshot('DisabledButton');
+      });
+
+      it('adds correct classes for type - disabled', () => {
+        const { container } = render(
+          <ButtonLink href="/" disabled>
+            Submit
+          </ButtonLink>,
+        );
+
+        expect(container.querySelector('.nhsuk-button--disabled')).toBeTruthy();
+      });
     });
-    disabledButton.unmount();
+
+    describe('secondary', () => {
+      it('matches snapshot', () => {
+        const { container } = render(
+          <ButtonLink href="/" secondary>
+            Submit
+          </ButtonLink>,
+        );
+
+        expect(container).toMatchSnapshot('SecondaryButton');
+      });
+
+      it('adds correct classes for type - secondary', () => {
+        const { container } = render(
+          <ButtonLink href="/" secondary>
+            Submit
+          </ButtonLink>,
+        );
+
+        expect(container.querySelector('.nhsuk-button--secondary')).toBeTruthy();
+      });
+    });
+
+    describe('reverse', () => {
+      it('matches snapshot', () => {
+        const { container } = render(
+          <ButtonLink href="/" reverse>
+            Submit
+          </ButtonLink>,
+        );
+
+        expect(container).toMatchSnapshot('ReverseButton');
+      });
+
+      it('adds correct classes for type - reverse', () => {
+        const { container } = render(
+          <ButtonLink href="/" reverse>
+            Submit
+          </ButtonLink>,
+        );
+
+        expect(container.querySelector('.nhsuk-button--reverse')).toBeTruthy();
+      });
+    });
+  });
+
+  it('adds aria disabled props to disabled button', () => {
+    const { container } = render(
+      <ButtonLink href="/" disabled>
+        Submit
+      </ButtonLink>,
+    );
+
+    expect(
+      container.querySelector('a.nhsuk-button.nhsuk-button--disabled')?.getAttribute('role'),
+    ).toBe('button');
+    expect(
+      container
+        .querySelector('a.nhsuk-button.nhsuk-button--disabled')
+        ?.getAttribute('aria-disabled'),
+    ).toBe('true');
   });
 });
 
 describe('ButtonWrapper', () => {
   it('renders a button when not given a href', () => {
-    const component = mount(<ButtonWrapper>Submit</ButtonWrapper>);
-    expect(
-      component.containsMatchingElement(<button className="nhsuk-button">Submit</button>),
-    ).toBeTruthy();
-    component.unmount();
+    const { container } = render(<ButtonWrapper>Submit</ButtonWrapper>);
+
+    expect(container.querySelector('button.nhsuk-button')?.textContent).toBe('Submit');
   });
 
   it('renders an anchor when given a href', () => {
-    const component = mount(<ButtonWrapper href="/">Submit</ButtonWrapper>);
-    // eslint-disable-next-line jsx-a11y/anchor-is-valid
-    expect(component.containsMatchingElement(<a className="nhsuk-button">Submit</a>)).toBeTruthy();
-    component.unmount();
+    const { container } = render(<ButtonWrapper href="/">Submit</ButtonWrapper>);
+
+    expect(container.querySelector('a.nhsuk-button')?.textContent).toBe('Submit');
   });
 });

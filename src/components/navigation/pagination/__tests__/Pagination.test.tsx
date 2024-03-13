@@ -5,12 +5,14 @@ import Pagination from '../';
 describe('Pagination', () => {
   it('matches snapshot', () => {
     const { container } = render(<Pagination />);
+
     expect(container).toMatchSnapshot('Pagination');
   });
 
   describe('Pagination.Link', () => {
     it('matches snapshot', () => {
       const { container } = render(<Pagination.Link />);
+
       expect(container).toMatchSnapshot('Pagination.Link');
     });
 

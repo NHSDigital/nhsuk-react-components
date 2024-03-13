@@ -1,52 +1,54 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import Details from '..';
+import { render } from '@testing-library/react';
+import Details from '../';
 
 describe('Details', () => {
   it('matches snapshot', () => {
-    const standardDetails = shallow(<Details />);
-    const expanderDetails = shallow(<Details expander />);
-    expect(standardDetails).toMatchSnapshot('StandardDetails');
-    expect(expanderDetails).toMatchSnapshot('ExpanderDetails');
-    standardDetails.unmount();
-    expanderDetails.unmount();
+    const { container } = render(<Details />);
+
+    expect(container).toMatchSnapshot('StandardDetails');
+  });
+
+  it('matches snapshot - with expander present', () => {
+    const { container } = render(<Details expander />);
+
+    expect(container).toMatchSnapshot('ExpanderDetails');
   });
 
   it('adds expander classes', () => {
-    const expander = shallow(<Details expander />);
-    expect(expander.hasClass('nhsuk-expander')).toBeTruthy();
-    expander.unmount();
+    const { container } = render(<Details expander />);
+
+    expect(container.querySelector('.nhsuk-expander')).toBeTruthy();
   });
 
   describe('Details.Summary', () => {
     it('matches snapshot', () => {
-      const element = shallow(<Details.Summary>Content</Details.Summary>);
-      expect(element).toMatchSnapshot('Details.Summary');
-      expect(element.type()).toEqual('summary');
-      expect(
-        element.containsMatchingElement(
-          <span className="nhsuk-details__summary-text">Content</span>,
-        ),
-      ).toBeTruthy();
-      element.unmount();
+      const { container } = render(<Details.Summary>Content</Details.Summary>);
+
+      expect(container).toMatchSnapshot('Details.Summary');
+    });
+
+    it('renders children', () => {
+      const { container } = render(<Details.Summary>Content</Details.Summary>);
+      const summaryText = container.querySelector('span.nhsuk-details__summary-text');
+
+      expect(summaryText?.textContent).toBe('Content');
     });
   });
 
   describe('Details.Text', () => {
     it('matches snapshot', () => {
-      const element = shallow(<Details.Text>Text</Details.Text>);
-      expect(element).toMatchSnapshot('Details.Text');
-      expect(element.type()).toEqual('div');
-      element.unmount();
+      const { container } = render(<Details.Text>Text</Details.Text>);
+
+      expect(container).toMatchSnapshot('Details.Text');
     });
   });
 
   describe('Details.ExpanderGroup', () => {
     it('matches snapshot', () => {
-      const element = shallow(<Details.ExpanderGroup />);
-      expect(element).toMatchSnapshot('Details.ExpanderGroup');
-      expect(element.type()).toEqual('div');
-      element.unmount();
+      const { container } = render(<Details.ExpanderGroup />);
+
+      expect(container).toMatchSnapshot('Details.ExpanderGroup');
     });
   });
 });

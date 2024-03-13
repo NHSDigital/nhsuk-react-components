@@ -6,11 +6,9 @@ interface SkipLinkProps extends HTMLProps<HTMLAnchorElement> {
   disableDefaultBehaviour?: boolean;
 }
 
-interface SkipLink extends React.Component<SkipLinkProps> {
-  firstHeadingElement: HTMLElement | null;
-}
-
 class SkipLink extends React.Component<SkipLinkProps> {
+  firstHeadingElement: HTMLElement | null;
+
   static defaultProps = {
     children: 'Skip to main content',
     href: '#maincontent',

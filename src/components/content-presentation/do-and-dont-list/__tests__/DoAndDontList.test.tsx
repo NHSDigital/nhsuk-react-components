@@ -1,133 +1,165 @@
 import React from 'react';
-import { shallow, mount } from 'enzyme';
-import DoDontList from '..';
+import { render } from '@testing-library/react';
+import DoAndDontList from '../';
 
-describe('DoDontList', () => {
-  it('matches snapshot', () => {
-    const doElement = shallow(<DoDontList listType="do" />);
-    const dontElement = shallow(<DoDontList listType="dont" />);
-    expect(doElement).toMatchSnapshot('DoDontList-Do');
-    expect(dontElement).toMatchSnapshot('DoDontList-Dont');
-    doElement.unmount();
-    dontElement.unmount();
+describe('DoAndDontList', () => {
+  describe('list type "do"', () => {
+    it('matches snapshot', () => {
+      const { container } = render(<DoAndDontList listType="do" />);
+
+      expect(container).toMatchSnapshot('DoDontList-Do');
+    });
+
+    it('adds the correct headings', () => {
+      const { container } = render(<DoAndDontList listType="do" />);
+
+      expect(container.querySelector('h3.nhsuk-do-dont-list__label')?.textContent).toEqual('Do');
+    });
+
+    it('adds the correct classes', () => {
+      const { container } = render(<DoAndDontList listType="do" />);
+
+      expect(container.querySelector('ul.nhsuk-list--tick')).toBeTruthy();
+      expect(container.querySelector('ul.nhsuk-list--cross')).toBeFalsy();
+    });
+
+    describe('dev warning', () => {
+      jest.spyOn(console, 'warn').mockImplementation();
+      afterEach(() => {
+        jest.clearAllMocks();
+      });
+
+      it('should not warn when using do list', () => {
+        render(<DoAndDontList listType="do" />);
+
+        expect(console.warn).not.toHaveBeenCalled();
+      });
+    });
   });
 
-  it('adds the correct header', () => {
-    const doElement = mount(<DoDontList listType="do" />);
-    const dontElement = mount(<DoDontList listType="dont" />);
-    expect(doElement.find('h3.nhsuk-do-dont-list__label').text()).toEqual('Do');
-    expect(dontElement.find('h3.nhsuk-do-dont-list__label').text()).toEqual("Don't");
-    doElement.unmount();
-    dontElement.unmount();
-  });
+  describe('list type "dont"', () => {
+    it('matches snapshot', () => {
+      const { container } = render(<DoAndDontList listType="dont" />);
 
-  it('adds the correct classes', () => {
-    const doElement = mount(<DoDontList listType="do" />);
-    const dontElement = mount(<DoDontList listType="dont" />);
+      expect(container).toMatchSnapshot('DoDontList-Dont');
+    });
 
-    expect(doElement.find('ul').hasClass('nhsuk-list--tick')).toBeTruthy();
-    expect(doElement.find('ul').hasClass('nhsuk-list--cross')).toBeFalsy();
+    it('adds the correct headings', () => {
+      const { container } = render(<DoAndDontList listType="dont" />);
 
-    expect(dontElement.find('ul').hasClass('nhsuk-list--tick')).toBeFalsy();
-    expect(dontElement.find('ul').hasClass('nhsuk-list--cross')).toBeTruthy();
+      expect(container.querySelector('h3.nhsuk-do-dont-list__label')?.textContent).toEqual("Don't");
+    });
 
-    doElement.unmount();
-    dontElement.unmount();
+    it('adds the correct classes', () => {
+      const { container } = render(<DoAndDontList listType="dont" />);
+
+      expect(container.querySelector('ul.nhsuk-list--tick')).toBeFalsy();
+      expect(container.querySelector('ul.nhsuk-list--cross')).toBeTruthy();
+    });
   });
 
   describe('DoDontList.Item', () => {
     it('matches snapshot', () => {
-      const element = shallow(<DoDontList.Item>Text</DoDontList.Item>);
-      expect(element).toMatchSnapshot('DoDontList.Item');
-      element.unmount();
+      const { container } = render(<DoAndDontList.Item>Text</DoAndDontList.Item>);
+
+      expect(container).toMatchSnapshot('DoDontList.Item');
     });
 
-    it('inherits type from context', () => {
-      const doList = mount(
-        <DoDontList listType="do">
-          <DoDontList.Item>Do</DoDontList.Item>
-        </DoDontList>,
-      );
-      const dontList = mount(
-        <DoDontList listType="dont">
-          <DoDontList.Item>Don&apos;t</DoDontList.Item>
-        </DoDontList>,
-      );
+    describe('list type "do"', () => {
+      it('inherits type from context', () => {
+        const { container } = render(
+          <DoAndDontList listType="do">
+            <DoAndDontList.Item>Do</DoAndDontList.Item>
+          </DoAndDontList>,
+        );
 
-      expect(doList.find('.nhsuk-icon__tick').exists()).toBeTruthy();
-      expect(doList.find('.nhsuk-icon__cross').exists()).toBeFalsy();
+        expect(container.querySelector('.nhsuk-icon__tick')).toBeTruthy();
+        expect(container.querySelector('.nhsuk-icon__cross')).toBeFalsy();
+      });
 
-      expect(dontList.find('.nhsuk-icon__tick').exists()).toBeFalsy();
-      expect(dontList.find('.nhsuk-icon__cross').exists()).toBeTruthy();
+      it('items render custom prefix text', () => {
+        const { container } = render(
+          <DoAndDontList listType="do">
+            <DoAndDontList.Item prefixText="do ">something good 1</DoAndDontList.Item>
+            <DoAndDontList.Item>something good 2</DoAndDontList.Item>
+            <DoAndDontList.Item prefixText={<span>also do </span>}>
+              something good 3
+            </DoAndDontList.Item>
+            <DoAndDontList.Item prefixText={undefined}>something good 4</DoAndDontList.Item>
+            <DoAndDontList.Item prefixText={null}>something good 5</DoAndDontList.Item>
+          </DoAndDontList>,
+        );
 
-      doList.unmount();
-      dontList.unmount();
+        expect(container.querySelector('.nhsuk-list--tick')?.children[0].textContent).toBe(
+          'do something good 1',
+        );
+        expect(container.querySelector('.nhsuk-list--tick')?.children[1].textContent).toBe(
+          'something good 2',
+        );
+        expect(container.querySelector('.nhsuk-list--tick')?.children[2].textContent).toBe(
+          'also do something good 3',
+        );
+        expect(container.querySelector('.nhsuk-list--tick')?.children[3].textContent).toBe(
+          'something good 4',
+        );
+        expect(container.querySelector('.nhsuk-list--tick')?.children[4].textContent).toBe(
+          'something good 5',
+        );
+      });
     });
 
-    it("dont item includes 'do not' by default", () => {
-      const dontList = mount(
-        <DoDontList listType="dont">
-          <DoDontList.Item>do something bad</DoDontList.Item>
-        </DoDontList>,
-      );
-      expect(dontList.find('.nhsuk-list--cross').text()).toEqual('do not do something bad');
-      dontList.unmount();
+    describe('list type "dont"', () => {
+      it('inherits type from context', () => {
+        const { container } = render(
+          <DoAndDontList listType="dont">
+            <DoAndDontList.Item>Don&apos;t</DoAndDontList.Item>
+          </DoAndDontList>,
+        );
+
+        expect(container.querySelector('.nhsuk-icon__tick')).toBeFalsy();
+        expect(container.querySelector('.nhsuk-icon__cross')).toBeTruthy();
+      });
+
+      it("item includes 'do not' by default", () => {
+        const { container } = render(
+          <DoAndDontList listType="dont">
+            <DoAndDontList.Item>do something bad</DoAndDontList.Item>
+          </DoAndDontList>,
+        );
+        expect(container.querySelector('.nhsuk-list--cross')?.textContent).toEqual(
+          'do not do something bad',
+        );
+      });
+
+      it('items render custom prefix text', () => {
+        const { container } = render(
+          <DoAndDontList listType="dont">
+            <DoAndDontList.Item prefixText="do not ">do something bad 1</DoAndDontList.Item>
+            <DoAndDontList.Item>do something bad 2</DoAndDontList.Item>
+            <DoAndDontList.Item prefixText={<span>don&apos;t do </span>}>
+              something bad 3
+            </DoAndDontList.Item>
+            <DoAndDontList.Item prefixText={undefined}>something bad 4</DoAndDontList.Item>
+            <DoAndDontList.Item prefixText={null}>something bad 5</DoAndDontList.Item>
+          </DoAndDontList>,
+        );
+
+        expect(container.querySelector('.nhsuk-list--cross')?.children[0].textContent).toBe(
+          'do not do something bad 1',
+        );
+        expect(container.querySelector('.nhsuk-list--cross')?.children[1].textContent).toBe(
+          'do not do something bad 2',
+        );
+        expect(container.querySelector('.nhsuk-list--cross')?.children[2].textContent).toBe(
+          "don't do something bad 3",
+        );
+        expect(container.querySelector('.nhsuk-list--cross')?.children[3].textContent).toBe(
+          'do not something bad 4',
+        );
+        expect(container.querySelector('.nhsuk-list--cross')?.children[4].textContent).toBe(
+          'something bad 5',
+        );
+      });
     });
-
-    it('items render custom prefix text', () => {
-      const doList = mount(
-        <DoDontList listType="do">
-          <DoDontList.Item prefixText="do ">something good 1</DoDontList.Item>
-          <DoDontList.Item>something good 2</DoDontList.Item>
-          <DoDontList.Item prefixText={<span>also do </span>}>something good 3</DoDontList.Item>
-          <DoDontList.Item prefixText={undefined}>something good 4</DoDontList.Item>
-          <DoDontList.Item prefixText={null}>something good 5</DoDontList.Item>
-        </DoDontList>,
-      );
-      const dontList = mount(
-        <DoDontList listType="dont">
-          <DoDontList.Item prefixText="do not ">do something bad 1</DoDontList.Item>
-          <DoDontList.Item>do something bad 2</DoDontList.Item>
-          <DoDontList.Item prefixText={<span>don&apos;t do </span>}>
-            something bad 3
-          </DoDontList.Item>
-          <DoDontList.Item prefixText={undefined}>something bad 4</DoDontList.Item>
-          <DoDontList.Item prefixText={null}>something bad 5</DoDontList.Item>
-        </DoDontList>,
-      );
-      expect(doList.find('.nhsuk-list--tick').childAt(0).text()).toBe('do something good 1');
-      expect(doList.find('.nhsuk-list--tick').childAt(1).text()).toBe('something good 2');
-      expect(doList.find('.nhsuk-list--tick').childAt(2).text()).toBe('also do something good 3');
-      expect(doList.find('.nhsuk-list--tick').childAt(3).text()).toBe('something good 4');
-      expect(doList.find('.nhsuk-list--tick').childAt(4).text()).toBe('something good 5');
-
-      expect(dontList.find('.nhsuk-list--cross').childAt(0).text()).toBe(
-        'do not do something bad 1',
-      );
-      expect(dontList.find('.nhsuk-list--cross').childAt(1).text()).toBe(
-        'do not do something bad 2',
-      );
-      expect(dontList.find('.nhsuk-list--cross').childAt(2).text()).toBe(
-        "don't do something bad 3",
-      );
-      expect(dontList.find('.nhsuk-list--cross').childAt(3).text()).toBe('do not something bad 4');
-      expect(dontList.find('.nhsuk-list--cross').childAt(4).text()).toBe('something bad 5');
-
-      doList.unmount();
-      dontList.unmount();
-    });
-  });
-});
-
-describe('dont list dev warning', () => {
-  jest.spyOn(console, 'warn').mockImplementation();
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
-
-  it('should not warn when using do list', () => {
-    const element = mount(<DoDontList listType="do" />);
-    expect(console.warn).not.toHaveBeenCalled();
-    element.unmount();
   });
 });

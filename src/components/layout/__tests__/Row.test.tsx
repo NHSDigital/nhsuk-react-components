@@ -1,11 +1,11 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import Row from '../Row';
 
 describe('Row', () => {
   it('matches snapshot', () => {
-    const component = shallow(<Row />);
-    expect(component).toMatchSnapshot('Row');
-    component.unmount();
+    const { container } = render(<Row />);
+
+    expect(container).toMatchSnapshot('Row');
   });
 });

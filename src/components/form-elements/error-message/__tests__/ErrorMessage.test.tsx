@@ -1,29 +1,29 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import ErrorMessage from '..';
+import { render } from '@testing-library/react';
+import ErrorMessage from '../';
 
 describe('ErrorMessage', () => {
   it('matches snapshot', () => {
-    const element = shallow(<ErrorMessage>Error</ErrorMessage>);
-    expect(element).toMatchSnapshot('ErrorMessage');
-    element.unmount();
+    const { container } = render(<ErrorMessage>Error</ErrorMessage>);
+
+    expect(container).toMatchSnapshot('ErrorMessage');
   });
 
   it('has default visuallyHiddenText', () => {
-    const element = shallow(<ErrorMessage>Error</ErrorMessage>);
-    expect(element.find('.nhsuk-u-visually-hidden').text()).toBe('Error: ');
-    element.unmount();
+    const { container } = render(<ErrorMessage>Error</ErrorMessage>);
+
+    expect(container.querySelector('.nhsuk-u-visually-hidden')?.textContent).toBe('Error: ');
   });
 
   it('has disabled visuallyHiddenText', () => {
-    const element = shallow(<ErrorMessage visuallyHiddenText={false}>Error</ErrorMessage>);
-    expect(element.find('.nhsuk-u-visually-hidden').exists()).toBeFalsy();
-    element.unmount();
+    const { container } = render(<ErrorMessage visuallyHiddenText={false}>Error</ErrorMessage>);
+
+    expect(container.querySelector('.nhsuk-u-visually-hidden')).toBeFalsy();
   });
 
   it('has custom visuallyHiddenText', () => {
-    const element = shallow(<ErrorMessage visuallyHiddenText="Custom">Error</ErrorMessage>);
-    expect(element.find('.nhsuk-u-visually-hidden').text()).toBe('Custom');
-    element.unmount();
+    const { container } = render(<ErrorMessage visuallyHiddenText="Custom">Error</ErrorMessage>);
+
+    expect(container.querySelector('.nhsuk-u-visually-hidden')?.textContent).toBe('Custom');
   });
 });

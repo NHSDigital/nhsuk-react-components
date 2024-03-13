@@ -1,66 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Breadcrumb base element matches snapshot: BaseBreadcrumbs 1`] = `
-<nav
-  aria-label="Breadcrumb"
-  className="nhsuk-breadcrumb"
->
-  <Container>
-    <ol
-      className="nhsuk-breadcrumb__list"
-    />
-  </Container>
-</nav>
+<div>
+  <nav
+    aria-label="Breadcrumb"
+    class="nhsuk-breadcrumb"
+  >
+    <div
+      class="nhsuk-width-container"
+    >
+      <ol
+        class="nhsuk-breadcrumb__list"
+      />
+    </div>
+  </nav>
+</div>
 `;
 
 exports[`Breadcrumb renders with children: BreadcrumbWithChildren 1`] = `
-<Breadcrumb
-  aria-label="Breadcrumb"
->
+<div>
   <nav
     aria-label="Breadcrumb"
-    className="nhsuk-breadcrumb"
+    class="nhsuk-breadcrumb"
   >
-    <Container>
-      <div
-        className="nhsuk-width-container"
+    <div
+      class="nhsuk-width-container"
+    >
+      <ol
+        class="nhsuk-breadcrumb__list"
       >
-        <ol
-          className="nhsuk-breadcrumb__list"
+        <li
+          class="nhsuk-breadcrumb__item"
         >
-          <Item
+          <a
+            class="nhsuk-breadcrumb__link"
             href="/bc-1"
-            key=".0"
           >
-            <li
-              className="nhsuk-breadcrumb__item"
-            >
-              <a
-                className="nhsuk-breadcrumb__link"
-                href="/bc-1"
-              >
-                Breadcrumb 1
-              </a>
-            </li>
-          </Item>
-          <Item
+            Breadcrumb 1
+          </a>
+        </li>
+        <li
+          class="nhsuk-breadcrumb__item"
+        >
+          <a
+            class="nhsuk-breadcrumb__link"
             href="/bc-2"
-            key=".1"
           >
-            <li
-              className="nhsuk-breadcrumb__item"
-            >
-              <a
-                className="nhsuk-breadcrumb__link"
-                href="/bc-2"
-              >
-                Breadcrumb 2
-              </a>
-            </li>
-          </Item>
-        </ol>
-      </div>
-    </Container>
+            Breadcrumb 2
+          </a>
+        </li>
+      </ol>
+    </div>
   </nav>
-</Breadcrumb>
+</div>
 `;

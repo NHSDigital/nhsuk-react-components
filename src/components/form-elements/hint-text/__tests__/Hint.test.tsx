@@ -1,12 +1,17 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import Hint from '..';
+import { render } from '@testing-library/react';
+import Hint from '../';
 
 describe('Hint', () => {
   it('matches snapshot', () => {
-    const component = shallow(<Hint>Text</Hint>);
-    expect(component.text()).toBe('Text');
-    expect(component).toMatchSnapshot('Hint');
-    component.unmount();
+    const { container } = render(<Hint>Text</Hint>);
+
+    expect(container).toMatchSnapshot('Hint');
+  });
+
+  it('renders children', () => {
+    const { container } = render(<Hint>Text</Hint>);
+
+    expect(container.textContent).toBe('Text');
   });
 });

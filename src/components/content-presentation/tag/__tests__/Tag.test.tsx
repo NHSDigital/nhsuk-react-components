@@ -1,16 +1,18 @@
-import { shallow } from 'enzyme';
 import React, { ComponentProps } from 'react';
+import { render } from '@testing-library/react';
 import Tag from '../Tag';
 
 describe('Tag', () => {
   it('matches snapshot', () => {
-    const wrapper = shallow(<Tag>Active</Tag>);
+    const { container } = render(<Tag>Active</Tag>);
 
-    expect(wrapper).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
+  });
 
-    expect(wrapper.find('strong').props().className).toBe('nhsuk-tag');
+  it('renders a nhsuk-tag class', () => {
+    const { container } = render(<Tag>Active</Tag>);
 
-    wrapper.unmount();
+    expect(container.querySelector('strong.nhsuk-tag')).toBeTruthy();
   });
 
   it.each<ComponentProps<typeof Tag>['color']>([
@@ -25,10 +27,8 @@ describe('Tag', () => {
     'orange',
     'yellow',
   ])('adds colour class %s ', (colour) => {
-    const wrapper = shallow(<Tag color={colour} />);
+    const { container } = render(<Tag color={colour} />);
 
-    expect(wrapper.find('strong').props().className).toBe(`nhsuk-tag nhsuk-tag--${colour}`);
-
-    wrapper.unmount();
+    expect(container.querySelector(`strong.nhsuk-tag.nhsuk-tag--${colour}`)).toBeTruthy();
   });
 });

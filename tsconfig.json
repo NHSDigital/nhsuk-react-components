@@ -1,34 +1,32 @@
 {
-    "compilerOptions": {
-        "jsx": "react",
-        "target": "es6",
-        "module": "esnext",
-        "moduleResolution": "node",
-        "declaration": true,
-        "declarationDir": "lib",
-        "baseUrl": "./",
-        "types": ["jest", "node"],
-        "sourceMap": true,
-        "forceConsistentCasingInFileNames": true,
-        "allowSyntheticDefaultImports": true,
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "strict": true,
-        "strictNullChecks": true,
-        "resolveJsonModule": true,
-        "paths": {
-            "@components/*": ["src/components/*"],
-            "@content-presentation/*": ["src/components/content-presentation/*"],
-            "@form-elements/*": ["src/components/form-elements/*"],
-            "@navigation/*": ["src/components/navigation/*"],
-            "@typography/*": ["src/components/typography/*"],
-            "@utils/*": ["src/utils/*"],
-            "@patterns/*": ["src/patterns/*"]
-        }
-    },
-    "include": ["src", "stories"],
-    "exclude": [
-        "node_modules",
-        "build"
-    ]
+  "compilerOptions": {
+    "jsx": "react",
+    "target": "es6",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "declaration": true,
+    "declarationDir": "lib",
+    "baseUrl": "./",
+    "types": ["jest", "node"],
+    "sourceMap": true,
+    "forceConsistentCasingInFileNames": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "strictNullChecks": true,
+    "resolveJsonModule": true,
+    "allowJs": true,
+    "paths": {
+      "@components/*": ["src/components/*"],
+      "@content-presentation/*": ["src/components/content-presentation/*"],
+      "@form-elements/*": ["src/components/form-elements/*"],
+      "@navigation/*": ["src/components/navigation/*"],
+      "@typography/*": ["src/components/typography/*"],
+      "@utils/*": ["src/utils/*"],
+      "@patterns/*": ["src/patterns/*"]
+    }
+  },
+  "include": ["src", "stories"],
+  "exclude": ["node_modules", "build"]
 }

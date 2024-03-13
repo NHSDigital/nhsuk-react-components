@@ -1,57 +1,53 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import SummaryList from '..';
+import { render } from '@testing-library/react';
+import SummaryList from '../';
 
 describe('SummaryList', () => {
   it('matches snapshot', () => {
-    const element = shallow(<SummaryList />);
-    expect(element).toMatchSnapshot('SummaryList');
-    element.unmount();
+    const { container } = render(<SummaryList />);
+
+    expect(container).toMatchSnapshot('SummaryList');
   });
 
   it('adds css classes when noBorder prop supplied', () => {
-    const element = shallow(<SummaryList noBorder />);
-    expect(element.hasClass('nhsuk-summary-list--no-border')).toBeTruthy();
-    element.unmount();
+    const { container } = render(<SummaryList noBorder />);
+
+    expect(container.querySelector('.nhsuk-summary-list--no-border')).toBeTruthy();
   });
 
   describe('SummaryList.Row', () => {
     it('matches snapshot', () => {
-      const element = shallow(<SummaryList.Row>Row</SummaryList.Row>);
-      expect(element.text()).toBe('Row');
-      expect(element).toMatchSnapshot();
-      expect(element.type()).toBe('div');
-      element.unmount();
+      const { container } = render(<SummaryList.Row>Row</SummaryList.Row>);
+
+      expect(container.textContent).toBe('Row');
+      expect(container).toMatchSnapshot();
     });
   });
 
   describe('SummaryList.Key', () => {
     it('matches snapshot', () => {
-      const element = shallow(<SummaryList.Key>Key</SummaryList.Key>);
-      expect(element.text()).toBe('Key');
-      expect(element).toMatchSnapshot();
-      expect(element.type()).toBe('dt');
-      element.unmount();
+      const { container } = render(<SummaryList.Key>Key</SummaryList.Key>);
+
+      expect(container.textContent).toBe('Key');
+      expect(container).toMatchSnapshot();
     });
   });
 
   describe('SummaryList.Value', () => {
     it('matches snapshot', () => {
-      const element = shallow(<SummaryList.Value>Value</SummaryList.Value>);
-      expect(element.text()).toBe('Value');
-      expect(element).toMatchSnapshot();
-      expect(element.type()).toBe('dd');
-      element.unmount();
+      const { container } = render(<SummaryList.Value>Value</SummaryList.Value>);
+
+      expect(container.textContent).toBe('Value');
+      expect(container).toMatchSnapshot();
     });
   });
 
   describe('SummaryList.Actions', () => {
     it('matches snapshot', () => {
-      const element = shallow(<SummaryList.Actions>Actions</SummaryList.Actions>);
-      expect(element.text()).toBe('Actions');
-      expect(element).toMatchSnapshot();
-      expect(element.type()).toBe('dd');
-      element.unmount();
+      const { container } = render(<SummaryList.Actions>Actions</SummaryList.Actions>);
+
+      expect(container.textContent).toBe('Actions');
+      expect(container).toMatchSnapshot();
     });
   });
 });

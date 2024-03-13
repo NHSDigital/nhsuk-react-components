@@ -1,14 +1,18 @@
-import { mount, shallow } from 'enzyme';
 import React, { useContext } from 'react';
+import { render } from '@testing-library/react';
 import Table from '../../Table';
 import TableSectionContext, { TableSection } from '../../TableSectionContext';
 import TableBody from '../TableBody';
 
 describe('Table.Body', () => {
   it('matches snapshot', () => {
-    const wrapper = shallow(<TableBody />);
-    expect(wrapper).toMatchSnapshot();
-    wrapper.unmount();
+    const { container } = render(
+      <table>
+        <TableBody />
+      </table>,
+    );
+
+    expect(container).toMatchSnapshot();
   });
 
   it('exposes TableSectionContext', () => {
@@ -24,7 +28,7 @@ describe('Table.Body', () => {
       return null;
     };
 
-    const wrapper = mount(
+    render(
       <Table>
         <TableBody>
           <TestComponent />
@@ -33,6 +37,5 @@ describe('Table.Body', () => {
     );
 
     expect(tableSection).toBe(TableSection.BODY);
-    wrapper.unmount();
   });
 });

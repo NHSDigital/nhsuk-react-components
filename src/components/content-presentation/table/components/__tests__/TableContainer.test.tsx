@@ -1,11 +1,11 @@
-import { shallow } from 'enzyme';
 import React from 'react';
+import { render } from '@testing-library/react';
 import TableContainer from '../TableContainer';
 
 describe('TableContainer', () => {
   it('matches snapshot', () => {
-    const wrapper = shallow(<TableContainer />);
-    expect(wrapper).toMatchSnapshot();
-    wrapper.unmount();
+    const { container } = render(<TableContainer />);
+
+    expect(container).toMatchSnapshot();
   });
 });

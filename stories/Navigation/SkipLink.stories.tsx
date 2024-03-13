@@ -2,7 +2,11 @@ import React from 'react';
 import { SkipLink, HintText } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
-const CodeText: React.FC = (props) => (
+const CodeText: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => (
   <span
     style={{
       fontFamily: 'monospace',
@@ -13,8 +17,9 @@ const CodeText: React.FC = (props) => (
       backgroundColor: 'rgba(255, 0, 0, 0.15)',
       borderRadius: 5,
     }}
-    {...props}
-  />
+  >
+    {children}
+  </span>
 );
 
 const meta: Meta<typeof SkipLink> = {

@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`TableContainer matches snapshot 1`] = `
-<div
-  className="nhsuk-table-container"
-/>
+<div>
+  <div
+    class="nhsuk-table-container"
+  />
+</div>
 `;

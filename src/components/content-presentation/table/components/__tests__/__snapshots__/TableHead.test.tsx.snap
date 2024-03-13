@@ -1,11 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Table.Head matches snapshot 1`] = `
-<thead
-  className="nhsuk-table__head"
->
-  <ContextProvider
-    value={1}
+<div>
+  <thead
+    class="nhsuk-table__head"
   />
-</thead>
+</div>
 `;

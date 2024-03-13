@@ -1,9 +1,11 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Hint matches snapshot: Hint 1`] = `
-<div
-  className="nhsuk-hint"
->
-  Text
+<div>
+  <div
+    class="nhsuk-hint"
+  >
+    Text
+  </div>
 </div>
 `;

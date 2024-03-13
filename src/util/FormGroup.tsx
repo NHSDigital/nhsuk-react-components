@@ -5,7 +5,9 @@ import ErrorMessage from '../components/form-elements/error-message/ErrorMessage
 import { generateRandomID } from './RandomID';
 import Label from '../components/form-elements/label/Label';
 import { FormElementProps } from './types/FormTypes';
-import FieldsetContext, { IFieldsetContext } from '../components/form-elements/fieldset/FieldsetContext';
+import FieldsetContext, {
+  IFieldsetContext,
+} from '../components/form-elements/fieldset/FieldsetContext';
 import { useFormContext } from '../components/form-elements/form';
 
 type ExcludedProps =
@@ -18,7 +20,7 @@ type ExcludedProps =
   | 'disableErrorLine';
 
 type BaseFormElementRenderProps = HTMLProps<
-HTMLInputElement | HTMLDivElement | HTMLSelectElement | HTMLTextAreaElement
+  HTMLInputElement | HTMLDivElement | HTMLSelectElement | HTMLTextAreaElement
 > & {
   error?: string | boolean;
 };
@@ -28,7 +30,7 @@ type FormElementRenderProps<T> = Omit<T, ExcludedProps> & {
   name: string;
 };
 
-type FormGroupProps<T> = FormElementProps & {
+export type FormGroupProps<T> = FormElementProps & {
   children: (props: FormElementRenderProps<T>) => ReactNode;
   inputType: 'input' | 'radios' | 'select' | 'checkboxes' | 'dateinput' | 'textarea';
 };

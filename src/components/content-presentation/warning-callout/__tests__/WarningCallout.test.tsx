@@ -1,10 +1,10 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import WarningCallout from '../WarningCallout';
 
 describe('WarningCallout', () => {
   it('matches snapshot', () => {
-    const wrapper = mount(
+    const { container } = render(
       <WarningCallout>
         <WarningCallout.Label>School, nursery or work</WarningCallout.Label>
         <p>
@@ -14,12 +14,11 @@ describe('WarningCallout', () => {
       </WarningCallout>,
     );
 
-    expect(wrapper).toMatchSnapshot();
-    wrapper.unmount();
+    expect(container).toMatchSnapshot();
   });
 
   it('adds default visually hidden text', () => {
-    const wrapper = mount(
+    const { container } = render(
       <WarningCallout>
         <WarningCallout.Label>School, nursery or work</WarningCallout.Label>
         <p>
@@ -29,13 +28,13 @@ describe('WarningCallout', () => {
       </WarningCallout>,
     );
 
-    expect(wrapper.find(WarningCallout.Label).text()).toBe('Important: School, nursery or work');
-
-    wrapper.unmount();
+    expect(container.querySelector('.nhsuk-warning-callout__label')?.textContent).toBe(
+      'Important: School, nursery or work',
+    );
   });
 
   it('adds custom visually hidden text', () => {
-    const wrapper = mount(
+    const { container } = render(
       <WarningCallout>
         <WarningCallout.Label visuallyHiddenText="Not Very Important: ">
           School, nursery or work
@@ -47,15 +46,13 @@ describe('WarningCallout', () => {
       </WarningCallout>,
     );
 
-    expect(wrapper.find(WarningCallout.Label).text()).toBe(
+    expect(container.querySelector('.nhsuk-warning-callout__label')?.textContent).toBe(
       'Not Very Important: School, nursery or work',
     );
-
-    wrapper.unmount();
   });
 
   it('can disable visually hidden text', () => {
-    const wrapper = mount(
+    const { container } = render(
       <WarningCallout>
         <WarningCallout.Label visuallyHiddenText={false}>
           School, nursery or work
@@ -67,8 +64,8 @@ describe('WarningCallout', () => {
       </WarningCallout>,
     );
 
-    expect(wrapper.find(WarningCallout.Label).text()).toBe('School, nursery or work');
-
-    wrapper.unmount();
+    expect(container.querySelector('.nhsuk-warning-callout__label')?.textContent).toBe(
+      'School, nursery or work',
+    );
   });
 });

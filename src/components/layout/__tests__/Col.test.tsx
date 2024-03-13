@@ -1,12 +1,17 @@
 import React from 'react';
-import { shallow } from 'enzyme';
+import { render } from '@testing-library/react';
 import Col from '../Col';
 
 describe('Col', () => {
   it('matches snapshot', () => {
-    const component = shallow(<Col width="full" />);
-    expect(component.hasClass('nhsuk-grid-column-full')).toBeTruthy();
-    expect(component).toMatchSnapshot('Col');
-    component.unmount();
+    const { container } = render(<Col width="full" />);
+
+    expect(container).toMatchSnapshot('Col');
+  });
+
+  it('renders a grid column', () => {
+    const { container } = render(<Col width="full" />);
+
+    expect(container.querySelector('.nhsuk-grid-column-full')).toBeTruthy();
   });
 });

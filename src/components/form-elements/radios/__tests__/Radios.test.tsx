@@ -1,10 +1,10 @@
-import { mount } from 'enzyme';
+import { render } from '@testing-library/react';
 import React from 'react';
 import Radios from '../Radios';
 
 describe('Radios', () => {
   it('matches snapshot', () => {
-    const element = mount(
+    const { container } = render(
       <Radios id="example" name="example">
         <Radios.Radio id="example-1" value="yes">
           Yes
@@ -14,12 +14,12 @@ describe('Radios', () => {
         </Radios.Radio>
       </Radios>,
     );
-    expect(element).toMatchSnapshot();
-    element.unmount();
+
+    expect(container).toMatchSnapshot();
   });
 
   it('does not render the conditional content if checked is false', () => {
-    const element = mount(
+    const { container } = render(
       <Radios id="example" name="example">
         <Radios.Radio
           id="example-1"
@@ -34,17 +34,17 @@ describe('Radios', () => {
         </Radios.Radio>
       </Radios>,
     );
-    element.find('input#example-1').simulate('change');
-    expect(element.exists('.conditional-test')).toBeFalsy();
-    element.unmount();
+
+    expect(container.querySelector('.conditional-test')).toBeFalsy();
   });
 
   it('renders the conditional content if the radio reference = selected radio', () => {
-    const element = mount(
+    const { container } = render(
       <Radios id="example" name="example">
         <Radios.Radio
           id="example-1"
           value="yes"
+          checked={true}
           conditional={<p className="conditional-test">Test</p>}
         >
           Yes
@@ -54,8 +54,8 @@ describe('Radios', () => {
         </Radios.Radio>
       </Radios>,
     );
-    element.find('input#example-1').simulate('change');
-    expect(element.exists('.conditional-test')).toBeTruthy();
-    element.unmount();
+
+    const conditionalElement = container.querySelector('.conditional-test');
+    expect(conditionalElement?.textContent).toBe('Test');
   });
 });

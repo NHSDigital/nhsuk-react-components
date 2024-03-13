@@ -1,29 +1,33 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ContentsList ContentsList.Item matches snapshot: ContentsList.Item 1`] = `
-<li
-  className="nhsuk-contents-list__item"
->
-  <a
-    className="nhsuk-contents-list__link"
+<div>
+  <li
+    class="nhsuk-contents-list__item"
   >
-    Content
-  </a>
-</li>
+    <a
+      class="nhsuk-contents-list__link"
+    >
+      Content
+    </a>
+  </li>
+</div>
 `;
 
 exports[`ContentsList matches snapshot: ContentsList 1`] = `
-<nav
-  className="nhsuk-contents-list"
-  role="navigation"
->
-  <h2
-    className="nhsuk-u-visually-hidden"
+<div>
+  <nav
+    class="nhsuk-contents-list"
+    role="navigation"
   >
-    Contents
-  </h2>
-  <ol
-    className="nhsuk-contents-list__list"
-  />
-</nav>
+    <h2
+      class="nhsuk-u-visually-hidden"
+    >
+      Contents
+    </h2>
+    <ol
+      class="nhsuk-contents-list__list"
+    />
+  </nav>
+</div>
 `;
