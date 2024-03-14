@@ -1,8 +1,8 @@
 import React from 'react';
 import { Col, HintText, Row, Table } from '../../src';
 import TableHead from '../../src/components/content-presentation/table/components/TableHead';
-import TableRow from '../../src/components/content-presentation/table/components//TableRow';
-import TableCell from '../../src/components/content-presentation/table/components//TableCell';
+import TableRow from '../../src/components/content-presentation/table/components/TableRow';
+import TableCell from '../../src/components/content-presentation/table/components/TableCell';
 import TableBody from '../../src/components/content-presentation/table/components/TableBody';
 import TablePanel from '../../src/components/content-presentation/table/components/TablePanel';
 import { Meta, StoryObj } from '@storybook/react';
