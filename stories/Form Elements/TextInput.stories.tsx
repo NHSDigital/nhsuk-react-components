@@ -46,3 +46,12 @@ export const WithWidthModifier: Story = {
     hint: 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.',
   },
 };
+
+export const WithPrefixAndSuffix: Story = {
+  args: {
+    width: 5,
+    label: 'Cost per item, in pounds',
+    prefix: '£',
+    suffix: 'per item',
+  },
+};

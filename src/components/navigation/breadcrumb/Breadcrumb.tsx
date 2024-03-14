@@ -2,12 +2,11 @@ import React, { HTMLProps, ReactNode } from 'react';
 import classNames from 'classnames';
 import { Container } from '../../layout';
 import type { AsElementLink } from '../../../util/types/LinkTypes';
+import { childIsOfComponentType } from '../../../util/types/TypeGuards';
 
 type Item = React.FC<AsElementLink<HTMLAnchorElement>>;
 
-const Item: Item = ({
-  className, children, asElement: Component = 'a', ...rest
-}) => (
+const Item: Item = ({ className, children, asElement: Component = 'a', ...rest }) => (
   <li className="nhsuk-breadcrumb__item">
     <Component className={classNames('nhsuk-breadcrumb__link', className)} {...rest}>
       {children}
@@ -15,9 +14,20 @@ const Item: Item = ({
   </li>
 );
 
-const Back: Item = ({ className, asElement: Component = 'a', ...rest }) => (
+type Back = React.FC<AsElementLink<HTMLAnchorElement> & { accessiblePrefix?: string }>;
+
+const Back: Back = ({
+  className,
+  children,
+  asElement: Component = 'a',
+  accessiblePrefix = 'Back to &nbsp;',
+  ...rest
+}) => (
   <p className={classNames('nhsuk-breadcrumb__back', className)}>
-    <Component className="nhsuk-breadcrumb__backlink" {...rest} />
+    <Component className="nhsuk-breadcrumb__backlink" {...rest}>
+      <span className="nhsuk-u-visually-hidden">{accessiblePrefix}</span>
+      {children}
+    </Component>
   </p>
 );
 
@@ -31,11 +41,16 @@ type SplitChildren = {
   OtherChildren: Array<ReactNode>;
 };
 
-const Breadcrumb: Breadcrumb = ({ className, children, "aria-label": ariaLabel = 'Breadcrumb', ...rest }) => {
+const Breadcrumb: Breadcrumb = ({
+  className,
+  children,
+  'aria-label': ariaLabel = 'Breadcrumb',
+  ...rest
+}) => {
   // Split off any "Item" components
   const { ItemChildren, OtherChildren } = React.Children.toArray(children).reduce<SplitChildren>(
     (prev, child) => {
-      if (child && typeof child === 'object' && 'type' in child && child.type === Item) {
+      if (childIsOfComponentType(child, Item)) {
         prev.ItemChildren.push(child);
       } else {
         prev.OtherChildren.push(child);

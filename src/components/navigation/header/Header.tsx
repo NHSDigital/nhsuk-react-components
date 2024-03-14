@@ -6,14 +6,11 @@ import HeaderContext, { IHeaderContext } from './HeaderContext';
 import Search from './components/Search';
 import Nav from './components/Nav';
 import NavItem from './components/NavItem';
-import NavItemList from './components/NavItemList';
-import NavMenuClose from './components/NavMenuClose';
+import NavDropdownMenu from './components/NavDropdownMenu';
 import { Container } from '../../layout';
 import Content from './components/Content';
-import MenuToggle from './components/MenuToggle';
 import TransactionalServiceName from './components/TransactionalServiceName';
-import NavTitle from './components/NavTitle';
-import NavContainer from './components/NavContainer';
+import HeaderJs from 'nhsuk-frontend/packages/components/header/header.js';
 
 const BaseHeaderLogo: React.FC<OrganisationalLogoProps & NHSLogoNavProps> = (props) => {
   const { orgName } = useContext<IHeaderContext>(HeaderContext);
@@ -50,21 +47,13 @@ class Header extends PureComponent<HeaderProps, HeaderState> {
 
   static Nav = Nav;
 
-  static NavTitle = NavTitle;
-
-  static NavContainer = NavContainer;
-
-  static NavItemList = NavItemList;
-
   static NavItem = NavItem;
 
-  static NavMenuClose = NavMenuClose;
+  static NavDropdownMenu = NavDropdownMenu;
 
   static Container = HeaderContainer;
 
   static Content = Content;
-
-  static MenuToggle = MenuToggle;
 
   static ServiceName = TransactionalServiceName;
 
@@ -98,6 +87,10 @@ class Header extends PureComponent<HeaderProps, HeaderState> {
     this.setState((state) => ({ searchOpen: !state.searchOpen }));
   };
 
+  componentDidMount(): void {
+    HeaderJs();
+  }
+
   render(): JSX.Element {
     const {
       className,
@@ -110,9 +103,7 @@ class Header extends PureComponent<HeaderProps, HeaderState> {
       white,
       ...rest
     } = this.props;
-    const {
-      hasSearch, hasMenuToggle, menuOpen, searchOpen,
-    } = this.state;
+    const { hasSearch, hasMenuToggle, menuOpen, searchOpen } = this.state;
     const contextValue: IHeaderContext = {
       orgName,
       orgSplit,
@@ -127,6 +118,7 @@ class Header extends PureComponent<HeaderProps, HeaderState> {
       menuOpen,
       searchOpen,
     };
+
     return (
       <header
         className={classNames(
