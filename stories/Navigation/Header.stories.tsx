@@ -13,15 +13,11 @@ type Story = StoryObj<typeof Header>;
 Header.Logo.displayName = 'Header.Logo';
 Header.Container.displayName = 'Header.Container';
 Header.Content.displayName = 'Header.Content';
-Header.MenuToggle.displayName = 'Header.MenuToggle';
 Header.Search.displayName = 'Header.Search';
 Header.Nav.displayName = 'Header.Nav';
 Header.NavItem.displayName = 'Header.NavItem';
 Header.ServiceName.displayName = 'Header.ServiceName';
-Header.NavContainer.displayName = 'Header.NavContainer';
-Header.NavTitle.displayName = 'Header.NavTitle';
-Header.NavMenuClose.displayName = 'Header.NavMenuClose';
-Header.NavItemList.displayName = 'Header.NavItemList';
+Header.NavDropdownMenu.displayName = 'Header.NavDropdownMenu';
 
 export const BasicHeader: Story = {
   render: (args) => (
@@ -29,7 +25,6 @@ export const BasicHeader: Story = {
       <Header.Container>
         <Header.Logo href="/" />
         <Header.Content>
-          <Header.MenuToggle />
           <Header.Search />
         </Header.Content>
       </Header.Container>
@@ -42,6 +37,7 @@ export const BasicHeader: Story = {
         <Header.NavItem href="/social-care-and-support">Care and support</Header.NavItem>
         <Header.NavItem href="/news">Health news</Header.NavItem>
         <Header.NavItem href="/service-search">Services near you</Header.NavItem>
+        <Header.NavDropdownMenu />
       </Header.Nav>
     </Header>
   ),
@@ -52,9 +48,7 @@ export const HeaderWithNavigation: Story = {
     <Header>
       <Header.Container>
         <Header.Logo href="/" />
-        <Header.Content>
-          <Header.MenuToggle />
-        </Header.Content>
+        <Header.Content></Header.Content>
       </Header.Container>
       <Header.Nav>
         <Header.NavItem href="/" mobileOnly>
@@ -65,6 +59,7 @@ export const HeaderWithNavigation: Story = {
         <Header.NavItem href="/social-care-and-support">Care and support</Header.NavItem>
         <Header.NavItem href="/news">Health news</Header.NavItem>
         <Header.NavItem href="/service-search">Services near you</Header.NavItem>
+        <Header.NavDropdownMenu />
       </Header.Nav>
     </Header>
   ),
@@ -120,7 +115,6 @@ export const OrganisationalHeader: Story = {
       <Header.Container>
         <Header.Logo href="/" />
         <Header.Content>
-          <Header.MenuToggle />
           <Header.Search />
         </Header.Content>
       </Header.Container>
@@ -133,6 +127,7 @@ export const OrganisationalHeader: Story = {
         <Header.NavItem>Conditions and treatments</Header.NavItem>
         <Header.NavItem>Our people</Header.NavItem>
         <Header.NavItem>Our research</Header.NavItem>
+        <Header.NavDropdownMenu />
       </Header.Nav>
     </Header>
   ),
@@ -149,7 +144,6 @@ export const OrganisationalHeaderWithWhiteHeader: Story = {
       <Header.Container>
         <Header.Logo href="/" />
         <Header.Content>
-          <Header.MenuToggle />
           <Header.Search />
         </Header.Content>
       </Header.Container>
@@ -162,6 +156,7 @@ export const OrganisationalHeaderWithWhiteHeader: Story = {
         <Header.NavItem>Conditions and treatments</Header.NavItem>
         <Header.NavItem>Our people</Header.NavItem>
         <Header.NavItem>Our research</Header.NavItem>
+        <Header.NavDropdownMenu />
       </Header.Nav>
     </Header>
   ),
@@ -181,7 +176,6 @@ export const HeaderWithCustomNavItemComponent: Story = {
         <Header.Container>
           <Header.Logo href="/" />
           <Header.Content>
-            <Header.MenuToggle />
             <Header.Search />
           </Header.Content>
         </Header.Container>
@@ -191,43 +185,9 @@ export const HeaderWithCustomNavItemComponent: Story = {
           </Header.NavItem>
           <Header.NavItem>Your hospital visit</Header.NavItem>
           <Header.NavItem>Wards and departments</Header.NavItem>
+          <Header.NavDropdownMenu />
         </Header.Nav>
       </Header>
     );
   },
-};
-
-export const HeaderWithCustomNavMenuCloseAndNavItemListComponent: Story = {
-  render: (args) => (
-    <Header
-      orgName="Anytown Anyplace"
-      orgSplit="Anywhere"
-      orgDescriptor="NHS Foundation Trust"
-      white
-    >
-      <Header.Container>
-        <Header.Logo href="/" />
-        <Header.Content>
-          <Header.MenuToggle />
-          <Header.Search />
-        </Header.Content>
-      </Header.Container>
-      <Header.NavContainer>
-        <Header.NavTitle>
-          <span>Menu</span>
-          <Header.NavMenuClose />
-        </Header.NavTitle>
-        <Header.NavItemList>
-          <Header.NavItem href="/" mobileOnly>
-            Home
-          </Header.NavItem>
-          <Header.NavItem href="/conditions">Health A-Z</Header.NavItem>
-          <Header.NavItem href="/live-well">Live Well</Header.NavItem>
-          <Header.NavItem href="/social-care-and-support">Care and support</Header.NavItem>
-          <Header.NavItem href="/news">Health news</Header.NavItem>
-          <Header.NavItem href="/service-search">Services near you</Header.NavItem>
-        </Header.NavItemList>
-      </Header.NavContainer>
-    </Header>
-  ),
 };
