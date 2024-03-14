@@ -23,7 +23,7 @@ import { Meta, StoryObj } from '@storybook/react';
  *             <Breadcrumb.Item href="/level-one">Level one</Breadcrumb.Item>
  *             <Breadcrumb.Item href="/level-one/level-two">Level two</Breadcrumb.Item>
  *             <Breadcrumb.Item href="/level-one/level-two/level-three">Level three</Breadcrumb.Item>
- *             <Breadcrumb.Back href="/level-one/level-two/level-three">Back to Level three</Breadcrumb.Back>
+ *             <Breadcrumb.Back href="/level-one/level-two/level-three">Level three</Breadcrumb.Back>
  *         </Breadcrumb>
  *     );
  * }
@@ -37,7 +37,7 @@ const meta: Meta<typeof Breadcrumb> = {
       <Breadcrumb.Item href="/level/one">Level One</Breadcrumb.Item>
       <Breadcrumb.Item href="/level/two">Level Two</Breadcrumb.Item>
       <Breadcrumb.Item href="/level/three">Level Three</Breadcrumb.Item>
-      <Breadcrumb.Back href="/level/three">Back to Level Three</Breadcrumb.Back>
+      <Breadcrumb.Back href="/level/three">Level Three</Breadcrumb.Back>
     </Breadcrumb>
   ),
 };

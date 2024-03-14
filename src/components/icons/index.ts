@@ -1,6 +1,7 @@
 export { ArrowLeft } from './individual/ArrowLeft';
 export { ArrowRight } from './individual/ArrowRight';
 export { ArrowRightCircle } from './individual/ArrowRightCircle';
+export { ChevronDown } from './individual/ChevronDown';
 export { ChevronLeft } from './individual/ChevronLeft';
 export { ChevronRight } from './individual/ChevronRight';
 export { Close } from './individual/Close';
@@ -11,4 +12,3 @@ export { Minus } from './individual/Minus';
 export { Plus } from './individual/Plus';
 export { Search } from './individual/Search';
 export { Tick } from './individual/Tick';
-
