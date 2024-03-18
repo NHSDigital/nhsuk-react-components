@@ -76,6 +76,41 @@ describe('Card', () => {
     ).toBeTruthy();
   });
 
+  it('adds primary class to card contents', () => {
+    const { container } = render(
+      <Card primary>
+        <Card.Content>
+          <Card.Heading>Feature card heading</Card.Heading>
+          <Card.Description>Feature card description</Card.Description>
+        </Card.Content>
+      </Card>,
+    );
+
+    expect(
+      container.querySelector(
+        'div.nhsuk-card__content.nhsuk-card__content.nhsuk-card__content--primary',
+      ),
+    ).toBeTruthy();
+  });
+
+  it('adds secondary classes to card and contents', () => {
+    const { container } = render(
+      <Card secondary>
+        <Card.Content>
+          <Card.Heading>Feature card heading</Card.Heading>
+          <Card.Description>Feature card description</Card.Description>
+        </Card.Content>
+      </Card>,
+    );
+
+    expect(container.querySelector('div.nhsuk-card.nhsuk-card.nhsuk-card--secondary')).toBeTruthy();
+    expect(
+      container.querySelector(
+        'div.nhsuk-card__content.nhsuk-card__content.nhsuk-card__content--secondary',
+      ),
+    ).toBeTruthy();
+  });
+
   describe('Card.Group', () => {
     it('matches snapshot', () => {
       const { container } = render(

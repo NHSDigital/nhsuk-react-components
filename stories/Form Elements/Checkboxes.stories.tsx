@@ -54,7 +54,7 @@ export const NoIDSupplied: Story = {
     }, [checkbox1Ref.current, checkbox2Ref.current, checkbox3Ref.current]);
 
     return (
-      <div style={{ padding: 20 }}>
+      <form style={{ padding: 20 }}>
         <h2>Scenario: No ID Supplied</h2>
         <h5>Expected Behaviour</h5>
         <ul className="nhsuk-hint">
@@ -94,7 +94,7 @@ export const NoIDSupplied: Story = {
           <Checkboxes.Box inputRef={checkbox2Ref}>Box 2</Checkboxes.Box>
           <Checkboxes.Box inputRef={checkbox3Ref}>Box 3</Checkboxes.Box>
         </Checkboxes>
-      </div>
+      </form>
     );
   },
 };
@@ -138,7 +138,7 @@ export const NameSupplied: Story = {
     }, [checkbox1Ref.current, checkbox2Ref.current, checkbox3Ref.current]);
 
     return (
-      <div style={{ padding: 20 }}>
+      <form style={{ padding: 20 }}>
         <h2>Scenario: Name Supplied</h2>
         <h5>Expected Behaviour</h5>
         <ul className="nhsuk-hint">
@@ -178,7 +178,7 @@ export const NameSupplied: Story = {
           <Checkboxes.Box inputRef={checkbox2Ref}>Box 2</Checkboxes.Box>
           <Checkboxes.Box inputRef={checkbox3Ref}>Box 3</Checkboxes.Box>
         </Checkboxes>
-      </div>
+      </form>
     );
   },
 };
@@ -222,7 +222,7 @@ export const IDPrefixSupplied: Story = {
     }, [checkbox1Ref.current, checkbox2Ref.current, checkbox3Ref.current]);
 
     return (
-      <div style={{ padding: 20 }}>
+      <form style={{ padding: 20 }}>
         <h2>Scenario: ID Prefix Supplied</h2>
         <h5>Expected Behaviour</h5>
         <ul className="nhsuk-hint">
@@ -263,7 +263,7 @@ export const IDPrefixSupplied: Story = {
           <Checkboxes.Box inputRef={checkbox2Ref}>Box 2</Checkboxes.Box>
           <Checkboxes.Box inputRef={checkbox3Ref}>Box 3</Checkboxes.Box>
         </Checkboxes>
-      </div>
+      </form>
     );
   },
 };
@@ -307,7 +307,7 @@ export const IDPrefixAndNameSupplied: Story = {
     }, [checkbox1Ref.current, checkbox2Ref.current, checkbox3Ref.current]);
 
     return (
-      <div style={{ padding: 20 }}>
+      <form style={{ padding: 20 }}>
         <h2>Scenario: ID Prefix and Name Supplied</h2>
         <h5>Expected Behaviour</h5>
         <ul className="nhsuk-hint">
@@ -348,7 +348,7 @@ export const IDPrefixAndNameSupplied: Story = {
           <Checkboxes.Box inputRef={checkbox2Ref}>Box 2</Checkboxes.Box>
           <Checkboxes.Box inputRef={checkbox3Ref}>Box 3</Checkboxes.Box>
         </Checkboxes>
-      </div>
+      </form>
     );
   },
 };
@@ -381,7 +381,7 @@ export const OnChangeAndOnInputHandlers: Story = {
     };
 
     return (
-      <div style={{ padding: 20 }}>
+      <form style={{ padding: 20 }}>
         <h2>Scenario: onChange and onInput handlers are bound without any other props</h2>
         <h5>Expected Behaviour</h5>
         <ul className="nhsuk-hint">
@@ -409,7 +409,7 @@ export const OnChangeAndOnInputHandlers: Story = {
             <li key={index}>{event}</li>
           ))}
         </ul>
-      </div>
+      </form>
     );
   },
 };

@@ -12,6 +12,8 @@ import CardGroupItem from './components/CardGroupItem';
 interface CardProps extends HTMLProps<HTMLDivElement> {
   clickable?: boolean;
   feature?: boolean;
+  primary?: boolean;
+  secondary?: boolean;
 }
 
 interface ICard extends React.FC<CardProps> {
@@ -25,18 +27,33 @@ interface ICard extends React.FC<CardProps> {
 }
 
 const Card: ICard = ({
-  className, clickable, children, feature = false, ...rest
+  className,
+  clickable,
+  children,
+  feature = false,
+  primary = false,
+  secondary = false,
+  ...rest
 }) => (
   <div
     className={classNames(
       'nhsuk-card',
       { 'nhsuk-card--clickable': clickable },
       { 'nhsuk-card--feature': feature },
+      { 'nhsuk-card--secondary': secondary },
       className,
     )}
     {...rest}
   >
-    <CardContext.Provider value={{ feature: Boolean(feature) }}>{children}</CardContext.Provider>
+    <CardContext.Provider
+      value={{
+        feature: Boolean(feature),
+        primary: Boolean(primary),
+        secondary: Boolean(secondary),
+      }}
+    >
+      {children}
+    </CardContext.Provider>
   </div>
 );
 

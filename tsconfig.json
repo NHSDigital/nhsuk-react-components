@@ -13,6 +13,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "strict": true,
+    "allowJs": true,
     "strictNullChecks": true,
     "resolveJsonModule": true,
     "paths": {
