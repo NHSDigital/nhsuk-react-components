@@ -7,6 +7,10 @@ export {
   ButtonLink,
 } from './components/form-elements/button';
 export { default as Card } from './components/navigation/card';
+export {
+  default as CharacterCount,
+  CharacterCountType,
+} from './components/form-elements/character-count';
 export { default as Checkboxes } from './components/form-elements/checkboxes';
 export { default as ContentsList } from './components/navigation/contents-list';
 export { default as DateInput } from './components/form-elements/date-input';
@@ -48,6 +52,7 @@ export { default as Select } from './components/form-elements/select';
 export { default as SkipLink } from './components/navigation/skip-link';
 export { default as SummaryList } from './components/content-presentation/summary-list';
 export { default as Table } from './components/content-presentation/table';
+export { default as Tabs } from './components/content-presentation/tabs';
 export { default as Tag } from './components/content-presentation/tag';
 export { default as Textarea } from './components/form-elements/textarea';
 export { LedeText, BodyText } from './components/typography';

@@ -1,6 +1,6 @@
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
-import { ColWidth } from '../../util/types/NHSUKTypes';
+import { ColWidth } from '@util/types/NHSUKTypes';
 
 interface ColProps extends HTMLProps<HTMLDivElement> {
   width: ColWidth;

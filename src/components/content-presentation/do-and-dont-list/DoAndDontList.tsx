@@ -1,24 +1,24 @@
 'use client';
 import React, { HTMLProps, createContext, useContext, ReactNode } from 'react';
 import classNames from 'classnames';
-import { Tick, Cross } from '../../icons';
-import HeadingLevel, { HeadingLevelType } from '../../../util/HeadingLevel';
+import { Tick, Cross } from '@components/icons';
+import HeadingLevel, { HeadingLevelType } from '@util/HeadingLevel';
 
 type ListType = 'do' | 'dont';
 
-interface DoDontListProps extends HTMLProps<HTMLDivElement> {
+interface DoAndDontListProps extends HTMLProps<HTMLDivElement> {
   listType: ListType;
   heading?: string;
   headingLevel?: HeadingLevelType;
 }
 
-interface DoDontList extends React.FC<DoDontListProps> {
-  Item: React.FC<DoDontItemProps>;
+interface DoAndDontList extends React.FC<DoAndDontListProps> {
+  Item: React.FC<DoAndDontItemProps>;
 }
 
-const DoDontListContext = createContext<ListType>('do');
+const DoAndDontListContext = createContext<ListType>('do');
 
-const DoDontList: DoDontList = ({
+const DoAndDontList: DoAndDontList = ({
   className,
   listType,
   children,
@@ -38,19 +38,24 @@ const DoDontList: DoDontList = ({
           { 'nhsuk-list--cross': listType === 'dont' },
         )}
       >
-        <DoDontListContext.Provider value={listType}>{children}</DoDontListContext.Provider>
+        <DoAndDontListContext.Provider value={listType}>{children}</DoAndDontListContext.Provider>
       </ul>
     </div>
   );
 };
 
-interface DoDontItemProps extends HTMLProps<HTMLLIElement> {
+interface DoAndDontItemProps extends HTMLProps<HTMLLIElement> {
   listItemType?: ListType;
   prefixText?: ReactNode;
 }
 
-const DoDontItem: React.FC<DoDontItemProps> = ({ prefixText, listItemType, children, ...rest }) => {
-  const listItem = useContext(DoDontListContext);
+const DoAndDontItem: React.FC<DoAndDontItemProps> = ({
+  prefixText,
+  listItemType,
+  children,
+  ...rest
+}) => {
+  const listItem = useContext(DoAndDontListContext);
   const defaultPrefix = (listItemType || listItem) === 'do' ? null : 'do not ';
   const actualPrefix = prefixText === undefined ? defaultPrefix : prefixText;
   return (
@@ -71,6 +76,6 @@ const DoDontItem: React.FC<DoDontItemProps> = ({ prefixText, listItemType, child
   );
 };
 
-DoDontList.Item = DoDontItem;
+DoAndDontList.Item = DoAndDontItem;
 
-export default DoDontList;
+export default DoAndDontList;

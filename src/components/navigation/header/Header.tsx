@@ -8,7 +8,7 @@ import Search from './components/Search';
 import Nav from './components/Nav';
 import NavItem from './components/NavItem';
 import NavDropdownMenu from './components/NavDropdownMenu';
-import { Container } from '../../layout';
+import { Container } from '@components/layout';
 import Content from './components/Content';
 import TransactionalServiceName from './components/TransactionalServiceName';
 import HeaderJs from 'nhsuk-frontend/packages/components/header/header.js';

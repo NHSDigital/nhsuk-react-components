@@ -1,7 +1,7 @@
 import { HTMLProps } from 'react';
-import { ErrorMessageProps } from '../../components/form-elements/error-message/ErrorMessage';
-import { HintTextProps } from '../../components/form-elements/hint-text/HintText';
-import { LabelProps } from '../../components/form-elements/label/Label';
+import { ErrorMessageProps } from '@components/form-elements/error-message/ErrorMessage';
+import { HintTextProps } from '@components/form-elements/hint-text/HintText';
+import { LabelProps } from '@components/form-elements/label/Label';
 
 export interface FormElementProps {
   label?: string;

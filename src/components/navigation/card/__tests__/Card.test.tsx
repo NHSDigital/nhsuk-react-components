@@ -55,7 +55,7 @@ describe('Card', () => {
 
   it('adds feature classes to all elements', () => {
     const { container } = render(
-      <Card feature>
+      <Card cardType="feature">
         <Card.Content>
           <Card.Heading>Feature card heading</Card.Heading>
           <Card.Description>Feature card description</Card.Description>
@@ -72,6 +72,41 @@ describe('Card', () => {
     expect(
       container.querySelector(
         'h2.nhsuk-card__heading.nhsuk-card__heading.nhsuk-card__heading--feature',
+      ),
+    ).toBeTruthy();
+  });
+
+  it('adds primary class to card contents', () => {
+    const { container } = render(
+      <Card cardType="primary">
+        <Card.Content>
+          <Card.Heading>Feature card heading</Card.Heading>
+          <Card.Description>Feature card description</Card.Description>
+        </Card.Content>
+      </Card>,
+    );
+
+    expect(
+      container.querySelector(
+        'div.nhsuk-card__content.nhsuk-card__content.nhsuk-card__content--primary',
+      ),
+    ).toBeTruthy();
+  });
+
+  it('adds secondary classes to card and contents', () => {
+    const { container } = render(
+      <Card cardType="secondary">
+        <Card.Content>
+          <Card.Heading>Feature card heading</Card.Heading>
+          <Card.Description>Feature card description</Card.Description>
+        </Card.Content>
+      </Card>,
+    );
+
+    expect(container.querySelector('div.nhsuk-card.nhsuk-card.nhsuk-card--secondary')).toBeTruthy();
+    expect(
+      container.querySelector(
+        'div.nhsuk-card__content.nhsuk-card__content.nhsuk-card__content--secondary',
       ),
     ).toBeTruthy();
   });

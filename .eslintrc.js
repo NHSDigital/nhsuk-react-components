@@ -8,6 +8,9 @@ module.exports = {
     jest: true,
   },
   settings: {
+    'import/resolver': {
+      typescript: {},
+    },
     react: {
       version: 'detect',
     },

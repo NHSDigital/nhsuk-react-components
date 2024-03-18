@@ -1,6 +1,6 @@
 import React, { ComponentProps, HTMLProps } from 'react';
 import classNames from 'classnames';
-import HeadingLevel from '../../../../util/HeadingLevel';
+import HeadingLevel from '@util/HeadingLevel';
 
 export interface TablePanelProps extends HTMLProps<HTMLDivElement> {
   heading?: string;

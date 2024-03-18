@@ -1,6 +1,6 @@
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
-import { NHSUKSize } from '../../../util/types/NHSUKTypes';
+import { NHSUKSize } from '@util/types/NHSUKTypes';
 
 export interface LabelProps extends Omit<HTMLProps<HTMLLabelElement>, 'size'> {
   bold?: boolean;
@@ -8,9 +8,7 @@ export interface LabelProps extends Omit<HTMLProps<HTMLLabelElement>, 'size'> {
   size?: NHSUKSize;
 }
 
-const BaseLabel: React.FC<LabelProps> = ({
-  className, bold, size, isPageHeading, ...rest
-}) => (
+const BaseLabel: React.FC<LabelProps> = ({ className, bold, size, isPageHeading, ...rest }) => (
   // eslint-disable-next-line jsx-a11y/label-has-associated-control
   <label
     className={classNames(
