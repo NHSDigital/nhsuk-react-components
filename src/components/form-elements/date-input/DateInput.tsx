@@ -1,9 +1,9 @@
 import React, { HTMLProps, PureComponent, ChangeEvent } from 'react';
 import classNames from 'classnames';
 import { DayInput, MonthInput, YearInput } from './components/IndividualDateInputs';
-import FormGroup from '../../../util/FormGroup';
+import FormGroup from '@util/FormGroup';
 import DateInputContext, { IDateInputContext } from './DateInputContext';
-import { FormElementProps } from '../../../util/types/FormTypes';
+import { FormElementProps } from '@util/types/FormTypes';
 
 type DateInputValue = {
   day: string;

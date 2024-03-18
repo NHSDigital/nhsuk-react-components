@@ -1,6 +1,6 @@
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
-import HeadingLevel, { HeadingLevelType } from '../../../util/HeadingLevel';
+import HeadingLevel, { HeadingLevelType } from '@util/HeadingLevel';
 
 interface WarningCalloutLabelProps extends HTMLProps<HTMLHeadingElement> {
   headingLevel?: HeadingLevelType;

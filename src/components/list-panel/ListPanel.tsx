@@ -1,7 +1,7 @@
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
-import type { AsElementLink } from '../../util/types/LinkTypes';
-import { ArrowRight } from '../../components/icons';
+import type { AsElementLink } from '@util/types/LinkTypes';
+import { ArrowRight } from '@components/icons';
 
 interface PanelProps extends HTMLProps<HTMLDivElement> {
   labelProps?: HTMLProps<HTMLHeadingElement>;

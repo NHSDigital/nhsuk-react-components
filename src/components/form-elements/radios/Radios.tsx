@@ -1,11 +1,11 @@
 import React, { HTMLProps, PureComponent } from 'react';
 import classNames from 'classnames';
-import { FormElementProps } from '../../../util/types/FormTypes';
+import { FormElementProps } from '@util/types/FormTypes';
 import { RadiosContext, IRadiosContext } from './RadioContext';
-import FormGroup from '../../../util/FormGroup';
+import FormGroup from '@util/FormGroup';
 import Divider from './components/Divider';
 import Radio from './components/Radio';
-import { generateRandomName } from '../../../util/RandomID';
+import { generateRandomName } from '@util/RandomID';
 
 interface RadiosProps extends HTMLProps<HTMLDivElement>, FormElementProps {
   inline?: boolean;
@@ -27,7 +27,6 @@ class Radios extends PureComponent<RadiosProps, RadiosState> {
   static Divider = Divider;
 
   static Radio = Radio;
-
 
   constructor(props: RadiosProps) {
     super(props);

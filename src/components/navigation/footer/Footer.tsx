@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
-import { Container } from '../../layout';
-import { childIsOfComponentType } from '../../../util/types/TypeGuards';
+import { Container } from '@components/layout';
+import { childIsOfComponentType } from '@util/types/TypeGuards';
 
 type FooterListProps = HTMLProps<HTMLOListElement> & { singleColumn?: boolean };
 

@@ -1,6 +1,6 @@
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
-import { Search as SearchIcon } from '../../../icons';
+import { Search as SearchIcon } from '@components/icons';
 
 export interface SearchProps extends HTMLProps<HTMLInputElement> {
   visuallyHiddenText?: string;

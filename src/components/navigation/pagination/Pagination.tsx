@@ -1,6 +1,6 @@
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
-import { ArrowLeft, ArrowRight } from '../../icons';
+import { ArrowLeft, ArrowRight } from '@components/icons';
 
 interface PaginationLinkProps extends HTMLProps<HTMLAnchorElement> {
   previous?: boolean;
@@ -45,8 +45,19 @@ interface Pagination extends React.FC<HTMLProps<HTMLDivElement>> {
   Link: React.FC<PaginationLinkProps>;
 }
 
-const Pagination: Pagination = ({ className, children, role = 'navigation', 'aria-label': ariaLabel = 'Pagination', ...rest }) => (
-  <nav className={classNames('nhsuk-pagination', className)} role={role} aria-label={ariaLabel} {...rest}>
+const Pagination: Pagination = ({
+  className,
+  children,
+  role = 'navigation',
+  'aria-label': ariaLabel = 'Pagination',
+  ...rest
+}) => (
+  <nav
+    className={classNames('nhsuk-pagination', className)}
+    role={role}
+    aria-label={ariaLabel}
+    {...rest}
+  >
     <ul className="nhsuk-list nhsuk-pagination__list">{children}</ul>
   </nav>
 );

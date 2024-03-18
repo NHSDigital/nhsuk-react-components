@@ -3,6 +3,7 @@ import React from 'react';
 import { Card } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 import { ColWidth } from '../../src/util/types/NHSUKTypes';
+import { ChevronRightCircle } from '@components/icons';
 
 const meta: Meta<typeof Card> = {
   title: 'Navigation/Card',
@@ -69,12 +70,38 @@ export const CardWithImage: Story = {
 };
 
 export const FeatureCard: Story = {
-  args: { feature: true },
-  render: (args) => (
-    <Card feature={args.feature}>
+  render: () => (
+    <Card cardType="feature">
       <Card.Content>
         <Card.Heading>Feature card heading</Card.Heading>
         <Card.Description>Feature card description</Card.Description>
+      </Card.Content>
+    </Card>
+  ),
+};
+
+export const PrimaryCardWithChevron: Story = {
+  render: () => (
+    <Card clickable cardType="primary">
+      <Card.Content>
+        <Card.Heading>
+          <Card.Link href="#">Primary card heading</Card.Link>
+        </Card.Heading>
+        <Card.Description>Primary card description</Card.Description>
+        <ChevronRightCircle />
+      </Card.Content>
+    </Card>
+  ),
+};
+
+export const SecondaryCard: Story = {
+  render: () => (
+    <Card clickable cardType="secondary">
+      <Card.Content>
+        <Card.Heading>
+          <Card.Link href="#">Secondary card heading</Card.Link>
+        </Card.Heading>
+        <Card.Description>Secondary card description</Card.Description>
       </Card.Content>
     </Card>
   ),

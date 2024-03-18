@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button as LibButton } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
-import { ButtonLinkProps, ButtonProps } from '../../src/components/form-elements/button/Button';
+import { ButtonLinkProps, ButtonProps } from '@components/form-elements/button/Button';
 
 /**
  *

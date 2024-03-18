@@ -1,11 +1,10 @@
-import React from 'react';
+import { CardType } from '@util/types/NHSUKTypes';
+import { createContext } from 'react';
 
 export interface ICardContext {
-  feature: boolean;
+  cardType?: CardType;
 }
 
-const CardContext = React.createContext<ICardContext>({
-  feature: false,
-});
+const CardContext = createContext<ICardContext>({});
 
 export default CardContext;

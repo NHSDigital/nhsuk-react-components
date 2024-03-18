@@ -21,7 +21,7 @@
       "@form-elements/*": ["src/components/form-elements/*"],
       "@navigation/*": ["src/components/navigation/*"],
       "@typography/*": ["src/components/typography/*"],
-      "@utils/*": ["src/utils/*"],
+      "@util/*": ["src/util/*"],
       "@patterns/*": ["src/patterns/*"]
     }
   },

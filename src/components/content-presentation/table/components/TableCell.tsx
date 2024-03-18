@@ -1,7 +1,7 @@
 'use client';
 import classNames from 'classnames';
 import React, { HTMLProps, useContext } from 'react';
-import useDevWarning from '../../../../util/hooks/UseDevWarning';
+import useDevWarning from '@util/hooks/UseDevWarning';
 import TableSectionContext, { TableSection } from '../TableSectionContext';
 
 const CellOutsideOfSectionWarning =

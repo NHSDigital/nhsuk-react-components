@@ -106,6 +106,42 @@ exports[`Icons all icons match snapshots: ChevronRight 1`] = `
 </div>
 `;
 
+exports[`Icons all icons match snapshots: ChevronRightCircle 1`] = `
+<div>
+  <svg
+    aria-hidden="true"
+    class="nhsuk-icon nhsuk-icon nhsuk-icon__chevron-right-circle"
+    focusable="false"
+    height="27"
+    width="27"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle
+      cx="13.333"
+      cy="13.333"
+      fill=""
+      r="13.333"
+    />
+    <g
+      data-name="Group 1"
+      fill="none"
+      stroke="#fff"
+      stroke-linecap="round"
+      stroke-miterlimit="10"
+      stroke-width="2.667"
+    >
+      <path
+        d="M15.438 13l-3.771 3.771"
+      />
+      <path
+        d="M11.667 9.229L15.438 13"
+        data-name="Path"
+      />
+    </g>
+  </svg>
+</div>
+`;
+
 exports[`Icons all icons match snapshots: Close 1`] = `
 <div>
   <svg

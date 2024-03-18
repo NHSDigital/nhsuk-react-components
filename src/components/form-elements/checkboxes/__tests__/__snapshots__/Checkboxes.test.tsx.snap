@@ -1,217 +1,330 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Checkboxes matches snapshot 1`] = `
+exports[`Checkboxes Matches the snapshot with an exclusive checkbox 1`] = `
 <div>
-  <div
-    class="nhsuk-form-group"
-  >
+  <form>
     <div
-      class="nhsuk-checkboxes"
-      id="example"
+      class="nhsuk-form-group"
     >
       <div
-        class="nhsuk-checkboxes__item"
+        class="nhsuk-checkboxes"
+        id="example"
       >
-        <input
-          class="nhsuk-checkboxes__input"
-          id="example-1"
-          name="example"
-          type="checkbox"
-          value="animal"
-        />
-        <label
-          class="nhsuk-label nhsuk-checkboxes__label"
-          for="example-1"
-          id="example-1--label"
+        <div
+          class="nhsuk-checkboxes__item"
         >
-          Waste from animal carcasses
-        </label>
-      </div>
-      <div
-        class="nhsuk-checkboxes__item"
-      >
-        <input
-          class="nhsuk-checkboxes__input"
-          id="example-2"
-          name="example"
-          type="checkbox"
-          value="mines"
-        />
-        <label
-          class="nhsuk-label nhsuk-checkboxes__label"
-          for="example-2"
-          id="example-2--label"
+          <input
+            class="nhsuk-checkboxes__input"
+            data-checkbox-exclusive-group="example"
+            id="example-1"
+            name="example"
+            type="checkbox"
+            value="animal"
+          />
+          <label
+            class="nhsuk-label nhsuk-checkboxes__label"
+            for="example-1"
+            id="example-1--label"
+          >
+            Waste from animal carcasses
+          </label>
+        </div>
+        <div
+          class="nhsuk-checkboxes__item"
         >
-          Waste from mines or quarries
-        </label>
-      </div>
-      <div
-        class="nhsuk-checkboxes__item"
-      >
-        <input
-          class="nhsuk-checkboxes__input"
-          id="example-3"
-          name="example"
-          type="checkbox"
-          value="farm"
-        />
-        <label
-          class="nhsuk-label nhsuk-checkboxes__label"
-          for="example-3"
-          id="example-3--label"
+          <input
+            class="nhsuk-checkboxes__input"
+            data-checkbox-exclusive-group="example"
+            id="example-2"
+            name="example"
+            type="checkbox"
+            value="mines"
+          />
+          <label
+            class="nhsuk-label nhsuk-checkboxes__label"
+            for="example-2"
+            id="example-2--label"
+          >
+            Waste from mines or quarries
+          </label>
+        </div>
+        <div
+          class="nhsuk-checkboxes__item"
         >
-          Farm or agricultural waste
-        </label>
+          <input
+            class="nhsuk-checkboxes__input"
+            data-checkbox-exclusive-group="example"
+            id="example-3"
+            name="example"
+            type="checkbox"
+            value="farm"
+          />
+          <label
+            class="nhsuk-label nhsuk-checkboxes__label"
+            for="example-3"
+            id="example-3--label"
+          >
+            Farm or agricultural waste
+          </label>
+        </div>
+        <div
+          class="nhsuk-checkboxes__divider"
+        >
+          or
+        </div>
+        <div
+          class="nhsuk-checkboxes__item"
+        >
+          <input
+            class="nhsuk-checkboxes__input"
+            data-checkbox-exclusive="true"
+            data-checkbox-exclusive-group="example"
+            id="none"
+            name="example"
+            type="checkbox"
+            value="none"
+          />
+          <label
+            class="nhsuk-label nhsuk-checkboxes__label"
+            for="none"
+            id="none--label"
+          >
+            None
+          </label>
+        </div>
       </div>
     </div>
-  </div>
+  </form>
+</div>
+`;
+
+exports[`Checkboxes matches snapshot 1`] = `
+<div>
+  <form>
+    <div
+      class="nhsuk-form-group"
+    >
+      <div
+        class="nhsuk-checkboxes"
+        id="example"
+      >
+        <div
+          class="nhsuk-checkboxes__item"
+        >
+          <input
+            class="nhsuk-checkboxes__input"
+            data-checkbox-exclusive-group="example"
+            id="example-1"
+            name="example"
+            type="checkbox"
+            value="animal"
+          />
+          <label
+            class="nhsuk-label nhsuk-checkboxes__label"
+            for="example-1"
+            id="example-1--label"
+          >
+            Waste from animal carcasses
+          </label>
+        </div>
+        <div
+          class="nhsuk-checkboxes__item"
+        >
+          <input
+            class="nhsuk-checkboxes__input"
+            data-checkbox-exclusive-group="example"
+            id="example-2"
+            name="example"
+            type="checkbox"
+            value="mines"
+          />
+          <label
+            class="nhsuk-label nhsuk-checkboxes__label"
+            for="example-2"
+            id="example-2--label"
+          >
+            Waste from mines or quarries
+          </label>
+        </div>
+        <div
+          class="nhsuk-checkboxes__item"
+        >
+          <input
+            class="nhsuk-checkboxes__input"
+            data-checkbox-exclusive-group="example"
+            id="example-3"
+            name="example"
+            type="checkbox"
+            value="farm"
+          />
+          <label
+            class="nhsuk-label nhsuk-checkboxes__label"
+            for="example-3"
+            id="example-3--label"
+          >
+            Farm or agricultural waste
+          </label>
+        </div>
+      </div>
+    </div>
+  </form>
 </div>
 `;
 
 exports[`Checkboxes matches snapshot with boolean error 1`] = `
 <div>
-  <div
-    class="nhsuk-form-group nhsuk-form-group--error"
-  >
+  <form>
     <div
-      class="nhsuk-checkboxes"
-      id="example"
+      class="nhsuk-form-group nhsuk-form-group--error"
     >
       <div
-        class="nhsuk-checkboxes__item"
+        class="nhsuk-checkboxes"
+        id="example"
       >
-        <input
-          class="nhsuk-checkboxes__input"
-          id="example-1"
-          name="example"
-          type="checkbox"
-          value="animal"
-        />
-        <label
-          class="nhsuk-label nhsuk-checkboxes__label"
-          for="example-1"
-          id="example-1--label"
+        <div
+          class="nhsuk-checkboxes__item"
         >
-          Waste from animal carcasses
-        </label>
-      </div>
-      <div
-        class="nhsuk-checkboxes__item"
-      >
-        <input
-          class="nhsuk-checkboxes__input"
-          id="example-2"
-          name="example"
-          type="checkbox"
-          value="mines"
-        />
-        <label
-          class="nhsuk-label nhsuk-checkboxes__label"
-          for="example-2"
-          id="example-2--label"
+          <input
+            class="nhsuk-checkboxes__input"
+            data-checkbox-exclusive-group="example"
+            id="example-1"
+            name="example"
+            type="checkbox"
+            value="animal"
+          />
+          <label
+            class="nhsuk-label nhsuk-checkboxes__label"
+            for="example-1"
+            id="example-1--label"
+          >
+            Waste from animal carcasses
+          </label>
+        </div>
+        <div
+          class="nhsuk-checkboxes__item"
         >
-          Waste from mines or quarries
-        </label>
-      </div>
-      <div
-        class="nhsuk-checkboxes__item"
-      >
-        <input
-          class="nhsuk-checkboxes__input"
-          id="example-3"
-          name="example"
-          type="checkbox"
-          value="farm"
-        />
-        <label
-          class="nhsuk-label nhsuk-checkboxes__label"
-          for="example-3"
-          id="example-3--label"
+          <input
+            class="nhsuk-checkboxes__input"
+            data-checkbox-exclusive-group="example"
+            id="example-2"
+            name="example"
+            type="checkbox"
+            value="mines"
+          />
+          <label
+            class="nhsuk-label nhsuk-checkboxes__label"
+            for="example-2"
+            id="example-2--label"
+          >
+            Waste from mines or quarries
+          </label>
+        </div>
+        <div
+          class="nhsuk-checkboxes__item"
         >
-          Farm or agricultural waste
-        </label>
+          <input
+            class="nhsuk-checkboxes__input"
+            data-checkbox-exclusive-group="example"
+            id="example-3"
+            name="example"
+            type="checkbox"
+            value="farm"
+          />
+          <label
+            class="nhsuk-label nhsuk-checkboxes__label"
+            for="example-3"
+            id="example-3--label"
+          >
+            Farm or agricultural waste
+          </label>
+        </div>
       </div>
     </div>
-  </div>
+  </form>
 </div>
 `;
 
 exports[`Checkboxes matches snapshot with string error 1`] = `
 <div>
-  <div
-    class="nhsuk-form-group nhsuk-form-group--error"
-  >
-    <span
-      class="nhsuk-error-message"
-      id="example--error-message"
-      role="alert"
+  <form>
+    <div
+      class="nhsuk-form-group nhsuk-form-group--error"
     >
       <span
-        class="nhsuk-u-visually-hidden"
+        class="nhsuk-error-message"
+        id="example--error-message"
+        role="alert"
       >
-        Error: 
+        <span
+          class="nhsuk-u-visually-hidden"
+        >
+          Error: 
+        </span>
+        Example error
       </span>
-      Example error
-    </span>
-    <div
-      class="nhsuk-checkboxes"
-      id="example"
-    >
       <div
-        class="nhsuk-checkboxes__item"
+        class="nhsuk-checkboxes"
+        id="example"
       >
-        <input
-          class="nhsuk-checkboxes__input"
-          id="example-1"
-          name="example"
-          type="checkbox"
-          value="animal"
-        />
-        <label
-          class="nhsuk-label nhsuk-checkboxes__label"
-          for="example-1"
-          id="example-1--label"
+        <div
+          class="nhsuk-checkboxes__item"
         >
-          Waste from animal carcasses
-        </label>
-      </div>
-      <div
-        class="nhsuk-checkboxes__item"
-      >
-        <input
-          class="nhsuk-checkboxes__input"
-          id="example-2"
-          name="example"
-          type="checkbox"
-          value="mines"
-        />
-        <label
-          class="nhsuk-label nhsuk-checkboxes__label"
-          for="example-2"
-          id="example-2--label"
+          <input
+            class="nhsuk-checkboxes__input"
+            data-checkbox-exclusive-group="example"
+            id="example-1"
+            name="example"
+            type="checkbox"
+            value="animal"
+          />
+          <label
+            class="nhsuk-label nhsuk-checkboxes__label"
+            for="example-1"
+            id="example-1--label"
+          >
+            Waste from animal carcasses
+          </label>
+        </div>
+        <div
+          class="nhsuk-checkboxes__item"
         >
-          Waste from mines or quarries
-        </label>
-      </div>
-      <div
-        class="nhsuk-checkboxes__item"
-      >
-        <input
-          class="nhsuk-checkboxes__input"
-          id="example-3"
-          name="example"
-          type="checkbox"
-          value="farm"
-        />
-        <label
-          class="nhsuk-label nhsuk-checkboxes__label"
-          for="example-3"
-          id="example-3--label"
+          <input
+            class="nhsuk-checkboxes__input"
+            data-checkbox-exclusive-group="example"
+            id="example-2"
+            name="example"
+            type="checkbox"
+            value="mines"
+          />
+          <label
+            class="nhsuk-label nhsuk-checkboxes__label"
+            for="example-2"
+            id="example-2--label"
+          >
+            Waste from mines or quarries
+          </label>
+        </div>
+        <div
+          class="nhsuk-checkboxes__item"
         >
-          Farm or agricultural waste
-        </label>
+          <input
+            class="nhsuk-checkboxes__input"
+            data-checkbox-exclusive-group="example"
+            id="example-3"
+            name="example"
+            type="checkbox"
+            value="farm"
+          />
+          <label
+            class="nhsuk-label nhsuk-checkboxes__label"
+            for="example-3"
+            id="example-3--label"
+          >
+            Farm or agricultural waste
+          </label>
+        </div>
       </div>
     </div>
-  </div>
+  </form>
 </div>
 `;

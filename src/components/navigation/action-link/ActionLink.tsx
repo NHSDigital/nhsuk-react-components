@@ -1,7 +1,7 @@
 import React from 'react';
 import classNames from 'classnames';
-import { ArrowRightCircle } from '../../icons';
-import type { AsElementLink } from '../../../util/types/LinkTypes';
+import { ArrowRightCircle } from '@components/icons';
+import type { AsElementLink } from '@util/types/LinkTypes';
 
 const ActionLink: React.FC<AsElementLink<HTMLAnchorElement>> = ({
   children,

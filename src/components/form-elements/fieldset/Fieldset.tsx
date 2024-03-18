@@ -1,7 +1,7 @@
 import React, { HTMLProps, PureComponent } from 'react';
 import classNames from 'classnames';
-import { NHSUKSize } from '../../../util/types/NHSUKTypes';
-import HeadingLevel, { HeadingLevelType } from '../../../util/HeadingLevel';
+import { NHSUKSize } from '@util/types/NHSUKTypes';
+import HeadingLevel, { HeadingLevelType } from '@util/HeadingLevel';
 import FieldsetContext, { IFieldsetContext } from './FieldsetContext';
 
 interface LegendProps extends Omit<HTMLProps<HTMLLegendElement>, 'size'> {

@@ -1,8 +1,8 @@
 import React, { HTMLProps, MutableRefObject } from 'react';
 import classNames from 'classnames';
-import FormGroup from '../../../util/FormGroup';
-import { InputWidth } from '../../../util/types/NHSUKTypes';
-import { FormElementProps } from '../../../util/types/FormTypes';
+import FormGroup from '@util/FormGroup';
+import { InputWidth } from '@util/types/NHSUKTypes';
+import { FormElementProps } from '@util/types/FormTypes';
 
 interface TextInputProps extends HTMLProps<HTMLInputElement>, FormElementProps {
   inputRef?: MutableRefObject<HTMLInputElement | null>;
