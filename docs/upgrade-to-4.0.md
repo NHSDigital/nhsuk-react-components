@@ -90,3 +90,35 @@ You can now specify prefixes and/or suffixes for your text inputs. These are exp
 ```
     <TextInput prefix="£" suffix="pounds" />
 ```
+
+### Exclusive option for checkboxes
+
+Added "None of the above" exclusive behaviour to checkboxes - allowing all checkboxes in a group to be automatically unchecked when the "None of the above" option is checked. To use this feature, a new prop is available on `Checkbox.Box` - set the `exclusive` prop to make that option exclusive, e.g.
+
+```
+<Checkboxes id="symptoms" name="symptoms" hint="Select all the symptoms you have.">
+    <Checkboxes.Box value="sore-throat">Sore throat</Checkboxes.Box>
+    <Checkboxes.Box value="runny-nose">Runny nose</Checkboxes.Box>
+    <Checkboxes.Box value="muscle-pain">Muscle or joint pain</Checkboxes.Box>
+    <Checkboxes.Divider />
+    <Checkboxes.Box value="none" exclusive>
+        None
+    </Checkboxes.Box>
+</Checkboxes>
+```
+
+### New component - Character Count
+
+See [the Digital Service Manual](https://service-manual.nhs.uk/design-system/components/character-count) for information.
+Usage:
+
+```
+<CharacterCount
+    maxLength={150}
+    countType={CharacterCountType.Characters}
+    textAreaId="more-details"
+>
+    <Label htmlFor="more-details">Can you provide more detail?</Label>
+    <Textarea id="more-details" className="nhsuk-js-character-count" name="more-details" rows={5} />
+</CharacterCount>
+```

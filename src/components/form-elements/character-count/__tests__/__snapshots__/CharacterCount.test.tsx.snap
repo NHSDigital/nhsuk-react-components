@@ -1,0 +1,165 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Character Count Matches snapshot with character count type 1`] = `
+<div>
+  <div
+    class="nhsuk-character-count"
+    data-maxlength="200"
+    data-module="nhsuk-character-count"
+  >
+    <div
+      class="nhsuk-form-group"
+    >
+      <label
+        class="nhsuk-label"
+        for="more-detail"
+      >
+        Can you provide more detail?
+      </label>
+      <div
+        class="nhsuk-hint"
+        id="more-detail-hint"
+      >
+        Do not include personal information like your name, date of birth or NHS number.
+      </div>
+      <div
+        class="nhsuk-form-group"
+      >
+        <textarea
+          aria-describedby="more-detail-hint"
+          class="nhsuk-textarea nhsuk-js-character-count"
+          id="more-detail"
+          name="more-detail"
+          rows="5"
+        />
+        <div
+          class="nhsuk-hint nhsuk-character-count__message nhsuk-u-visually-hidden"
+          id="more-detail-info"
+        >
+          You can enter up to 
+          200
+           characters
+        </div>
+        <div
+          aria-hidden="true"
+          class="nhsuk-hint nhsuk-character-count__message nhsuk-character-count__status"
+        >
+          You have 200 characters remaining
+        </div>
+        <div
+          aria-live="polite"
+          class="nhsuk-character-count__sr-status nhsuk-u-visually-hidden"
+        >
+          You have 200 characters remaining
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Character Count Matches snapshot with threshold percent set 1`] = `
+<div>
+  <div
+    class="nhsuk-character-count"
+    data-maxlength="112"
+    data-module="nhsuk-character-count"
+    data-threshold="75"
+  >
+    <div
+      class="nhsuk-form-group"
+    >
+      <label
+        class="nhsuk-label"
+        for="threshold"
+      >
+        Can you provide more detail?
+      </label>
+      <div
+        class="nhsuk-form-group"
+      >
+        <textarea
+          class="nhsuk-textarea nhsuk-js-character-count"
+          id="threshold"
+          name="threshold"
+          rows="5"
+        >
+          Type another letter into this field after this message to see the threshold feature
+        </textarea>
+        <div
+          class="nhsuk-hint nhsuk-character-count__message nhsuk-u-visually-hidden"
+          id="threshold-info"
+        >
+          You can enter up to 
+          112
+           characters
+        </div>
+        <div
+          aria-hidden="true"
+          class="nhsuk-hint nhsuk-character-count__message nhsuk-character-count__status nhsuk-character-count__message--disabled"
+        >
+          You have 29 characters remaining
+        </div>
+        <div
+          aria-hidden="true"
+          aria-live="polite"
+          class="nhsuk-character-count__sr-status nhsuk-u-visually-hidden"
+        >
+          You have 29 characters remaining
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Character Count Matches snapshot with word count type 1`] = `
+<div>
+  <div
+    class="nhsuk-character-count"
+    data-maxwords="150"
+    data-module="nhsuk-character-count"
+  >
+    <div
+      class="nhsuk-form-group"
+    >
+      <label
+        class="nhsuk-label nhsuk-label--l"
+        for="job-description-detail"
+      >
+        Enter a job description
+      </label>
+      <div
+        class="nhsuk-form-group"
+      >
+        <textarea
+          class="nhsuk-textarea nhsuk-js-character-count"
+          id="job-description-detail"
+          name="job-description-detail"
+          rows="5"
+        />
+        <div
+          class="nhsuk-hint nhsuk-character-count__message nhsuk-u-visually-hidden"
+          id="job-description-detail-info"
+        >
+          You can enter up to 
+          150
+           characters
+        </div>
+        <div
+          aria-hidden="true"
+          class="nhsuk-hint nhsuk-character-count__message nhsuk-character-count__status"
+        >
+          You have 150 words remaining
+        </div>
+        <div
+          aria-live="polite"
+          class="nhsuk-character-count__sr-status nhsuk-u-visually-hidden"
+        >
+          You have 150 words remaining
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

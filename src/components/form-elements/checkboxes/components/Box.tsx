@@ -10,6 +10,7 @@ import classNames from 'classnames';
 import CheckboxContext, { ICheckboxContext } from '../CheckboxContext';
 import Label, { LabelProps } from '../../label/Label';
 import HintText, { HintTextProps } from '../../hint-text/HintText';
+import { HTMLAttributesWithData } from '../../../../util/types/NHSUKTypes';
 
 type BoxProps = Omit<HTMLProps<HTMLInputElement>, 'label'> & {
   labelProps?: LabelProps;
@@ -19,6 +20,7 @@ type BoxProps = Omit<HTMLProps<HTMLInputElement>, 'label'> & {
   forceShowConditional?: boolean;
   conditionalWrapperProps?: HTMLProps<HTMLDivElement>;
   inputRef?: MutableRefObject<HTMLInputElement | null>;
+  exclusive?: boolean;
 };
 
 const Box: React.FC<BoxProps> = ({
@@ -34,6 +36,7 @@ const Box: React.FC<BoxProps> = ({
   inputRef,
   forceShowConditional,
   conditionalWrapperProps,
+  exclusive = false,
   type = 'checkbox',
   ...rest
 }) => {
@@ -62,6 +65,12 @@ const Box: React.FC<BoxProps> = ({
     return () => setConditional(boxReference, false);
   }, [conditional]);
 
+  const inputProps: HTMLAttributesWithData<HTMLInputElement> = rest;
+
+  if (exclusive) {
+    inputProps['data-checkbox-exclusive'] = true;
+  }
+
   return (
     <>
       <div className="nhsuk-checkboxes__item">
@@ -77,7 +86,8 @@ const Box: React.FC<BoxProps> = ({
           defaultChecked={defaultChecked}
           ref={inputRef}
           type={type}
-          {...rest}
+          data-checkbox-exclusive-group={name}
+          {...inputProps}
         />
         {children ? (
           <Label
@@ -90,7 +100,10 @@ const Box: React.FC<BoxProps> = ({
           </Label>
         ) : null}
         {hint ? (
-          <HintText className={classNames('nhsuk-checkboxes__hint', hintClassName)} {...restHintProps}>
+          <HintText
+            className={classNames('nhsuk-checkboxes__hint', hintClassName)}
+            {...restHintProps}
+          >
             {hint}
           </HintText>
         ) : null}

@@ -4,7 +4,9 @@ import { FormElementProps } from '../../../util/types/FormTypes';
 import FormGroup from '../../../util/FormGroup';
 import CheckboxContext, { ICheckboxContext } from './CheckboxContext';
 import Box from './components/Box';
+import Divider from './components/Divider';
 import { generateRandomName } from '../../../util/RandomID';
+import CheckboxJs from 'nhsuk-frontend/packages/components/checkboxes/checkboxes.js';
 
 interface CheckboxesProps extends HTMLProps<HTMLDivElement>, FormElementProps {
   idPrefix?: string;
@@ -75,7 +77,12 @@ class Checkboxes extends PureComponent<CheckboxesProps, CheckboxesState> {
     this.boxIds = {};
   };
 
+  componentDidMount(): void {
+    CheckboxJs();
+  }
+
   static Box = Box;
+  static Divider = Divider;
 
   render(): JSX.Element {
     const { children, ...rest } = this.props;
