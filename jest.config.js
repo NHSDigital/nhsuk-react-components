@@ -4,7 +4,7 @@ const { compilerOptions } = require('./tsconfig.json');
 const jestConfig = {
   testEnvironment: 'jsdom',
   rootDir: './src',
-  setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
+  setupFilesAfterEnv: ['<rootDir>/../setup/setupTests.ts'],
   collectCoverageFrom: ['<rootDir>/**/*.{ts,tsx}'],
   moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
     prefix: '<rootDir>',

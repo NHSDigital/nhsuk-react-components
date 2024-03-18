@@ -5,6 +5,8 @@
     "module": "esnext",
     "moduleResolution": "node",
     "declaration": true,
+    "declarationDir": "types",
+    "emitDeclarationOnly": true,
     "baseUrl": "./",
     "types": ["jest", "node"],
     "sourceMap": true,
@@ -26,6 +28,6 @@
       "@patterns/*": ["src/patterns/*"]
     }
   },
-  "include": ["src", "stories"],
+  "include": ["src"],
   "exclude": ["node_modules", "build"]
 }

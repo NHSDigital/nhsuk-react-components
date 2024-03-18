@@ -1,7 +1,11 @@
 export { default as ActionLink } from './components/navigation/action-link';
 export { default as BackLink } from './components/navigation/back-link';
 export { default as Breadcrumb } from './components/navigation/breadcrumb';
-export { default as Button, Button as DefaultButton, ButtonLink } from './components/form-elements/button';
+export {
+  default as Button,
+  Button as DefaultButton,
+  ButtonLink,
+} from './components/form-elements/button';
 export { default as Card } from './components/navigation/card';
 export { default as Checkboxes } from './components/form-elements/checkboxes';
 export { default as ContentsList } from './components/navigation/contents-list';
