@@ -1,3 +1,4 @@
+'use client';
 import React, { HTMLProps, useContext, ChangeEvent } from 'react';
 import classNames from 'classnames';
 import Label, { LabelProps } from '../../label/Label';
@@ -48,7 +49,8 @@ const IndividualDateInput: React.FC<IndividualDateInputProps> = ({
   const inputID = id || `${ctxId}-${inputType}`;
   const inputName = name || `${ctxName}-${inputType}`;
   const inputValue = value !== undefined ? value : ctxValue?.[inputType];
-  const inputDefaultValue = defaultValue !== undefined ? defaultValue : ctxDefaultValue?.[inputType];
+  const inputDefaultValue =
+    defaultValue !== undefined ? defaultValue : ctxDefaultValue?.[inputType];
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     e.persist();

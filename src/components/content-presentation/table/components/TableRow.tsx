@@ -1,3 +1,4 @@
+'use client';
 import classNames from 'classnames';
 import React, { HTMLProps, useContext, useEffect } from 'react';
 import TableContext from '../TableContext';

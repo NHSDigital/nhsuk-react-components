@@ -1,6 +1,5 @@
-import React, {
-  HTMLProps, useContext, ReactNode, useEffect, useState,
-} from 'react';
+'use client';
+import React, { HTMLProps, useContext, ReactNode, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { RadiosContext, IRadiosContext } from '../RadioContext';
 import HintText, { HintTextProps } from '../../hint-text/HintText';

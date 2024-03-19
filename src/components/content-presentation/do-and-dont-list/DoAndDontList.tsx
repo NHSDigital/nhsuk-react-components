@@ -1,3 +1,4 @@
+'use client';
 import React, { HTMLProps, createContext, useContext, ReactNode } from 'react';
 import classNames from 'classnames';
 import { Tick, Cross } from '../../icons';

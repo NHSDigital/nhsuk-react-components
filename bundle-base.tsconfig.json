@@ -4,9 +4,6 @@
     "target": "es6",
     "module": "esnext",
     "moduleResolution": "node",
-    "declaration": true,
-    "declarationDir": "types",
-    "emitDeclarationOnly": true,
     "baseUrl": "./",
     "types": ["jest", "node"],
     "sourceMap": true,
@@ -17,7 +14,6 @@
     "strict": true,
     "strictNullChecks": true,
     "resolveJsonModule": true,
-    "allowJs": true,
     "paths": {
       "@components/*": ["src/components/*"],
       "@content-presentation/*": ["src/components/content-presentation/*"],
@@ -29,5 +25,5 @@
     }
   },
   "include": ["src"],
-  "exclude": ["node_modules", "build"]
+  "exclude": ["node_modules", "**/__tests__", "src/setupTests.ts"]
 }

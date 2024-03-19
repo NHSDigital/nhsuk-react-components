@@ -1,3 +1,4 @@
+'use client';
 import React, {
   HTMLProps,
   useContext,
@@ -90,7 +91,10 @@ const Box: React.FC<BoxProps> = ({
           </Label>
         ) : null}
         {hint ? (
-          <HintText className={classNames('nhsuk-checkboxes__hint', hintClassName)} {...restHintProps}>
+          <HintText
+            className={classNames('nhsuk-checkboxes__hint', hintClassName)}
+            {...restHintProps}
+          >
             {hint}
           </HintText>
         ) : null}

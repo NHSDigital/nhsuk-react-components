@@ -15,7 +15,6 @@
     "strict": true,
     "strictNullChecks": true,
     "resolveJsonModule": true,
-    "allowJs": true,
     "paths": {
       "@components/*": ["src/components/*"],
       "@content-presentation/*": ["src/components/content-presentation/*"],
