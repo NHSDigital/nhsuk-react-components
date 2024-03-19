@@ -1,3 +1,4 @@
+'use client';
 import React, { HTMLProps, useContext } from 'react';
 import classNames from 'classnames';
 import CardContext from '../CardContext';

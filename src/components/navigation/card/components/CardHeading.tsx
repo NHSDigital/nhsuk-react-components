@@ -1,3 +1,4 @@
+'use client';
 import React, { HTMLProps, useContext } from 'react';
 import classNames from 'classnames';
 import HeadingLevel, { HeadingLevelType } from '../../../../util/HeadingLevel';

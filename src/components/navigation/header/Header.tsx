@@ -1,3 +1,4 @@
+'use client';
 import React, { PureComponent, HTMLProps, useContext } from 'react';
 import classNames from 'classnames';
 import NHSLogo, { NHSLogoNavProps } from './components/NHSLogo';

@@ -1,3 +1,4 @@
+'use client';
 import React, { ReactNode, useState, useEffect, HTMLProps, useContext } from 'react';
 import classNames from 'classnames';
 import HintText from '../components/form-elements/hint-text/HintText';

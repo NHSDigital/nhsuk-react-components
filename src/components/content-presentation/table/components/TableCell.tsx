@@ -1,3 +1,4 @@
+'use client';
 import classNames from 'classnames';
 import React, { HTMLProps, useContext } from 'react';
 import useDevWarning from '../../../../util/hooks/UseDevWarning';
@@ -38,11 +39,7 @@ const TableCell: React.FC<TableCellProps> = ({
     case TableSection.NONE:
     default:
       return (
-        <td
-          className={classes}
-          role={_responsive ? 'cell' : undefined}
-          {...rest}
-        >
+        <td className={classes} role={_responsive ? 'cell' : undefined} {...rest}>
           {_responsive && (
             <span className="nhsuk-table-responsive__heading">{_responsiveHeading}</span>
           )}

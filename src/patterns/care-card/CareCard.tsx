@@ -1,3 +1,4 @@
+'use client';
 import React, { HTMLProps, createContext, useContext } from 'react';
 import classNames from 'classnames';
 import { CareCardType } from '../../util/types/NHSUKTypes';
@@ -66,9 +67,7 @@ interface CareCard extends React.FC<CareCardProps> {
   Heading: React.FC<CareCardHeadingProps>;
 }
 
-const CareCard: CareCard = ({
-  className, type, children, ...rest
-}) => (
+const CareCard: CareCard = ({ className, type, children, ...rest }) => (
   <div className={classNames('nhsuk-care-card', `nhsuk-care-card--${type}`, className)} {...rest}>
     <CareCardContext.Provider value={type}>{children}</CareCardContext.Provider>
   </div>
