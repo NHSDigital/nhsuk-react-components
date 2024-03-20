@@ -1,8 +1,8 @@
 'use client';
-import React, { HTMLProps } from 'react';
+import React, { FC, HTMLProps } from 'react';
 import classNames from 'classnames';
 
-const Content: React.FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => {
+const Content: FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => {
   return <div className={classNames('nhsuk-header__content', className)} {...rest} />;
 };
 export default Content;

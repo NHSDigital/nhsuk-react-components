@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { FC } from 'react';
 import classNames from 'classnames';
-import type { AsElementLink } from '@util/types/LinkTypes';
+import { AsElementLink } from '@util/types/LinkTypes';
 
 export interface NavItemProps extends AsElementLink<HTMLAnchorElement> {
   mobileOnly?: boolean;
 }
 
-const NavItem: React.FC<NavItemProps> = ({
+const NavItem: FC<NavItemProps> = ({
   mobileOnly,
   className,
   children,

@@ -1,6 +1,6 @@
-import React, { HTMLProps } from 'react';
+import React, { FC, HTMLProps } from 'react';
 
-const Clearfix: React.FC<HTMLProps<HTMLDivElement>> = (props) => (
+const Clearfix: FC<HTMLProps<HTMLDivElement>> = (props) => (
   <div className="nhsuk-u-clear" {...props} />
 );
 

@@ -1,4 +1,4 @@
-import React, { ComponentProps, HTMLProps } from 'react';
+import React, { FC, ComponentProps, HTMLProps } from 'react';
 import classNames from 'classnames';
 import HeadingLevel from '@util/HeadingLevel';
 
@@ -7,7 +7,7 @@ export interface TablePanelProps extends HTMLProps<HTMLDivElement> {
   headingProps?: ComponentProps<typeof HeadingLevel>;
 }
 
-const TablePanel: React.FC<TablePanelProps> = ({
+const TablePanel: FC<TablePanelProps> = ({
   className,
   heading,
   headingProps,

@@ -1,5 +1,5 @@
 'use client';
-import React, { HTMLProps, useContext, ReactNode, useEffect, useState } from 'react';
+import React, { FC, HTMLProps, useContext, ReactNode, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { RadiosContext, IRadiosContext } from '../RadioContext';
 import HintText, { HintTextProps } from '../../hint-text/HintText';
@@ -15,7 +15,7 @@ export interface RadioProps extends HTMLProps<HTMLInputElement> {
   inputRef?: (inputRef: HTMLInputElement | null) => void;
 }
 
-const Radio: React.FC<RadioProps> = ({
+const Radio: FC<RadioProps> = ({
   className,
   children,
   id,
@@ -32,15 +32,8 @@ const Radio: React.FC<RadioProps> = ({
   type = 'radio',
   ...rest
 }) => {
-  const {
-    name,
-    getRadioId,
-    setConditional,
-    setSelected,
-    selectedRadio,
-    leaseReference,
-    unleaseReference,
-  } = useContext<IRadiosContext>(RadiosContext);
+  const { name, getRadioId, setSelected, selectedRadio, leaseReference, unleaseReference } =
+    useContext<IRadiosContext>(RadiosContext);
   const [radioReference] = useState<string>(leaseReference());
   const inputID = id || getRadioId(radioReference);
   const shouldShowConditional = selectedRadio === radioReference && checked !== false;
@@ -54,11 +47,6 @@ const Radio: React.FC<RadioProps> = ({
   useEffect(() => {
     if (checked) setSelected(radioReference);
   }, [checked]);
-
-  useEffect(() => {
-    setConditional(radioReference, Boolean(conditional));
-    return () => setConditional(radioReference, false);
-  }, [conditional]);
 
   return (
     <>

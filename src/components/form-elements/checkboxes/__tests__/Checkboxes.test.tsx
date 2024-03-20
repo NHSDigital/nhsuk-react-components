@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import Checkboxes from '../Checkboxes';
+import Checkboxes from '../';
 
 describe('Checkboxes', () => {
   it('matches snapshot', () => {

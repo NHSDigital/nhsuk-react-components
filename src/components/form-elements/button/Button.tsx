@@ -1,4 +1,4 @@
-import React, { HTMLProps } from 'react';
+import React, { FC, HTMLProps } from 'react';
 import classNames from 'classnames';
 
 export interface ButtonProps extends HTMLProps<HTMLButtonElement> {
@@ -16,7 +16,7 @@ export interface ButtonLinkProps extends HTMLProps<HTMLAnchorElement> {
   as?: 'a';
 }
 
-export const Button: React.FC<ButtonProps> = ({
+export const Button: FC<ButtonProps> = ({
   className,
   disabled,
   secondary,
@@ -40,7 +40,7 @@ export const Button: React.FC<ButtonProps> = ({
   />
 );
 
-export const ButtonLink: React.FC<ButtonLinkProps> = ({
+export const ButtonLink: FC<ButtonLinkProps> = ({
   className,
   role = 'button',
   draggable = false,
@@ -67,7 +67,7 @@ export const ButtonLink: React.FC<ButtonLinkProps> = ({
   </a>
 );
 
-const ButtonWrapper: React.FC<ButtonLinkProps | ButtonProps> = ({ href, as, ...rest }) => {
+const ButtonWrapper: FC<ButtonLinkProps | ButtonProps> = ({ href, as, ...rest }) => {
   if (as === 'a') {
     return <ButtonLink href={href} {...(rest as ButtonLinkProps)} />;
   }

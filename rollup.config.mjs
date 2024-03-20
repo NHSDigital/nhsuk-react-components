@@ -3,9 +3,10 @@ import commonjs from '@rollup/plugin-commonjs';
 import typescript from '@rollup/plugin-typescript';
 import terser from '@rollup/plugin-terser';
 import external from 'rollup-plugin-peer-deps-external';
-import dts from 'rollup-plugin-dts';
+import { dts } from 'rollup-plugin-dts';
 import preserveDirectives from 'rollup-plugin-preserve-directives';
 
+import tsBuildConfig from './bundle-base.tsconfig.json' assert { type: 'json' };
 import packageJson from './package.json' assert { type: 'json' };
 
 // suppresses warnings printed to console as part of bundling components with directives present.
@@ -72,9 +73,15 @@ export default [
   },
   // type bundling
   {
-    input: 'dist/esm/index.d.ts',
+    input: 'src/index.ts',
     output: [{ file: 'dist/index.d.ts', format: 'esm' }],
     external: [],
-    plugins: [dts()],
+    plugins: [
+      dts({
+        compilerOptions: {
+          paths: tsBuildConfig.compilerOptions.paths,
+        },
+      }),
+    ],
   },
 ];

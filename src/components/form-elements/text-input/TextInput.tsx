@@ -1,4 +1,4 @@
-import React, { HTMLProps, MutableRefObject } from 'react';
+import React, { FC, HTMLProps, MutableRefObject } from 'react';
 import classNames from 'classnames';
 import FormGroup from '@util/FormGroup';
 import { InputWidth } from '@util/types/NHSUKTypes';
@@ -12,19 +12,19 @@ interface TextInputProps extends HTMLProps<HTMLInputElement>, FormElementProps {
   suffix?: string;
 }
 
-const TextInputPrefix: React.FC<{ prefix: string }> = ({ prefix }) => (
+const TextInputPrefix: FC<{ prefix: string }> = ({ prefix }) => (
   <div className="nhsuk-input__prefix" aria-hidden="true">
     {prefix}
   </div>
 );
 
-const TextInputSuffix: React.FC<{ suffix: string }> = ({ suffix }) => (
+const TextInputSuffix: FC<{ suffix: string }> = ({ suffix }) => (
   <div className="nhsuk-input__suffix" aria-hidden="true">
     {suffix}
   </div>
 );
 
-const TextInput: React.FC<TextInputProps> = (props) => (
+const TextInput: FC<TextInputProps> = (props) => (
   <FormGroup<TextInputProps> {...props} inputType="input">
     {({ width, className, error, inputRef, type = 'text', prefix, suffix, ...rest }) => {
       const Input = (

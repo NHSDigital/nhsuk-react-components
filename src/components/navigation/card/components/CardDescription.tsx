@@ -1,7 +1,7 @@
-import React, { HTMLProps } from 'react';
+import React, { FC, HTMLProps } from 'react';
 import classNames from 'classnames';
 
-const CardDescription: React.FC<HTMLProps<HTMLParagraphElement>> = ({ className, ...rest }) => (
+const CardDescription: FC<HTMLProps<HTMLParagraphElement>> = ({ className, ...rest }) => (
   <p className={classNames('nhsuk-card__description', className)} {...rest} />
 );
 

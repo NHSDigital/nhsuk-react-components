@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Fieldset, Checkboxes, TextInput } from '../../src';
 import { Button } from '@components/form-elements/button';
 import { Meta, StoryObj } from '@storybook/react';
@@ -159,7 +159,7 @@ export const WithExclusiveNoneOption: Story = {
 export const WithErrorBoolean: Story = {
   render: (args) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [errorToggle, setErrorToggle] = React.useState(true);
+    const [errorToggle, setErrorToggle] = useState(true);
     return (
       <form>
         <Fieldset aria-describedby="waste-hint">
@@ -190,7 +190,7 @@ export const WithErrorBoolean: Story = {
 export const WithErrorString: Story = {
   render: (args) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [error, setError] = React.useState('Please select an option');
+    const [error, setError] = useState('Please select an option');
     return (
       <form>
         <Fieldset aria-describedby="waste-hint">

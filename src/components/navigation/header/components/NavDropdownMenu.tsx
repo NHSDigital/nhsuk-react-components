@@ -1,5 +1,5 @@
 'use client';
-import React, { HTMLProps, useContext, useEffect, MouseEvent } from 'react';
+import React, { FC, HTMLProps, useContext, useEffect, MouseEvent } from 'react';
 import HeaderContext, { IHeaderContext } from '../HeaderContext';
 import { ChevronDown as ChevronDownIcon } from '@components/icons';
 
@@ -8,11 +8,7 @@ export interface NavDropdownMenuProps extends HTMLProps<HTMLButtonElement> {
   dropdownText?: string;
 }
 
-const NavMenuDropdown: React.FC<NavDropdownMenuProps> = ({
-  onClick,
-  dropdownText = 'More',
-  ...rest
-}) => {
+const NavMenuDropdown: FC<NavDropdownMenuProps> = ({ onClick, dropdownText = 'More', ...rest }) => {
   const { setMenuToggle, toggleMenu, menuOpen } = useContext<IHeaderContext>(HeaderContext);
 
   const onToggleClick = (e: MouseEvent<HTMLButtonElement>) => {

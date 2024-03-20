@@ -1,6 +1,6 @@
-import React, { HTMLProps } from 'react';
+import React, { FC, HTMLProps } from 'react';
 import classNames from 'classnames';
-import type { AsElementLink } from '@util/types/LinkTypes';
+import { AsElementLink } from '@util/types/LinkTypes';
 import Card from '@components/navigation/card';
 
 interface PanelProps extends HTMLProps<HTMLDivElement> {
@@ -10,9 +10,9 @@ interface PanelProps extends HTMLProps<HTMLDivElement> {
   backToTopLink?: string;
 }
 
-interface Panel extends React.FC<PanelProps> {
-  LinkItem: React.FC<HTMLProps<HTMLAnchorElement>>;
-  Item: React.FC<HTMLProps<HTMLLIElement>>;
+interface Panel extends FC<PanelProps> {
+  LinkItem: FC<HTMLProps<HTMLAnchorElement>>;
+  Item: FC<HTMLProps<HTMLLIElement>>;
 }
 
 const Panel: Panel = ({
@@ -48,11 +48,11 @@ const Panel: Panel = ({
   </>
 );
 
-const PanelItem: React.FC<HTMLProps<HTMLLIElement>> = ({ className, ...rest }) => (
+const PanelItem: FC<HTMLProps<HTMLLIElement>> = ({ className, ...rest }) => (
   <li className={classNames('nhsuk-list-panel__item', className)} {...rest} />
 );
 
-const PanelLinkItem: React.FC<AsElementLink<HTMLAnchorElement>> = ({
+const PanelLinkItem: FC<AsElementLink<HTMLAnchorElement>> = ({
   className,
   asElement: Component = 'a',
   ...rest

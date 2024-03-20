@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import Select from '../Select';
 
@@ -8,7 +8,7 @@ describe('Select', () => {
   });
 
   const SelectComp = ({ onHandle }: { onHandle: () => void }) => {
-    const ref = React.useRef<HTMLSelectElement | null>(null);
+    const ref = useRef<HTMLSelectElement | null>(null);
     const handleClick = () => {
       if (!ref.current) return;
       onHandle();
