@@ -9,6 +9,7 @@ import CardHeading from './components/CardHeading';
 import CardGroup from './components/CardGroup';
 import CardGroupItem from './components/CardGroupItem';
 import { CardType } from '@util/types/NHSUKTypes';
+import { cardTypeIsCareCard } from '@util/types/TypeGuards';
 
 interface CardProps extends HTMLProps<HTMLDivElement> {
   clickable?: boolean;
@@ -25,26 +26,35 @@ interface ICard extends React.FC<CardProps> {
   GroupItem: typeof CardGroupItem;
 }
 
-const Card: ICard = ({ className, clickable, children, cardType, ...rest }) => (
-  <div
-    className={classNames(
-      'nhsuk-card',
-      { 'nhsuk-card--clickable': clickable },
-      { 'nhsuk-card--feature': cardType === 'feature' },
-      { 'nhsuk-card--secondary': cardType === 'secondary' },
-      className,
-    )}
-    {...rest}
-  >
-    <CardContext.Provider
-      value={{
-        cardType,
-      }}
-    >
-      {children}
-    </CardContext.Provider>
-  </div>
-);
+const Card: ICard = ({ className, clickable, children, cardType, ...rest }) => {
+  let cardClassNames = classNames(
+    'nhsuk-card',
+    { 'nhsuk-card--clickable': clickable },
+    { 'nhsuk-card--feature': cardType === 'feature' },
+    { 'nhsuk-card--secondary': cardType === 'secondary' },
+    className,
+  );
+
+  if (cardTypeIsCareCard(cardType)) {
+    cardClassNames = classNames(
+      cardClassNames,
+      'nhsuk-card--care',
+      `nhsuk-card--care--${cardType}`,
+    );
+  }
+
+  return (
+    <div className={cardClassNames} {...rest}>
+      <CardContext.Provider
+        value={{
+          cardType,
+        }}
+      >
+        {children}
+      </CardContext.Provider>
+    </div>
+  );
+};
 
 Card.Heading = CardHeading;
 Card.Description = CardDescription;

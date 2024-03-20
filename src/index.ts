@@ -44,7 +44,7 @@ export { default as TextInput } from './components/form-elements/text-input';
 export { default as InsetText } from './components/content-presentation/inset-text';
 export { default as Label } from './components/form-elements/label';
 export { Container, Col, Row } from './components/layout';
-export { default as ListPanel } from './components/list-panel';
+export { default as Panel } from './patterns/panel';
 export { default as NavAZ } from './patterns/nav-a-z';
 export { default as Pagination } from './components/navigation/pagination';
 export { default as Radios } from './components/form-elements/radios';

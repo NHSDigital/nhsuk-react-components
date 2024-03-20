@@ -111,6 +111,144 @@ describe('Card', () => {
     ).toBeTruthy();
   });
 
+  describe('Care card variant', () => {
+    describe('non-urgent', () => {
+      it('matches the snapshot', () => {
+        const { container } = render(
+          <Card cardType="non-urgent">
+            <Card.Heading>Non urgent heading</Card.Heading>
+          </Card>,
+        );
+
+        expect(container).toMatchSnapshot();
+      });
+      it('adds classes to card', () => {
+        const { container } = render(
+          <Card cardType="non-urgent">
+            <Card.Heading>Non urgent heading</Card.Heading>
+          </Card>,
+        );
+
+        expect(container.querySelector('div.nhsuk-card.nhsuk-card.nhsuk-card--care')).toBeTruthy();
+        expect(
+          container.querySelector('div.nhsuk-card.nhsuk-card.nhsuk-card--care--non-urgent'),
+        ).toBeTruthy();
+      });
+
+      it('renders the heading with the expected hidden text', () => {
+        const { container } = render(
+          <Card cardType="non-urgent">
+            <Card.Heading>Non urgent heading</Card.Heading>
+          </Card>,
+        );
+
+        const headingContainer = container.querySelector('.nhsuk-card--care__heading-container');
+
+        expect(headingContainer?.querySelector('.nhsuk-u-visually-hidden')?.textContent).toEqual(
+          'Non-urgent advice: ',
+        );
+      });
+    });
+
+    describe('urgent', () => {
+      it('matches the snapshot', () => {
+        const { container } = render(
+          <Card cardType="urgent">
+            <Card.Heading>Urgent heading</Card.Heading>
+          </Card>,
+        );
+
+        expect(container).toMatchSnapshot();
+      });
+      it('adds classes to card', () => {
+        const { container } = render(
+          <Card cardType="urgent">
+            <Card.Heading>Urgent heading</Card.Heading>
+          </Card>,
+        );
+
+        expect(container.querySelector('div.nhsuk-card.nhsuk-card.nhsuk-card--care')).toBeTruthy();
+        expect(
+          container.querySelector('div.nhsuk-card.nhsuk-card.nhsuk-card--care--urgent'),
+        ).toBeTruthy();
+      });
+
+      it('renders the heading with the expected hidden text', () => {
+        const { container } = render(
+          <Card cardType="urgent">
+            <Card.Heading>Urgent heading</Card.Heading>
+          </Card>,
+        );
+
+        const headingContainer = container.querySelector('.nhsuk-card--care__heading-container');
+
+        expect(headingContainer?.querySelector('.nhsuk-u-visually-hidden')?.textContent).toEqual(
+          'Urgent advice: ',
+        );
+      });
+    });
+
+    describe('emergency', () => {
+      it('matches the snapshot', () => {
+        const { container } = render(
+          <Card cardType="emergency">
+            <Card.Heading>Emergency heading</Card.Heading>
+          </Card>,
+        );
+
+        expect(container).toMatchSnapshot();
+      });
+      it('adds classes to card', () => {
+        const { container } = render(
+          <Card cardType="emergency">
+            <Card.Heading>Emergency heading</Card.Heading>
+          </Card>,
+        );
+
+        expect(container.querySelector('div.nhsuk-card.nhsuk-card.nhsuk-card--care')).toBeTruthy();
+        expect(
+          container.querySelector('div.nhsuk-card.nhsuk-card.nhsuk-card--care--emergency'),
+        ).toBeTruthy();
+      });
+
+      it('renders the heading with the expected hidden text', () => {
+        const { container } = render(
+          <Card cardType="emergency">
+            <Card.Heading>Emergency heading</Card.Heading>
+          </Card>,
+        );
+
+        const headingContainer = container.querySelector('.nhsuk-card--care__heading-container');
+
+        expect(headingContainer?.querySelector('.nhsuk-u-visually-hidden')?.textContent).toEqual(
+          'Immediate action required: ',
+        );
+      });
+    });
+
+    describe('hidden text', () => {
+      it('renders without hidden text', () => {
+        const { container } = render(
+          <Card cardType="urgent">
+            <Card.Heading visuallyHiddenText={false}>Heading</Card.Heading>
+          </Card>,
+        );
+
+        expect(container.querySelector('.nhsuk-u-visually-hidden')).toBeFalsy();
+      });
+
+      it('renders with hidden text', () => {
+        const { container } = render(
+          <Card cardType="urgent">
+            <Card.Heading visuallyHiddenText="Custom">Heading</Card.Heading>
+          </Card>,
+        );
+
+        expect(container.querySelector('.nhsuk-u-visually-hidden')?.textContent).toEqual('Custom');
+      });
+    });
+  });
+
   describe('Card.Group', () => {
     it('matches snapshot', () => {
       const { container } = render(

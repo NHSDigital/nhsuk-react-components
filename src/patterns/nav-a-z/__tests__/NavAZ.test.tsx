@@ -32,14 +32,12 @@ describe('NavAZ', () => {
     render(<NavAZ fullAlphabet disabledLetters={['A', 'B']} />);
 
     expect(
-      screen.queryByText('A')?.classList.contains('nhsuk-u-display-block--disabled'),
+      screen.queryByText('A')?.classList.contains('nhsuk-u-secondary-text-color'),
     ).toBeTruthy();
     expect(
-      screen.queryByText('B')?.classList.contains('nhsuk-u-display-block--disabled'),
+      screen.queryByText('B')?.classList.contains('nhsuk-u-secondary-text-color'),
     ).toBeTruthy();
-    expect(
-      screen.queryByText('C')?.classList.contains('nhsuk-u-display-block--disabled'),
-    ).toBeFalsy();
+    expect(screen.queryByText('C')?.classList.contains('nhsuk-u-secondary-text-color')).toBeFalsy();
   });
 
   it('passes through children', () => {

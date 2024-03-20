@@ -2,8 +2,12 @@ import React from 'react';
 import { NavAZ } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
+/**
+ * This component is generally used as part of the 'A to Z page' pattern.
+ */
+
 const meta: Meta<typeof NavAZ> = {
-  title: 'Components/NavAZ',
+  title: 'Patterns/NavAZ',
   component: NavAZ,
   args: {
     fullAlphabet: false,

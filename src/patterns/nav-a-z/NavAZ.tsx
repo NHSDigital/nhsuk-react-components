@@ -88,14 +88,14 @@ const LinkItem: React.FC<AsElementLink<HTMLAnchorElement>> = ({
   </li>
 );
 
-// TODO - check disabled here - it probably doesn't work
 const DisabledItem: React.FC<HTMLProps<HTMLSpanElement>> = ({ className, ...rest }) => (
   <li className="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1">
     <span
       className={classNames(
         'nhsuk-u-font-size-22',
         'nhsuk-u-padding-2',
-        'nhsuk-u-display-block--disabled',
+        'nhsuk-u-display-block',
+        'nhsuk-u-secondary-text-color',
         className,
       )}
       {...rest}

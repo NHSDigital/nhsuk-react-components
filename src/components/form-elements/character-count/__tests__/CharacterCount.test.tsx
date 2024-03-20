@@ -1,7 +1,9 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 import CharacterCount, { CharacterCountType } from '../CharacterCount';
-import { Label, HintText, Textarea } from '../../../..';
+import Label from '@components/form-elements/label/Label';
+import HintText from '@components/form-elements/hint-text/HintText';
+import Textarea from '@components/form-elements/textarea/Textarea';
 
 describe('Character Count', () => {
   it('Matches snapshot', () => {
