@@ -81,6 +81,42 @@ Should become this:
 It is now required that a `js-enabled` class is added to a parent element if JavaScript is enabled (we suggest using `body`). E.g. `<body class="js-enabled">`.
 This is to facilitate a differentiation in styling to the header depending on whether JavaScript is enabled or disabled.
 
+### CareCard is now a variant of Card
+
+`CareCard` has been removed as a standalone component and the `Card` component has been refactored to provide this functionality. This is achieved via the `cardType` prop.
+
+Notice also that the `immediate` type of card is unsupported - this has been replaced with `emergency`.
+
+Before, using the `CareCard`, you may have markup that looks like this:
+
+```
+<CareCard type='immediate'>
+    <CareCard.Heading>Call 999 if:</CareCard.Heading>
+    <CareCard.Content>
+        <div>Your care card contents</div>
+    </CareCard.Content>
+</CareCard>
+```
+
+Now, it should look like this:
+
+```
+<Card cardType='emergency'>
+    <Card.Heading>Call 999 if:</CareCard.Heading>
+    <Card.Content>
+        <div>Your care card contents</div>
+    </Card.Content>
+</Card>
+```
+
+### NavAZ and ListPanel
+
+Due to these components being [removed from the nhsuk-frontend library](https://github.com/nhsuk/nhsuk-frontend/blob/main/CHANGELOG.md#600---29-november-2021), refactoring has taken place to ensure they still adhere to the NHS digital service manual.
+
+The `NavAZ` component is still available, however the `ListPanel` component has now been renamed to `Panel`. To combine multiple panels you would simply render them as siblings - there is no need to wrap them in a list.
+
+An additional storybook story has been added to give a full example of an A-Z page, combining both of these components. This helps to bring this library into alignment with the [NHS digital service manual listing](https://service-manual.nhs.uk/design-system/patterns/a-to-z-page) for this pattern.
+
 ## New features
 
 ### Text input prefixes + suffixes
@@ -162,7 +198,7 @@ More information can be found in the [NHS digital service manual](https://servic
 Usage:
 
 ```
-<Card clickable primary>
+<Card clickable cardType='primary'>
     <Card.Content>
         <Card.Heading>
             <Card.Link href="#">Primary card heading</Card.Link>
@@ -180,7 +216,7 @@ More information can be found in the [NHS digital service manual](https://servic
 Usage:
 
 ```
-<Card clickable secondary>
+<Card clickable cardType='secondary'>
     <Card.Content>
         <Card.Heading>
             <Card.Link href="#">Secondary card heading</Card.Link>
