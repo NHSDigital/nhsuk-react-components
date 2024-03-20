@@ -1,5 +1,10 @@
 import React from 'react';
 import { Col, HintText, Row, Table } from '../../src';
+import TableHead from '../../src/components/content-presentation/table/components/TableHead';
+import TableRow from '../../src/components/content-presentation/table/components/TableRow';
+import TableCell from '../../src/components/content-presentation/table/components/TableCell';
+import TableBody from '../../src/components/content-presentation/table/components/TableBody';
+import TablePanel from '../../src/components/content-presentation/table/components/TablePanel';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Table> = {
@@ -9,65 +14,66 @@ const meta: Meta<typeof Table> = {
 export default meta;
 type Story = StoryObj<typeof Table>;
 
-Table.Head.displayName = 'Table.Head';
-Table.Body.displayName = 'Table.Body';
-Table.Row.displayName = 'Table.Row';
-Table.Cell.displayName = 'Table.Cell';
-Table.Panel.displayName = 'Table.Panel';
+TableHead.displayName = 'Table.Head';
+TableBody.displayName = 'Table.Body';
+TableRow.displayName = 'Table.Row';
+TableCell.displayName = 'Table.Cell';
+TablePanel.displayName = 'Table.Panel';
 
 export const StandardTable: Story = {
   render: (args) => (
     <Table caption="Skin symptoms and possible causes">
-      <Table.Head>
-        <Table.Row>
-          <Table.Cell>Skin Symptoms</Table.Cell>
-          <Table.Cell>Possible cause</Table.Cell>
-        </Table.Row>
-      </Table.Head>
-      <Table.Body>
-        <Table.Row>
-          <Table.Cell>Blisters on lips or around the mouth</Table.Cell>
-          <Table.Cell>cold sores</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell>Itchy, dry, cracked, sore</Table.Cell>
-          <Table.Cell>eczema</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell>Itchy blisters</Table.Cell>
-          <Table.Cell>shingles, chickenpox</Table.Cell>
-        </Table.Row>
-      </Table.Body>
+      <TableHead>
+        <TableRow>
+          <TableCell>Skin Symptoms</TableCell>
+          <TableCell>Possible cause</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        <TableRow>
+          <TableCell>Blisters on lips or around the mouth</TableCell>
+          <TableCell>cold sores</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Itchy, dry, cracked, sore</TableCell>
+          <TableCell>eczema</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>Itchy blisters</TableCell>
+          <TableCell>shingles, chickenpox</TableCell>
+        </TableRow>
+      </TableBody>
     </Table>
   ),
 };
 
-export const TablePanel: Story = {
+// Had to rename this as it conflicts with the imported component TablePanel. Not sure what the best solution is for this.
+export const PanelTable: Story = {
   render: (args) => (
-    <Table.Panel heading="Conditions similar to impetigo">
+    <TablePanel heading="Conditions similar to impetigo">
       <Table caption="Other possible causes of your symptoms">
-        <Table.Head>
-          <Table.Row>
-            <Table.Cell>Skin Symptoms</Table.Cell>
-            <Table.Cell>Possible cause</Table.Cell>
-          </Table.Row>
-        </Table.Head>
-        <Table.Body>
-          <Table.Row>
-            <Table.Cell>Blisters on lips or around the mouth</Table.Cell>
-            <Table.Cell>cold sores</Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell>Itchy, dry, cracked, sore</Table.Cell>
-            <Table.Cell>eczema</Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell>Itchy blisters</Table.Cell>
-            <Table.Cell>shingles, chickenpox</Table.Cell>
-          </Table.Row>
-        </Table.Body>
+        <TableHead>
+          <TableRow>
+            <TableCell>Skin Symptoms</TableCell>
+            <TableCell>Possible cause</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          <TableRow>
+            <TableCell>Blisters on lips or around the mouth</TableCell>
+            <TableCell>cold sores</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Itchy, dry, cracked, sore</TableCell>
+            <TableCell>eczema</TableCell>
+          </TableRow>
+          <TableRow>
+            <TableCell>Itchy blisters</TableCell>
+            <TableCell>shingles, chickenpox</TableCell>
+          </TableRow>
+        </TableBody>
       </Table>
-    </Table.Panel>
+    </TablePanel>
   ),
 };
 
@@ -75,30 +81,30 @@ export const ResponsiveTable: Story = {
   args: { responsive: true },
   render: ({ responsive }) => (
     <Table responsive={responsive} caption="Ibuprofen syrup dosages for children">
-      <Table.Head role="rowgroup">
-        <Table.Row>
-          <Table.Cell>Age</Table.Cell>
-          <Table.Cell>How much?</Table.Cell>
-          <Table.Cell>How often?</Table.Cell>
-        </Table.Row>
-      </Table.Head>
-      <Table.Body>
-        <Table.Row>
-          <Table.Cell>3 to 5 months (weighing more than 5kg)</Table.Cell>
-          <Table.Cell>2.5ml</Table.Cell>
-          <Table.Cell>Max 3 times in 24 hours</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell>6 to 11 months</Table.Cell>
-          <Table.Cell>2.5ml</Table.Cell>
-          <Table.Cell>Max 3 to 4 times in 24 hours</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-          <Table.Cell>1 to 3 years</Table.Cell>
-          <Table.Cell>5ml</Table.Cell>
-          <Table.Cell>Max 3 times in 24 hours</Table.Cell>
-        </Table.Row>
-      </Table.Body>
+      <TableHead role="rowgroup">
+        <TableRow>
+          <TableCell>Age</TableCell>
+          <TableCell>How much?</TableCell>
+          <TableCell>How often?</TableCell>
+        </TableRow>
+      </TableHead>
+      <TableBody>
+        <TableRow>
+          <TableCell>3 to 5 months (weighing more than 5kg)</TableCell>
+          <TableCell>2.5ml</TableCell>
+          <TableCell>Max 3 times in 24 hours</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>6 to 11 months</TableCell>
+          <TableCell>2.5ml</TableCell>
+          <TableCell>Max 3 to 4 times in 24 hours</TableCell>
+        </TableRow>
+        <TableRow>
+          <TableCell>1 to 3 years</TableCell>
+          <TableCell>5ml</TableCell>
+          <TableCell>Max 3 times in 24 hours</TableCell>
+        </TableRow>
+      </TableBody>
     </Table>
   ),
 };
@@ -109,26 +115,26 @@ export const NumericCells: Story = {
       <Col width="one-half">
         <HintText>Right-aligned cells are used for numeric values</HintText>
         <Table caption="Number of cases">
-          <Table.Head>
-            <Table.Row>
-              <Table.Cell>Location</Table.Cell>
-              <Table.Cell isNumeric>Number of cases</Table.Cell>
-            </Table.Row>
-          </Table.Head>
-          <Table.Body>
-            <Table.Row>
-              <Table.Cell>England</Table.Cell>
-              <Table.Cell isNumeric>4,000</Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell>Wales</Table.Cell>
-              <Table.Cell isNumeric>2,500</Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell>Scotland</Table.Cell>
-              <Table.Cell isNumeric>600</Table.Cell>
-            </Table.Row>
-          </Table.Body>
+          <TableHead>
+            <TableRow>
+              <TableCell>Location</TableCell>
+              <TableCell isNumeric>Number of cases</TableCell>
+            </TableRow>
+          </TableHead>
+          <TableBody>
+            <TableRow>
+              <TableCell>England</TableCell>
+              <TableCell isNumeric>4,000</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Wales</TableCell>
+              <TableCell isNumeric>2,500</TableCell>
+            </TableRow>
+            <TableRow>
+              <TableCell>Scotland</TableCell>
+              <TableCell isNumeric>600</TableCell>
+            </TableRow>
+          </TableBody>
         </Table>
       </Col>
     </Row>
