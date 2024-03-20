@@ -1,4 +1,3 @@
-'use client';
 import classNames from 'classnames';
 import React, { HTMLProps, useContext } from 'react';
 import useDevWarning from '@util/hooks/UseDevWarning';
@@ -27,26 +26,22 @@ const TableCell: React.FC<TableCellProps> = ({
   const cellClass = section === TableSection.HEAD ? 'nhsuk-table__header' : 'nhsuk-table__cell';
   const classes = classNames(cellClass, { [`${cellClass}--numeric`]: isNumeric }, className);
 
-  switch (section) {
-    case TableSection.HEAD:
-      return (
+  return (
+    <>
+      {section === TableSection.HEAD ? (
         <th className={classes} scope="col" {...rest}>
           {children}
         </th>
-      );
-
-    case TableSection.BODY:
-    case TableSection.NONE:
-    default:
-      return (
+      ) : (
         <td className={classes} role={_responsive ? 'cell' : undefined} {...rest}>
           {_responsive && (
             <span className="nhsuk-table-responsive__heading">{_responsiveHeading}</span>
           )}
           {children}
         </td>
-      );
-  }
+      )}
+    </>
+  );
 };
 
 TableCell.displayName = 'Table.Cell';
