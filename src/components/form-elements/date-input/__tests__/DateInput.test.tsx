@@ -1,6 +1,6 @@
 import React from 'react';
 import { render, fireEvent } from '@testing-library/react';
-import DateInput from '../DateInput';
+import DateInput, { DateInputChangeEvent } from '../DateInput';
 
 describe('DateInput', () => {
   it('matches snapshot', () => {
@@ -66,7 +66,8 @@ describe('DateInput', () => {
   );
 
   it('Invokes the provided onChange function prop if provided', () => {
-    const onChange = jest.fn();
+    let onChangeParam: DateInputChangeEvent | null = null;
+    const onChange = jest.fn().mockImplementation((val) => (onChangeParam = val));
 
     const { container } = render(<DateInput id="testInput" name="testInput" onChange={onChange} />);
 
@@ -77,47 +78,29 @@ describe('DateInput', () => {
     fireEvent.change(dayInput, { target: { value: '21' } });
 
     expect(onChange).toHaveBeenCalledTimes(1);
-    expect(onChange).toHaveBeenLastCalledWith(
-      expect.objectContaining({
-        currentTarget: {
-          value: {
-            day: '21',
-            month: '',
-            year: '',
-          },
-        },
-      }),
-    );
+    expect(onChangeParam!.currentTarget!.value).toEqual({
+      day: '21',
+      month: '',
+      year: '',
+    });
 
     fireEvent.change(monthInput, { target: { value: '03' } });
 
     expect(onChange).toHaveBeenCalledTimes(2);
-    expect(onChange).toHaveBeenLastCalledWith(
-      expect.objectContaining({
-        currentTarget: {
-          value: {
-            day: '21',
-            month: '03',
-            year: '',
-          },
-        },
-      }),
-    );
+    expect(onChangeParam!.currentTarget!.value).toEqual({
+      day: '21',
+      month: '03',
+      year: '',
+    });
 
     fireEvent.change(yearInput, { target: { value: '2024' } });
 
     expect(onChange).toHaveBeenCalledTimes(3);
-    expect(onChange).toHaveBeenLastCalledWith(
-      expect.objectContaining({
-        currentTarget: {
-          value: {
-            day: '21',
-            month: '03',
-            year: '2024',
-          },
-        },
-      }),
-    );
+    expect(onChangeParam!.currentTarget!.value).toEqual({
+      day: '21',
+      month: '03',
+      year: '2024',
+    });
   });
 
   it('Renders the specified children instead of date fields if provided', () => {

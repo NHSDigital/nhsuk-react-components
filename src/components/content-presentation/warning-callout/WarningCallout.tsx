@@ -1,4 +1,4 @@
-import React, { HTMLProps } from 'react';
+import React, { FC, HTMLProps } from 'react';
 import classNames from 'classnames';
 import HeadingLevel, { HeadingLevelType } from '@util/HeadingLevel';
 
@@ -7,7 +7,7 @@ interface WarningCalloutLabelProps extends HTMLProps<HTMLHeadingElement> {
   visuallyHiddenText?: string | false;
 }
 
-const WarningCalloutLabel: React.FC<WarningCalloutLabelProps> = ({
+const WarningCalloutLabel: FC<WarningCalloutLabelProps> = ({
   className,
   visuallyHiddenText = 'Important: ',
   children,
@@ -22,7 +22,7 @@ const WarningCalloutLabel: React.FC<WarningCalloutLabelProps> = ({
   </HeadingLevel>
 );
 
-interface IWarningCallout extends React.FC<HTMLProps<HTMLDivElement>> {
+interface IWarningCallout extends FC<HTMLProps<HTMLDivElement>> {
   Label: typeof WarningCalloutLabel;
 }
 

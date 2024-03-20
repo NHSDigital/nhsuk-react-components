@@ -1,4 +1,4 @@
-import React, { HTMLProps, MutableRefObject } from 'react';
+import React, { FC, HTMLProps, MutableRefObject } from 'react';
 
 import classNames from 'classnames';
 import { FormElementProps } from '@util/types/FormTypes';
@@ -9,8 +9,8 @@ interface ISelectProps extends HTMLProps<HTMLSelectElement>, FormElementProps {
   selectRef?: MutableRefObject<HTMLSelectElement | null>;
 }
 
-interface ISelect extends React.FC<ISelectProps> {
-  Option: React.FC<HTMLProps<HTMLOptionElement>>;
+interface ISelect extends FC<ISelectProps> {
+  Option: FC<HTMLProps<HTMLOptionElement>>;
 }
 
 const Select: ISelect = ({ children, ...rest }) => (
@@ -27,7 +27,7 @@ const Select: ISelect = ({ children, ...rest }) => (
   </FormGroup>
 );
 
-const Option: React.FC<HTMLProps<HTMLOptionElement>> = (props) => <option {...props} />;
+const Option: FC<HTMLProps<HTMLOptionElement>> = (props) => <option {...props} />;
 
 Select.Option = Option;
 

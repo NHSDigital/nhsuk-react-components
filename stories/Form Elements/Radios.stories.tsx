@@ -1,4 +1,4 @@
-import React, { MouseEvent } from 'react';
+import React, { useState, MouseEvent } from 'react';
 import { Radios, Fieldset, Button, TextInput, Checkboxes } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
@@ -89,17 +89,19 @@ export const RadiosWithConditionalContent: Story = {
     );
 
     return (
-      <Fieldset>
-        <Fieldset.Legend>Impairment requirement</Fieldset.Legend>
-        <Radios name="example" id="example-conditional" hint="Select relevant options.">
-          <Radios.Radio id="hello1" value="yes" conditional={impairmentsForm}>
-            Patient requires an impairment to be added
-          </Radios.Radio>
-          <Radios.Radio id="hello2" value="no">
-            Patient would prefer not to say
-          </Radios.Radio>
-        </Radios>
-      </Fieldset>
+      <form style={{ padding: 20 }}>
+        <Fieldset>
+          <Fieldset.Legend>Impairment requirement</Fieldset.Legend>
+          <Radios name="example" id="example-conditional" hint="Select relevant options.">
+            <Radios.Radio id="hello1" value="yes" conditional={impairmentsForm}>
+              Patient requires an impairment to be added
+            </Radios.Radio>
+            <Radios.Radio id="hello2" value="no">
+              Patient would prefer not to say
+            </Radios.Radio>
+          </Radios>
+        </Fieldset>
+      </form>
     );
   },
 };
@@ -122,7 +124,7 @@ export const RadiosWithHintsOnItems: Story = {
   render: (args) => (
     <Fieldset>
       <Fieldset.Legend>How do you want to sign in?</Fieldset.Legend>
-      <Radios name="example" id="example-divider">
+      <Radios name="example" id="example-with-hints">
         <Radios.Radio
           value="government-gateway"
           hint="You&#39;ll have a user ID if you've registered for self-assessment or filed a tax return online before."
@@ -152,13 +154,13 @@ export const RadiosWithoutFieldset: Story = {
 
 export const RadiosWithErrorBoolean: Story = {
   render: function RadiosWithErrorBooleanRender() {
-    const [error, setError] = React.useState<boolean>(true);
+    const [error, setError] = useState<boolean>(true);
     return (
       <>
         <Fieldset>
           <Fieldset.Legend>Have you changed your name?</Fieldset.Legend>
           <Radios
-            name="example"
+            name="example-with-err-boolean"
             error={error}
             hint="This includes changing your last name or spelling your name differently."
           >
@@ -187,13 +189,13 @@ export const RadiosWithErrorBoolean: Story = {
 
 export const RadiosWithErrorString: Story = {
   render: function RadiosWithErrorStringRender() {
-    const [error, setError] = React.useState('Please select an option');
+    const [error, setError] = useState('Please select an option');
     return (
       <>
         <Fieldset>
           <Fieldset.Legend>Have you changed your name?</Fieldset.Legend>
           <Radios
-            name="example"
+            name="example-with-err-string"
             error={error}
             hint="This includes changing your last name or spelling your name differently."
           >

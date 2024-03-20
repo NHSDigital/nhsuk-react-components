@@ -1,4 +1,4 @@
-import React, { HTMLProps } from 'react';
+import React, { FC, HTMLProps } from 'react';
 import classNames from 'classnames';
 
 interface CardImageProps extends HTMLProps<HTMLImageElement> {
@@ -7,7 +7,7 @@ interface CardImageProps extends HTMLProps<HTMLImageElement> {
   crossOrigin?: 'anonymous' | 'use-credentials' | undefined;
 }
 
-const CardImage: React.FC<CardImageProps> = ({ className, alt, ...rest }) => (
+const CardImage: FC<CardImageProps> = ({ className, alt, ...rest }) => (
   <img className={classNames('nhsuk-card__img', className)} alt={alt} {...rest} />
 );
 

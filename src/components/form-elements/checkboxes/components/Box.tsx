@@ -1,5 +1,7 @@
 'use client';
+
 import React, {
+  FC,
   HTMLProps,
   useContext,
   ReactNode,
@@ -24,7 +26,7 @@ type BoxProps = Omit<HTMLProps<HTMLInputElement>, 'label'> & {
   exclusive?: boolean;
 };
 
-const Box: React.FC<BoxProps> = ({
+const Box: FC<BoxProps> = ({
   id,
   labelProps,
   children,
@@ -41,7 +43,7 @@ const Box: React.FC<BoxProps> = ({
   type = 'checkbox',
   ...rest
 }) => {
-  const { getBoxId, name, setConditional, unleaseReference, leaseReference } =
+  const { getBoxId, name, leaseReference, unleaseReference } =
     useContext<ICheckboxContext>(CheckboxContext);
 
   const [boxReference] = useState<string>(leaseReference());
@@ -60,11 +62,6 @@ const Box: React.FC<BoxProps> = ({
       setShowConditional(checked);
     }
   }, [checked]);
-
-  useEffect(() => {
-    setConditional(boxReference, Boolean(conditional));
-    return () => setConditional(boxReference, false);
-  }, [conditional]);
 
   const inputProps: HTMLAttributesWithData<HTMLInputElement> = rest;
 

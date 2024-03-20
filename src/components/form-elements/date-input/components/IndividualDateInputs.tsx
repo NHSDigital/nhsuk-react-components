@@ -1,5 +1,5 @@
 'use client';
-import React, { HTMLProps, useContext, ChangeEvent } from 'react';
+import React, { FC, HTMLProps, useContext, ChangeEvent } from 'react';
 import classNames from 'classnames';
 import Label, { LabelProps } from '../../label/Label';
 import DateInputContext, { IDateInputContext } from '../DateInputContext';
@@ -17,7 +17,7 @@ const labels: Record<'day' | 'month' | 'year', string> = {
   year: 'Year',
 };
 
-const IndividualDateInput: React.FC<IndividualDateInputProps> = ({
+const IndividualDateInput: FC<IndividualDateInputProps> = ({
   label,
   labelProps,
   inputType,
@@ -101,14 +101,14 @@ const IndividualDateInput: React.FC<IndividualDateInputProps> = ({
   );
 };
 
-export const DayInput: React.FC<Omit<IndividualDateInputProps, 'inputType'>> = (props) => (
+export const DayInput: FC<Omit<IndividualDateInputProps, 'inputType'>> = (props) => (
   <IndividualDateInput inputType="day" {...props} />
 );
 
-export const MonthInput: React.FC<Omit<IndividualDateInputProps, 'inputType'>> = (props) => (
+export const MonthInput: FC<Omit<IndividualDateInputProps, 'inputType'>> = (props) => (
   <IndividualDateInput inputType="month" {...props} />
 );
 
-export const YearInput: React.FC<Omit<IndividualDateInputProps, 'inputType'>> = (props) => (
+export const YearInput: FC<Omit<IndividualDateInputProps, 'inputType'>> = (props) => (
   <IndividualDateInput inputType="year" {...props} />
 );

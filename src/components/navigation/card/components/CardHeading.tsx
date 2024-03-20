@@ -1,5 +1,5 @@
 'use client';
-import React, { HTMLProps, useContext } from 'react';
+import React, { FC, HTMLProps, useContext } from 'react';
 import classNames from 'classnames';
 import HeadingLevel, { HeadingLevelType } from '@util/HeadingLevel';
 import CardContext from '../CardContext';
@@ -24,7 +24,7 @@ const genHiddenText = (cardType: CareCardType): string => {
   }
 };
 
-const CareHeading: React.FC<CardHeadingProps & { careType: CareCardType }> = ({
+const CareHeading: FC<CardHeadingProps & { careType: CareCardType }> = ({
   className,
   children,
   visuallyHiddenText,
@@ -54,7 +54,7 @@ const CareHeading: React.FC<CardHeadingProps & { careType: CareCardType }> = ({
   );
 };
 
-const CardHeading: React.FC<CardHeadingProps> = (props) => {
+const CardHeading: FC<CardHeadingProps> = (props) => {
   const { cardType } = useContext(CardContext);
 
   if (cardTypeIsCareCard(cardType)) {

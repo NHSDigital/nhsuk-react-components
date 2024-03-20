@@ -1,4 +1,4 @@
-import React, { MouseEvent } from 'react';
+import React, { useState, MouseEvent } from 'react';
 import { Select, Button, TextInput } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
@@ -37,7 +37,7 @@ export const SelectWithHintText: Story = {
 
 export const SelectWithErrorBoolean: Story = {
   render: function SelectWithErrorBooleanRender() {
-    const [error, setError] = React.useState<boolean>(true);
+    const [error, setError] = useState<boolean>(true);
     return (
       <>
         <Select error={error} label="Label text goes here">
@@ -62,7 +62,7 @@ export const SelectWithErrorBoolean: Story = {
 
 export const SelectWithErrorString: Story = {
   render: function SelectWithErrorStringRender() {
-    const [error, setError] = React.useState<string>('Error message goes here');
+    const [error, setError] = useState<string>('Error message goes here');
     return (
       <>
         <Select error={error} label="Label text goes here">
