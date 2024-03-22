@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import TextInput from '../TextInput';
 import { InputWidth } from '@util/types/NHSUKTypes';
@@ -9,7 +9,7 @@ describe('TextInput', () => {
   });
 
   const TextInputComp = ({ onHandle }: { onHandle: () => void }) => {
-    const ref = React.useRef(null);
+    const ref = useRef(null);
     const handleClick = () => {
       if (!ref.current) return;
       onHandle();

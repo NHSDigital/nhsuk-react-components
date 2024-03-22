@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { FC } from 'react';
 import classNames from 'classnames';
 import { ChevronLeft } from '@components/icons';
 import type { AsElementLink } from '@util/types/LinkTypes';
 
-const BackLink: React.FC<AsElementLink<HTMLAnchorElement>> = ({
+const BackLink: FC<AsElementLink<HTMLAnchorElement>> = ({
   children,
   className,
   asElement: Component = 'a',

@@ -1,5 +1,5 @@
 'use client';
-import React, { HTMLProps, createContext, useContext, ReactNode } from 'react';
+import React, { FC, HTMLProps, createContext, useContext, ReactNode } from 'react';
 import classNames from 'classnames';
 import { Tick, Cross } from '@components/icons';
 import HeadingLevel, { HeadingLevelType } from '@util/HeadingLevel';
@@ -12,8 +12,8 @@ interface DoAndDontListProps extends HTMLProps<HTMLDivElement> {
   headingLevel?: HeadingLevelType;
 }
 
-interface DoAndDontList extends React.FC<DoAndDontListProps> {
-  Item: React.FC<DoAndDontItemProps>;
+interface DoAndDontList extends FC<DoAndDontListProps> {
+  Item: FC<DoAndDontItemProps>;
 }
 
 const DoAndDontListContext = createContext<ListType>('do');
@@ -49,12 +49,7 @@ interface DoAndDontItemProps extends HTMLProps<HTMLLIElement> {
   prefixText?: ReactNode;
 }
 
-const DoAndDontItem: React.FC<DoAndDontItemProps> = ({
-  prefixText,
-  listItemType,
-  children,
-  ...rest
-}) => {
+const DoAndDontItem: FC<DoAndDontItemProps> = ({ prefixText, listItemType, children, ...rest }) => {
   const listItem = useContext(DoAndDontListContext);
   const defaultPrefix = (listItemType || listItem) === 'do' ? null : 'do not ';
   const actualPrefix = prefixText === undefined ? defaultPrefix : prefixText;

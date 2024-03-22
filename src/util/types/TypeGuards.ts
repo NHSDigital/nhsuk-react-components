@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from 'react';
+import { FC, ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from 'react';
 import { CardType, CareCardType } from './NHSUKTypes';
 
 /**
@@ -15,7 +15,7 @@ export const childIsOfComponentType = (
     | ReactPortal
     | null
     | undefined,
-  component: React.FC,
+  component: FC,
 ): child is
   | React.ReactElement<any, string | React.JSXElementConstructor<any>>
   | React.ReactPortal =>

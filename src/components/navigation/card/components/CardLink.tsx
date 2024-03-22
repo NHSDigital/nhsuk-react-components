@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { FC } from 'react';
 import classNames from 'classnames';
 import type { AsElementLink } from '@util/types/LinkTypes';
 
-const CardLink: React.FC<AsElementLink<HTMLAnchorElement>> = ({
+const CardLink: FC<AsElementLink<HTMLAnchorElement>> = ({
   className,
   asElement: Component = 'a',
   ...rest

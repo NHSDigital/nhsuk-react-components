@@ -1,4 +1,4 @@
-import React, { useEffect, SyntheticEvent } from 'react';
+import React, { useRef, useState, useEffect, SyntheticEvent } from 'react';
 import { Checkboxes } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
@@ -17,11 +17,11 @@ type CheckboxState = {
 
 export const NoIDSupplied: Story = {
   render: function NoIDSuppliedRender() {
-    const checkbox1Ref = React.useRef<HTMLInputElement>(null);
-    const checkbox2Ref = React.useRef<HTMLInputElement>(null);
-    const checkbox3Ref = React.useRef<HTMLInputElement>(null);
+    const checkbox1Ref = useRef<HTMLInputElement>(null);
+    const checkbox2Ref = useRef<HTMLInputElement>(null);
+    const checkbox3Ref = useRef<HTMLInputElement>(null);
 
-    const [checkboxState, setCheckboxState] = React.useState<CheckboxState>({
+    const [checkboxState, setCheckboxState] = useState<CheckboxState>({
       box1: {
         name: '',
         id: '',
@@ -101,11 +101,11 @@ export const NoIDSupplied: Story = {
 
 export const NameSupplied: Story = {
   render: function NameSuppliedRender() {
-    const checkbox1Ref = React.useRef<HTMLInputElement>(null);
-    const checkbox2Ref = React.useRef<HTMLInputElement>(null);
-    const checkbox3Ref = React.useRef<HTMLInputElement>(null);
+    const checkbox1Ref = useRef<HTMLInputElement>(null);
+    const checkbox2Ref = useRef<HTMLInputElement>(null);
+    const checkbox3Ref = useRef<HTMLInputElement>(null);
 
-    const [checkboxState, setCheckboxState] = React.useState<CheckboxState>({
+    const [checkboxState, setCheckboxState] = useState<CheckboxState>({
       box1: {
         name: '',
         id: '',
@@ -185,11 +185,11 @@ export const NameSupplied: Story = {
 
 export const IDPrefixSupplied: Story = {
   render: function IDPrefixSuppliedRender() {
-    const checkbox1Ref = React.useRef<HTMLInputElement>(null);
-    const checkbox2Ref = React.useRef<HTMLInputElement>(null);
-    const checkbox3Ref = React.useRef<HTMLInputElement>(null);
+    const checkbox1Ref = useRef<HTMLInputElement>(null);
+    const checkbox2Ref = useRef<HTMLInputElement>(null);
+    const checkbox3Ref = useRef<HTMLInputElement>(null);
 
-    const [checkboxState, setCheckboxState] = React.useState<CheckboxState>({
+    const [checkboxState, setCheckboxState] = useState<CheckboxState>({
       box1: {
         name: '',
         id: '',
@@ -270,11 +270,11 @@ export const IDPrefixSupplied: Story = {
 
 export const IDPrefixAndNameSupplied: Story = {
   render: function IDPrefixAndNameSuppliedRender() {
-    const checkbox1Ref = React.useRef<HTMLInputElement>(null);
-    const checkbox2Ref = React.useRef<HTMLInputElement>(null);
-    const checkbox3Ref = React.useRef<HTMLInputElement>(null);
+    const checkbox1Ref = useRef<HTMLInputElement>(null);
+    const checkbox2Ref = useRef<HTMLInputElement>(null);
+    const checkbox3Ref = useRef<HTMLInputElement>(null);
 
-    const [checkboxState, setCheckboxState] = React.useState<CheckboxState>({
+    const [checkboxState, setCheckboxState] = useState<CheckboxState>({
       box1: {
         name: '',
         id: '',
@@ -355,9 +355,9 @@ export const IDPrefixAndNameSupplied: Story = {
 
 export const OnChangeAndOnInputHandlers: Story = {
   render: function OnChangeAndOnInputHandlersRender() {
-    const [changeEventLog, setChangeEventLog] = React.useState<Array<string>>([]);
-    const [inputEventLog, setInputEventLog] = React.useState<Array<string>>([]);
-    const [currentValue, setCurrentValue] = React.useState<Array<string>>([]);
+    const [changeEventLog, setChangeEventLog] = useState<Array<string>>([]);
+    const [inputEventLog, setInputEventLog] = useState<Array<string>>([]);
+    const [currentValue, setCurrentValue] = useState<Array<string>>([]);
 
     const handleChange = (e: SyntheticEvent<HTMLInputElement>) => {
       const target = e.target as HTMLInputElement;

@@ -1,4 +1,4 @@
-import React, { HTMLProps } from 'react';
+import React, { FC, HTMLProps } from 'react';
 import classNames from 'classnames';
 import CardContext from './CardContext';
 import CardContent from './components/CardContent';
@@ -16,7 +16,7 @@ interface CardProps extends HTMLProps<HTMLDivElement> {
   cardType?: CardType;
 }
 
-interface ICard extends React.FC<CardProps> {
+interface ICard extends FC<CardProps> {
   Content: typeof CardContent;
   Description: typeof CardDescription;
   Image: typeof CardImage;

@@ -1,10 +1,10 @@
-import React, { HTMLProps, ReactNode } from 'react';
+import React, { Children, FC, HTMLProps, ReactNode } from 'react';
 import classNames from 'classnames';
 import { Container } from '@components/layout';
 import type { AsElementLink } from '@util/types/LinkTypes';
 import { childIsOfComponentType } from '@util/types/TypeGuards';
 
-type Item = React.FC<AsElementLink<HTMLAnchorElement>>;
+type Item = FC<AsElementLink<HTMLAnchorElement>>;
 
 const Item: Item = ({ className, children, asElement: Component = 'a', ...rest }) => (
   <li className="nhsuk-breadcrumb__item">
@@ -14,7 +14,7 @@ const Item: Item = ({ className, children, asElement: Component = 'a', ...rest }
   </li>
 );
 
-type Back = React.FC<AsElementLink<HTMLAnchorElement> & { accessiblePrefix?: string }>;
+type Back = FC<AsElementLink<HTMLAnchorElement> & { accessiblePrefix?: string }>;
 
 const Back: Back = ({
   className,
@@ -31,7 +31,7 @@ const Back: Back = ({
   </p>
 );
 
-interface Breadcrumb extends React.FC<HTMLProps<HTMLDivElement>> {
+interface Breadcrumb extends FC<HTMLProps<HTMLDivElement>> {
   Item: Item;
   Back: Back;
 }
@@ -48,7 +48,7 @@ const Breadcrumb: Breadcrumb = ({
   ...rest
 }) => {
   // Split off any "Item" components
-  const { ItemChildren, OtherChildren } = React.Children.toArray(children).reduce<SplitChildren>(
+  const { ItemChildren, OtherChildren } = Children.toArray(children).reduce<SplitChildren>(
     (prev, child) => {
       if (childIsOfComponentType(child, Item)) {
         prev.ItemChildren.push(child);

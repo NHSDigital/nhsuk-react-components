@@ -1,5 +1,5 @@
 'use client';
-import React, { PureComponent, HTMLProps, useContext } from 'react';
+import React, { FC, HTMLProps, useContext, useState, useEffect } from 'react';
 import classNames from 'classnames';
 import NHSLogo, { NHSLogoNavProps } from './components/NHSLogo';
 import OrganisationalLogo, { OrganisationalLogoProps } from './components/OrganisationalLogo';
@@ -13,7 +13,7 @@ import Content from './components/Content';
 import TransactionalServiceName from './components/TransactionalServiceName';
 import HeaderJs from 'nhsuk-frontend/packages/components/header/header.js';
 
-const BaseHeaderLogo: React.FC<OrganisationalLogoProps & NHSLogoNavProps> = (props) => {
+const BaseHeaderLogo: FC<OrganisationalLogoProps & NHSLogoNavProps> = (props) => {
   const { orgName } = useContext<IHeaderContext>(HeaderContext);
   if (orgName) {
     return <OrganisationalLogo {...props} />;
@@ -21,7 +21,7 @@ const BaseHeaderLogo: React.FC<OrganisationalLogoProps & NHSLogoNavProps> = (pro
   return <NHSLogo {...props} />;
 };
 
-const HeaderContainer: React.FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => (
+const HeaderContainer: FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => (
   <Container className={classNames('nhsuk-header__container', className)} {...rest} />
 );
 
@@ -34,99 +34,75 @@ interface HeaderProps extends HTMLProps<HTMLDivElement> {
   white?: boolean;
 }
 
-interface HeaderState {
-  hasMenuToggle: boolean;
-  hasSearch: boolean;
-  menuOpen: boolean;
-}
+const Header = ({
+  className,
+  children,
+  transactional,
+  orgName,
+  orgSplit,
+  orgDescriptor,
+  role = 'banner',
+  serviceName,
+  white,
+  ...rest
+}: HeaderProps) => {
+  const [hasMenuToggle, setHasMenuToggle] = useState(false);
+  const [hasSearch, setHasSearch] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-class Header extends PureComponent<HeaderProps, HeaderState> {
-  static Logo = BaseHeaderLogo;
-
-  static Search = Search;
-
-  static Nav = Nav;
-
-  static NavItem = NavItem;
-
-  static NavDropdownMenu = NavDropdownMenu;
-
-  static Container = HeaderContainer;
-
-  static Content = Content;
-
-  static ServiceName = TransactionalServiceName;
-
-  static defaultProps = {
-    role: 'banner',
-  };
-
-  constructor(props: HeaderProps) {
-    super(props);
-    this.state = {
-      hasMenuToggle: false,
-      hasSearch: false,
-      menuOpen: false,
-    };
-  }
-
-  setMenuToggle = (toggle: boolean): void => {
-    this.setState({ hasMenuToggle: toggle });
-  };
-
-  setSearch = (toggle: boolean): void => {
-    this.setState({ hasSearch: toggle });
-  };
-
-  toggleMenu = (): void => {
-    this.setState((state) => ({ menuOpen: !state.menuOpen }));
-  };
-
-  componentDidMount(): void {
+  useEffect(() => {
     HeaderJs();
-  }
+  }, []);
 
-  render(): JSX.Element {
-    const {
-      className,
-      children,
-      transactional,
-      orgName,
-      orgSplit,
-      orgDescriptor,
-      serviceName,
-      white,
-      ...rest
-    } = this.props;
-    const { hasSearch, hasMenuToggle, menuOpen } = this.state;
-    const contextValue: IHeaderContext = {
-      orgName,
-      orgSplit,
-      orgDescriptor,
-      serviceName,
-      hasSearch,
-      hasMenuToggle,
-      setMenuToggle: this.setMenuToggle,
-      setSearch: this.setSearch,
-      toggleMenu: this.toggleMenu,
-      menuOpen,
-    };
+  const setMenuToggle = (toggle: boolean): void => {
+    setHasMenuToggle(toggle);
+  };
 
-    return (
-      <header
-        className={classNames(
-          'nhsuk-header',
-          { 'nhsuk-header--transactional': transactional },
-          { 'nhsuk-header--organisation': orgName },
-          { 'nhsuk-header--white': white },
-          className,
-        )}
-        {...rest}
-      >
-        <HeaderContext.Provider value={contextValue}>{children}</HeaderContext.Provider>
-      </header>
-    );
-  }
-}
+  const setSearch = (toggle: boolean): void => {
+    setHasSearch(toggle);
+  };
+
+  const toggleMenu = (): void => {
+    setMenuOpen(!menuOpen);
+  };
+
+  const contextValue: IHeaderContext = {
+    orgName,
+    orgSplit,
+    orgDescriptor,
+    serviceName,
+    hasSearch,
+    hasMenuToggle,
+    setMenuToggle,
+    setSearch,
+    toggleMenu,
+    menuOpen,
+  };
+
+  return (
+    <header
+      className={classNames(
+        'nhsuk-header',
+        { 'nhsuk-header--transactional': transactional },
+        { 'nhsuk-header--organisation': orgName },
+        { 'nhsuk-header--white': white },
+        className,
+      )}
+      role={role}
+      {...rest}
+    >
+      <HeaderContext.Provider value={contextValue}>{children}</HeaderContext.Provider>
+    </header>
+  );
+};
+
+Header.Logo = BaseHeaderLogo;
+Header.Search = Search;
+Header.Nav = Nav;
+Header.NavItem = NavItem;
+Header.NavDropdownMenu = NavDropdownMenu;
+Header.Container = HeaderContainer;
+Header.Content = Content;
+Header.ServiceName = TransactionalServiceName;
 
 export default Header;

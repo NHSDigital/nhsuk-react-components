@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
 import ErrorSummary from '../';
 
@@ -10,7 +10,7 @@ describe('ErrorSummary', () => {
   });
 
   it('forwards refs', () => {
-    const ref = React.createRef<HTMLDivElement>();
+    const ref = createRef<HTMLDivElement>();
     render(<ErrorSummary ref={ref} />);
 
     expect(ref.current).not.toBeNull();

@@ -1,4 +1,4 @@
-import React, { HTMLProps } from 'react';
+import React, { FC, HTMLProps } from 'react';
 import classNames from 'classnames';
 import type { AsElementLink } from '@util/types/LinkTypes';
 
@@ -43,9 +43,9 @@ interface NavAZProps extends HTMLProps<HTMLDivElement> {
   letters?: Array<string>;
 }
 
-interface NavAZ extends React.FC<NavAZProps> {
-  LinkItem: React.FC<AsElementLink<HTMLAnchorElement>>;
-  DisabledItem: React.FC<HTMLProps<HTMLSpanElement>>;
+interface NavAZ extends FC<NavAZProps> {
+  LinkItem: FC<AsElementLink<HTMLAnchorElement>>;
+  DisabledItem: FC<HTMLProps<HTMLSpanElement>>;
 }
 
 const NavAZ: NavAZ = ({
@@ -70,7 +70,7 @@ const NavAZ: NavAZ = ({
   </nav>
 );
 
-const LinkItem: React.FC<AsElementLink<HTMLAnchorElement>> = ({
+const LinkItem: FC<AsElementLink<HTMLAnchorElement>> = ({
   className,
   asElement: Component = 'a',
   ...rest
@@ -88,7 +88,7 @@ const LinkItem: React.FC<AsElementLink<HTMLAnchorElement>> = ({
   </li>
 );
 
-const DisabledItem: React.FC<HTMLProps<HTMLSpanElement>> = ({ className, ...rest }) => (
+const DisabledItem: FC<HTMLProps<HTMLSpanElement>> = ({ className, ...rest }) => (
   <li className="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1">
     <span
       className={classNames(

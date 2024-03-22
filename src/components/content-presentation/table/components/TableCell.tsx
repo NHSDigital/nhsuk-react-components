@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { HTMLProps, useContext } from 'react';
+import React, { FC, HTMLProps, useContext } from 'react';
 import useDevWarning from '@util/hooks/UseDevWarning';
 import TableSectionContext, { TableSection } from '../TableSectionContext';
 
@@ -12,7 +12,7 @@ export interface TableCellProps extends HTMLProps<HTMLTableCellElement> {
   isNumeric?: boolean;
 }
 
-const TableCell: React.FC<TableCellProps> = ({
+const TableCell: FC<TableCellProps> = ({
   className,
   _responsive = false,
   _responsiveHeading = '',

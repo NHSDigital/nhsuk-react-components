@@ -1,7 +1,7 @@
-import React, { HTMLProps } from 'react';
+import React, { FC, HTMLProps } from 'react';
 import classNames from 'classnames';
 
-const TableContainer: React.FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => (
+const TableContainer: FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => (
   <div className={classNames('nhsuk-table-container', className)} {...rest} />
 );
 TableContainer.displayName = 'Table.Container';

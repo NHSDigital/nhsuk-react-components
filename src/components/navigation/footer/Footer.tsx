@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { HTMLProps } from 'react';
+import React, { Children, FC, HTMLProps, cloneElement } from 'react';
 import classNames from 'classnames';
 import { Container } from '@components/layout';
 import { childIsOfComponentType } from '@util/types/TypeGuards';
 
 type FooterListProps = HTMLProps<HTMLOListElement> & { singleColumn?: boolean };
 
-const FooterList: React.FC<FooterListProps> = ({
+const FooterList: FC<FooterListProps> = ({
   className,
   children,
   singleColumn = false,
@@ -15,10 +15,8 @@ const FooterList: React.FC<FooterListProps> = ({
   let newChildren = children;
 
   if (singleColumn) {
-    newChildren = React.Children.map(newChildren, (child) =>
-      childIsOfComponentType(child, FooterListItem)
-        ? React.cloneElement(child, { singleColumn })
-        : child,
+    newChildren = Children.map(newChildren, (child) =>
+      childIsOfComponentType(child, FooterListItem) ? cloneElement(child, { singleColumn }) : child,
     );
   }
 
@@ -29,7 +27,7 @@ const FooterList: React.FC<FooterListProps> = ({
   );
 };
 
-const FooterListItem: React.FC<HTMLProps<HTMLAnchorElement> & { singleColumn?: boolean }> = ({
+const FooterListItem: FC<HTMLProps<HTMLAnchorElement> & { singleColumn?: boolean }> = ({
   className,
   singleColumn = false,
   ...rest
@@ -44,7 +42,7 @@ const FooterListItem: React.FC<HTMLProps<HTMLAnchorElement> & { singleColumn?: b
   </li>
 );
 
-const FooterCopyright: React.FC<HTMLProps<HTMLParagraphElement>> = ({ className, ...rest }) => (
+const FooterCopyright: FC<HTMLProps<HTMLParagraphElement>> = ({ className, ...rest }) => (
   <p className={classNames('nhsuk-footer__copyright', className)} {...rest} />
 );
 
@@ -52,23 +50,23 @@ interface FooterProps extends HTMLProps<HTMLDivElement> {
   visuallyHiddenText?: false | string;
 }
 
-interface Footer extends React.FC<FooterProps> {
-  List: React.FC<FooterListProps>;
-  ListItem: React.FC<HTMLProps<HTMLAnchorElement>>;
-  Copyright: React.FC<HTMLProps<HTMLParagraphElement>>;
+interface Footer extends FC<FooterProps> {
+  List: FC<FooterListProps>;
+  ListItem: FC<HTMLProps<HTMLAnchorElement>>;
+  Copyright: FC<HTMLProps<HTMLParagraphElement>>;
 }
 
 const Footer: Footer = ({ className, children, visuallyHiddenText = 'Support links', ...rest }) => {
-  const footerCols = React.Children.toArray(children).filter((child) =>
+  const footerCols = Children.toArray(children).filter((child) =>
     childIsOfComponentType(child, FooterList),
   );
 
   let newChildren = children;
 
   if (footerCols.length === 1) {
-    newChildren = React.Children.map(children, (child) =>
+    newChildren = Children.map(children, (child) =>
       childIsOfComponentType(child, FooterList)
-        ? React.cloneElement(child, { singleColumn: true })
+        ? cloneElement(child, { singleColumn: true })
         : child,
     );
   }

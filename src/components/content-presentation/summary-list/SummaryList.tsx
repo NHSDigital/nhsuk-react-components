@@ -1,19 +1,19 @@
-import React, { HTMLProps } from 'react';
+import React, { FC, HTMLProps } from 'react';
 import classNames from 'classnames';
 
-const SummaryListRow: React.FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => (
+const SummaryListRow: FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => (
   <div className={classNames('nhsuk-summary-list__row', className)} {...rest} />
 );
 
-const SummaryListKey: React.FC<HTMLProps<HTMLDListElement>> = ({ className, ...rest }) => (
+const SummaryListKey: FC<HTMLProps<HTMLDListElement>> = ({ className, ...rest }) => (
   <dt className={classNames('nhsuk-summary-list__key', className)} {...rest} />
 );
 
-const SummaryListValue: React.FC<HTMLProps<HTMLDListElement>> = ({ className, ...rest }) => (
+const SummaryListValue: FC<HTMLProps<HTMLDListElement>> = ({ className, ...rest }) => (
   <dd className={classNames('nhsuk-summary-list__value', className)} {...rest} />
 );
 
-const SummaryListActions: React.FC<HTMLProps<HTMLDListElement>> = ({ className, ...rest }) => (
+const SummaryListActions: FC<HTMLProps<HTMLDListElement>> = ({ className, ...rest }) => (
   <dd className={classNames('nhsuk-summary-list__actions', className)} {...rest} />
 );
 
@@ -21,11 +21,11 @@ interface SummaryListProps extends HTMLProps<HTMLDListElement> {
   noBorder?: boolean;
 }
 
-interface SummaryList extends React.FC<SummaryListProps> {
-  Row: React.FC<HTMLProps<HTMLDivElement>>;
-  Key: React.FC<HTMLProps<HTMLDListElement>>;
-  Value: React.FC<HTMLProps<HTMLDListElement>>;
-  Actions: React.FC<HTMLProps<HTMLDListElement>>;
+interface SummaryList extends FC<SummaryListProps> {
+  Row: FC<HTMLProps<HTMLDivElement>>;
+  Key: FC<HTMLProps<HTMLDListElement>>;
+  Value: FC<HTMLProps<HTMLDListElement>>;
+  Actions: FC<HTMLProps<HTMLDListElement>>;
 }
 
 const SummaryList: SummaryList = ({ className, noBorder, ...rest }) => (
