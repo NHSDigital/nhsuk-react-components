@@ -28,6 +28,40 @@ describe('Footer', () => {
     expect(container.querySelector('.nhsuk-u-visually-hidden')?.textContent).toBe('Custom');
   });
 
+  it('Includes the single column class on ListItem when there is only one column', () => {
+    const { container } = render(
+      <Footer>
+        <Footer.List>
+          <Footer.ListItem id="test-listItem"></Footer.ListItem>
+        </Footer.List>
+      </Footer>,
+    );
+
+    expect(container.querySelector('#test-listItem')?.parentElement).toHaveClass(
+      'nhsuk-footer-default__list-item',
+    );
+  });
+
+  it('Does not include the single column class on ListItem when there is more than one column', () => {
+    const { container } = render(
+      <Footer>
+        <Footer.List>
+          <Footer.ListItem id="test-listItem"></Footer.ListItem>
+        </Footer.List>
+        <Footer.List>
+          <Footer.ListItem id="test-listItem2"></Footer.ListItem>
+        </Footer.List>
+      </Footer>,
+    );
+
+    expect(container.querySelector('#test-listItem')?.parentElement).not.toHaveClass(
+      'nhsuk-footer-default__list-item',
+    );
+    expect(container.querySelector('#test-listItem2')?.parentElement).not.toHaveClass(
+      'nhsuk-footer-default__list-item',
+    );
+  });
+
   describe('Footer.List', () => {
     afterEach(() => {
       jest.clearAllMocks();

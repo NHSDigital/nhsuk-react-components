@@ -17,7 +17,26 @@ describe('Select', () => {
     return <Select onClick={handleClick} selectRef={ref} />;
   };
 
-  // further tests need to be added as part of NUT-4646
+  it('Matches the snapshot', () => {
+    const { container } = render(
+      <Select id="test-select">
+        <Select.Option value="1">Option 1</Select.Option>
+        <Select.Option value="2">Option 2</Select.Option>
+      </Select>,
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it.each([true, false])('Adds the appropriate class if error is specified as %s', (error) => {
+    const { container } = render(<Select id="test-select" error={error} />);
+
+    if (error) {
+      expect(container.querySelector('#test-select')).toHaveClass('nhsuk-select--error');
+    } else {
+      expect(container.querySelector('#test-select')).not.toHaveClass('nhsuk-select--error');
+    }
+  });
 
   it('should handle DOM events where ref Exists', () => {
     const useRefSpy = jest

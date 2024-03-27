@@ -1,15 +1,8 @@
 'use client';
-import React, { HTMLProps, useContext } from 'react';
+import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
-import HeaderContext, { IHeaderContext } from '../HeaderContext';
 
 const Content: React.FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => {
-  const { searchOpen } = useContext<IHeaderContext>(HeaderContext);
-  return (
-    <div
-      className={classNames('nhsuk-header__content', { 'js-show': searchOpen }, className)}
-      {...rest}
-    />
-  );
+  return <div className={classNames('nhsuk-header__content', className)} {...rest} />;
 };
 export default Content;

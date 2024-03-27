@@ -8,11 +8,9 @@ export interface IHeaderContext {
   setSearch: (toggle: boolean) => void;
   setMenuToggle: (toggle: boolean) => void;
   toggleMenu: () => void;
-  toggleSearch: () => void;
   hasSearch: boolean;
   hasMenuToggle: boolean;
   menuOpen: boolean;
-  searchOpen: boolean;
 }
 
 export default createContext<IHeaderContext>({
@@ -26,7 +24,5 @@ export default createContext<IHeaderContext>({
   hasSearch: false,
   hasMenuToggle: false,
   toggleMenu: () => {},
-  toggleSearch: () => {},
   menuOpen: false,
-  searchOpen: false,
 });
