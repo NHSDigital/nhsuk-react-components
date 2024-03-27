@@ -33,7 +33,7 @@ const Back: Back = ({
 
 interface Breadcrumb extends React.FC<HTMLProps<HTMLDivElement>> {
   Item: Item;
-  Back: Item;
+  Back: Back;
 }
 
 type SplitChildren = {
