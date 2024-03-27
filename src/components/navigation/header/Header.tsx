@@ -38,7 +38,6 @@ interface HeaderState {
   hasMenuToggle: boolean;
   hasSearch: boolean;
   menuOpen: boolean;
-  searchOpen: boolean;
 }
 
 class Header extends PureComponent<HeaderProps, HeaderState> {
@@ -68,7 +67,6 @@ class Header extends PureComponent<HeaderProps, HeaderState> {
       hasMenuToggle: false,
       hasSearch: false,
       menuOpen: false,
-      searchOpen: false,
     };
   }
 
@@ -82,10 +80,6 @@ class Header extends PureComponent<HeaderProps, HeaderState> {
 
   toggleMenu = (): void => {
     this.setState((state) => ({ menuOpen: !state.menuOpen }));
-  };
-
-  toggleSearch = (): void => {
-    this.setState((state) => ({ searchOpen: !state.searchOpen }));
   };
 
   componentDidMount(): void {
@@ -104,7 +98,7 @@ class Header extends PureComponent<HeaderProps, HeaderState> {
       white,
       ...rest
     } = this.props;
-    const { hasSearch, hasMenuToggle, menuOpen, searchOpen } = this.state;
+    const { hasSearch, hasMenuToggle, menuOpen } = this.state;
     const contextValue: IHeaderContext = {
       orgName,
       orgSplit,
@@ -115,9 +109,7 @@ class Header extends PureComponent<HeaderProps, HeaderState> {
       setMenuToggle: this.setMenuToggle,
       setSearch: this.setSearch,
       toggleMenu: this.toggleMenu,
-      toggleSearch: this.toggleSearch,
       menuOpen,
-      searchOpen,
     };
 
     return (

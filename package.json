@@ -86,7 +86,7 @@
     "classnames": "^2.2.6"
   },
   "peerDependencies": {
-    "nhsuk-frontend": ">=8.0.0",
+    "nhsuk-frontend": ">=8.0.0 <9.0.0",
     "react": ">=18.2.0",
     "react-dom": ">=18.2.0"
   },

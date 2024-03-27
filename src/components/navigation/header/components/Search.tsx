@@ -1,6 +1,7 @@
-import React, { HTMLProps } from 'react';
+import React, { HTMLProps, useContext, useEffect } from 'react';
 import classNames from 'classnames';
 import { Search as SearchIcon } from '@components/icons';
+import HeaderContext, { IHeaderContext } from '../HeaderContext';
 
 export interface SearchProps extends HTMLProps<HTMLInputElement> {
   visuallyHiddenText?: string;
@@ -17,6 +18,11 @@ const Search: React.FC<SearchProps> = ({
   placeholder = 'Search',
   ...rest
 }) => {
+  const { setSearch } = useContext<IHeaderContext>(HeaderContext);
+  useEffect(() => {
+    setSearch(true);
+    return () => setSearch(false);
+  }, []);
   return (
     <div className="nhsuk-header__search">
       <div className={classNames('nhsuk-header__search-wrap')}>
