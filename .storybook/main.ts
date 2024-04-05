@@ -12,6 +12,9 @@ const config: StorybookConfig = {
   docs: {
     autodocs: true,
   },
+  typescript: {
+    reactDocgen: 'react-docgen-typescript',
+  },
   viteFinal(config) {
     return mergeConfig(config, {
       plugins: [tsConfigPaths()],
