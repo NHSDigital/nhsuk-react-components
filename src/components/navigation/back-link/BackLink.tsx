@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import classNames from 'classnames';
-import { ChevronLeft } from '@components/icons';
+import { ChevronLeft } from '@components/content-presentation/icons';
 import { AsElementLink } from '@util/types/LinkTypes';
 
 const BackLink: FC<AsElementLink<HTMLAnchorElement>> = ({

@@ -1,7 +1,7 @@
 'use client';
 import React, { FC, HTMLProps, createContext, useContext, ReactNode } from 'react';
 import classNames from 'classnames';
-import { Tick, Cross } from '@components/icons';
+import { Tick, Cross } from '@components/content-presentation/icons';
 import HeadingLevel, { HeadingLevelType } from '@util/HeadingLevel';
 
 type ListType = 'do' | 'dont';

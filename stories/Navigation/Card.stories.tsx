@@ -3,7 +3,7 @@ import React from 'react';
 import { Card } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 import { ColWidth } from '../../src/util/types/NHSUKTypes';
-import { ChevronRightCircle } from '@components/icons';
+import { ChevronRightCircle } from '@components/content-presentation/icons';
 
 const meta: Meta<typeof Card> = {
   title: 'Navigation/Card',

@@ -1,6 +1,6 @@
 import React, { FC, HTMLProps } from 'react';
 import classNames from 'classnames';
-import { Container, Row, Col } from '../layout';
+import { Container, Row, Col } from '../../layout';
 import HeadingLevel, { HeadingLevelType } from '@util/HeadingLevel';
 
 interface HeroContentProps extends HTMLProps<HTMLDivElement> {

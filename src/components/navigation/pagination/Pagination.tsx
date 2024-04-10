@@ -1,6 +1,6 @@
 import React, { FC, HTMLProps } from 'react';
 import classNames from 'classnames';
-import { ArrowLeft, ArrowRight } from '@components/icons';
+import { ArrowLeft, ArrowRight } from '@components/content-presentation/icons';
 
 interface PaginationLinkProps extends HTMLProps<HTMLAnchorElement> {
   previous?: boolean;
