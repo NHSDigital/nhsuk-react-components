@@ -3,7 +3,7 @@ import { Meta, StoryObj } from '@storybook/react';
 import Panel from '@patterns/panel/Panel';
 
 const meta: Meta<typeof Panel> = {
-  title: 'Components/Panel',
+  title: 'Patterns/Panel',
   component: Panel,
 };
 export default meta;

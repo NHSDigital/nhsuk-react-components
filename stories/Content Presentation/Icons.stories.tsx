@@ -17,7 +17,7 @@ import {
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta = {
-  title: 'Components/Icons',
+  title: 'Content Presentation/Icons',
 };
 export default meta;
 type Story = StoryObj<Element>;

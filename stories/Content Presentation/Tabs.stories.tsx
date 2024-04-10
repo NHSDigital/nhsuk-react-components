@@ -11,7 +11,7 @@ import { Meta, StoryObj } from '@storybook/react';
  */
 
 const meta: Meta<typeof Tabs> = {
-  title: 'Form Elements/Tabs',
+  title: 'Content Presentation/Tabs',
   component: Tabs,
 };
 

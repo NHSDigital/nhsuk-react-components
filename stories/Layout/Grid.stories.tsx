@@ -3,7 +3,7 @@ import { Row, Col, Card, Container } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta = {
-  title: 'Components/Grid',
+  title: 'Layout/Grid',
 };
 export default meta;
 

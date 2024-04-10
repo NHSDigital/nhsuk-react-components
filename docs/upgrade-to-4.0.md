@@ -117,6 +117,10 @@ The `NavAZ` component is still available, however the `ListPanel` component has 
 
 An additional storybook story has been added to give a full example of an A-Z page, combining both of these components. This helps to bring this library into alignment with the [NHS digital service manual listing](https://service-manual.nhs.uk/design-system/patterns/a-to-z-page) for this pattern.
 
+### Hint
+
+`Hint` has been renamed to `HintText`.
+
 ## New features
 
 ### Text input prefixes + suffixes

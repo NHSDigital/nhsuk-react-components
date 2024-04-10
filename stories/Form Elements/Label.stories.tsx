@@ -2,7 +2,7 @@ import { Label } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Label> = {
-  title: 'Components/Label',
+  title: 'Form Elements/Label',
   component: Label,
   args: {
     children: 'National Insurance Number',

@@ -22,7 +22,7 @@ export { default as Fieldset } from './components/form-elements/fieldset';
 export { default as Footer } from './components/navigation/footer';
 export { default as Form, useFormContext } from './components/form-elements/form';
 export { default as Header } from './components/navigation/header';
-export { default as Hero } from './components/hero';
+export { default as Hero } from './components/content-presentation/hero';
 export { default as HintText } from './components/form-elements/hint-text';
 export {
   ArrowLeft as ArrowLeftIcon,
@@ -38,7 +38,7 @@ export {
   Plus as PlusIcon,
   Search as SearchIcon,
   Tick as TickIcon,
-} from './components/icons';
+} from './components/content-presentation/icons';
 export { default as Images } from './components/content-presentation/images';
 export { default as TextInput } from './components/form-elements/text-input';
 export { default as InsetText } from './components/content-presentation/inset-text';

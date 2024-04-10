@@ -3,7 +3,7 @@ import { Hero } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Hero> = {
-  title: 'Components/Hero',
+  title: 'Content Presentation/Hero',
   component: Hero,
 };
 export default meta;
