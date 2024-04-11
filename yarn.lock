@@ -9338,8 +9338,8 @@ __metadata:
     vite-tsconfig-paths: "npm:^4.3.2"
   peerDependencies:
     nhsuk-frontend: ">=8.0.0 <9.0.0"
-    react: ">=18.2.0"
-    react-dom: ">=18.2.0"
+    react: ">=16.8.0"
+    react-dom: ">=16.8.0"
   languageName: unknown
   linkType: soft
 
