@@ -4,6 +4,7 @@ import typescript from '@rollup/plugin-typescript';
 import terser from '@rollup/plugin-terser';
 import external from 'rollup-plugin-peer-deps-external';
 import { dts } from 'rollup-plugin-dts';
+import tsPaths from 'rollup-plugin-tsconfig-paths';
 import preserveDirectives from 'rollup-plugin-preserve-directives';
 
 import tsBuildConfig from './bundle-base.tsconfig.json' assert { type: 'json' };
@@ -19,7 +20,7 @@ const onWarnSuppression = {
   },
 };
 
-const commonPlugins = [external(), resolve(), commonjs()];
+const commonPlugins = [external(), tsPaths(), resolve(), commonjs()];
 
 export default [
   // cjs export
@@ -64,6 +65,7 @@ export default [
           declaration: true,
           declarationDir: 'dist/esm',
           emitDeclarationOnly: true,
+          outDir: 'dist/esm',
         },
       }),
       preserveDirectives(),

@@ -8,7 +8,7 @@ import CheckboxContext, { ICheckboxContext } from './CheckboxContext';
 import Box from './components/Box';
 import Divider from './components/Divider';
 import { generateRandomName } from '@util/RandomID';
-import CheckboxJs from 'nhsuk-frontend/packages/components/checkboxes/checkboxes';
+import CheckboxJs from '@resources/checkboxes';
 
 interface CheckboxesProps extends HTMLProps<HTMLDivElement>, FormElementProps {
   idPrefix?: string;
@@ -20,7 +20,7 @@ const Checkboxes = ({ children, idPrefix, ...rest }: CheckboxesProps) => {
   let _boxIds: Record<string, string> = {};
 
   useEffect(() => {
-    CheckboxJs.default ? CheckboxJs.default() : CheckboxJs();
+    CheckboxJs();
   }, []);
 
   const getBoxId = (id: string, reference: string): string => {

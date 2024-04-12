@@ -14,6 +14,8 @@
     "strict": true,
     "strictNullChecks": true,
     "resolveJsonModule": true,
+    "allowJs": true,
+    "outDir": "./dist",
     "paths": {
       "@components/*": ["src/components/*"],
       "@content-presentation/*": ["src/components/content-presentation/*"],
@@ -21,7 +23,8 @@
       "@navigation/*": ["src/components/navigation/*"],
       "@typography/*": ["src/components/typography/*"],
       "@util/*": ["src/util/*"],
-      "@patterns/*": ["src/patterns/*"]
+      "@patterns/*": ["src/patterns/*"],
+      "@resources/*": ["src/resources/*"]
     }
   },
   "include": ["src"],
