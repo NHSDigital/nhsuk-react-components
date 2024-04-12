@@ -75,6 +75,7 @@
     "rollup-plugin-dts": "^6.1.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-preserve-directives": "^0.4.0",
+    "rollup-plugin-tsconfig-paths": "^1.5.2",
     "sass": "^1.53.0",
     "storybook": "^8.0.5",
     "ts-jest": "^29.1.2",

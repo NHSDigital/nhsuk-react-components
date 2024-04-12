@@ -2,7 +2,7 @@
 import classNames from 'classnames';
 import React, { FC, HTMLAttributes, useEffect } from 'react';
 import HeadingLevel, { HeadingLevelType } from '@util/HeadingLevel';
-import TabsJs from 'nhsuk-frontend/packages/components/tabs/tabs';
+import TabsJs from '@resources/tabs';
 
 type TabsProps = HTMLAttributes<HTMLDivElement>;
 
@@ -55,7 +55,7 @@ interface Tabs extends FC<TabsProps> {
 
 const Tabs: Tabs = ({ className, children, ...rest }) => {
   useEffect(() => {
-    TabsJs.default ? TabsJs.default() : TabsJs();
+    TabsJs();
   }, []);
 
   return (

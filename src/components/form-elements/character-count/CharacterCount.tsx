@@ -1,6 +1,6 @@
 'use client';
 import React, { FC, useEffect } from 'react';
-import CharacterCountJs from 'nhsuk-frontend/packages/components/character-count/character-count';
+import CharacterCountJs from '@resources/character-count';
 import { HTMLAttributesWithData } from '@util/types/NHSUKTypes';
 
 export enum CharacterCountType {
@@ -25,7 +25,7 @@ const CharacterCount: FC<CharacterCountProps> = ({
   ...rest
 }) => {
   useEffect(() => {
-    CharacterCountJs.default ? CharacterCountJs.default() : CharacterCountJs();
+    CharacterCountJs();
   }, []);
 
   const characterCountProps: HTMLAttributesWithData<HTMLDivElement> =
