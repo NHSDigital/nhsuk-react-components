@@ -19,11 +19,13 @@ const NHSLogo: FC<NHSLogoNavProps> = ({
   'aria-label': ariaLabel = 'NHS homepage',
   ...rest
 }) => {
-  const { serviceName, hasMenuToggle, hasSearch } = useContext<IHeaderContext>(HeaderContext);
+  const { serviceName, hasMenuToggle, hasSearch, transactional } =
+    useContext<IHeaderContext>(HeaderContext);
   return (
     <div
       className={classNames('nhsuk-header__logo', {
         'nhsuk-header__logo--only': !hasMenuToggle && !hasSearch,
+        'nhsuk-header__transactional--logo': transactional,
       })}
     >
       <Component

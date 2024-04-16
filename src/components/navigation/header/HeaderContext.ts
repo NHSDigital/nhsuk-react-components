@@ -11,6 +11,7 @@ export interface IHeaderContext {
   hasSearch: boolean;
   hasMenuToggle: boolean;
   menuOpen: boolean;
+  transactional: boolean;
 }
 
 export default createContext<IHeaderContext>({
@@ -25,4 +26,5 @@ export default createContext<IHeaderContext>({
   hasMenuToggle: false,
   toggleMenu: () => {},
   menuOpen: false,
+  transactional: false,
 });

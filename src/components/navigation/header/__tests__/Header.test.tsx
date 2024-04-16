@@ -45,9 +45,9 @@ describe('The header component', () => {
       const headerElement = container.querySelector('.nhsuk-header');
 
       if (transactional) {
-        expect(headerElement).toHaveClass('nhsuk-header--transactional');
+        expect(headerElement).toHaveClass('nhsuk-header__transactional');
       } else {
-        expect(headerElement).not.toHaveClass('nhsuk-header--transactional');
+        expect(headerElement).not.toHaveClass('nhsuk-header__transactional');
       }
 
       if (orgName !== undefined) {
@@ -161,6 +161,18 @@ describe('The header component', () => {
 
       expect(container.querySelector('.nhsuk-header__logo')).not.toHaveClass(
         'nhsuk-header__logo--only',
+      );
+    });
+
+    it('Sets the transactional class if the header is transactional', () => {
+      const { container } = render(
+        <Header transactional>
+          <Header.Logo />
+        </Header>,
+      );
+
+      expect(container.querySelector('.nhsuk-header__logo')).toHaveClass(
+        'nhsuk-header__transactional--logo',
       );
     });
 

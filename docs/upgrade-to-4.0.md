@@ -6,7 +6,7 @@ There are some breaking changes you'll need to be aware of when upgrading to v4.
 
 ### Breadcrumbs
 
-The breadcrumbs component has been brought in line with nhsuk-frontend. As part of this, the mobile-only 'back link' which is displayed will now have a hidden 'Back to' prefix added to it. Please ensure you remove any custom accessibility around this.
+The breadcrumbs component has been brought in line with nhsuk-frontend. As part of this, the mobile-only 'back link' which is displayed will now have a hidden 'Back to' aria-label prefix added to it. Please ensure you remove any custom accessibility around this.
 
 I.e., this:
 
@@ -111,11 +111,11 @@ Now, it should look like this:
 
 ### NavAZ and ListPanel
 
-Due to these components being [removed from the nhsuk-frontend library](https://github.com/nhsuk/nhsuk-frontend/blob/main/CHANGELOG.md#600---29-november-2021), refactoring has taken place to ensure they still adhere to the NHS digital service manual.
+Due to these patterns being [removed from the nhsuk-frontend library](https://github.com/nhsuk/nhsuk-frontend/blob/main/CHANGELOG.md#600---29-november-2021), refactoring has taken place to ensure they still adhere to the NHS digital service manual.
 
-The `NavAZ` component is still available, however the `ListPanel` component has now been renamed to `Panel`. To combine multiple panels you would simply render them as siblings - there is no need to wrap them in a list.
+The `NavAZ` pattern is still available as a component, however the `ListPanel` pattern component has now been renamed to `Panel`. To combine multiple panels you would simply render them as siblings - there is no need to wrap them in a list.
 
-An additional storybook story has been added to give a full example of an A-Z page, combining both of these components. This helps to bring this library into alignment with the [NHS digital service manual listing](https://service-manual.nhs.uk/design-system/patterns/a-to-z-page) for this pattern.
+An additional storybook story has been added to give a full example of an A-Z page, combining both of these pattern components. This helps to bring this library into alignment with the [NHS digital service manual listing](https://service-manual.nhs.uk/design-system/patterns/a-to-z-page) for this pattern.
 
 ### Hint
 
@@ -128,7 +128,7 @@ An additional storybook story has been added to give a full example of an A-Z pa
 You can now specify prefixes and/or suffixes for your text inputs. These are exposed as new props on the `TextInput` component, e.g.
 
 ```
-    <TextInput prefix="£" suffix="pounds" />
+    <TextInput prefix="£" suffix="per item" />
 ```
 
 ### Exclusive option for checkboxes

@@ -78,6 +78,7 @@ const Header = ({
       setSearch,
       toggleMenu,
       menuOpen,
+      transactional: transactional ?? false,
     };
   }, [
     orgName,
@@ -90,13 +91,14 @@ const Header = ({
     setSearch,
     toggleMenu,
     menuOpen,
+    transactional,
   ]);
 
   return (
     <header
       className={classNames(
         'nhsuk-header',
-        { 'nhsuk-header--transactional': transactional },
+        { 'nhsuk-header__transactional': transactional },
         { 'nhsuk-header--organisation': orgName },
         { 'nhsuk-header--white': white },
         className,

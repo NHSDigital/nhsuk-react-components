@@ -44,9 +44,9 @@ export const Standard: Story = {
 };
 
 /**
- * There is a hidden heading which is useful for accessibility concerns and screen readers.
- *
- * This heading is also visible on small screens and if the user has JavaScript disabled.
+ * There is a heading available by using the `Tabs.Title` component.
+ * This heading is hidden on larger screens, and is useful for accessibility concerns and screen readers.
+ * It also displays if the user has JavaScript disabled.
  */
 export const DifferentAccessibleHeading: Story = {
   render: () => (
