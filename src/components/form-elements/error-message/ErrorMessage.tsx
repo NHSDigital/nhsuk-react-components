@@ -9,7 +9,6 @@ const ErrorMessage: FC<ErrorMessageProps> = ({
   className,
   visuallyHiddenText = 'Error: ',
   children,
-  role = 'alert',
   ...rest
 }) => (
   <span className={classNames('nhsuk-error-message', className)} {...rest}>
