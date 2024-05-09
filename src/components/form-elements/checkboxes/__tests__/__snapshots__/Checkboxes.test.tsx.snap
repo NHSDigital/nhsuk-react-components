@@ -253,7 +253,6 @@ exports[`Checkboxes matches snapshot with string error 1`] = `
       <span
         class="nhsuk-error-message"
         id="example--error-message"
-        role="alert"
       >
         <span
           class="nhsuk-u-visually-hidden"
