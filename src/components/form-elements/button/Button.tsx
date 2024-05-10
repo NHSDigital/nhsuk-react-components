@@ -36,6 +36,7 @@ export const Button: FC<ButtonProps> = ({
     disabled={disabled}
     aria-disabled={disabled ? 'true' : 'false'}
     type={type}
+    data-module='nhsuk-button'
     {...rest}
   />
 );
@@ -61,6 +62,7 @@ export const ButtonLink: FC<ButtonLinkProps> = ({
     role={role}
     aria-disabled={disabled ? 'true' : 'false'}
     draggable={draggable}
+    data-module='nhsuk-button'
     {...rest}
   >
     {children}

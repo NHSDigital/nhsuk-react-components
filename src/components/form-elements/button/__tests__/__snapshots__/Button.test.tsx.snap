@@ -5,6 +5,7 @@ exports[`Button disabled matches snapshot: DisabledButton 1`] = `
   <button
     aria-disabled="true"
     class="nhsuk-button nhsuk-button--disabled"
+    data-module="nhsuk-button"
     disabled=""
     type="submit"
   >
@@ -18,6 +19,7 @@ exports[`Button matches snapshot: PlainButton 1`] = `
   <button
     aria-disabled="false"
     class="nhsuk-button"
+    data-module="nhsuk-button"
     type="submit"
   >
     Submit
@@ -30,6 +32,7 @@ exports[`Button reverse matches snapshot: ReverseButton 1`] = `
   <button
     aria-disabled="false"
     class="nhsuk-button nhsuk-button--reverse"
+    data-module="nhsuk-button"
     type="submit"
   >
     Submit
@@ -42,6 +45,7 @@ exports[`Button secondary matches snapshot: SecondaryButton 1`] = `
   <button
     aria-disabled="false"
     class="nhsuk-button nhsuk-button--secondary"
+    data-module="nhsuk-button"
     type="submit"
   >
     Submit
@@ -54,6 +58,7 @@ exports[`ButtonLink button types disabled matches snapshot: DisabledButton 1`] =
   <a
     aria-disabled="true"
     class="nhsuk-button nhsuk-button--disabled"
+    data-module="nhsuk-button"
     draggable="false"
     href="/"
     role="button"
@@ -68,6 +73,7 @@ exports[`ButtonLink button types reverse matches snapshot: ReverseButton 1`] = `
   <a
     aria-disabled="false"
     class="nhsuk-button nhsuk-button--reverse"
+    data-module="nhsuk-button"
     draggable="false"
     href="/"
     role="button"
@@ -82,6 +88,7 @@ exports[`ButtonLink button types secondary matches snapshot: SecondaryButton 1`]
   <a
     aria-disabled="false"
     class="nhsuk-button nhsuk-button--secondary"
+    data-module="nhsuk-button"
     draggable="false"
     href="/"
     role="button"
@@ -96,6 +103,7 @@ exports[`ButtonLink matches snapshot: PlainButton 1`] = `
   <a
     aria-disabled="false"
     class="nhsuk-button"
+    data-module="nhsuk-button"
     draggable="false"
     href="/"
     role="button"
