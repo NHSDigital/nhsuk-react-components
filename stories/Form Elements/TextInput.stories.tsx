@@ -7,7 +7,7 @@ const meta: Meta<typeof TextInput> = {
   args: {
     id: 'input-example',
     name: 'test-name',
-    label: 'National Insurance Number',
+    label: 'National Insurance number',
   },
   argTypes: {
     inputRef: { table: { disable: true } },
@@ -22,6 +22,23 @@ export const WithHintText: Story = {
   args: {
     hint: 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.',
   },
+};
+
+export const AsPageHeading: Story = {
+  args: {
+    labelProps: {
+      isPageHeading: true,
+      size: "l"
+    },
+    hint: 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.',
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'To be used when the input label should also be a page heading - such as when it is the main question on a page.'
+      }
+    }
+  }
 };
 
 export const WithErrorBoolean: Story = {
