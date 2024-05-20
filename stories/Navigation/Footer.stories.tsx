@@ -61,7 +61,7 @@ export const WithLinksArrangedInColumns: Story = {
           <Footer.ListItem href="#">Profile editor login</Footer.ListItem>
         </Footer.List>
 
-        <Footer.List>
+        <Footer.List className="nhsuk-footer__meta">
           <Footer.ListItem href="#">About us</Footer.ListItem>
           <Footer.ListItem href="#">Accessibility statement</Footer.ListItem>
           <Footer.ListItem href="#">Our policies</Footer.ListItem>
