@@ -7,7 +7,7 @@
   - [Upgrading to 4.0](#upgrading-to-40)
   - [Installation](#installation)
   - [Usage](#usage)
-    - [Storybook](#storybook)
+    - [Documentation and examples / storybook](#documentation-and-examples)
   - [Maintainers](#maintainers)
   - [Preparing Releases](#preparing-releases)
 
@@ -59,9 +59,9 @@ class GetStartedButton extends PureComponent {
 }
 ```
 
-### Storybook
+### Documentation and examples
 
-A storybook containing all of the components and their usage can be found [here](https://main--6422e711d7f854c1b681c505.chromatic.com).
+A storybook containing all of the components and their usage can be found [here](https://nhsdigital.github.io/nhsuk-react-components).
 
 ## Maintainers
 
