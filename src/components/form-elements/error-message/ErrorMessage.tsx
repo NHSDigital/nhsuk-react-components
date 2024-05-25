@@ -9,10 +9,9 @@ const ErrorMessage: FC<ErrorMessageProps> = ({
   className,
   visuallyHiddenText = 'Error: ',
   children,
-  role = 'alert',
   ...rest
 }) => (
-  <span className={classNames('nhsuk-error-message', className)} role={role} {...rest}>
+  <span className={classNames('nhsuk-error-message', className)} {...rest}>
     {visuallyHiddenText !== false ? (
       <span className="nhsuk-u-visually-hidden">{visuallyHiddenText}</span>
     ) : null}

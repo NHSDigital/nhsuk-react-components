@@ -60,10 +60,19 @@ const Footer: Footer = ({ className, children, visuallyHiddenText = 'Support lin
   const footerCols = Children.toArray(children).filter((child) =>
     childIsOfComponentType(child, FooterList),
   );
+  const footerCopyright = Children.toArray(children).filter((child) =>
+    childIsOfComponentType(child, FooterCopyright),
+  );
 
-  let newChildren = children;
+  let newChildren;
+  const footerHasMultipleColumns = footerCols.length > 1;
 
-  if (footerCols.length === 1) {
+  if (footerHasMultipleColumns) {
+    // Remove the copyright from being rendered inside the 'nhsuk-footer' div
+    newChildren = Children.toArray(children).filter(
+      (child) => !childIsOfComponentType(child, FooterCopyright),
+    );
+  } else {
     newChildren = Children.map(children, (child) =>
       childIsOfComponentType(child, FooterList)
         ? cloneElement(child, { singleColumn: true })
@@ -79,6 +88,7 @@ const Footer: Footer = ({ className, children, visuallyHiddenText = 'Support lin
             <h2 className="nhsuk-u-visually-hidden">{visuallyHiddenText}</h2>
           ) : null}
           <div className="nhsuk-footer">{newChildren}</div>
+          {footerHasMultipleColumns ? <div>{footerCopyright}</div> : undefined}
         </Container>
       </div>
     </footer>

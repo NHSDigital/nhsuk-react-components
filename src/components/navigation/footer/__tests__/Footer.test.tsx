@@ -42,6 +42,42 @@ describe('Footer', () => {
     );
   });
 
+  it('Renders the copyright within the nhsuk-footer when there is only one column', () => {
+    const { container } = render(
+      <Footer>
+        <Footer.List>
+          <Footer.ListItem id="test-listItem"></Footer.ListItem>
+        </Footer.List>
+        <Footer.Copyright>This is the copyright</Footer.Copyright>
+      </Footer>,
+    );
+    expect(container.querySelectorAll('.nhsuk-footer__copyright').length).toBe(1);
+    expect(
+      container.querySelector('.nhsuk-footer')?.querySelector('.nhsuk-footer__copyright'),
+    ).not.toBeNull();
+  });
+
+  it('Renders the copyright outside of the nhsuk-footer when there is more than one column', () => {
+    const { container } = render(
+      <Footer>
+        <Footer.List>
+          <Footer.ListItem id="test-listItem"></Footer.ListItem>
+        </Footer.List>
+        <Footer.List>
+          <Footer.ListItem id="test-listItem2"></Footer.ListItem>
+        </Footer.List>
+        <Footer.Copyright>This is the copyright</Footer.Copyright>
+      </Footer>,
+    );
+    expect(container.querySelectorAll('.nhsuk-footer__copyright').length).toBe(1);
+    expect(
+      container.querySelector('.nhsuk-width-container')?.querySelector('.nhsuk-footer__copyright'),
+    ).not.toBeNull();
+    expect(
+      container.querySelector('.nhsuk-footer')?.querySelector('.nhsuk-footer__copyright'),
+    ).toBeNull();
+  });
+
   it('Does not include the single column class on ListItem when there is more than one column', () => {
     const { container } = render(
       <Footer>
