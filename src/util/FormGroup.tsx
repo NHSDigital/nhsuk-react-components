@@ -64,7 +64,7 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
 
   const childProps = {
     'aria-describedby': hint ? hintID : undefined,
-    'aria-labelledby': label ? labelID : undefined,
+    'aria-labelledby': error ? errorID : undefined,
     error,
     name: name || elementID,
     id: elementID,

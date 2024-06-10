@@ -108,9 +108,6 @@ describe('FormGroup', () => {
     expect(renderProps!.id).toHaveLength(11);
     expect(renderProps!.id).toContain('input');
 
-    expect(container.querySelector('input')?.getAttribute('aria-labelledby')).toBe(
-      `${renderProps!.id}--label`,
-    );
     expect(container.querySelector('.nhsuk-label')?.getAttribute('id')).toBe(
       `${renderProps!.id}--label`,
     );
@@ -133,7 +130,6 @@ describe('FormGroup', () => {
     expect(renderProps).not.toBe(null);
     expect(renderProps!.id).toBe('testID');
 
-    expect(container.querySelector('input')?.getAttribute('aria-labelledby')).toBe('testID--label');
     expect(container.querySelector('.nhsuk-label')?.getAttribute('id')).toBe('testID--label');
     expect(container.querySelector('.nhsuk-label')?.getAttribute('for')).toBe('testID');
     expect(container.querySelector('.nhsuk-label')?.textContent).toBe('This is a test label');
@@ -155,6 +151,7 @@ describe('FormGroup', () => {
     expect(renderProps).not.toBe(null);
     expect(renderProps!.id).toHaveLength(11);
     expect(renderProps!.id).toContain('input');
+    expect(renderProps!['aria-labelledby']).toBe(`${renderProps!.id}--error-message`);
 
     expect(container.querySelector('.nhsuk-error-message')?.getAttribute('id')).toBe(
       `${renderProps!.id}--error-message`,
@@ -182,6 +179,8 @@ describe('FormGroup', () => {
 
     expect(renderProps).not.toBe(null);
     expect(renderProps!.id).toBe('testID');
+    expect(renderProps!['aria-labelledby']).toBe(`testID--error-message`);
+
 
     expect(container.querySelector('.nhsuk-error-message')?.getAttribute('id')).toBe(
       'testID--error-message',
