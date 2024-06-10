@@ -151,7 +151,7 @@ describe('FormGroup', () => {
     expect(renderProps).not.toBe(null);
     expect(renderProps!.id).toHaveLength(11);
     expect(renderProps!.id).toContain('input');
-    expect(renderProps!['aria-labelledby']).toBe(`${renderProps!.id}--error-message`);
+    expect(renderProps!['aria-describedby']).toBe(`${renderProps!.id}--error-message`);
 
     expect(container.querySelector('.nhsuk-error-message')?.getAttribute('id')).toBe(
       `${renderProps!.id}--error-message`,
@@ -179,7 +179,7 @@ describe('FormGroup', () => {
 
     expect(renderProps).not.toBe(null);
     expect(renderProps!.id).toBe('testID');
-    expect(renderProps!['aria-labelledby']).toBe(`testID--error-message`);
+    expect(renderProps!['aria-describedby']).toBe(`testID--error-message`);
 
 
     expect(container.querySelector('.nhsuk-error-message')?.getAttribute('id')).toBe(
@@ -238,5 +238,33 @@ describe('FormGroup', () => {
     const html = container.innerHTML;
 
     expect(await axe(html)).toHaveNoViolations();
+  });
+
+  it('should add hint ID and error ID to the aria-describedby of the input', () => {
+    const { container } = renderFormGroupComponent({
+      inputType: 'input',
+      id: 'error-and-hint',
+      error: 'This is an error',
+      hint: 'This is a hint',
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      children: ({ error, ...rest }) => <input {...rest} />,
+    });
+
+    const inputElement = container.querySelector('input');
+    expect(inputElement).not.toBeNull();
+    expect(inputElement?.getAttribute('aria-describedby')).toBe('error-and-hint--hint error-and-hint--error-message');
+  })
+
+  it('should have no aria-describedby when there is no hint or label', () => {
+    const { container } = renderFormGroupComponent({
+      inputType: 'input',
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      children: ({ error, ...rest }) => <input {...rest} />,
+    });
+
+    const inputElement = container.querySelector('input');
+    expect(inputElement).not.toBeNull();
+
+    expect(inputElement?.getAttribute('aria-describedby')).toBe(null);
   });
 });
