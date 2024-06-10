@@ -70,6 +70,76 @@ describe('Button', () => {
     ).toBe('true');
     expect(container.querySelector('button.nhsuk-button.nhsuk-button--disabled')).toBeDisabled();
   });
+
+  it('preventDoubleClick calls debounced function', () => {
+    jest.useFakeTimers();
+    const clickHandler = jest.fn();
+
+    const { container } = render(
+      <Button preventDoubleClick onClick={clickHandler}>
+        Submit
+      </Button>,
+    );
+    
+    const button = container.querySelector('button');
+    
+    button?.click();
+    expect(clickHandler).toHaveBeenCalledTimes(1);
+
+    button?.click();
+    expect(clickHandler).toHaveBeenCalledTimes(1);
+
+    jest.runAllTimers();
+    button?.click();
+    expect(clickHandler).toHaveBeenCalledTimes(2);
+  });
+
+  it('preventDoubleClick=false calls original function', () => {
+    const clickHandler = jest.fn();
+
+    const { container } = render(
+      <Button preventDoubleClick={false} onClick={clickHandler}>
+        Submit
+      </Button>,
+    );
+    
+    const button = container.querySelector('button');
+    button?.click();
+    expect(clickHandler).toHaveBeenCalledTimes(1);
+
+    button?.click();
+    expect(clickHandler).toHaveBeenCalledTimes(2);
+
+    button?.click();
+    expect(clickHandler).toHaveBeenCalledTimes(3);
+  });
+
+  it('uses custom debounce timeout', () => {
+    jest.useFakeTimers();
+
+    const clickHandler = jest.fn();
+
+    const { container } = render(
+      <Button preventDoubleClick debounceTimeout={5000} onClick={clickHandler}>
+        Submit
+      </Button>,
+    );
+
+    const button = container.querySelector('button');
+    button?.click();
+    expect(clickHandler).toHaveBeenCalledTimes(1);
+
+    button?.click();
+    expect(clickHandler).toHaveBeenCalledTimes(1);
+
+    jest.advanceTimersByTime(4999);
+    button?.click();
+    expect(clickHandler).toHaveBeenCalledTimes(1);
+
+    jest.advanceTimersByTime(1);
+    button?.click();
+    expect(clickHandler).toHaveBeenCalledTimes(2);
+  });
 });
 
 describe('ButtonLink', () => {
