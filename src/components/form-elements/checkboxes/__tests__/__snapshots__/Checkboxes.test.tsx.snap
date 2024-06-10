@@ -178,6 +178,7 @@ exports[`Checkboxes matches snapshot with boolean error 1`] = `
       class="nhsuk-form-group nhsuk-form-group--error"
     >
       <div
+        aria-describedby="example--error-message"
         class="nhsuk-checkboxes"
         id="example"
       >
@@ -262,6 +263,7 @@ exports[`Checkboxes matches snapshot with string error 1`] = `
         Example error
       </span>
       <div
+        aria-describedby="example--error-message"
         class="nhsuk-checkboxes"
         id="example"
       >
