@@ -62,9 +62,13 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
   const errorID = `${elementID}--error-message`;
   const hintID = `${elementID}--hint`;
 
+  const ariaDescribedBy = [
+    hint ? hintID : undefined,
+    error ? errorID : undefined,
+  ].filter(Boolean);
+
   const childProps = {
-    'aria-describedby': hint ? hintID : undefined,
-    'aria-labelledby': label ? labelID : undefined,
+    'aria-describedby': ariaDescribedBy.join(' ') || undefined,
     error,
     name: name || elementID,
     id: elementID,
