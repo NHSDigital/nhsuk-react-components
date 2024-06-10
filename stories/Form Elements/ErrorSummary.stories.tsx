@@ -23,8 +23,8 @@ import { Meta, StoryObj } from '@storybook/react';
  *
  * const Element = () => {
  *     return (
- *         <ErrorSummary aria-labelledby="error-summary-title" role="alert" tabIndex={-1}>
- *             <ErrorSummary.Title id="error-summary-title">There is a problem</ErrorSummary.Title>
+ *         <ErrorSummary>
+ *             <ErrorSummary.Title>There is a problem</ErrorSummary.Title>
  *             <ErrorSummary.Body>
  *                 <p>Optional description of the errors and how to correct them</p>
  *                 <ErrorSummary.List>
@@ -55,8 +55,8 @@ ErrorSummary.Item.displayName = 'ErrorSummary.Item';
 
 export const Standard: Story = {
   render: (args) => (
-    <ErrorSummary aria-labelledby="error-summary-title" role="alert" tabIndex={-1}>
-      <ErrorSummary.Title id="error-summary-title">There is a problem</ErrorSummary.Title>
+    <ErrorSummary>
+      <ErrorSummary.Title>There is a problem</ErrorSummary.Title>
       <ErrorSummary.Body>
         <p>Optional description of the errors and how to correct them</p>
         <ErrorSummary.List>

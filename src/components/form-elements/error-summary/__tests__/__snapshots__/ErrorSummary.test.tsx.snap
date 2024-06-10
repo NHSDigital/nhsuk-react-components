@@ -34,6 +34,7 @@ exports[`ErrorSummary ErrorSummary.Title matches snapshot: ErrorSummary.Title 1`
 <div>
   <h2
     class="nhsuk-error-summary__title"
+    id="error-summary-title"
   >
     Title
   </h2>
@@ -43,7 +44,10 @@ exports[`ErrorSummary ErrorSummary.Title matches snapshot: ErrorSummary.Title 1`
 exports[`ErrorSummary matches snapshot: ErrorSummary 1`] = `
 <div>
   <div
+    aria-labelledby="error-summary-title"
     class="nhsuk-error-summary"
+    role="alert"
+    tabindex="-1"
   />
 </div>
 `;
