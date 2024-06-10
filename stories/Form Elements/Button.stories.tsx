@@ -68,3 +68,22 @@ export const Disabled: Story = { args: { disabled: true, children: 'Disabled' } 
 export const LinkButton: Story = { args: { href: '/', children: 'As a Link' } };
 export const ForceButton: Story = { args: { as: 'button', children: 'As a Button' } };
 export const ForceAnchor: Story = { args: { as: 'a', children: 'As an Anchor' } };
+export const DebouncedButton: Story = {
+  args: {
+    preventDoubleClick: true,
+    onClick: () => console.log(new Date()),
+    children: 'Debounced Button',
+    debounceTimeout: 5000,
+  },
+  render: (args) => <Button {...args} />,
+};
+export const DebouncedLinkButton: Story = {
+  args: {
+    preventDoubleClick: true,
+    href: '#',
+    onClick: () => console.log(new Date()),
+    children: 'Debounced Button as Link',
+    debounceTimeout: 5000,
+  },
+  render: (args) => <Button {...args} />,
+};
