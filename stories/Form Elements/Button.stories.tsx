@@ -9,7 +9,7 @@ import { ButtonLinkProps, ButtonProps } from '@components/form-elements/button/B
  *
  * ## Implementation Notes
  *
- * When importing `Button` from `nhsuk-react-components`, the `ButtonWrapper` component is imported. This will either render a standard `Button` or `ButtonLink` component depending on whether a `href` prop is supplied.
+ * When importing `Button` from `nhsuk-react-components`, the `ButtonWrapper` component is imported. This will either render a standard `Button` or `ButtonLink` component depending on whether an `href` prop is supplied.
  *
  * If you want to use a specific component instead of the wrapper, you can supply the `as="a"` or `as="button"` props.
  *
@@ -64,26 +64,37 @@ export const Primary: Story = {
 };
 export const Secondary: Story = { args: { secondary: true, children: 'Secondary' } };
 export const Reverse: Story = { args: { reverse: true, children: 'Reverse' } };
+
+/**
+ * 
+ * Disabled buttons have poor contrast and can confuse some users. Only use them if user research shows it makes things easier for users to understand.
+ * 
+ */
+
 export const Disabled: Story = { args: { disabled: true, children: 'Disabled' } };
 export const LinkButton: Story = { args: { href: '/', children: 'As a Link' } };
 export const ForceButton: Story = { args: { as: 'button', children: 'As a Button' } };
 export const ForceAnchor: Story = { args: { as: 'a', children: 'As an Anchor' } };
-export const DebouncedButton: Story = {
+
+/**
+ * You can test this button by opening the browser console. It will log the current dateTime once per debounce.
+ * 
+ * Debounced buttons can optionally provide `debounceTimeout` (measured in milliseconds) to adjust the length of the debounce.
+ */
+export const PreventDoubleClickButton: Story = {
   args: {
     preventDoubleClick: true,
     onClick: () => console.log(new Date()),
     children: 'Debounced Button',
-    debounceTimeout: 5000,
   },
   render: (args) => <Button {...args} />,
 };
-export const DebouncedLinkButton: Story = {
+export const PreventDoubleClickLinkButton: Story = {
   args: {
     preventDoubleClick: true,
     href: '#',
     onClick: () => console.log(new Date()),
     children: 'Debounced Button as Link',
-    debounceTimeout: 5000,
   },
   render: (args) => <Button {...args} />,
 };
