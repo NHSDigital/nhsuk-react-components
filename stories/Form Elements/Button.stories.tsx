@@ -79,7 +79,7 @@ export const ForceAnchor: Story = { args: { as: 'a', children: 'As an Anchor' } 
 /**
  * You can test this button by opening the browser console. It will log the current dateTime once per debounce.
  * 
- * Debounced buttons can optionally provide `debounceTimeout` (measured in miliseconds) to adjust the length of the debounce.
+ * Debounced buttons can optionally provide `debounceTimeout` (measured in milliseconds) to adjust the length of the debounce.
  */
 export const PreventDoubleClickButton: Story = {
   args: {
