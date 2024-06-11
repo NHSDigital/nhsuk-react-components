@@ -19,7 +19,8 @@
 ## 4.0.2 - 21 May 2024
 
 :wrench: **Fixes**
-*-* Fix error message role by @edwardhorsford in [#219](https://github.com/NHSDigital/nhsuk-react-components/pull/219)
+
+* Fix error message role by @edwardhorsford in [#219](https://github.com/NHSDigital/nhsuk-react-components/pull/219)
 
 ## 4.0.1 - 20 May 2024
 
