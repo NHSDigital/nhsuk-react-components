@@ -77,3 +77,21 @@ export const SelectWithErrorString: Story = {
 
   name: 'Select With Error (String)',
 };
+
+export const SelectWithErrorAndHintString: Story = {
+  render: function SelectWithErrorAndHintStringRender() {
+    const [error, setError] = useState<string>('Error message goes here');
+    return (
+      <>
+        <Select error={error} label="Label text goes here" hint="Hint text goes here">
+          <Select.Option value="1">NHS.UK frontend option 1</Select.Option>
+          <Select.Option value="2">NHS.UK frontend option 2</Select.Option>
+          <Select.Option value="3">NHS.UK frontend option 3</Select.Option>
+        </Select>
+        <TextInput onChange={(e) => setError(e.currentTarget.value)} value={error} />
+      </>
+    );
+  },
+
+  name: 'Select With Error and Hint (String)',
+};
