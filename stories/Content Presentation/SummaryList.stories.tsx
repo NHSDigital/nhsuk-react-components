@@ -14,7 +14,7 @@ import { Meta, StoryObj } from '@storybook/react';
  * ```jsx
  *  <a href="#">
  *   Change
- *   <span class="nhsuk-u-visually-hidden">
+ *   <span className="nhsuk-u-visually-hidden">
  *     {' '}name
  *   </span>
  * </a>
@@ -51,7 +51,7 @@ export const Standard: Story = {
         <SummaryList.Value>Sarah Philips</SummaryList.Value>
         <SummaryList.Actions>
           <a href="#">
-            Change<span class="nhsuk-u-visually-hidden"> name</span>
+            Change<span className="nhsuk-u-visually-hidden"> name</span>
           </a>
         </SummaryList.Actions>
       </SummaryList.Row>
@@ -60,7 +60,7 @@ export const Standard: Story = {
         <SummaryList.Value>5 January 1978</SummaryList.Value>
         <SummaryList.Actions>
           <a href="#">
-            Change<span class="nhsuk-u-visually-hidden"> date of birth</span>
+            Change<span className="nhsuk-u-visually-hidden"> date of birth</span>
           </a>
         </SummaryList.Actions>
       </SummaryList.Row>
@@ -75,7 +75,7 @@ export const Standard: Story = {
         </SummaryList.Value>
         <SummaryList.Actions>
           <a href="#">
-            Change<span class="nhsuk-u-visually-hidden"> contact information</span>
+            Change<span className="nhsuk-u-visually-hidden"> contact information</span>
           </a>
         </SummaryList.Actions>
       </SummaryList.Row>
@@ -87,7 +87,7 @@ export const Standard: Story = {
         </SummaryList.Value>
         <SummaryList.Actions>
           <a href="#">
-            Change<span class="nhsuk-u-visually-hidden"> contact details</span>
+            Change<span className="nhsuk-u-visually-hidden"> contact details</span>
           </a>
         </SummaryList.Actions>
       </SummaryList.Row>
