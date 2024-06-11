@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## 4.1.0 - 11 June 2024
+
 :wrench: **Fixes**
 
 * Add js shims for buttons. PR [#231](https://github.com/NHSDigital/nhsuk-react-components/pull/231), Fixes [#218](https://github.com/NHSDigital/nhsuk-react-components/issues/218)
