@@ -3,6 +3,25 @@ import React from 'react';
 import { SummaryList, BodyText } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
+
+/**
+ * ## Implementation notes
+ *
+ * When providing action links, you must include visually hidden text. This means a screen reader user will hear a meaningful action, like "Change name" or "Change date of birth".'
+ * 
+ * Example of an action link:
+ * 
+ * ```jsx
+ *  <a href="#">
+ *   Change
+ *   <span className="nhsuk-u-visually-hidden">
+ *     {' '}name
+ *   </span>
+ * </a>
+ * ```
+ */
+
+
 const meta: Meta<typeof SummaryList> = {
   title: 'Content Presentation/SummaryList',
   component: SummaryList,
@@ -14,6 +33,8 @@ SummaryList.Row.displayName = 'SummaryList.Row';
 SummaryList.Key.displayName = 'SummaryList.Key';
 SummaryList.Value.displayName = 'SummaryList.Value';
 SummaryList.Actions.displayName = 'SummaryList.Actions';
+
+
 
 export const Standard: Story = {
   argTypes: {
@@ -29,14 +50,18 @@ export const Standard: Story = {
         <SummaryList.Key>Name</SummaryList.Key>
         <SummaryList.Value>Sarah Philips</SummaryList.Value>
         <SummaryList.Actions>
-          <a href="stories#">Change</a>
+          <a href="#">
+            Change<span className="nhsuk-u-visually-hidden"> name</span>
+          </a>
         </SummaryList.Actions>
       </SummaryList.Row>
       <SummaryList.Row>
         <SummaryList.Key>Date of birth</SummaryList.Key>
         <SummaryList.Value>5 January 1978</SummaryList.Value>
         <SummaryList.Actions>
-          <a href="stories#">Change</a>
+          <a href="#">
+            Change<span className="nhsuk-u-visually-hidden"> date of birth</span>
+          </a>
         </SummaryList.Actions>
       </SummaryList.Row>
       <SummaryList.Row>
@@ -49,7 +74,9 @@ export const Standard: Story = {
           SE23 6FH
         </SummaryList.Value>
         <SummaryList.Actions>
-          <a href="stories#">Change</a>
+          <a href="#">
+            Change<span className="nhsuk-u-visually-hidden"> contact information</span>
+          </a>
         </SummaryList.Actions>
       </SummaryList.Row>
       <SummaryList.Row>
@@ -59,12 +86,23 @@ export const Standard: Story = {
           <BodyText>sarah.phillips@example.com</BodyText>
         </SummaryList.Value>
         <SummaryList.Actions>
-          <a href="stories#">Change</a>
+          <a href="#">
+            Change<span className="nhsuk-u-visually-hidden"> contact details</span>
+          </a>
         </SummaryList.Actions>
       </SummaryList.Row>
     </SummaryList>
   ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Change links must include visually hidden text. This means a screen reader user will hear a meaningful action, like "Change name" or "Change date of birth".'
+      }
+    }
+  }
 };
+
+
 
 export const SummaryListWithoutActions: Story = {
   args: { noBorder: false },
