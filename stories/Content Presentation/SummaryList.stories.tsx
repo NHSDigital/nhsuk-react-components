@@ -29,14 +29,18 @@ export const Standard: Story = {
         <SummaryList.Key>Name</SummaryList.Key>
         <SummaryList.Value>Sarah Philips</SummaryList.Value>
         <SummaryList.Actions>
-          <a href="stories#">Change</a>
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> name</span>
+          </a>
         </SummaryList.Actions>
       </SummaryList.Row>
       <SummaryList.Row>
         <SummaryList.Key>Date of birth</SummaryList.Key>
         <SummaryList.Value>5 January 1978</SummaryList.Value>
         <SummaryList.Actions>
-          <a href="stories#">Change</a>
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> date of birth</span>
+          </a>
         </SummaryList.Actions>
       </SummaryList.Row>
       <SummaryList.Row>
@@ -49,7 +53,9 @@ export const Standard: Story = {
           SE23 6FH
         </SummaryList.Value>
         <SummaryList.Actions>
-          <a href="stories#">Change</a>
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> contact information</span>
+          </a>
         </SummaryList.Actions>
       </SummaryList.Row>
       <SummaryList.Row>
@@ -59,11 +65,20 @@ export const Standard: Story = {
           <BodyText>sarah.phillips@example.com</BodyText>
         </SummaryList.Value>
         <SummaryList.Actions>
-          <a href="stories#">Change</a>
+          <a href="#">
+            Change<span class="nhsuk-u-visually-hidden"> contact details</span>
+          </a>
         </SummaryList.Actions>
       </SummaryList.Row>
     </SummaryList>
   ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Change links must include visually hidden text. This means a screen reader user will hear a meaningful action, like "Change name" or "Change date of birth".'
+      }
+    }
+  }
 };
 
 export const SummaryListWithoutActions: Story = {
