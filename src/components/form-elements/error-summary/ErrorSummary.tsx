@@ -5,6 +5,9 @@ import React, {
   HTMLProps,
   PropsWithoutRef,
   RefAttributes,
+  useImperativeHandle,
+  useRef,
+  useEffect,
 } from 'react';
 import classNames from 'classnames';
 import useDevWarning from '@util/hooks/UseDevWarning';
@@ -50,17 +53,28 @@ const ErrorSummaryDiv = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>(
     tabIndex = -1,
     role = 'alert',
     'aria-labelledby': ariaLabelledBy = DefaultErrorSummaryTitleID,
+    autoFocus = false,
     ...rest
   },
   ref
 ) => {
+    const divRef = useRef<HTMLDivElement>(null);
+
     useDevWarning('The ErrorSummary component should always have a tabIndex of -1', () => tabIndex !== -1)
     useDevWarning('The ErrorSummary component should always have a role of alert', () => role !== 'alert')
-  
+
+    useImperativeHandle(ref, () => divRef.current as HTMLDivElement);
+
+    useEffect(() => {
+      if (divRef.current && autoFocus) {
+        divRef.current.focus();
+      }
+    }, [divRef.current])
+
     return (
       <div
         className={classNames('nhsuk-error-summary', className)}
-        ref={ref}
+        ref={divRef}
         tabIndex={tabIndex}
         role={role}
         aria-labelledby={ariaLabelledBy}
