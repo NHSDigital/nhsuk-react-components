@@ -87,7 +87,6 @@ const IndividualDateInput: FC<IndividualDateInputProps> = ({
           value={inputValue}
           defaultValue={inputDefaultValue}
           id={inputID}
-          aria-labelledby={restLabelProps.id || `${inputID}--label`}
           name={inputName}
           onChange={handleChange}
           ref={refCallback}
