@@ -2,14 +2,19 @@ import React, { HTMLProps, MouseEvent, useEffect } from 'react';
 import classNames from 'classnames';
 
 interface SkipLinkProps extends HTMLProps<HTMLAnchorElement> {
+  /** The reference to the element to set focus to when the link is clicked */
   focusTargetRef?: React.RefObject<HTMLElement>;
+  /** Disables the default anchor click behaviour, avoiding navigation entries being added to the browser history */
   disableDefaultBehaviour?: boolean;
+  /** Disables focusing the first h1 level heading when {@link focusTargetRef} is not set */
+  disableHeadingFocus?: boolean;
 }
 
 const SkipLink = ({
   children = 'Skip to main content',
   className,
   disableDefaultBehaviour,
+  disableHeadingFocus,
   focusTargetRef,
   href = '#maincontent',
   tabIndex = 0,
@@ -65,7 +70,7 @@ const SkipLink = ({
     if (disableDefaultBehaviour) event.preventDefault();
     if (focusTargetRef && focusTargetRef.current) {
       focusElement(focusTargetRef.current);
-    } else if (!disableDefaultBehaviour) {
+    } else if (!disableHeadingFocus) {
       // Follow the default NHSUK Frontend behaviour, but go about it in a safer way.
       // https://github.com/nhsuk/nhsuk-frontend/blob/master/packages/components/skip-link/skip-link.js
       if (firstHeadingElement) focusElement(firstHeadingElement);
@@ -80,7 +85,7 @@ const SkipLink = ({
     <a
       className={classNames('nhsuk-skip-link', className)}
       onClick={focusTarget}
-      href={disableDefaultBehaviour ? undefined : href}
+      href={href}
       tabIndex={tabIndex}
       {...rest}
     >

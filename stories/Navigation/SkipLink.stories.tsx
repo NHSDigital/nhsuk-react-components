@@ -25,9 +25,7 @@ const CodeText: React.FC<{ children: React.ReactNode }> = ({
 const meta: Meta<typeof SkipLink> = {
   title: 'Navigation/SkipLink',
   component: SkipLink,
-  argTypes: {
-    focusTargetRef: { table: { disable: true } },
-  },
+
   render: (args) => (
     <>
       <HintText>
@@ -35,7 +33,12 @@ const meta: Meta<typeof SkipLink> = {
         <CodeText>tab</CodeText>
         to show the SkipLink
       </HintText>
-      <SkipLink disableDefaultBehaviour={args.disableDefaultBehaviour} />
+      <SkipLink
+        disableDefaultBehaviour={args.disableDefaultBehaviour}
+        disableHeadingFocus={args.disableHeadingFocus}
+      />
+      <h1>Page heading</h1>
+      <div id="#maincontent">This is the main content</div>
     </>
   ),
 };
@@ -46,14 +49,20 @@ type Story = StoryObj<typeof SkipLink>;
 export const Standard: Story = {
   args: {
     disableDefaultBehaviour: false,
-  },
-  argTypes: {
-    disableDefaultBehaviour: { table: { disable: true } },
+    disableHeadingFocus: false,
   },
 };
 
 export const SkipLinkWithDefaultBehaviourDisabled: Story = {
   args: {
     disableDefaultBehaviour: true,
+    disableHeadingFocus: false,
+  },
+};
+
+export const SkipLinkWithHeadingFocusDisabled: Story = {
+  args: {
+    disableDefaultBehaviour: false,
+    disableHeadingFocus: true,
   },
 };
