@@ -75,6 +75,7 @@ class GetStartedButton extends PureComponent {
 - Kevin Kuszyk ([GitHub](https://github.com/kevinkuszyk))
 - Kai Spencer ([GitHub](https://github.com/KaiSpencer))
 - Ed Horsford ([GitHub](https://github.com/edwardhorsford))
+- Jake Barton ([GitHub](https://github.com/jakeb-nhs))
 
 ## Preparing Releases
 
