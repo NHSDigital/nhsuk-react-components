@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+## 4.1.2 - 3 September 2024
+
+:wrench: **Fixes**
+
+* Fix issues with SkipLink (always set the href) and bring into line with NHSUK frontend. PR [#248](https://github.com/NHSDigital/nhsuk-react-components/pull/248)
+
+## 4.1.1 - 9 August 2024
+
+:wrench: **Fixes**
+
+* Remove the unnecessary aria-labelledby tags from DateInput fields. PR [#246](https://github.com/NHSDigital/nhsuk-react-components/pull/246)
+
 ## 4.1.0 - 11 June 2024
 
 :wrench: **Fixes**
