@@ -1,4 +1,4 @@
-# NHS.UK React Components
+# NHS.UK React components
 
 This repository contains the code for NHS.UK React components - a port of the [NHS.UK Frontend components](https://github.com/nhsuk/nhsuk-frontend).
 
@@ -6,7 +6,7 @@ This repository contains the code for NHS.UK React components - a port of the [N
 
 ## Documentation and examples
 
-[View documentation and examples](https://nhsdigital.github.io/nhsuk-react-components).
+[View documentation and examples](https://nhsdigital.github.io/nhsuk-react-components)
 
 ## Installation
 
@@ -45,7 +45,7 @@ class GetStartedButton extends PureComponent {
 
 ## Maintainers
 
-**We're currently looking for new maintainers!** If you have knowledge of React and would be willing to help maintain this library, you can email me (Thomas Judd-Cooper) [here](mailto:thomas.judd-cooper1@nhs.net).
+**We’re currently looking for new maintainers** If you have knowledge of React and would be willing to help maintain this library, you can [email me (Thomas Judd-Cooper)](mailto:thomas.judd-cooper1@nhs.net).
 
 - Thomas Judd-Cooper ([GitHub](https://github.com/tomdango))
 - Sam Brown ([GitHub](https://github.com/samueldavidbrown))
@@ -55,7 +55,7 @@ class GetStartedButton extends PureComponent {
 - Ed Horsford ([GitHub](https://github.com/edwardhorsford))
 - Jake Barton ([GitHub](https://github.com/jakeb-nhs))
 
-## Preparing Releases
+## Preparing releases
 
 Releases run in CI using github actions.
 
