@@ -22,10 +22,44 @@ describe('SkipLink', () => {
     expect(container).toMatchSnapshot('SkipLink');
   });
 
-  it('sets the href to #maincontent by default', () => {
-    const { container } = render(<SkipLink />);
+  it('sets the href to #maincontent by default and focuses the first heading', () => {
+    const { container } = render(
+      <>
+        <SkipLink />
+        <h1 id="heading">Heading</h1>
+      </>,
+    );
 
-    expect(container.querySelector('.nhsuk-skip-link')?.getAttribute('href')).toBe('#maincontent');
+    const headingEl = container.querySelector('#heading') as HTMLElement;
+    const focusSpy = jest.spyOn(headingEl, 'focus');
+
+    const skipLinkEl = container.querySelector('.nhsuk-skip-link')!;
+
+    expect(skipLinkEl.getAttribute('href')).toBe('#maincontent');
+
+    fireEvent.click(skipLinkEl);
+
+    expect(focusSpy).toHaveBeenCalled();
+  });
+
+  it('Does not focus the first heading if disableHeadingFocus is set', () => {
+    const { container } = render(
+      <>
+        <SkipLink disableHeadingFocus />
+        <h1 id="heading">Heading</h1>
+      </>,
+    );
+
+    const headingEl = container.querySelector('#heading') as HTMLElement;
+    const focusSpy = jest.spyOn(headingEl, 'focus');
+
+    const skipLinkEl = container.querySelector('.nhsuk-skip-link')!;
+
+    expect(skipLinkEl.getAttribute('href')).toBe('#maincontent');
+
+    fireEvent.click(skipLinkEl);
+
+    expect(focusSpy).not.toHaveBeenCalled();
   });
 
   it('calls onClick callback when clicked', () => {
@@ -36,12 +70,6 @@ describe('SkipLink', () => {
     fireEvent.click(skipLinkEl);
 
     expect(onClick).toHaveBeenCalled();
-  });
-
-  it('does not set the href when disableDefaultBehaviour is set', () => {
-    const { container } = render(<SkipLink disableDefaultBehaviour />);
-
-    expect(container.querySelector('.nhsuk-skip-link')?.getAttribute('href')).toBeFalsy();
   });
 
   it('Focuses the main content when clicked', () => {
