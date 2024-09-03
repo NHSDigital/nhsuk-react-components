@@ -1,5 +1,15 @@
 # NHS.UK React Components
 
+This repository contains the code for NHS.UK React components - a port of the [NHS.UK Frontend components](https://github.com/nhsuk/nhsuk-frontend).
+
+[![GitHub Actions CI Status](https://github.com/NHSDigital/nhsuk-react-components/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/NHSDigital/nhsuk-react-components/actions?query=workflow%3A%22CI+Build%22+branch%3Amain) [![Bundle Size](https://img.shields.io/bundlephobia/minzip/nhsuk-react-components.svg)](https://bundlephobia.com/result?p=nhsuk-react-components)
+
+## Documentation and examples
+
+[View documentation and examples](https://nhsdigital.github.io/nhsuk-react-components).
+
+## Index
+
 - [NHS.UK React Components](#nhsuk-react-components)
   - [Coming from 0.x?](#coming-from-0x)
   - [Upgrading to 2.0](#upgrading-to-20)
@@ -11,11 +21,7 @@
   - [Maintainers](#maintainers)
   - [Preparing Releases](#preparing-releases)
 
-NHS.UK Frontend ported to React
-
-[![GitHub Actions CI Status](https://github.com/NHSDigital/nhsuk-react-components/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/NHSDigital/nhsuk-react-components/actions?query=workflow%3A%22CI+Build%22+branch%3Amain) [![Bundle Size](https://img.shields.io/bundlephobia/minzip/nhsuk-react-components.svg)](https://bundlephobia.com/result?p=nhsuk-react-components)
-
-## Coming from 0.x?
+## Coming from 0.x
 
 If you're coming from versions of the library prior to 1.0.0, please give [this doc](/docs/upgrade-to-1.0.md) a brief read, as there a number of changes between 0.x release and the 1.0 release.
 
@@ -59,10 +65,6 @@ class GetStartedButton extends PureComponent {
 }
 ```
 
-### Documentation and examples
-
-A storybook containing all of the components and their usage can be found [here](https://nhsdigital.github.io/nhsuk-react-components).
-
 ## Maintainers
 
 **We're currently looking for new maintainers!** If you have knowledge of React and would be willing to help maintain this library, you can email me (Thomas Judd-Cooper) [here](mailto:thomas.judd-cooper1@nhs.net).
@@ -72,6 +74,7 @@ A storybook containing all of the components and their usage can be found [here]
 - Luke Pearson ([GitHub](https://github.com/lukepearson))
 - Kevin Kuszyk ([GitHub](https://github.com/kevinkuszyk))
 - Kai Spencer ([GitHub](https://github.com/KaiSpencer))
+- Ed Horsford ([GitHub](https://github.com/edwardhorsford))
 
 ## Preparing Releases
 
