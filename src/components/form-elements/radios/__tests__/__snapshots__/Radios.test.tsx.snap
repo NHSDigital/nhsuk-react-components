@@ -13,7 +13,6 @@ exports[`Radios matches snapshot 1`] = `
         class="nhsuk-radios__item"
       >
         <input
-          aria-labelledby="example-1--label"
           class="nhsuk-radios__input"
           id="example-1"
           name="example"
@@ -32,7 +31,6 @@ exports[`Radios matches snapshot 1`] = `
         class="nhsuk-radios__item"
       >
         <input
-          aria-labelledby="example-2--label"
           class="nhsuk-radios__input"
           id="example-2"
           name="example"

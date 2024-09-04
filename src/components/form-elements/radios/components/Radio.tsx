@@ -59,7 +59,6 @@ const Radio: FC<RadioProps> = ({
           className={classNames('nhsuk-radios__input', className)}
           id={inputID}
           name={name}
-          aria-labelledby={children ? `${inputID}--label` : undefined}
           aria-describedby={hint ? `${inputID}--hint` : undefined}
           checked={checked}
           defaultChecked={defaultChecked}
