@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+:wrench: **Fixes**
+* Remove the unnecessary aria-labelledby tags from radio items. PR [#253](https://github.com/NHSDigital/nhsuk-react-components/pull/253)
+
+
 ## 4.1.2 - 3 September 2024
 
 :wrench: **Fixes**
