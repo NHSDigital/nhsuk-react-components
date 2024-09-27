@@ -20,20 +20,21 @@ describe('ErrorSummary', () => {
     const { container } = render(<ErrorSummary />);
 
     expect(container.querySelector('div')?.getAttribute('tabindex')).toBe('-1');
-    expect(container.querySelector('div')?.getAttribute('role')).toBe('alert');
-    expect(container.querySelector('div')?.getAttribute('aria-labelledby')).toBe('error-summary-title');
+    expect(container.querySelector('div')?.getAttribute('role')).toBeNull();
+    expect(container.querySelector('div')?.getAttribute('aria-labelledby')).toBeNull();
+  })
+
+  it('has role="alert" on the inner div', () => {
+    const { container } = render(<ErrorSummary />);
+
+    const alertDiv = container.querySelector('.nhsuk-error-summary > div[role="alert"]');
+    expect(alertDiv).not.toBeNull();
   })
 
   it('throws a dev warning if tabIndex is not -1', () => {
     jest.spyOn(console, 'warn').mockImplementation(() => {});
     render(<ErrorSummary tabIndex={0} />);
     expect(console.warn).toHaveBeenCalledWith('The ErrorSummary component should always have a tabIndex of -1');
-  })
-
-  it('throws a dev warning if role is not alert', () => {
-    jest.spyOn(console, 'warn').mockImplementation(() => {});
-    render(<ErrorSummary role="status" />);
-    expect(console.warn).toHaveBeenCalledWith('The ErrorSummary component should always have a role of alert');
   })
 
   describe('ErrorSummary.Title', () => {
