@@ -5,7 +5,7 @@ import HintText from '../components/form-elements/hint-text/HintText';
 import ErrorMessage from '../components/form-elements/error-message/ErrorMessage';
 import { generateRandomID } from './RandomID';
 import Label from '../components/form-elements/label/Label';
-import { FormElementProps } from './types/FormTypes';
+import { FormElementProps, InputType } from './types/FormTypes';
 import FieldsetContext, {
   IFieldsetContext,
 } from '../components/form-elements/fieldset/FieldsetContext';
@@ -33,7 +33,7 @@ type FormElementRenderProps<T> = Omit<T, ExcludedProps> & {
 
 export type FormGroupProps<T> = FormElementProps & {
   children: (props: FormElementRenderProps<T>) => ReactNode;
-  inputType: 'input' | 'radios' | 'select' | 'checkboxes' | 'dateinput' | 'textarea';
+  inputType: InputType;
 };
 
 const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T>): JSX.Element => {
@@ -62,10 +62,7 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
   const errorID = `${elementID}--error-message`;
   const hintID = `${elementID}--hint`;
 
-  const ariaDescribedBy = [
-    hint ? hintID : undefined,
-    error ? errorID : undefined,
-  ].filter(Boolean);
+  const ariaDescribedBy = [hint ? hintID : undefined, error ? errorID : undefined].filter(Boolean);
 
   const childProps = {
     'aria-describedby': ariaDescribedBy.join(' ') || undefined,
@@ -82,8 +79,8 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
   }, [elementID, error, isFieldset]);
 
   useEffect(() => {
-    registerComponent(elementID);
-    return () => registerComponent(elementID, true);
+    registerComponent(elementID, inputType);
+    return () => registerComponent(elementID, inputType, true);
   }, []);
 
   const { className: formGroupClassName, ...formGroupRestProps } = formGroupProps || {};

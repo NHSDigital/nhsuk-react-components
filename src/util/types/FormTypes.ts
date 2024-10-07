@@ -15,3 +15,10 @@ export interface FormElementProps {
   id?: string;
   name?: string;
 }
+
+export type InputType = 'input' | 'radios' | 'select' | 'checkboxes' | 'dateinput' | 'textarea';
+
+export type RegisteredComponent = {
+  inputType: InputType;
+  elementId: string;
+};

@@ -32,6 +32,7 @@ const meta: Meta<typeof Fieldset> = {
   component: Fieldset,
   args: {
     children: 'What is your address?',
+    disableFieldsetRenderWithSingleFormElements: false,
   },
 };
 export default meta;
@@ -58,8 +59,10 @@ export const WithCustomLegendSize: Story = {
 };
 
 export const WithFormElement: Story = {
-  render: () => (
-    <Fieldset>
+  render: (args) => (
+    <Fieldset
+      disableFieldsetRenderWithSingleFormElements={args.disableFieldsetRenderWithSingleFormElements}
+    >
       <Fieldset.Legend size="m">Input below</Fieldset.Legend>
       <TextInput id="test-input" />
     </Fieldset>
