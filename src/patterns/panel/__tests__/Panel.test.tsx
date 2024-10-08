@@ -9,13 +9,28 @@ describe('Panel', () => {
     expect(container).toMatchSnapshot('ListPanel');
   });
 
-  it('renders label', () => {
-    const { container } = render(<Panel label="Label" labelProps={{ className: 'test-label' }} />);
-    const label = container.querySelector('.test-label');
+  it.each`
+    headingLevelProp | expectedHeadingTag
+    ${undefined}     | ${'H2'}
+    ${'h1'}          | ${'H1'}
+    ${'h2'}          | ${'H2'}
+    ${'h3'}          | ${'H3'}
+  `(
+    'renders label using headingLevel $headingLevelProp results in expected tag $expectedHeadingTag',
+    ({ headingLevelProp, expectedHeadingTag }) => {
+      const { container } = render(
+        <Panel
+          label="Label"
+          labelProps={{ className: 'test-label', headingLevel: headingLevelProp }}
+        />,
+      );
+      const label = container.querySelector('.test-label');
 
-    expect(label).toBeTruthy();
-    expect(label?.textContent).toBe('Label');
-  });
+      expect(label).toBeTruthy();
+      expect(label?.textContent).toBe('Label');
+      expect(label?.tagName).toBe(expectedHeadingTag);
+    },
+  );
 
   it('renders back to top button', () => {
     const { container } = render(<Panel backToTop />);

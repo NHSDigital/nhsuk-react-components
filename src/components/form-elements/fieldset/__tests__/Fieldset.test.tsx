@@ -5,7 +5,11 @@ import TextInput from '@components/form-elements/text-input';
 
 describe('Fieldset', () => {
   it('matches snapshot', () => {
-    const { container } = render(<Fieldset>Text</Fieldset>);
+    const { container } = render(
+      <Fieldset>
+        <TextInput id="test-input" />
+      </Fieldset>,
+    );
 
     expect(container).toMatchSnapshot('Fieldset');
   });

@@ -18,23 +18,23 @@ export type HeadingLevelType =
   | 'H5'
   | 'H6';
 
-const HeadingLevel: FC<HeadingLevelProps> = ({ headingLevel = 'h3', ...rest }) => {
+const HeadingLevel: FC<HeadingLevelProps> = ({ headingLevel = 'h3', children, ...rest }) => {
   switch (headingLevel.toLowerCase()) {
     case 'h1':
-      return <h1 {...rest} />;
+      return <h1 {...rest}>{children}</h1>;
     case 'h2':
-      return <h2 {...rest} />;
+      return <h2 {...rest}>{children}</h2>;
     case 'h3':
-      return <h3 {...rest} />;
+      return <h3 {...rest}>{children}</h3>;
     case 'h4':
-      return <h4 {...rest} />;
+      return <h4 {...rest}>{children}</h4>;
     case 'h5':
-      return <h5 {...rest} />;
+      return <h5 {...rest}>{children}</h5>;
     case 'h6':
-      return <h6 {...rest} />;
+      return <h6 {...rest}>{children}</h6>;
     default:
       console.error(`HeadingLevel: Invalid headingLevel prop: ${headingLevel}`);
-      return <h3 {...rest} />;
+      return <h3 {...rest}>{children}</h3>;
   }
 };
 

@@ -1,6 +1,5 @@
 import React, { Children, FC, HTMLProps, ReactNode } from 'react';
 import classNames from 'classnames';
-import { Container } from '@components/layout';
 import { AsElementLink } from '@util/types/LinkTypes';
 import { childIsOfComponentType } from '@util/types/TypeGuards';
 
@@ -65,10 +64,8 @@ const Breadcrumb: Breadcrumb = ({
 
   return (
     <nav className={classNames('nhsuk-breadcrumb', className)} aria-label={ariaLabel} {...rest}>
-      <Container>
-        <ol className="nhsuk-breadcrumb__list">{ItemChildren}</ol>
-        {OtherChildren}
-      </Container>
+      <ol className="nhsuk-breadcrumb__list">{ItemChildren}</ol>
+      {OtherChildren}
     </nav>
   );
 };

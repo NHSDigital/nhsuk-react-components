@@ -1,9 +1,7 @@
 import React, { FC } from 'react';
-import HintText, { HintTextProps } from '../components/form-elements/hint-text/HintText';
-import Label, { LabelProps } from '../components/form-elements/label/Label';
-import ErrorMessage, {
-  ErrorMessageProps,
-} from '../components/form-elements/error-message/ErrorMessage';
+import HintText, { HintTextProps } from '../form-elements/hint-text/HintText';
+import Label, { LabelProps } from '../form-elements/label/Label';
+import ErrorMessage, { ErrorMessageProps } from '../form-elements/error-message/ErrorMessage';
 
 interface LabelBlockProps {
   elementId?: string;
