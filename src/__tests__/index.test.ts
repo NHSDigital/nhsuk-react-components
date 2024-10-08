@@ -36,6 +36,7 @@ describe('Index', () => {
       'Fieldset',
       'Footer',
       'Form',
+      'FormGroup',
       'Header',
       'Hero',
       'HintText',

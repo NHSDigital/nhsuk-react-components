@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import Tabs from '../Tabs';
-import { HeadingLevelType } from '@util/HeadingLevel';
+import { HeadingLevelType } from '@components/utils/HeadingLevel';
 
 describe('The tabs component', () => {
   it('Matches the snapshot', () => {

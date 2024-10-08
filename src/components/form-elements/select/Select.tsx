@@ -2,7 +2,7 @@ import React, { FC, HTMLProps, MutableRefObject } from 'react';
 
 import classNames from 'classnames';
 import { FormElementProps } from '@util/types/FormTypes';
-import FormGroup from '@util/FormGroup';
+import SingleInputFormGroup from '@components/utils/SingleInputFormGroup';
 
 //  SelectProps = HTMLProps<HTMLSelectElement> & FormElementProps;
 interface ISelectProps extends HTMLProps<HTMLSelectElement>, FormElementProps {
@@ -14,7 +14,7 @@ interface ISelect extends FC<ISelectProps> {
 }
 
 const Select: ISelect = ({ children, ...rest }) => (
-  <FormGroup<ISelectProps> inputType="select" {...rest}>
+  <SingleInputFormGroup<ISelectProps> inputType="select" {...rest}>
     {({ className, error, selectRef, ...restRenderProps }) => (
       <select
         className={classNames('nhsuk-select', { 'nhsuk-select--error': error }, className)}
@@ -24,7 +24,7 @@ const Select: ISelect = ({ children, ...rest }) => (
         {children}
       </select>
     )}
-  </FormGroup>
+  </SingleInputFormGroup>
 );
 
 const Option: FC<HTMLProps<HTMLOptionElement>> = (props) => <option {...props} />;

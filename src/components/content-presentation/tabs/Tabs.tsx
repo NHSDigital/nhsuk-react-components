@@ -1,7 +1,7 @@
 'use client';
 import classNames from 'classnames';
 import React, { FC, HTMLAttributes, useEffect } from 'react';
-import HeadingLevel, { HeadingLevelType } from '@util/HeadingLevel';
+import HeadingLevel, { HeadingLevelType } from '@components/utils/HeadingLevel';
 import TabsJs from '@resources/tabs';
 
 type TabsProps = HTMLAttributes<HTMLDivElement>;

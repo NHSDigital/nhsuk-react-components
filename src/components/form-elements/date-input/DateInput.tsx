@@ -3,7 +3,7 @@
 import React, { HTMLProps, ChangeEvent, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { DayInput, MonthInput, YearInput } from './components/IndividualDateInputs';
-import FormGroup from '@util/FormGroup';
+import SingleInputFormGroup from '@components/utils/SingleInputFormGroup';
 import DateInputContext, { IDateInputContext } from './DateInputContext';
 import { FormElementProps } from '@util/types/FormTypes';
 
@@ -90,7 +90,10 @@ const DateInput = ({
   };
 
   return (
-    <FormGroup<Omit<DateInputProps, 'value' | 'defaultValue'>> inputType="dateinput" {...rest}>
+    <SingleInputFormGroup<Omit<DateInputProps, 'value' | 'defaultValue'>>
+      inputType="dateinput"
+      {...rest}
+    >
       {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
       {({ className, name, id, error, autoSelectNext, ...restRenderProps }) => {
         const contextValue: IDateInputContext = {
@@ -116,7 +119,7 @@ const DateInput = ({
           </div>
         );
       }}
-    </FormGroup>
+    </SingleInputFormGroup>
   );
 };
 
