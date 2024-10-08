@@ -28,7 +28,8 @@ const Panel: Panel = ({
       <Card.Content>
         {label ? (
           <Card.Heading
-            className={classNames('nhsuk-u-font-size-24', labelProps?.className)}
+            className={classNames('nhsuk-heading-m', labelProps?.className)}
+            headingLevel="h2"
             {...labelProps}
           >
             {label}

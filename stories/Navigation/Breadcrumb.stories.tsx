@@ -1,5 +1,5 @@
 import React from 'react';
-import { Breadcrumb } from '../../src';
+import { Breadcrumb, Container } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
 /**
@@ -19,12 +19,15 @@ import { Meta, StoryObj } from '@storybook/react';
  *
  * const Link = () => {
  *     return (
- *         <Breadcrumb>
+ *         <Container>
+ *           <Breadcrumb>
  *             <Breadcrumb.Item href="/level-one">Level one</Breadcrumb.Item>
  *             <Breadcrumb.Item href="/level-one/level-two">Level two</Breadcrumb.Item>
  *             <Breadcrumb.Item href="/level-one/level-two/level-three">Level three</Breadcrumb.Item>
  *             <Breadcrumb.Back href="/level-one/level-two/level-three">Level three</Breadcrumb.Back>
- *         </Breadcrumb>
+ *           </Breadcrumb>
+ *         </Container>
+ *
  *     );
  * }
  * ```
@@ -33,12 +36,14 @@ const meta: Meta<typeof Breadcrumb> = {
   title: 'Navigation/Breadcrumb',
   component: Breadcrumb,
   render: (args) => (
-    <Breadcrumb aria-label={args['aria-label']}>
-      <Breadcrumb.Item href="/level/one">Level One</Breadcrumb.Item>
-      <Breadcrumb.Item href="/level/two">Level Two</Breadcrumb.Item>
-      <Breadcrumb.Item href="/level/three">Level Three</Breadcrumb.Item>
-      <Breadcrumb.Back href="/level/three">Level Three</Breadcrumb.Back>
-    </Breadcrumb>
+    <Container>
+      <Breadcrumb aria-label={args['aria-label']}>
+        <Breadcrumb.Item href="/level/one">Level One</Breadcrumb.Item>
+        <Breadcrumb.Item href="/level/two">Level Two</Breadcrumb.Item>
+        <Breadcrumb.Item href="/level/three">Level Three</Breadcrumb.Item>
+        <Breadcrumb.Back href="/level/three">Level Three</Breadcrumb.Back>
+      </Breadcrumb>
+    </Container>
   ),
 };
 export default meta;

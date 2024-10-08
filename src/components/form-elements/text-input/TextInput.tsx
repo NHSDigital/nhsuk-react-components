@@ -1,6 +1,6 @@
 import React, { FC, HTMLProps, MutableRefObject } from 'react';
 import classNames from 'classnames';
-import FormGroup from '@util/FormGroup';
+import SingleInputFormGroup from '@components/utils/SingleInputFormGroup';
 import { InputWidth } from '@util/types/NHSUKTypes';
 import { FormElementProps } from '@util/types/FormTypes';
 
@@ -25,7 +25,7 @@ const TextInputSuffix: FC<{ suffix: string }> = ({ suffix }) => (
 );
 
 const TextInput: FC<TextInputProps> = (props) => (
-  <FormGroup<TextInputProps> {...props} inputType="input">
+  <SingleInputFormGroup<TextInputProps> {...props} inputType="input">
     {({ width, className, error, inputRef, type = 'text', prefix, suffix, ...rest }) => {
       const Input = (
         <input
@@ -51,7 +51,7 @@ const TextInput: FC<TextInputProps> = (props) => (
         Input
       );
     }}
-  </FormGroup>
+  </SingleInputFormGroup>
 );
 
 export default TextInput;

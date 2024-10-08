@@ -2,7 +2,7 @@
 import React, { FC, HTMLProps, createContext, useContext, ReactNode } from 'react';
 import classNames from 'classnames';
 import { Tick, Cross } from '@components/content-presentation/icons';
-import HeadingLevel, { HeadingLevelType } from '@util/HeadingLevel';
+import HeadingLevel, { HeadingLevelType } from '@components/utils/HeadingLevel';
 
 type ListType = 'do' | 'dont';
 
