@@ -12,10 +12,23 @@ exports[`Fieldset Fieldset.Legend matches snapshot: FieldsetLegend 1`] = `
 
 exports[`Fieldset matches snapshot: Fieldset 1`] = `
 <div>
-  <fieldset
-    class="nhsuk-fieldset"
+  <div
+    class="nhsuk-form-group"
   >
-    Text
-  </fieldset>
+    <fieldset
+      class="nhsuk-fieldset"
+    >
+      <div
+        class="nhsuk-form-group"
+      >
+        <input
+          class="nhsuk-input"
+          id="test-input"
+          name="test-input"
+          type="text"
+        />
+      </div>
+    </fieldset>
+  </div>
 </div>
 `;

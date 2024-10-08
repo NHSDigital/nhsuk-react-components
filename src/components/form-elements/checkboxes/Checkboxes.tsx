@@ -3,7 +3,7 @@
 import React, { HTMLProps, useEffect } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '@util/types/FormTypes';
-import FormGroup from '@util/FormGroup';
+import SingleInputFormGroup from '@components/utils/SingleInputFormGroup';
 import CheckboxContext, { ICheckboxContext } from './CheckboxContext';
 import Box from './components/Box';
 import Divider from './components/Divider';
@@ -53,7 +53,7 @@ const Checkboxes = ({ children, idPrefix, ...rest }: CheckboxesProps) => {
   };
 
   return (
-    <FormGroup<CheckboxesProps> inputType="checkboxes" {...rest}>
+    <SingleInputFormGroup<CheckboxesProps> inputType="checkboxes" {...rest}>
       {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
       {({ className, name, id, idPrefix, error, ...restRenderProps }) => {
         resetCheckboxIds();
@@ -69,7 +69,7 @@ const Checkboxes = ({ children, idPrefix, ...rest }: CheckboxesProps) => {
           </div>
         );
       }}
-    </FormGroup>
+    </SingleInputFormGroup>
   );
 };
 
