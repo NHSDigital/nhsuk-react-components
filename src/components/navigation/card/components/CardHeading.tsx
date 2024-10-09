@@ -1,7 +1,7 @@
 'use client';
 import React, { FC, HTMLProps, useContext } from 'react';
 import classNames from 'classnames';
-import HeadingLevel, { HeadingLevelType } from '@util/HeadingLevel';
+import HeadingLevel, { HeadingLevelType } from '@components/utils/HeadingLevel';
 import CardContext from '../CardContext';
 import { CareCardType } from '../../../../util/types/NHSUKTypes';
 import { cardTypeIsCareCard } from '@util/types/TypeGuards';
