@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import NavAZ from '@patterns/nav-a-z';
-import HeadingLevel from '@util/HeadingLevel';
+import HeadingLevel from '@components/utils/HeadingLevel';
 import Panel from '@patterns/panel/Panel';
 import Container from '@components/layout/Container';
 import Row from '@components/layout/Row';

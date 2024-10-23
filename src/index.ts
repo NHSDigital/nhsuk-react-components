@@ -59,5 +59,6 @@ export { LedeText, BodyText } from './components/typography';
 export { default as WarningCallout } from './components/content-presentation/warning-callout';
 export { default as Clearfix } from './components/utils/Clearfix';
 export { default as ReadingWidth } from './components/utils/ReadingWidth';
+export { default as FormGroup } from './components/utils/FormGroup';
 
 export { default as ReviewDate } from './patterns/review-date';

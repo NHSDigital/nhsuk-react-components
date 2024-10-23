@@ -1,15 +1,13 @@
 'use client';
 import React, { ReactNode, useState, useEffect, HTMLProps, useContext } from 'react';
 import classNames from 'classnames';
-import HintText from '../components/form-elements/hint-text/HintText';
-import ErrorMessage from '../components/form-elements/error-message/ErrorMessage';
-import { generateRandomID } from './RandomID';
-import Label from '../components/form-elements/label/Label';
-import { FormElementProps } from './types/FormTypes';
-import FieldsetContext, {
-  IFieldsetContext,
-} from '../components/form-elements/fieldset/FieldsetContext';
-import { useFormContext } from '../components/form-elements/form';
+import HintText from '../form-elements/hint-text/HintText';
+import ErrorMessage from '../form-elements/error-message/ErrorMessage';
+import { generateRandomID } from '../../util/RandomID';
+import Label from '../form-elements/label/Label';
+import { FormElementProps } from '../../util/types/FormTypes';
+import { useFormContext } from '../form-elements/form';
+import FormGroupContext, { IFormGroupContext } from './FormGroupContext';
 
 type ExcludedProps =
   | 'hint'
@@ -31,12 +29,14 @@ type FormElementRenderProps<T> = Omit<T, ExcludedProps> & {
   name: string;
 };
 
-export type FormGroupProps<T> = FormElementProps & {
+export type SingleInputFormGroupProps<T> = FormElementProps & {
   children: (props: FormElementRenderProps<T>) => ReactNode;
   inputType: 'input' | 'radios' | 'select' | 'checkboxes' | 'dateinput' | 'textarea';
 };
 
-const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T>): JSX.Element => {
+const SingleInputFormGroup = <T extends BaseFormElementRenderProps>(
+  props: SingleInputFormGroupProps<T>,
+): JSX.Element => {
   const {
     children,
     hint,
@@ -53,33 +53,28 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
     ...rest
   } = props;
   const [generatedID] = useState<string>(generateRandomID(inputType));
-  const { isFieldset, registerComponent, passError } =
-    useContext<IFieldsetContext>(FieldsetContext);
+  const { registerComponent, passError } = useContext<IFormGroupContext>(FormGroupContext);
   const { disableErrorFromComponents } = useFormContext();
 
-  const elementID = id || generatedID;
+  const elementID = id ?? generatedID;
   const labelID = `${elementID}--label`;
   const errorID = `${elementID}--error-message`;
   const hintID = `${elementID}--hint`;
 
-  const ariaDescribedBy = [
-    hint ? hintID : undefined,
-    error ? errorID : undefined,
-  ].filter(Boolean);
+  const ariaDescribedBy = [hint ? hintID : undefined, error ? errorID : undefined].filter(Boolean);
 
   const childProps = {
     'aria-describedby': ariaDescribedBy.join(' ') || undefined,
     error,
-    name: name || elementID,
+    name: name ?? elementID,
     id: elementID,
     ...rest,
   } as FormElementRenderProps<T>;
 
   useEffect(() => {
-    if (!isFieldset) return;
     passError(elementID, disableErrorFromComponents ? false : Boolean(error));
     return () => passError(elementID, false);
-  }, [elementID, error, isFieldset]);
+  }, [elementID, error]);
 
   useEffect(() => {
     registerComponent(elementID);
@@ -119,4 +114,4 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
   );
 };
 
-export default FormGroup;
+export default SingleInputFormGroup;

@@ -1,7 +1,7 @@
 import React, { HTMLProps } from 'react';
 import { render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import FormGroup, { FormGroupProps } from '../FormGroup';
+import SingleInputFormGroup, { SingleInputFormGroupProps } from '../SingleInputFormGroup';
 
 expect.extend(toHaveNoViolations);
 
@@ -11,10 +11,10 @@ type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>;
 const renderFormGroupComponent = ({
   children = (props) => <input {...props} />,
   ...rest
-}: Optional<FormGroupProps<InputProps>, 'children'>) =>
-  render(<FormGroup<InputProps> {...rest}>{children}</FormGroup>);
+}: Optional<SingleInputFormGroupProps<InputProps>, 'children'>) =>
+  render(<SingleInputFormGroup<InputProps> {...rest}>{children}</SingleInputFormGroup>);
 
-describe('FormGroup', () => {
+describe('SingleInputFormGroup', () => {
   it('matches snapshot', () => {
     const { container } = renderFormGroupComponent({ inputType: 'input', id: 'testId' });
 
@@ -181,7 +181,6 @@ describe('FormGroup', () => {
     expect(renderProps!.id).toBe('testID');
     expect(renderProps!['aria-describedby']).toBe(`testID--error-message`);
 
-
     expect(container.querySelector('.nhsuk-error-message')?.getAttribute('id')).toBe(
       'testID--error-message',
     );
@@ -229,10 +228,10 @@ describe('FormGroup', () => {
   it('should produce an accessible component', async () => {
     const { container } = render(
       <main>
-        <FormGroup<InputProps> inputType="input" error label="Form Label">
+        <SingleInputFormGroup<InputProps> inputType="input" error label="Form Label">
           {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
           {({ error, ...rest }) => <input {...rest} />}
-        </FormGroup>
+        </SingleInputFormGroup>
       </main>,
     );
     const html = container.innerHTML;
@@ -252,8 +251,10 @@ describe('FormGroup', () => {
 
     const inputElement = container.querySelector('input');
     expect(inputElement).not.toBeNull();
-    expect(inputElement?.getAttribute('aria-describedby')).toBe('error-and-hint--hint error-and-hint--error-message');
-  })
+    expect(inputElement?.getAttribute('aria-describedby')).toBe(
+      'error-and-hint--hint error-and-hint--error-message',
+    );
+  });
 
   it('should have no aria-describedby when there is no hint or label', () => {
     const { container } = renderFormGroupComponent({

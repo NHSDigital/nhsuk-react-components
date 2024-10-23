@@ -21,7 +21,7 @@ export const Standard: Story = {
         <Footer.List>
           <Footer.ListItem href="https://www.nhs.uk/nhs-sites/">NHS sites</Footer.ListItem>
           <Footer.ListItem href="https://www.nhs.uk/about-us/">About us</Footer.ListItem>
-          <Footer.ListItem href="https://www.nhs.uk/contact-us/">Contact us</Footer.ListItem>
+          <Footer.ListItem href="https://www.nhs.uk/contact-us/">Give us feedback</Footer.ListItem>
           <Footer.ListItem href="https://www.nhs.uk/about-us/sitemap/">Sitemap</Footer.ListItem>
           <Footer.ListItem href="https://www.nhs.uk/our-policies/">Our policies</Footer.ListItem>
         </Footer.List>
@@ -56,7 +56,7 @@ export const WithLinksArrangedInColumns: Story = {
         </Footer.List>
 
         <Footer.List>
-          <Footer.ListItem href="#">Contact us</Footer.ListItem>
+          <Footer.ListItem href="#">Give us feedback</Footer.ListItem>
           <Footer.ListItem href="#">Other NHS websites</Footer.ListItem>
           <Footer.ListItem href="#">Profile editor login</Footer.ListItem>
         </Footer.List>

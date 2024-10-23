@@ -14,6 +14,6 @@ export const StandardLink: Story = {};
 export const BackLinkAsAButton: Story = {
   args: {
     asElement: 'button',
-    href: false
+    href: undefined,
   },
 };
