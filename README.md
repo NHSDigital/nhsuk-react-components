@@ -38,10 +38,11 @@ class GetStartedButton extends PureComponent {
 
 ## Upgrading
 
-* [Upgrading to 1.0](/docs/upgrade-to-1.0.md)
-* [Upgrading to 2.0](/docs/upgrade-to-2.0.md)
-* [Upgrading to 3.0](/docs/upgrade-to-3.0.md)
-* [Upgrading to 4.0](/docs/upgrade-to-4.0.md)
+- [Upgrading to 1.0](/docs/upgrade-to-1.0.md)
+- [Upgrading to 2.0](/docs/upgrade-to-2.0.md)
+- [Upgrading to 3.0](/docs/upgrade-to-3.0.md)
+- [Upgrading to 4.0](/docs/upgrade-to-4.0.md)
+- [Upgrading to 5.0](/docs/upgrade-to-5.0.md)
 
 ## Maintainers
 
@@ -53,7 +54,6 @@ class GetStartedButton extends PureComponent {
 - Kevin Kuszyk ([GitHub](https://github.com/kevinkuszyk))
 - Kai Spencer ([GitHub](https://github.com/KaiSpencer))
 - Ed Horsford ([GitHub](https://github.com/edwardhorsford))
-- Jake Barton ([GitHub](https://github.com/jakeb-nhs))
 
 ## Preparing releases
 

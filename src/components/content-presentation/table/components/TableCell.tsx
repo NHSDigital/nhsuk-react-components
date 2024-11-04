@@ -35,7 +35,9 @@ const TableCell: FC<TableCellProps> = ({
       ) : (
         <td className={classes} role={_responsive ? 'cell' : undefined} {...rest}>
           {_responsive && (
-            <span className="nhsuk-table-responsive__heading">{_responsiveHeading}</span>
+            <span className="nhsuk-table-responsive__heading" aria-hidden>
+              {_responsiveHeading}
+            </span>
           )}
           {children}
         </td>

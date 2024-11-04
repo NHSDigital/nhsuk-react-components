@@ -2,9 +2,10 @@ import React, { FC, HTMLProps } from 'react';
 import classNames from 'classnames';
 import { AsElementLink } from '@util/types/LinkTypes';
 import Card from '@components/navigation/card';
+import { CardHeadingProps } from '@components/navigation/card/components/CardHeading';
 
 interface PanelProps extends HTMLProps<HTMLDivElement> {
-  labelProps?: HTMLProps<HTMLHeadingElement>;
+  labelProps?: HTMLProps<HTMLHeadingElement> & CardHeadingProps;
   backToTop?: boolean;
   backToTopButtonText?: string;
   backToTopLink?: string;
@@ -26,14 +27,7 @@ const Panel: Panel = ({
   <>
     <Card cardType="feature">
       <Card.Content>
-        {label ? (
-          <Card.Heading
-            className={classNames('nhsuk-u-font-size-24', labelProps?.className)}
-            {...labelProps}
-          >
-            {label}
-          </Card.Heading>
-        ) : null}
+        {label ? <Card.Heading {...labelProps}>{label}</Card.Heading> : null}
         <ul className="nhsuk-list nhsuk-list--border">{children}</ul>
       </Card.Content>
     </Card>

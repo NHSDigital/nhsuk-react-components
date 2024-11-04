@@ -2,7 +2,7 @@ import React, { HTMLProps, useState } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '@util/types/FormTypes';
 import { RadiosContext, IRadiosContext } from './RadioContext';
-import FormGroup from '@util/FormGroup';
+import SingleInputFormGroup from '@components/utils/SingleInputFormGroup';
 import Divider from './components/Divider';
 import Radio from './components/Radio';
 import { generateRandomName } from '@util/RandomID';
@@ -53,7 +53,7 @@ const Radios = ({ children, idPrefix, ...rest }: RadiosProps) => {
   };
 
   return (
-    <FormGroup<RadiosProps> inputType="radios" {...rest}>
+    <SingleInputFormGroup<RadiosProps> inputType="radios" {...rest}>
       {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
       {({ className, inline, name, id, error, ...restRenderProps }) => {
         resetRadioIds();
@@ -76,7 +76,7 @@ const Radios = ({ children, idPrefix, ...rest }: RadiosProps) => {
           </div>
         );
       }}
-    </FormGroup>
+    </SingleInputFormGroup>
   );
 };
 

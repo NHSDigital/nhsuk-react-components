@@ -64,6 +64,52 @@ describe('The header component', () => {
     },
   );
 
+  describe('The Nav component', () => {
+    it.each`
+      numberOfLinks | expectedLeftAligned
+      ${0}          | ${true}
+      ${1}          | ${true}
+      ${2}          | ${true}
+      ${3}          | ${true}
+      ${4}          | ${false}
+      ${5}          | ${false}
+    `(
+      'When rendered with $numberOfLinks links then it is $expectedLeftAligned that the list has the left aligned class',
+      ({ numberOfLinks, expectedLeftAligned }) => {
+        const { container } = render(
+          <Header.Nav>
+            {[...Array(numberOfLinks)].map((_x, i) => (
+              <Header.NavItem key={i} />
+            ))}
+          </Header.Nav>,
+        );
+
+        const navList = container.getElementsByClassName('nhsuk-header__navigation-list')[0];
+
+        if (expectedLeftAligned) {
+          expect(navList).toHaveClass('nhsuk-header__navigation-list--left-aligned');
+        } else {
+          expect(navList).not.toHaveClass('nhsuk-header__navigation-list--left-aligned');
+        }
+      },
+    );
+
+    it('Only counts NavItem components when determining whether to set left aligned class', () => {
+      const { container } = render(
+        <Header.Nav>
+          <Header.NavItem />
+          <Header.NavItem />
+          <Header.NavItem />
+          <Header.Logo />
+        </Header.Nav>,
+      );
+
+      const navList = container.getElementsByClassName('nhsuk-header__navigation-list')[0];
+
+      expect(navList).toHaveClass('nhsuk-header__navigation-list--left-aligned');
+    });
+  });
+
   describe('The NavDropdownMenu', () => {
     it.each<string | undefined>([undefined, 'Dropdown Text'])(
       'Renders as expected when passed a dropdownText of %s',
