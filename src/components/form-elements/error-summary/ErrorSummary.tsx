@@ -9,14 +9,15 @@ import React, {
 import classNames from 'classnames';
 import useDevWarning from '@util/hooks/UseDevWarning';
 
-const DefaultErrorSummaryTitleID = 'error-summary-title';
-
 const ErrorSummaryTitle: FC<HTMLProps<HTMLHeadingElement>> = ({
   className,
-  id = DefaultErrorSummaryTitleID,
+  id,
   ...rest
 }) => (
-  <h2 className={classNames('nhsuk-error-summary__title', className)} id={id} {...rest} />
+  <h2 className={classNames('nhsuk-error-summary__title', className)}
+    {...(id && { id })}
+    {...rest}
+  />
 );
 
 
@@ -48,24 +49,24 @@ const ErrorSummaryDiv = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>(
   ({
     className,
     tabIndex = -1,
-    role = 'alert',
-    'aria-labelledby': ariaLabelledBy = DefaultErrorSummaryTitleID,
+    children,
     ...rest
   },
   ref
 ) => {
     useDevWarning('The ErrorSummary component should always have a tabIndex of -1', () => tabIndex !== -1)
-    useDevWarning('The ErrorSummary component should always have a role of alert', () => role !== 'alert')
   
     return (
       <div
         className={classNames('nhsuk-error-summary', className)}
         ref={ref}
         tabIndex={tabIndex}
-        role={role}
-        aria-labelledby={ariaLabelledBy}
         {...rest}
-      />
+      >
+        <div role="alert">
+          {children}
+        </div>
+      </div>
     )
 });
 
