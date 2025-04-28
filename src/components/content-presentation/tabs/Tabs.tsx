@@ -2,7 +2,8 @@
 import classNames from 'classnames';
 import React, { FC, HTMLAttributes, useEffect } from 'react';
 import HeadingLevel, { HeadingLevelType } from '@components/utils/HeadingLevel';
-import TabsJs from '@resources/tabs';
+// @ts-expect-error -- No types available
+import TabsJs from 'nhsuk-frontend/packages/components/tabs/tabs';
 
 type TabsProps = HTMLAttributes<HTMLDivElement>;
 

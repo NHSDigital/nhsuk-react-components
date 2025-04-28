@@ -11,7 +11,8 @@ import NavDropdownMenu from './components/NavDropdownMenu';
 import { Container } from '@components/layout';
 import Content from './components/Content';
 import TransactionalServiceName from './components/TransactionalServiceName';
-import HeaderJs from '@resources/header';
+// @ts-expect-error -- No types available
+import HeaderJs from 'nhsuk-frontend/packages/components/header/header';
 
 const BaseHeaderLogo: FC<OrganisationalLogoProps & NHSLogoNavProps> = (props) => {
   const { orgName } = useContext<IHeaderContext>(HeaderContext);

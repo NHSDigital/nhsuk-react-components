@@ -8,7 +8,8 @@ import CheckboxContext, { ICheckboxContext } from './CheckboxContext';
 import Box from './components/Box';
 import Divider from './components/Divider';
 import { generateRandomName } from '@util/RandomID';
-import CheckboxJs from '@resources/checkboxes';
+// @ts-expect-error -- No types available
+import CheckboxJs from 'nhsuk-frontend/packages/components/checkboxes/checkboxes';
 
 interface CheckboxesProps extends HTMLProps<HTMLDivElement>, FormElementProps {
   idPrefix?: string;
