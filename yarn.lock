@@ -9269,10 +9269,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nhsuk-frontend@npm:^9.0.1":
-  version: 9.0.1
-  resolution: "nhsuk-frontend@npm:9.0.1"
-  checksum: 10c0/50a071be382807bb5c7b474d01f40d6cc59198cf601c9b52f168c7cc8d7e09c092d35dfea53bc654417cb07739b5fceb481e61aeb39a7c2621b54b78b82c8e0c
+"nhsuk-frontend@npm:^9.6.3":
+  version: 9.6.3
+  resolution: "nhsuk-frontend@npm:9.6.3"
+  checksum: 10c0/f130ad9596803b97b913693c503e468fa4e395fe89025b7af219e6c66b68944b35c5eb19fc6f3630cb9576bf2a73321912901b391dcea9fa80dfb8d3eb2ee451
   languageName: node
   linkType: hard
 
@@ -9321,7 +9321,7 @@ __metadata:
     jest: "npm:^29.7.0"
     jest-axe: "npm:^8.0.0"
     jest-environment-jsdom: "npm:^29.7.0"
-    nhsuk-frontend: "npm:^9.0.1"
+    nhsuk-frontend: "npm:^9.6.3"
     prettier: "npm:^3.2.5"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
