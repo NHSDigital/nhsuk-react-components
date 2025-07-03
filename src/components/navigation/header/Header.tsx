@@ -12,7 +12,7 @@ import { Container } from '@components/layout';
 import Content from './components/Content';
 import TransactionalServiceName from './components/TransactionalServiceName';
 // @ts-expect-error -- No types available
-import HeaderJs from 'nhsuk-frontend/packages/components/header/header';
+import initHeader from 'nhsuk-frontend/packages/components/header/header';
 
 const BaseHeaderLogo: FC<OrganisationalLogoProps & NHSLogoNavProps> = (props) => {
   const { orgName } = useContext<IHeaderContext>(HeaderContext);
@@ -53,7 +53,7 @@ const Header = ({
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    HeaderJs();
+    initHeader();
   }, []);
 
   const setMenuToggle = (toggle: boolean): void => {

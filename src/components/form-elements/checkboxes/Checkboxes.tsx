@@ -9,7 +9,7 @@ import Box from './components/Box';
 import Divider from './components/Divider';
 import { generateRandomName } from '@util/RandomID';
 // @ts-expect-error -- No types available
-import CheckboxJs from 'nhsuk-frontend/packages/components/checkboxes/checkboxes';
+import initCheckboxes from 'nhsuk-frontend/packages/components/checkboxes/checkboxes';
 
 interface CheckboxesProps extends HTMLProps<HTMLDivElement>, FormElementProps {
   idPrefix?: string;
@@ -21,7 +21,7 @@ const Checkboxes = ({ children, idPrefix, ...rest }: CheckboxesProps) => {
   let _boxIds: Record<string, string> = {};
 
   useEffect(() => {
-    CheckboxJs();
+    initCheckboxes();
   }, []);
 
   const getBoxId = (id: string, reference: string): string => {

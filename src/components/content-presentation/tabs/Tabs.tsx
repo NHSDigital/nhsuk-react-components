@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import React, { FC, HTMLAttributes, useEffect } from 'react';
 import HeadingLevel, { HeadingLevelType } from '@components/utils/HeadingLevel';
 // @ts-expect-error -- No types available
-import TabsJs from 'nhsuk-frontend/packages/components/tabs/tabs';
+import initTabs from 'nhsuk-frontend/packages/components/tabs/tabs';
 
 type TabsProps = HTMLAttributes<HTMLDivElement>;
 
@@ -56,7 +56,7 @@ interface Tabs extends FC<TabsProps> {
 
 const Tabs: Tabs = ({ className, children, ...rest }) => {
   useEffect(() => {
-    TabsJs();
+    initTabs();
   }, []);
 
   return (

@@ -1,7 +1,7 @@
 'use client';
 import React, { FC, useEffect } from 'react';
 // @ts-expect-error -- No types available
-import CharacterCountJs from 'nhsuk-frontend/packages/components/character-count/character-count';
+import initCharacterCounts from 'nhsuk-frontend/packages/components/character-count/character-count';
 import { HTMLAttributesWithData } from '@util/types/NHSUKTypes';
 
 export enum CharacterCountType {
@@ -26,7 +26,7 @@ const CharacterCount: FC<CharacterCountProps> = ({
   ...rest
 }) => {
   useEffect(() => {
-    CharacterCountJs();
+    initCharacterCounts();
   }, []);
 
   const characterCountProps: HTMLAttributesWithData<HTMLDivElement> =
