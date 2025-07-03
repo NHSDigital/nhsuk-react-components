@@ -1,6 +1,6 @@
 'use client';
 import classNames from 'classnames';
-import React, { FC, HTMLAttributes, useEffect } from 'react';
+import React, { FC, HTMLAttributes, useEffect, useRef, useState } from 'react';
 import HeadingLevel, { HeadingLevelType } from '@components/utils/HeadingLevel';
 // @ts-expect-error -- No types available
 import initTabs from 'nhsuk-frontend/packages/components/tabs/tabs';
@@ -55,12 +55,25 @@ interface Tabs extends FC<TabsProps> {
 }
 
 const Tabs: Tabs = ({ className, children, ...rest }) => {
+  const moduleRef = useRef<HTMLDivElement>(null);
+  const [isInitialised, setIsInitialised] = useState<boolean>(false);
+
   useEffect(() => {
-    initTabs();
-  }, []);
+    if (isInitialised || !moduleRef.current?.parentElement) {
+      return;
+    }
+
+    initTabs({ scope: moduleRef.current.parentElement });
+    setIsInitialised(true);
+  }, [isInitialised, moduleRef]);
 
   return (
-    <div className={classNames('nhsuk-tabs', className)} data-module="nhsuk-tabs" {...rest}>
+    <div
+      className={classNames('nhsuk-tabs', className)}
+      data-module="nhsuk-tabs"
+      ref={moduleRef}
+      {...rest}
+    >
       {children}
     </div>
   );

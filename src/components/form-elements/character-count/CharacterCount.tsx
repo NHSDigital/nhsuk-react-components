@@ -1,5 +1,5 @@
 'use client';
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useRef, useState } from 'react';
 // @ts-expect-error -- No types available
 import initCharacterCounts from 'nhsuk-frontend/packages/components/character-count/character-count';
 import { HTMLAttributesWithData } from '@util/types/NHSUKTypes';
@@ -25,9 +25,17 @@ const CharacterCount: FC<CharacterCountProps> = ({
   thresholdPercent,
   ...rest
 }) => {
+  const moduleRef = useRef<HTMLDivElement>(null);
+  const [isInitialised, setIsInitialised] = useState<boolean>(false);
+
   useEffect(() => {
-    initCharacterCounts();
-  }, []);
+    if (isInitialised || !moduleRef.current?.parentElement) {
+      return;
+    }
+
+    initCharacterCounts({ scope: moduleRef.current.parentElement });
+    setIsInitialised(true);
+  }, [isInitialised, moduleRef]);
 
   const characterCountProps: HTMLAttributesWithData<HTMLDivElement> =
     countType === CharacterCountType.Characters
@@ -42,6 +50,7 @@ const CharacterCount: FC<CharacterCountProps> = ({
     <div
       className="nhsuk-character-count"
       data-module="nhsuk-character-count"
+      ref={moduleRef}
       {...characterCountProps}
     >
       <div className="nhsuk-form-group">{children}</div>

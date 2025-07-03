@@ -1,6 +1,6 @@
 'use client';
 
-import React, { HTMLProps, useEffect } from 'react';
+import React, { HTMLProps, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '@util/types/FormTypes';
 import SingleInputFormGroup from '@components/utils/SingleInputFormGroup';
@@ -16,13 +16,21 @@ interface CheckboxesProps extends HTMLProps<HTMLDivElement>, FormElementProps {
 }
 
 const Checkboxes = ({ children, idPrefix, ...rest }: CheckboxesProps) => {
+  const moduleRef = useRef<HTMLDivElement>(null);
+  const [isInitialised, setIsInitialised] = useState<boolean>(false);
+
   const _boxReferences: string[] = [];
   let _boxCount: number = 0;
   let _boxIds: Record<string, string> = {};
 
   useEffect(() => {
-    initCheckboxes();
-  }, []);
+    if (isInitialised || !moduleRef.current?.parentElement) {
+      return;
+    }
+
+    initCheckboxes({ scope: moduleRef.current.parentElement });
+    setIsInitialised(true);
+  }, [isInitialised, moduleRef]);
 
   const getBoxId = (id: string, reference: string): string => {
     if (reference in _boxIds) {
@@ -65,7 +73,12 @@ const Checkboxes = ({ children, idPrefix, ...rest }: CheckboxesProps) => {
           unleaseReference,
         };
         return (
-          <div className={classNames('nhsuk-checkboxes', className)} id={id} {...restRenderProps}>
+          <div
+            className={classNames('nhsuk-checkboxes', className)}
+            id={id}
+            ref={moduleRef}
+            {...restRenderProps}
+          >
             <CheckboxContext.Provider value={contextValue}>{children}</CheckboxContext.Provider>
           </div>
         );

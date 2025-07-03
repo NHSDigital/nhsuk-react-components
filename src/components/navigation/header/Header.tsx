@@ -1,5 +1,5 @@
 'use client';
-import React, { FC, HTMLProps, useContext, useState, useEffect, useMemo } from 'react';
+import React, { FC, HTMLProps, useContext, useState, useEffect, useMemo, useRef } from 'react';
 import classNames from 'classnames';
 import NHSLogo, { NHSLogoNavProps } from './components/NHSLogo';
 import OrganisationalLogo, { OrganisationalLogoProps } from './components/OrganisationalLogo';
@@ -47,14 +47,22 @@ const Header = ({
   white,
   ...rest
 }: HeaderProps) => {
+  const moduleRef = useRef<HTMLElement>(null);
+
   const [hasMenuToggle, setHasMenuToggle] = useState(false);
   const [hasSearch, setHasSearch] = useState(false);
   const [hasServiceName, setHasServiceName] = useState(false);
+  const [isInitialised, setIsInitialised] = useState<boolean>(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    initHeader();
-  }, []);
+    if (isInitialised || !moduleRef.current?.parentElement) {
+      return;
+    }
+
+    initHeader({ scope: moduleRef.current.parentElement });
+    setIsInitialised(true);
+  }, [isInitialised, moduleRef]);
 
   const setMenuToggle = (toggle: boolean): void => {
     setHasMenuToggle(toggle);
@@ -114,6 +122,7 @@ const Header = ({
         className,
       )}
       role={role}
+      ref={moduleRef}
       {...rest}
     >
       <HeaderContext.Provider value={contextValue}>{children}</HeaderContext.Provider>
