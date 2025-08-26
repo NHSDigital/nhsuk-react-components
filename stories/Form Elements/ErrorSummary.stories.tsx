@@ -1,6 +1,6 @@
 import React from 'react';
 import { ErrorSummary } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 /**
  * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/error-summary" target="_blank" rel="noopener noreferrer">here</a>.
@@ -43,7 +43,7 @@ export default meta;
 type Story = StoryObj<typeof ErrorSummary>;
 
 export const Standard: Story = {
-  render: (args) => (
+  render: () => (
     <ErrorSummary>
       <ErrorSummary.Title>There is a problem</ErrorSummary.Title>
       <ErrorSummary.List>
@@ -54,7 +54,7 @@ export const Standard: Story = {
 };
 
 export const WithDescription: Story = {
-  render: (args) => (
+  render: () => (
     <ErrorSummary>
       <ErrorSummary.Title>There is a problem</ErrorSummary.Title>
       <p>Describe the errors and how to correct them</p>
@@ -68,7 +68,7 @@ export const WithDescription: Story = {
 };
 
 export const WithAutoFocusDisabled: Story = {
-  render: (args) => (
+  render: () => (
     <ErrorSummary disableAutoFocus={true}>
       <ErrorSummary.Title>There is a problem</ErrorSummary.Title>
       <ErrorSummary.List>

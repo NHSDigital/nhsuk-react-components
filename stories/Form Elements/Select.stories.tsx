@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Select, TextInput } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Select> = {
   title: 'Form Elements/Select',
@@ -10,7 +10,7 @@ export default meta;
 type Story = StoryObj<typeof Select>;
 
 export const Standard: Story = {
-  render: (args) => (
+  render: () => (
     <Select label="Label text goes here" labelProps={{ size: 'l' }}>
       <Select.Option value="1">NHS.UK frontend option 1</Select.Option>
       <Select.Option value="2" selected>
@@ -24,7 +24,7 @@ export const Standard: Story = {
 };
 
 export const SelectWithHintText: Story = {
-  render: (args) => (
+  render: () => (
     <Select label="Label text goes here" labelProps={{ size: 'l' }} hint="Hint text goes here">
       <Select.Option value="1">NHS.UK frontend option 1</Select.Option>
       <Select.Option value="2">NHS.UK frontend option 2</Select.Option>

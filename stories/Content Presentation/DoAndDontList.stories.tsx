@@ -1,6 +1,6 @@
 import React from 'react';
 import { DoAndDontList } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 /**
  * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/do-dont-list" target="_blank" rel="noopener noreferrer">here</a>.
@@ -46,7 +46,7 @@ export default meta;
 type Story = StoryObj<typeof DoAndDontList>;
 
 export const Do: Story = {
-  render: (args) => (
+  render: () => (
     <DoAndDontList listType="do">
       <DoAndDontList.Item>
         cover blisters that are likely to burst with a soft plaster or dressing
@@ -60,7 +60,7 @@ export const Do: Story = {
 };
 
 export const Dont: Story = {
-  render: (args) => (
+  render: () => (
     <DoAndDontList listType="dont">
       <DoAndDontList.Item>burst a blister yourself</DoAndDontList.Item>
       <DoAndDontList.Item>peel the skin off a burst blister</DoAndDontList.Item>

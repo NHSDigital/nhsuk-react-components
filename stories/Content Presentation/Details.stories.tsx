@@ -1,6 +1,6 @@
 import React from 'react';
 import { Details } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 /**
  * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/contents-list" target="_blank">here</a>.
@@ -125,7 +125,7 @@ export const Expander: Story = {
 };
 
 export const ExpanderGroup: Story = {
-  render: (args) => (
+  render: () => (
     <Details.ExpanderGroup>
       <Details expander>
         <Details.Summary>How to measure your blood glucose levels</Details.Summary>

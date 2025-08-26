@@ -1,6 +1,6 @@
 import React from 'react';
 import { Hero } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Hero> = {
   title: 'Content Presentation/Hero',
@@ -10,7 +10,7 @@ export default meta;
 type Story = StoryObj<typeof Hero>;
 
 export const HeroWithHeadingAndContent: Story = {
-  render: (args) => (
+  render: () => (
     <Hero>
       <Hero.Heading>We&apos;re here for you.</Hero.Heading>
       <Hero.Text>Helping you take control of your health and wellbeing.</Hero.Text>
@@ -19,7 +19,7 @@ export const HeroWithHeadingAndContent: Story = {
 };
 
 export const HeroWithImageHeadingAndContent: Story = {
-  render: (args) => (
+  render: () => (
     <Hero imageSrc="https://assets.nhs.uk/prod/images/S_0818_homepage_hero_1_F0147446.width-1000.jpg">
       <Hero.Heading>We&apos;re here for you.</Hero.Heading>
       <Hero.Text>Helping you take control of your health and wellbeing.</Hero.Text>
@@ -28,7 +28,7 @@ export const HeroWithImageHeadingAndContent: Story = {
 };
 
 export const HeroWithImageOnly: Story = {
-  render: (args) => (
+  render: () => (
     <Hero imageSrc="https://assets.nhs.uk/prod/images/S_0818_homepage_hero_1_F0147446.width-1000.jpg" />
   ),
 };

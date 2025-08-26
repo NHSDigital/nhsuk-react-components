@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavAZ } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 /**
  * This component is generally used as part of the 'A to Z page' pattern.
@@ -20,7 +20,7 @@ export default meta;
 type Story = StoryObj<typeof NavAZ>;
 
 export const Basic: Story = {
-  render: (args) => (
+  render: () => (
     <NavAZ>
       <NavAZ.LinkItem href="#A">A</NavAZ.LinkItem>
       <NavAZ.LinkItem href="#B">B</NavAZ.LinkItem>

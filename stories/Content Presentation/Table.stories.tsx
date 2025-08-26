@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, HintText, Row, Table } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Table> = {
   title: 'Content Presentation/Table',
@@ -10,7 +10,7 @@ export default meta;
 type Story = StoryObj<typeof Table>;
 
 export const StandardTable: Story = {
-  render: (args) => (
+  render: () => (
     <Table caption="Skin symptoms and possible causes">
       <Table.Head>
         <Table.Row>
@@ -37,7 +37,7 @@ export const StandardTable: Story = {
 };
 
 export const TablePanel: Story = {
-  render: (args) => (
+  render: () => (
     <Table.Panel heading="Conditions similar to impetigo">
       <Table caption="Other possible causes of your symptoms">
         <Table.Head>
@@ -98,7 +98,7 @@ export const ResponsiveTable: Story = {
 };
 
 export const FirstCellAsHeader: Story = {
-  render: (args) => (
+  render: () => (
     <Table firstCellIsHeader>
       <Table.Head>
         <Table.Row>
@@ -141,7 +141,7 @@ export const FirstCellAsHeader: Story = {
 };
 
 export const NumericCells: Story = {
-  render: (args) => (
+  render: () => (
     <Row>
       <Col width="one-half">
         <HintText>Right-aligned cells are used for numeric values</HintText>

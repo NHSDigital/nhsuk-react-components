@@ -1,6 +1,6 @@
 import React from 'react';
 import { Fieldset, TextInput } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 /**
  * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/fieldset" target="_blank" rel="noopener noreferrer">here</a>.
@@ -35,7 +35,7 @@ export default meta;
 type Story = StoryObj<typeof Fieldset>;
 
 export const Standard: Story = {
-  render: (args) => (
+  render: () => (
     <Fieldset>
       <Fieldset.Legend size="l">What is your address?</Fieldset.Legend>
       <TextInput
@@ -69,7 +69,7 @@ export const Standard: Story = {
 };
 
 export const WithLegendAsAPageHeading: Story = {
-  render: (args) => (
+  render: () => (
     <Fieldset>
       <Fieldset.Legend isPageHeading>What is your address?</Fieldset.Legend>
     </Fieldset>
@@ -78,7 +78,7 @@ export const WithLegendAsAPageHeading: Story = {
 
 export const WithCustomLegendSizeS: Story = {
   name: 'With Bold Text (S)',
-  render: (args) => (
+  render: () => (
     <Fieldset>
       <Fieldset.Legend size="s">What is your address?</Fieldset.Legend>
     </Fieldset>
@@ -87,7 +87,7 @@ export const WithCustomLegendSizeS: Story = {
 
 export const WithCustomLegendSizeM: Story = {
   name: 'With Custom Size (M)',
-  render: (args) => (
+  render: () => (
     <Fieldset>
       <Fieldset.Legend size="m">What is your address?</Fieldset.Legend>
     </Fieldset>
@@ -96,7 +96,7 @@ export const WithCustomLegendSizeM: Story = {
 
 export const WithCustomLegendSizeL: Story = {
   name: 'With Custom Size (L)',
-  render: (args) => (
+  render: () => (
     <Fieldset>
       <Fieldset.Legend size="l">What is your address?</Fieldset.Legend>
     </Fieldset>
@@ -105,7 +105,7 @@ export const WithCustomLegendSizeL: Story = {
 
 export const WithCustomLegendSizeXL: Story = {
   name: 'With Custom Size (XL)',
-  render: (args) => (
+  render: () => (
     <Fieldset>
       <Fieldset.Legend size="xl">What is your address?</Fieldset.Legend>
     </Fieldset>

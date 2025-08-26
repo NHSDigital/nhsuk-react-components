@@ -9,7 +9,7 @@ import {
   TickIcon,
   UserIcon,
 } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta = {
   title: 'Content Presentation/Icons',
@@ -17,11 +17,11 @@ const meta: Meta = {
 export default meta;
 type Story = StoryObj<Element>;
 
-export const ArrowLeft: Story = { render: (args) => <ArrowLeftIcon /> };
-export const ArrowRight: Story = { render: (args) => <ArrowRightIcon /> };
-export const ArrowRightCircle: Story = { render: (args) => <ArrowRightCircleIcon /> };
-export const ChevronRightCircle: Story = { render: (args) => <ChevronRightCircleIcon /> };
-export const Cross: Story = { render: (args) => <CrossIcon /> };
-export const Search: Story = { render: (args) => <SearchIcon /> };
-export const Tick: Story = { render: (args) => <TickIcon /> };
-export const User: Story = { render: (args) => <UserIcon /> };
+export const ArrowLeft: Story = { render: () => <ArrowLeftIcon /> };
+export const ArrowRight: Story = { render: () => <ArrowRightIcon /> };
+export const ArrowRightCircle: Story = { render: () => <ArrowRightCircleIcon /> };
+export const ChevronRightCircle: Story = { render: () => <ChevronRightCircleIcon /> };
+export const Cross: Story = { render: () => <CrossIcon /> };
+export const Search: Story = { render: () => <SearchIcon /> };
+export const Tick: Story = { render: () => <TickIcon /> };
+export const User: Story = { render: () => <UserIcon /> };

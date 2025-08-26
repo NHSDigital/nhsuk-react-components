@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tag } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Tag> = {
   title: 'Content Presentation/Tag',
@@ -12,7 +12,7 @@ type Story = StoryObj<typeof Tag>;
 export const StandardTag: Story = { args: { children: 'Standard' } };
 
 export const AllColours: Story = {
-  render: (args) => (
+  render: () => (
     <div className="tag-wrapper">
       <Tag modifier="white">Started</Tag>
       <Tag modifier="grey">Not started</Tag>

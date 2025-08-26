@@ -14,6 +14,8 @@ export type ColWidth =
   | 'one-third'
   | 'one-quarter';
 
+import React from 'react';
+
 export type HTMLAttributesWithData<T> = React.HTMLAttributes<T> & {
   [key: `data-${string}`]: unknown;
 };

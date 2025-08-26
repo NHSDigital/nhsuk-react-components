@@ -1,6 +1,6 @@
 import React from 'react';
 import { Footer } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Footer> = {
   title: 'Navigation/Footer',
@@ -10,7 +10,7 @@ export default meta;
 type Story = StoryObj<typeof Footer>;
 
 export const Standard: Story = {
-  render: (args) => (
+  render: () => (
     <Footer>
       <Footer.Meta>
         <Footer.ListItem href="#">About us</Footer.ListItem>
@@ -25,7 +25,7 @@ export const Standard: Story = {
 };
 
 export const WithLinksArrangedInColumns: Story = {
-  render: (args) => (
+  render: () => (
     <Footer>
       <Footer.List>
         <Footer.ListItem href="#">Home</Footer.ListItem>

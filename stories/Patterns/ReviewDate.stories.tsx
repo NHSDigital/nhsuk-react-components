@@ -1,5 +1,5 @@
 import { ReviewDate } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof ReviewDate> = {
   title: 'Patterns/ReviewDate',

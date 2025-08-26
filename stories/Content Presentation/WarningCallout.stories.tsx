@@ -1,6 +1,6 @@
 import React from 'react';
 import { WarningCallout } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof WarningCallout> = {
   title: 'Content Presentation/WarningCallout',
@@ -10,7 +10,7 @@ export default meta;
 type Story = StoryObj<typeof WarningCallout>;
 
 export const StandardWarningCallout: Story = {
-  render: (args) => (
+  render: () => (
     <WarningCallout>
       <WarningCallout.Heading>Important</WarningCallout.Heading>
       <p>
@@ -24,7 +24,7 @@ export const StandardWarningCallout: Story = {
 };
 
 export const WarningCalloutWithCustomHeading: Story = {
-  render: (args) => (
+  render: () => (
     <WarningCallout>
       <WarningCallout.Heading>School, nursery or work</WarningCallout.Heading>
       <p>
@@ -36,7 +36,7 @@ export const WarningCalloutWithCustomHeading: Story = {
 };
 
 export const WarningCalloutWithCustomHeadingLevel: Story = {
-  render: (args) => (
+  render: () => (
     <WarningCallout>
       <WarningCallout.Heading headingLevel="h4">School, nursery or work</WarningCallout.Heading>
       <p>
