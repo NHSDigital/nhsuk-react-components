@@ -1,0 +1,20 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "noEmit": true, // Rollup writes JS; TS only type-checks
+        "declaration": false,
+        "declarationMap": false,
+        "types": [] // avoid pulling jest/node types into the build
+    },
+    "include": [
+        "src/**/*"
+    ],
+    "exclude": [
+        "**/*.test.*",
+        "**/*.spec.*",
+        "**/*.stories.*",
+        "stories",
+        "tests",
+        "jest.config.*"
+    ]
+}

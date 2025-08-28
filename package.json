@@ -1,7 +1,10 @@
 {
   "name": "nhsuk-react-components",
   "version": "5.0.0",
-  "files": ["dist", "lib"],
+  "files": [
+    "dist",
+    "lib"
+  ],
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
@@ -31,31 +34,31 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
-
     "@babel/core": "^7.24.1",
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
     "@rollup/plugin-typescript": "^11.1.6",
-    "rollup": "^4.13.0",
-    "rollup-plugin-dts": "^6.1.0",
-    "rollup-plugin-peer-deps-external": "^2.2.4",
-
+    "@storybook/addon-essentials": "^8.0.5",
     "@storybook/react": "^8.0.5",
     "@storybook/react-vite": "^8.0.5",
-    "@storybook/addon-essentials": "^8.0.5",
     "@storybook/theming": "^8.0.5",
-
     "@testing-library/react": "^16.3.0",
     "@types/react": "^18.2.60",
     "@types/react-dom": "^18.2.19",
-
+    "nhsuk-frontend": "^9.0.1",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "rollup": "^4.13.0",
+    "rollup-plugin-dts": "^6.1.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-preserve-directives": "^0.4.0",
+    "rollup-plugin-tsconfig-paths": "^1.5.2",
+    "sass": "^1.53.0",
+    "tslib": "^2.8.1",
     "typescript": "5.3.3",
     "vite": "^4.5.3",
-    "vite-tsconfig-paths": "^4.3.2",
-    "nhsuk-frontend": "^9.0.1",
-    "sass": "^1.53.0"
+    "vite-tsconfig-paths": "^4.3.2"
   },
   "license": "MIT",
   "packageManager": "yarn@4.1.1"

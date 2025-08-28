@@ -13,22 +13,29 @@ import packageJson from './package.json' assert { type: 'json' };
 // suppresses warnings printed to console as part of bundling components with directives present.
 const onWarnSuppression = {
   onwarn(warning, warn) {
-    if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.includes(`"use client"`)) {
-      return;
-    }
+    if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.includes(`"use client"`)) return;
     warn(warning);
   },
 };
 
-const commonPlugins = [external(), tsPaths(), resolve(), commonjs()];
+// Keep react 19 out of the bundle
+const externals = ['react', 'react-dom', 'react/jsx-runtime'];
+
+const commonPlugins = [
+  external(),            // auto-externalize peer deps
+  tsPaths(),             // respect tsconfig paths in source
+  resolve({ extensions: ['.mjs', '.js', '.ts', '.tsx'] }),
+  commonjs(),
+];
 
 export default [
-  // cjs export
+  // CJS (single file)
   {
     input: 'src/index.ts',
+    external: externals,
     output: [
       {
-        file: packageJson.main,
+        file: packageJson.main, // e.g. dist/cjs/index.js
         format: 'cjs',
         sourcemap: true,
       },
@@ -36,53 +43,46 @@ export default [
     plugins: [
       ...commonPlugins,
       typescript({
-        tsconfig: 'bundle-base.tsconfig.json',
-        compilerOptions: {
-          declaration: false,
-        },
+        // IMPORTANT: dedicated build tsconfig (noEmit, no jest/node types)
+        tsconfig: './tsconfig.build.json',
       }),
-      terser(),
+      preserveDirectives(),           // keep "use client" etc.
+      terser({ compress: { directives: false } }),
     ],
     ...onWarnSuppression,
   },
-  // esm export
+
+  // ESM (single file)
   {
     input: 'src/index.ts',
+    external: externals,
     output: [
       {
-        dir: packageJson.module,
+        file: packageJson.module, // e.g. dist/esm/index.js
         format: 'esm',
         sourcemap: true,
-        preserveModules: true,
-        preserveModulesRoot: 'src',
       },
     ],
     plugins: [
       ...commonPlugins,
       typescript({
-        tsconfig: 'bundle-base.tsconfig.json',
-        compilerOptions: {
-          declaration: true,
-          declarationDir: 'dist/esm',
-          emitDeclarationOnly: true,
-          outDir: 'dist/esm',
-        },
+        tsconfig: './tsconfig.build.json',
       }),
       preserveDirectives(),
       terser({ compress: { directives: false } }),
     ],
     ...onWarnSuppression,
   },
-  // type bundling
+
+  // Type definitions (bundled .d.ts)
   {
     input: 'src/index.ts',
+    external: externals,
     output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-    external: [],
     plugins: [
       dts({
-        compilerOptions: {
-          paths: tsBuildConfig.compilerOptions.paths,
-        },
+        // carry over path mapping if you have any
+        compilerOptions: { paths: tsBuildConfig?.compilerOptions?.paths ?? {} },
       }),
     ],
   },
