@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tag matches snapshot 1`] = `
+<div>
+  <span
+    class="nhsuk-tag"
+  >
+    Tag
+  </span>
+</div>
+`;

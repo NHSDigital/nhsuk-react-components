@@ -1,0 +1,49 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tooltip Matches Snapshot 1`] = `
+<div>
+  <div
+    class="nhsuk-tooltip"
+  >
+    Hover Over Me
+    <span
+      class="nhsuk-tooltip__text"
+    >
+      Tooltip!
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Tooltip Passes through IDs 1`] = `
+<div>
+  <div
+    class="nhsuk-tooltip"
+  >
+    Hover Over Me
+    <span
+      class="nhsuk-tooltip__text"
+    >
+      Tooltip!
+    </span>
+  </div>
+</div>
+`;
+
+exports[`Tooltip Passes through IDs 2`] = `
+<div>
+  <div
+    aria-labelledby="test-id-tooltip-text"
+    class="nhsuk-tooltip"
+    id="test-id"
+  >
+    Hover Over Me
+    <span
+      class="nhsuk-tooltip__text"
+      id="test-id-tooltip-text"
+    >
+      Tooltip!
+    </span>
+  </div>
+</div>
+`;

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TabSet Tab matches snapshot 1`] = `
+<div>
+  <button
+    class="nhsuk-tab-set__tab"
+    type="button"
+  />
+</div>
+`;
+
+exports[`TabSet matches snapshot 1`] = `
+<div>
+  <div
+    class="nhsuk-tab-set"
+  />
+</div>
+`;

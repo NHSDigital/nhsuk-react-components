@@ -1,0 +1,175 @@
+@use 'sass:color';
+@use '../../../node_modules/nhsuk-frontend/packages/core/settings/all' as settings;
+@import '../../../node_modules/nhsuk-frontend/packages/core/all';
+
+.nhsuk-ribbon-link {
+
+  @include nhsuk-responsive-padding(2, 'top');
+  @include nhsuk-responsive-padding(2, 'bottom');
+  @include nhsuk-responsive-padding(2, 'left');
+  @include nhsuk-responsive-padding(2, 'right');
+  @include nhsuk-typography-responsive(24);
+
+  display: flex;
+  cursor: pointer;
+  font-weight: settings.$nhsuk-font-bold;
+  align-items: center;
+  justify-content: flex-start;
+  border: 0;
+  border-bottom: 4px solid;
+  width: 100%;
+  border-radius: 4px;
+  outline: none !important;
+
+  &:hover,
+  &:active,
+  &:focus {
+    outline: none !important;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+
+  &:active {
+    text-decoration: none;
+    margin-top: 4px;
+    border-bottom: 0;
+  }
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
+
+  &__icon {
+    @include nhsuk-responsive-margin(1, 'left');
+    @include nhsuk-responsive-margin(2, 'right');
+  }
+
+  &--cool {
+    border-bottom-color: settings.$color_nhsuk-blue;
+    background-color: settings.$color_nhsuk-white;
+    color: settings.$color_nhsuk-blue;
+
+    > svg {
+      fill: settings.$color_nhsuk-blue;
+    }
+
+    &:hover {
+      background-color: color.adjust(settings.$color_nhsuk-white, $lightness: -5%);
+      color: settings.$color_nhsuk-purple;
+    }
+
+    &:focus {
+      background-color: settings.$color_nhsuk-yellow;
+      color: settings.$color_nhsuk-black;
+      border-bottom-color: settings.$color_nhsuk-black;
+
+      > svg {
+        fill: settings.$color_nhsuk-black;
+      }
+    }
+
+    &:active {
+      color: settings.$color_nhsuk-white;
+      border-bottom-color: color.adjust(settings.$color_nhsuk-blue, $lightness: -10%);
+      border-left-color: color.adjust(settings.$color_nhsuk-blue, $lightness: -10%);
+
+      > svg {
+        fill: settings.$color_nhsuk-white;
+        margin-left: none;
+      }
+    }
+  }
+
+  &--mild {
+    border-bottom-color: color.adjust(settings.$color_nhsuk-warm-yellow, $lightness: -10%);
+    background-color: settings.$color_nhsuk-warm-yellow;
+    color: settings.$color_nhsuk-black;
+
+    > svg {
+      fill: settings.$color_nhsuk-black;
+    }
+
+    &:hover {
+      background-color: settings.$color_nhsuk-blue;
+      color: settings.$color_nhsuk-white;
+      border-bottom-color: settings.$color_shade_nhsuk-blue-20;
+
+      > svg {
+        fill: settings.$color_nhsuk-white;
+      }
+    }
+
+    &:focus {
+      background-color: settings.$color_shade_nhsuk-blue-20;
+      color: settings.$color_nhsuk-white;
+      border-bottom-color: settings.$color_shade_nhsuk-blue-35;
+
+      > svg {
+        fill: settings.$color_nhsuk-white;
+      }
+    }
+
+    &:active {
+      background-color: settings.$color_shade_nhsuk-blue-20;
+      color: settings.$color_nhsuk-white;
+      border-bottom-color: settings.$color_shade_nhsuk-blue-35;
+
+      > svg {
+        fill: settings.$color_nhsuk-white;
+      }
+    }
+  }
+
+  &--hot {
+    border-bottom-color: color.adjust(settings.$color_nhsuk-red, $lightness: -10%);
+    background-color: settings.$color_nhsuk-red;
+    color: settings.$color_nhsuk-white;
+
+    > svg {
+      fill: settings.$color_nhsuk-white;
+    }
+
+    &:hover {
+      background-color: color.adjust(settings.$color_nhsuk-red, $lightness: -5%);
+
+      > svg {
+        fill: settings.$color_nhsuk-white;
+      }
+    }
+
+    &:focus {
+      background-color: settings.$color_nhsuk-yellow;
+      color: settings.$color_nhsuk-black;
+      border-bottom-color: settings.$color_nhsuk-black;
+
+      > svg {
+        fill: settings.$color_nhsuk-black;
+      }
+    }
+
+    &:active {
+      background-color: color.adjust(settings.$color_nhsuk-red, $lightness: -10%);
+      color: settings.$color_nhsuk-white;
+      border-bottom-color: settings.$color_shade_nhsuk-blue-35;
+
+      > svg {
+        fill: settings.$color_nhsuk-white;
+      }
+    }
+  }
+
+  &__bar {
+    display: flex;
+    justify-content: space-between;
+
+    .nhsuk-ribbon-link {
+      @include nhsuk-responsive-margin(3, 'right');
+
+      &:last-of-type {
+        @include nhsuk-responsive-margin(0, 'right');
+      }
+    }
+  }
+}
