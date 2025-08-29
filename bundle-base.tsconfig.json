@@ -18,6 +18,7 @@
     "outDir": "./dist",
     "paths": {
       "@components/*": ["src/components/*"],
+      "@extensions/*": ["src/components/extension/*"],
       "@content-presentation/*": ["src/components/content-presentation/*"],
       "@form-elements/*": ["src/components/form-elements/*"],
       "@navigation/*": ["src/components/navigation/*"],

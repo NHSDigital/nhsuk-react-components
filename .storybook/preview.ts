@@ -10,6 +10,7 @@ const preview: Preview = {
           'Welcome',
           'Migration Guides',
           'Form Elements',
+          'Extensions',
           'Content Presentation',
           'Navigation',
           'Layout',

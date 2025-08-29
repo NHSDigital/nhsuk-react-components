@@ -20,16 +20,41 @@
     "allowJs": true,
     "outDir": "./dist",
     "paths": {
-      "@components/*": ["src/components/*"],
-      "@content-presentation/*": ["src/components/content-presentation/*"],
-      "@form-elements/*": ["src/components/form-elements/*"],
-      "@navigation/*": ["src/components/navigation/*"],
-      "@typography/*": ["src/components/typography/*"],
-      "@util/*": ["src/util/*"],
-      "@patterns/*": ["src/patterns/*"],
-      "@resources/*": ["src/resources/*"]
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@extensions/*": [
+        "src/components/extension/*"
+      ],
+      "@content-presentation/*": [
+        "src/components/content-presentation/*"
+      ],
+      "@form-elements/*": [
+        "src/components/form-elements/*"
+      ],
+      "@navigation/*": [
+        "src/components/navigation/*"
+      ],
+      "@typography/*": [
+        "src/components/typography/*"
+      ],
+      "@util/*": [
+        "src/util/*"
+      ],
+      "@patterns/*": [
+        "src/patterns/*"
+      ],
+      "@resources/*": [
+        "src/resources/*"
+      ]
     }
   },
-  "include": ["src", "stories"],
-  "exclude": ["node_modules", "build"]
+  "include": [
+    "src",
+    "stories"
+  ],
+  "exclude": [
+    "node_modules",
+    "build"
+  ]
 }

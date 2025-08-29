@@ -4,7 +4,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import AccordionMenu from '@components/accordion-menu/AccordionMenu';
 
 const meta: Meta<typeof AccordionMenu> = {
-  title: 'Accordion Menu',
+  title: 'Extensions/Accordion Menu',
   component: AccordionMenu,
 };
 export default meta;
