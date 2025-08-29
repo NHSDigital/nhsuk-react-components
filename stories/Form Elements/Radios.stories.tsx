@@ -1,6 +1,6 @@
 import React, { useState, MouseEvent } from 'react';
 import { Radios, Fieldset, Button, TextInput, Checkboxes } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Radios> = {
   title: 'Form Elements/Radios',

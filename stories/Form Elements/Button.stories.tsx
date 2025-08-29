@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button as LibButton } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { ButtonLinkProps, ButtonProps } from '@components/form-elements/button/Button';
 
 /**

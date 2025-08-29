@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import Panel from '@patterns/panel/Panel';
 
 const meta: Meta<typeof Panel> = {

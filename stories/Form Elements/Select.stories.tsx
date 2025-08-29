@@ -1,6 +1,6 @@
 import React, { useState, MouseEvent } from 'react';
 import { Select, Button, TextInput } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Select> = {
   title: 'Form Elements/Select',

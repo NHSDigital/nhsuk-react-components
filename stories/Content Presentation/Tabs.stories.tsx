@@ -1,6 +1,6 @@
 import React from 'react';
 import { Tabs } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 /**
  * The tabs component lets users navigate between related sections of content, displaying 1 section at a time.

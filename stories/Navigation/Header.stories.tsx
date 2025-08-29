@@ -1,7 +1,7 @@
 import React from 'react';
 import { Header } from '../../src';
 import { AsElementLink } from '../../src/util/types/LinkTypes';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Header> = {
   title: 'Navigation/Header',

@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect, SyntheticEvent } from 'react';
 import { Fieldset, Checkboxes, TextInput, Button } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 /**
  * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/master/packages/components/checkboxes" target="_blank" rel="noopener noreferrer">here</a>.

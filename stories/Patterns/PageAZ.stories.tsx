@@ -1,5 +1,5 @@
 import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import NavAZ from '@patterns/nav-a-z';
 import HeadingLevel from '@components/utils/HeadingLevel';
 import Panel from '@patterns/panel/Panel';

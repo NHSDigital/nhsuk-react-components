@@ -1,6 +1,6 @@
 import React from 'react';
 import { SkipLink, HintText } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 const CodeText: React.FC<{ children: React.ReactNode }> = ({
   children,

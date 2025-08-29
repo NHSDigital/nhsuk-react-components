@@ -1,6 +1,6 @@
 import React, { MouseEvent, useState } from 'react';
 import { Textarea, Button, TextInput } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Textarea> = {
   title: 'Form Elements/Textarea',

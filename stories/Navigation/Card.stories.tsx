@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React from 'react';
 import { Card } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 import { ColWidth } from '../../src/util/types/NHSUKTypes';
 import { ChevronRightCircle } from '@components/content-presentation/icons';
 

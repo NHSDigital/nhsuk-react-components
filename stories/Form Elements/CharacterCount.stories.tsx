@@ -1,6 +1,6 @@
 import React from 'react';
 import { CharacterCount, CharacterCountType, HintText, Label, Textarea } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 /**
  * Help users know how much text they can enter when there is a limit on the number of characters.
