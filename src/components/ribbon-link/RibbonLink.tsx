@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-redeclare */
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
-import { ArrowRightCircleIcon } from 'nhsuk-react-components';
 import Bar from './components/Bar';
+import { ArrowRightCircleIcon } from 'src'
 
 type RibbonFlavours = 'hot' | 'mild' | 'cool';
 

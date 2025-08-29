@@ -7,10 +7,10 @@ import Search from './components/LocalSearch';
 import Nav from './components/LocalNav';
 import NavItem from './components/LocalNavItem';
 import NavDropdownMenu from './components/LocalNavDropdownMenu';
-import { Container } from 'nhsuk-react-components';
 import Content from './components/LocalContent';
 import TransactionalServiceName from './components/LocalTransactionalServiceName';
 import HeaderJs from './header';
+import Container from '@components/layout/Container';
 
 const BaseHeaderLogo: FC<OrganisationalLogoProps & NHSLogoNavProps> = (props) => {
   const { orgName } = useContext<IHeaderContext>(HeaderContext);
