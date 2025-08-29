@@ -1,37 +1,37 @@
 // Settings
-@import './variables';
+@use './variables';
 
 // Tools
-@import '../../node_modules/nhsuk-frontend/packages/core/tools/all';
+@use '../../node_modules/nhsuk-frontend/packages/core/tools/all';
 
 // Generic
-@import '../../node_modules/nhsuk-frontend/packages/core/generic/box-sizing';
-@import '../../node_modules/nhsuk-frontend/packages/core/generic/font-face';
+@use '../../node_modules/nhsuk-frontend/packages/core/generic/box-sizing';
+@use '../../node_modules/nhsuk-frontend/packages/core/generic/font-face';
 
 // Elements
-@import '../../node_modules/nhsuk-frontend/packages/core/elements/forms';
-@import '../../node_modules/nhsuk-frontend/packages/core/elements/links';
-@import '../../node_modules/nhsuk-frontend/packages/core/elements/page';
-@import '../../node_modules/nhsuk-frontend/packages/core/elements/table';
+@use '../../node_modules/nhsuk-frontend/packages/core/elements/forms';
+@use '../../node_modules/nhsuk-frontend/packages/core/elements/links';
+@use '../../node_modules/nhsuk-frontend/packages/core/elements/page';
+@use '../../node_modules/nhsuk-frontend/packages/core/elements/table';
 
 // Objects
-@import '../../node_modules/nhsuk-frontend/packages/core/objects/form-group';
-@import '../../node_modules/nhsuk-frontend/packages/core/objects/grid';
-@import '../../node_modules/nhsuk-frontend/packages/core/objects/main-wrapper';
-@import '../../node_modules/nhsuk-frontend/packages/core/objects/width-container';
+@use '../../node_modules/nhsuk-frontend/packages/core/objects/form-group';
+@use '../../node_modules/nhsuk-frontend/packages/core/objects/grid';
+@use '../../node_modules/nhsuk-frontend/packages/core/objects/main-wrapper';
+@use '../../node_modules/nhsuk-frontend/packages/core/objects/width-container';
 
 // Styles
-@import '../../node_modules/nhsuk-frontend/packages/core/styles/icons';
-@import '../../node_modules/nhsuk-frontend/packages/core/styles/lists';
-@import '../../node_modules/nhsuk-frontend/packages/core/styles/section-break';
-@import '../../node_modules/nhsuk-frontend/packages/core/styles/typography';
+@use '../../node_modules/nhsuk-frontend/packages/core/styles/icons';
+@use '../../node_modules/nhsuk-frontend/packages/core/styles/lists';
+@use '../../node_modules/nhsuk-frontend/packages/core/styles/section-break';
+// @use '../../node_modules/nhsuk-frontend/packages/core/styles/typography';
 
 // Utilities
-@import '../../node_modules/nhsuk-frontend/packages/core/utilities/clearfix';
-@import '../../node_modules/nhsuk-frontend/packages/core/utilities/grid-widths';
-@import '../../node_modules/nhsuk-frontend/packages/core/utilities/link-nowrap';
-@import '../../node_modules/nhsuk-frontend/packages/core/utilities/reading-width';
-@import '../../node_modules/nhsuk-frontend/packages/core/utilities/spacing';
-@import '../../node_modules/nhsuk-frontend/packages/core/utilities/typography';
-@import '../../node_modules/nhsuk-frontend/packages/core/utilities/visually-hidden';
-@import '../../node_modules/nhsuk-frontend/packages/core/utilities/widths';
+@use '../../node_modules/nhsuk-frontend/packages/core/utilities/clearfix';
+@use '../../node_modules/nhsuk-frontend/packages/core/utilities/grid-widths';
+@use '../../node_modules/nhsuk-frontend/packages/core/utilities/link-nowrap';
+@use '../../node_modules/nhsuk-frontend/packages/core/utilities/reading-width';
+@use '../../node_modules/nhsuk-frontend/packages/core/utilities/spacing';
+@use '../../node_modules/nhsuk-frontend/packages/core/utilities/typography';
+@use '../../node_modules/nhsuk-frontend/packages/core/utilities/visually-hidden';
+@use '../../node_modules/nhsuk-frontend/packages/core/utilities/widths';
