@@ -6,6 +6,7 @@ exports[`Character Count Matches snapshot 1`] = `
     class="nhsuk-character-count"
     data-maxlength="200"
     data-module="nhsuk-character-count"
+    data-nhsuk-character-count-init=""
   >
     <div
       class="nhsuk-form-group"

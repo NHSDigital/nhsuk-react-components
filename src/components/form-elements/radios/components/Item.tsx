@@ -5,7 +5,7 @@ import { RadiosContext, IRadiosContext } from '../RadioContext';
 import HintText, { HintTextProps } from '../../hint-text/HintText';
 import Label, { LabelProps } from '../../label/Label';
 
-export interface RadioProps extends HTMLProps<HTMLInputElement> {
+export interface RadiosItemProps extends HTMLProps<HTMLInputElement> {
   hint?: string;
   hintProps?: HintTextProps;
   labelProps?: LabelProps;
@@ -15,7 +15,7 @@ export interface RadioProps extends HTMLProps<HTMLInputElement> {
   inputRef?: (inputRef: HTMLInputElement | null) => void;
 }
 
-const Radio: FC<RadioProps> = ({
+const RadiosItem: FC<RadiosItemProps> = ({
   className,
   children,
   id,
@@ -59,11 +59,12 @@ const Radio: FC<RadioProps> = ({
           className={classNames('nhsuk-radios__input', className)}
           id={inputID}
           name={name}
+          type={type}
+          aria-controls={conditional ? `${inputID}--conditional` : undefined}
           aria-describedby={hint ? `${inputID}--hint` : undefined}
           checked={checked}
           defaultChecked={defaultChecked}
           ref={inputRef}
-          type={type}
           {...rest}
         />
         {children ? (
@@ -82,17 +83,19 @@ const Radio: FC<RadioProps> = ({
           </HintText>
         ) : null}
       </div>
-      {conditional && (shouldShowConditional || forceShowConditional) ? (
+      {conditional && (
         <div
-          className="nhsuk-radios__conditional"
+          className={classNames('nhsuk-radios__conditional', {
+            'nhsuk-radios__conditional--hidden': !(shouldShowConditional || forceShowConditional),
+          })}
           id={`${inputID}--conditional`}
           {...conditionalWrapperProps}
         >
           {conditional}
         </div>
-      ) : null}
+      )}
     </>
   );
 };
 
-export default Radio;
+export default RadiosItem;

@@ -1,34 +1,31 @@
-import { createContext } from 'react';
+import { createContext, type Dispatch, type SetStateAction } from 'react';
 
 export interface IHeaderContext {
-  orgName: string | undefined;
-  serviceName: string | undefined;
-  orgSplit: string | undefined;
-  orgDescriptor: string | undefined;
-  setSearch: (toggle: boolean) => void;
-  setMenuToggle: (toggle: boolean) => void;
-  setServiceName: (toggle: boolean) => void;
-  toggleMenu: () => void;
-  hasSearch: boolean;
-  hasMenuToggle: boolean;
-  hasServiceName: boolean;
-  menuOpen: boolean;
-  transactional: boolean;
+  logo?: {
+    href?: string;
+    src?: string;
+    'aria-label'?: string;
+  };
+  service?: {
+    href?: string;
+    text?: string;
+  };
+  organisation?: {
+    name?: string;
+    split?: string;
+    descriptor?: string;
+  };
+  setLogo: Dispatch<SetStateAction<IHeaderContext['logo']>>;
+  setService: Dispatch<SetStateAction<IHeaderContext['service']>>;
+  setOrganisation: Dispatch<SetStateAction<IHeaderContext['organisation']>>;
 }
 
 export default createContext<IHeaderContext>({
   /* eslint-disable @typescript-eslint/no-empty-function */
-  orgName: undefined,
-  serviceName: undefined,
-  orgSplit: undefined,
-  orgDescriptor: undefined,
-  setSearch: () => {},
-  setMenuToggle: () => {},
-  setServiceName: () => {},
-  hasSearch: false,
-  hasMenuToggle: false,
-  hasServiceName: false,
-  toggleMenu: () => {},
-  menuOpen: false,
-  transactional: false,
+  logo: undefined,
+  service: undefined,
+  organisation: undefined,
+  setLogo: () => {},
+  setService: () => {},
+  setOrganisation: () => {},
 });

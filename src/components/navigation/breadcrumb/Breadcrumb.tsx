@@ -2,35 +2,28 @@ import React, { Children, FC, HTMLProps, ReactNode } from 'react';
 import classNames from 'classnames';
 import { AsElementLink } from '@util/types/LinkTypes';
 import { childIsOfComponentType } from '@util/types/TypeGuards';
+import BackLink from '../back-link';
 
 type Item = FC<AsElementLink<HTMLAnchorElement>>;
 
-const Item: Item = ({ className, children, asElement: Component = 'a', ...rest }) => (
-  <li className="nhsuk-breadcrumb__item">
-    <Component className={classNames('nhsuk-breadcrumb__link', className)} {...rest}>
+const Item: Item = ({ className, children, asElement: Element = 'a', ...rest }) => (
+  <li className="nhsuk-breadcrumb__list-item">
+    <Element className={classNames('nhsuk-breadcrumb__link', className)} {...rest}>
       {children}
-    </Component>
+    </Element>
   </li>
 );
 
-type Back = FC<AsElementLink<HTMLAnchorElement> & { accessiblePrefix?: string }>;
+type Back = typeof BackLink;
 
-const Back: Back = ({
-  className,
-  children,
-  asElement: Component = 'a',
-  accessiblePrefix = 'Back to &nbsp;',
-  ...rest
-}) => (
-  <p className={classNames('nhsuk-breadcrumb__back', className)}>
-    <Component className="nhsuk-breadcrumb__backlink" {...rest}>
-      <span className="nhsuk-u-visually-hidden">{accessiblePrefix}</span>
-      {children}
-    </Component>
-  </p>
+const Back: Back = ({ children, ...rest }) => (
+  <BackLink {...rest}>
+    <span className="nhsuk-u-visually-hidden">Back to&nbsp;</span>
+    {children}
+  </BackLink>
 );
 
-interface Breadcrumb extends FC<HTMLProps<HTMLDivElement>> {
+interface BreadcrumbComponent extends FC<HTMLProps<HTMLDivElement>> {
   Item: Item;
   Back: Back;
 }
@@ -40,7 +33,7 @@ type SplitChildren = {
   OtherChildren: Array<ReactNode>;
 };
 
-const Breadcrumb: Breadcrumb = ({
+const BreadcrumbComponent: BreadcrumbComponent = ({
   className,
   children,
   'aria-label': ariaLabel = 'Breadcrumb',
@@ -70,7 +63,7 @@ const Breadcrumb: Breadcrumb = ({
   );
 };
 
-Breadcrumb.Item = Item;
-Breadcrumb.Back = Back;
+BreadcrumbComponent.Item = Item;
+BreadcrumbComponent.Back = Back;
 
-export default Breadcrumb;
+export default BreadcrumbComponent;

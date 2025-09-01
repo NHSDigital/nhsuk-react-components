@@ -3,7 +3,7 @@ import { DoAndDontList } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
 /**
- * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/master/packages/components/do-dont-list" target="_blank" rel="noopener noreferrer">here</a>.
+ * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/do-dont-list" target="_blank" rel="noopener noreferrer">here</a>.
  *
  * ## Implementation Notes
  *
@@ -96,8 +96,12 @@ export const CustomPrefixText: Story = {
   render: () => (
     <DoAndDontList listType="dont">
       <DoAndDontList.Item prefixText="You must not">burst a blister yourself</DoAndDontList.Item>
-      <DoAndDontList.Item prefixText={undefined}>peel the skin off a burst blister</DoAndDontList.Item>
-      <DoAndDontList.Item prefixText={null}>pick at the edges of the remaining skin</DoAndDontList.Item>
+      <DoAndDontList.Item prefixText={undefined}>
+        peel the skin off a burst blister
+      </DoAndDontList.Item>
+      <DoAndDontList.Item prefixText={null}>
+        pick at the edges of the remaining skin
+      </DoAndDontList.Item>
       <DoAndDontList.Item prefixText={<span>please dont </span>}>
         wear the shoes or use the equipment that caused your blister until it heals
       </DoAndDontList.Item>
@@ -105,6 +109,5 @@ export const CustomPrefixText: Story = {
         wear the shoes or use the equipment that caused your blister until it heals
       </DoAndDontList.Item>
     </DoAndDontList>
-
   ),
-}
+};

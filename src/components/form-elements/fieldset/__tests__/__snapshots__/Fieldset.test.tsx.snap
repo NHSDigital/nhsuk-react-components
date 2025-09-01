@@ -1,34 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Fieldset Fieldset.Legend matches snapshot: FieldsetLegend 1`] = `
-<div>
-  <legend
-    class="nhsuk-fieldset__legend"
-  >
-    Text
-  </legend>
-</div>
-`;
-
 exports[`Fieldset matches snapshot: Fieldset 1`] = `
 <div>
-  <div
-    class="nhsuk-form-group"
+  <fieldset
+    class="nhsuk-fieldset"
   >
-    <fieldset
-      class="nhsuk-fieldset"
+    <div
+      class="nhsuk-form-group"
     >
-      <div
-        class="nhsuk-form-group"
-      >
-        <input
-          class="nhsuk-input"
-          id="test-input"
-          name="test-input"
-          type="text"
-        />
-      </div>
-    </fieldset>
-  </div>
+      <input
+        class="nhsuk-input"
+        id="test-input"
+        name="test-input"
+        type="text"
+      />
+    </div>
+  </fieldset>
 </div>
 `;

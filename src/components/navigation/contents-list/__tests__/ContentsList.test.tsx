@@ -21,12 +21,6 @@ describe('ContentsList', () => {
     expect(container.querySelector('.nhsuk-u-visually-hidden')?.textContent).toEqual('Custom');
   });
 
-  it('disables hidden text', () => {
-    const { container } = render(<ContentsList visuallyHiddenText={false} />);
-
-    expect(container.querySelector('.nhsuk-u-visually-hidden')).toBeFalsy();
-  });
-
   describe('ContentsList.Item', () => {
     it('matches snapshot', () => {
       const { container } = render(<ContentsList.Item>Content</ContentsList.Item>);

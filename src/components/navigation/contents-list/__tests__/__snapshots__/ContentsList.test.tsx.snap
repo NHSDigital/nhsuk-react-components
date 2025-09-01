@@ -17,6 +17,7 @@ exports[`ContentsList ContentsList.Item matches snapshot: ContentsList.Item 1`] 
 exports[`ContentsList matches snapshot: ContentsList 1`] = `
 <div>
   <nav
+    aria-label="Pages in this guide"
     class="nhsuk-contents-list"
     role="navigation"
   >

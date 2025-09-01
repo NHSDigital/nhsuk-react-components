@@ -1,5 +1,5 @@
 import React from 'react';
-import { CharacterCount, CharacterCountType, HintText, Label, Textarea } from '../../src';
+import { CharacterCount, HintText, Label, Textarea } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
 /**
@@ -20,11 +20,7 @@ type Story = StoryObj<typeof CharacterCount>;
 
 export const Standard: Story = {
   render: () => (
-    <CharacterCount
-      maxLength={200}
-      countType={CharacterCountType.Characters}
-      textAreaId="more-detail"
-    >
+    <CharacterCount maxLength={200} textAreaId="more-detail">
       <Label htmlFor="more-detail">Can you provide more detail?</Label>
       <HintText id="more-detail-hint">
         Do not include personal information like your name, date of birth or NHS number.
@@ -47,11 +43,7 @@ export const Standard: Story = {
  */
 export const WordCountLimit: Story = {
   render: () => (
-    <CharacterCount
-      maxLength={150}
-      countType={CharacterCountType.Words}
-      textAreaId="job-description-detail"
-    >
+    <CharacterCount maxWords={150} textAreaId="job-description-detail">
       <Label htmlFor="job-description-detail" size="l">
         Enter a job description
       </Label>
@@ -68,20 +60,21 @@ export const WordCountLimit: Story = {
 /**
  * If the limit is much higher than most users are likely to reach, you can choose to only display the message after a user has entered a certain amount.
  *
- * Use the `thresholdPercent` prop to only show the count message when users have reached that percentage of the limit.
+ * Use the `threshold` prop to only show the count message when users have reached that percentage of the limit.
  */
-export const MessageThresholdPercentage: Story = {
+export const MessageThreshold: Story = {
   render: () => (
-    <CharacterCount
-      maxLength={112}
-      countType={CharacterCountType.Characters}
-      textAreaId="threshold"
-      thresholdPercent={75}
-    >
+    <CharacterCount maxLength={112} textAreaId="threshold" threshold={75}>
       <Label htmlFor="threshold">Can you provide more detail?</Label>
-      <Textarea id="threshold" className="nhsuk-js-character-count" name="threshold" rows={5}>
-        Type another letter into this field after this message to see the threshold feature
-      </Textarea>
+      <Textarea
+        id="threshold"
+        className="nhsuk-js-character-count"
+        name="threshold"
+        defaultValue={
+          'Type another letter into this field after this message to see the threshold feature'
+        }
+        rows={5}
+      />
     </CharacterCount>
   ),
 };

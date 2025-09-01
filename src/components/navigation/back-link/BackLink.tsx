@@ -1,20 +1,16 @@
 import React, { FC } from 'react';
 import classNames from 'classnames';
-import { ChevronLeft } from '@components/content-presentation/icons';
 import { AsElementLink } from '@util/types/LinkTypes';
 
-const BackLink: FC<AsElementLink<HTMLAnchorElement>> = ({
-  children,
+const BackLinkComponent: FC<AsElementLink<HTMLAnchorElement>> = ({
+  children = 'Back',
   className,
-  asElement: Component = 'a',
+  asElement: Element = 'a',
   ...rest
 }) => (
-  <div className="nhsuk-back-link">
-    <Component className={classNames('nhsuk-back-link__link', className)} {...rest}>
-      <ChevronLeft height={24} width={24} />
-      {children}
-    </Component>
-  </div>
+  <Element className={classNames('nhsuk-back-link', className)} {...rest}>
+    {children}
+  </Element>
 );
 
-export default BackLink;
+export default BackLinkComponent;

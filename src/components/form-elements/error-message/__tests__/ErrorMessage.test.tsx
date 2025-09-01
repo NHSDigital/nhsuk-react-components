@@ -12,18 +12,18 @@ describe('ErrorMessage', () => {
   it('has default visuallyHiddenText', () => {
     const { container } = render(<ErrorMessage>Error</ErrorMessage>);
 
-    expect(container.querySelector('.nhsuk-u-visually-hidden')?.textContent).toBe('Error: ');
-  });
-
-  it('has disabled visuallyHiddenText', () => {
-    const { container } = render(<ErrorMessage visuallyHiddenText={false}>Error</ErrorMessage>);
-
-    expect(container.querySelector('.nhsuk-u-visually-hidden')).toBeFalsy();
+    expect(container.querySelector('.nhsuk-u-visually-hidden')?.textContent).toBe('Error:');
   });
 
   it('has custom visuallyHiddenText', () => {
     const { container } = render(<ErrorMessage visuallyHiddenText="Custom">Error</ErrorMessage>);
 
-    expect(container.querySelector('.nhsuk-u-visually-hidden')?.textContent).toBe('Custom');
+    expect(container.querySelector('.nhsuk-u-visually-hidden')?.textContent).toBe('Custom:');
+  });
+
+  it('has empty visuallyHiddenText', () => {
+    const { container } = render(<ErrorMessage visuallyHiddenText="">Error</ErrorMessage>);
+
+    expect(container.querySelector('.nhsuk-u-visually-hidden')).toBeFalsy();
   });
 });

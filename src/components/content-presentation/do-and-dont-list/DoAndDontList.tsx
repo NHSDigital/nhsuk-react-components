@@ -12,13 +12,13 @@ interface DoAndDontListProps extends HTMLProps<HTMLDivElement> {
   headingLevel?: HeadingLevelType;
 }
 
-interface DoAndDontList extends FC<DoAndDontListProps> {
+interface DoAndDontListComponent extends FC<DoAndDontListProps> {
   Item: FC<DoAndDontItemProps>;
 }
 
 const DoAndDontListContext = createContext<ListType>('do');
 
-const DoAndDontList: DoAndDontList = ({
+const DoAndDontListComponent: DoAndDontListComponent = ({
   className,
   listType,
   children,
@@ -71,6 +71,6 @@ const DoAndDontItem: FC<DoAndDontItemProps> = ({ prefixText, listItemType, child
   );
 };
 
-DoAndDontList.Item = DoAndDontItem;
+DoAndDontListComponent.Item = DoAndDontItem;
 
-export default DoAndDontList;
+export default DoAndDontListComponent;

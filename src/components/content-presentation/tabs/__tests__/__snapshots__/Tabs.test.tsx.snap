@@ -5,6 +5,7 @@ exports[`The tabs component Matches the snapshot 1`] = `
   <div
     class="nhsuk-tabs"
     data-module="nhsuk-tabs"
+    data-nhsuk-tabs-init=""
   >
     <h2
       class="nhsuk-tabs__title"

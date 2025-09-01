@@ -25,7 +25,7 @@ export const Standard: Story = {
           <Footer.ListItem href="https://www.nhs.uk/about-us/sitemap/">Sitemap</Footer.ListItem>
           <Footer.ListItem href="https://www.nhs.uk/our-policies/">Our policies</Footer.ListItem>
         </Footer.List>
-        <Footer.Copyright>&copy; Crown copyright</Footer.Copyright>
+        <Footer.Copyright />
       </Footer>
     </>
   ),
@@ -61,13 +61,14 @@ export const WithLinksArrangedInColumns: Story = {
           <Footer.ListItem href="#">Profile editor login</Footer.ListItem>
         </Footer.List>
 
-        <Footer.List className="nhsuk-footer__meta">
+        <Footer.Meta>
           <Footer.ListItem href="#">About us</Footer.ListItem>
           <Footer.ListItem href="#">Accessibility statement</Footer.ListItem>
           <Footer.ListItem href="#">Our policies</Footer.ListItem>
           <Footer.ListItem href="#">Cookies</Footer.ListItem>
-        </Footer.List>
-        <Footer.Copyright>&copy; Crown copyright</Footer.Copyright>
+
+          <Footer.Copyright />
+        </Footer.Meta>
       </Footer>
     </>
   ),

@@ -19,7 +19,6 @@ const jestConfig = {
       },
     ],
   },
-  transformIgnorePatterns: ['node_modules/(?!nhsuk-frontend/packages)'],
 };
 
 module.exports = jestConfig;

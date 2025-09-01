@@ -26,7 +26,7 @@ interface ICard extends FC<CardProps> {
   GroupItem: typeof CardGroupItem;
 }
 
-const Card: ICard = ({ className, clickable, children, cardType, ...rest }) => {
+const CardComponent: ICard = ({ className, clickable, children, cardType, ...rest }) => {
   let cardClassNames = classNames(
     'nhsuk-card',
     { 'nhsuk-card--clickable': clickable },
@@ -56,12 +56,12 @@ const Card: ICard = ({ className, clickable, children, cardType, ...rest }) => {
   );
 };
 
-Card.Heading = CardHeading;
-Card.Description = CardDescription;
-Card.Image = CardImage;
-Card.Link = CardLink;
-Card.Content = CardContent;
-Card.Group = CardGroup;
-Card.GroupItem = CardGroupItem;
+CardComponent.Heading = CardHeading;
+CardComponent.Description = CardDescription;
+CardComponent.Image = CardImage;
+CardComponent.Link = CardLink;
+CardComponent.Content = CardContent;
+CardComponent.Group = CardGroup;
+CardComponent.GroupItem = CardGroupItem;
 
-export default Card;
+export default CardComponent;

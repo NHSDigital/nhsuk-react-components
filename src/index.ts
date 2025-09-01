@@ -1,16 +1,9 @@
 export { default as ActionLink } from './components/navigation/action-link';
 export { default as BackLink } from './components/navigation/back-link';
 export { default as Breadcrumb } from './components/navigation/breadcrumb';
-export {
-  default as Button,
-  Button as DefaultButton,
-  ButtonLink,
-} from './components/form-elements/button';
+export { default as Button } from './components/form-elements/button';
 export { default as Card } from './components/navigation/card';
-export {
-  default as CharacterCount,
-  CharacterCountType,
-} from './components/form-elements/character-count';
+export { default as CharacterCount } from './components/form-elements/character-count';
 export { default as Checkboxes } from './components/form-elements/checkboxes';
 export { default as ContentsList } from './components/navigation/contents-list';
 export { default as DateInput } from './components/form-elements/date-input';
@@ -24,20 +17,16 @@ export { default as Form, useFormContext } from './components/form-elements/form
 export { default as Header } from './components/navigation/header';
 export { default as Hero } from './components/content-presentation/hero';
 export { default as HintText } from './components/form-elements/hint-text';
+export { default as Legend } from './components/form-elements/legend';
 export {
   ArrowLeft as ArrowLeftIcon,
   ArrowRight as ArrowRightIcon,
   ArrowRightCircle as ArrowRightCircleIcon,
-  ChevronLeft as ChevronLeftIcon,
-  ChevronRight as ChevronRightIcon,
-  Close as CloseIcon,
+  ChevronRightCircle as ChevronRightCircleIcon,
   Cross as CrossIcon,
-  SmallEmdash as SmallEmdashIcon,
-  Emdash as EmdashIcon,
-  Minus as MinusIcon,
-  Plus as PlusIcon,
   Search as SearchIcon,
   Tick as TickIcon,
+  User as UserIcon,
 } from './components/content-presentation/icons';
 export { default as Images } from './components/content-presentation/images';
 export { default as TextInput } from './components/form-elements/text-input';

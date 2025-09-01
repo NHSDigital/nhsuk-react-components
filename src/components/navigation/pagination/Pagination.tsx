@@ -41,11 +41,11 @@ const PaginationLink: FC<PaginationLinkProps> = ({
   </li>
 );
 
-interface Pagination extends FC<HTMLProps<HTMLDivElement>> {
+interface PaginationComponent extends FC<HTMLProps<HTMLDivElement>> {
   Link: FC<PaginationLinkProps>;
 }
 
-const Pagination: Pagination = ({
+const PaginationComponent: PaginationComponent = ({
   className,
   children,
   role = 'navigation',
@@ -62,6 +62,6 @@ const Pagination: Pagination = ({
   </nav>
 );
 
-Pagination.Link = PaginationLink;
+PaginationComponent.Link = PaginationLink;
 
-export default Pagination;
+export default PaginationComponent;

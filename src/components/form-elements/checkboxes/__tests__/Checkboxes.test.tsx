@@ -7,9 +7,9 @@ describe('Checkboxes', () => {
     const { container } = render(
       <form>
         <Checkboxes id="example" name="example">
-          <Checkboxes.Box value="animal">Waste from animal carcasses</Checkboxes.Box>
-          <Checkboxes.Box value="mines">Waste from mines or quarries</Checkboxes.Box>
-          <Checkboxes.Box value="farm">Farm or agricultural waste</Checkboxes.Box>
+          <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
+          <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
+          <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
         </Checkboxes>
       </form>,
     );
@@ -21,9 +21,9 @@ describe('Checkboxes', () => {
     const { container } = render(
       <form>
         <Checkboxes id="example" name="example" error="Example error">
-          <Checkboxes.Box value="animal">Waste from animal carcasses</Checkboxes.Box>
-          <Checkboxes.Box value="mines">Waste from mines or quarries</Checkboxes.Box>
-          <Checkboxes.Box value="farm">Farm or agricultural waste</Checkboxes.Box>
+          <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
+          <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
+          <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
         </Checkboxes>
       </form>,
     );
@@ -35,9 +35,9 @@ describe('Checkboxes', () => {
     const { container } = render(
       <form>
         <Checkboxes id="example" name="example" error={true}>
-          <Checkboxes.Box value="animal">Waste from animal carcasses</Checkboxes.Box>
-          <Checkboxes.Box value="mines">Waste from mines or quarries</Checkboxes.Box>
-          <Checkboxes.Box value="farm">Farm or agricultural waste</Checkboxes.Box>
+          <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
+          <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
+          <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
         </Checkboxes>
       </form>,
     );
@@ -49,13 +49,13 @@ describe('Checkboxes', () => {
     const { container } = render(
       <form>
         <Checkboxes id="example" name="example">
-          <Checkboxes.Box value="animal">Waste from animal carcasses</Checkboxes.Box>
-          <Checkboxes.Box value="mines">Waste from mines or quarries</Checkboxes.Box>
-          <Checkboxes.Box value="farm">Farm or agricultural waste</Checkboxes.Box>
+          <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
+          <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
+          <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
           <Checkboxes.Divider />
-          <Checkboxes.Box value="none" id="none" exclusive>
+          <Checkboxes.Item value="none" id="none" exclusive>
             None
-          </Checkboxes.Box>
+          </Checkboxes.Item>
         </Checkboxes>
       </form>,
     );
@@ -67,12 +67,12 @@ describe('Checkboxes', () => {
     const { container } = render(
       <form>
         <Checkboxes id="example" name="example">
-          <Checkboxes.Box value="animal">Waste from animal carcasses</Checkboxes.Box>
-          <Checkboxes.Box value="mines">Waste from mines or quarries</Checkboxes.Box>
-          <Checkboxes.Box value="farm">Farm or agricultural waste</Checkboxes.Box>
-          <Checkboxes.Box value="none" id="none" exclusive>
+          <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
+          <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
+          <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
+          <Checkboxes.Item value="none" id="none" exclusive>
             None
-          </Checkboxes.Box>
+          </Checkboxes.Item>
         </Checkboxes>
       </form>,
     );

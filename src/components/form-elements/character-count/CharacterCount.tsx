@@ -1,47 +1,42 @@
 'use client';
-import React, { FC, useEffect } from 'react';
-import CharacterCountJs from '@resources/character-count';
-import { HTMLAttributesWithData } from '@util/types/NHSUKTypes';
+import React, { FC, HTMLProps, useEffect, useRef, useState } from 'react';
+import { CharacterCount } from 'nhsuk-frontend';
 
-export enum CharacterCountType {
-  Characters,
-  Words,
-}
-
-type CharacterCountProps = React.HTMLAttributes<HTMLDivElement> & {
-  children: React.ReactNode;
-  maxLength: number;
-  countType: CharacterCountType;
+type CharacterCountProps = HTMLProps<HTMLDivElement> & {
+  maxLength?: number;
+  maxWords?: number;
   textAreaId: string;
-  thresholdPercent?: number;
+  threshold?: number;
 };
 
-const CharacterCount: FC<CharacterCountProps> = ({
+const CharacterCountComponent: FC<CharacterCountProps> = ({
   children,
   maxLength,
-  countType,
+  maxWords,
   textAreaId,
-  thresholdPercent,
+  threshold,
   ...rest
 }) => {
+  const moduleRef = useRef<HTMLDivElement>(null);
+  const [instance, setInstance] = useState<CharacterCount>();
+
   useEffect(() => {
-    CharacterCountJs();
-  }, []);
+    if (!moduleRef.current || instance) {
+      return;
+    }
 
-  const characterCountProps: HTMLAttributesWithData<HTMLDivElement> =
-    countType === CharacterCountType.Characters
-      ? { ...rest, ['data-maxlength']: maxLength }
-      : { ...rest, ['data-maxwords']: maxLength };
-
-  if (thresholdPercent) {
-    characterCountProps['data-threshold'] = thresholdPercent;
-  }
+    setInstance(new CharacterCount(moduleRef.current));
+  }, [moduleRef, instance]);
 
   return (
     <div
       className="nhsuk-character-count"
       data-module="nhsuk-character-count"
-      {...characterCountProps}
+      data-maxlength={maxLength}
+      data-maxwords={maxWords}
+      data-threshold={threshold}
+      ref={moduleRef}
+      {...rest}
     >
       <div className="nhsuk-form-group">{children}</div>
 
@@ -52,4 +47,4 @@ const CharacterCount: FC<CharacterCountProps> = ({
   );
 };
 
-export default CharacterCount;
+export default CharacterCountComponent;

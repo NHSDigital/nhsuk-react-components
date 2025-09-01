@@ -3,7 +3,7 @@
 import React, { HTMLProps, ChangeEvent, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { DayInput, MonthInput, YearInput } from './components/IndividualDateInputs';
-import SingleInputFormGroup from '@components/utils/SingleInputFormGroup';
+import FormGroup from '@components/utils/FormGroup';
 import DateInputContext, { IDateInputContext } from './DateInputContext';
 import { FormElementProps } from '@util/types/FormTypes';
 
@@ -13,15 +13,13 @@ type DateInputValue = {
   year: string;
 };
 
-export type DateInputChangeEvent = ChangeEvent<HTMLInputElement> & {
-  target: HTMLInputElement & { value: DateInputValue };
-  currentTarget: HTMLInputElement & { value: DateInputValue };
-};
+export type DateInputChangeEvent = ChangeEvent<
+  Omit<HTMLInputElement, 'value'> & { value: DateInputValue }
+>;
 
 interface DateInputProps
-  extends Omit<HTMLProps<HTMLDivElement>, 'value' | 'defaultValue'>,
-    FormElementProps {
-  autoSelectNext?: boolean;
+  extends Omit<HTMLProps<HTMLDivElement>, 'value' | 'defaultValue' | 'label'>,
+    Omit<FormElementProps, 'label' | 'labelProps'> {
   value?: Partial<DateInputValue>;
   defaultValue?: Partial<DateInputValue>;
   onChange?: (e: DateInputChangeEvent) => void;
@@ -29,16 +27,13 @@ interface DateInputProps
 
 type InputType = 'day' | 'month' | 'year';
 
-const DateInput = ({
-  autoSelectNext,
+const DateInputComponent = ({
   children,
   onChange,
   value,
   defaultValue,
   ...rest
 }: DateInputProps) => {
-  let monthRef: HTMLInputElement | null = null;
-  let yearRef: HTMLInputElement | null = null;
   const [internalDate, setInternalDate] = useState<Record<InputType, string>>({
     day: value?.day ?? '',
     month: value?.month ?? '',
@@ -55,47 +50,32 @@ const DateInput = ({
     return setInternalDate(newState);
   }, [value]);
 
-  const handleFocusNextInput = (inputType: InputType, value: string): void => {
-    if (!autoSelectNext) return;
-    if (inputType === 'day' && value.length === 2 && monthRef) {
-      monthRef.focus();
-    } else if (inputType === 'month' && value.length === 2 && yearRef) {
-      yearRef.focus();
-    }
-  };
-
   const handleChange = (inputType: InputType, event: ChangeEvent<HTMLInputElement>): void => {
-    handleFocusNextInput(inputType, event.target.value);
     event.stopPropagation();
 
-    if (onChange) {
-      const newEventValue = {
-        ...internalDate,
-        [inputType]: event.target.value,
-      };
-      const newEvent = {
-        ...event,
-        target: { ...event.target, value: newEventValue },
-        currentTarget: { ...event.currentTarget, value: newEventValue },
-      } as DateInputChangeEvent;
+    const newEventValue: DateInputValue = {
+      ...internalDate,
+      [inputType]: event.target.value,
+    };
 
-      onChange(newEvent);
-      setInternalDate(newEventValue);
-    }
-  };
+    const newEvent: DateInputChangeEvent = {
+      ...event,
+      target: { ...event.target, value: newEventValue },
+      currentTarget: { ...event.currentTarget, value: newEventValue },
+    };
 
-  const registerRef = (inputType: InputType, ref: HTMLInputElement | null): void => {
-    if (inputType === 'month') monthRef = ref;
-    if (inputType === 'year') yearRef = ref;
+    onChange?.(newEvent);
+    setInternalDate(newEventValue);
   };
 
   return (
-    <SingleInputFormGroup<Omit<DateInputProps, 'value' | 'defaultValue'>>
+    <FormGroup<Omit<DateInputProps, 'value' | 'defaultValue'>>
+      fieldsetProps={{ role: 'group' }}
       inputType="dateinput"
       {...rest}
     >
       {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
-      {({ className, name, id, error, autoSelectNext, ...restRenderProps }) => {
+      {({ className, name, id, error, ...restRenderProps }) => {
         const contextValue: IDateInputContext = {
           id,
           name,
@@ -103,28 +83,27 @@ const DateInput = ({
           value,
           defaultValue,
           handleChange,
-          registerRef,
         };
         return (
           <div className={classNames('nhsuk-date-input', className)} {...restRenderProps} id={id}>
             <DateInputContext.Provider value={contextValue}>
               {children || (
                 <>
-                  <DateInput.Day />
-                  <DateInput.Month />
-                  <DateInput.Year />
+                  <DateInputComponent.Day />
+                  <DateInputComponent.Month />
+                  <DateInputComponent.Year />
                 </>
               )}
             </DateInputContext.Provider>
           </div>
         );
       }}
-    </SingleInputFormGroup>
+    </FormGroup>
   );
 };
 
-DateInput.Day = DayInput;
-DateInput.Month = MonthInput;
-DateInput.Year = YearInput;
+DateInputComponent.Day = DayInput;
+DateInputComponent.Month = MonthInput;
+DateInputComponent.Year = YearInput;
 
-export default DateInput;
+export default DateInputComponent;

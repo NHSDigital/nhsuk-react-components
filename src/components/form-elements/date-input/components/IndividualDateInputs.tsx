@@ -29,9 +29,6 @@ const IndividualDateInput: FC<IndividualDateInputProps> = ({
   error,
   value,
   defaultValue,
-  pattern = '[0-9]*',
-  inputMode = 'numeric',
-  type = 'text',
   ...rest
 }) => {
   const {
@@ -41,7 +38,6 @@ const IndividualDateInput: FC<IndividualDateInputProps> = ({
     value: ctxValue,
     defaultValue: ctxDefaultValue,
     handleChange: ctxHandleChange,
-    registerRef,
   } = useContext<IDateInputContext>(DateInputContext);
 
   const { className: labelClassName, ...restLabelProps } = labelProps || {};
@@ -61,7 +57,6 @@ const IndividualDateInput: FC<IndividualDateInputProps> = ({
   };
 
   const refCallback = (ref: HTMLInputElement | null) => {
-    registerRef(inputType, ref);
     if (inputRef) inputRef(ref);
   };
 
@@ -90,9 +85,8 @@ const IndividualDateInput: FC<IndividualDateInputProps> = ({
           name={inputName}
           onChange={handleChange}
           ref={refCallback}
-          pattern={pattern}
-          inputMode={inputMode}
-          type={type}
+          inputMode="numeric"
+          type="text"
           {...rest}
         />
       </div>

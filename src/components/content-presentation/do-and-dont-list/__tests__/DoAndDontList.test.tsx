@@ -73,8 +73,8 @@ describe('DoAndDontList', () => {
           </DoAndDontList>,
         );
 
-        expect(container.querySelector('.nhsuk-icon__tick')).toBeTruthy();
-        expect(container.querySelector('.nhsuk-icon__cross')).toBeFalsy();
+        expect(container.querySelector('.nhsuk-icon--tick')).toBeTruthy();
+        expect(container.querySelector('.nhsuk-icon--cross')).toBeFalsy();
       });
 
       it('items render custom prefix text', () => {
@@ -116,8 +116,8 @@ describe('DoAndDontList', () => {
           </DoAndDontList>,
         );
 
-        expect(container.querySelector('.nhsuk-icon__tick')).toBeFalsy();
-        expect(container.querySelector('.nhsuk-icon__cross')).toBeTruthy();
+        expect(container.querySelector('.nhsuk-icon--tick')).toBeFalsy();
+        expect(container.querySelector('.nhsuk-icon--cross')).toBeTruthy();
       });
 
       it("item includes 'do not' by default", () => {

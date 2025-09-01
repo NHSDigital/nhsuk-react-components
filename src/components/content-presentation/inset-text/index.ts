@@ -1,3 +1,1 @@
-import InsetText from './InsetText';
-
-export default InsetText;
+export { default } from './InsetText';

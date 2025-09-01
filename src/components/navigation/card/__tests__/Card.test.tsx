@@ -225,28 +225,6 @@ describe('Card', () => {
         );
       });
     });
-
-    describe('hidden text', () => {
-      it('renders without hidden text', () => {
-        const { container } = render(
-          <Card cardType="urgent">
-            <Card.Heading visuallyHiddenText={false}>Heading</Card.Heading>
-          </Card>,
-        );
-
-        expect(container.querySelector('.nhsuk-u-visually-hidden')).toBeFalsy();
-      });
-
-      it('renders with hidden text', () => {
-        const { container } = render(
-          <Card cardType="urgent">
-            <Card.Heading visuallyHiddenText="Custom">Heading</Card.Heading>
-          </Card>,
-        );
-
-        expect(container.querySelector('.nhsuk-u-visually-hidden')?.textContent).toEqual('Custom');
-      });
-    });
   });
 
   describe('Card.Group', () => {

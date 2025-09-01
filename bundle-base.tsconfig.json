@@ -23,8 +23,7 @@
       "@navigation/*": ["src/components/navigation/*"],
       "@typography/*": ["src/components/typography/*"],
       "@util/*": ["src/util/*"],
-      "@patterns/*": ["src/patterns/*"],
-      "@resources/*": ["src/resources/*"]
+      "@patterns/*": ["src/patterns/*"]
     }
   },
   "include": ["src"],

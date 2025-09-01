@@ -35,13 +35,11 @@ describe('Breadcrumb', () => {
     expect(breadcrumbListItems.length).toBe(2);
 
     breadcrumbListItems.forEach((child) => {
-      expect(child.classList).toContain('nhsuk-breadcrumb__item');
+      expect(child.classList).toContain('nhsuk-breadcrumb__list-item');
     });
 
     expect(container.querySelector('#otherElement')?.textContent).toEqual('Test Element');
-    expect(container.querySelector('.nhsuk-breadcrumb__back')?.textContent).toBe(
-      'Back to &nbsp;Breadcrumb 2',
-    );
+    expect(container.querySelector('.nhsuk-back-link')?.textContent).toBe('Back to Breadcrumb 2');
   });
 
   it('passes through other children fine', () => {
@@ -68,24 +66,17 @@ describe('Breadcrumb', () => {
   );
 
   describe('The BreadcrumbBack component', () => {
-    it.each<string | undefined>([undefined, 'Accessible prefix'])(
-      'Renders as expected with visually hidden text when accessiblePrefix is specified as %s',
-      (accessiblePrefix) => {
-        const { container } = render(
-          <Breadcrumb>
-            <Breadcrumb.Back href="/back" accessiblePrefix={accessiblePrefix}>
-              Breadcrumb 2
-            </Breadcrumb.Back>
-          </Breadcrumb>,
-        );
+    it('Renders as expected with visually hidden text', () => {
+      const { container } = render(
+        <Breadcrumb>
+          <Breadcrumb.Back href="/back">Breadcrumb 2</Breadcrumb.Back>
+        </Breadcrumb>,
+      );
 
-        const hiddenSpan = container.querySelector(
-          '.nhsuk-breadcrumb__backlink > .nhsuk-u-visually-hidden',
-        );
+      const hiddenSpan = container.querySelector('.nhsuk-back-link > .nhsuk-u-visually-hidden');
 
-        expect(hiddenSpan?.textContent).toBe(accessiblePrefix ?? 'Back to &nbsp;');
-      },
-    );
+      expect(hiddenSpan?.textContent).toBe('Back to ');
+    });
 
     it.each<ElementType | undefined>([undefined, 'button'])(
       'Renders with asElement when specified as %s',
@@ -98,7 +89,7 @@ describe('Breadcrumb', () => {
           </Breadcrumb>,
         );
 
-        const component = container.querySelector('.nhsuk-breadcrumb__backlink');
+        const component = container.querySelector('.nhsuk-back-link');
 
         expect(component?.nodeName).toBe(asElement?.toString()?.toUpperCase() ?? 'A');
       },

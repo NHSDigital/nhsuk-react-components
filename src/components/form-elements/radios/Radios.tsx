@@ -1,22 +1,36 @@
-import React, { HTMLProps, useState } from 'react';
+import React, { HTMLProps, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '@util/types/FormTypes';
 import { RadiosContext, IRadiosContext } from './RadioContext';
-import SingleInputFormGroup from '@components/utils/SingleInputFormGroup';
-import Divider from './components/Divider';
-import Radio from './components/Radio';
+import FormGroup from '@components/utils/FormGroup';
+import RadiosDivider from './components/Divider';
+import RadiosItem from './components/Item';
 import { generateRandomName } from '@util/RandomID';
+import { Radios } from 'nhsuk-frontend';
 
-interface RadiosProps extends HTMLProps<HTMLDivElement>, FormElementProps {
+interface RadiosProps
+  extends HTMLProps<HTMLDivElement>,
+    Omit<FormElementProps, 'label' | 'labelProps'> {
   inline?: boolean;
   idPrefix?: string;
 }
 
-const Radios = ({ children, idPrefix, ...rest }: RadiosProps) => {
+const RadiosComponent = ({ children, idPrefix, ...rest }: RadiosProps) => {
+  const moduleRef = useRef<HTMLDivElement>(null);
+  const [instance, setInstance] = useState<Radios>();
+  const [selectedRadio, setSelectedRadio] = useState<string>();
+
   const _radioReferences: Array<string> = [];
   let _radioCount = 0;
   let _radioIds: Record<string, string> = {};
-  const [selectedRadio, setSelectedRadio] = useState<string>();
+
+  useEffect(() => {
+    if (!moduleRef.current || instance) {
+      return;
+    }
+
+    setInstance(new Radios(moduleRef.current));
+  }, [moduleRef, instance]);
 
   const getRadioId = (id: string, reference: string): string => {
     if (reference in _radioIds) {
@@ -53,7 +67,7 @@ const Radios = ({ children, idPrefix, ...rest }: RadiosProps) => {
   };
 
   return (
-    <SingleInputFormGroup<RadiosProps> inputType="radios" {...rest}>
+    <FormGroup<RadiosProps> inputType="radios" {...rest}>
       {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
       {({ className, inline, name, id, error, ...restRenderProps }) => {
         resetRadioIds();
@@ -69,18 +83,20 @@ const Radios = ({ children, idPrefix, ...rest }: RadiosProps) => {
         return (
           <div
             className={classNames('nhsuk-radios', { 'nhsuk-radios--inline': inline }, className)}
+            data-module="nhsuk-radios"
             id={id}
+            ref={moduleRef}
             {...restRenderProps}
           >
             <RadiosContext.Provider value={contextValue}>{children}</RadiosContext.Provider>
           </div>
         );
       }}
-    </SingleInputFormGroup>
+    </FormGroup>
   );
 };
 
-Radios.Divider = Divider;
-Radios.Radio = Radio;
+RadiosComponent.Item = RadiosItem;
+RadiosComponent.Divider = RadiosDivider;
 
-export default Radios;
+export default RadiosComponent;

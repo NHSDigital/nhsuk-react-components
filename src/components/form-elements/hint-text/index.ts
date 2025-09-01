@@ -1,3 +1,1 @@
-import HintText from './HintText';
-
-export default HintText;
+export { default } from './HintText';

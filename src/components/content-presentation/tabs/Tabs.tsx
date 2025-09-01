@@ -1,8 +1,8 @@
 'use client';
 import classNames from 'classnames';
-import React, { FC, HTMLAttributes, useEffect } from 'react';
+import React, { FC, HTMLAttributes, useEffect, useRef, useState } from 'react';
 import HeadingLevel, { HeadingLevelType } from '@components/utils/HeadingLevel';
-import TabsJs from '@resources/tabs';
+import { Tabs } from 'nhsuk-frontend';
 
 type TabsProps = HTMLAttributes<HTMLDivElement>;
 
@@ -46,28 +46,40 @@ const TabContents: FC<TabContentsProps> = ({ id, children }) => (
   </div>
 );
 
-interface Tabs extends FC<TabsProps> {
+interface TabsComponent extends FC<TabsProps> {
   Title: FC<TabTitleProps>;
   List: FC<TabListProps>;
   ListItem: FC<TabListItemProps>;
   Contents: FC<TabContentsProps>;
 }
 
-const Tabs: Tabs = ({ className, children, ...rest }) => {
+const TabsComponent: TabsComponent = ({ className, children, ...rest }) => {
+  const moduleRef = useRef<HTMLDivElement>(null);
+  const [instance, setInstance] = useState<Tabs>();
+
   useEffect(() => {
-    TabsJs();
-  }, []);
+    if (!moduleRef.current || instance) {
+      return;
+    }
+
+    setInstance(new Tabs(moduleRef.current));
+  }, [moduleRef, instance]);
 
   return (
-    <div className={classNames('nhsuk-tabs', className)} data-module="nhsuk-tabs" {...rest}>
+    <div
+      className={classNames('nhsuk-tabs', className)}
+      data-module="nhsuk-tabs"
+      ref={moduleRef}
+      {...rest}
+    >
       {children}
     </div>
   );
 };
 
-Tabs.Title = TabTitle;
-Tabs.List = TabList;
-Tabs.ListItem = TabListItem;
-Tabs.Contents = TabContents;
+TabsComponent.Title = TabTitle;
+TabsComponent.List = TabList;
+TabsComponent.ListItem = TabListItem;
+TabsComponent.Contents = TabContents;
 
-export default Tabs;
+export default TabsComponent;

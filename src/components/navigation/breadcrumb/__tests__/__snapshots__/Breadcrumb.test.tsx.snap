@@ -23,7 +23,7 @@ exports[`Breadcrumb renders with children: BreadcrumbWithChildren 1`] = `
       class="nhsuk-breadcrumb__list"
     >
       <li
-        class="nhsuk-breadcrumb__item"
+        class="nhsuk-breadcrumb__list-item"
       >
         <a
           class="nhsuk-breadcrumb__link"
@@ -33,7 +33,7 @@ exports[`Breadcrumb renders with children: BreadcrumbWithChildren 1`] = `
         </a>
       </li>
       <li
-        class="nhsuk-breadcrumb__item"
+        class="nhsuk-breadcrumb__list-item"
       >
         <a
           class="nhsuk-breadcrumb__link"

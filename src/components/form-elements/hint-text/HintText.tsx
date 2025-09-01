@@ -3,8 +3,16 @@ import classNames from 'classnames';
 
 export type HintTextProps = HTMLProps<HTMLDivElement>;
 
-const HintText: FC<HintTextProps> = ({ className, ...rest }) => (
-  <div className={classNames('nhsuk-hint', className)} {...rest} />
-);
+const HintTextComponent: FC<HintTextProps> = ({ className, children, ...rest }) => {
+  if (!children) {
+    return null;
+  }
 
-export default HintText;
+  return (
+    <div className={classNames('nhsuk-hint', className)} {...rest}>
+      {children}
+    </div>
+  );
+};
+
+export default HintTextComponent;

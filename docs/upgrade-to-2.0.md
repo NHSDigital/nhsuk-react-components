@@ -1,6 +1,6 @@
 # Upgrading to 2.0
 
-There are some breaking changes you'll need to be aware of when upgrading to v2.  These are mostly related to us upgrading our dependency on [nhsuk-frontend to v4](https://github.com/nhsuk/nhsuk-frontend/blob/master/CHANGELOG.md#400---26-october-2020) which also includes some breaking changes.
+There are some breaking changes you'll need to be aware of when upgrading to v2. These are mostly related to us upgrading our dependency on [nhsuk-frontend to v4](https://github.com/nhsuk/nhsuk-frontend/blob/master/CHANGELOG.md#400---26-october-2020) which also includes some breaking changes.
 
 ## New Card Component
 
@@ -59,11 +59,11 @@ The `Panel` and `Promo` components have been removed from `nhsuk-frontend` since
 
 ```jsx
 // Old Imports
-import { Button, Panel, Promo } from "nhsuk-react-components";
+import { Button, Panel, Promo } from 'nhsuk-react-components';
 
 // New Imports
-import { Button } from "nhsuk-react-components";
-import { Panel, Promo } from "nhsuk-react-components/dist/deprecated";
+import { Button } from 'nhsuk-react-components';
+import { Panel, Promo } from 'nhsuk-react-components/dist/deprecated';
 ```
 
 A warning is printed to the console in dev environments when using these components, as they are set to be removed in the next major release.
@@ -73,7 +73,7 @@ A warning is printed to the console in dev environments when using these compone
 In line with the upstream nhsuk-frontend, NHS Design Kit and GDS recommendations, we now render the input boxes in the date component as follows:
 
 ```html
-<input type="text" inputType="numeric" pattern="[0-9]*">
+<input type="text" inputType="numeric" pattern="[0-9]*" />
 ```
 
 There is more on this change here:

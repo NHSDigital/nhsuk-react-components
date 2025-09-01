@@ -15,7 +15,7 @@ interface TableProps extends HTMLProps<HTMLTableElement> {
   captionProps?: ComponentProps<typeof TableCaption>;
 }
 
-interface Table extends FC<TableProps> {
+interface TableComponent extends FC<TableProps> {
   Body: FC<HTMLProps<HTMLTableSectionElement>>;
   Cell: FC<TableCellProps>;
   Container: FC<HTMLProps<HTMLDivElement>>;
@@ -24,7 +24,7 @@ interface Table extends FC<TableProps> {
   Row: FC<HTMLProps<HTMLTableRowElement>>;
 }
 
-const Table = ({
+const TableComponent = ({
   caption,
   captionProps,
   children,
@@ -59,11 +59,11 @@ const Table = ({
   );
 };
 
-Table.Body = TableBody;
-Table.Cell = TableCell;
-Table.Container = TableContainer;
-Table.Head = TableHead;
-Table.Panel = TablePanel;
-Table.Row = TableRow;
+TableComponent.Body = TableBody;
+TableComponent.Cell = TableCell;
+TableComponent.Container = TableContainer;
+TableComponent.Head = TableHead;
+TableComponent.Panel = TablePanel;
+TableComponent.Row = TableRow;
 
-export default Table;
+export default TableComponent;

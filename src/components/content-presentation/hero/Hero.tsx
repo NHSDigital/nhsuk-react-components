@@ -49,12 +49,12 @@ interface HeroProps extends HTMLProps<HTMLDivElement> {
   imageSrc?: string;
 }
 
-interface Hero extends FC<HeroProps> {
+interface HeroComponent extends FC<HeroProps> {
   Heading: FC<HeroHeadingProps>;
   Text: FC<HTMLProps<HTMLParagraphElement>>;
 }
 
-const Hero: Hero = ({ className, children, imageSrc, ...rest }) => (
+const HeroComponent: HeroComponent = ({ className, children, imageSrc, ...rest }) => (
   <section
     className={classNames(
       'nhsuk-hero',
@@ -75,7 +75,7 @@ const Hero: Hero = ({ className, children, imageSrc, ...rest }) => (
   </section>
 );
 
-Hero.Heading = HeroHeading;
-Hero.Text = HeroText;
+HeroComponent.Heading = HeroHeading;
+HeroComponent.Text = HeroText;
 
-export default Hero;
+export default HeroComponent;

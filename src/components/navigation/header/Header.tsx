@@ -1,132 +1,112 @@
 'use client';
-import React, { FC, HTMLProps, useContext, useState, useEffect, useMemo } from 'react';
+import React, { HTMLProps, useState, useEffect, useMemo, useRef, Children } from 'react';
 import classNames from 'classnames';
-import NHSLogo, { NHSLogoNavProps } from './components/NHSLogo';
-import OrganisationalLogo, { OrganisationalLogoProps } from './components/OrganisationalLogo';
-import HeaderContext, { IHeaderContext } from './HeaderContext';
-import Search from './components/Search';
-import Nav from './components/Nav';
-import NavItem from './components/NavItem';
-import NavDropdownMenu from './components/NavDropdownMenu';
 import { Container } from '@components/layout';
-import Content from './components/Content';
-import TransactionalServiceName from './components/TransactionalServiceName';
-import HeaderJs from '@resources/header';
+import { childIsOfComponentType } from '@util/types/TypeGuards';
+import HeaderContext, { IHeaderContext } from './HeaderContext';
+import Account from './components/Account';
+import AccountItem from './components/AccountItem';
+import Logo from './components/Logo';
+import Navigation from './components/Navigation';
+import NavigationItem from './components/NavigationItem';
+import Search from './components/Search';
+import ServiceName from './components/ServiceName';
+import { Header } from 'nhsuk-frontend';
 
-const BaseHeaderLogo: FC<OrganisationalLogoProps & NHSLogoNavProps> = (props) => {
-  const { orgName } = useContext<IHeaderContext>(HeaderContext);
-  if (orgName) {
-    return <OrganisationalLogo {...props} />;
-  }
-  return <NHSLogo {...props} />;
-};
-
-const HeaderContainer: FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => (
-  <Container className={classNames('nhsuk-header__container', className)} {...rest} />
-);
-
-interface HeaderProps extends HTMLProps<HTMLDivElement> {
-  transactional?: boolean;
-  orgName?: string;
-  orgSplit?: string;
-  orgDescriptor?: string;
-  serviceName?: string;
-  white?: boolean;
+interface HeaderProps
+  extends HTMLProps<HTMLDivElement>,
+    Pick<IHeaderContext, 'logo' | 'service' | 'organisation'> {
+  containerClasses?: string;
 }
 
-const Header = ({
-  className,
-  children,
-  transactional,
-  orgName,
-  orgSplit,
-  orgDescriptor,
-  role = 'banner',
-  serviceName,
-  white,
-  ...rest
-}: HeaderProps) => {
-  const [hasMenuToggle, setHasMenuToggle] = useState(false);
-  const [hasSearch, setHasSearch] = useState(false);
-  const [hasServiceName, setHasServiceName] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+const HeaderComponent = ({ className, containerClasses, children, ...rest }: HeaderProps) => {
+  const moduleRef = useRef<HTMLDivElement>(null);
+
+  const [logo, setLogo] = useState(rest.logo);
+  const [service, setService] = useState(rest.service);
+  const [organisation, setOrganisation] = useState(rest.organisation);
+  const [instance, setInstance] = useState<Header>();
 
   useEffect(() => {
-    HeaderJs();
-  }, []);
+    if (!rest.logo) {
+      return;
+    }
 
-  const setMenuToggle = (toggle: boolean): void => {
-    setHasMenuToggle(toggle);
-  };
+    setLogo(rest.logo);
+    return () => setLogo(undefined);
+  }, [rest.logo]);
 
-  const setSearch = (toggle: boolean): void => {
-    setHasSearch(toggle);
-  };
+  useEffect(() => {
+    if (!rest.service) {
+      return;
+    }
 
-  const toggleMenu = (): void => {
-    setMenuOpen(!menuOpen);
-  };
+    setService(rest.service);
+    return () => setService(undefined);
+  }, [rest.service]);
 
-  const setServiceName = (toggle: boolean): void => {
-    setHasServiceName(toggle);
-  };
+  useEffect(() => {
+    if (!rest.organisation) {
+      return;
+    }
+
+    setOrganisation(rest.organisation);
+    return () => setOrganisation(undefined);
+  }, [rest.organisation]);
+
+  useEffect(() => {
+    if (!moduleRef.current || instance) {
+      return;
+    }
+
+    setInstance(new Header(moduleRef.current));
+  }, [moduleRef, instance]);
 
   const contextValue: IHeaderContext = useMemo(() => {
     return {
-      orgName,
-      orgSplit,
-      orgDescriptor,
-      serviceName,
-      hasSearch,
-      hasMenuToggle,
-      hasServiceName,
-      setMenuToggle,
-      setSearch,
-      setServiceName,
-      toggleMenu,
-      menuOpen,
-      transactional: transactional ?? false,
+      logo,
+      service,
+      organisation,
+      setLogo,
+      setService,
+      setOrganisation,
     };
-  }, [
-    orgName,
-    orgSplit,
-    orgDescriptor,
-    serviceName,
-    hasSearch,
-    hasMenuToggle,
-    hasServiceName,
-    setMenuToggle,
-    setSearch,
-    setServiceName,
-    toggleMenu,
-    menuOpen,
-    transactional,
-  ]);
+  }, [logo, service, organisation]);
+
+  const items = Children.toArray(children);
+  const [childLogo] = items.filter((child) => childIsOfComponentType(child, Logo));
+  const [childSearch] = items.filter((child) => childIsOfComponentType(child, Search));
+  const [childNavigation] = items.filter((child) => childIsOfComponentType(child, Navigation));
+  const [childAccount] = items.filter((child) => childIsOfComponentType(child, Account));
 
   return (
     <header
       className={classNames(
         'nhsuk-header',
-        { 'nhsuk-header__transactional': transactional },
-        { 'nhsuk-header--organisation': orgName },
-        { 'nhsuk-header--white': white },
+        { 'nhsuk-header--organisation': organisation },
         className,
       )}
-      role={role}
-      {...rest}
+      data-module="nhsuk-header"
+      role="banner"
+      ref={moduleRef}
     >
-      <HeaderContext.Provider value={contextValue}>{children}</HeaderContext.Provider>
+      <HeaderContext.Provider value={contextValue}>
+        <Container className={classNames('nhsuk-header__container', containerClasses)}>
+          <ServiceName {...service}>{childLogo}</ServiceName>
+          {childSearch}
+          {childAccount}
+        </Container>
+        {childNavigation}
+      </HeaderContext.Provider>
     </header>
   );
 };
 
-Header.Logo = BaseHeaderLogo;
-Header.Search = Search;
-Header.Nav = Nav;
-Header.NavItem = NavItem;
-Header.NavDropdownMenu = NavDropdownMenu;
-Header.Container = HeaderContainer;
-Header.Content = Content;
-Header.ServiceName = TransactionalServiceName;
+HeaderComponent.Account = Account;
+HeaderComponent.AccountItem = AccountItem;
+HeaderComponent.Logo = Logo;
+HeaderComponent.Search = Search;
+HeaderComponent.Navigation = Navigation;
+HeaderComponent.NavigationItem = NavigationItem;
 
-export default Header;
+export default HeaderComponent;

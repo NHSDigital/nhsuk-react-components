@@ -2,21 +2,30 @@ import React, { FC, HTMLProps } from 'react';
 import classNames from 'classnames';
 
 export interface ErrorMessageProps extends HTMLProps<HTMLSpanElement> {
-  visuallyHiddenText?: false | string;
+  visuallyHiddenText?: string;
 }
 
-const ErrorMessage: FC<ErrorMessageProps> = ({
+const ErrorMessageComponent: FC<ErrorMessageProps> = ({
   className,
-  visuallyHiddenText = 'Error: ',
+  visuallyHiddenText = 'Error',
   children,
   ...rest
-}) => (
-  <span className={classNames('nhsuk-error-message', className)} {...rest}>
-    {visuallyHiddenText !== false ? (
-      <span className="nhsuk-u-visually-hidden">{visuallyHiddenText}</span>
-    ) : null}
-    {children}
-  </span>
-);
+}) => {
+  if (!children || typeof children !== 'string') {
+    return null;
+  }
 
-export default ErrorMessage;
+  return (
+    <span className={classNames('nhsuk-error-message', className)} {...rest}>
+      {visuallyHiddenText ? (
+        <>
+          <span className="nhsuk-u-visually-hidden">{`${visuallyHiddenText}:`}</span> {children}
+        </>
+      ) : (
+        <>{children}</>
+      )}
+    </span>
+  );
+};
+
+export default ErrorMessageComponent;

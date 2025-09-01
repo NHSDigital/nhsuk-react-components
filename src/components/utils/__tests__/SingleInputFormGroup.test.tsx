@@ -1,7 +1,7 @@
 import React, { HTMLProps } from 'react';
 import { render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import SingleInputFormGroup, { SingleInputFormGroupProps } from '../SingleInputFormGroup';
+import FormGroup, { FormGroupProps } from '../FormGroup';
 
 expect.extend(toHaveNoViolations);
 
@@ -11,10 +11,10 @@ type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>;
 const renderFormGroupComponent = ({
   children = (props) => <input {...props} />,
   ...rest
-}: Optional<SingleInputFormGroupProps<InputProps>, 'children'>) =>
-  render(<SingleInputFormGroup<InputProps> {...rest}>{children}</SingleInputFormGroup>);
+}: Optional<FormGroupProps<InputProps>, 'children'>) =>
+  render(<FormGroup<InputProps> {...rest}>{children}</FormGroup>);
 
-describe('SingleInputFormGroup', () => {
+describe('FormGroup', () => {
   it('matches snapshot', () => {
     const { container } = renderFormGroupComponent({ inputType: 'input', id: 'testId' });
 
@@ -228,10 +228,10 @@ describe('SingleInputFormGroup', () => {
   it('should produce an accessible component', async () => {
     const { container } = render(
       <main>
-        <SingleInputFormGroup<InputProps> inputType="input" error label="Form Label">
+        <FormGroup<InputProps> inputType="input" error label="Form Label">
           {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
           {({ error, ...rest }) => <input {...rest} />}
-        </SingleInputFormGroup>
+        </FormGroup>
       </main>,
     );
     const html = container.innerHTML;

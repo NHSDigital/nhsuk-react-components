@@ -1,15 +1,13 @@
 import React from 'react';
-import { Button as LibButton } from '../../src';
+import { Button } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
-import { ButtonLinkProps, ButtonProps } from '@components/form-elements/button/Button';
 
 /**
- *
  * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/components/button" target="_blank" rel="noopener noreferrer">here</a>.
  *
  * ## Implementation Notes
  *
- * When importing `Button` from `nhsuk-react-components`, the `ButtonWrapper` component is imported. This will either render a standard `Button` or `ButtonLink` component depending on whether an `href` prop is supplied.
+ * The `Button` component from `nhsuk-react-components` will either render a standard `<button>` or `<a>` element depending on whether an `href` prop is supplied.
  *
  * If you want to use a specific component instead of the wrapper, you can supply the `as="a"` or `as="button"` props.
  *
@@ -41,22 +39,14 @@ import { ButtonLinkProps, ButtonProps } from '@components/form-elements/button/B
  * );
  * ```
  */
-const meta: Meta<typeof LibButton> = {
+const meta: Meta<typeof Button> = {
   title: 'Form Elements/Button',
-  component: LibButton,
+  component: Button,
   render: (args) => <Button {...args} />,
 };
 
-/**
- * There might be a better way to do this, but this is the only way I could get storybook not to use the name of the default exported component
- * which in this case is <ButtonWrapper> and not <Button>
- */
-function Button(props: ButtonLinkProps | ButtonProps) {
-  return <LibButton {...props} />;
-}
-
 export default meta;
-type Story = StoryObj<typeof LibButton>;
+type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
   args: { children: 'Primary' },
@@ -79,8 +69,6 @@ export const ForceAnchor: Story = { args: { as: 'a', children: 'As an Anchor' } 
 
 /**
  * You can test this button by opening the browser console. It will log the current dateTime once per debounce.
- *
- * Debounced buttons can optionally provide `debounceTimeout` (measured in milliseconds) to adjust the length of the debounce.
  */
 export const PreventDoubleClickButton: Story = {
   args: {

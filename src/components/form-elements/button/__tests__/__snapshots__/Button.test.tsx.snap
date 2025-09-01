@@ -1,10 +1,57 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Button as a link button types reverse matches snapshot: ReverseButton 1`] = `
+<div>
+  <a
+    class="nhsuk-button nhsuk-button--reverse"
+    data-module="nhsuk-button"
+    data-nhsuk-button-init=""
+    draggable="false"
+    href="/"
+    role="button"
+  >
+    Submit
+  </a>
+</div>
+`;
+
+exports[`Button as a link button types secondary matches snapshot: SecondaryButton 1`] = `
+<div>
+  <a
+    class="nhsuk-button nhsuk-button--secondary"
+    data-module="nhsuk-button"
+    data-nhsuk-button-init=""
+    draggable="false"
+    href="/"
+    role="button"
+  >
+    Submit
+  </a>
+</div>
+`;
+
+exports[`Button as a link matches snapshot: PlainButton 1`] = `
+<div>
+  <a
+    class="nhsuk-button"
+    data-module="nhsuk-button"
+    data-nhsuk-button-init=""
+    draggable="false"
+    href="/"
+    role="button"
+  >
+    Submit
+  </a>
+</div>
+`;
+
 exports[`Button disabled matches snapshot: DisabledButton 1`] = `
 <div>
   <button
     aria-disabled="true"
-    class="nhsuk-button nhsuk-button--disabled"
+    class="nhsuk-button"
+    data-module="nhsuk-button"
+    data-nhsuk-button-init=""
     disabled=""
     type="submit"
   >
@@ -16,8 +63,9 @@ exports[`Button disabled matches snapshot: DisabledButton 1`] = `
 exports[`Button matches snapshot: PlainButton 1`] = `
 <div>
   <button
-    aria-disabled="false"
     class="nhsuk-button"
+    data-module="nhsuk-button"
+    data-nhsuk-button-init=""
     type="submit"
   >
     Submit
@@ -28,8 +76,9 @@ exports[`Button matches snapshot: PlainButton 1`] = `
 exports[`Button reverse matches snapshot: ReverseButton 1`] = `
 <div>
   <button
-    aria-disabled="false"
     class="nhsuk-button nhsuk-button--reverse"
+    data-module="nhsuk-button"
+    data-nhsuk-button-init=""
     type="submit"
   >
     Submit
@@ -40,67 +89,12 @@ exports[`Button reverse matches snapshot: ReverseButton 1`] = `
 exports[`Button secondary matches snapshot: SecondaryButton 1`] = `
 <div>
   <button
-    aria-disabled="false"
     class="nhsuk-button nhsuk-button--secondary"
+    data-module="nhsuk-button"
+    data-nhsuk-button-init=""
     type="submit"
   >
     Submit
   </button>
-</div>
-`;
-
-exports[`ButtonLink button types disabled matches snapshot: DisabledButton 1`] = `
-<div>
-  <a
-    aria-disabled="true"
-    class="nhsuk-button nhsuk-button--disabled"
-    draggable="false"
-    href="/"
-    role="button"
-  >
-    Submit
-  </a>
-</div>
-`;
-
-exports[`ButtonLink button types reverse matches snapshot: ReverseButton 1`] = `
-<div>
-  <a
-    aria-disabled="false"
-    class="nhsuk-button nhsuk-button--reverse"
-    draggable="false"
-    href="/"
-    role="button"
-  >
-    Submit
-  </a>
-</div>
-`;
-
-exports[`ButtonLink button types secondary matches snapshot: SecondaryButton 1`] = `
-<div>
-  <a
-    aria-disabled="false"
-    class="nhsuk-button nhsuk-button--secondary"
-    draggable="false"
-    href="/"
-    role="button"
-  >
-    Submit
-  </a>
-</div>
-`;
-
-exports[`ButtonLink matches snapshot: PlainButton 1`] = `
-<div>
-  <a
-    aria-disabled="false"
-    class="nhsuk-button"
-    draggable="false"
-    href="/"
-    role="button"
-  >
-    Submit
-  </a>
 </div>
 `;

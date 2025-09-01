@@ -48,11 +48,11 @@ const PanelItem: FC<HTMLProps<HTMLLIElement>> = ({ className, ...rest }) => (
 
 const PanelLinkItem: FC<AsElementLink<HTMLAnchorElement>> = ({
   className,
-  asElement: Component = 'a',
+  asElement: Element = 'a',
   ...rest
 }) => (
   <PanelItem>
-    <Component className={classNames('nhsuk-list-panel__link', className)} {...rest} />
+    <Element className={classNames('nhsuk-list-panel__link', className)} {...rest} />
   </PanelItem>
 );
 

@@ -20,9 +20,10 @@ export const Standard: Story = {
       </ul>
       <h5>Component</h5>
       <DateInput
+        legend="What is your date of birth?"
+        legendProps={{ size: 'l' }}
+        hint="For example, 15 3 1984"
         onChange={(e) => console.log(e.target.value)}
-        hint="Test hint"
-        label="Test label"
       />
     </div>
   ),
@@ -39,37 +40,25 @@ export const StandardWithError: Story = {
       </ul>
       <h5>Component</h5>
       <DateInput
+        legend="What is your date of birth?"
+        legendProps={{ size: 'l' }}
+        hint="For example, 15 3 1984"
+        error="Enter your date of birth"
         onChange={(e) => console.log(e.target.value)}
-        error="Test Error"
-        hint="Test hint"
-        label="Test label"
       />
       <h5>Component with specific field errors</h5>
 
       <DateInput
+        hint="For example, 15 3 1984"
+        legend="What is your date of birth?"
+        legendProps={{ size: 'l' }}
+        error="Enter your date of birth"
         onChange={(e) => console.log(e.target.value)}
-        error="Test Error"
-        hint="Test hint"
-        label="Test label"
       >
         <DateInput.Day error={false} />
         <DateInput.Month />
         <DateInput.Year />
       </DateInput>
-    </div>
-  ),
-};
-
-export const StandardWithAutoSelect: Story = {
-  render: () => (
-    <div style={{ padding: 20 }}>
-      <h2>Scenario: autoSelectNext prop is set to enable the auto focus functionality</h2>
-      <h5>Expected Behaviour</h5>
-      <ul className="nhsuk-hint">
-        <li>When day field has 2 or month field has 2 characters, the next field is focused</li>
-      </ul>
-      <h5>Component</h5>
-      <DateInput autoSelectNext />
     </div>
   ),
 };
@@ -80,7 +69,11 @@ export const PrePopulatedIndividualComponents: Story = {
     return (
       <div style={{ padding: 20 }}>
         <h5>Component</h5>
-        <DateInput hint="Test hint" label="Test label">
+        <DateInput
+          legend="What is your date of birth?"
+          legendProps={{ size: 'l' }}
+          hint="For example, 15 3 1984"
+        >
           <DateInput.Day defaultValue={defaultValue.day} />
           <DateInput.Month defaultValue={defaultValue.month} />
           <DateInput.Year defaultValue={defaultValue.year} />
@@ -96,7 +89,12 @@ export const PrePopulatedWrapper: Story = {
     return (
       <div style={{ padding: 20 }}>
         <h5>Component</h5>
-        <DateInput hint="Test hint" label="Test label" defaultValue={defaultValue} />
+        <DateInput
+          legend="What is your date of birth?"
+          legendProps={{ size: 'l' }}
+          hint="For example, 15 3 1984"
+          defaultValue={defaultValue}
+        />
       </div>
     );
   },
@@ -108,7 +106,11 @@ export const ControlledElementIndividualComponents: Story = {
     return (
       <div style={{ padding: 20 }}>
         <h5>Component</h5>
-        <DateInput hint="Test hint" label="Test label">
+        <DateInput
+          legend="What is your date of birth?"
+          legendProps={{ size: 'l' }}
+          hint="For example, 15 3 1984"
+        >
           <DateInput.Day value={value.day} />
           <DateInput.Month value={value.month} />
           <DateInput.Year value={value.year} />
@@ -124,7 +126,12 @@ export const ControlledElementWrapper: Story = {
     return (
       <div style={{ padding: 20 }}>
         <h5>Component</h5>
-        <DateInput hint="Test hint" label="Test label" value={value} />
+        <DateInput
+          legend="What is your date of birth?"
+          legendProps={{ size: 'l' }}
+          hint="For example, 15 3 1984"
+          value={value}
+        />
       </div>
     );
   },
@@ -135,15 +142,13 @@ export const ChangeableControlledElement: Story = {
     const [value, setValue] = useState({ day: '20', month: '09', year: '1996' });
 
     return (
-      <div style={{ padding: 20 }}>
-        <h5>Component</h5>
-        <DateInput
-          hint="Test hint"
-          label="Test label"
-          value={value}
-          onChange={(e) => setValue(e.currentTarget.value)}
-        />
-      </div>
+      <DateInput
+        legend="What is your date of birth?"
+        legendProps={{ size: 'l' }}
+        hint="For example, 15 3 1984"
+        value={value}
+        onChange={(e) => setValue(e.currentTarget.value)}
+      />
     );
   },
 };

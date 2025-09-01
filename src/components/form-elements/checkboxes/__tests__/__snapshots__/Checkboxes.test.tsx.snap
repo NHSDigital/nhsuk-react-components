@@ -8,6 +8,8 @@ exports[`Checkboxes Matches the snapshot with an exclusive checkbox 1`] = `
     >
       <div
         class="nhsuk-checkboxes"
+        data-module="nhsuk-checkboxes"
+        data-nhsuk-checkboxes-init=""
         id="example"
       >
         <div
@@ -106,6 +108,8 @@ exports[`Checkboxes matches snapshot 1`] = `
     >
       <div
         class="nhsuk-checkboxes"
+        data-module="nhsuk-checkboxes"
+        data-nhsuk-checkboxes-init=""
         id="example"
       >
         <div
@@ -180,6 +184,8 @@ exports[`Checkboxes matches snapshot with boolean error 1`] = `
       <div
         aria-describedby="example--error-message"
         class="nhsuk-checkboxes"
+        data-module="nhsuk-checkboxes"
+        data-nhsuk-checkboxes-init=""
         id="example"
       >
         <div
@@ -258,13 +264,16 @@ exports[`Checkboxes matches snapshot with string error 1`] = `
         <span
           class="nhsuk-u-visually-hidden"
         >
-          Error: 
+          Error:
         </span>
+         
         Example error
       </span>
       <div
         aria-describedby="example--error-message"
         class="nhsuk-checkboxes"
+        data-module="nhsuk-checkboxes"
+        data-nhsuk-checkboxes-init=""
         id="example"
       >
         <div

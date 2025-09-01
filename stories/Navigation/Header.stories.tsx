@@ -10,57 +10,54 @@ const meta: Meta<typeof Header> = {
 export default meta;
 type Story = StoryObj<typeof Header>;
 
+Header.Account.displayName = 'Header.Account';
+Header.AccountItem.displayName = 'Header.AccountItem';
 Header.Logo.displayName = 'Header.Logo';
-Header.Container.displayName = 'Header.Container';
-Header.Content.displayName = 'Header.Content';
 Header.Search.displayName = 'Header.Search';
-Header.Nav.displayName = 'Header.Nav';
-Header.NavItem.displayName = 'Header.NavItem';
-Header.ServiceName.displayName = 'Header.ServiceName';
-Header.NavDropdownMenu.displayName = 'Header.NavDropdownMenu';
+Header.Navigation.displayName = 'Header.Navigation';
+Header.NavigationItem.displayName = 'Header.NavigationItem';
 
-export const BasicHeader: Story = {
+export const HeaderDefault: Story = {
   render: (args) => (
-    <Header>
-      <Header.Container>
-        <Header.Logo href="/" />
-        <Header.Content>
-          <Header.Search />
-        </Header.Content>
-      </Header.Container>
-      <Header.Nav>
-        <Header.NavItem href="/conditions">Health A-Z</Header.NavItem>
-        <Header.NavItem href="/live-well">Live Well</Header.NavItem>
-        <Header.NavItem href="/social-care-and-support">Care and support</Header.NavItem>
-        <Header.NavItem href="/news">Health news</Header.NavItem>
-        <Header.NavItem href="/service-search">Services near you</Header.NavItem>
-        <Header.NavItem href="/" home>
-          Home
-        </Header.NavItem>
-        <Header.NavDropdownMenu />
-      </Header.Nav>
+    <Header
+      service={{
+        text: 'Digital service manual',
+        href: '/',
+      }}
+    >
+      <Header.Logo />
+      <Header.Search
+        placeholder="Search"
+        visuallyHiddenLabel="Search the NHS digital service manual"
+      />
+      <Header.Navigation>
+        <Header.NavigationItem href="#">NHS service standard</Header.NavigationItem>
+        <Header.NavigationItem href="#">Design system</Header.NavigationItem>
+        <Header.NavigationItem href="#">Content guide</Header.NavigationItem>
+        <Header.NavigationItem href="#">Accessibility</Header.NavigationItem>
+        <Header.NavigationItem href="#">Community and contribution</Header.NavigationItem>
+      </Header.Navigation>
     </Header>
   ),
 };
 
-export const HeaderWithNavigation: Story = {
+export const HeaderBasic: Story = {
   render: (args) => (
     <Header>
-      <Header.Container>
-        <Header.Logo href="/" />
-        <Header.Content></Header.Content>
-      </Header.Container>
-      <Header.Nav>
-        <Header.NavItem href="/conditions">Health A-Z</Header.NavItem>
-        <Header.NavItem href="/live-well">Live Well</Header.NavItem>
-        <Header.NavItem href="/social-care-and-support">Care and support</Header.NavItem>
-        <Header.NavItem href="/news">Health news</Header.NavItem>
-        <Header.NavItem href="/service-search">Services near you</Header.NavItem>
-        <Header.NavItem href="/" home>
-          Home
-        </Header.NavItem>
-        <Header.NavDropdownMenu />
-      </Header.Nav>
+      <Header.Logo href="/" />
+    </Header>
+  ),
+};
+
+export const HeaderWithServiceName: Story = {
+  render: (args) => (
+    <Header
+      service={{
+        text: 'Manage patients',
+        href: '/',
+      }}
+    >
+      <Header.Logo />
     </Header>
   ),
 };
@@ -68,96 +65,143 @@ export const HeaderWithNavigation: Story = {
 export const HeaderWithSearch: Story = {
   render: (args) => (
     <Header>
-      <Header.Container>
-        <Header.Logo href="/" />
-        <Header.Content>
-          <Header.Search />
-        </Header.Content>
-      </Header.Container>
+      <Header.Logo href="/" />
+      <Header.Search />
     </Header>
   ),
 };
 
-export const HeaderWithLogo: Story = {
+export const HeaderWithNavigation: Story = {
   render: (args) => (
     <Header>
-      <Header.Container>
-        <Header.Logo href="/" />
-      </Header.Container>
+      <Header.Logo href="/" />
+      <Header.Navigation>
+        <Header.NavigationItem href="#">NHS service standard</Header.NavigationItem>
+        <Header.NavigationItem href="#" active={true}>
+          Design system
+        </Header.NavigationItem>
+        <Header.NavigationItem href="#">Content guide</Header.NavigationItem>
+        <Header.NavigationItem href="#">Accessibility</Header.NavigationItem>
+        <Header.NavigationItem href="#">Community and contribution</Header.NavigationItem>
+      </Header.Navigation>
     </Header>
   ),
 };
 
-export const TransactionalHeader: Story = {
-  render: (args) => (
-    <Header transactional>
-      <Header.Container>
-        <Header.Logo href="/" />
-      </Header.Container>
-    </Header>
-  ),
-};
-
-export const TransactionalHeaderWithServiceName: Story = {
-  render: (args) => (
-    <Header transactional>
-      <Header.Container>
-        <Header.Logo href="/" />
-        <Header.ServiceName href="/">Register with a GP</Header.ServiceName>
-      </Header.Container>
-    </Header>
-  ),
-};
-
-export const OrganisationalHeader: Story = {
-  render: (args) => (
-    <Header orgName="Anytown Anyplace" orgSplit="Anywhere" orgDescriptor="NHS Foundation Trust">
-      <Header.Container>
-        <Header.Logo href="/" />
-        <Header.Content>
-          <Header.Search />
-        </Header.Content>
-      </Header.Container>
-      <Header.Nav>
-        <Header.NavItem>Your hospital visit</Header.NavItem>
-        <Header.NavItem>Wards and departments</Header.NavItem>
-        <Header.NavItem>Conditions and treatments</Header.NavItem>
-        <Header.NavItem>Our people</Header.NavItem>
-        <Header.NavItem>Our research</Header.NavItem>
-        <Header.NavItem href="/" home>
-          Home
-        </Header.NavItem>
-        <Header.NavDropdownMenu />
-      </Header.Nav>
-    </Header>
-  ),
-};
-
-export const OrganisationalHeaderWithWhiteHeader: Story = {
+export const HeaderWithAccount: Story = {
   render: (args) => (
     <Header
-      orgName="Anytown Anyplace"
-      orgSplit="Anywhere"
-      orgDescriptor="NHS Foundation Trust"
-      white
+      service={{
+        text: 'Manage patients',
+        href: '/',
+      }}
     >
-      <Header.Container>
-        <Header.Logo href="/" />
-        <Header.Content>
-          <Header.Search />
-        </Header.Content>
-      </Header.Container>
-      <Header.Nav>
-        <Header.NavItem>Your hospital visit</Header.NavItem>
-        <Header.NavItem>Wards and departments</Header.NavItem>
-        <Header.NavItem>Conditions and treatments</Header.NavItem>
-        <Header.NavItem>Our people</Header.NavItem>
-        <Header.NavItem>Our research</Header.NavItem>
-        <Header.NavItem href="/" home>
-          Home
-        </Header.NavItem>
-        <Header.NavDropdownMenu />
-      </Header.Nav>
+      <Header.Logo />
+      <Header.Account>
+        <Header.AccountItem href="#" icon={true}>
+          florence.nightingale@nhs.net
+        </Header.AccountItem>
+        <Header.AccountItem href="#">Log out</Header.AccountItem>
+      </Header.Account>
+    </Header>
+  ),
+};
+
+export const HeaderWithAccountComplex: Story = {
+  render: (args) => (
+    <Header
+      service={{
+        text: 'Manage patients',
+        href: '/',
+      }}
+    >
+      <Header.Logo />
+      <Header.Account>
+        <Header.AccountItem href="#" icon={true}>
+          Florence Nightingale (Regional Manager)
+        </Header.AccountItem>
+        <Header.AccountItem href="#">Change role</Header.AccountItem>
+        <Header.AccountItem href="#">Log out</Header.AccountItem>
+      </Header.Account>
+      <Header.Navigation>
+        <Header.NavigationItem href="#">Home</Header.NavigationItem>
+        <Header.NavigationItem href="#">Add new patient</Header.NavigationItem>
+        <Header.NavigationItem href="#">Find a patient</Header.NavigationItem>
+      </Header.Navigation>
+    </Header>
+  ),
+};
+
+export const HeaderOrganisationalBlueWithNavigation: Story = {
+  render: (args) => (
+    <Header
+      organisation={{
+        name: 'Anytown Anyplace',
+        split: 'Anywhere',
+        descriptor: 'NHS Foundation Trust',
+      }}
+    >
+      <Header.Logo href="/" />
+      <Header.Search visuallyHiddenLabel="Search the Anytown Anyplace Anywhere website" />
+      <Header.Navigation>
+        <Header.NavigationItem href="#">Your hospital visit</Header.NavigationItem>
+        <Header.NavigationItem href="#" active={true}>
+          Wards and departments
+        </Header.NavigationItem>
+        <Header.NavigationItem href="#">Conditions and treatments</Header.NavigationItem>
+        <Header.NavigationItem href="#">Our people</Header.NavigationItem>
+        <Header.NavigationItem href="#">Our research</Header.NavigationItem>
+      </Header.Navigation>
+    </Header>
+  ),
+};
+
+export const HeaderOrganisationalWhiteWithNavigation: Story = {
+  render: (args) => (
+    <Header
+      className="nhsuk-header--white"
+      organisation={{
+        name: 'Anytown Anyplace',
+        split: 'Anywhere',
+        descriptor: 'NHS Foundation Trust',
+      }}
+    >
+      <Header.Logo href="/" />
+      <Header.Search />
+      <Header.Navigation>
+        <Header.NavigationItem href="#">Your hospital visit</Header.NavigationItem>
+        <Header.NavigationItem href="#" active={true}>
+          Wards and departments
+        </Header.NavigationItem>
+        <Header.NavigationItem href="#">Conditions and treatments</Header.NavigationItem>
+        <Header.NavigationItem href="#">Our people</Header.NavigationItem>
+        <Header.NavigationItem href="#">Our research</Header.NavigationItem>
+      </Header.Navigation>
+    </Header>
+  ),
+};
+
+export const HeaderOrganisationalWhiteWithNavigationWhite: Story = {
+  render: (args) => (
+    <Header
+      className="nhsuk-header--white"
+      organisation={{
+        name: 'Anytown Anyplace',
+        split: 'Anywhere',
+        descriptor: 'NHS Foundation Trust',
+      }}
+    >
+      <Header.Logo href="/" />
+      <Header.Search />
+      <Header.Navigation className="nhsuk-header__navigation--white">
+        <Header.NavigationItem href="#">Your hospital visit</Header.NavigationItem>
+        <Header.NavigationItem href="#" active={true}>
+          Wards and departments
+        </Header.NavigationItem>
+        <Header.NavigationItem href="#">Conditions and treatments</Header.NavigationItem>
+        <Header.NavigationItem href="#">Our people</Header.NavigationItem>
+        <Header.NavigationItem href="#">Our research</Header.NavigationItem>
+      </Header.Navigation>
     </Header>
   ),
 };
@@ -168,25 +212,23 @@ export const HeaderWithCustomNavItemComponent: Story = {
 
     return (
       <Header
-        orgName="Anytown Anyplace"
-        orgSplit="Anywhere"
-        orgDescriptor="NHS Foundation Trust"
-        white
+        organisation={{
+          name: 'Anytown Anyplace',
+          split: 'Anywhere',
+          descriptor: 'NHS Foundation Trust',
+        }}
       >
-        <Header.Container>
-          <Header.Logo href="/" />
-          <Header.Content>
-            <Header.Search />
-          </Header.Content>
-        </Header.Container>
-        <Header.Nav>
-          <Header.NavItem to="/" asElement={customElement}>
+        <Header.Logo href="/" />
+        <Header.Search />
+        <Header.Navigation className="nhsuk-header__navigation--white">
+          <Header.NavigationItem to="/" asElement={customElement}>
             Link to props
-          </Header.NavItem>
-          <Header.NavItem>Your hospital visit</Header.NavItem>
-          <Header.NavItem>Wards and departments</Header.NavItem>
-          <Header.NavDropdownMenu />
-        </Header.Nav>
+          </Header.NavigationItem>
+          <Header.NavigationItem href="#">Your hospital visit</Header.NavigationItem>
+          <Header.NavigationItem href="#" active={true}>
+            Wards and departments
+          </Header.NavigationItem>
+        </Header.Navigation>
       </Header>
     );
   },
