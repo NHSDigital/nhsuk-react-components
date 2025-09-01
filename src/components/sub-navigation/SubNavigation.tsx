@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-redeclare */
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
+import './_SubNavigation.scss';
 
 const SubNavigationItem: React.FC<HTMLProps<HTMLAnchorElement>> = ({
   className,

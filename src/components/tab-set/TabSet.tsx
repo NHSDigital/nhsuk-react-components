@@ -2,6 +2,7 @@
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
 import Tab, { TabProps } from './components/Tab';
+import './_TabSet.scss';
 
 interface TabSet extends React.FC<HTMLProps<HTMLDivElement>> {
   Tab: React.FC<TabProps>;

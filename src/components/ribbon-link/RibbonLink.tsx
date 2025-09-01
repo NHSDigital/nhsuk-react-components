@@ -3,6 +3,7 @@ import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
 import Bar from './components/Bar';
 import { ArrowRightCircleIcon } from 'src'
+import './_RibbonLink.scss'
 
 type RibbonFlavours = 'hot' | 'mild' | 'cool';
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import Event, { EventProps } from './components/Event';
+import './_Timeline.scss';
 
 type TimelineProps = {
   events: Array<EventProps>;

@@ -3,6 +3,7 @@ import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
 import Section, { SectionProps } from './components/Section';
 import Link from './components/Link';
+import './_AccordionMenu.scss';
 
 interface AccordionMenu extends React.FC<HTMLProps<HTMLDivElement>> {
   Section: React.FC<SectionProps>;

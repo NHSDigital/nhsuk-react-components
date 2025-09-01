@@ -1,5 +1,6 @@
 import React, { HTMLProps } from 'react';
 import classNames from 'classnames';
+import './_Tag.scss';
 
 type TagColours =
   | 'white'

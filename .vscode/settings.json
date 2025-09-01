@@ -6,14 +6,22 @@
     "source.fixAll": "explicit",
     "source.fixAll.eslint": "explicit"
   },
-  "eslint.validate": ["javascript", "typescript"],
+  "eslint.validate": [
+    "javascript",
+    "typescript"
+  ],
   "eslint.codeAction.showDocumentation": {
     "enable": true
   },
   "eslint.alwaysShowStatus": true,
-  "eslint.workingDirectories": ["src"],
+  "eslint.workingDirectories": [
+    "src"
+  ],
   "typescript.tsdk": "node_modules/typescript/lib",
   "[jsonc]": {
     "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   }
 }
