@@ -9269,10 +9269,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nhsuk-frontend@npm:^9.0.1":
-  version: 9.0.1
-  resolution: "nhsuk-frontend@npm:9.0.1"
-  checksum: 10c0/50a071be382807bb5c7b474d01f40d6cc59198cf601c9b52f168c7cc8d7e09c092d35dfea53bc654417cb07739b5fceb481e61aeb39a7c2621b54b78b82c8e0c
+"nhsuk-frontend@npm:^10.0.0":
+  version: 10.0.0
+  resolution: "nhsuk-frontend@npm:10.0.0"
+  checksum: 10c0/5a24cc7b56188d18bbd86c040e39b420546451f1b955eed176f4acd5f3b75d6ec5eef86b8ab970cff1b4741f2f599debae03bf4be75c3f6a903cfce205e88501
   languageName: node
   linkType: hard
 
@@ -9321,7 +9321,7 @@ __metadata:
     jest: "npm:^29.7.0"
     jest-axe: "npm:^8.0.0"
     jest-environment-jsdom: "npm:^29.7.0"
-    nhsuk-frontend: "npm:^9.0.1"
+    nhsuk-frontend: "npm:^10.0.0"
     prettier: "npm:^3.2.5"
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
@@ -9338,7 +9338,7 @@ __metadata:
     vite: "npm:^4.5.3"
     vite-tsconfig-paths: "npm:^4.3.2"
   peerDependencies:
-    nhsuk-frontend: ">=9.0.0 <10.0.0"
+    nhsuk-frontend: ">=10.0.0 <11.0.0"
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
   languageName: unknown
