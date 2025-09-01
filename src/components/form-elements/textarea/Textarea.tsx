@@ -18,4 +18,6 @@ const TextareaComponent: FC<TextareaProps> = (props) => (
   </FormGroup>
 );
 
+TextareaComponent.displayName = 'Textarea';
+
 export default TextareaComponent;

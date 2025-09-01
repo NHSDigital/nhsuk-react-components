@@ -8,4 +8,6 @@ const InsetTextComponent: FC<HTMLProps<HTMLDivElement>> = ({ className, children
   </div>
 );
 
+InsetTextComponent.displayName = 'InsetText';
+
 export default InsetTextComponent;

@@ -1,5 +1,5 @@
 import React, { useState, MouseEvent } from 'react';
-import { Radios, Fieldset, Button, TextInput, Checkboxes } from '../../src';
+import { Radios, Button, TextInput, Checkboxes } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Radios> = {
@@ -8,9 +8,6 @@ const meta: Meta<typeof Radios> = {
 };
 export default meta;
 type Story = StoryObj<typeof Radios>;
-
-Radios.Item.displayName = 'Radios.Item';
-Radios.Divider.displayName = 'Radios.Divider';
 
 export const StandardRadios: Story = {
   render: (args) => (

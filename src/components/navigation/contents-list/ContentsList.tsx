@@ -45,6 +45,9 @@ const ContentsListComponent: ContentsListComponent = ({
   </nav>
 );
 
+ContentsListComponent.displayName = 'ContentsList';
+ContentsListItem.displayName = 'ContentsList.Item';
+
 ContentsListComponent.Item = ContentsListItem;
 
 export default ContentsListComponent;

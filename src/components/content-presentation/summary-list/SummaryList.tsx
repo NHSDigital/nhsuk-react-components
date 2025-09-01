@@ -39,6 +39,12 @@ const SummaryListComponent: SummaryListComponent = ({ className, noBorder, ...re
   />
 );
 
+SummaryListComponent.displayName = 'SummaryList';
+SummaryListRow.displayName = 'SummaryList.Row';
+SummaryListKey.displayName = 'SummaryList.Key';
+SummaryListValue.displayName = 'SummaryList.Value';
+SummaryListActions.displayName = 'SummaryList.Actions';
+
 SummaryListComponent.Row = SummaryListRow;
 SummaryListComponent.Key = SummaryListKey;
 SummaryListComponent.Value = SummaryListValue;

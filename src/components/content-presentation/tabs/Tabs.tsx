@@ -77,6 +77,12 @@ const TabsComponent: TabsComponent = ({ className, children, ...rest }) => {
   );
 };
 
+TabsComponent.displayName = 'Tabs';
+TabTitle.displayName = 'Tabs.Title';
+TabList.displayName = 'Tabs.List';
+TabListItem.displayName = 'Tabs.ListItem';
+TabContents.displayName = 'Tabs.Contents';
+
 TabsComponent.Title = TabTitle;
 TabsComponent.List = TabList;
 TabsComponent.ListItem = TabListItem;

@@ -19,4 +19,10 @@ describe('Fieldset', () => {
 
     expect(container.textContent).toBe('Text');
   });
+
+  it('renders null with no children', () => {
+    const { container } = render(<Fieldset />);
+
+    expect(container.querySelector('fieldset')).toBeNull();
+  });
 });

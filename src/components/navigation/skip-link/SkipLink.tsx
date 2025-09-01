@@ -32,4 +32,6 @@ const SkipLinkComponent = ({
   );
 };
 
+SkipLinkComponent.displayName = 'SkipLink';
+
 export default SkipLinkComponent;

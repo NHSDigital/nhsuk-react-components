@@ -96,6 +96,8 @@ const RadiosComponent = ({ children, idPrefix, ...rest }: RadiosProps) => {
   );
 };
 
+RadiosComponent.displayName = 'Radios';
+
 RadiosComponent.Item = RadiosItem;
 RadiosComponent.Divider = RadiosDivider;
 

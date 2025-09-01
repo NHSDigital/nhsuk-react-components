@@ -88,6 +88,8 @@ const CheckboxesComponent = ({ children, idPrefix, ...rest }: CheckboxesProps) =
   );
 };
 
+CheckboxesComponent.displayName = 'Checkboxes';
+
 CheckboxesComponent.Item = CheckboxesItem;
 CheckboxesComponent.Divider = CheckboxesDivider;
 

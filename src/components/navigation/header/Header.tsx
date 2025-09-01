@@ -102,6 +102,8 @@ const HeaderComponent = ({ className, containerClasses, children, ...rest }: Hea
   );
 };
 
+HeaderComponent.displayName = 'Header';
+
 HeaderComponent.Account = Account;
 HeaderComponent.AccountItem = AccountItem;
 HeaderComponent.Logo = Logo;

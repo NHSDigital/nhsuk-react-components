@@ -16,6 +16,8 @@ const FieldsetComponent = ({ children, className, ...rest }: FieldsetProps) => {
   );
 };
 
+FieldsetComponent.displayName = 'Fieldset';
+
 FieldsetComponent.Legend = Legend;
 
 export default FieldsetComponent;

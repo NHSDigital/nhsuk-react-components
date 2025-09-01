@@ -43,4 +43,6 @@ const AccountItemWrapper: FC<AccountItemProps> = ({ className, ...rest }) => {
   );
 };
 
+AccountItemWrapper.displayName = 'Header.AccountItem';
+
 export default AccountItemWrapper;

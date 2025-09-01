@@ -131,4 +131,6 @@ const ButtonWrapper: FC<ButtonLinkProps | ButtonProps> = ({ as, ...rest }) =>
     <ButtonComponent {...(rest as ButtonProps)} />
   );
 
+ButtonWrapper.displayName = 'Button';
+
 export default ButtonWrapper;

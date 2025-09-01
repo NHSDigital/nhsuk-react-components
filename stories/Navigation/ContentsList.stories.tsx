@@ -21,7 +21,7 @@ import { Meta, StoryObj } from '@storybook/react';
  * const Element = () => {
  *     return (
  *         <ContentsList aria-label="Pages in this guide">
- *             <ContentsList.Item current aria-current="page">
+ *             <ContentsList.Item current>
  *                 What is AMD?
  *             </ContentsList.Item>
  *             <ContentsList.Item href="https://www.nhs.uk/conditions/age-related-macular-degeneration-amd/symptoms/">
@@ -48,14 +48,10 @@ const meta: Meta<typeof ContentsList> = {
 export default meta;
 type Story = StoryObj<typeof ContentsList>;
 
-ContentsList.Item.displayName = 'ContentsList.Item';
-
 export const Standard: Story = {
   render: (args) => (
     <ContentsList aria-label="Pages in this guide">
-      <ContentsList.Item current aria-current="page">
-        What is AMD?
-      </ContentsList.Item>
+      <ContentsList.Item current>What is AMD?</ContentsList.Item>
       <ContentsList.Item href="https://www.nhs.uk/conditions/age-related-macular-degeneration-amd/symptoms/">
         Symptoms
       </ContentsList.Item>

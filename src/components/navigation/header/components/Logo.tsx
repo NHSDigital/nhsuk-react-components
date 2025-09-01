@@ -63,4 +63,6 @@ const Logo: FC<LogoProps> = (logo) => {
   );
 };
 
+Logo.displayName = 'Header.Logo';
+
 export default Logo;

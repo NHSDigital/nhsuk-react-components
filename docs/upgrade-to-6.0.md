@@ -18,6 +18,42 @@ You must now use the NHS.UK frontend v10.x feature detection snippet to check fo
 +   <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' nhsuk-frontend-supported' : '');</script>
 ```
 
+### Update fieldset legend and label size, font weight
+
+To align with NHS.UK frontend, the fieldset legend and label components no longer default to size "XL" when `isPageHeading: true` is set and the `bold` prop has been removed.
+
+You must make the following changes to `labelProps` and `<Label>` components:
+
+- for every `isPageHeading: true` append `size: 'xl'`
+- replace `bold: true` with `size: 's'`
+
+```patch
+  <TextInput
+    label="Address line 1"
+-   labelProps={{ isPageHeading: true }}
++   labelProps={{ isPageHeading: true, size: 'xl' }}
+    autoComplete="address-line1"
+  />
+  <TextInput
+    label="Address line 2"
+-   labelProps={{ bold: true }}
++   labelProps={{ size: 's' }}
+    autoComplete="address-line2"
+  />
+```
+
+You must make the following changes to `<Fieldset.Legend>` components:
+
+- for every `isPageHeading` append `size="xl"`
+
+```patch
+  <Fieldset>
+-   <Fieldset.Legend isPageHeading>What is your address?</Fieldset.Legend>
++   <Fieldset.Legend isPageHeading size="xl">What is your address?</Fieldset.Legend>
+    <!-- // ... -->
+  </Fieldset>
+```
+
 ### Restore visually hidden text for accessibility
 
 For accessibility reasons, it's no longer possible to pass `visuallyHiddenText: false` or override other hidden text for the following:
@@ -89,9 +125,26 @@ To count maximum words:
 + <CharacterCountComponent maxWords={20} textAreaId="example">
 ```
 
+### Contents list
+
+To align with NHS.UK frontend, the contents list component automatically adds ARIA attributes for the current item. You must make the following changes:
+
+- remove the `ContentsList` component `aria-label` attribute
+- remove the `ContentsList.Item` component `aria-current` attribute
+
+```patch
+- <ContentsList aria-label="Pages in this guide">
++ <ContentsList>
+-   <ContentsList.Item current aria-current="page">Example page 1</ContentsList.Item>
+-   <ContentsList.Item current>Example page 1</ContentsList.Item>
+    <ContentsList.Item>Example page 2</ContentsList.Item>
+    <ContentsList.Item>Example page 3</ContentsList.Item>
+  </ContentsList>
+```
+
 ### Date input
 
-To align with NHS.UK frontend, we have fixed various accessibility issues in date inputs by automatically adding `<fieldset role="group">` and `<legend>` HTML elements.
+To align with NHS.UK frontend, the date input component automatically renders its own fieldset, legend and associated ARIA attributes. The custom `autoSelectNext` prop is no longer supported:
 
 ```patch
   <DateInput
@@ -170,6 +223,39 @@ The updated footer component from NHS.UK frontend v10.x has been added. You will
   </Footer>
 ```
 
+### List panel
+
+The list panel component was removed in NHS.UK frontend v6.0.0 and must be replaced with a feature card and nested list:
+
+Before:
+
+```jsx
+<Panel label="C" labelProps={{ id: 'C' }} backToTop backToTopLink="#nhsuk-nav-a-z">
+  <Panel.LinkItem href="/conditions/chest-pain/">Chest pain</Panel.LinkItem>
+  <Panel.LinkItem href="/conditions/cold-sores/">Cold sore</Panel.LinkItem>
+</Panel>
+```
+
+After:
+
+```jsx
+<Card cardType="feature">
+  <Card.Content>
+    <Card.Heading id="C">C</Card.Heading>
+    <ul className="nhsuk-list nhsuk-list--border">
+      <li><a href="/conditions/chest-pain/">Chest pain</a></li>
+      <li><a href="/conditions/cold-sores/">Cold sore</a></li>
+    </ul>
+  </Card.Content>
+</Card>
+
+<div className="nhsuk-back-to-top">
+  <a className="nhsuk-back-to-top__link" href="#nhsuk-nav-a-z">
+    Back to top
+  </a>
+</div>
+```
+
 ### Radios
 
 To align with NHS.UK frontend, the radios component automatically renders its own fieldset, legend and associated ARIA attributes. You must also rename the `Radios.Radio` component to `Radios.Item` as shown:
@@ -204,6 +290,29 @@ To align with NHS.UK frontend, the checkboxes component automatically renders it
 +     <Checkboxes.Item value="other">Citizen of another country</Checkboxes.Item>
     </Checkboxes>
 - </Fieldset>
+```
+
+### Error summary
+
+To align with NHS.UK frontend, the error summary component is automatically alerted to screen readers by focusing itself on render. You will need to make the following changes:
+
+- remove the nested `ErrorSummary.Body` component wrapper
+- rename the `ErrorSummary.Item` component to `ErrorSummary.ListItem`
+
+```patch
+- </Fieldset>
+  <ErrorSummary>
+    <ErrorSummary.Title>There is a problem</ErrorSummary.Title>
+-   <ErrorSummary.Body>
+      <ErrorSummary.List>
+-       <ErrorSummary.Item href="#example-error-1">
++       <ErrorSummary.ListItem href="#example-error-1">
+          Date of birth must be in the past
+-       </ErrorSummary.Item>
++       </ErrorSummary.ListItem>
+      </ErrorSummary.List>
+-   </ErrorSummary.Body>
+  </ErrorSummary>
 ```
 
 ### Skip link

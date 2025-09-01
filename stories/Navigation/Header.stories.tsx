@@ -10,13 +10,6 @@ const meta: Meta<typeof Header> = {
 export default meta;
 type Story = StoryObj<typeof Header>;
 
-Header.Account.displayName = 'Header.Account';
-Header.AccountItem.displayName = 'Header.AccountItem';
-Header.Logo.displayName = 'Header.Logo';
-Header.Search.displayName = 'Header.Search';
-Header.Navigation.displayName = 'Header.Navigation';
-Header.NavigationItem.displayName = 'Header.NavigationItem';
-
 export const HeaderDefault: Story = {
   render: (args) => (
     <Header

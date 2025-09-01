@@ -5,4 +5,6 @@ const CardDescription: FC<HTMLProps<HTMLParagraphElement>> = ({ className, ...re
   <p className={classNames('nhsuk-card__description', className)} {...rest} />
 );
 
+CardDescription.displayName = 'Card.Description';
+
 export default CardDescription;

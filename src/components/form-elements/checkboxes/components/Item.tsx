@@ -118,4 +118,6 @@ const CheckboxesItem: FC<CheckboxesItemProps> = ({
   );
 };
 
+CheckboxesItem.displayName = 'Checkboxes.Item';
+
 export default CheckboxesItem;

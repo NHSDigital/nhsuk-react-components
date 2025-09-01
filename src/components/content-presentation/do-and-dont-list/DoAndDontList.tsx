@@ -71,6 +71,9 @@ const DoAndDontItem: FC<DoAndDontItemProps> = ({ prefixText, listItemType, child
   );
 };
 
+DoAndDontListComponent.displayName = 'DoAndDontList';
+DoAndDontItem.displayName = 'DoAndDontList.Item';
+
 DoAndDontListComponent.Item = DoAndDontItem;
 
 export default DoAndDontListComponent;

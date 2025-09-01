@@ -103,6 +103,10 @@ const DisabledItem: FC<HTMLProps<HTMLSpanElement>> = ({ className, ...rest }) =>
   </li>
 );
 
+NavAZ.displayName = 'NavAZ';
+LinkItem.displayName = 'NavAZ.LinkItem';
+DisabledItem.displayName = 'NavAZ.DisabledItem';
+
 NavAZ.LinkItem = LinkItem;
 NavAZ.DisabledItem = DisabledItem;
 

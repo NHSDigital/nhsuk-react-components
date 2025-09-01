@@ -27,11 +27,6 @@ const meta: Meta<typeof SummaryList> = {
 export default meta;
 type Story = StoryObj<typeof SummaryList>;
 
-SummaryList.Row.displayName = 'SummaryList.Row';
-SummaryList.Key.displayName = 'SummaryList.Key';
-SummaryList.Value.displayName = 'SummaryList.Value';
-SummaryList.Actions.displayName = 'SummaryList.Actions';
-
 export const Standard: Story = {
   argTypes: {
     noBorder: {

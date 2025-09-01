@@ -25,9 +25,6 @@ const LegendComponent: FC<LegendProps> = ({
     <legend
       className={classNames(
         'nhsuk-fieldset__legend',
-        {
-          'nhsuk-fieldset__legend--xl': isPageHeading && !size,
-        },
         { [`nhsuk-fieldset__legend--${size}`]: size },
         className,
       )}
@@ -43,5 +40,7 @@ const LegendComponent: FC<LegendProps> = ({
     </legend>
   );
 };
+
+LegendComponent.displayName = 'Fieldset.Legend';
 
 export default LegendComponent;

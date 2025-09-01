@@ -92,6 +92,12 @@ const FooterComponent: FooterComponent = ({ className, containerClassName, child
   );
 };
 
+FooterComponent.displayName = 'Footer';
+FooterMeta.displayName = 'Footer.Meta';
+FooterList.displayName = 'Footer.List';
+FooterListItem.displayName = 'Footer.ListItem';
+FooterCopyright.displayName = 'Footer.Copyright';
+
 FooterComponent.Meta = FooterMeta;
 FooterComponent.List = FooterList;
 FooterComponent.ListItem = FooterListItem;

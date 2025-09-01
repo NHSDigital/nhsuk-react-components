@@ -15,4 +15,6 @@ const ActionLinkComponent: FC<AsElementLink<HTMLAnchorElement>> = ({
   </Element>
 );
 
+ActionLinkComponent.displayName = 'ActionLink';
+
 export default ActionLinkComponent;

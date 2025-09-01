@@ -59,11 +59,13 @@ const TableComponent = ({
   );
 };
 
-TableComponent.Body = TableBody;
-TableComponent.Cell = TableCell;
+TableComponent.displayName = 'Table';
+
 TableComponent.Container = TableContainer;
-TableComponent.Head = TableHead;
 TableComponent.Panel = TablePanel;
+TableComponent.Head = TableHead;
+TableComponent.Body = TableBody;
 TableComponent.Row = TableRow;
+TableComponent.Cell = TableCell;
 
 export default TableComponent;

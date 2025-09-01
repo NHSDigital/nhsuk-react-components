@@ -56,6 +56,8 @@ const CardComponent: ICard = ({ className, clickable, children, cardType, ...res
   );
 };
 
+CardComponent.displayName = 'Card';
+
 CardComponent.Heading = CardHeading;
 CardComponent.Description = CardDescription;
 CardComponent.Image = CardImage;

@@ -6,4 +6,6 @@ const CardGroupItem: FC<ComponentProps<typeof Col>> = ({ className, ...rest }) =
   <Col className={classNames('nhsuk-card-group__item', className)} {...rest} />
 );
 
+CardGroupItem.displayName = 'Card.GroupItem';
+
 export default CardGroupItem;

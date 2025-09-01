@@ -1,15 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ErrorSummary ErrorSummary.Body matches snapshot: ErrorSummary.Body 1`] = `
-<div>
-  <div
-    class="nhsuk-error-summary__body"
-  >
-    Body
-  </div>
-</div>
-`;
-
 exports[`ErrorSummary ErrorSummary.List matches snapshot: ErrorSummary.List 1`] = `
 <div>
   <ul
@@ -20,12 +10,22 @@ exports[`ErrorSummary ErrorSummary.List matches snapshot: ErrorSummary.List 1`] 
 </div>
 `;
 
-exports[`ErrorSummary ErrorSummary.ListItem matches snapshot: ErrorSummary.ListItem 1`] = `
+exports[`ErrorSummary ErrorSummary.ListItem matches snapshot for items with links 1`] = `
 <div>
   <li>
-    <a>
-      ListItem
+    <a
+      href="#example-error-1"
+    >
+      List item with link
     </a>
+  </li>
+</div>
+`;
+
+exports[`ErrorSummary ErrorSummary.ListItem matches snapshot for items without links 1`] = `
+<div>
+  <li>
+    List item without link
   </li>
 </div>
 `;
@@ -34,7 +34,6 @@ exports[`ErrorSummary ErrorSummary.Title matches snapshot: ErrorSummary.Title 1`
 <div>
   <h2
     class="nhsuk-error-summary__title"
-    id="error-summary-title"
   >
     Title
   </h2>
@@ -44,10 +43,18 @@ exports[`ErrorSummary ErrorSummary.Title matches snapshot: ErrorSummary.Title 1`
 exports[`ErrorSummary matches snapshot: ErrorSummary 1`] = `
 <div>
   <div
-    aria-labelledby="error-summary-title"
     class="nhsuk-error-summary"
-    role="alert"
+    data-module="nhsuk-error-summary"
+    data-nhsuk-error-summary-init=""
     tabindex="-1"
-  />
+  >
+    <div
+      role="alert"
+    >
+      <div
+        class="nhsuk-error-summary__body"
+      />
+    </div>
+  </div>
 </div>
 `;

@@ -12,14 +12,6 @@ const meta: Meta<typeof Card> = {
 export default meta;
 type Story = StoryObj<typeof Card>;
 
-Card.Content.displayName = 'Card.Content';
-Card.Heading.displayName = 'Card.Heading';
-Card.Description.displayName = 'Card.Description';
-Card.Link.displayName = 'Card.Link';
-Card.Image.displayName = 'Card.Image';
-Card.Group.displayName = 'Card.Group';
-Card.GroupItem.displayName = 'Card.GroupItem';
-
 export const Standard: Story = {
   render: (args) => (
     <Card>
@@ -75,6 +67,27 @@ export const FeatureCard: Story = {
       <Card.Content>
         <Card.Heading>Feature card heading</Card.Heading>
         <Card.Description>Feature card description</Card.Description>
+      </Card.Content>
+    </Card>
+  ),
+};
+
+export const FeatureCardWithList: Story = {
+  render: () => (
+    <Card cardType="feature">
+      <Card.Content>
+        <Card.Heading>Feature card heading</Card.Heading>
+        <ul className="nhsuk-list nhsuk-list--border">
+          <li>
+            <a href="/conditions/abdominal-aortic-aneurysm/">AAA</a>
+          </li>
+          <li>
+            <a href="/conditions/abdominal-aortic-aneurysm/">Abdominal aortic aneurysm</a>
+          </li>
+          <li>
+            <a href="/conditions/abscess/">Abscess</a>
+          </li>
+        </ul>
       </Card.Content>
     </Card>
   ),

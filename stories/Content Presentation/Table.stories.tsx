@@ -9,12 +9,6 @@ const meta: Meta<typeof Table> = {
 export default meta;
 type Story = StoryObj<typeof Table>;
 
-Table.Head.displayName = 'Table.Head';
-Table.Body.displayName = 'Table.Body';
-Table.Row.displayName = 'Table.Row';
-Table.Cell.displayName = 'Table.Cell';
-Table.Panel.displayName = 'Table.Panel';
-
 export const StandardTable: Story = {
   render: (args) => (
     <Table caption="Skin symptoms and possible causes">

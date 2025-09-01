@@ -48,4 +48,6 @@ const NavigationItem: FC<NavigationItemProps> = ({
   );
 };
 
+NavigationItem.displayName = 'Header.NavigationItem';
+
 export default NavigationItem;
