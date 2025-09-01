@@ -1,5 +1,5 @@
 // Allow current nhsuk styles to override legacy
-@import '../node_modules/nhsuk-frontend/packages/nhsuk.scss';
+@import 'nhsuk-frontend/dist/nhsuk';
 
 .tag-wrapper {
   display: flex;
