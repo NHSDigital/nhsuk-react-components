@@ -6,11 +6,11 @@ import external from 'rollup-plugin-peer-deps-external';
 import { dts } from 'rollup-plugin-dts';
 import tsPaths from 'rollup-plugin-tsconfig-paths';
 import preserveDirectives from 'rollup-plugin-preserve-directives';
+import postcss from 'rollup-plugin-postcss';
 
 import tsBuildConfig from './bundle-base.tsconfig.json' assert { type: 'json' };
 import packageJson from './package.json' assert { type: 'json' };
 
-// suppresses warnings printed to console as part of bundling components with directives present.
 const onWarnSuppression = {
   onwarn(warning, warn) {
     if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.includes(`"use client"`)) return;
@@ -18,72 +18,89 @@ const onWarnSuppression = {
   },
 };
 
-// Keep react 19 out of the bundle
-const externals = ['react', 'react-dom', 'react/jsx-runtime'];
-
 const commonPlugins = [
-  external(),            // auto-externalize peer deps
-  tsPaths(),             // respect tsconfig paths in source
+  external(),
+  tsPaths(),
   resolve({ extensions: ['.mjs', '.js', '.ts', '.tsx'] }),
   commonjs(),
+  // ⬇️ compile SCSS → CSS for any `import './file.scss'`
+  postcss({
+    extract: true,                  // or a filename like 'styles.css'
+    modules: false,
+    minimize: false,
+    use: { sass: { quietDeps: true } }, // uses Dart Sass
+    includePaths: ['node_modules'], // lets you @use "nhsuk-frontend/..." cleanly
+  }),
 ];
 
+// JS-only version of preserveDirectives
+const jsOnlyPreserveDirectives = preserveDirectives({
+  include: ['**/*.{js,jsx,ts,tsx,mjs,cjs}'],
+  exclude: ['**/*.{css,scss,sass,less,styl}'],
+});
+
 export default [
-  // CJS (single file)
+  // cjs export
   {
     input: 'src/index.ts',
-    external: externals,
-    output: [
-      {
-        file: packageJson.main, // e.g. dist/cjs/index.js
-        format: 'cjs',
-        sourcemap: true,
-      },
-    ],
+    output: [{ file: packageJson.main, format: 'cjs', sourcemap: true }],
     plugins: [
       ...commonPlugins,
       typescript({
-        // IMPORTANT: dedicated build tsconfig (noEmit, no jest/node types)
-        tsconfig: './tsconfig.build.json',
+        tsconfig: 'bundle-base.tsconfig.json',
+        compilerOptions: { declaration: false },
       }),
-      preserveDirectives(),           // keep "use client" etc.
-      terser({ compress: { directives: false } }),
+      terser(),
     ],
     ...onWarnSuppression,
   },
 
-  // ESM (single file)
+  // esm export
   {
     input: 'src/index.ts',
-    external: externals,
     output: [
       {
-        file: packageJson.module, // e.g. dist/esm/index.js
+        dir: packageJson.module,
         format: 'esm',
         sourcemap: true,
+        preserveModules: true,
+        preserveModulesRoot: 'src',
       },
     ],
     plugins: [
       ...commonPlugins,
       typescript({
-        tsconfig: './tsconfig.build.json',
+        tsconfig: 'bundle-base.tsconfig.json',
+        compilerOptions: {
+          declaration: false,          // don’t emit .d.ts here
+          emitDeclarationOnly: false,
+          outDir: undefined,           // let Rollup handle files
+        },
       }),
-      preserveDirectives(),
+      jsOnlyPreserveDirectives,                 // ⬅️ don't touch .scss
       terser({ compress: { directives: false } }),
     ],
     ...onWarnSuppression,
   },
 
-  // Type definitions (bundled .d.ts)
+  // type bundling
+  // type bundling
   {
     input: 'src/index.ts',
-    external: externals,
     output: [{ file: 'dist/index.d.ts', format: 'esm' }],
+
+    // ⬅️ Ignore any style imports during .d.ts bundling
+    external: [/\.s?css$/i, /\.less$/i, /\.styl(us)?$/i],
+
     plugins: [
       dts({
-        // carry over path mapping if you have any
-        compilerOptions: { paths: tsBuildConfig?.compilerOptions?.paths ?? {} },
+        respectExternal: true, // ⬅️ key: don't inline externals (like the styles we exclude)
+        compilerOptions: {
+          // carry over paths if you use them
+          paths: tsBuildConfig.compilerOptions.paths,
+        },
       }),
     ],
-  },
+  }
+
 ];
