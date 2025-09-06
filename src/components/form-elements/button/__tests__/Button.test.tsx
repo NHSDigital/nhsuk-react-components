@@ -25,7 +25,7 @@ describe('Button', () => {
     it('adds correct classes for button type', () => {
       const { container } = render(<Button disabled>Submit</Button>);
 
-      expect(container.querySelector('.nhsuk-button--disabled')).toBeTruthy();
+      expect(container.querySelector('.nhsuk-button[disabled]')).toBeTruthy();
     });
   });
 
@@ -60,15 +60,13 @@ describe('Button', () => {
   it('adds aria props and disabled to disabled button', () => {
     const { container } = render(<Button disabled>Submit</Button>);
 
+    expect(container.querySelector('button.nhsuk-button[disabled]')?.getAttribute('type')).toBe(
+      'submit',
+    );
     expect(
-      container.querySelector('button.nhsuk-button.nhsuk-button--disabled')?.getAttribute('type'),
-    ).toBe('submit');
-    expect(
-      container
-        .querySelector('button.nhsuk-button.nhsuk-button--disabled')
-        ?.getAttribute('aria-disabled'),
+      container.querySelector('button.nhsuk-button[disabled]')?.getAttribute('aria-disabled'),
     ).toBe('true');
-    expect(container.querySelector('button.nhsuk-button.nhsuk-button--disabled')).toBeDisabled();
+    expect(container.querySelector('button.nhsuk-button[disabled]')).toBeDisabled();
   });
 
   it('preventDoubleClick calls debounced function', () => {

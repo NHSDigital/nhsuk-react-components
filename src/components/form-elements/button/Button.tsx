@@ -79,7 +79,6 @@ export const ButtonComponent: FC<ButtonProps> = ({
     <button
       className={classNames(
         'nhsuk-button',
-        { 'nhsuk-button--disabled': disabled },
         { 'nhsuk-button--secondary': secondary },
         { 'nhsuk-button--reverse': reverse },
         { 'nhsuk-button--warning': warning },
@@ -131,7 +130,6 @@ export const ButtonLinkComponent: FC<ButtonLinkProps> = ({
     <a
       className={classNames(
         'nhsuk-button',
-        { 'nhsuk-button--disabled': disabled },
         { 'nhsuk-button--secondary': secondary },
         { 'nhsuk-button--reverse': reverse },
         { 'nhsuk-button--warning': warning },
