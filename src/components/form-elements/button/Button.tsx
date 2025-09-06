@@ -14,7 +14,6 @@ export const DefaultButtonDebounceTimeout = 1000;
 
 export interface ButtonProps extends HTMLProps<HTMLButtonElement> {
   type?: 'button' | 'submit' | 'reset';
-  disabled?: boolean;
   secondary?: boolean;
   reverse?: boolean;
   warning?: boolean;
@@ -23,8 +22,7 @@ export interface ButtonProps extends HTMLProps<HTMLButtonElement> {
   debounceTimeout?: number;
 }
 
-export interface ButtonLinkProps extends HTMLProps<HTMLAnchorElement> {
-  disabled?: boolean;
+export interface ButtonLinkProps extends ComponentProps<'a'> {
   secondary?: boolean;
   reverse?: boolean;
   warning?: boolean;
@@ -85,7 +83,7 @@ export const ButtonComponent: FC<ButtonProps> = ({
         className,
       )}
       disabled={disabled}
-      aria-disabled={disabled ? 'true' : 'false'}
+      aria-disabled={disabled ? 'true' : undefined}
       type={type}
       onClick={preventDoubleClick ? debouncedHandleClick : onClick}
       {...rest}
@@ -95,10 +93,7 @@ export const ButtonComponent: FC<ButtonProps> = ({
 
 export const ButtonLinkComponent: FC<ButtonLinkProps> = ({
   className,
-  role = 'button',
-  draggable = false,
   children,
-  disabled,
   secondary,
   reverse,
   warning,
@@ -135,9 +130,8 @@ export const ButtonLinkComponent: FC<ButtonLinkProps> = ({
         { 'nhsuk-button--warning': warning },
         className,
       )}
-      role={role}
-      aria-disabled={disabled ? 'true' : 'false'}
-      draggable={draggable}
+      role="button"
+      draggable="false"
       onKeyDown={handleKeyDown}
       onClick={preventDoubleClick ? debouncedHandleClick : onClick}
       {...rest}

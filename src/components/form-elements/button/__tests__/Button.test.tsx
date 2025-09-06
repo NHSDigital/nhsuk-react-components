@@ -154,28 +154,6 @@ describe('Button as a link', () => {
   });
 
   describe('button types', () => {
-    describe('disabled', () => {
-      it('matches snapshot', () => {
-        const { container } = render(
-          <Button href="/" disabled>
-            Submit
-          </Button>,
-        );
-
-        expect(container).toMatchSnapshot('DisabledButton');
-      });
-
-      it('adds correct classes for type - disabled', () => {
-        const { container } = render(
-          <Button href="/" disabled>
-            Submit
-          </Button>,
-        );
-
-        expect(container.querySelector('.nhsuk-button--disabled')).toBeTruthy();
-      });
-    });
-
     describe('secondary', () => {
       it('matches snapshot', () => {
         const { container } = render(
@@ -219,23 +197,6 @@ describe('Button as a link', () => {
         expect(container.querySelector('.nhsuk-button--reverse')).toBeTruthy();
       });
     });
-  });
-
-  it('adds aria disabled props to disabled button', () => {
-    const { container } = render(
-      <Button href="/" disabled>
-        Submit
-      </Button>,
-    );
-
-    expect(
-      container.querySelector('a.nhsuk-button.nhsuk-button--disabled')?.getAttribute('role'),
-    ).toBe('button');
-    expect(
-      container
-        .querySelector('a.nhsuk-button.nhsuk-button--disabled')
-        ?.getAttribute('aria-disabled'),
-    ).toBe('true');
   });
 });
 
