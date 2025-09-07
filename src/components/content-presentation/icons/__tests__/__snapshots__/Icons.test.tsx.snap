@@ -55,57 +55,6 @@ exports[`Icons all icons match snapshots: ArrowRightCircle 1`] = `
 </div>
 `;
 
-exports[`Icons all icons match snapshots: ChevronDown 1`] = `
-<div>
-  <svg
-    aria-hidden="true"
-    class="nhsuk-icon nhsuk-icon__chevron-down"
-    height="34"
-    viewBox="0 0 24 24"
-    width="34"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"
-    />
-  </svg>
-</div>
-`;
-
-exports[`Icons all icons match snapshots: ChevronLeft 1`] = `
-<div>
-  <svg
-    aria-hidden="true"
-    class="nhsuk-icon nhsuk-icon__chevron-left"
-    height="34"
-    viewBox="0 0 24 24"
-    width="34"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M8.5 12c0-.3.1-.5.3-.7l5-5c.4-.4 1-.4 1.4 0s.4 1 0 1.4L10.9 12l4.3 4.3c.4.4.4 1 0 1.4s-1 .4-1.4 0l-5-5c-.2-.2-.3-.4-.3-.7z"
-    />
-  </svg>
-</div>
-`;
-
-exports[`Icons all icons match snapshots: ChevronRight 1`] = `
-<div>
-  <svg
-    aria-hidden="true"
-    class="nhsuk-icon nhsuk-icon__chevron-right"
-    height="34"
-    viewBox="0 0 24 24"
-    width="34"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"
-    />
-  </svg>
-</div>
-`;
-
 exports[`Icons all icons match snapshots: ChevronRightCircle 1`] = `
 <div>
   <svg
@@ -142,23 +91,6 @@ exports[`Icons all icons match snapshots: ChevronRightCircle 1`] = `
 </div>
 `;
 
-exports[`Icons all icons match snapshots: Close 1`] = `
-<div>
-  <svg
-    aria-hidden="true"
-    class="nhsuk-icon nhsuk-icon__close"
-    height="34"
-    viewBox="0 0 24 24"
-    width="34"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M13.41 12l5.3-5.29a1 1 0 1 0-1.42-1.42L12 10.59l-5.29-5.3a1 1 0 0 0-1.42 1.42l5.3 5.29-5.3 5.29a1 1 0 0 0 0 1.42 1 1 0 0 0 1.42 0l5.29-5.3 5.29 5.3a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42z"
-    />
-  </svg>
-</div>
-`;
-
 exports[`Icons all icons match snapshots: Cross 1`] = `
 <div>
   <svg
@@ -181,77 +113,6 @@ exports[`Icons all icons match snapshots: Cross 1`] = `
 </div>
 `;
 
-exports[`Icons all icons match snapshots: Emdash 1`] = `
-<div>
-  <svg
-    aria-hidden="true"
-    class="nhsuk-icon nhsuk-icon__emdash"
-    height="1"
-    viewBox="0 0 24 24"
-    width="19"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M0 0h19v1H0z"
-    />
-  </svg>
-</div>
-`;
-
-exports[`Icons all icons match snapshots: Minus 1`] = `
-<div>
-  <svg
-    aria-hidden="true"
-    class="nhsuk-icon nhsuk-icon__minus"
-    height="34"
-    viewBox="0 0 24 24"
-    width="34"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <circle
-      cx="12"
-      cy="12"
-      r="10"
-    />
-    <path
-      d="M8 12h8"
-      fill="none"
-      stroke="#fff"
-      stroke-linecap="round"
-      stroke-miterlimit="10"
-      stroke-width="2"
-    />
-  </svg>
-</div>
-`;
-
-exports[`Icons all icons match snapshots: Plus 1`] = `
-<div>
-  <svg
-    aria-hidden="true"
-    class="nhsuk-icon nhsuk-icon__minus"
-    height="34"
-    viewBox="0 0 24 24"
-    width="34"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <circle
-      cx="12"
-      cy="12"
-      r="10"
-    />
-    <path
-      d="M12 8v8M8 12h8"
-      fill="none"
-      stroke="#fff"
-      stroke-linecap="round"
-      stroke-miterlimit="10"
-      stroke-width="2"
-    />
-  </svg>
-</div>
-`;
-
 exports[`Icons all icons match snapshots: Search 1`] = `
 <div>
   <svg
@@ -264,23 +125,6 @@ exports[`Icons all icons match snapshots: Search 1`] = `
   >
     <path
       d="M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"
-    />
-  </svg>
-</div>
-`;
-
-exports[`Icons all icons match snapshots: SmallEmdash 1`] = `
-<div>
-  <svg
-    aria-hidden="true"
-    class="nhsuk-icon nhsuk-icon__emdash"
-    height="1"
-    viewBox="0 0 24 24"
-    width="16"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M0 0h16v1H0z"
     />
   </svg>
 </div>

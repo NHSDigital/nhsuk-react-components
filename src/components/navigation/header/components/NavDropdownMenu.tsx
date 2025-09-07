@@ -1,7 +1,6 @@
 'use client';
 import React, { FC, HTMLProps, useContext, useEffect, MouseEvent } from 'react';
 import HeaderContext, { IHeaderContext } from '../HeaderContext';
-import { ChevronDown as ChevronDownIcon } from '@components/content-presentation/icons';
 
 export interface NavDropdownMenuProps extends HTMLProps<HTMLButtonElement> {
   type?: 'button' | 'submit' | 'reset';
@@ -34,7 +33,6 @@ const NavMenuDropdown: FC<NavDropdownMenuProps> = ({ onClick, dropdownText = 'Mo
       >
         <span className="nhsuk-u-visually-hidden">Browse</span>
         {dropdownText}
-        <ChevronDownIcon />
       </button>
     </li>
   );
