@@ -8,6 +8,6 @@ This component can be found in the `nhsuk-frontend` repository [here](https://gi
 import { BackLink } from 'nhsuk-react-components';
 
 const Link = () => {
-  return <BackLink href="/back">Go Back</BackLink>;
+  return <BackLink href="/back">Back</BackLink>;
 };
 ```
