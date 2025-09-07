@@ -95,7 +95,7 @@ const DisabledItem: FC<HTMLProps<HTMLSpanElement>> = ({ className, ...rest }) =>
         'nhsuk-u-font-size-22',
         'nhsuk-u-padding-2',
         'nhsuk-u-display-block',
-        'nhsuk-u-secondary-text-color',
+        'nhsuk-u-secondary-text-colour',
         className,
       )}
       {...rest}

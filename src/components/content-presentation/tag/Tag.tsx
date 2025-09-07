@@ -2,7 +2,7 @@ import React, { FC, HTMLProps } from 'react';
 import classNames from 'classnames';
 
 interface TagProps extends HTMLProps<HTMLSpanElement> {
-  color?:
+  modifier?:
     | 'white'
     | 'grey'
     | 'green'
@@ -13,11 +13,16 @@ interface TagProps extends HTMLProps<HTMLSpanElement> {
     | 'red'
     | 'orange'
     | 'yellow';
+
+  /**
+   * @deprecated Use `modifier` instead.
+   */
+  color?: TagProps['modifier'];
 }
 
-const TagComponent: FC<TagProps> = ({ className, color, ...rest }) => (
+const TagComponent: FC<TagProps> = ({ className, color, modifier = color, ...rest }) => (
   <strong
-    className={classNames('nhsuk-tag', { [`nhsuk-tag--${color}`]: color }, className)}
+    className={classNames('nhsuk-tag', { [`nhsuk-tag--${modifier}`]: modifier }, className)}
     {...rest}
   />
 );

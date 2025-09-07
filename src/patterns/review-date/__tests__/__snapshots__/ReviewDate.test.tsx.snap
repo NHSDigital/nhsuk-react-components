@@ -3,7 +3,7 @@
 exports[`ReviewDate matches snapshot: ReviewDate 1`] = `
 <div>
   <p
-    class="nhsuk-body-s nhsuk-u-secondary-text-color nhsuk-u-margin-top-7"
+    class="nhsuk-body-s nhsuk-u-secondary-text-colour nhsuk-u-margin-top-7"
   />
 </div>
 `;
