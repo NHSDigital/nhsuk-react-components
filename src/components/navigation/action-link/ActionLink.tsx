@@ -9,12 +9,10 @@ const ActionLinkComponent: FC<AsElementLink<HTMLAnchorElement>> = ({
   className,
   ...rest
 }) => (
-  <div className="nhsuk-action-link">
-    <Element className={classNames('nhsuk-action-link__link', className)} {...rest}>
-      <ArrowRightCircle />
-      <span className="nhsuk-action-link__text">{children}</span>
-    </Element>
-  </div>
+  <Element className={classNames('nhsuk-action-link', className)} {...rest}>
+    <ArrowRightCircle />
+    <span className="nhsuk-action-link__text">{children}</span>
+  </Element>
 );
 
 export default ActionLinkComponent;
