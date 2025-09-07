@@ -96,8 +96,12 @@ export const CustomPrefixText: Story = {
   render: () => (
     <DoAndDontList listType="dont">
       <DoAndDontList.Item prefixText="You must not">burst a blister yourself</DoAndDontList.Item>
-      <DoAndDontList.Item prefixText={undefined}>peel the skin off a burst blister</DoAndDontList.Item>
-      <DoAndDontList.Item prefixText={null}>pick at the edges of the remaining skin</DoAndDontList.Item>
+      <DoAndDontList.Item prefixText={undefined}>
+        peel the skin off a burst blister
+      </DoAndDontList.Item>
+      <DoAndDontList.Item prefixText={null}>
+        pick at the edges of the remaining skin
+      </DoAndDontList.Item>
       <DoAndDontList.Item prefixText={<span>please dont </span>}>
         wear the shoes or use the equipment that caused your blister until it heals
       </DoAndDontList.Item>
@@ -105,6 +109,5 @@ export const CustomPrefixText: Story = {
         wear the shoes or use the equipment that caused your blister until it heals
       </DoAndDontList.Item>
     </DoAndDontList>
-
   ),
-}
+};

@@ -9,9 +9,9 @@ The ActionLink component does not use the `nhsuk-frontend` "openInNewWindow" pro
 ## Usage
 
 ```jsx
-import { ActionLink } from "nhsuk-react-components";
+import { ActionLink } from 'nhsuk-react-components';
 
 const Link = () => {
-    return <ActionLink href="/to-somewhere">Link</ActionLink>;
-}
+  return <ActionLink href="/to-somewhere">Link</ActionLink>;
+};
 ```
