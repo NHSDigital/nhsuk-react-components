@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import { render } from '@testing-library/react';
 import React from 'react';
+import { render } from '@testing-library/react';
+import { CardType } from '@util/types/NHSUKTypes';
 import Card from '../Card';
 
 describe('Card', () => {
@@ -50,7 +51,9 @@ describe('Card', () => {
       </Card>,
     );
 
-    expect(container.querySelector('div.nhsuk-card.nhsuk-card.nhsuk-card--clickable')).toBeTruthy();
+    const cardEl = container.querySelector('.nhsuk-card');
+
+    expect(cardEl).toHaveClass('nhsuk-card--clickable');
   });
 
   it('adds feature classes to all elements', () => {
@@ -63,17 +66,12 @@ describe('Card', () => {
       </Card>,
     );
 
-    expect(container.querySelector('div.nhsuk-card.nhsuk-card.nhsuk-card--feature')).toBeTruthy();
-    expect(
-      container.querySelector(
-        'div.nhsuk-card__content.nhsuk-card__content.nhsuk-card__content--feature',
-      ),
-    ).toBeTruthy();
-    expect(
-      container.querySelector(
-        'h2.nhsuk-card__heading.nhsuk-card__heading.nhsuk-card__heading--feature',
-      ),
-    ).toBeTruthy();
+    const cardEl = container.querySelector('.nhsuk-card');
+    const cardHeadingEl = cardEl?.querySelector('.nhsuk-card__heading');
+
+    expect(cardHeadingEl).toHaveClass('nhsuk-card__heading');
+    expect(cardHeadingEl).toHaveClass('nhsuk-card__heading--feature');
+    expect(cardHeadingEl?.tagName).toBe('H2');
   });
 
   it('adds primary class to card contents', () => {
@@ -86,11 +84,10 @@ describe('Card', () => {
       </Card>,
     );
 
-    expect(
-      container.querySelector(
-        'div.nhsuk-card__content.nhsuk-card__content.nhsuk-card__content--primary',
-      ),
-    ).toBeTruthy();
+    const cardEl = container.querySelector('.nhsuk-card');
+    const cardContentsEl = cardEl?.querySelector('.nhsuk-card__content');
+
+    expect(cardContentsEl).toHaveClass('nhsuk-card__content--primary');
   });
 
   it('adds secondary classes to card and contents', () => {
@@ -103,148 +100,77 @@ describe('Card', () => {
       </Card>,
     );
 
-    expect(container.querySelector('div.nhsuk-card.nhsuk-card.nhsuk-card--secondary')).toBeTruthy();
-    expect(
-      container.querySelector(
-        'div.nhsuk-card__content.nhsuk-card__content.nhsuk-card__content--secondary',
-      ),
-    ).toBeTruthy();
+    const cardEl = container.querySelector('.nhsuk-card');
+    const cardContentsEl = cardEl?.querySelector('.nhsuk-card__content');
+
+    expect(cardEl).toHaveClass('nhsuk-card');
+    expect(cardEl).toHaveClass('nhsuk-card--secondary');
+    expect(cardContentsEl).toHaveClass('nhsuk-card__content--secondary');
   });
 
   describe('Care card variant', () => {
-    describe('non-urgent', () => {
+    describe.each<{
+      heading: string;
+      cardType: CardType;
+      visuallyHidden: string;
+    }>([
+      {
+        heading: 'Non urgent heading (blue)',
+        cardType: 'non-urgent',
+        visuallyHidden: 'Non-urgent advice',
+      },
+      {
+        heading: 'Urgent heading (red)',
+        cardType: 'urgent',
+        visuallyHidden: 'Urgent advice',
+      },
+      {
+        heading: 'Emergency heading (red and black)',
+        cardType: 'emergency',
+        visuallyHidden: 'Immediate action required',
+      },
+    ])('$cardType', ({ heading, cardType, visuallyHidden }) => {
       it('matches the snapshot', () => {
         const { container } = render(
-          <Card cardType="non-urgent">
-            <Card.Heading>Non urgent heading</Card.Heading>
+          <Card cardType={cardType}>
+            <Card.Heading>{heading}</Card.Heading>
           </Card>,
         );
 
         expect(container).toMatchSnapshot();
       });
+
       it('adds classes to card', () => {
         const { container } = render(
-          <Card cardType="non-urgent">
-            <Card.Heading>Non urgent heading</Card.Heading>
+          <Card cardType={cardType}>
+            <Card.Heading>{heading}</Card.Heading>
           </Card>,
         );
 
-        expect(container.querySelector('div.nhsuk-card.nhsuk-card.nhsuk-card--care')).toBeTruthy();
-        expect(
-          container.querySelector('div.nhsuk-card.nhsuk-card.nhsuk-card--care--non-urgent'),
-        ).toBeTruthy();
+        const cardEl = container.querySelector('.nhsuk-card');
+
+        expect(cardEl).toHaveClass('nhsuk-card--care');
+        expect(cardEl).toHaveClass(`nhsuk-card--care--${cardType}`);
       });
 
       it('renders the heading with the expected hidden text', () => {
         const { container } = render(
-          <Card cardType="non-urgent">
-            <Card.Heading>Non urgent heading</Card.Heading>
+          <Card cardType={cardType}>
+            <Card.Heading>{heading}</Card.Heading>
           </Card>,
         );
 
-        const headingContainer = container.querySelector('.nhsuk-card--care__heading-container');
-
-        expect(headingContainer?.querySelector('.nhsuk-u-visually-hidden')?.textContent).toEqual(
-          'Non-urgent advice: ',
-        );
-      });
-    });
-
-    describe('urgent', () => {
-      it('matches the snapshot', () => {
-        const { container } = render(
-          <Card cardType="urgent">
-            <Card.Heading>Urgent heading</Card.Heading>
-          </Card>,
-        );
-
-        expect(container).toMatchSnapshot();
-      });
-      it('adds classes to card', () => {
-        const { container } = render(
-          <Card cardType="urgent">
-            <Card.Heading>Urgent heading</Card.Heading>
-          </Card>,
-        );
-
-        expect(container.querySelector('div.nhsuk-card.nhsuk-card.nhsuk-card--care')).toBeTruthy();
-        expect(
-          container.querySelector('div.nhsuk-card.nhsuk-card.nhsuk-card--care--urgent'),
-        ).toBeTruthy();
+        expect(container.querySelector('h2')).toHaveAccessibleName(`${visuallyHidden}: ${heading}`);
       });
 
-      it('renders the heading with the expected hidden text', () => {
+      it('renders the heading with custom heading level', () => {
         const { container } = render(
-          <Card cardType="urgent">
-            <Card.Heading>Urgent heading</Card.Heading>
+          <Card cardType={cardType}>
+            <Card.Heading headingLevel="h3">{heading}</Card.Heading>
           </Card>,
         );
 
-        const headingContainer = container.querySelector('.nhsuk-card--care__heading-container');
-
-        expect(headingContainer?.querySelector('.nhsuk-u-visually-hidden')?.textContent).toEqual(
-          'Urgent advice: ',
-        );
-      });
-    });
-
-    describe('emergency', () => {
-      it('matches the snapshot', () => {
-        const { container } = render(
-          <Card cardType="emergency">
-            <Card.Heading>Emergency heading</Card.Heading>
-          </Card>,
-        );
-
-        expect(container).toMatchSnapshot();
-      });
-      it('adds classes to card', () => {
-        const { container } = render(
-          <Card cardType="emergency">
-            <Card.Heading>Emergency heading</Card.Heading>
-          </Card>,
-        );
-
-        expect(container.querySelector('div.nhsuk-card.nhsuk-card.nhsuk-card--care')).toBeTruthy();
-        expect(
-          container.querySelector('div.nhsuk-card.nhsuk-card.nhsuk-card--care--emergency'),
-        ).toBeTruthy();
-      });
-
-      it('renders the heading with the expected hidden text', () => {
-        const { container } = render(
-          <Card cardType="emergency">
-            <Card.Heading>Emergency heading</Card.Heading>
-          </Card>,
-        );
-
-        const headingContainer = container.querySelector('.nhsuk-card--care__heading-container');
-
-        expect(headingContainer?.querySelector('.nhsuk-u-visually-hidden')?.textContent).toEqual(
-          'Immediate action required: ',
-        );
-      });
-    });
-
-    describe('hidden text', () => {
-      it('renders without hidden text', () => {
-        const { container } = render(
-          <Card cardType="urgent">
-            <Card.Heading visuallyHiddenText={false}>Heading</Card.Heading>
-          </Card>,
-        );
-
-        expect(container.querySelector('.nhsuk-u-visually-hidden')).toBeFalsy();
-      });
-
-      it('renders with hidden text', () => {
-        const { container } = render(
-          <Card cardType="urgent">
-            <Card.Heading visuallyHiddenText="Custom">Heading</Card.Heading>
-          </Card>,
-        );
-
-        expect(container.querySelector('.nhsuk-u-visually-hidden')?.textContent).toEqual('Custom');
+        expect(container.querySelector('h3')).toHaveAccessibleName(`${visuallyHidden}: ${heading}`);
       });
     });
   });

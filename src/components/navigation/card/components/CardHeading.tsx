@@ -8,26 +8,22 @@ import { cardTypeIsCareCard } from '@util/types/TypeGuards';
 
 export interface CardHeadingProps extends HTMLProps<HTMLHeadingElement> {
   headingLevel?: HeadingLevelType;
-  visuallyHiddenText?: false | string;
 }
 
 const genHiddenText = (cardType: CareCardType): string => {
   switch (cardType) {
-    case 'non-urgent':
-      return 'Non-urgent advice: ';
-    case 'urgent':
-      return 'Urgent advice: ';
     case 'emergency':
       return 'Immediate action required: ';
+    case 'urgent':
+      return 'Urgent advice: ';
     default:
-      return '';
+      return 'Non-urgent advice: ';
   }
 };
 
 const CareHeading: FC<CardHeadingProps & { careType: CareCardType }> = ({
   className,
   children,
-  visuallyHiddenText,
   careType,
   headingLevel = 'h2',
   role = 'text',
@@ -41,11 +37,7 @@ const CareHeading: FC<CardHeadingProps & { careType: CareCardType }> = ({
         {...rest}
       >
         <span role={role}>
-          {visuallyHiddenText !== false ? (
-            <span className="nhsuk-u-visually-hidden">
-              {visuallyHiddenText || genHiddenText(careType)}
-            </span>
-          ) : null}
+          <span className="nhsuk-u-visually-hidden">{genHiddenText(careType)}</span>
           {children}
         </span>
       </HeadingLevel>

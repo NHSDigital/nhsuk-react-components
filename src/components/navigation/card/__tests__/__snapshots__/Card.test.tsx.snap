@@ -72,7 +72,7 @@ exports[`Card Care card variant emergency matches the snapshot 1`] = `
           >
             Immediate action required: 
           </span>
-          Emergency heading
+          Emergency heading (red and black)
         </span>
       </h2>
       <span
@@ -103,7 +103,7 @@ exports[`Card Care card variant non-urgent matches the snapshot 1`] = `
           >
             Non-urgent advice: 
           </span>
-          Non urgent heading
+          Non urgent heading (blue)
         </span>
       </h2>
       <span
@@ -134,7 +134,7 @@ exports[`Card Care card variant urgent matches the snapshot 1`] = `
           >
             Urgent advice: 
           </span>
-          Urgent heading
+          Urgent heading (red)
         </span>
       </h2>
       <span
