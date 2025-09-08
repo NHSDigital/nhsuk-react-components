@@ -6,7 +6,7 @@ describe('WarningCallout', () => {
   it('matches snapshot', () => {
     const { container } = render(
       <WarningCallout>
-        <WarningCallout.Label>School, nursery or work</WarningCallout.Label>
+        <WarningCallout.Heading>School, nursery or work</WarningCallout.Heading>
         <p>
           Stay away from school, nursery or work until all the spots have crusted over. This is
           usually 5 days after the spots first appeared.
@@ -20,7 +20,7 @@ describe('WarningCallout', () => {
   it('adds default visually hidden text', () => {
     const { container } = render(
       <WarningCallout>
-        <WarningCallout.Label>School, nursery or work</WarningCallout.Label>
+        <WarningCallout.Heading>School, nursery or work</WarningCallout.Heading>
         <p>
           Stay away from school, nursery or work until all the spots have crusted over. This is
           usually 5 days after the spots first appeared.
@@ -36,9 +36,9 @@ describe('WarningCallout', () => {
   it('adds custom visually hidden text', () => {
     const { container } = render(
       <WarningCallout>
-        <WarningCallout.Label visuallyHiddenText="Not Very Important: ">
+        <WarningCallout.Heading visuallyHiddenText="Not Very Important: ">
           School, nursery or work
-        </WarningCallout.Label>
+        </WarningCallout.Heading>
         <p>
           Stay away from school, nursery or work until all the spots have crusted over. This is
           usually 5 days after the spots first appeared.
@@ -54,9 +54,9 @@ describe('WarningCallout', () => {
   it('can disable visually hidden text', () => {
     const { container } = render(
       <WarningCallout>
-        <WarningCallout.Label visuallyHiddenText={false}>
+        <WarningCallout.Heading visuallyHiddenText={false}>
           School, nursery or work
-        </WarningCallout.Label>
+        </WarningCallout.Heading>
         <p>
           Stay away from school, nursery or work until all the spots have crusted over. This is
           usually 5 days after the spots first appeared.

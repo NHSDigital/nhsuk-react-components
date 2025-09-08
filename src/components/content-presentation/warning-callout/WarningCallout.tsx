@@ -2,12 +2,12 @@ import React, { FC, HTMLProps } from 'react';
 import classNames from 'classnames';
 import HeadingLevel, { HeadingLevelType } from '@components/utils/HeadingLevel';
 
-interface WarningCalloutLabelProps extends HTMLProps<HTMLHeadingElement> {
+interface WarningCalloutHeadingProps extends HTMLProps<HTMLHeadingElement> {
   headingLevel?: HeadingLevelType;
   visuallyHiddenText?: string | false;
 }
 
-const WarningCalloutLabel: FC<WarningCalloutLabelProps> = ({
+const WarningCalloutHeading: FC<WarningCalloutHeadingProps> = ({
   className,
   visuallyHiddenText = 'Important: ',
   children,
@@ -23,13 +23,13 @@ const WarningCalloutLabel: FC<WarningCalloutLabelProps> = ({
 );
 
 interface IWarningCallout extends FC<HTMLProps<HTMLDivElement>> {
-  Label: typeof WarningCalloutLabel;
+  Heading: typeof WarningCalloutHeading;
 }
 
 const WarningCalloutComponent: IWarningCallout = ({ className, ...rest }) => (
   <div className={classNames('nhsuk-warning-callout', className)} {...rest} />
 );
 
-WarningCalloutComponent.Label = WarningCalloutLabel;
+WarningCalloutComponent.Heading = WarningCalloutHeading;
 
 export default WarningCalloutComponent;
