@@ -1,5 +1,5 @@
 'use client';
-import React, { FC, HTMLProps, useContext, useState, useEffect, useMemo } from 'react';
+import React, { FC, HTMLProps, useContext, useState, useEffect, useMemo, useRef } from 'react';
 import classNames from 'classnames';
 import NHSLogo, { NHSLogoNavProps } from './components/NHSLogo';
 import OrganisationalLogo, { OrganisationalLogoProps } from './components/OrganisationalLogo';
@@ -11,7 +11,7 @@ import NavDropdownMenu from './components/NavDropdownMenu';
 import { Container } from '@components/layout';
 import Content from './components/Content';
 import TransactionalServiceName from './components/TransactionalServiceName';
-import { createAll, Header } from 'nhsuk-frontend';
+import { Header } from 'nhsuk-frontend';
 
 const HeaderLogo: FC<OrganisationalLogoProps & NHSLogoNavProps> = (props) => {
   const { orgName } = useContext<IHeaderContext>(HeaderContext);
@@ -46,14 +46,21 @@ const HeaderComponent = ({
   white,
   ...rest
 }: HeaderProps) => {
+  const moduleRef = useRef<HTMLDivElement>(null);
+
   const [hasMenuToggle, setHasMenuToggle] = useState(false);
   const [hasSearch, setHasSearch] = useState(false);
   const [hasServiceName, setHasServiceName] = useState(false);
+  const [instance, setInstance] = useState<Header>();
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    createAll(Header);
-  }, []);
+    if (!moduleRef.current || instance) {
+      return;
+    }
+
+    setInstance(new Header(moduleRef.current));
+  }, [moduleRef, instance]);
 
   const setMenuToggle = (toggle: boolean): void => {
     setHasMenuToggle(toggle);
@@ -113,6 +120,7 @@ const HeaderComponent = ({
         className,
       )}
       role={role}
+      ref={moduleRef}
       {...rest}
     >
       <HeaderContext.Provider value={contextValue}>{children}</HeaderContext.Provider>

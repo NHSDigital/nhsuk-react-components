@@ -1,6 +1,6 @@
 'use client';
 
-import React, { HTMLProps, useEffect } from 'react';
+import React, { HTMLProps, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '@util/types/FormTypes';
 import SingleInputFormGroup from '@components/utils/SingleInputFormGroup';
@@ -8,20 +8,27 @@ import CheckboxContext, { ICheckboxContext } from './CheckboxContext';
 import CheckboxesItem from './components/Item';
 import CheckboxesDivider from './components/Divider';
 import { generateRandomName } from '@util/RandomID';
-import { createAll, Checkboxes } from 'nhsuk-frontend';
+import { Checkboxes } from 'nhsuk-frontend';
 
 interface CheckboxesProps extends HTMLProps<HTMLDivElement>, FormElementProps {
   idPrefix?: string;
 }
 
 const CheckboxesComponent = ({ children, idPrefix, ...rest }: CheckboxesProps) => {
+  const moduleRef = useRef<HTMLDivElement>(null);
+  const [instance, setInstance] = useState<Checkboxes>();
+
   const _boxReferences: string[] = [];
   let _boxCount: number = 0;
   let _boxIds: Record<string, string> = {};
 
   useEffect(() => {
-    createAll(Checkboxes);
-  }, []);
+    if (!moduleRef.current || instance) {
+      return;
+    }
+
+    setInstance(new Checkboxes(moduleRef.current));
+  }, [moduleRef, instance]);
 
   const getBoxId = (id: string, reference: string): string => {
     if (reference in _boxIds) {
@@ -64,7 +71,12 @@ const CheckboxesComponent = ({ children, idPrefix, ...rest }: CheckboxesProps) =
           unleaseReference,
         };
         return (
-          <div className={classNames('nhsuk-checkboxes', className)} id={id} {...restRenderProps}>
+          <div
+            className={classNames('nhsuk-checkboxes', className)}
+            id={id}
+            ref={moduleRef}
+            {...restRenderProps}
+          >
             <CheckboxContext.Provider value={contextValue}>{children}</CheckboxContext.Provider>
           </div>
         );

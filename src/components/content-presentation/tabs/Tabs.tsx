@@ -1,8 +1,8 @@
 'use client';
 import classNames from 'classnames';
-import React, { FC, HTMLAttributes, useEffect } from 'react';
+import React, { FC, HTMLAttributes, useEffect, useRef, useState } from 'react';
 import HeadingLevel, { HeadingLevelType } from '@components/utils/HeadingLevel';
-import { createAll, Tabs } from 'nhsuk-frontend';
+import { Tabs } from 'nhsuk-frontend';
 
 type TabsProps = HTMLAttributes<HTMLDivElement>;
 
@@ -54,12 +54,24 @@ interface TabsComponent extends FC<TabsProps> {
 }
 
 const TabsComponent: TabsComponent = ({ className, children, ...rest }) => {
+  const moduleRef = useRef<HTMLDivElement>(null);
+  const [instance, setInstance] = useState<Tabs>();
+
   useEffect(() => {
-    createAll(Tabs);
-  }, []);
+    if (!moduleRef.current || instance) {
+      return;
+    }
+
+    setInstance(new Tabs(moduleRef.current));
+  }, [moduleRef, instance]);
 
   return (
-    <div className={classNames('nhsuk-tabs', className)} data-module="nhsuk-tabs" {...rest}>
+    <div
+      className={classNames('nhsuk-tabs', className)}
+      data-module="nhsuk-tabs"
+      ref={moduleRef}
+      {...rest}
+    >
       {children}
     </div>
   );

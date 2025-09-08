@@ -1,6 +1,6 @@
 'use client';
-import React, { FC, useEffect } from 'react';
-import { createAll, CharacterCount } from 'nhsuk-frontend';
+import React, { FC, useEffect, useRef, useState } from 'react';
+import { CharacterCount } from 'nhsuk-frontend';
 import { HTMLAttributesWithData } from '@util/types/NHSUKTypes';
 
 export enum CharacterCountType {
@@ -24,9 +24,16 @@ const CharacterCountComponent: FC<CharacterCountProps> = ({
   thresholdPercent,
   ...rest
 }) => {
+  const moduleRef = useRef<HTMLDivElement>(null);
+  const [instance, setInstance] = useState<CharacterCount>();
+
   useEffect(() => {
-    createAll(CharacterCount);
-  }, []);
+    if (!moduleRef.current || instance) {
+      return;
+    }
+
+    setInstance(new CharacterCount(moduleRef.current));
+  }, [moduleRef, instance]);
 
   const characterCountProps: HTMLAttributesWithData<HTMLDivElement> =
     countType === CharacterCountType.Characters
@@ -41,6 +48,7 @@ const CharacterCountComponent: FC<CharacterCountProps> = ({
     <div
       className="nhsuk-character-count"
       data-module="nhsuk-character-count"
+      ref={moduleRef}
       {...characterCountProps}
     >
       <div className="nhsuk-form-group">{children}</div>

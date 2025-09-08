@@ -4,6 +4,7 @@ exports[`The header component Matches the snapshot 1`] = `
 <div>
   <header
     class="nhsuk-header"
+    data-nhsuk-header-init=""
     role="banner"
   >
     <div
