@@ -79,9 +79,15 @@ export const MessageThresholdPercentage: Story = {
       thresholdPercent={75}
     >
       <Label htmlFor="threshold">Can you provide more detail?</Label>
-      <Textarea id="threshold" className="nhsuk-js-character-count" name="threshold" rows={5}>
-        Type another letter into this field after this message to see the threshold feature
-      </Textarea>
+      <Textarea
+        id="threshold"
+        className="nhsuk-js-character-count"
+        name="threshold"
+        defaultValue={
+          'Type another letter into this field after this message to see the threshold feature'
+        }
+        rows={5}
+      />
     </CharacterCount>
   ),
 };
