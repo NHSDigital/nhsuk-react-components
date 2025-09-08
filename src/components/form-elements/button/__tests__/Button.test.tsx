@@ -111,33 +111,6 @@ describe('Button', () => {
     button?.click();
     expect(clickHandler).toHaveBeenCalledTimes(3);
   });
-
-  it('uses custom debounce timeout', () => {
-    jest.useFakeTimers();
-
-    const clickHandler = jest.fn();
-
-    const { container } = render(
-      <Button preventDoubleClick debounceTimeout={5000} onClick={clickHandler}>
-        Submit
-      </Button>,
-    );
-
-    const button = container.querySelector('button');
-    button?.click();
-    expect(clickHandler).toHaveBeenCalledTimes(1);
-
-    button?.click();
-    expect(clickHandler).toHaveBeenCalledTimes(1);
-
-    jest.advanceTimersByTime(4999);
-    button?.click();
-    expect(clickHandler).toHaveBeenCalledTimes(1);
-
-    jest.advanceTimersByTime(1);
-    button?.click();
-    expect(clickHandler).toHaveBeenCalledTimes(2);
-  });
 });
 
 describe('Button as a link', () => {

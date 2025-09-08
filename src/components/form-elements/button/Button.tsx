@@ -9,9 +9,6 @@ import React, {
 } from 'react';
 import classNames from 'classnames';
 
-// Debounce timeout - default 1 second
-export const DefaultButtonDebounceTimeout = 1000;
-
 export interface ButtonProps extends HTMLProps<HTMLButtonElement> {
   type?: 'button' | 'submit' | 'reset';
   secondary?: boolean;
@@ -19,7 +16,6 @@ export interface ButtonProps extends HTMLProps<HTMLButtonElement> {
   warning?: boolean;
   as?: 'button';
   preventDoubleClick?: boolean;
-  debounceTimeout?: number;
 }
 
 export interface ButtonLinkProps extends ComponentProps<'a'> {
@@ -28,13 +24,9 @@ export interface ButtonLinkProps extends ComponentProps<'a'> {
   warning?: boolean;
   as?: 'a';
   preventDoubleClick?: boolean;
-  debounceTimeout?: number;
 }
 
-const useDebounceTimeout = (
-  fn?: EventHandler<SyntheticEvent>,
-  timeout: number = DefaultButtonDebounceTimeout,
-) => {
+const useDebounceTimeout = (fn?: EventHandler<SyntheticEvent>) => {
   const timeoutRef = useRef<number>();
 
   if (!fn) return undefined;
@@ -52,7 +44,7 @@ const useDebounceTimeout = (
 
     timeoutRef.current = window.setTimeout(() => {
       timeoutRef.current = undefined;
-    }, timeout);
+    }, 1000);
   };
 
   return handler;
@@ -66,11 +58,10 @@ export const ButtonComponent: FC<ButtonProps> = ({
   warning,
   type = 'submit',
   preventDoubleClick = false,
-  debounceTimeout = DefaultButtonDebounceTimeout,
   onClick,
   ...rest
 }) => {
-  const debouncedHandleClick = useDebounceTimeout(onClick, debounceTimeout);
+  const debouncedHandleClick = useDebounceTimeout(onClick);
 
   return (
     // eslint-disable-next-line react/button-has-type
@@ -98,11 +89,10 @@ export const ButtonLinkComponent: FC<ButtonLinkProps> = ({
   reverse,
   warning,
   preventDoubleClick = false,
-  debounceTimeout = DefaultButtonDebounceTimeout,
   onClick,
   ...rest
 }) => {
-  const debouncedHandleClick = useDebounceTimeout(onClick, debounceTimeout);
+  const debouncedHandleClick = useDebounceTimeout(onClick);
 
   /**
    * Recreate the shim behaviour from NHS.UK/GOV.UK Frontend
