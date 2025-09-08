@@ -11,7 +11,7 @@ import NavDropdownMenu from './components/NavDropdownMenu';
 import { Container } from '@components/layout';
 import Content from './components/Content';
 import TransactionalServiceName from './components/TransactionalServiceName';
-import Header from '@resources/header';
+import { createAll, Header } from 'nhsuk-frontend';
 
 const HeaderLogo: FC<OrganisationalLogoProps & NHSLogoNavProps> = (props) => {
   const { orgName } = useContext<IHeaderContext>(HeaderContext);
@@ -52,7 +52,7 @@ const HeaderComponent = ({
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    Header();
+    createAll(Header);
   }, []);
 
   const setMenuToggle = (toggle: boolean): void => {

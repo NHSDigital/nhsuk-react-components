@@ -6,6 +6,22 @@ import HintText from '@components/form-elements/hint-text/HintText';
 import Textarea from '@components/form-elements/textarea/Textarea';
 
 describe('Character Count', () => {
+  const children = (
+    <>
+      <Label htmlFor="more-detail">Can you provide more detail?</Label>
+      <HintText id="more-detail-hint">
+        Do not include personal information like your name, date of birth or NHS number.
+      </HintText>
+      <Textarea
+        id="more-detail"
+        className="nhsuk-js-character-count"
+        name="more-detail"
+        aria-describedby="more-detail-hint"
+        rows={5}
+      />
+    </>
+  );
+
   it('Matches snapshot', () => {
     const { container } = render(
       <CharacterCount
@@ -13,17 +29,7 @@ describe('Character Count', () => {
         countType={CharacterCountType.Characters}
         textAreaId="more-detail"
       >
-        <Label htmlFor="more-detail">Can you provide more detail?</Label>
-        <HintText id="more-detail-hint">
-          Do not include personal information like your name, date of birth or NHS number.
-        </HintText>
-        <Textarea
-          id="more-detail"
-          className="nhsuk-js-character-count"
-          name="more-detail"
-          aria-describedby="more-detail-hint"
-          rows={5}
-        />
+        {children}
       </CharacterCount>,
     );
 
@@ -37,7 +43,7 @@ describe('Character Count', () => {
         countType={CharacterCountType.Characters}
         textAreaId="more-detail"
       >
-        <div />
+        {children}
       </CharacterCount>,
     );
 
@@ -55,7 +61,7 @@ describe('Character Count', () => {
   it('Sets the data-maxwords attribute when counting words', () => {
     const { container } = render(
       <CharacterCount maxLength={200} countType={CharacterCountType.Words} textAreaId="more-detail">
-        <div />
+        {children}
       </CharacterCount>,
     );
 
@@ -78,7 +84,7 @@ describe('Character Count', () => {
         thresholdPercent={50}
         textAreaId="more-detail"
       >
-        <div />
+        {children}
       </CharacterCount>,
     );
 
