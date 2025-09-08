@@ -1,20 +1,9 @@
 import React, { FC, HTMLProps } from 'react';
 import classNames from 'classnames';
 
-interface InsetTextProps extends HTMLProps<HTMLDivElement> {
-  visuallyHiddenText?: string | false;
-}
-
-const InsetTextComponent: FC<InsetTextProps> = ({
-  className,
-  children,
-  visuallyHiddenText = 'Information: ',
-  ...rest
-}) => (
+const InsetTextComponent: FC<HTMLProps<HTMLDivElement>> = ({ className, children, ...rest }) => (
   <div className={classNames('nhsuk-inset-text', className)} {...rest}>
-    {visuallyHiddenText ? (
-      <span className="nhsuk-u-visually-hidden">{visuallyHiddenText}</span>
-    ) : null}
+    <span className="nhsuk-u-visually-hidden">Information: </span>
     {children}
   </div>
 );
