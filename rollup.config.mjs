@@ -12,95 +12,100 @@ import tsBuildConfig from './bundle-base.tsconfig.json' assert { type: 'json' };
 import packageJson from './package.json' assert { type: 'json' };
 
 const onWarnSuppression = {
-  onwarn(warning, warn) {
-    if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.includes(`"use client"`)) return;
-    warn(warning);
-  },
+	onwarn(warning, warn) {
+		if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.includes(`"use client"`)) return;
+		warn(warning);
+	},
 };
 
 const commonPlugins = [
-  external(),
-  tsPaths(),
-  resolve({ extensions: ['.mjs', '.js', '.ts', '.tsx'] }),
-  commonjs(),
-  // ⬇️ compile SCSS → CSS for any `import './file.scss'`
-  postcss({
-    extract: true,                  // or a filename like 'styles.css'
-    modules: false,
-    minimize: false,
-    use: { sass: { quietDeps: true } }, // uses Dart Sass
-    includePaths: ['node_modules'], // lets you @use "nhsuk-frontend/..." cleanly
-  }),
+	external(),
+	tsPaths(),
+	resolve({ extensions: ['.mjs', '.js', '.ts', '.tsx'] }),
+	commonjs(),
+	postcss({
+		extract: true,
+		modules: false,
+		minimize: false,
+		use: { sass: { quietDeps: true } },
+		includePaths: ['node_modules'],
+	}),
 ];
 
-// JS-only version of preserveDirectives
 const jsOnlyPreserveDirectives = preserveDirectives({
-  include: ['**/*.{js,jsx,ts,tsx,mjs,cjs}'],
-  exclude: ['**/*.{css,scss,sass,less,styl}'],
+	include: ['**/*.{js,jsx,ts,tsx,mjs,cjs}'],
+	exclude: ['**/*.{css,scss,sass,less,styl}'],
 });
 
 export default [
-  // cjs export
-  {
-    input: 'src/index.ts',
-    output: [{ file: packageJson.main, format: 'cjs', sourcemap: true }],
-    plugins: [
-      ...commonPlugins,
-      typescript({
-        tsconfig: 'bundle-base.tsconfig.json',
-        compilerOptions: { declaration: false },
-      }),
-      terser(),
-    ],
-    ...onWarnSuppression,
-  },
+	// cjs export
+	{
+		input: 'src/index.ts',
+		output: [{ file: packageJson.main, format: 'cjs', sourcemap: true }],
+		plugins: [
+			...commonPlugins,
+			typescript({
+				tsconfig: 'bundle-base.tsconfig.json',
+				compilerOptions: { declaration: false },
+			}),
+			terser(),
+		],
+		...onWarnSuppression,
+	},
 
-  // esm export
-  {
-    input: 'src/index.ts',
-    output: [
-      {
-        dir: packageJson.module,
-        format: 'esm',
-        sourcemap: true,
-        preserveModules: true,
-        preserveModulesRoot: 'src',
-      },
-    ],
-    plugins: [
-      ...commonPlugins,
-      typescript({
-        tsconfig: 'bundle-base.tsconfig.json',
-        compilerOptions: {
-          declaration: false,          // don’t emit .d.ts here
-          emitDeclarationOnly: false,
-          outDir: undefined,           // let Rollup handle files
-        },
-      }),
-      jsOnlyPreserveDirectives,                 // ⬅️ don't touch .scss
-      terser({ compress: { directives: false } }),
-    ],
-    ...onWarnSuppression,
-  },
+	// esm export
+	{
+		input: 'src/index.ts',
+		output: [
+			{
+				dir: packageJson.module,
+				format: 'esm',
+				sourcemap: true,
+				preserveModules: true,
+				preserveModulesRoot: 'src',
+			},
+		],
+		plugins: [
+			...commonPlugins,
+			typescript({
+				tsconfig: 'bundle-base.tsconfig.json',
+				compilerOptions: {
+					declaration: false,
+					emitDeclarationOnly: false,
+					outDir: undefined,
+				},
+			}),
+			jsOnlyPreserveDirectives,
+			terser({ compress: { directives: false } }),
+		],
+		...onWarnSuppression,
+	},
 
-  // type bundling
-  // type bundling
-  {
-    input: 'src/index.ts',
-    output: [{ file: 'dist/index.d.ts', format: 'esm' }],
+	// d.ts bundle  ⬅️ only changes are here
+	{
+		input: 'src/index.ts',
+		output: [{ file: 'dist/index.d.ts', format: 'es' }],
 
-    // ⬅️ Ignore any style imports during .d.ts bundling
-    external: [/\.s?css$/i, /\.less$/i, /\.styl(us)?$/i],
+		// Keep styles and React types external so dts doesn't try to inline them
+		external: [
+			/\.s?css$/i,
+			/\.less$/i,
+			/\.styl(us)?$/i,
+			/^react($|\/)/,
+			/^react-dom($|\/)/,
+			/^@types\/react($|\/)/,
+			/^@types\/react-dom($|\/)/,
+		],
 
-    plugins: [
-      dts({
-        respectExternal: true, // ⬅️ key: don't inline externals (like the styles we exclude)
-        compilerOptions: {
-          // carry over paths if you use them
-          paths: tsBuildConfig.compilerOptions.paths,
-        },
-      }),
-    ],
-  }
-
+		plugins: [
+			dts({
+				respectExternal: true,
+				// helps avoid lib type conflicts; also carry through your tsconfig paths
+				compilerOptions: {
+					skipLibCheck: true,
+					paths: tsBuildConfig.compilerOptions?.paths ?? {},
+				},
+			}),
+		],
+	},
 ];
