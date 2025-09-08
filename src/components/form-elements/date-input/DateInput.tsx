@@ -1,6 +1,6 @@
 'use client';
 
-import React, { HTMLProps, ChangeEvent, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { DayInput, MonthInput, YearInput } from './components/IndividualDateInputs';
 import SingleInputFormGroup from '@components/utils/SingleInputFormGroup';
@@ -13,14 +13,14 @@ type DateInputValue = {
   year: string;
 };
 
-export type DateInputChangeEvent = ChangeEvent<HTMLInputElement> & {
+export type DateInputChangeEvent = React.ChangeEvent<HTMLInputElement> & {
   target: HTMLInputElement & { value: DateInputValue };
   currentTarget: HTMLInputElement & { value: DateInputValue };
 };
 
 interface DateInputProps
-  extends Omit<HTMLProps<HTMLDivElement>, 'value' | 'defaultValue'>,
-    FormElementProps {
+  extends Omit<React.HTMLProps<HTMLDivElement>, 'value' | 'defaultValue'>,
+  FormElementProps {
   autoSelectNext?: boolean;
   value?: Partial<DateInputValue>;
   defaultValue?: Partial<DateInputValue>;
@@ -64,7 +64,7 @@ const DateInput = ({
     }
   };
 
-  const handleChange = (inputType: InputType, event: ChangeEvent<HTMLInputElement>): void => {
+  const handleChange = (inputType: InputType, event: React.ChangeEvent<HTMLInputElement>): void => {
     handleFocusNextInput(inputType, event.target.value);
     event.stopPropagation();
 

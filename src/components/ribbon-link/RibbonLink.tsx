@@ -1,22 +1,22 @@
-/* eslint-disable @typescript-eslint/no-redeclare */
-import React, { HTMLProps } from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
 import Bar from './components/Bar';
-import { ArrowRightCircleIcon } from 'src'
-import './_RibbonLink.scss'
+import { ArrowRightCircleIcon } from 'src';
+import './_RibbonLink.scss';
 
 type RibbonFlavours = 'hot' | 'mild' | 'cool';
 
-interface RibbonProps extends HTMLProps<HTMLButtonElement> {
+// Use public, bundler-safe props types
+type RibbonProps = React.ComponentPropsWithoutRef<'button'> & {
   flavour: RibbonFlavours;
-  type?: 'button' | 'submit' | 'reset';
-}
+};
 
-interface RibbonLink extends React.FC<RibbonProps> {
-  Bar: React.FC<HTMLProps<HTMLDivElement>>;
-}
+// Static member typed from the actual import to avoid drift
+type RibbonLinkComponent = React.FC<RibbonProps> & {
+  Bar: typeof Bar;
+};
 
-const RibbonLink: RibbonLink = ({ children, flavour, className, ...rest }) => (
+const RibbonLink: RibbonLinkComponent = ({ children, flavour, className, ...rest }) => (
   <button
     className={classNames('nhsuk-ribbon-link', `nhsuk-ribbon-link--${flavour}`, className)}
     type="button"

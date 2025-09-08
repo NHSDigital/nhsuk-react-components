@@ -1,5 +1,5 @@
-@use '../../../node_modules/nhsuk-frontend/packages/core/settings/all' as settings;
-@import '../../../node_modules/nhsuk-frontend/packages/core/all';
+@use '../../../node_modules/nhsuk-frontend/packages/core/settings' as *;
+@use '../../../node_modules/nhsuk-frontend/packages/core' as *;
 
 
 .nhsuk-timeline {
@@ -8,7 +8,7 @@
 }
 
 .nhsuk-timeline::before {
-  background-color: settings.$color_nhsuk-blue;
+  background-color: $color_nhsuk-blue;
   content: '';
   height: 100%;
   left: 0;
@@ -32,7 +32,7 @@
 }
 
 .nhsuk-timeline__event::before {
-  background-color: settings.$color_nhsuk-blue;
+  background-color: $color_nhsuk-blue;
   content: '';
   height: 5px;
   left: 0;
@@ -42,24 +42,24 @@
 }
 
 .nhsuk-timeline__title {
-  @include nhsuk-typography-responsive(19);
+  @include nhsuk-font-size(19);
   display: inline;
 }
 
 .nhsuk-timeline__by {
-  @include nhsuk-typography-responsive(19);
-  font-weight: settings.$nhsuk-font-normal;
+  @include nhsuk-font-size(19);
+  font-weight: $nhsuk-font-normal;
   display: inline;
   @include nhsuk-responsive-margin(0);
 }
 
 .nhsuk-timeline__date {
-  @include nhsuk-typography-responsive(16);
+  @include nhsuk-font-size(16);
   @include nhsuk-responsive-margin(1, 'top');
   @include nhsuk-responsive-margin(0, 'bottom');
 }
 
 .nhsuk-timeline__description-item {
-  @include nhsuk-typography-responsive(16);
+  @include nhsuk-font-size(16);
   @include nhsuk-responsive-margin(0, 'bottom');
 }

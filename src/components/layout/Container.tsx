@@ -1,11 +1,11 @@
-import React, { FC, HTMLProps } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
-interface ContainerProps extends HTMLProps<HTMLDivElement> {
+interface ContainerProps extends React.HTMLProps<HTMLDivElement> {
   fluid?: boolean;
 }
 
-const Container: FC<ContainerProps> = ({ className, fluid, ...rest }) => (
+const Container: React.FC<ContainerProps> = ({ className, fluid, ...rest }) => (
   <div
     className={classNames(
       { 'nhsuk-width-container': !fluid },

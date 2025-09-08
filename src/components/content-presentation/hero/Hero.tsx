@@ -1,13 +1,13 @@
-import React, { FC, HTMLProps } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { Container, Row, Col } from '../../layout';
 import HeadingLevel, { HeadingLevelType } from '@components/utils/HeadingLevel';
 
-interface HeroContentProps extends HTMLProps<HTMLDivElement> {
+interface HeroContentProps extends React.HTMLProps<HTMLDivElement> {
   hasImage: boolean;
 }
 
-const HeroContent: FC<HeroContentProps> = ({ children, hasImage }) => {
+const HeroContent: React.FC<HeroContentProps> = ({ children, hasImage }) => {
   if (!children) {
     return null;
   }
@@ -29,11 +29,11 @@ const HeroContent: FC<HeroContentProps> = ({ children, hasImage }) => {
   );
 };
 
-interface HeroHeadingProps extends HTMLProps<HTMLHeadingElement> {
+interface HeroHeadingProps extends React.HTMLProps<HTMLHeadingElement> {
   headingLevel?: HeadingLevelType;
 }
 
-const HeroHeading: FC<HeroHeadingProps> = ({ className, headingLevel = 'h1', ...rest }) => (
+const HeroHeading: React.FC<HeroHeadingProps> = ({ className, headingLevel = 'h1', ...rest }) => (
   <HeadingLevel
     className={classNames('nhsuk-u-margin-bottom-3', className)}
     headingLevel={headingLevel}
@@ -41,17 +41,17 @@ const HeroHeading: FC<HeroHeadingProps> = ({ className, headingLevel = 'h1', ...
   />
 );
 
-const HeroText: FC<HTMLProps<HTMLParagraphElement>> = ({ className, ...rest }) => (
+const HeroText: React.FC<React.HTMLProps<HTMLParagraphElement>> = ({ className, ...rest }) => (
   <p className={classNames('nhsuk-body-l nhsuk-u-margin-bottom-0', className)} {...rest} />
 );
 
-interface HeroProps extends HTMLProps<HTMLDivElement> {
+interface HeroProps extends React.HTMLProps<HTMLDivElement> {
   imageSrc?: string;
 }
 
-interface Hero extends FC<HeroProps> {
-  Heading: FC<HeroHeadingProps>;
-  Text: FC<HTMLProps<HTMLParagraphElement>>;
+interface Hero extends React.FC<HeroProps> {
+  Heading: React.FC<HeroHeadingProps>;
+  Text: React.FC<React.HTMLProps<HTMLParagraphElement>>;
 }
 
 const Hero: Hero = ({ className, children, imageSrc, ...rest }) => (

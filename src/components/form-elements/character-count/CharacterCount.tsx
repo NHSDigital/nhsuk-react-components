@@ -1,5 +1,5 @@
 'use client';
-import React, { FC, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import CharacterCountJs from '@resources/character-count';
 import { HTMLAttributesWithData } from '@util/types/NHSUKTypes';
 
@@ -16,7 +16,7 @@ type CharacterCountProps = React.HTMLAttributes<HTMLDivElement> & {
   thresholdPercent?: number;
 };
 
-const CharacterCount: FC<CharacterCountProps> = ({
+const CharacterCount: React.FC<CharacterCountProps> = ({
   children,
   maxLength,
   countType,

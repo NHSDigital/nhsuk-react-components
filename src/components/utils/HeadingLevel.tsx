@@ -1,6 +1,6 @@
-import React, { FC, HTMLProps } from 'react';
+import React from 'react';
 
-interface HeadingLevelProps extends HTMLProps<HTMLHeadingElement> {
+interface HeadingLevelProps extends React.HTMLProps<HTMLHeadingElement> {
   headingLevel?: HeadingLevelType;
 }
 
@@ -18,7 +18,7 @@ export type HeadingLevelType =
   | 'H5'
   | 'H6';
 
-const HeadingLevel: FC<HeadingLevelProps> = ({ headingLevel = 'h3', children, ...rest }) => {
+const HeadingLevel: React.FC<HeadingLevelProps> = ({ headingLevel = 'h3', children, ...rest }) => {
   switch (headingLevel.toLowerCase()) {
     case 'h1':
       return <h1 {...rest}>{children}</h1>;

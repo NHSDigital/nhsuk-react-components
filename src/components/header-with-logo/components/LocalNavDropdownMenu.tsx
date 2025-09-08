@@ -1,12 +1,12 @@
-import React, { FC, HTMLProps, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import HeaderContext, { IHeaderContext } from '../HeaderContext';
 import { ChevronDownIcon } from './LocalChevronDown';
-export interface NavDropdownMenuProps extends HTMLProps<HTMLButtonElement> {
+export interface NavDropdownMenuProps extends React.HTMLProps<HTMLButtonElement> {
   type?: 'button' | 'submit' | 'reset';
   dropdownText?: string;
 }
 
-const NavMenuDropdown: FC<NavDropdownMenuProps> = ({ onClick, dropdownText = 'More', ...rest }) => {
+const NavMenuDropdown: React.FC<NavDropdownMenuProps> = ({ onClick, dropdownText = 'More', ...rest }) => {
   const { setMenuToggle } = useContext<IHeaderContext>(HeaderContext);
 
   useEffect(() => {

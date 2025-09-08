@@ -1,7 +1,7 @@
-import React, { HTMLProps, MouseEvent, useEffect } from 'react';
+import React, { MouseEvent, useEffect } from 'react';
 import classNames from 'classnames';
 
-interface SkipLinkProps extends HTMLProps<HTMLAnchorElement> {
+interface SkipLinkProps extends React.HTMLProps<HTMLAnchorElement> {
   /** The reference to the element to set focus to when the link is clicked */
   focusTargetRef?: React.RefObject<HTMLElement>;
   /** Disables the default anchor click behaviour, avoiding navigation entries being added to the browser history */

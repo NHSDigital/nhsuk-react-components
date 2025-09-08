@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { AsElementLink } from '@util/types/LinkTypes';
 
@@ -6,7 +6,7 @@ export interface NavItemProps extends AsElementLink<HTMLAnchorElement> {
   home?: boolean;
 }
 
-const NavItem: FC<NavItemProps> = ({
+const NavItem: React.FC<NavItemProps> = ({
   home,
   className,
   children,

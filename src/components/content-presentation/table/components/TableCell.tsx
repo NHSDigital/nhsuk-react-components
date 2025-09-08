@@ -1,18 +1,18 @@
 import classNames from 'classnames';
-import React, { FC, HTMLProps, useContext } from 'react';
+import React, { useContext } from 'react';
 import useDevWarning from '@util/hooks/UseDevWarning';
 import TableSectionContext, { TableSection } from '../TableSectionContext';
 
 const CellOutsideOfSectionWarning =
   'Table.Cell used outside of a Table.Head or Table.Body component. Unable to determine section type from context.';
 
-export interface TableCellProps extends HTMLProps<HTMLTableCellElement> {
+export interface TableCellProps extends React.HTMLProps<HTMLTableCellElement> {
   _responsive?: boolean;
   _responsiveHeading?: string;
   isNumeric?: boolean;
 }
 
-const TableCell: FC<TableCellProps> = ({
+const TableCell: React.FC<TableCellProps> = ({
   className,
   _responsive = false,
   _responsiveHeading = '',

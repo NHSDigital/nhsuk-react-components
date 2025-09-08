@@ -1,8 +1,8 @@
 import classNames from 'classnames';
-import React, { FC, HTMLProps } from 'react';
+import React from 'react';
 import TableSectionContext, { TableSection } from '../TableSectionContext';
 
-const TableBody: FC<HTMLProps<HTMLTableSectionElement>> = ({ className, children, ...rest }) => (
+const TableBody: React.FC<React.HTMLProps<HTMLTableSectionElement>> = ({ className, children, ...rest }) => (
   <tbody className={classNames('nhsuk-table__body', className)} {...rest}>
     <TableSectionContext.Provider value={TableSection.BODY}>
       {children}

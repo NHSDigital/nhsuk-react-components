@@ -1,4 +1,4 @@
-import React, { ComponentProps, FC, HTMLProps, ReactNode, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import classNames from 'classnames';
 import TableBody from './components/TableBody';
 import TableCaption from './components/TableCaption';
@@ -9,19 +9,19 @@ import TableRow from './components/TableRow';
 import TablePanel, { TablePanelProps } from './components/TablePanel';
 import TableContext, { ITableContext } from './TableContext';
 
-interface TableProps extends HTMLProps<HTMLTableElement> {
+interface TableProps extends React.HTMLProps<HTMLTableElement> {
   responsive?: boolean;
-  caption?: ReactNode;
-  captionProps?: ComponentProps<typeof TableCaption>;
+  caption?: React.ReactNode;
+  captionProps?: React.ComponentProps<typeof TableCaption>;
 }
 
-interface Table extends FC<TableProps> {
-  Body: FC<HTMLProps<HTMLTableSectionElement>>;
-  Cell: FC<TableCellProps>;
-  Container: FC<HTMLProps<HTMLDivElement>>;
-  Head: FC<HTMLProps<HTMLTableSectionElement>>;
-  Panel: FC<TablePanelProps>;
-  Row: FC<HTMLProps<HTMLTableRowElement>>;
+interface Table extends React.FC<TableProps> {
+  Body: React.FC<React.HTMLProps<HTMLTableSectionElement>>;
+  Cell: React.FC<TableCellProps>;
+  Container: React.FC<React.HTMLProps<HTMLDivElement>>;
+  Head: React.FC<React.HTMLProps<HTMLTableSectionElement>>;
+  Panel: React.FC<TablePanelProps>;
+  Row: React.FC<React.HTMLProps<HTMLTableRowElement>>;
 }
 
 const Table = ({

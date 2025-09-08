@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { BaseIconSVGProps, BaseIconSVG } from '../BaseIcon';
 
-export const Tick: FC<BaseIconSVGProps> = (props) => (
+export const Tick: React.FC<BaseIconSVGProps> = (props) => (
   <BaseIconSVG iconType="nhsuk-icon__tick" {...props}>
     <path
       strokeWidth="4"

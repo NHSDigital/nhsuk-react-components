@@ -1,5 +1,5 @@
 'use client';
-import React, { FC, useContext } from 'react';
+import React, { useContext } from 'react';
 import HeaderContext, { IHeaderContext } from '../HeaderContext';
 import { AsElementLink } from '@util/types/LinkTypes';
 
@@ -7,7 +7,7 @@ export interface OrganisationalLogoProps extends AsElementLink<HTMLAnchorElement
   logoUrl?: string;
 }
 
-const OrganisationalLogo: FC<OrganisationalLogoProps> = ({
+const OrganisationalLogo: React.FC<OrganisationalLogoProps> = ({
   logoUrl,
   alt,
   asElement: Component = 'a',

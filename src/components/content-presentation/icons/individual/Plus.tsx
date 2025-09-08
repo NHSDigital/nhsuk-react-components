@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
+import React from 'react';
 import { BaseIconSVGProps, BaseIconSVG } from '../BaseIcon';
 
-export const Plus: FC<BaseIconSVGProps> = (props) => (
+export const Plus: React.FC<BaseIconSVGProps> = (props) => (
   <BaseIconSVG iconType="nhsuk-icon__minus" {...props}>
     <circle cx="12" cy="12" r="10" />
     <path

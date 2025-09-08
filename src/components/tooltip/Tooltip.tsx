@@ -1,9 +1,9 @@
-import React, { HTMLProps } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import './_Tooltip.scss';
 
-interface TooltipProps extends HTMLProps<HTMLDivElement> {
-	textProps?: HTMLProps<HTMLSpanElement>;
+interface TooltipProps extends React.HTMLProps<HTMLDivElement> {
+	textProps?: React.HTMLProps<HTMLSpanElement>;
 	tooltip: string;
 }
 

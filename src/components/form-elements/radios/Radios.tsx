@@ -1,4 +1,4 @@
-import React, { HTMLProps, useState } from 'react';
+import React, { useState } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '@util/types/FormTypes';
 import { RadiosContext, IRadiosContext } from './RadioContext';
@@ -7,7 +7,7 @@ import Divider from './components/Divider';
 import Radio from './components/Radio';
 import { generateRandomName } from '@util/RandomID';
 
-interface RadiosProps extends HTMLProps<HTMLDivElement>, FormElementProps {
+interface RadiosProps extends React.HTMLProps<HTMLDivElement>, FormElementProps {
   inline?: boolean;
   idPrefix?: string;
 }

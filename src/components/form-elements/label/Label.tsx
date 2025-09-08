@@ -1,14 +1,14 @@
-import React, { FC, HTMLProps } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { NHSUKSize } from '@util/types/NHSUKTypes';
 
-export interface LabelProps extends Omit<HTMLProps<HTMLLabelElement>, 'size'> {
+export interface LabelProps extends Omit<React.HTMLProps<HTMLLabelElement>, 'size'> {
   bold?: boolean;
   isPageHeading?: boolean;
   size?: NHSUKSize;
 }
 
-const BaseLabel: FC<LabelProps> = ({ className, bold, size, isPageHeading, ...rest }) => (
+const BaseLabel: React.FC<LabelProps> = ({ className, bold, size, isPageHeading, ...rest }) => (
   // eslint-disable-next-line jsx-a11y/label-has-associated-control
   <label
     className={classNames(
@@ -22,7 +22,7 @@ const BaseLabel: FC<LabelProps> = ({ className, bold, size, isPageHeading, ...re
   />
 );
 
-const Label: FC<LabelProps> = ({ isPageHeading, ...rest }) => {
+const Label: React.FC<LabelProps> = ({ isPageHeading, ...rest }) => {
   if (isPageHeading) {
     return (
       <h1 className="nhsuk-label-wrapper">

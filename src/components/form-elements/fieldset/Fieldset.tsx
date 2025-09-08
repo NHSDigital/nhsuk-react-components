@@ -1,16 +1,19 @@
-import React, { FC, HTMLProps, MutableRefObject } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { NHSUKSize } from '@util/types/NHSUKTypes';
 import HeadingLevel, { HeadingLevelType } from '@components/utils/HeadingLevel';
 import FormGroup from '@components/utils/FormGroup';
 
-interface LegendProps extends Omit<HTMLProps<HTMLLegendElement>, 'size'> {
+import type * as ReactTypes from 'react';
+export type MutableRefObject<T> = ReactTypes.RefObject<T>;
+
+interface LegendProps extends Omit<React.HTMLProps<HTMLLegendElement>, 'size'> {
   isPageHeading?: boolean;
   headingLevel?: HeadingLevelType;
   size?: NHSUKSize;
 }
 
-const Legend: FC<LegendProps> = ({
+const Legend: React.FC<LegendProps> = ({
   className,
   children,
   isPageHeading,
@@ -39,7 +42,7 @@ const Legend: FC<LegendProps> = ({
   </legend>
 );
 
-interface FieldsetProps extends HTMLProps<HTMLFieldSetElement> {
+interface FieldsetProps extends React.HTMLProps<HTMLFieldSetElement> {
   fieldsetRef?: MutableRefObject<HTMLFieldSetElement | null>;
   disableErrorLine?: boolean;
 }

@@ -1,7 +1,6 @@
 import React, {
   EventHandler,
   FC,
-  HTMLProps,
   KeyboardEvent,
   SyntheticEvent,
   useCallback,
@@ -12,7 +11,7 @@ import classNames from 'classnames';
 // Debounce timeout - default 1 second
 export const DefaultButtonDebounceTimeout = 1000;
 
-export interface ButtonProps extends HTMLProps<HTMLButtonElement> {
+export interface ButtonProps extends React.HTMLProps<HTMLButtonElement> {
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
   secondary?: boolean;
@@ -23,7 +22,7 @@ export interface ButtonProps extends HTMLProps<HTMLButtonElement> {
   debounceTimeout?: number;
 }
 
-export interface ButtonLinkProps extends HTMLProps<HTMLAnchorElement> {
+export interface ButtonLinkProps extends React.HTMLProps<HTMLAnchorElement> {
   disabled?: boolean;
   secondary?: boolean;
   reverse?: boolean;
@@ -37,7 +36,7 @@ const useDebounceTimeout = (
   fn?: EventHandler<SyntheticEvent>,
   timeout: number = DefaultButtonDebounceTimeout,
 ) => {
-  const timeoutRef = useRef<number>();
+  const timeoutRef = useRef<number>(0);
 
   if (!fn) return undefined;
 
@@ -60,7 +59,7 @@ const useDebounceTimeout = (
   return handler;
 };
 
-export const Button: FC<ButtonProps> = ({
+export const Button: React.FC<ButtonProps> = ({
   className,
   disabled,
   secondary,
@@ -93,7 +92,7 @@ export const Button: FC<ButtonProps> = ({
     />
   );
 };
-export const ButtonLink: FC<ButtonLinkProps> = ({
+export const ButtonLink: React.FC<ButtonLinkProps> = ({
   className,
   role = 'button',
   draggable = false,
@@ -148,7 +147,7 @@ export const ButtonLink: FC<ButtonLinkProps> = ({
   );
 };
 
-const ButtonWrapper: FC<ButtonLinkProps | ButtonProps> = ({ href, as, ...rest }) => {
+const ButtonWrapper: React.FC<ButtonLinkProps | ButtonProps> = ({ href, as, ...rest }) => {
   if (as === 'a') {
     return <ButtonLink href={href} {...(rest as ButtonLinkProps)} />;
   }

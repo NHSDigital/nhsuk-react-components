@@ -1,12 +1,12 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { Children, FC, HTMLProps, cloneElement } from 'react';
+import React, { Children, cloneElement } from 'react';
 import classNames from 'classnames';
 import { Container } from '@components/layout';
 import { childIsOfComponentType } from '@util/types/TypeGuards';
 
-type FooterListProps = HTMLProps<HTMLOListElement> & { singleColumn?: boolean };
+type FooterListProps = React.HTMLProps<HTMLOListElement> & { singleColumn?: boolean };
 
-const FooterList: FC<FooterListProps> = ({
+const FooterList: React.FC<FooterListProps> = ({
   className,
   children,
   singleColumn = false,
@@ -27,7 +27,7 @@ const FooterList: FC<FooterListProps> = ({
   );
 };
 
-const FooterListItem: FC<HTMLProps<HTMLAnchorElement> & { singleColumn?: boolean }> = ({
+const FooterListItem: React.FC<React.HTMLProps<HTMLAnchorElement> & { singleColumn?: boolean }> = ({
   className,
   singleColumn = false,
   ...rest
@@ -42,18 +42,18 @@ const FooterListItem: FC<HTMLProps<HTMLAnchorElement> & { singleColumn?: boolean
   </li>
 );
 
-const FooterCopyright: FC<HTMLProps<HTMLParagraphElement>> = ({ className, ...rest }) => (
+const FooterCopyright: React.FC<React.HTMLProps<HTMLParagraphElement>> = ({ className, ...rest }) => (
   <p className={classNames('nhsuk-footer__copyright', className)} {...rest} />
 );
 
-interface FooterProps extends HTMLProps<HTMLDivElement> {
+interface FooterProps extends React.HTMLProps<HTMLDivElement> {
   visuallyHiddenText?: false | string;
 }
 
-interface Footer extends FC<FooterProps> {
-  List: FC<FooterListProps>;
-  ListItem: FC<HTMLProps<HTMLAnchorElement>>;
-  Copyright: FC<HTMLProps<HTMLParagraphElement>>;
+interface Footer extends React.FC<FooterProps> {
+  List: React.FC<FooterListProps>;
+  ListItem: React.FC<React.HTMLProps<HTMLAnchorElement>>;
+  Copyright: React.FC<React.HTMLProps<HTMLParagraphElement>>;
 }
 
 const Footer: Footer = ({ className, children, visuallyHiddenText = 'Support links', ...rest }) => {

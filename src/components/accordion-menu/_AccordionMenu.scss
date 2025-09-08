@@ -1,6 +1,6 @@
 @use '../../styles/variables';
-@use '../../../node_modules/nhsuk-frontend/packages/core/settings/all' as settings;
-@import '../../../node_modules/nhsuk-frontend/packages/core/all';
+@use '../../../node_modules/nhsuk-frontend/packages/core/settings' as settings;
+@use '../../../node_modules/nhsuk-frontend/packages/core' as *;
 
 .nhsuk-accordion-menu {
   display: block;
@@ -75,7 +75,7 @@
       }
 
       &-text {
-        @include nhsuk-typography-responsive(22);
+        @include nhsuk-font-size(22);
         display: block;
         position: relative;
       }
@@ -97,7 +97,7 @@
       @include nhsuk-responsive-padding(3, 'right');
       @include nhsuk-responsive-padding(3, 'left');
 
-      @include nhsuk-typography-responsive(19);
+      @include nhsuk-font-size(19);
       display: block;
       border-bottom: 3px solid transparent;
       border-top: 3px solid transparent;

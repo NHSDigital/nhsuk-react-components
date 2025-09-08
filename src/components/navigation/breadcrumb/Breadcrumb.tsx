@@ -1,11 +1,11 @@
-import React, { Children, FC, HTMLProps, ReactNode } from 'react';
+import * as React from 'react';
 import classNames from 'classnames';
-import { AsElementLink } from '@util/types/LinkTypes';
+import type { AsElementLink } from '@util/types/LinkTypes';
 import { childIsOfComponentType } from '@util/types/TypeGuards';
 
-type Item = FC<AsElementLink<HTMLAnchorElement>>;
+type ItemProps = AsElementLink<'a'>;
 
-const Item: Item = ({ className, children, asElement: Component = 'a', ...rest }) => (
+const Item: React.FC<ItemProps> = ({ className, children, asElement: Component = 'a', ...rest }) => (
   <li className="nhsuk-breadcrumb__item">
     <Component className={classNames('nhsuk-breadcrumb__link', className)} {...rest}>
       {children}
@@ -13,9 +13,9 @@ const Item: Item = ({ className, children, asElement: Component = 'a', ...rest }
   </li>
 );
 
-type Back = FC<AsElementLink<HTMLAnchorElement> & { accessiblePrefix?: string }>;
+type BackProps = AsElementLink<'a'> & { accessiblePrefix?: string };
 
-const Back: Back = ({
+const Back: React.FC<BackProps> = ({
   className,
   children,
   asElement: Component = 'a',
@@ -30,24 +30,21 @@ const Back: Back = ({
   </p>
 );
 
-interface Breadcrumb extends FC<HTMLProps<HTMLDivElement>> {
-  Item: Item;
-  Back: Back;
-}
+type BreadcrumbProps = React.HTMLProps<HTMLDivElement>;
 
 type SplitChildren = {
-  ItemChildren: Array<ReactNode>;
-  OtherChildren: Array<ReactNode>;
+  ItemChildren: Array<React.ReactNode>;
+  OtherChildren: Array<React.ReactNode>;
 };
 
-const Breadcrumb: Breadcrumb = ({
+const Breadcrumb: React.FC<BreadcrumbProps> & { Item: typeof Item; Back: typeof Back } = ({
   className,
   children,
   'aria-label': ariaLabel = 'Breadcrumb',
   ...rest
 }) => {
   // Split off any "Item" components
-  const { ItemChildren, OtherChildren } = Children.toArray(children).reduce<SplitChildren>(
+  const { ItemChildren, OtherChildren } = React.Children.toArray(children).reduce<SplitChildren>(
     (prev, child) => {
       if (childIsOfComponentType(child, Item)) {
         prev.ItemChildren.push(child);
@@ -56,10 +53,7 @@ const Breadcrumb: Breadcrumb = ({
       }
       return prev;
     },
-    {
-      ItemChildren: [],
-      OtherChildren: [],
-    },
+    { ItemChildren: [], OtherChildren: [] }
   );
 
   return (

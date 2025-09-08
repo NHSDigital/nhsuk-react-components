@@ -1,9 +1,9 @@
-import React, { Children, FC, HTMLProps } from 'react';
+import React, { Children, } from 'react';
 import classNames from 'classnames';
 import { childIsOfComponentType } from './LocalTypeGuards';
 import NavItem from './LocalNavItem';
 
-const Nav: FC<HTMLProps<HTMLDivElement>> = ({
+const Nav: React.FC<React.HTMLProps<HTMLDivElement>> = ({
   className,
   children,
   id = 'header-navigation',

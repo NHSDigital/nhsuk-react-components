@@ -1,5 +1,5 @@
 'use client';
-import React, { ReactNode, useState, useEffect, HTMLProps, useContext } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import classNames from 'classnames';
 import HintText from '../form-elements/hint-text/HintText';
 import ErrorMessage from '../form-elements/error-message/ErrorMessage';
@@ -18,7 +18,7 @@ type ExcludedProps =
   | 'inputType'
   | 'disableErrorLine';
 
-type BaseFormElementRenderProps = HTMLProps<
+type BaseFormElementRenderProps = React.HTMLProps<
   HTMLInputElement | HTMLDivElement | HTMLSelectElement | HTMLTextAreaElement
 > & {
   error?: string | boolean;
@@ -30,13 +30,13 @@ type FormElementRenderProps<T> = Omit<T, ExcludedProps> & {
 };
 
 export type SingleInputFormGroupProps<T> = FormElementProps & {
-  children: (props: FormElementRenderProps<T>) => ReactNode;
+  children: (props: FormElementRenderProps<T>) => React.ReactNode;
   inputType: 'input' | 'radios' | 'select' | 'checkboxes' | 'dateinput' | 'textarea';
 };
 
 const SingleInputFormGroup = <T extends BaseFormElementRenderProps>(
   props: SingleInputFormGroupProps<T>,
-): JSX.Element => {
+): Element => {
   const {
     children,
     hint,

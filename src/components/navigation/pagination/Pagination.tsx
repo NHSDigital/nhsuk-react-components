@@ -1,13 +1,13 @@
-import React, { FC, HTMLProps } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { ArrowLeft, ArrowRight } from '@components/content-presentation/icons';
 
-interface PaginationLinkProps extends HTMLProps<HTMLAnchorElement> {
+interface PaginationLinkProps extends React.HTMLProps<HTMLAnchorElement> {
   previous?: boolean;
   next?: boolean;
 }
 
-const PaginationLink: FC<PaginationLinkProps> = ({
+const PaginationLink: React.FC<PaginationLinkProps> = ({
   className,
   children,
   previous,
@@ -41,8 +41,8 @@ const PaginationLink: FC<PaginationLinkProps> = ({
   </li>
 );
 
-interface Pagination extends FC<HTMLProps<HTMLDivElement>> {
-  Link: FC<PaginationLinkProps>;
+interface Pagination extends React.FC<React.HTMLProps<HTMLDivElement>> {
+  Link: React.FC<PaginationLinkProps>;
 }
 
 const Pagination: Pagination = ({

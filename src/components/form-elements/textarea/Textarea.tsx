@@ -1,12 +1,13 @@
-import React, { FC, HTMLProps, MutableRefObject } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '@util/types/FormTypes';
 import SingleInputFormGroup from '@components/utils/SingleInputFormGroup';
+import { MutableRefObject } from '../fieldset/Fieldset';
 
-type TextareaProps = HTMLProps<HTMLTextAreaElement> &
+type TextareaProps = React.HTMLProps<HTMLTextAreaElement> &
   FormElementProps & { textareaRef?: MutableRefObject<HTMLTextAreaElement | null> };
 
-const Textarea: FC<TextareaProps> = ({ children, ...props }) => (
+const Textarea: React.FC<TextareaProps> = ({ children, ...props }) => (
   <SingleInputFormGroup<TextareaProps> inputType="textarea" {...props}>
     {({ className, error, textareaRef, ...rest }) => (
       <textarea

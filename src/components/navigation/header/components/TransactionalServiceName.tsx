@@ -1,8 +1,8 @@
-import React, { FC, HTMLProps, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import classNames from 'classnames';
 import HeaderContext, { IHeaderContext } from '../HeaderContext';
 
-const TransactionalServiceName: FC<HTMLProps<HTMLAnchorElement>> = ({ className, ...rest }) => {
+const TransactionalServiceName: React.FC<React.HTMLProps<HTMLAnchorElement>> = ({ className, ...rest }) => {
   const { setServiceName } = useContext<IHeaderContext>(HeaderContext);
   useEffect(() => {
     setServiceName(true);

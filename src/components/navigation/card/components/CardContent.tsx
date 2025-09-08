@@ -1,9 +1,9 @@
 'use client';
-import React, { FC, HTMLProps, useContext } from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import CardContext from '../CardContext';
 
-const CardContent: FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => {
+const CardContent: React.FC<React.HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => {
   const { cardType } = useContext(CardContext);
   return (
     <div

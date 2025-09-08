@@ -1,10 +1,11 @@
-import React, { FC, HTMLProps, MutableRefObject } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import SingleInputFormGroup from '@components/utils/SingleInputFormGroup';
 import { InputWidth } from '@util/types/NHSUKTypes';
 import { FormElementProps } from '@util/types/FormTypes';
+import { MutableRefObject } from '../fieldset/Fieldset';
 
-interface TextInputProps extends HTMLProps<HTMLInputElement>, FormElementProps {
+interface TextInputProps extends React.HTMLProps<HTMLInputElement>, FormElementProps {
   inputRef?: MutableRefObject<HTMLInputElement | null>;
   width?: InputWidth;
   disableErrorLine?: boolean;
@@ -12,19 +13,19 @@ interface TextInputProps extends HTMLProps<HTMLInputElement>, FormElementProps {
   suffix?: string;
 }
 
-const TextInputPrefix: FC<{ prefix: string }> = ({ prefix }) => (
+const TextInputPrefix: React.FC<{ prefix: string }> = ({ prefix }) => (
   <div className="nhsuk-input__prefix" aria-hidden="true">
     {prefix}
   </div>
 );
 
-const TextInputSuffix: FC<{ suffix: string }> = ({ suffix }) => (
+const TextInputSuffix: React.FC<{ suffix: string }> = ({ suffix }) => (
   <div className="nhsuk-input__suffix" aria-hidden="true">
     {suffix}
   </div>
 );
 
-const TextInput: FC<TextInputProps> = (props) => (
+const TextInput: React.FC<TextInputProps> = (props) => (
   <SingleInputFormGroup<TextInputProps> {...props} inputType="input">
     {({ width, className, error, inputRef, type = 'text', prefix, suffix, ...rest }) => {
       const Input = (

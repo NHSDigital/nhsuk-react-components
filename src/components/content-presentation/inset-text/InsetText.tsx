@@ -1,11 +1,11 @@
-import React, { FC, HTMLProps } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
-interface InsetTextProps extends HTMLProps<HTMLDivElement> {
+interface InsetTextProps extends React.HTMLProps<HTMLDivElement> {
   visuallyHiddenText?: string | false;
 }
 
-const InsetText: FC<InsetTextProps> = ({
+const InsetText: React.FC<InsetTextProps> = ({
   className,
   children,
   visuallyHiddenText = 'Information: ',

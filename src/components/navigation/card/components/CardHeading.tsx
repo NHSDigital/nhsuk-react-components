@@ -1,12 +1,12 @@
 'use client';
-import React, { FC, HTMLProps, useContext } from 'react';
+import React, { useContext } from 'react';
 import classNames from 'classnames';
 import HeadingLevel, { HeadingLevelType } from '@components/utils/HeadingLevel';
 import CardContext from '../CardContext';
 import { CareCardType } from '../../../../util/types/NHSUKTypes';
 import { cardTypeIsCareCard } from '@util/types/TypeGuards';
 
-export interface CardHeadingProps extends HTMLProps<HTMLHeadingElement> {
+export interface CardHeadingProps extends React.HTMLProps<HTMLHeadingElement> {
   headingLevel?: HeadingLevelType;
   visuallyHiddenText?: false | string;
 }
@@ -24,7 +24,7 @@ const genHiddenText = (cardType: CareCardType): string => {
   }
 };
 
-const CareHeading: FC<CardHeadingProps & { careType: CareCardType }> = ({
+const CareHeading: React.FC<CardHeadingProps & { careType: CareCardType }> = ({
   className,
   children,
   visuallyHiddenText,
@@ -54,7 +54,7 @@ const CareHeading: FC<CardHeadingProps & { careType: CareCardType }> = ({
   );
 };
 
-const CardHeading: FC<CardHeadingProps> = (props) => {
+const CardHeading: React.FC<CardHeadingProps> = (props) => {
   const { cardType } = useContext(CardContext);
 
   if (cardTypeIsCareCard(cardType)) {

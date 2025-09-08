@@ -1,12 +1,12 @@
-import React, { FC, HTMLProps } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
-export interface BaseIconSVGProps extends HTMLProps<SVGSVGElement> {
+export interface BaseIconSVGProps extends React.HTMLProps<SVGSVGElement> {
   iconType?: string;
   crossOrigin?: '' | 'anonymous' | 'use-credentials';
 }
 
-export const BaseIconSVG: FC<BaseIconSVGProps> = ({
+export const BaseIconSVG: React.FC<BaseIconSVGProps> = ({
   className,
   children,
   height = 34,

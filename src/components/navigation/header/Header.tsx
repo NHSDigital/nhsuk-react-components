@@ -1,5 +1,5 @@
 'use client';
-import React, { FC, HTMLProps, useContext, useState, useEffect, useMemo } from 'react';
+import React, { useContext, useState, useEffect, useMemo } from 'react';
 import classNames from 'classnames';
 import NHSLogo, { NHSLogoNavProps } from './components/NHSLogo';
 import OrganisationalLogo, { OrganisationalLogoProps } from './components/OrganisationalLogo';
@@ -13,7 +13,7 @@ import Content from './components/Content';
 import TransactionalServiceName from './components/TransactionalServiceName';
 import HeaderJs from '@resources/header';
 
-const BaseHeaderLogo: FC<OrganisationalLogoProps & NHSLogoNavProps> = (props) => {
+const BaseHeaderLogo: React.FC<OrganisationalLogoProps & NHSLogoNavProps> = (props) => {
   const { orgName } = useContext<IHeaderContext>(HeaderContext);
   if (orgName) {
     return <OrganisationalLogo {...props} />;
@@ -21,11 +21,11 @@ const BaseHeaderLogo: FC<OrganisationalLogoProps & NHSLogoNavProps> = (props) =>
   return <NHSLogo {...props} />;
 };
 
-const HeaderContainer: FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => (
+const HeaderContainer: React.FC<React.HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => (
   <Container className={classNames('nhsuk-header__container', className)} {...rest} />
 );
 
-interface HeaderProps extends HTMLProps<HTMLDivElement> {
+interface HeaderProps extends React.HTMLProps<HTMLDivElement> {
   transactional?: boolean;
   orgName?: string;
   orgSplit?: string;

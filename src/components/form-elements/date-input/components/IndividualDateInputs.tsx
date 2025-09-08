@@ -1,10 +1,10 @@
 'use client';
-import React, { FC, HTMLProps, useContext, ChangeEvent } from 'react';
+import React, { useContext, ChangeEvent } from 'react';
 import classNames from 'classnames';
 import Label, { LabelProps } from '../../label/Label';
 import DateInputContext, { IDateInputContext } from '../DateInputContext';
 
-export interface IndividualDateInputProps extends HTMLProps<HTMLInputElement> {
+export interface IndividualDateInputProps extends React.HTMLProps<HTMLInputElement> {
   labelProps?: LabelProps;
   inputType: 'day' | 'month' | 'year';
   inputRef?: (ref: HTMLInputElement | null) => void;
@@ -17,7 +17,7 @@ const labels: Record<'day' | 'month' | 'year', string> = {
   year: 'Year',
 };
 
-const IndividualDateInput: FC<IndividualDateInputProps> = ({
+const IndividualDateInput: React.FC<IndividualDateInputProps> = ({
   label,
   labelProps,
   inputType,
@@ -100,14 +100,14 @@ const IndividualDateInput: FC<IndividualDateInputProps> = ({
   );
 };
 
-export const DayInput: FC<Omit<IndividualDateInputProps, 'inputType'>> = (props) => (
+export const DayInput: React.FC<Omit<IndividualDateInputProps, 'inputType'>> = (props) => (
   <IndividualDateInput inputType="day" {...props} />
 );
 
-export const MonthInput: FC<Omit<IndividualDateInputProps, 'inputType'>> = (props) => (
+export const MonthInput: React.FC<Omit<IndividualDateInputProps, 'inputType'>> = (props) => (
   <IndividualDateInput inputType="month" {...props} />
 );
 
-export const YearInput: FC<Omit<IndividualDateInputProps, 'inputType'>> = (props) => (
+export const YearInput: React.FC<Omit<IndividualDateInputProps, 'inputType'>> = (props) => (
   <IndividualDateInput inputType="year" {...props} />
 );

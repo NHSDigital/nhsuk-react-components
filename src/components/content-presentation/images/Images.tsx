@@ -1,14 +1,14 @@
-import React, { FC, HTMLProps } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
-interface ImageProps extends HTMLProps<HTMLImageElement> {
+interface ImageProps extends React.HTMLProps<HTMLImageElement> {
   // Overriding the default crossOrigin the default is crossOrigin: string | undefined
   // which causes a typescript "incompatible types" error.
   crossOrigin?: 'anonymous' | 'use-credentials' | undefined;
   caption?: string;
 }
 
-const Images: FC<ImageProps> = ({ className, caption, ...rest }) => (
+const Images: React.FC<ImageProps> = ({ className, caption, ...rest }) => (
   <figure className="nhsuk-image">
     {/* eslint-disable-next-line jsx-a11y/alt-text */}
     <img className={classNames('nhsuk-image__img', className)} {...rest} />

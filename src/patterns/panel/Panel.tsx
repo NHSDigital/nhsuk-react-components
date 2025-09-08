@@ -1,19 +1,19 @@
-import React, { FC, HTMLProps } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { AsElementLink } from '@util/types/LinkTypes';
 import Card from '@components/navigation/card';
 import { CardHeadingProps } from '@components/navigation/card/components/CardHeading';
 
-interface PanelProps extends HTMLProps<HTMLDivElement> {
-  labelProps?: HTMLProps<HTMLHeadingElement> & CardHeadingProps;
+interface PanelProps extends React.HTMLProps<HTMLDivElement> {
+  labelProps?: React.HTMLProps<HTMLHeadingElement> & CardHeadingProps;
   backToTop?: boolean;
   backToTopButtonText?: string;
   backToTopLink?: string;
 }
 
-interface Panel extends FC<PanelProps> {
-  LinkItem: FC<HTMLProps<HTMLAnchorElement>>;
-  Item: FC<HTMLProps<HTMLLIElement>>;
+interface Panel extends React.FC<PanelProps> {
+  LinkItem: React.FC<React.HTMLProps<HTMLAnchorElement>>;
+  Item: React.FC<React.HTMLProps<HTMLLIElement>>;
 }
 
 const Panel: Panel = ({
@@ -42,11 +42,11 @@ const Panel: Panel = ({
   </>
 );
 
-const PanelItem: FC<HTMLProps<HTMLLIElement>> = ({ className, ...rest }) => (
+const PanelItem: React.FC<React.HTMLProps<HTMLLIElement>> = ({ className, ...rest }) => (
   <li className={classNames('nhsuk-list-panel__item', className)} {...rest} />
 );
 
-const PanelLinkItem: FC<AsElementLink<HTMLAnchorElement>> = ({
+const PanelLinkItem: React.FC<AsElementLink<React.HTMLAnchorElement>> = ({
   className,
   asElement: Component = 'a',
   ...rest

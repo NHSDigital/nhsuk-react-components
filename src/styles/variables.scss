@@ -1,7 +1,7 @@
 // Settings
-@import '../../node_modules/nhsuk-frontend/packages/core/settings/all';
-@import '../../node_modules/nhsuk-frontend/packages/core/settings/colours';
-@import '../../node_modules/nhsuk-frontend/packages/core/tools/all';
+@use '../../node_modules/nhsuk-frontend/packages/core/settings' as *;
+@use '../../node_modules/nhsuk-frontend/packages/core/settings/colours';
+@use '../../node_modules/nhsuk-frontend/packages/core/tools' as *;
 
 $color_nhsuk-pink: #ae2573;
 $color_nhsuk-dark-blue: #003087;

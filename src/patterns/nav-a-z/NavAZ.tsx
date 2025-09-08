@@ -1,4 +1,4 @@
-import React, { FC, HTMLProps } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import { AsElementLink } from '@util/types/LinkTypes';
 
@@ -36,16 +36,16 @@ const processLetters = (
   return null;
 };
 
-interface NavAZProps extends HTMLProps<HTMLDivElement> {
+interface NavAZProps extends React.HTMLProps<HTMLDivElement> {
   fullAlphabet?: boolean;
   removedLetters?: Array<string>;
   disabledLetters?: Array<string>;
   letters?: Array<string>;
 }
 
-interface NavAZ extends FC<NavAZProps> {
-  LinkItem: FC<AsElementLink<HTMLAnchorElement>>;
-  DisabledItem: FC<HTMLProps<HTMLSpanElement>>;
+interface NavAZ extends React.FC<NavAZProps> {
+  LinkItem: React.FC<AsElementLink<HTMLAnchorElement>>;
+  DisabledItem: React.FC<React.HTMLProps<HTMLSpanElement>>;
 }
 
 const NavAZ: NavAZ = ({
@@ -70,7 +70,7 @@ const NavAZ: NavAZ = ({
   </nav>
 );
 
-const LinkItem: FC<AsElementLink<HTMLAnchorElement>> = ({
+const LinkItem: React.FC<AsElementLink<HTMLAnchorElement>> = ({
   className,
   asElement: Component = 'a',
   ...rest
@@ -88,7 +88,7 @@ const LinkItem: FC<AsElementLink<HTMLAnchorElement>> = ({
   </li>
 );
 
-const DisabledItem: FC<HTMLProps<HTMLSpanElement>> = ({ className, ...rest }) => (
+const DisabledItem: React.FC<React.HTMLProps<HTMLSpanElement>> = ({ className, ...rest }) => (
   <li className="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1">
     <span
       className={classNames(

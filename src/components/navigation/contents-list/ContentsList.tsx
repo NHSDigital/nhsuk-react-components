@@ -1,11 +1,11 @@
-import React, { FC, HTMLProps } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
-interface ContentsListItemProps extends HTMLProps<HTMLAnchorElement> {
+interface ContentsListItemProps extends React.HTMLProps<HTMLAnchorElement> {
   current?: boolean;
 }
 
-const ContentsListItem: FC<ContentsListItemProps> = ({ className, current, ...rest }) => (
+const ContentsListItem: React.FC<ContentsListItemProps> = ({ className, current, ...rest }) => (
   <li className={classNames('nhsuk-contents-list__item', className)}>
     {current ? (
       <span className="nhsuk-contents-list__current" {...rest} />
@@ -15,12 +15,12 @@ const ContentsListItem: FC<ContentsListItemProps> = ({ className, current, ...re
   </li>
 );
 
-interface ContentsListProps extends HTMLProps<HTMLDivElement> {
+interface ContentsListProps extends React.HTMLProps<HTMLDivElement> {
   visuallyHiddenText?: false | string;
 }
 
-interface ContentsList extends FC<ContentsListProps> {
-  Item: FC<ContentsListItemProps>;
+interface ContentsList extends React.FC<ContentsListProps> {
+  Item: React.FC<ContentsListItemProps>;
 }
 
 const ContentsList: ContentsList = ({

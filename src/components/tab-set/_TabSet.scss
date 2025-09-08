@@ -1,6 +1,6 @@
 @use '../../../node_modules/nhsuk-frontend/packages/core/tools/focused' as *;
 @use '../../../node_modules/nhsuk-frontend/packages/core/settings/colours';
-@import '../../../node_modules/nhsuk-frontend/packages/core/all';
+@use '../../../node_modules/nhsuk-frontend/packages/core' as *;
 
 
 $nhsukext-tab-border-width: 1px !default;
@@ -21,7 +21,7 @@ $nhsukext-content-background-color: colours.$color_nhsuk-white !default;
     @include nhsuk-responsive-margin(3, 'top');
     @include nhsuk-responsive-padding(3, 'top');
     @include nhsuk-responsive-padding(3, 'bottom');
-    @include nhsuk-typography-responsive(19);
+    @include nhsuk-font-size(19);
     background-color: colours.$color_nhsuk-white;
     border: $nhsukext-tab-border-width solid $nhsukext-content-background-color;
     border-bottom-left-radius: 0;

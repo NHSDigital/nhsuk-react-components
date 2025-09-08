@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React from 'react';
 import HintText, { HintTextProps } from '../form-elements/hint-text/HintText';
 import Label, { LabelProps } from '../form-elements/label/Label';
 import ErrorMessage, { ErrorMessageProps } from '../form-elements/error-message/ErrorMessage';
@@ -13,7 +13,7 @@ interface LabelBlockProps {
   errorProps?: ErrorMessageProps;
 }
 
-const LabelBlock: FC<LabelBlockProps> = ({
+const LabelBlock: React.FC<LabelBlockProps> = ({
   elementId,
   label,
   labelProps,

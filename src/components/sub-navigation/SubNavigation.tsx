@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-redeclare */
-import React, { HTMLProps } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import './_SubNavigation.scss';
 
-const SubNavigationItem: React.FC<HTMLProps<HTMLAnchorElement>> = ({
+const SubNavigationItem: React.FC<React.HTMLProps<HTMLAnchorElement>> = ({
   className,
   children,
   ...rest
@@ -15,8 +15,8 @@ const SubNavigationItem: React.FC<HTMLProps<HTMLAnchorElement>> = ({
   </li>
 );
 
-interface SubNavigation extends React.FC<HTMLProps<HTMLDivElement>> {
-  Item: React.FC<HTMLProps<HTMLAnchorElement>>;
+interface SubNavigation extends React.FC<React.HTMLProps<HTMLDivElement>> {
+  Item: React.FC<React.HTMLProps<HTMLAnchorElement>>;
 }
 
 const SubNavigation: SubNavigation = ({ children, className, ...rest }) => (

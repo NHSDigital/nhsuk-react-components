@@ -1,10 +1,10 @@
 /* eslint-disable @typescript-eslint/no-redeclare */
-import React, { HTMLProps } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import Tab, { TabProps } from './components/Tab';
 import './_TabSet.scss';
 
-interface TabSet extends React.FC<HTMLProps<HTMLDivElement>> {
+interface TabSet extends React.FC<React.HTMLProps<HTMLDivElement>> {
   Tab: React.FC<TabProps>;
 }
 

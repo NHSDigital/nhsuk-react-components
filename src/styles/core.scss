@@ -2,7 +2,7 @@
 @use './variables';
 
 // Tools
-@use '../../node_modules/nhsuk-frontend/packages/core/tools/all';
+@use '../../node_modules/nhsuk-frontend/packages/core/tools' as *;
 
 // Generic
 @use '../../node_modules/nhsuk-frontend/packages/core/generic/box-sizing';

@@ -1,8 +1,8 @@
- 
-import React, { HTMLProps } from 'react';
+
+import React from 'react';
 import classNames from 'classnames';
 
-export type TabProps = HTMLProps<HTMLButtonElement> & {
+export type TabProps = React.HTMLProps<HTMLButtonElement> & {
   active?: boolean;
   empty?: boolean;
   type?: 'button' | 'submit' | 'reset';
@@ -13,7 +13,7 @@ const Tab: React.FC<TabProps> = ({
   active,
   disabled,
   empty,
-  type,
+  type = 'button',
   tabIndex,
   ...rest
 }) => (
@@ -30,9 +30,5 @@ const Tab: React.FC<TabProps> = ({
     {...rest}
   />
 );
-
-Tab.defaultProps = {
-  type: 'button',
-};
 
 export default Tab;

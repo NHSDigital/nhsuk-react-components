@@ -1,4 +1,4 @@
-import React, { FC, HTMLProps } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 import CardContext from './CardContext';
 import CardContent from './components/CardContent';
@@ -11,12 +11,12 @@ import CardGroupItem from './components/CardGroupItem';
 import { CardType } from '@util/types/NHSUKTypes';
 import { cardTypeIsCareCard } from '@util/types/TypeGuards';
 
-interface CardProps extends HTMLProps<HTMLDivElement> {
+interface CardProps extends React.HTMLProps<HTMLDivElement> {
   clickable?: boolean;
   cardType?: CardType;
 }
 
-interface ICard extends FC<CardProps> {
+interface ICard extends React.FC<CardProps> {
   Content: typeof CardContent;
   Description: typeof CardDescription;
   Image: typeof CardImage;

@@ -1,8 +1,8 @@
-import React, { HTMLProps, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import classNames from 'classnames';
 import FormGroupContext, { IFormGroupContext } from './FormGroupContext';
 
-interface FormGroupProps extends HTMLProps<HTMLDivElement> {
+interface FormGroupProps extends React.HTMLProps<HTMLDivElement> {
   enableErrorLine?: boolean;
 }
 

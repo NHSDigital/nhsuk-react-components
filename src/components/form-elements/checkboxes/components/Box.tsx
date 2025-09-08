@@ -1,32 +1,30 @@
 'use client';
 
 import React, {
-  FC,
-  HTMLProps,
   useContext,
   ReactNode,
   useEffect,
-  useState,
-  MutableRefObject,
+  useState
 } from 'react';
 import classNames from 'classnames';
 import CheckboxContext, { ICheckboxContext } from '../CheckboxContext';
 import Label, { LabelProps } from '../../label/Label';
 import HintText, { HintTextProps } from '../../hint-text/HintText';
 import { HTMLAttributesWithData } from '@util/types/NHSUKTypes';
+import { MutableRefObject } from '@components/form-elements/fieldset/Fieldset';
 
-type BoxProps = Omit<HTMLProps<HTMLInputElement>, 'label'> & {
+type BoxProps = Omit<React.HTMLProps<HTMLInputElement>, 'label'> & {
   labelProps?: LabelProps;
   hint?: string;
   hintProps?: HintTextProps;
   conditional?: ReactNode;
   forceShowConditional?: boolean;
-  conditionalWrapperProps?: HTMLProps<HTMLDivElement>;
+  conditionalWrapperProps?: React.HTMLProps<HTMLDivElement>;
   inputRef?: MutableRefObject<HTMLInputElement | null>;
   exclusive?: boolean;
 };
 
-const Box: FC<BoxProps> = ({
+const Box: React.FC<BoxProps> = ({
   id,
   labelProps,
   children,

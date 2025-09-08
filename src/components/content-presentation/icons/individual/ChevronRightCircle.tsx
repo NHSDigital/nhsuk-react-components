@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
+import React from 'react';
 
-export const ChevronRightCircle: FC = () => (
+export const ChevronRightCircle: React.FC = () => (
   <svg
     className="nhsuk-icon nhsuk-icon nhsuk-icon__chevron-right-circle"
     xmlns="http://www.w3.org/2000/svg"

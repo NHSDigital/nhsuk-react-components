@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
-    "jsx": "react",
+    "jsx": "react-jsx",
+    "skipLibCheck": true,
     "target": "es6",
     "module": "esnext",
     "moduleResolution": "node",
@@ -13,7 +14,6 @@
     "forceConsistentCasingInFileNames": true,
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
-    "skipLibCheck": true,
     "strict": true,
     "strictNullChecks": true,
     "resolveJsonModule": true,

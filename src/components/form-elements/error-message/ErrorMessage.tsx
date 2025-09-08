@@ -1,11 +1,11 @@
-import React, { FC, HTMLProps } from 'react';
+import React from 'react';
 import classNames from 'classnames';
 
-export interface ErrorMessageProps extends HTMLProps<HTMLSpanElement> {
+export interface ErrorMessageProps extends React.HTMLProps<HTMLSpanElement> {
   visuallyHiddenText?: false | string;
 }
 
-const ErrorMessage: FC<ErrorMessageProps> = ({
+const ErrorMessage: React.FC<ErrorMessageProps> = ({
   className,
   visuallyHiddenText = 'Error: ',
   children,

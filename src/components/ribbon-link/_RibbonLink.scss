@@ -1,6 +1,6 @@
 @use 'sass:color';
-@use '../../../node_modules/nhsuk-frontend/packages/core/settings/all' as settings;
-@import '../../../node_modules/nhsuk-frontend/packages/core/all';
+@use '../../../node_modules/nhsuk-frontend/packages/core/settings' as *;
+@use '../../../node_modules/nhsuk-frontend/packages/core' as *;
 
 .nhsuk-ribbon-link {
 
@@ -8,11 +8,11 @@
   @include nhsuk-responsive-padding(2, 'bottom');
   @include nhsuk-responsive-padding(2, 'left');
   @include nhsuk-responsive-padding(2, 'right');
-  @include nhsuk-typography-responsive(24);
+  @include nhsuk-font-size(_24);
 
   display: flex;
   cursor: pointer;
-  font-weight: settings.$nhsuk-font-bold;
+  font-weight: $nhsuk-font-bold;
   align-items: center;
   justify-content: flex-start;
   border: 0;
@@ -47,115 +47,115 @@
   }
 
   &--cool {
-    border-bottom-color: settings.$color_nhsuk-blue;
-    background-color: settings.$color_nhsuk-white;
-    color: settings.$color_nhsuk-blue;
+    border-bottom-color: $color_nhsuk-blue;
+    background-color: $color_nhsuk-white;
+    color: $color_nhsuk-blue;
 
     > svg {
-      fill: settings.$color_nhsuk-blue;
+      fill: $color_nhsuk-blue;
     }
 
     &:hover {
-      background-color: color.adjust(settings.$color_nhsuk-white, $lightness: -5%);
-      color: settings.$color_nhsuk-purple;
+      background-color: color.adjust($color_nhsuk-white, $lightness: -5%);
+      color: $color_nhsuk-purple;
     }
 
     &:focus {
-      background-color: settings.$color_nhsuk-yellow;
-      color: settings.$color_nhsuk-black;
-      border-bottom-color: settings.$color_nhsuk-black;
+      background-color: $color_nhsuk-yellow;
+      color: $color_nhsuk-black;
+      border-bottom-color: $color_nhsuk-black;
 
       > svg {
-        fill: settings.$color_nhsuk-black;
+        fill: $color_nhsuk-black;
       }
     }
 
     &:active {
-      color: settings.$color_nhsuk-white;
-      border-bottom-color: color.adjust(settings.$color_nhsuk-blue, $lightness: -10%);
-      border-left-color: color.adjust(settings.$color_nhsuk-blue, $lightness: -10%);
+      color: $color_nhsuk-white;
+      border-bottom-color: color.adjust($color_nhsuk-blue, $lightness: -10%);
+      border-left-color: color.adjust($color_nhsuk-blue, $lightness: -10%);
 
       > svg {
-        fill: settings.$color_nhsuk-white;
+        fill: $color_nhsuk-white;
         margin-left: none;
       }
     }
   }
 
   &--mild {
-    border-bottom-color: color.adjust(settings.$color_nhsuk-warm-yellow, $lightness: -10%);
-    background-color: settings.$color_nhsuk-warm-yellow;
-    color: settings.$color_nhsuk-black;
+    border-bottom-color: color.adjust($color_nhsuk-warm-yellow, $lightness: -10%);
+    background-color: $color_nhsuk-warm-yellow;
+    color: $color_nhsuk-black;
 
     > svg {
-      fill: settings.$color_nhsuk-black;
+      fill: $color_nhsuk-black;
     }
 
     &:hover {
-      background-color: settings.$color_nhsuk-blue;
-      color: settings.$color_nhsuk-white;
-      border-bottom-color: settings.$color_shade_nhsuk-blue-20;
+      background-color: $color_nhsuk-blue;
+      color: $color_nhsuk-white;
+      border-bottom-color: $color_shade_nhsuk-blue-20;
 
       > svg {
-        fill: settings.$color_nhsuk-white;
+        fill: $color_nhsuk-white;
       }
     }
 
     &:focus {
-      background-color: settings.$color_shade_nhsuk-blue-20;
-      color: settings.$color_nhsuk-white;
-      border-bottom-color: settings.$color_shade_nhsuk-blue-35;
+      background-color: $color_shade_nhsuk-blue-20;
+      color: $color_nhsuk-white;
+      border-bottom-color: $color_shade_nhsuk-blue-35;
 
       > svg {
-        fill: settings.$color_nhsuk-white;
+        fill: $color_nhsuk-white;
       }
     }
 
     &:active {
-      background-color: settings.$color_shade_nhsuk-blue-20;
-      color: settings.$color_nhsuk-white;
-      border-bottom-color: settings.$color_shade_nhsuk-blue-35;
+      background-color: $color_shade_nhsuk-blue-20;
+      color: $color_nhsuk-white;
+      border-bottom-color: $color_shade_nhsuk-blue-35;
 
       > svg {
-        fill: settings.$color_nhsuk-white;
+        fill: $color_nhsuk-white;
       }
     }
   }
 
   &--hot {
-    border-bottom-color: color.adjust(settings.$color_nhsuk-red, $lightness: -10%);
-    background-color: settings.$color_nhsuk-red;
-    color: settings.$color_nhsuk-white;
+    border-bottom-color: color.adjust($color_nhsuk-red, $lightness: -10%);
+    background-color: $color_nhsuk-red;
+    color: $color_nhsuk-white;
 
     > svg {
-      fill: settings.$color_nhsuk-white;
+      fill: $color_nhsuk-white;
     }
 
     &:hover {
-      background-color: color.adjust(settings.$color_nhsuk-red, $lightness: -5%);
+      background-color: color.adjust($color_nhsuk-red, $lightness: -5%);
 
       > svg {
-        fill: settings.$color_nhsuk-white;
+        fill: $color_nhsuk-white;
       }
     }
 
     &:focus {
-      background-color: settings.$color_nhsuk-yellow;
-      color: settings.$color_nhsuk-black;
-      border-bottom-color: settings.$color_nhsuk-black;
+      background-color: $color_nhsuk-yellow;
+      color: $color_nhsuk-black;
+      border-bottom-color: $color_nhsuk-black;
 
       > svg {
-        fill: settings.$color_nhsuk-black;
+        fill: $color_nhsuk-black;
       }
     }
 
     &:active {
-      background-color: color.adjust(settings.$color_nhsuk-red, $lightness: -10%);
-      color: settings.$color_nhsuk-white;
-      border-bottom-color: settings.$color_shade_nhsuk-blue-35;
+      background-color: color.adjust($color_nhsuk-red, $lightness: -10%);
+      color: $color_nhsuk-white;
+      border-bottom-color: $color_shade_nhsuk-blue-35;
 
       > svg {
-        fill: settings.$color_nhsuk-white;
+        fill: $color_nhsuk-white;
       }
     }
   }

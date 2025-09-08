@@ -1,21 +1,21 @@
 'use client';
-import React, { FC, HTMLProps, useContext, ReactNode, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { RadiosContext, IRadiosContext } from '../RadioContext';
 import HintText, { HintTextProps } from '../../hint-text/HintText';
 import Label, { LabelProps } from '../../label/Label';
 
-export interface RadioProps extends HTMLProps<HTMLInputElement> {
+export interface RadioProps extends React.HTMLProps<HTMLInputElement> {
   hint?: string;
   hintProps?: HintTextProps;
   labelProps?: LabelProps;
-  conditional?: ReactNode;
+  conditional?: React.ReactNode;
   forceShowConditional?: boolean;
-  conditionalWrapperProps?: HTMLProps<HTMLDivElement>;
+  conditionalWrapperProps?: React.HTMLProps<HTMLDivElement>;
   inputRef?: (inputRef: HTMLInputElement | null) => void;
 }
 
-const Radio: FC<RadioProps> = ({
+const Radio: React.FC<RadioProps> = ({
   className,
   children,
   id,

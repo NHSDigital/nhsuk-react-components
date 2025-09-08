@@ -1,6 +1,6 @@
 'use client';
 
-import React, { HTMLProps, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '@util/types/FormTypes';
 import SingleInputFormGroup from '@components/utils/SingleInputFormGroup';
@@ -10,7 +10,7 @@ import Divider from './components/Divider';
 import { generateRandomName } from '@util/RandomID';
 import CheckboxJs from '@resources/checkboxes';
 
-interface CheckboxesProps extends HTMLProps<HTMLDivElement>, FormElementProps {
+interface CheckboxesProps extends React.HTMLProps<HTMLDivElement>, FormElementProps {
   idPrefix?: string;
 }
 
