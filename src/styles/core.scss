@@ -24,7 +24,7 @@
 @use '../../node_modules/nhsuk-frontend/packages/core/styles/icons';
 @use '../../node_modules/nhsuk-frontend/packages/core/styles/lists';
 @use '../../node_modules/nhsuk-frontend/packages/core/styles/section-break';
-// @use '../../node_modules/nhsuk-frontend/packages/core/styles/typography';
+@use '../../node_modules/nhsuk-frontend/packages/core/styles/typography';
 
 // Utilities
 @use '../../node_modules/nhsuk-frontend/packages/core/utilities/clearfix';
@@ -32,6 +32,5 @@
 @use '../../node_modules/nhsuk-frontend/packages/core/utilities/link-nowrap';
 @use '../../node_modules/nhsuk-frontend/packages/core/utilities/reading-width';
 @use '../../node_modules/nhsuk-frontend/packages/core/utilities/spacing';
-@use '../../node_modules/nhsuk-frontend/packages/core/utilities/typography';
 @use '../../node_modules/nhsuk-frontend/packages/core/utilities/visually-hidden';
 @use '../../node_modules/nhsuk-frontend/packages/core/utilities/widths';
