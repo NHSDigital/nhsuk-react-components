@@ -67,6 +67,7 @@
     "jest-axe": "^8.0.0",
     "jest-environment-jsdom": "^29.7.0",
     "nhsuk-frontend": "^10.0.0",
+    "outdent": "^0.8.0",
     "prettier": "^3.2.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
