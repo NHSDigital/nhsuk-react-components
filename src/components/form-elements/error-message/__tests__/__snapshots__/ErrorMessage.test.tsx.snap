@@ -8,8 +8,9 @@ exports[`ErrorMessage matches snapshot: ErrorMessage 1`] = `
     <span
       class="nhsuk-u-visually-hidden"
     >
-      Error: 
+      Error:
     </span>
+     
     Error
   </span>
 </div>

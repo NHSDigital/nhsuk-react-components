@@ -6,7 +6,7 @@ import { Meta, StoryObj } from '@storybook/react';
  *
  * ## Implementation Notes
  *
- * The `ErrorMessage` component has a default `visuallyHiddenText` of "Error: ". This can be overriden, or disabled using `visuallyHiddenText={false}`.
+ * The `ErrorMessage` component has a default `visuallyHiddenText` of "Error: ". This can be overriden using `visuallyHiddenText`.
  *
  * ## Usage
  *
@@ -17,7 +17,7 @@ import { Meta, StoryObj } from '@storybook/react';
  *
  * const Element = () => {
  *     return (
- *         <ErrorMessage>Error!</ErrorMessage>
+ *         <ErrorMessage>Enter your full name</ErrorMessage>
  *     );
  * }
  * ```
@@ -26,7 +26,7 @@ const meta: Meta<typeof ErrorMessage> = {
   title: 'Form Elements/ErrorMessage',
   component: ErrorMessage,
   args: {
-    children: 'Error message about full name goes here',
+    children: 'Enter your full name',
   },
 };
 export default meta;
@@ -35,8 +35,13 @@ type Story = StoryObj<typeof ErrorMessage>;
 export const Standard: Story = {
   argTypes: { visuallyHiddenText: { control: false } },
 };
-export const NoVisuallyHiddenText: Story = {
-  args: { visuallyHiddenText: false },
+
+export const CustomVisuallyHiddenText: Story = {
+  args: { visuallyHiddenText: 'Custom' },
   argTypes: { visuallyHiddenText: { control: false } },
 };
-export const CustomVisuallyHiddenText: Story = { args: { visuallyHiddenText: 'Custom Text' } };
+
+export const EmptyVisuallyHiddenText: Story = {
+  args: { visuallyHiddenText: '' },
+  argTypes: { visuallyHiddenText: { control: false } },
+};
