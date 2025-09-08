@@ -1,11 +1,11 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 
 export interface EventProps {
-  title: ReactNode;
-  instigator?: ReactNode;
+  title: React.ReactNode;
+  instigator?: React.ReactNode;
   date: string;
-  description?: Array<ReactNode>;
-  action?: ReactNode;
+  description?: Array<React.ReactNode>;
+  action?: React.ReactNode;
 }
 
 const Event: React.FC<EventProps> = ({ title, instigator, date, description = [], action }) => (
