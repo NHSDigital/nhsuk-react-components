@@ -9,7 +9,7 @@ import { Meta, StoryObj } from '@storybook/react';
  *
  * The `ContentsList` component has one subcomponent: `ContentsList.Item`.
  *
- * There are two default props set to the ContentsList: `role: 'navigation'` and `visuallyHiddenText: 'Contents'`. These are only default props and can be overriden. `visuallyHiddenText={false}` will disable the visually hidden text.
+ * There are two default props set to the ContentsList: `role: 'navigation'` and `visuallyHiddenText: 'Contents'`. These are only default props and can be overriden.
  *
  * ## Usage
  *

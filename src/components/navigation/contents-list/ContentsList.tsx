@@ -16,7 +16,7 @@ const ContentsListItem: FC<ContentsListItemProps> = ({ className, current, ...re
 );
 
 interface ContentsListProps extends HTMLProps<HTMLDivElement> {
-  visuallyHiddenText?: false | string;
+  visuallyHiddenText?: string;
 }
 
 interface ContentsListComponent extends FC<ContentsListProps> {
@@ -31,9 +31,7 @@ const ContentsListComponent: ContentsListComponent = ({
   ...rest
 }) => (
   <nav className={classNames('nhsuk-contents-list', className)} role={role} {...rest}>
-    {visuallyHiddenText !== false ? (
-      <h2 className="nhsuk-u-visually-hidden">{visuallyHiddenText}</h2>
-    ) : null}
+    <h2 className="nhsuk-u-visually-hidden">{visuallyHiddenText}</h2>
     <ol className="nhsuk-contents-list__list">{children}</ol>
   </nav>
 );
