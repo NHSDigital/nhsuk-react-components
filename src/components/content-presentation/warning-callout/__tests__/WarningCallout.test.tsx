@@ -6,18 +6,34 @@ describe('WarningCallout', () => {
   it('matches snapshot', () => {
     const { container } = render(
       <WarningCallout>
-        <WarningCallout.Heading>School, nursery or work</WarningCallout.Heading>
+        <WarningCallout.Heading>Important</WarningCallout.Heading>
         <p>
-          Stay away from school, nursery or work until all the spots have crusted over. This is
-          usually 5 days after the spots first appeared.
+          For safety, tell your doctor or pharmacist if you&apos;re taking any other medicines,
+          including herbal medicines, vitamins or supplements.
         </p>
       </WarningCallout>,
     );
 
-    expect(container).toMatchSnapshot();
+    expect(container).toMatchSnapshot('WarningCallout');
   });
 
-  it('adds default visually hidden text', () => {
+  it('omits visually hidden text when unnecessary', () => {
+    const { container } = render(
+      <WarningCallout>
+        <WarningCallout.Heading>Important</WarningCallout.Heading>
+        <p>
+          For safety, tell your doctor or pharmacist if you&apos;re taking any other medicines,
+          including herbal medicines, vitamins or supplements.
+        </p>
+      </WarningCallout>,
+    );
+
+    expect(container.querySelector('.nhsuk-warning-callout__label')?.textContent).toBe(
+      'Important:',
+    );
+  });
+
+  it('adds visually hidden text when necessary', () => {
     const { container } = render(
       <WarningCallout>
         <WarningCallout.Heading>School, nursery or work</WarningCallout.Heading>
@@ -27,45 +43,11 @@ describe('WarningCallout', () => {
         </p>
       </WarningCallout>,
     );
+
+    expect(container).toMatchSnapshot('WarningCalloutWithTextRole');
 
     expect(container.querySelector('.nhsuk-warning-callout__label')?.textContent).toBe(
       'Important: School, nursery or work',
-    );
-  });
-
-  it('adds custom visually hidden text', () => {
-    const { container } = render(
-      <WarningCallout>
-        <WarningCallout.Heading visuallyHiddenText="Not Very Important: ">
-          School, nursery or work
-        </WarningCallout.Heading>
-        <p>
-          Stay away from school, nursery or work until all the spots have crusted over. This is
-          usually 5 days after the spots first appeared.
-        </p>
-      </WarningCallout>,
-    );
-
-    expect(container.querySelector('.nhsuk-warning-callout__label')?.textContent).toBe(
-      'Not Very Important: School, nursery or work',
-    );
-  });
-
-  it('can disable visually hidden text', () => {
-    const { container } = render(
-      <WarningCallout>
-        <WarningCallout.Heading visuallyHiddenText={false}>
-          School, nursery or work
-        </WarningCallout.Heading>
-        <p>
-          Stay away from school, nursery or work until all the spots have crusted over. This is
-          usually 5 days after the spots first appeared.
-        </p>
-      </WarningCallout>,
-    );
-
-    expect(container.querySelector('.nhsuk-warning-callout__label')?.textContent).toBe(
-      'School, nursery or work',
     );
   });
 });

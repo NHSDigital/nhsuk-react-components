@@ -4,21 +4,28 @@ import HeadingLevel, { HeadingLevelType } from '@components/utils/HeadingLevel';
 
 interface WarningCalloutHeadingProps extends HTMLProps<HTMLHeadingElement> {
   headingLevel?: HeadingLevelType;
-  visuallyHiddenText?: string | false;
 }
 
 const WarningCalloutHeading: FC<WarningCalloutHeadingProps> = ({
   className,
-  visuallyHiddenText = 'Important: ',
   children,
   ...rest
 }) => (
   <HeadingLevel className={classNames('nhsuk-warning-callout__label', className)} {...rest}>
-    {/* eslint-disable-next-line jsx-a11y/aria-role */}
-    <span role="text">
-      {visuallyHiddenText && <span className="nhsuk-u-visually-hidden">{visuallyHiddenText}</span>}
-      {children}
-    </span>
+    {children?.toString().toLowerCase().includes('important') ? (
+      <>
+        {children}
+        <span className="nhsuk-u-visually-hidden">:</span>
+      </>
+    ) : (
+      <>
+        {/* eslint-disable-next-line jsx-a11y/aria-role */}
+        <span role="text">
+          <span className="nhsuk-u-visually-hidden">Important: </span>
+          {children}
+        </span>
+      </>
+    )}
   </HeadingLevel>
 );
 
