@@ -25,4 +25,10 @@ describe('Label', () => {
       '<h1 class="nhsuk-label-wrapper"><label class="nhsuk-label nhsuk-label--xl">Text</label></h1>',
     );
   });
+
+  it('renders null with no children', () => {
+    const { container } = render(<Label />);
+
+    expect(container.querySelector('label')).toBeNull();
+  });
 });

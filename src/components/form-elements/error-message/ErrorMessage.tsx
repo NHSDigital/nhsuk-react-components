@@ -10,16 +10,22 @@ const ErrorMessageComponent: FC<ErrorMessageProps> = ({
   visuallyHiddenText = 'Error',
   children,
   ...rest
-}) => (
-  <span className={classNames('nhsuk-error-message', className)} {...rest}>
-    {visuallyHiddenText ? (
-      <>
-        <span className="nhsuk-u-visually-hidden">{`${visuallyHiddenText}:`}</span> {children}
-      </>
-    ) : (
-      <>{children}</>
-    )}
-  </span>
-);
+}) => {
+  if (!children || typeof children !== 'string') {
+    return null;
+  }
+
+  return (
+    <span className={classNames('nhsuk-error-message', className)} {...rest}>
+      {visuallyHiddenText ? (
+        <>
+          <span className="nhsuk-u-visually-hidden">{`${visuallyHiddenText}:`}</span> {children}
+        </>
+      ) : (
+        <>{children}</>
+      )}
+    </span>
+  );
+};
 
 export default ErrorMessageComponent;

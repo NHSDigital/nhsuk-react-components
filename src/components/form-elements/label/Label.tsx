@@ -22,15 +22,21 @@ const Label: FC<LabelProps> = ({ className, bold, size, isPageHeading, ...rest }
   />
 );
 
-const LabelComponent: FC<LabelProps> = ({ isPageHeading, ...rest }) => {
+const LabelComponent: FC<LabelProps> = ({ isPageHeading, children, ...rest }) => {
+  if (!children) {
+    return null;
+  }
+
   if (isPageHeading) {
     return (
       <h1 className="nhsuk-label-wrapper">
-        <Label isPageHeading {...rest} />
+        <Label isPageHeading {...rest}>
+          {children}
+        </Label>
       </h1>
     );
   }
-  return <Label {...rest} />;
+  return <Label {...rest}>{children}</Label>;
 };
 
 export default LabelComponent;

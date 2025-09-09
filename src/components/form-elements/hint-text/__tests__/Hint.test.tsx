@@ -14,4 +14,10 @@ describe('Hint', () => {
 
     expect(container.textContent).toBe('Text');
   });
+
+  it('renders null with no children', () => {
+    const { container } = render(<Hint />);
+
+    expect(container.querySelector('div')).toBeNull();
+  });
 });

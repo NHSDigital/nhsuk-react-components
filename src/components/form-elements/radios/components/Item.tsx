@@ -67,21 +67,17 @@ const RadiosItem: FC<RadiosItemProps> = ({
           ref={inputRef}
           {...rest}
         />
-        {children ? (
-          <Label
-            className="nhsuk-radios__label"
-            id={`${inputID}--label`}
-            htmlFor={inputID}
-            {...labelProps}
-          >
-            {children}
-          </Label>
-        ) : null}
-        {hint ? (
-          <HintText className="nhsuk-radios__hint" id={`${inputID}--hint`} {...hintProps}>
-            {hint}
-          </HintText>
-        ) : null}
+        <Label
+          className="nhsuk-radios__label"
+          id={`${inputID}--label`}
+          htmlFor={inputID}
+          {...labelProps}
+        >
+          {children}
+        </Label>
+        <HintText className="nhsuk-radios__hint" id={`${inputID}--hint`} {...hintProps}>
+          {hint}
+        </HintText>
       </div>
       {conditional && (
         <div

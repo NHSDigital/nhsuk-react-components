@@ -77,25 +77,21 @@ const CheckboxesItem: FC<CheckboxesItemProps> = ({
           ref={inputRef}
           {...inputProps}
         />
-        {children ? (
-          <Label
-            className={classNames('nhsuk-checkboxes__label', labelClassName)}
-            id={`${inputID}--label`}
-            htmlFor={inputID}
-            {...restLabelProps}
-          >
-            {children}
-          </Label>
-        ) : null}
-        {hint ? (
-          <HintText
-            className={classNames('nhsuk-checkboxes__hint', hintClassName)}
-            id={`${inputID}--hint`}
-            {...restHintProps}
-          >
-            {hint}
-          </HintText>
-        ) : null}
+        <Label
+          className={classNames('nhsuk-checkboxes__label', labelClassName)}
+          id={`${inputID}--label`}
+          htmlFor={inputID}
+          {...restLabelProps}
+        >
+          {children}
+        </Label>
+        <HintText
+          className={classNames('nhsuk-checkboxes__hint', hintClassName)}
+          id={`${inputID}--hint`}
+          {...restHintProps}
+        >
+          {hint}
+        </HintText>
       </div>
       {conditional && (
         <div

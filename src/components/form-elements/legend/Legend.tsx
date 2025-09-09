@@ -16,26 +16,32 @@ const LegendComponent: FC<LegendProps> = ({
   headingLevel = 'h1',
   size,
   ...rest
-}) => (
-  <legend
-    className={classNames(
-      'nhsuk-fieldset__legend',
-      {
-        'nhsuk-fieldset__legend--xl': isPageHeading && !size,
-      },
-      { [`nhsuk-fieldset__legend--${size}`]: size },
-      className,
-    )}
-    {...rest}
-  >
-    {isPageHeading ? (
-      <HeadingLevel className="nhsuk-fieldset__heading" headingLevel={headingLevel}>
-        {children}
-      </HeadingLevel>
-    ) : (
-      children
-    )}
-  </legend>
-);
+}) => {
+  if (!children) {
+    return null;
+  }
+
+  return (
+    <legend
+      className={classNames(
+        'nhsuk-fieldset__legend',
+        {
+          'nhsuk-fieldset__legend--xl': isPageHeading && !size,
+        },
+        { [`nhsuk-fieldset__legend--${size}`]: size },
+        className,
+      )}
+      {...rest}
+    >
+      {isPageHeading ? (
+        <HeadingLevel className="nhsuk-fieldset__heading" headingLevel={headingLevel}>
+          {children}
+        </HeadingLevel>
+      ) : (
+        children
+      )}
+    </legend>
+  );
+};
 
 export default LegendComponent;

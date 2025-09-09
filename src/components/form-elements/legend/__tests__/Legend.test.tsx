@@ -15,4 +15,10 @@ describe('Legend', () => {
     expect(container.querySelector('.nhsuk-fieldset__legend--xl')).toBeTruthy();
     expect(container.querySelector('.nhsuk-fieldset__heading')?.textContent).toBe('Text');
   });
+
+  it('renders null with no children', () => {
+    const { container } = render(<Legend />);
+
+    expect(container.querySelector('legend')).toBeNull();
+  });
 });
