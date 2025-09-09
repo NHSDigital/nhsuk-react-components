@@ -2,23 +2,19 @@
 
 exports[`Fieldset matches snapshot: Fieldset 1`] = `
 <div>
-  <div
-    class="nhsuk-form-group"
+  <fieldset
+    class="nhsuk-fieldset"
   >
-    <fieldset
-      class="nhsuk-fieldset"
+    <div
+      class="nhsuk-form-group"
     >
-      <div
-        class="nhsuk-form-group"
-      >
-        <input
-          class="nhsuk-input"
-          id="test-input"
-          name="test-input"
-          type="text"
-        />
-      </div>
-    </fieldset>
-  </div>
+      <input
+        class="nhsuk-input"
+        id="test-input"
+        name="test-input"
+        type="text"
+      />
+    </div>
+  </fieldset>
 </div>
 `;

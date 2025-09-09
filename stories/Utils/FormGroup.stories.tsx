@@ -5,8 +5,6 @@ import HeadingLevel from '@components/utils/HeadingLevel';
 
 /**
  * This component is designed as a grouping wrapper around one or more inputs on a form.
- * Typically, a consumer would use the `Fieldset` component which uses `FormGroup`, but there
- * may be occassions where the same `FormGroup` functionality may be desired without rendering a `<fieldset />` element.
  *
  *  ## Usage
  *
