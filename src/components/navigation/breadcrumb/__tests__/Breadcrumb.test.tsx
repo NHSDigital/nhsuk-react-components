@@ -68,24 +68,19 @@ describe('Breadcrumb', () => {
   );
 
   describe('The BreadcrumbBack component', () => {
-    it.each<string | undefined>([undefined, 'Accessible prefix'])(
-      'Renders as expected with visually hidden text when accessiblePrefix is specified as %s',
-      (accessiblePrefix) => {
-        const { container } = render(
-          <Breadcrumb>
-            <Breadcrumb.Back href="/back" accessiblePrefix={accessiblePrefix}>
-              Breadcrumb 2
-            </Breadcrumb.Back>
-          </Breadcrumb>,
-        );
+    it('Renders as expected with visually hidden text', () => {
+      const { container } = render(
+        <Breadcrumb>
+          <Breadcrumb.Back href="/back">Breadcrumb 2</Breadcrumb.Back>
+        </Breadcrumb>,
+      );
 
-        const hiddenSpan = container.querySelector(
-          '.nhsuk-breadcrumb__backlink > .nhsuk-u-visually-hidden',
-        );
+      const hiddenSpan = container.querySelector(
+        '.nhsuk-breadcrumb__backlink > .nhsuk-u-visually-hidden',
+      );
 
-        expect(hiddenSpan?.textContent).toBe(accessiblePrefix ?? 'Back to &nbsp;');
-      },
-    );
+      expect(hiddenSpan?.textContent).toBe('Back to &nbsp;');
+    });
 
     it.each<ElementType | undefined>([undefined, 'button'])(
       'Renders with asElement when specified as %s',

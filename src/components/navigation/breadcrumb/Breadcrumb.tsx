@@ -13,18 +13,12 @@ const Item: Item = ({ className, children, asElement: Element = 'a', ...rest }) 
   </li>
 );
 
-type Back = FC<AsElementLink<HTMLAnchorElement> & { accessiblePrefix?: string }>;
+type Back = FC<AsElementLink<HTMLAnchorElement>>;
 
-const Back: Back = ({
-  className,
-  children,
-  asElement: Element = 'a',
-  accessiblePrefix = 'Back to &nbsp;',
-  ...rest
-}) => (
+const Back: Back = ({ className, children, asElement: Element = 'a', ...rest }) => (
   <p className={classNames('nhsuk-breadcrumb__back', className)}>
     <Element className="nhsuk-breadcrumb__backlink" {...rest}>
-      <span className="nhsuk-u-visually-hidden">{accessiblePrefix}</span>
+      <span className="nhsuk-u-visually-hidden">Back to &nbsp;</span>
       {children}
     </Element>
   </p>
