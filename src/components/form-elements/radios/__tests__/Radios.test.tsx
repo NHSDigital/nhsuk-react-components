@@ -35,7 +35,9 @@ describe('Radios', () => {
       </Radios>,
     );
 
-    expect(container.querySelector('.conditional-test')).toBeFalsy();
+    expect(container.querySelector('.conditional-test')?.parentElement).toHaveClass(
+      'nhsuk-radios__conditional--hidden',
+    );
   });
 
   it('renders the conditional content if the radio reference = selected radio', () => {

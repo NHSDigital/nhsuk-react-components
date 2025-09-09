@@ -1,4 +1,4 @@
-import React, { HTMLProps, useState } from 'react';
+import React, { HTMLProps, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '@util/types/FormTypes';
 import { RadiosContext, IRadiosContext } from './RadioContext';
@@ -6,6 +6,7 @@ import SingleInputFormGroup from '@components/utils/SingleInputFormGroup';
 import RadiosDivider from './components/Divider';
 import RadiosItem from './components/Item';
 import { generateRandomName } from '@util/RandomID';
+import { Radios } from 'nhsuk-frontend';
 
 interface RadiosProps extends HTMLProps<HTMLDivElement>, FormElementProps {
   inline?: boolean;
@@ -13,10 +14,21 @@ interface RadiosProps extends HTMLProps<HTMLDivElement>, FormElementProps {
 }
 
 const RadiosComponent = ({ children, idPrefix, ...rest }: RadiosProps) => {
+  const moduleRef = useRef<HTMLDivElement>(null);
+  const [instance, setInstance] = useState<Radios>();
+  const [selectedRadio, setSelectedRadio] = useState<string>();
+
   const _radioReferences: Array<string> = [];
   let _radioCount = 0;
   let _radioIds: Record<string, string> = {};
-  const [selectedRadio, setSelectedRadio] = useState<string>();
+
+  useEffect(() => {
+    if (!moduleRef.current || instance) {
+      return;
+    }
+
+    setInstance(new Radios(moduleRef.current));
+  }, [moduleRef, instance]);
 
   const getRadioId = (id: string, reference: string): string => {
     if (reference in _radioIds) {
@@ -69,7 +81,9 @@ const RadiosComponent = ({ children, idPrefix, ...rest }: RadiosProps) => {
         return (
           <div
             className={classNames('nhsuk-radios', { 'nhsuk-radios--inline': inline }, className)}
+            data-module="nhsuk-radios"
             id={id}
+            ref={moduleRef}
             {...restRenderProps}
           >
             <RadiosContext.Provider value={contextValue}>{children}</RadiosContext.Provider>

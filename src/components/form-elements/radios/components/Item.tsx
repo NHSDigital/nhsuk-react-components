@@ -59,11 +59,12 @@ const RadiosItem: FC<RadiosItemProps> = ({
           className={classNames('nhsuk-radios__input', className)}
           id={inputID}
           name={name}
+          type={type}
+          aria-controls={conditional ? `${inputID}--conditional` : undefined}
           aria-describedby={hint ? `${inputID}--hint` : undefined}
           checked={checked}
           defaultChecked={defaultChecked}
           ref={inputRef}
-          type={type}
           {...rest}
         />
         {children ? (
@@ -82,15 +83,17 @@ const RadiosItem: FC<RadiosItemProps> = ({
           </HintText>
         ) : null}
       </div>
-      {conditional && (shouldShowConditional || forceShowConditional) ? (
+      {conditional && (
         <div
-          className="nhsuk-radios__conditional"
+          className={classNames('nhsuk-radios__conditional', {
+            'nhsuk-radios__conditional--hidden': !(shouldShowConditional || forceShowConditional),
+          })}
           id={`${inputID}--conditional`}
           {...conditionalWrapperProps}
         >
           {conditional}
         </div>
-      ) : null}
+      )}
     </>
   );
 };
