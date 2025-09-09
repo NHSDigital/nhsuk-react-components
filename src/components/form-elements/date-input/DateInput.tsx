@@ -1,6 +1,6 @@
 'use client';
 
-import React, { HTMLProps, ChangeEvent, useEffect, useState } from 'react';
+import React, { ChangeEvent, EventHandler, HTMLProps, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { DayInput, MonthInput, YearInput } from './components/IndividualDateInputs';
 import SingleInputFormGroup from '@components/utils/SingleInputFormGroup';
@@ -13,18 +13,24 @@ type DateInputValue = {
   year: string;
 };
 
-export type DateInputChangeEvent = ChangeEvent<HTMLInputElement> & {
-  target: HTMLInputElement & { value: DateInputValue };
-  currentTarget: HTMLInputElement & { value: DateInputValue };
-};
+export interface DateInputChangeEvent
+  extends Omit<ChangeEvent<DateInputElement>, 'target' | 'currentTarget'> {
+  target: DateInputElement;
+  currentTarget: DateInputElement;
+}
+
+interface DateInputElement extends Omit<HTMLInputElement, 'value' | 'onChange'> {
+  value?: Partial<DateInputValue>;
+  onChange?: EventHandler<DateInputChangeEvent>;
+}
 
 interface DateInputProps
-  extends Omit<HTMLProps<HTMLDivElement>, 'value' | 'defaultValue'>,
+  extends Omit<HTMLProps<HTMLDivElement>, 'value' | 'defaultValue' | 'label' | 'onChange'>,
     FormElementProps {
   autoSelectNext?: boolean;
   value?: Partial<DateInputValue>;
   defaultValue?: Partial<DateInputValue>;
-  onChange?: (e: DateInputChangeEvent) => void;
+  onChange?: EventHandler<DateInputChangeEvent>;
 }
 
 type InputType = 'day' | 'month' | 'year';
@@ -39,7 +45,7 @@ const DateInputComponent = ({
 }: DateInputProps) => {
   let monthRef: HTMLInputElement | null = null;
   let yearRef: HTMLInputElement | null = null;
-  const [internalDate, setInternalDate] = useState<Record<InputType, string>>({
+  const [internalDate, setInternalDate] = useState<DateInputValue>({
     day: value?.day ?? '',
     month: value?.month ?? '',
     year: value?.year ?? '',
@@ -69,15 +75,16 @@ const DateInputComponent = ({
     event.stopPropagation();
 
     if (onChange) {
-      const newEventValue = {
+      const newEventValue: DateInputValue = {
         ...internalDate,
         [inputType]: event.target.value,
       };
-      const newEvent = {
+
+      const newEvent: ChangeEvent<DateInputElement> = {
         ...event,
         target: { ...event.target, value: newEventValue },
         currentTarget: { ...event.currentTarget, value: newEventValue },
-      } as DateInputChangeEvent;
+      };
 
       onChange(newEvent);
       setInternalDate(newEventValue);
