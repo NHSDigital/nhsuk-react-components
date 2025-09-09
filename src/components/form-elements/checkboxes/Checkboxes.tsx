@@ -73,6 +73,7 @@ const CheckboxesComponent = ({ children, idPrefix, ...rest }: CheckboxesProps) =
         return (
           <div
             className={classNames('nhsuk-checkboxes', className)}
+            data-module="nhsuk-checkboxes"
             id={id}
             ref={moduleRef}
             {...restRenderProps}

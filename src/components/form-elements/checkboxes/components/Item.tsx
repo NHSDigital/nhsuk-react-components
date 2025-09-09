@@ -35,7 +35,6 @@ const CheckboxesItem: FC<CheckboxesItemProps> = ({
   conditional,
   defaultChecked,
   checked,
-  onChange,
   inputRef,
   forceShowConditional,
   conditionalWrapperProps,
@@ -47,8 +46,8 @@ const CheckboxesItem: FC<CheckboxesItemProps> = ({
     useContext<ICheckboxContext>(CheckboxContext);
 
   const [boxReference] = useState<string>(leaseReference());
-  const [showConditional, setShowConditional] = useState<boolean>(!!(checked || defaultChecked));
   const inputID = id || getBoxId(boxReference);
+  const shouldShowConditional = !!(checked || defaultChecked);
 
   const { className: labelClassName, ...restLabelProps } = labelProps || {};
   const { className: hintClassName, ...restHintProps } = hintProps || {};
@@ -56,12 +55,6 @@ const CheckboxesItem: FC<CheckboxesItemProps> = ({
     conditionalWrapperProps || {};
 
   useEffect(() => () => unleaseReference(boxReference), []);
-
-  useEffect(() => {
-    if (checked !== undefined) {
-      setShowConditional(checked);
-    }
-  }, [checked]);
 
   const inputProps: HTMLAttributesWithData<HTMLInputElement> = rest;
 
@@ -74,17 +67,14 @@ const CheckboxesItem: FC<CheckboxesItemProps> = ({
       <div className="nhsuk-checkboxes__item">
         <input
           className="nhsuk-checkboxes__input"
-          onChange={(e) => {
-            if (checked === undefined) setShowConditional(e.target.checked);
-            if (onChange) onChange(e);
-          }}
-          name={name}
           id={inputID}
-          checked={checked}
-          defaultChecked={defaultChecked}
-          ref={inputRef}
+          name={name}
           type={type}
+          aria-controls={conditional ? `${inputID}--conditional` : undefined}
+          aria-describedby={hint ? `${inputID}--hint` : undefined}
           data-checkbox-exclusive-group={name}
+          defaultChecked={checked || defaultChecked}
+          ref={inputRef}
           {...inputProps}
         />
         {children ? (
@@ -100,21 +90,30 @@ const CheckboxesItem: FC<CheckboxesItemProps> = ({
         {hint ? (
           <HintText
             className={classNames('nhsuk-checkboxes__hint', hintClassName)}
+            id={`${inputID}--hint`}
             {...restHintProps}
           >
             {hint}
           </HintText>
         ) : null}
       </div>
-      {conditional && (showConditional || forceShowConditional) ? (
+      {conditional && (
         <div
-          className={classNames('nhsuk-radios__conditional', conditionalClassName)}
+          className={classNames(
+            'nhsuk-checkboxes__conditional',
+            {
+              'nhsuk-checkboxes__conditional--hidden': !(
+                shouldShowConditional || forceShowConditional
+              ),
+            },
+            conditionalClassName,
+          )}
           id={`${inputID}--conditional`}
           {...restConditionalProps}
         >
           {conditional}
         </div>
-      ) : null}
+      )}
     </>
   );
 };
