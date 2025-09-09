@@ -77,6 +77,7 @@ const DateInputComponent = ({
 
   return (
     <SingleInputFormGroup<Omit<DateInputProps, 'value' | 'defaultValue'>>
+      fieldsetProps={{ role: 'group' }}
       inputType="dateinput"
       {...rest}
     >
