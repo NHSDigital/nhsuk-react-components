@@ -1,6 +1,9 @@
 {
   "name": "nhsuk-react-components",
   "version": "5.0.0",
+  "author": {
+    "name": "NHS England"
+  },
   "files": [
     "dist",
     "lib"

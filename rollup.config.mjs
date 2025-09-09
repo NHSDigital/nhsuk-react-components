@@ -11,6 +11,7 @@ import postcss from 'rollup-plugin-postcss';
 import tsBuildConfig from './bundle-base.tsconfig.json' assert { type: 'json' };
 import packageJson from './package.json' assert { type: 'json' };
 
+// suppresses warnings printed to console as part of bundling components with directives present.
 const onWarnSuppression = {
 	onwarn(warning, warn) {
 		if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.includes(`"use client"`)) return;

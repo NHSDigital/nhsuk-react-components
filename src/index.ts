@@ -62,14 +62,3 @@ export { default as ReadingWidth } from './components/utils/ReadingWidth';
 export { default as FormGroup } from './components/utils/FormGroup';
 
 export { default as ReviewDate } from './patterns/review-date';
-
-export { default as AccordionMenu } from './components/accordion-menu';
-export { default as HeaderWithLogo} from './components/header-with-logo'
-
-export { default as RibbonLink } from './components/ribbon-link';
-export { default as SubNavigation } from './components/sub-navigation';
-// export { default as TabSet } from './components/tab-set';
-export { default as Timeline } from './components/timeline';
-export { default as Tooltip } from './components/tooltip';
-export { WarningIcon } from './components/icons';
-
