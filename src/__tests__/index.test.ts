@@ -38,6 +38,7 @@ describe('Index', () => {
       'InsetText',
       'Label',
       'LedeText',
+      'Legend',
       'NavAZ',
       'Pagination',
       'Panel',

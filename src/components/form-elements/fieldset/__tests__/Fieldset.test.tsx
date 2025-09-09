@@ -29,19 +29,4 @@ describe('Fieldset', () => {
 
     expect(container.firstChild).toHaveClass('nhsuk-form-group');
   });
-
-  describe('Fieldset.Legend', () => {
-    it('matches snapshot', () => {
-      const { container } = render(<Fieldset.Legend>Text</Fieldset.Legend>);
-
-      expect(container).toMatchSnapshot('FieldsetLegend');
-    });
-
-    it('renders as page heading', () => {
-      const { container } = render(<Fieldset.Legend isPageHeading>Text</Fieldset.Legend>);
-
-      expect(container.querySelector('.nhsuk-fieldset__legend--xl')).toBeTruthy();
-      expect(container.querySelector('.nhsuk-fieldset__heading')?.textContent).toBe('Text');
-    });
-  });
 });

@@ -1,45 +1,9 @@
-import React, { FC, HTMLProps, MutableRefObject } from 'react';
+import React, { HTMLProps, MutableRefObject } from 'react';
 import classNames from 'classnames';
-import { NHSUKSize } from '@util/types/NHSUKTypes';
-import HeadingLevel, { HeadingLevelType } from '@components/utils/HeadingLevel';
-import FormGroup from '@components/utils/FormGroup';
+import Legend from '../legend/Legend';
+import FormGroup from '../../utils/FormGroup';
 
-interface LegendProps extends Omit<HTMLProps<HTMLLegendElement>, 'size'> {
-  isPageHeading?: boolean;
-  headingLevel?: HeadingLevelType;
-  size?: NHSUKSize;
-}
-
-const Legend: FC<LegendProps> = ({
-  className,
-  children,
-  isPageHeading,
-  headingLevel = 'h1',
-  size,
-  ...rest
-}) => (
-  <legend
-    className={classNames(
-      'nhsuk-fieldset__legend',
-      {
-        'nhsuk-fieldset__legend--xl': isPageHeading && !size,
-      },
-      { [`nhsuk-fieldset__legend--${size}`]: size },
-      className,
-    )}
-    {...rest}
-  >
-    {isPageHeading ? (
-      <HeadingLevel className="nhsuk-fieldset__heading" headingLevel={headingLevel}>
-        {children}
-      </HeadingLevel>
-    ) : (
-      children
-    )}
-  </legend>
-);
-
-interface FieldsetProps extends HTMLProps<HTMLFieldSetElement> {
+export interface FieldsetProps extends HTMLProps<HTMLFieldSetElement> {
   fieldsetRef?: MutableRefObject<HTMLFieldSetElement | null>;
   disableErrorLine?: boolean;
 }

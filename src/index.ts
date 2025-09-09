@@ -17,6 +17,7 @@ export { default as Form, useFormContext } from './components/form-elements/form
 export { default as Header } from './components/navigation/header';
 export { default as Hero } from './components/content-presentation/hero';
 export { default as HintText } from './components/form-elements/hint-text';
+export { default as Legend } from './components/form-elements/legend';
 export {
   ArrowLeft as ArrowLeftIcon,
   ArrowRight as ArrowRightIcon,
