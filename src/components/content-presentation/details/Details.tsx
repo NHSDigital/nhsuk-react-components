@@ -11,7 +11,6 @@ interface DetailsComponent extends FC<DetailsProps> {
   ExpanderGroup: FC<HTMLProps<HTMLDivElement>>;
 }
 
-// TODO: Check if standard NHS.UK polyfill "details.polyfill.js" is required
 const DetailsComponent: DetailsComponent = ({ className, expander, ...rest }) => (
   <details
     className={classNames('nhsuk-details', { 'nhsuk-expander': expander }, className)}
