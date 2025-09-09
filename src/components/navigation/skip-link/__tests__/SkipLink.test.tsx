@@ -1,90 +1,41 @@
-import React, { createRef } from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import React from 'react';
+import { fireEvent, render, waitFor } from '@testing-library/react';
 import SkipLink from '../';
 
 function SkipLinkTestApp(): JSX.Element {
-  const mainContentRef = createRef<HTMLElement>();
-
   return (
     <>
-      <SkipLink focusTargetRef={mainContentRef} />
-      <main className="nhsuk-main-wrapper" id="maincontent" role="main" ref={mainContentRef}>
-        <div className="nhsuk-grid-row"></div>
-      </main>
+      <SkipLink />
+      <div className="nhsuk-width-container">
+        <main className="nhsuk-main-wrapper" id="maincontent"></main>
+      </div>
     </>
   );
 }
 
 describe('SkipLink', () => {
   it('matches snapshot', () => {
-    const { container } = render(<SkipLink />);
+    const { container } = render(<SkipLinkTestApp />);
 
     expect(container).toMatchSnapshot('SkipLink');
   });
 
-  it('sets the href to #maincontent by default and focuses the first heading', () => {
-    const { container } = render(
-      <>
-        <SkipLink />
-        <h1 id="heading">Heading</h1>
-      </>,
-    );
-
-    const headingEl = container.querySelector('#heading') as HTMLElement;
-    const focusSpy = jest.spyOn(headingEl, 'focus');
-
-    const skipLinkEl = container.querySelector('.nhsuk-skip-link')!;
-
-    expect(skipLinkEl.getAttribute('href')).toBe('#maincontent');
-
-    fireEvent.click(skipLinkEl);
-
-    expect(focusSpy).toHaveBeenCalled();
-  });
-
-  it('Does not focus the first heading if disableHeadingFocus is set', () => {
-    const { container } = render(
-      <>
-        <SkipLink disableHeadingFocus />
-        <h1 id="heading">Heading</h1>
-      </>,
-    );
-
-    const headingEl = container.querySelector('#heading') as HTMLElement;
-    const focusSpy = jest.spyOn(headingEl, 'focus');
-
-    const skipLinkEl = container.querySelector('.nhsuk-skip-link')!;
-
-    expect(skipLinkEl.getAttribute('href')).toBe('#maincontent');
-
-    fireEvent.click(skipLinkEl);
-
-    expect(focusSpy).not.toHaveBeenCalled();
-  });
-
-  it('calls onClick callback when clicked', () => {
-    const onClick = jest.fn();
-    const { container } = render(<SkipLink onClick={onClick} />);
-
-    const skipLinkEl = container.querySelector('.nhsuk-skip-link')!;
-    fireEvent.click(skipLinkEl);
-
-    expect(onClick).toHaveBeenCalled();
-  });
-
-  it('Focuses the main content when clicked', () => {
+  it('sets the href to #maincontent by default', () => {
     const { container } = render(<SkipLinkTestApp />);
 
-    const mainContent = container.querySelector('main#maincontent') as HTMLElement;
+    const skipLinkEl = container.querySelector('.nhsuk-skip-link')!;
 
-    const focusSpy = jest.spyOn(mainContent, 'focus');
+    expect(skipLinkEl.getAttribute('href')).toBe('#maincontent');
+  });
 
-    expect(focusSpy).not.toHaveBeenCalled();
+  it('focuses the main content when clicked', async () => {
+    const { container } = render(<SkipLinkTestApp />);
 
-    const skipButton = container.querySelector('.nhsuk-skip-link')!;
+    const mainEl = container.querySelector('main');
+    const skipLinkEl = container.querySelector('.nhsuk-skip-link')!;
 
-    fireEvent.click(skipButton);
+    fireEvent.click(skipLinkEl);
 
-    expect(focusSpy).toHaveBeenCalled();
+    await waitFor(() => expect(document.activeElement).toBe(mainEl));
   });
 });
