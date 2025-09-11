@@ -7,12 +7,11 @@ import { Meta, StoryObj } from '@storybook/react';
  *
  * ## Implementation Notes
  *
- * The `ErrorSummary` component has four subcomponents:
+ * The `ErrorSummary` component has three subcomponents:
  *
  * - `ErrorSummary.Title`
- * - `ErrorSummary.Body`
  * - `ErrorSummary.List`
- * - `ErrorSummary.Item`
+ * - `ErrorSummary.ListItem`
  *
  * ## Usage
  *
@@ -25,17 +24,12 @@ import { Meta, StoryObj } from '@storybook/react';
  *     return (
  *         <ErrorSummary>
  *             <ErrorSummary.Title>There is a problem</ErrorSummary.Title>
- *             <ErrorSummary.Body>
- *                 <p>Optional description of the errors and how to correct them</p>
- *                 <ErrorSummary.List>
- *                     <ErrorSummary.Item href="#example-error-1">
- *                         Link to error with explanation
- *                     </ErrorSummary.Item>
- *                     <ErrorSummary.Item href="#example-error-2">
- *                         Link to error with explanation
- *                     </ErrorSummary.Item>
- *                 </ErrorSummary.List>
- *             </ErrorSummary.Body>
+ *             <p>Describe the errors and how to correct them</p>
+ *             <ErrorSummary.List>
+ *                 <ErrorSummary.ListItem href="#example-error-1">
+ *                     Date of birth must be in the past
+ *                 </ErrorSummary.ListItem>
+ *             </ErrorSummary.List>
  *         </ErrorSummary>
  *     );
  * }
@@ -48,26 +42,40 @@ const meta: Meta<typeof ErrorSummary> = {
 export default meta;
 type Story = StoryObj<typeof ErrorSummary>;
 
-ErrorSummary.Title.displayName = 'ErrorSummary.Title';
-ErrorSummary.Body.displayName = 'ErrorSummary.Body';
-ErrorSummary.List.displayName = 'ErrorSummary.List';
-ErrorSummary.Item.displayName = 'ErrorSummary.Item';
-
 export const Standard: Story = {
   render: (args) => (
     <ErrorSummary>
       <ErrorSummary.Title>There is a problem</ErrorSummary.Title>
-      <ErrorSummary.Body>
-        <p>Optional description of the errors and how to correct them</p>
-        <ErrorSummary.List>
-          <ErrorSummary.Item href="#example-error-1">
-            Link to error with explanation
-          </ErrorSummary.Item>
-          <ErrorSummary.Item href="#example-error-2">
-            Link to error with explanation
-          </ErrorSummary.Item>
-        </ErrorSummary.List>
-      </ErrorSummary.Body>
+      <ErrorSummary.List>
+        <ErrorSummary.ListItem href="#example-error-1">Enter your full name</ErrorSummary.ListItem>
+      </ErrorSummary.List>
+    </ErrorSummary>
+  ),
+};
+
+export const WithDescription: Story = {
+  render: (args) => (
+    <ErrorSummary>
+      <ErrorSummary.Title>There is a problem</ErrorSummary.Title>
+      <p>Describe the errors and how to correct them</p>
+      <ErrorSummary.List>
+        <ErrorSummary.ListItem href="#example-error-1">
+          Date of birth must be in the past
+        </ErrorSummary.ListItem>
+      </ErrorSummary.List>
+    </ErrorSummary>
+  ),
+};
+
+export const WithAutoFocusDisabled: Story = {
+  render: (args) => (
+    <ErrorSummary disableAutoFocus={true}>
+      <ErrorSummary.Title>There is a problem</ErrorSummary.Title>
+      <ErrorSummary.List>
+        <ErrorSummary.ListItem href="#example-error-1">
+          Date of birth must be in the past
+        </ErrorSummary.ListItem>
+      </ErrorSummary.List>
     </ErrorSummary>
   ),
 };
