@@ -6,4 +6,6 @@ const CardGroup: FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => (
   <Row className={classNames('nhsuk-card-group', className)} {...rest} />
 );
 
+CardGroup.displayName = 'Card.Group';
+
 export default CardGroup;

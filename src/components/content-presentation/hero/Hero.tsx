@@ -75,6 +75,10 @@ const HeroComponent: HeroComponent = ({ className, children, imageSrc, ...rest }
   </section>
 );
 
+HeroComponent.displayName = 'Hero';
+HeroHeading.displayName = 'Hero.Heading';
+HeroText.displayName = 'Hero.Text';
+
 HeroComponent.Heading = HeroHeading;
 HeroComponent.Text = HeroText;
 

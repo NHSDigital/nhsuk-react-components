@@ -40,4 +40,6 @@ const Search: FC<SearchProps> = ({
   );
 };
 
+Search.displayName = 'Header.Search';
+
 export default Search;

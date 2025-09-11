@@ -9,9 +9,6 @@ const meta: Meta<typeof Radios> = {
 export default meta;
 type Story = StoryObj<typeof Radios>;
 
-Radios.Item.displayName = 'Radios.Item';
-Radios.Divider.displayName = 'Radios.Divider';
-
 export const StandardRadios: Story = {
   render: (args) => (
     <Radios

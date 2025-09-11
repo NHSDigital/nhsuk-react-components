@@ -15,4 +15,6 @@ const HintTextComponent: FC<HintTextProps> = ({ className, children, ...rest }) 
   );
 };
 
+HintTextComponent.displayName = 'HintText';
+
 export default HintTextComponent;

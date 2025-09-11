@@ -39,4 +39,6 @@ const LabelComponent: FC<LabelProps> = ({ isPageHeading, children, ...rest }) =>
   return <Label {...rest}>{children}</Label>;
 };
 
+LabelComponent.displayName = 'Label';
+
 export default LabelComponent;

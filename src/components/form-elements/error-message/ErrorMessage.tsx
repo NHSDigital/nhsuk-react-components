@@ -28,4 +28,6 @@ const ErrorMessageComponent: FC<ErrorMessageProps> = ({
   );
 };
 
+ErrorMessageComponent.displayName = 'ErrorMessage';
+
 export default ErrorMessageComponent;

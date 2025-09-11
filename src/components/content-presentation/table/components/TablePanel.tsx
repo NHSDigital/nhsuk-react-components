@@ -28,4 +28,6 @@ const TablePanel: FC<TablePanelProps> = ({
   </div>
 );
 
+TablePanel.displayName = 'Table.Panel';
+
 export default TablePanel;

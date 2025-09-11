@@ -19,8 +19,6 @@ const meta: Meta<typeof NavAZ> = {
 export default meta;
 type Story = StoryObj<typeof NavAZ>;
 
-NavAZ.LinkItem.displayName = 'NavAZ.LinkItem';
-
 export const Basic: Story = {
   render: (args) => (
     <NavAZ>

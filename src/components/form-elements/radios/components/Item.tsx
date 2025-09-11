@@ -94,4 +94,6 @@ const RadiosItem: FC<RadiosItemProps> = ({
   );
 };
 
+RadiosItem.displayName = 'Radios.Item';
+
 export default RadiosItem;

@@ -56,6 +56,10 @@ const PanelLinkItem: FC<AsElementLink<HTMLAnchorElement>> = ({
   </PanelItem>
 );
 
+Panel.displayName = 'Panel';
+PanelLinkItem.displayName = 'Panel.LinkItem';
+PanelItem.displayName = 'Panel.Item';
+
 Panel.LinkItem = PanelLinkItem;
 Panel.Item = PanelItem;
 

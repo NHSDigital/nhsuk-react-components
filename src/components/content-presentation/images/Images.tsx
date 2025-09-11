@@ -16,4 +16,6 @@ const ImagesComponent: FC<ImageProps> = ({ className, caption, ...rest }) => (
   </figure>
 );
 
+ImagesComponent.displayName = 'Images';
+
 export default ImagesComponent;

@@ -48,4 +48,6 @@ const Navigation: FC<NavigationProps> = ({
   );
 };
 
+Navigation.displayName = 'Header.Navigation';
+
 export default Navigation;

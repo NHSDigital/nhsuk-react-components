@@ -9,8 +9,6 @@ const meta: Meta<typeof Panel> = {
 export default meta;
 type Story = StoryObj<typeof Panel>;
 
-Panel.LinkItem.displayName = 'Panel.LinkItem';
-
 export const Standard: Story = {
   argTypes: {
     type: { table: { disable: true } },

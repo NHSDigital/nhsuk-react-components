@@ -19,4 +19,6 @@ const CardContent: FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => {
   );
 };
 
+CardContent.displayName = 'Card.Content';
+
 export default CardContent;

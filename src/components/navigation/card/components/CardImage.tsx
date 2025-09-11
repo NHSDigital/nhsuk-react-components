@@ -11,4 +11,6 @@ const CardImage: FC<CardImageProps> = ({ className, alt, ...rest }) => (
   <img className={classNames('nhsuk-card__img', className)} alt={alt} {...rest} />
 );
 
+CardImage.displayName = 'Card.Image';
+
 export default CardImage;

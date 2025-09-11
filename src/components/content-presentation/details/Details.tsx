@@ -32,6 +32,11 @@ const ExpanderGroup: FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) =>
   <div className={classNames('nhsuk-expander-group', className)} {...rest} />
 );
 
+DetailsComponent.displayName = 'Details';
+DetailsSummary.displayName = 'Details.Summary';
+DetailsText.displayName = 'Details.Text';
+ExpanderGroup.displayName = 'Details.ExpanderGroup';
+
 DetailsComponent.Summary = DetailsSummary;
 DetailsComponent.Text = DetailsText;
 DetailsComponent.ExpanderGroup = ExpanderGroup;

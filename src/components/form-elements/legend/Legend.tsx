@@ -44,4 +44,6 @@ const LegendComponent: FC<LegendProps> = ({
   );
 };
 
+LegendComponent.displayName = 'Fieldset.Legend';
+
 export default LegendComponent;

@@ -37,6 +37,9 @@ const WarningCalloutComponent: IWarningCallout = ({ className, ...rest }) => (
   <div className={classNames('nhsuk-warning-callout', className)} {...rest} />
 );
 
+WarningCalloutComponent.displayName = 'WarningCallout';
+WarningCalloutHeading.displayName = 'WarningCallout.Heading';
+
 WarningCalloutComponent.Heading = WarningCalloutHeading;
 
 export default WarningCalloutComponent;

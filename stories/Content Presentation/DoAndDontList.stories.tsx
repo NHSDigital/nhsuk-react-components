@@ -45,8 +45,6 @@ const meta: Meta<typeof DoAndDontList> = {
 export default meta;
 type Story = StoryObj<typeof DoAndDontList>;
 
-DoAndDontList.Item.displayName = 'DoAndDontList.Item';
-
 export const Do: Story = {
   render: (args) => (
     <DoAndDontList listType="do">

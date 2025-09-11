@@ -90,5 +90,3 @@ export const Standard: Story = {
     </Container>
   ),
 };
-
-NavAZ.LinkItem.displayName = 'NavAZ.LinkItem';

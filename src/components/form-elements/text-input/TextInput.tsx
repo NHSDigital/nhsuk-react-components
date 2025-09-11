@@ -54,4 +54,6 @@ const TextInputComponent: FC<TextInputProps> = (props) => (
   </FormGroup>
 );
 
+TextInputComponent.displayName = 'TextInput';
+
 export default TextInputComponent;

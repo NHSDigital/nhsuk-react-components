@@ -13,4 +13,6 @@ const BackLinkComponent: FC<AsElementLink<HTMLAnchorElement>> = ({
   </Element>
 );
 
+BackLinkComponent.displayName = 'BackLink';
+
 export default BackLinkComponent;

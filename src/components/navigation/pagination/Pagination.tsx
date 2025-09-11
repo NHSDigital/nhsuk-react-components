@@ -62,6 +62,9 @@ const PaginationComponent: PaginationComponent = ({
   </nav>
 );
 
+PaginationComponent.displayName = 'Pagination';
+PaginationLink.displayName = 'Pagination.Link';
+
 PaginationComponent.Link = PaginationLink;
 
 export default PaginationComponent;

@@ -105,3 +105,7 @@ export const MonthInput: FC<Omit<IndividualDateInputProps, 'inputType'>> = (prop
 export const YearInput: FC<Omit<IndividualDateInputProps, 'inputType'>> = (props) => (
   <IndividualDateInput inputType="year" {...props} />
 );
+
+DayInput.displayName = 'DateInput.Day';
+MonthInput.displayName = 'DateInput.Month';
+YearInput.displayName = 'DateInput.Year';

@@ -11,4 +11,6 @@ const FormComponent: FC<FormProps> = ({ disableErrorFromComponents, ...rest }) =
   </FormContext.Provider>
 );
 
+FormComponent.displayName = 'Form';
+
 export default FormComponent;

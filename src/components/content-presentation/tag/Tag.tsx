@@ -27,4 +27,6 @@ const TagComponent: FC<TagProps> = ({ className, color, modifier = color, ...res
   />
 );
 
+TagComponent.displayName = 'Tag';
+
 export default TagComponent;

@@ -69,4 +69,6 @@ const CharacterCountComponent: FC<CharacterCountProps> = ({
   );
 };
 
+CharacterCountComponent.displayName = 'CharacterCount';
+
 export default CharacterCountComponent;

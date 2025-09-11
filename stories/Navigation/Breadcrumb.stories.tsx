@@ -49,9 +49,6 @@ const meta: Meta<typeof Breadcrumb> = {
 export default meta;
 type Story = StoryObj<typeof Breadcrumb>;
 
-Breadcrumb.Item.displayName = 'Breadcrumb.Item';
-Breadcrumb.Back.displayName = 'Breadcrumb.Back';
-
 export const Standard: Story = {};
 
 export const OverrideAriaLabel: Story = {

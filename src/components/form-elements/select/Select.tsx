@@ -29,6 +29,9 @@ const SelectComponent: ISelect = ({ children, ...rest }) => (
 
 const Option: FC<HTMLProps<HTMLOptionElement>> = (props) => <option {...props} />;
 
+SelectComponent.displayName = 'Select';
+Option.displayName = 'Select.Option';
+
 SelectComponent.Option = Option;
 
 export default SelectComponent;

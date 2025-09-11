@@ -109,6 +109,8 @@ const DateInputComponent = ({
   );
 };
 
+DateInputComponent.displayName = 'DateInput';
+
 DateInputComponent.Day = DayInput;
 DateInputComponent.Month = MonthInput;
 DateInputComponent.Year = YearInput;

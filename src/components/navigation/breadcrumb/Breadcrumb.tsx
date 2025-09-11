@@ -63,6 +63,10 @@ const BreadcrumbComponent: BreadcrumbComponent = ({
   );
 };
 
+BreadcrumbComponent.displayName = 'Breadcrumb';
+Item.displayName = 'Breadcrumb.Item';
+Back.displayName = 'Breadcrumb.Back';
+
 BreadcrumbComponent.Item = Item;
 BreadcrumbComponent.Back = Back;
 

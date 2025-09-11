@@ -139,6 +139,8 @@ const HeaderComponent = ({
   );
 };
 
+HeaderComponent.displayName = 'Header';
+
 HeaderComponent.Account = Account;
 HeaderComponent.AccountItem = AccountItem;
 HeaderComponent.Logo = Logo;

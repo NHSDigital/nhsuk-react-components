@@ -13,4 +13,6 @@ const Account: FC<AccountProps> = ({
   </nav>
 );
 
+Account.displayName = 'Header.Account';
+
 export default Account;

@@ -48,8 +48,6 @@ const meta: Meta<typeof ContentsList> = {
 export default meta;
 type Story = StoryObj<typeof ContentsList>;
 
-ContentsList.Item.displayName = 'ContentsList.Item';
-
 export const Standard: Story = {
   render: (args) => (
     <ContentsList aria-label="Pages in this guide">

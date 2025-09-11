@@ -68,4 +68,6 @@ const CardHeading: FC<CardHeadingProps> = (props) => {
   );
 };
 
+CardHeading.displayName = 'Card.Heading';
+
 export default CardHeading;

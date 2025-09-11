@@ -8,4 +8,6 @@ const CardLink: FC<AsElementLink<HTMLAnchorElement>> = ({
   ...rest
 }) => <Element className={classNames('nhsuk-card__link', className)} {...rest} />;
 
+CardLink.displayName = 'Card.Link';
+
 export default CardLink;
