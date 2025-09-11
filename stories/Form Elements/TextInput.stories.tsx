@@ -24,7 +24,7 @@ export const WithHintText: Story = {
   },
 };
 
-export const AsPageHeading: Story = {
+export const WithLabelAsPageHeading: Story = {
   args: {
     labelProps: {
       isPageHeading: true,

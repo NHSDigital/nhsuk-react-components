@@ -1,5 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
+import type { NHSUKSize } from '@util/types/NHSUKTypes';
 import Label from '../Label';
 
 describe('Label', () => {
@@ -10,21 +11,43 @@ describe('Label', () => {
     expect(container.innerHTML).toBe('<label class="nhsuk-label">Text</label>');
   });
 
-  it('can render with size m', () => {
-    const { container } = render(<Label size="m">Text</Label>);
+  it.each<NHSUKSize>(['s', 'm', 'l', 'xl'])('renders with custom size %s', (size) => {
+    const { container } = render(<Label size={size}>Text</Label>);
 
-    expect(container.textContent).toBe('Text');
-    expect(container.innerHTML).toBe('<label class="nhsuk-label nhsuk-label--m">Text</label>');
+    const labelEl = container.querySelector('.nhsuk-label');
+
+    expect(labelEl).toHaveTextContent('Text');
+    expect(labelEl).toHaveClass(`nhsuk-label--${size}`);
   });
 
-  it('can render with heading prop', () => {
+  it('renders as page heading', () => {
     const { container } = render(<Label isPageHeading>Text</Label>);
 
-    expect(container.querySelector('.nhsuk-label.nhsuk-label--xl')?.textContent).toBe('Text');
-    expect(container.innerHTML).toBe(
-      '<h1 class="nhsuk-label-wrapper"><label class="nhsuk-label nhsuk-label--xl">Text</label></h1>',
-    );
+    const headingEl = container.querySelector('.nhsuk-label-wrapper');
+    const labelEl = headingEl?.querySelector('.nhsuk-label');
+
+    expect(headingEl?.tagName).toBe('H1');
+    expect(labelEl).toHaveTextContent('Text');
+    expect(labelEl).not.toHaveClass(`nhsuk-label--xl`);
   });
+
+  it.each<NHSUKSize>(['s', 'm', 'l', 'xl'])(
+    'renders as page heading with custom size %s',
+    (size) => {
+      const { container } = render(
+        <Label isPageHeading size={size}>
+          Text
+        </Label>,
+      );
+
+      const headingEl = container.querySelector('.nhsuk-label-wrapper');
+      const labelEl = headingEl?.querySelector('.nhsuk-label');
+
+      expect(headingEl?.tagName).toBe('H1');
+      expect(labelEl).toHaveTextContent('Text');
+      expect(labelEl).toHaveClass(`nhsuk-label--${size}`);
+    },
+  );
 
   it('renders null with no children', () => {
     const { container } = render(<Label />);

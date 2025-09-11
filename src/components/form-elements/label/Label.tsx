@@ -3,21 +3,14 @@ import classNames from 'classnames';
 import { NHSUKSize } from '@util/types/NHSUKTypes';
 
 export interface LabelProps extends Omit<HTMLProps<HTMLLabelElement>, 'size'> {
-  bold?: boolean;
   isPageHeading?: boolean;
   size?: NHSUKSize;
 }
 
-const Label: FC<LabelProps> = ({ className, bold, size, isPageHeading, ...rest }) => (
+const Label: FC<LabelProps> = ({ className, size, ...rest }) => (
   // eslint-disable-next-line jsx-a11y/label-has-associated-control
   <label
-    className={classNames(
-      'nhsuk-label',
-      { 'nhsuk-label--s': bold && !size },
-      { 'nhsuk-label--xl': isPageHeading && !size },
-      { [`nhsuk-label--${size}`]: size },
-      className,
-    )}
+    className={classNames('nhsuk-label', { [`nhsuk-label--${size}`]: size }, className)}
     {...rest}
   />
 );

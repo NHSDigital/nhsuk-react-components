@@ -125,7 +125,7 @@ export const WithLegendAsPageHeading: Story = {
     <form>
       <Checkboxes
         legend="Which types of waste do you transport regularly?"
-        legendProps={{ isPageHeading: true }}
+        legendProps={{ isPageHeading: true, size: 'l' }}
         hint="Select all that apply"
         id="waste"
         name="waste"

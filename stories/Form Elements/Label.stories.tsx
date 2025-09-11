@@ -7,26 +7,47 @@ const meta: Meta<typeof Label> = {
   args: {
     children: 'National Insurance Number',
     size: undefined,
-    bold: false,
     isPageHeading: false,
+  },
+  argTypes: {
+    size: { control: 'select', options: [undefined, 's', 'm', 'l', 'xl'] },
   },
 };
 export default meta;
 type Story = StoryObj<typeof Label>;
 
 export const Standard: Story = {};
-export const BoldLabel: Story = {
-  args: {
-    bold: true,
-  },
-};
-export const PageHeadingLabel: Story = {
+
+export const AsPageHeading: Story = {
   args: {
     isPageHeading: true,
   },
 };
-export const CustomSizeLabel: Story = {
+
+export const WithCustomSizeS: Story = {
+  name: 'With Bold Text (S)',
+  args: {
+    size: 's',
+  },
+};
+
+export const WithCustomSizeM: Story = {
+  name: 'With Custom Size (M)',
   args: {
     size: 'm',
+  },
+};
+
+export const WithCustomSizeL: Story = {
+  name: 'With Custom Size (L)',
+  args: {
+    size: 'l',
+  },
+};
+
+export const WithCustomSizeXL: Story = {
+  name: 'With Custom Size (XL)',
+  args: {
+    size: 'xl',
   },
 };

@@ -6,22 +6,37 @@ const meta: Meta<typeof Textarea> = {
   title: 'Form Elements/Textarea',
   component: Textarea,
   args: {
-    label: 'Can you provide more detail?',
-    hint: "Don't include personal or financial information, eg your National Insurance number or credit card details.",
-    id: 'more-detail',
-    name: 'more-detail',
+    id: 'example',
+    name: 'example',
     rows: 5,
   },
 };
 export default meta;
 type Story = StoryObj<typeof Textarea>;
 
-export const Standard: Story = {};
+export const Standard: Story = {
+  args: {
+    label: 'Can you provide more detail?',
+    labelProps: { size: 'l' },
+    hint: 'Do not include personal information, like your name, date of birth or NHS number',
+  },
+};
+
+export const WithLabelAsPageHeading: Story = {
+  args: {
+    label: 'Can you provide more detail?',
+    labelProps: { isPageHeading: true, size: 'l' },
+    hint: 'Do not include personal information, like your name, date of birth or NHS number',
+    autoComplete: 'street-address',
+  },
+};
+
 export const TextareaWithAutoCompleteAttribute: Story = {
   args: {
+    label: 'Can you provide more detail?',
+    labelProps: { size: 'l' },
+    hint: 'Do not include personal information, like your name, date of birth or NHS number',
     autoComplete: 'street-address',
-    label: 'Full address',
-    id: 'textarea-with-autocomplete-attribute',
   },
 };
 
@@ -32,11 +47,13 @@ export const TextareaWithErrorBoolean: Story = {
     return (
       <>
         <Textarea
+          label="Can you provide more detail?"
+          labelProps={{ size: 'l' }}
+          hint="Do not include personal information, like your name, date of birth or NHS number"
           error={error}
-          id="no-ni-reason"
-          name="no-ni-reason"
+          id="with-error-message"
+          name="with-error-message"
           rows={5}
-          label="Why can&#39;t you provide a National Insurance number?"
         />
         <Button
           onClick={(e: MouseEvent<HTMLButtonElement>) => {
@@ -59,11 +76,13 @@ export const TextareaWithErrorString: Story = {
     return (
       <>
         <Textarea
+          label="Can you provide more detail?"
+          labelProps={{ size: 'l' }}
+          hint="Do not include personal information, like your name, date of birth or NHS number"
           error={error}
-          id="no-ni-reason"
-          name="no-ni-reason"
+          id="with-error-message"
+          name="with-error-message"
           rows={5}
-          label="Why can&#39;t you provide a National Insurance number?"
         />
         <TextInput onChange={(e) => setError(e.currentTarget.value)} value={error} />
       </>
