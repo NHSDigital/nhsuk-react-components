@@ -72,6 +72,27 @@ export const FeatureCard: Story = {
   ),
 };
 
+export const FeatureCardWithList: Story = {
+  render: () => (
+    <Card cardType="feature">
+      <Card.Content>
+        <Card.Heading>Feature card heading</Card.Heading>
+        <ul className="nhsuk-list nhsuk-list--border">
+          <li>
+            <a href="/conditions/abdominal-aortic-aneurysm/">AAA</a>
+          </li>
+          <li>
+            <a href="/conditions/abdominal-aortic-aneurysm/">Abdominal aortic aneurysm</a>
+          </li>
+          <li>
+            <a href="/conditions/abscess/">Abscess</a>
+          </li>
+        </ul>
+      </Card.Content>
+    </Card>
+  ),
+};
+
 export const PrimaryCardWithChevron: Story = {
   render: () => (
     <Card clickable cardType="primary">

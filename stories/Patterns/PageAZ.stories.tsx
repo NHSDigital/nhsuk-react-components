@@ -2,10 +2,10 @@ import React from 'react';
 import { Meta, StoryObj } from '@storybook/react';
 import NavAZ from '@patterns/nav-a-z';
 import HeadingLevel from '@components/utils/HeadingLevel';
-import Panel from '@patterns/panel/Panel';
 import Container from '@components/layout/Container';
 import Row from '@components/layout/Row';
 import Col from '@components/layout/Col';
+import { Card } from '../../src';
 
 /**
  * A to Z is a way of presenting a number of pages alphabetically.
@@ -28,7 +28,7 @@ type Story = StoryObj;
 export const Standard: Story = {
   render: () => (
     <Container>
-      <main className="nhsuk-main-wrapper" id="maincontent" role="main">
+      <main className="nhsuk-main-wrapper" id="maincontent">
         <Row>
           <Col width="full">
             <HeadingLevel headingLevel="h1">Health A to Z</HeadingLevel>
@@ -62,28 +62,86 @@ export const Standard: Story = {
               <NavAZ.LinkItem href="#Z">Z</NavAZ.LinkItem>
             </NavAZ>
 
-            <Panel label="A" labelProps={{ id: 'A' }} backToTop backToTopLink="#nhsuk-nav-a-z">
-              <Panel.LinkItem href="/conditions/abdominal-aortic-aneurysm/">AAA</Panel.LinkItem>
-              <Panel.LinkItem href="/conditions/abdominal-aortic-aneurysm/">
-                Abdominal aortic aneurysm
-              </Panel.LinkItem>
-              <Panel.LinkItem href="/conditions/abscess/">Abscess</Panel.LinkItem>
-            </Panel>
+            <Card cardType="feature">
+              <Card.Content>
+                <Card.Heading id="A">A</Card.Heading>
+                <ul className="nhsuk-list nhsuk-list--border">
+                  <li>
+                    <a href="/conditions/abdominal-aortic-aneurysm/">AAA</a>
+                  </li>
+                  <li>
+                    <a href="/conditions/abdominal-aortic-aneurysm/">Abdominal aortic aneurysm</a>
+                  </li>
+                  <li>
+                    <a href="/conditions/abscess/">Abscess</a>
+                  </li>
+                </ul>
+              </Card.Content>
+            </Card>
 
-            <Panel label="B" labelProps={{ id: 'B' }} backToTop backToTopLink="#nhsuk-nav-a-z">
-              <Panel.Item>There are currently no conditions listed</Panel.Item>
-            </Panel>
+            <div className="nhsuk-back-to-top">
+              <a className="nhsuk-back-to-top__link" href="#nhsuk-nav-a-z">
+                Back to top
+              </a>
+            </div>
 
-            <Panel label="C" labelProps={{ id: 'C' }} backToTop backToTopLink="#nhsuk-nav-a-z">
-              <Panel.LinkItem href="/conditions/chest-pain/">Chest pain</Panel.LinkItem>
-              <Panel.LinkItem href="/conditions/cold-sores/">Cold sore</Panel.LinkItem>
-            </Panel>
+            <Card cardType="feature">
+              <Card.Content>
+                <Card.Heading id="B">B</Card.Heading>
+                <ul className="nhsuk-list nhsuk-list--border">
+                  <li>There are currently no conditions listed</li>
+                </ul>
+              </Card.Content>
+            </Card>
 
-            <Panel label="D" labelProps={{ id: 'D' }} backToTop backToTopLink="#nhsuk-nav-a-z">
-              <Panel.LinkItem href="/conditions/dandruff/">Dandruff</Panel.LinkItem>
-              <Panel.LinkItem href="/conditions/dementia/">Dementia</Panel.LinkItem>
-              <Panel.LinkItem href="/conditions/toothache/">Toothache</Panel.LinkItem>
-            </Panel>
+            <div className="nhsuk-back-to-top">
+              <a className="nhsuk-back-to-top__link" href="#nhsuk-nav-a-z">
+                Back to top
+              </a>
+            </div>
+
+            <Card cardType="feature">
+              <Card.Content>
+                <Card.Heading id="C">C</Card.Heading>
+                <ul className="nhsuk-list nhsuk-list--border">
+                  <li>
+                    <a href="/conditions/chest-pain/">Chest pain</a>
+                  </li>
+                  <li>
+                    <a href="/conditions/cold-sores/">Cold sore</a>
+                  </li>
+                </ul>
+              </Card.Content>
+            </Card>
+
+            <div className="nhsuk-back-to-top">
+              <a className="nhsuk-back-to-top__link" href="#nhsuk-nav-a-z">
+                Back to top
+              </a>
+            </div>
+
+            <Card cardType="feature">
+              <Card.Content>
+                <Card.Heading id="D">D</Card.Heading>
+                <ul className="nhsuk-list nhsuk-list--border">
+                  <li>
+                    <a href="/conditions/dandruff/">Dandruff</a>
+                  </li>
+                  <li>
+                    <a href="/conditions/dementia/">Dementia</a>
+                  </li>
+                  <li>
+                    <a href="/conditions/toothache/">Dental pain</a>
+                  </li>
+                </ul>
+              </Card.Content>
+            </Card>
+
+            <div className="nhsuk-back-to-top">
+              <a className="nhsuk-back-to-top__link" href="#nhsuk-nav-a-z">
+                Back to top
+              </a>
+            </div>
           </Col>
         </Row>
       </main>
