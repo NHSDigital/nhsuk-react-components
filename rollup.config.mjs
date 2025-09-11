@@ -7,8 +7,8 @@ import { dts } from 'rollup-plugin-dts';
 import tsPaths from 'rollup-plugin-tsconfig-paths';
 import preserveDirectives from 'rollup-plugin-preserve-directives';
 
-import tsBuildConfig from './bundle-base.tsconfig.json' assert { type: 'json' };
-import packageJson from './package.json' assert { type: 'json' };
+import tsBuildConfig from './bundle-base.tsconfig.json' with { type: 'json' };
+import packageJson from './package.json' with { type: 'json' };
 
 // suppresses warnings printed to console as part of bundling components with directives present.
 const onWarnSuppression = {
