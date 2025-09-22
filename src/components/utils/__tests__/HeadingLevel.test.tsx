@@ -1,25 +1,21 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import HeadingLevel, { HeadingLevelType } from '../HeadingLevel';
+import HeadingLevel, { HeadingLevelProps } from '../HeadingLevel';
 
 describe('HeadingLevel', () => {
-  it.each<HeadingLevelType>([
-    'h1',
-    'H1',
-    'h2',
-    'H2',
-    'h3',
-    'H3',
-    'h4',
-    'H4',
-    'h5',
-    'H5',
-    'h6',
-    'H6',
-  ])('renders the correct elements - %s', (headingLevel: HeadingLevelType) => {
-    const { container } = render(<HeadingLevel headingLevel={headingLevel} />);
+  it.each<HeadingLevelProps>([
+    { headingLevel: 'h1' },
+    { headingLevel: 'h2' },
+    { headingLevel: 'h3' },
+    { headingLevel: 'h4' },
+    { headingLevel: 'h5' },
+    { headingLevel: 'h6' },
+  ])('renders the correct elements - %s', (props) => {
+    const { container } = render(<HeadingLevel {...props} />);
 
-    expect(container.querySelector(String(headingLevel).toLowerCase())).toBeTruthy();
+    const headingEl = container.querySelector(props.headingLevel!);
+
+    expect(headingEl).toHaveProperty('tagName', props?.headingLevel?.toUpperCase());
   });
 
   it('console.warn when headingLevel is invalid', () => {

@@ -1,7 +1,6 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import Tabs from '../Tabs';
-import { HeadingLevelType } from '@components/utils/HeadingLevel';
+import Tabs, { TabTitleProps } from '../Tabs';
 
 describe('The tabs component', () => {
   it('Matches the snapshot', () => {
@@ -71,25 +70,19 @@ describe('The tabs component', () => {
   });
 
   describe('The tabs title', () => {
-    it.each`
-      headingLevel
-      ${undefined}
-      ${'H1'}
-      ${'H2'}
-      ${'H3'}
-      ${'H4'}
-    `(
-      'Renders the chosen heading level $headingLevel if specified',
-      ({ headingLevel }: { headingLevel: HeadingLevelType }) => {
-        const { container } = render(
-          <Tabs.Title headingLevel={headingLevel}>Test title</Tabs.Title>,
-        );
+    it.each<TabTitleProps | undefined>([
+      undefined,
+      { headingLevel: 'h1' },
+      { headingLevel: 'h2' },
+      { headingLevel: 'h3' },
+      { headingLevel: 'h4' },
+    ])('Renders the chosen heading level $headingLevel if specified', (props) => {
+      const { container } = render(<Tabs.Title {...props}>Test title</Tabs.Title>);
 
-        const title = container.querySelector('.nhsuk-tabs__title');
+      const title = container.querySelector('.nhsuk-tabs__title');
 
-        expect(title?.nodeName).toEqual(headingLevel ?? 'H2');
-      },
-    );
+      expect(title).toHaveProperty('tagName', props?.headingLevel?.toUpperCase() ?? 'H2');
+    });
   });
 
   describe('The tab list', () => {
