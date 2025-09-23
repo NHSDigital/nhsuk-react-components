@@ -2,7 +2,7 @@
 import classNames from 'classnames';
 import React, { FC, HTMLAttributes, useEffect } from 'react';
 import HeadingLevel, { HeadingLevelType } from '@components/utils/HeadingLevel';
-import TabsJs from '@resources/tabs';
+import Tabs from '@resources/tabs';
 
 type TabsProps = HTMLAttributes<HTMLDivElement>;
 
@@ -46,16 +46,16 @@ const TabContents: FC<TabContentsProps> = ({ id, children }) => (
   </div>
 );
 
-interface Tabs extends FC<TabsProps> {
+interface TabsComponent extends FC<TabsProps> {
   Title: FC<TabTitleProps>;
   List: FC<TabListProps>;
   ListItem: FC<TabListItemProps>;
   Contents: FC<TabContentsProps>;
 }
 
-const Tabs: Tabs = ({ className, children, ...rest }) => {
+const TabsComponent: TabsComponent = ({ className, children, ...rest }) => {
   useEffect(() => {
-    TabsJs();
+    Tabs();
   }, []);
 
   return (
@@ -65,9 +65,9 @@ const Tabs: Tabs = ({ className, children, ...rest }) => {
   );
 };
 
-Tabs.Title = TabTitle;
-Tabs.List = TabList;
-Tabs.ListItem = TabListItem;
-Tabs.Contents = TabContents;
+TabsComponent.Title = TabTitle;
+TabsComponent.List = TabList;
+TabsComponent.ListItem = TabListItem;
+TabsComponent.Contents = TabContents;
 
-export default Tabs;
+export default TabsComponent;

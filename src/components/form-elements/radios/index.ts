@@ -1,3 +1,1 @@
-import Radios from './Radios';
-
-export default Radios;
+export { default } from './Radios';

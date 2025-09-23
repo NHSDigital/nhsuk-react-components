@@ -5,14 +5,14 @@ interface DetailsProps extends HTMLProps<HTMLDetailsElement> {
   expander?: boolean;
 }
 
-interface Details extends FC<DetailsProps> {
+interface DetailsComponent extends FC<DetailsProps> {
   Summary: FC<HTMLProps<HTMLDivElement>>;
   Text: FC<HTMLProps<HTMLDivElement>>;
   ExpanderGroup: FC<HTMLProps<HTMLDivElement>>;
 }
 
 // TODO: Check if standard NHS.UK polyfill "details.polyfill.js" is required
-const Details: Details = ({ className, expander, ...rest }) => (
+const DetailsComponent: DetailsComponent = ({ className, expander, ...rest }) => (
   <details
     className={classNames('nhsuk-details', { 'nhsuk-expander': expander }, className)}
     {...rest}
@@ -33,8 +33,8 @@ const ExpanderGroup: FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) =>
   <div className={classNames('nhsuk-expander-group', className)} {...rest} />
 );
 
-Details.Summary = DetailsSummary;
-Details.Text = DetailsText;
-Details.ExpanderGroup = ExpanderGroup;
+DetailsComponent.Summary = DetailsSummary;
+DetailsComponent.Text = DetailsText;
+DetailsComponent.ExpanderGroup = ExpanderGroup;
 
-export default Details;
+export default DetailsComponent;

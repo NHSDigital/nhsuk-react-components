@@ -13,7 +13,7 @@ interface ISelect extends FC<ISelectProps> {
   Option: FC<HTMLProps<HTMLOptionElement>>;
 }
 
-const Select: ISelect = ({ children, ...rest }) => (
+const SelectComponent: ISelect = ({ children, ...rest }) => (
   <SingleInputFormGroup<ISelectProps> inputType="select" {...rest}>
     {({ className, error, selectRef, ...restRenderProps }) => (
       <select
@@ -29,6 +29,6 @@ const Select: ISelect = ({ children, ...rest }) => (
 
 const Option: FC<HTMLProps<HTMLOptionElement>> = (props) => <option {...props} />;
 
-Select.Option = Option;
+SelectComponent.Option = Option;
 
-export default Select;
+export default SelectComponent;

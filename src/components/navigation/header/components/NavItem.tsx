@@ -10,7 +10,7 @@ const NavItem: FC<NavItemProps> = ({
   home,
   className,
   children,
-  asElement: Component = 'a',
+  asElement: Element = 'a',
   ...rest
 }) => (
   <li
@@ -20,9 +20,9 @@ const NavItem: FC<NavItemProps> = ({
       className,
     )}
   >
-    <Component className="nhsuk-header__navigation-link" {...rest}>
+    <Element className="nhsuk-header__navigation-link" {...rest}>
       {children}
-    </Component>
+    </Element>
   </li>
 );
 

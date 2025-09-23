@@ -72,11 +72,11 @@ const NavAZ: NavAZ = ({
 
 const LinkItem: FC<AsElementLink<HTMLAnchorElement>> = ({
   className,
-  asElement: Component = 'a',
+  asElement: Element = 'a',
   ...rest
 }) => (
   <li className="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1">
-    <Component
+    <Element
       className={classNames(
         'nhsuk-u-font-size-22',
         'nhsuk-u-padding-2',

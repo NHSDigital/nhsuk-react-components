@@ -5,7 +5,7 @@ export interface ErrorMessageProps extends HTMLProps<HTMLSpanElement> {
   visuallyHiddenText?: false | string;
 }
 
-const ErrorMessage: FC<ErrorMessageProps> = ({
+const ErrorMessageComponent: FC<ErrorMessageProps> = ({
   className,
   visuallyHiddenText = 'Error: ',
   children,
@@ -19,4 +19,4 @@ const ErrorMessage: FC<ErrorMessageProps> = ({
   </span>
 );
 
-export default ErrorMessage;
+export default ErrorMessageComponent;

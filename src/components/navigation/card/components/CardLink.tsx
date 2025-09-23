@@ -4,8 +4,8 @@ import { AsElementLink } from '@util/types/LinkTypes';
 
 const CardLink: FC<AsElementLink<HTMLAnchorElement>> = ({
   className,
-  asElement: Component = 'a',
+  asElement: Element = 'a',
   ...rest
-}) => <Component className={classNames('nhsuk-card__link', className)} {...rest} />;
+}) => <Element className={classNames('nhsuk-card__link', className)} {...rest} />;
 
 export default CardLink;

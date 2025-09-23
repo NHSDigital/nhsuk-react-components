@@ -1,3 +1,1 @@
-import WarningCallout from './WarningCallout';
-
-export default WarningCallout;
+export { default } from './WarningCallout';

@@ -5,7 +5,7 @@ import { RadiosContext, IRadiosContext } from '../RadioContext';
 import HintText, { HintTextProps } from '../../hint-text/HintText';
 import Label, { LabelProps } from '../../label/Label';
 
-export interface RadioProps extends HTMLProps<HTMLInputElement> {
+export interface RadiosItemProps extends HTMLProps<HTMLInputElement> {
   hint?: string;
   hintProps?: HintTextProps;
   labelProps?: LabelProps;
@@ -15,7 +15,7 @@ export interface RadioProps extends HTMLProps<HTMLInputElement> {
   inputRef?: (inputRef: HTMLInputElement | null) => void;
 }
 
-const Radio: FC<RadioProps> = ({
+const RadiosItem: FC<RadiosItemProps> = ({
   className,
   children,
   id,
@@ -95,4 +95,4 @@ const Radio: FC<RadioProps> = ({
   );
 };
 
-export default Radio;
+export default RadiosItem;

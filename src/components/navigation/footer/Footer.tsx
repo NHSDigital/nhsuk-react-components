@@ -50,13 +50,18 @@ interface FooterProps extends HTMLProps<HTMLDivElement> {
   visuallyHiddenText?: false | string;
 }
 
-interface Footer extends FC<FooterProps> {
+interface FooterComponent extends FC<FooterProps> {
   List: FC<FooterListProps>;
   ListItem: FC<HTMLProps<HTMLAnchorElement>>;
   Copyright: FC<HTMLProps<HTMLParagraphElement>>;
 }
 
-const Footer: Footer = ({ className, children, visuallyHiddenText = 'Support links', ...rest }) => {
+const FooterComponent: FooterComponent = ({
+  className,
+  children,
+  visuallyHiddenText = 'Support links',
+  ...rest
+}) => {
   const footerCols = Children.toArray(children).filter((child) =>
     childIsOfComponentType(child, FooterList),
   );
@@ -95,8 +100,8 @@ const Footer: Footer = ({ className, children, visuallyHiddenText = 'Support lin
   );
 };
 
-Footer.List = FooterList;
-Footer.ListItem = FooterListItem;
-Footer.Copyright = FooterCopyright;
+FooterComponent.List = FooterList;
+FooterComponent.ListItem = FooterListItem;
+FooterComponent.Copyright = FooterCopyright;
 
-export default Footer;
+export default FooterComponent;

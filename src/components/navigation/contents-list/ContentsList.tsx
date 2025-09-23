@@ -19,11 +19,11 @@ interface ContentsListProps extends HTMLProps<HTMLDivElement> {
   visuallyHiddenText?: false | string;
 }
 
-interface ContentsList extends FC<ContentsListProps> {
+interface ContentsListComponent extends FC<ContentsListProps> {
   Item: FC<ContentsListItemProps>;
 }
 
-const ContentsList: ContentsList = ({
+const ContentsListComponent: ContentsListComponent = ({
   className,
   children,
   role = 'navigation',
@@ -38,6 +38,6 @@ const ContentsList: ContentsList = ({
   </nav>
 );
 
-ContentsList.Item = ContentsListItem;
+ContentsListComponent.Item = ContentsListItem;
 
-export default ContentsList;
+export default ContentsListComponent;

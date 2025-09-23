@@ -5,11 +5,11 @@ import { childIsOfComponentType } from '@util/types/TypeGuards';
 
 type Item = FC<AsElementLink<HTMLAnchorElement>>;
 
-const Item: Item = ({ className, children, asElement: Component = 'a', ...rest }) => (
+const Item: Item = ({ className, children, asElement: Element = 'a', ...rest }) => (
   <li className="nhsuk-breadcrumb__item">
-    <Component className={classNames('nhsuk-breadcrumb__link', className)} {...rest}>
+    <Element className={classNames('nhsuk-breadcrumb__link', className)} {...rest}>
       {children}
-    </Component>
+    </Element>
   </li>
 );
 
@@ -18,19 +18,19 @@ type Back = FC<AsElementLink<HTMLAnchorElement> & { accessiblePrefix?: string }>
 const Back: Back = ({
   className,
   children,
-  asElement: Component = 'a',
+  asElement: Element = 'a',
   accessiblePrefix = 'Back to &nbsp;',
   ...rest
 }) => (
   <p className={classNames('nhsuk-breadcrumb__back', className)}>
-    <Component className="nhsuk-breadcrumb__backlink" {...rest}>
+    <Element className="nhsuk-breadcrumb__backlink" {...rest}>
       <span className="nhsuk-u-visually-hidden">{accessiblePrefix}</span>
       {children}
-    </Component>
+    </Element>
   </p>
 );
 
-interface Breadcrumb extends FC<HTMLProps<HTMLDivElement>> {
+interface BreadcrumbComponent extends FC<HTMLProps<HTMLDivElement>> {
   Item: Item;
   Back: Back;
 }
@@ -40,7 +40,7 @@ type SplitChildren = {
   OtherChildren: Array<ReactNode>;
 };
 
-const Breadcrumb: Breadcrumb = ({
+const BreadcrumbComponent: BreadcrumbComponent = ({
   className,
   children,
   'aria-label': ariaLabel = 'Breadcrumb',
@@ -70,7 +70,7 @@ const Breadcrumb: Breadcrumb = ({
   );
 };
 
-Breadcrumb.Item = Item;
-Breadcrumb.Back = Back;
+BreadcrumbComponent.Item = Item;
+BreadcrumbComponent.Back = Back;
 
-export default Breadcrumb;
+export default BreadcrumbComponent;

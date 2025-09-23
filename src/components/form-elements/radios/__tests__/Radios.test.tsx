@@ -6,12 +6,12 @@ describe('Radios', () => {
   it('matches snapshot', () => {
     const { container } = render(
       <Radios id="example" name="example">
-        <Radios.Radio id="example-1" value="yes">
+        <Radios.Item id="example-1" value="yes">
           Yes
-        </Radios.Radio>
-        <Radios.Radio id="example-2" value="no">
+        </Radios.Item>
+        <Radios.Item id="example-2" value="no">
           No
-        </Radios.Radio>
+        </Radios.Item>
       </Radios>,
     );
 
@@ -21,17 +21,17 @@ describe('Radios', () => {
   it('does not render the conditional content if checked is false', () => {
     const { container } = render(
       <Radios id="example" name="example">
-        <Radios.Radio
+        <Radios.Item
           id="example-1"
           value="yes"
           checked={false}
           conditional={<p className="conditional-test">Test</p>}
         >
           Yes
-        </Radios.Radio>
-        <Radios.Radio id="example-2" value="no">
+        </Radios.Item>
+        <Radios.Item id="example-2" value="no">
           No
-        </Radios.Radio>
+        </Radios.Item>
       </Radios>,
     );
 
@@ -41,17 +41,17 @@ describe('Radios', () => {
   it('renders the conditional content if the radio reference = selected radio', () => {
     const { container } = render(
       <Radios id="example" name="example">
-        <Radios.Radio
+        <Radios.Item
           id="example-1"
           value="yes"
           checked={true}
           conditional={<p className="conditional-test">Test</p>}
         >
           Yes
-        </Radios.Radio>
-        <Radios.Radio id="example-2" value="no">
+        </Radios.Item>
+        <Radios.Item id="example-2" value="no">
           No
-        </Radios.Radio>
+        </Radios.Item>
       </Radios>,
     );
 

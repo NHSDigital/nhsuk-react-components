@@ -1,3 +1,1 @@
-import DateInput from './DateInput';
-
-export default DateInput;
+export { default } from './DateInput';

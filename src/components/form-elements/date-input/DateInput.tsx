@@ -29,7 +29,7 @@ interface DateInputProps
 
 type InputType = 'day' | 'month' | 'year';
 
-const DateInput = ({
+const DateInputComponent = ({
   autoSelectNext,
   children,
   onChange,
@@ -110,9 +110,9 @@ const DateInput = ({
             <DateInputContext.Provider value={contextValue}>
               {children || (
                 <>
-                  <DateInput.Day />
-                  <DateInput.Month />
-                  <DateInput.Year />
+                  <DateInputComponent.Day />
+                  <DateInputComponent.Month />
+                  <DateInputComponent.Year />
                 </>
               )}
             </DateInputContext.Provider>
@@ -123,8 +123,8 @@ const DateInput = ({
   );
 };
 
-DateInput.Day = DayInput;
-DateInput.Month = MonthInput;
-DateInput.Year = YearInput;
+DateInputComponent.Day = DayInput;
+DateInputComponent.Month = MonthInput;
+DateInputComponent.Year = YearInput;
 
-export default DateInput;
+export default DateInputComponent;

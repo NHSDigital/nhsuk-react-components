@@ -5,22 +5,22 @@ import classNames from 'classnames';
 import { FormElementProps } from '@util/types/FormTypes';
 import SingleInputFormGroup from '@components/utils/SingleInputFormGroup';
 import CheckboxContext, { ICheckboxContext } from './CheckboxContext';
-import Box from './components/Box';
-import Divider from './components/Divider';
+import CheckboxesItem from './components/Item';
+import CheckboxesDivider from './components/Divider';
 import { generateRandomName } from '@util/RandomID';
-import CheckboxJs from '@resources/checkboxes';
+import Checkboxes from '@resources/checkboxes';
 
 interface CheckboxesProps extends HTMLProps<HTMLDivElement>, FormElementProps {
   idPrefix?: string;
 }
 
-const Checkboxes = ({ children, idPrefix, ...rest }: CheckboxesProps) => {
+const CheckboxesComponent = ({ children, idPrefix, ...rest }: CheckboxesProps) => {
   const _boxReferences: string[] = [];
   let _boxCount: number = 0;
   let _boxIds: Record<string, string> = {};
 
   useEffect(() => {
-    CheckboxJs();
+    Checkboxes();
   }, []);
 
   const getBoxId = (id: string, reference: string): string => {
@@ -73,7 +73,7 @@ const Checkboxes = ({ children, idPrefix, ...rest }: CheckboxesProps) => {
   );
 };
 
-Checkboxes.Box = Box;
-Checkboxes.Divider = Divider;
+CheckboxesComponent.Item = CheckboxesItem;
+CheckboxesComponent.Divider = CheckboxesDivider;
 
-export default Checkboxes;
+export default CheckboxesComponent;

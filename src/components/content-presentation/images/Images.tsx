@@ -8,7 +8,7 @@ interface ImageProps extends HTMLProps<HTMLImageElement> {
   caption?: string;
 }
 
-const Images: FC<ImageProps> = ({ className, caption, ...rest }) => (
+const ImagesComponent: FC<ImageProps> = ({ className, caption, ...rest }) => (
   <figure className="nhsuk-image">
     {/* eslint-disable-next-line jsx-a11y/alt-text */}
     <img className={classNames('nhsuk-image__img', className)} {...rest} />
@@ -16,4 +16,4 @@ const Images: FC<ImageProps> = ({ className, caption, ...rest }) => (
   </figure>
 );
 
-export default Images;
+export default ImagesComponent;

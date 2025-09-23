@@ -1,3 +1,1 @@
-import SummaryList from './SummaryList';
-
-export default SummaryList;
+export { default } from './SummaryList';

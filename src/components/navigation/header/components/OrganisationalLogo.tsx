@@ -10,13 +10,13 @@ export interface OrganisationalLogoProps extends AsElementLink<HTMLAnchorElement
 const OrganisationalLogo: FC<OrganisationalLogoProps> = ({
   logoUrl,
   alt,
-  asElement: Component = 'a',
+  asElement: Element = 'a',
   ...rest
 }) => {
   const { orgName, orgSplit, orgDescriptor } = useContext<IHeaderContext>(HeaderContext);
   return (
     <div className="nhsuk-header__logo">
-      <Component className="nhsuk-header__link" {...rest}>
+      <Element className="nhsuk-header__link" {...rest}>
         {logoUrl ? (
           <img className="nhsuk-org-logo" src={logoUrl} alt={alt} />
         ) : (
@@ -48,7 +48,7 @@ const OrganisationalLogo: FC<OrganisationalLogoProps> = ({
             ) : null}
           </>
         )}
-      </Component>
+      </Element>
     </div>
   );
 };

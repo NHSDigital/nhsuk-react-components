@@ -26,10 +26,10 @@ interface IWarningCallout extends FC<HTMLProps<HTMLDivElement>> {
   Label: typeof WarningCalloutLabel;
 }
 
-const WarningCallout: IWarningCallout = ({ className, ...rest }) => (
+const WarningCalloutComponent: IWarningCallout = ({ className, ...rest }) => (
   <div className={classNames('nhsuk-warning-callout', className)} {...rest} />
 );
 
-WarningCallout.Label = WarningCalloutLabel;
+WarningCalloutComponent.Label = WarningCalloutLabel;
 
-export default WarningCallout;
+export default WarningCalloutComponent;

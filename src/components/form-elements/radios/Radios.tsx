@@ -3,8 +3,8 @@ import classNames from 'classnames';
 import { FormElementProps } from '@util/types/FormTypes';
 import { RadiosContext, IRadiosContext } from './RadioContext';
 import SingleInputFormGroup from '@components/utils/SingleInputFormGroup';
-import Divider from './components/Divider';
-import Radio from './components/Radio';
+import RadiosDivider from './components/Divider';
+import RadiosItem from './components/Item';
 import { generateRandomName } from '@util/RandomID';
 
 interface RadiosProps extends HTMLProps<HTMLDivElement>, FormElementProps {
@@ -12,7 +12,7 @@ interface RadiosProps extends HTMLProps<HTMLDivElement>, FormElementProps {
   idPrefix?: string;
 }
 
-const Radios = ({ children, idPrefix, ...rest }: RadiosProps) => {
+const RadiosComponent = ({ children, idPrefix, ...rest }: RadiosProps) => {
   const _radioReferences: Array<string> = [];
   let _radioCount = 0;
   let _radioIds: Record<string, string> = {};
@@ -80,7 +80,7 @@ const Radios = ({ children, idPrefix, ...rest }: RadiosProps) => {
   );
 };
 
-Radios.Divider = Divider;
-Radios.Radio = Radio;
+RadiosComponent.Item = RadiosItem;
+RadiosComponent.Divider = RadiosDivider;
 
-export default Radios;
+export default RadiosComponent;

@@ -60,7 +60,7 @@ const useDebounceTimeout = (
   return handler;
 };
 
-export const Button: FC<ButtonProps> = ({
+export const ButtonComponent: FC<ButtonProps> = ({
   className,
   disabled,
   secondary,
@@ -93,7 +93,8 @@ export const Button: FC<ButtonProps> = ({
     />
   );
 };
-export const ButtonLink: FC<ButtonLinkProps> = ({
+
+export const ButtonLinkComponent: FC<ButtonLinkProps> = ({
   className,
   role = 'button',
   draggable = false,
@@ -148,17 +149,11 @@ export const ButtonLink: FC<ButtonLinkProps> = ({
   );
 };
 
-const ButtonWrapper: FC<ButtonLinkProps | ButtonProps> = ({ href, as, ...rest }) => {
-  if (as === 'a') {
-    return <ButtonLink href={href} {...(rest as ButtonLinkProps)} />;
-  }
-  if (as === 'button') {
-    return <Button {...(rest as ButtonProps)} />;
-  }
-  if (href) {
-    return <ButtonLink href={href} {...(rest as ButtonLinkProps)} />;
-  }
-  return <Button {...(rest as ButtonProps)} />;
-};
+const ButtonWrapper: FC<ButtonLinkProps | ButtonProps> = ({ as, ...rest }) =>
+  'href' in rest || as === 'a' ? (
+    <ButtonLinkComponent {...(rest as ButtonLinkProps)} />
+  ) : (
+    <ButtonComponent {...(rest as ButtonProps)} />
+  );
 
 export default ButtonWrapper;

@@ -21,14 +21,14 @@ interface SummaryListProps extends HTMLProps<HTMLDListElement> {
   noBorder?: boolean;
 }
 
-interface SummaryList extends FC<SummaryListProps> {
+interface SummaryListComponent extends FC<SummaryListProps> {
   Row: FC<HTMLProps<HTMLDivElement>>;
   Key: FC<HTMLProps<HTMLDListElement>>;
   Value: FC<HTMLProps<HTMLDListElement>>;
   Actions: FC<HTMLProps<HTMLDListElement>>;
 }
 
-const SummaryList: SummaryList = ({ className, noBorder, ...rest }) => (
+const SummaryListComponent: SummaryListComponent = ({ className, noBorder, ...rest }) => (
   <dl
     className={classNames(
       'nhsuk-summary-list',
@@ -39,9 +39,9 @@ const SummaryList: SummaryList = ({ className, noBorder, ...rest }) => (
   />
 );
 
-SummaryList.Row = SummaryListRow;
-SummaryList.Key = SummaryListKey;
-SummaryList.Value = SummaryListValue;
-SummaryList.Actions = SummaryListActions;
+SummaryListComponent.Row = SummaryListRow;
+SummaryListComponent.Key = SummaryListKey;
+SummaryListComponent.Value = SummaryListValue;
+SummaryListComponent.Actions = SummaryListActions;
 
-export default SummaryList;
+export default SummaryListComponent;

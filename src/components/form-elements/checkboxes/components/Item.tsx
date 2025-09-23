@@ -15,7 +15,7 @@ import Label, { LabelProps } from '../../label/Label';
 import HintText, { HintTextProps } from '../../hint-text/HintText';
 import { HTMLAttributesWithData } from '@util/types/NHSUKTypes';
 
-type BoxProps = Omit<HTMLProps<HTMLInputElement>, 'label'> & {
+type CheckboxesItemProps = Omit<HTMLProps<HTMLInputElement>, 'label'> & {
   labelProps?: LabelProps;
   hint?: string;
   hintProps?: HintTextProps;
@@ -26,7 +26,7 @@ type BoxProps = Omit<HTMLProps<HTMLInputElement>, 'label'> & {
   exclusive?: boolean;
 };
 
-const Box: FC<BoxProps> = ({
+const CheckboxesItem: FC<CheckboxesItemProps> = ({
   id,
   labelProps,
   children,
@@ -119,4 +119,4 @@ const Box: FC<BoxProps> = ({
   );
 };
 
-export default Box;
+export default CheckboxesItem;

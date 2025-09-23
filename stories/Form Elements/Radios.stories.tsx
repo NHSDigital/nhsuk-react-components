@@ -9,7 +9,7 @@ const meta: Meta<typeof Radios> = {
 export default meta;
 type Story = StoryObj<typeof Radios>;
 
-Radios.Radio.displayName = 'Radios.Radio';
+Radios.Item.displayName = 'Radios.Item';
 Radios.Divider.displayName = 'Radios.Divider';
 
 export const StandardRadios: Story = {
@@ -21,10 +21,10 @@ export const StandardRadios: Story = {
         id="standard-example"
         hint="This includes changing your last name or spelling your name differently."
       >
-        <Radios.Radio value="yes">Yes</Radios.Radio>
-        <Radios.Radio value="no" checked>
+        <Radios.Item value="yes">Yes</Radios.Item>
+        <Radios.Item value="no" checked>
           No
-        </Radios.Radio>
+        </Radios.Item>
       </Radios>
     </Fieldset>
   ),
@@ -40,10 +40,10 @@ export const InlineRadios: Story = {
         id="inline-example"
         hint="This includes changing your last name or spelling your name differently."
       >
-        <Radios.Radio value="yes">Yes</Radios.Radio>
-        <Radios.Radio value="no" checked>
+        <Radios.Item value="yes">Yes</Radios.Item>
+        <Radios.Item value="no" checked>
           No
-        </Radios.Radio>
+        </Radios.Item>
       </Radios>
     </Fieldset>
   ),
@@ -58,12 +58,12 @@ export const DisabledRadios: Story = {
         id="disabled-example"
         hint="This includes changing your last name or spelling your name differently."
       >
-        <Radios.Radio disabled value="yes">
+        <Radios.Item disabled value="yes">
           Yes
-        </Radios.Radio>
-        <Radios.Radio disabled value="no">
+        </Radios.Item>
+        <Radios.Item disabled value="no">
           No
-        </Radios.Radio>
+        </Radios.Item>
       </Radios>
     </Fieldset>
   ),
@@ -73,18 +73,18 @@ export const RadiosWithConditionalContent: Story = {
   render: (args) => {
     const impairmentsForm = (
       <Checkboxes name="impairments" id="impairments">
-        <Checkboxes.Box value="autism">Autism</Checkboxes.Box>
-        <Checkboxes.Box value="developmental-conditions">
+        <Checkboxes.Item value="autism">Autism</Checkboxes.Item>
+        <Checkboxes.Item value="developmental-conditions">
           Developmental conditions (excluding autism)
-        </Checkboxes.Box>
-        <Checkboxes.Box value="dementia">Dementia</Checkboxes.Box>
-        <Checkboxes.Box value="learning-disability">Learning disability</Checkboxes.Box>
-        <Checkboxes.Box value="mental-health-condition">Mental Health Condition</Checkboxes.Box>
-        <Checkboxes.Box value="physical-disability">Physical disability</Checkboxes.Box>
-        <Checkboxes.Box value="sensory-disability">
+        </Checkboxes.Item>
+        <Checkboxes.Item value="dementia">Dementia</Checkboxes.Item>
+        <Checkboxes.Item value="learning-disability">Learning disability</Checkboxes.Item>
+        <Checkboxes.Item value="mental-health-condition">Mental Health Condition</Checkboxes.Item>
+        <Checkboxes.Item value="physical-disability">Physical disability</Checkboxes.Item>
+        <Checkboxes.Item value="sensory-disability">
           Sensory disability - such as sight, hearing or verbal
-        </Checkboxes.Box>
-        <Checkboxes.Box value="long-term-condition">Long-term condition</Checkboxes.Box>
+        </Checkboxes.Item>
+        <Checkboxes.Item value="long-term-condition">Long-term condition</Checkboxes.Item>
       </Checkboxes>
     );
 
@@ -93,12 +93,12 @@ export const RadiosWithConditionalContent: Story = {
         <Fieldset>
           <Fieldset.Legend>Impairment requirement</Fieldset.Legend>
           <Radios name="example" id="example-conditional" hint="Select relevant options.">
-            <Radios.Radio id="hello1" value="yes" conditional={impairmentsForm}>
+            <Radios.Item id="hello1" value="yes" conditional={impairmentsForm}>
               Patient requires an impairment to be added
-            </Radios.Radio>
-            <Radios.Radio id="hello2" value="no">
+            </Radios.Item>
+            <Radios.Item id="hello2" value="no">
               Patient would prefer not to say
-            </Radios.Radio>
+            </Radios.Item>
           </Radios>
         </Fieldset>
       </form>
@@ -111,10 +111,10 @@ export const RadiosWithADivider: Story = {
     <Fieldset>
       <Fieldset.Legend>How do you want to sign in?</Fieldset.Legend>
       <Radios name="example" id="example-divider">
-        <Radios.Radio value="government-gateway">Use Government Gateway</Radios.Radio>
-        <Radios.Radio value="nhsuk-login">Use NHS.UK login</Radios.Radio>
+        <Radios.Item value="government-gateway">Use Government Gateway</Radios.Item>
+        <Radios.Item value="nhsuk-login">Use NHS.UK login</Radios.Item>
         <Radios.Divider>or</Radios.Divider>
-        <Radios.Radio value="create-account">Create an account</Radios.Radio>
+        <Radios.Item value="create-account">Create an account</Radios.Item>
       </Radios>
     </Fieldset>
   ),
@@ -125,18 +125,18 @@ export const RadiosWithHintsOnItems: Story = {
     <Fieldset>
       <Fieldset.Legend>How do you want to sign in?</Fieldset.Legend>
       <Radios name="example" id="example-with-hints">
-        <Radios.Radio
+        <Radios.Item
           value="government-gateway"
           hint="You&#39;ll have a user ID if you've registered for self-assessment or filed a tax return online before."
         >
           Use Government Gateway
-        </Radios.Radio>
-        <Radios.Radio
+        </Radios.Item>
+        <Radios.Item
           value="nhsuk-login"
           hint="You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
         >
           Use NHS.UK login
-        </Radios.Radio>
+        </Radios.Item>
       </Radios>
     </Fieldset>
   ),
@@ -145,9 +145,9 @@ export const RadiosWithHintsOnItems: Story = {
 export const RadiosWithoutFieldset: Story = {
   render: (args) => (
     <Radios name="colours" id="colours">
-      <Radios.Radio value="red">Red</Radios.Radio>
-      <Radios.Radio value="green">Green</Radios.Radio>
-      <Radios.Radio value="blue">Blue</Radios.Radio>
+      <Radios.Item value="red">Red</Radios.Item>
+      <Radios.Item value="green">Green</Radios.Item>
+      <Radios.Item value="blue">Blue</Radios.Item>
     </Radios>
   ),
 };
@@ -164,12 +164,12 @@ export const RadiosWithErrorBoolean: Story = {
             error={error}
             hint="This includes changing your last name or spelling your name differently."
           >
-            <Radios.Radio id="example-1" value="yes">
+            <Radios.Item id="example-1" value="yes">
               Yes
-            </Radios.Radio>
-            <Radios.Radio id="example-2" value="no" checked>
+            </Radios.Item>
+            <Radios.Item id="example-2" value="no" checked>
               No
-            </Radios.Radio>
+            </Radios.Item>
           </Radios>
         </Fieldset>
         <Button
@@ -199,12 +199,12 @@ export const RadiosWithErrorString: Story = {
             error={error}
             hint="This includes changing your last name or spelling your name differently."
           >
-            <Radios.Radio id="example-1" value="yes">
+            <Radios.Item id="example-1" value="yes">
               Yes
-            </Radios.Radio>
-            <Radios.Radio id="example-2" value="no" checked>
+            </Radios.Item>
+            <Radios.Item id="example-2" value="no" checked>
               No
-            </Radios.Radio>
+            </Radios.Item>
           </Radios>
         </Fieldset>
         <TextInput value={error} onChange={(e) => setError(e.currentTarget.value)} />

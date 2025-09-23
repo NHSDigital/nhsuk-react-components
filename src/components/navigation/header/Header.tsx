@@ -11,9 +11,9 @@ import NavDropdownMenu from './components/NavDropdownMenu';
 import { Container } from '@components/layout';
 import Content from './components/Content';
 import TransactionalServiceName from './components/TransactionalServiceName';
-import HeaderJs from '@resources/header';
+import Header from '@resources/header';
 
-const BaseHeaderLogo: FC<OrganisationalLogoProps & NHSLogoNavProps> = (props) => {
+const HeaderLogo: FC<OrganisationalLogoProps & NHSLogoNavProps> = (props) => {
   const { orgName } = useContext<IHeaderContext>(HeaderContext);
   if (orgName) {
     return <OrganisationalLogo {...props} />;
@@ -34,7 +34,7 @@ interface HeaderProps extends HTMLProps<HTMLDivElement> {
   white?: boolean;
 }
 
-const Header = ({
+const HeaderComponent = ({
   className,
   children,
   transactional,
@@ -52,7 +52,7 @@ const Header = ({
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    HeaderJs();
+    Header();
   }, []);
 
   const setMenuToggle = (toggle: boolean): void => {
@@ -120,13 +120,13 @@ const Header = ({
   );
 };
 
-Header.Logo = BaseHeaderLogo;
-Header.Search = Search;
-Header.Nav = Nav;
-Header.NavItem = NavItem;
-Header.NavDropdownMenu = NavDropdownMenu;
-Header.Container = HeaderContainer;
-Header.Content = Content;
-Header.ServiceName = TransactionalServiceName;
+HeaderComponent.Logo = HeaderLogo;
+HeaderComponent.Search = Search;
+HeaderComponent.Nav = Nav;
+HeaderComponent.NavItem = NavItem;
+HeaderComponent.NavDropdownMenu = NavDropdownMenu;
+HeaderComponent.Container = HeaderContainer;
+HeaderComponent.Content = Content;
+HeaderComponent.ServiceName = TransactionalServiceName;
 
-export default Header;
+export default HeaderComponent;

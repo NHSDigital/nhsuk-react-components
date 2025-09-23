@@ -15,7 +15,7 @@ const SVGImageWithSrc: FC<SVGImageWithSrc> = (props) => <image {...props} />;
 const NHSLogo: FC<NHSLogoNavProps> = ({
   className,
   alt = 'NHS Logo',
-  asElement: Component = 'a',
+  asElement: Element = 'a',
   'aria-label': ariaLabel = 'NHS homepage',
   ...rest
 }) => {
@@ -28,7 +28,7 @@ const NHSLogo: FC<NHSLogoNavProps> = ({
         'nhsuk-header__transactional--logo': transactional,
       })}
     >
-      <Component
+      <Element
         className={classNames(
           'nhsuk-header__link',
           { 'nhsuk-header__link--service': serviceName },
@@ -54,7 +54,7 @@ const NHSLogo: FC<NHSLogoNavProps> = ({
           />
         </svg>
         {serviceName ? <span className="nhsuk-header__service-name">{serviceName}</span> : null}
-      </Component>
+      </Element>
     </div>
   );
 };

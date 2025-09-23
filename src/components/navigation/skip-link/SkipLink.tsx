@@ -10,7 +10,7 @@ interface SkipLinkProps extends HTMLProps<HTMLAnchorElement> {
   disableHeadingFocus?: boolean;
 }
 
-const SkipLink = ({
+const SkipLinkComponent = ({
   children = 'Skip to main content',
   className,
   disableDefaultBehaviour,
@@ -94,4 +94,4 @@ const SkipLink = ({
   );
 };
 
-export default SkipLink;
+export default SkipLinkComponent;

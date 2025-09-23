@@ -15,11 +15,11 @@ interface TagProps extends HTMLProps<HTMLSpanElement> {
     | 'yellow';
 }
 
-const Tag: FC<TagProps> = ({ className, color, ...rest }) => (
+const TagComponent: FC<TagProps> = ({ className, color, ...rest }) => (
   <strong
     className={classNames('nhsuk-tag', { [`nhsuk-tag--${color}`]: color }, className)}
     {...rest}
   />
 );
 
-export default Tag;
+export default TagComponent;

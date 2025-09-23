@@ -24,7 +24,7 @@ const TextInputSuffix: FC<{ suffix: string }> = ({ suffix }) => (
   </div>
 );
 
-const TextInput: FC<TextInputProps> = (props) => (
+const TextInputComponent: FC<TextInputProps> = (props) => (
   <SingleInputFormGroup<TextInputProps> {...props} inputType="input">
     {({ width, className, error, inputRef, type = 'text', prefix, suffix, ...rest }) => {
       const Input = (
@@ -54,4 +54,4 @@ const TextInput: FC<TextInputProps> = (props) => (
   </SingleInputFormGroup>
 );
 
-export default TextInput;
+export default TextInputComponent;

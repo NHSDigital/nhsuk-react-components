@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import ButtonWrapper, { ButtonLink, Button } from '../Button';
+import Button from '../Button';
 
 describe('Button', () => {
   it('matches snapshot', () => {
@@ -80,9 +80,9 @@ describe('Button', () => {
         Submit
       </Button>,
     );
-    
+
     const button = container.querySelector('button');
-    
+
     button?.click();
     expect(clickHandler).toHaveBeenCalledTimes(1);
 
@@ -102,7 +102,7 @@ describe('Button', () => {
         Submit
       </Button>,
     );
-    
+
     const button = container.querySelector('button');
     button?.click();
     expect(clickHandler).toHaveBeenCalledTimes(1);
@@ -142,15 +142,15 @@ describe('Button', () => {
   });
 });
 
-describe('ButtonLink', () => {
+describe('Button as a link', () => {
   it('matches snapshot', () => {
-    const { container } = render(<ButtonLink href="/">Submit</ButtonLink>);
+    const { container } = render(<Button href="/">Submit</Button>);
 
     expect(container).toMatchSnapshot('PlainButton');
   });
 
   it('renders child text as expected', () => {
-    const { container } = render(<ButtonLink href="/">Submit</ButtonLink>);
+    const { container } = render(<Button href="/">Submit</Button>);
 
     expect(container.querySelector('a')?.textContent).toEqual('Submit');
   });
@@ -159,9 +159,9 @@ describe('ButtonLink', () => {
     describe('disabled', () => {
       it('matches snapshot', () => {
         const { container } = render(
-          <ButtonLink href="/" disabled>
+          <Button href="/" disabled>
             Submit
-          </ButtonLink>,
+          </Button>,
         );
 
         expect(container).toMatchSnapshot('DisabledButton');
@@ -169,9 +169,9 @@ describe('ButtonLink', () => {
 
       it('adds correct classes for type - disabled', () => {
         const { container } = render(
-          <ButtonLink href="/" disabled>
+          <Button href="/" disabled>
             Submit
-          </ButtonLink>,
+          </Button>,
         );
 
         expect(container.querySelector('.nhsuk-button--disabled')).toBeTruthy();
@@ -181,9 +181,9 @@ describe('ButtonLink', () => {
     describe('secondary', () => {
       it('matches snapshot', () => {
         const { container } = render(
-          <ButtonLink href="/" secondary>
+          <Button href="/" secondary>
             Submit
-          </ButtonLink>,
+          </Button>,
         );
 
         expect(container).toMatchSnapshot('SecondaryButton');
@@ -191,9 +191,9 @@ describe('ButtonLink', () => {
 
       it('adds correct classes for type - secondary', () => {
         const { container } = render(
-          <ButtonLink href="/" secondary>
+          <Button href="/" secondary>
             Submit
-          </ButtonLink>,
+          </Button>,
         );
 
         expect(container.querySelector('.nhsuk-button--secondary')).toBeTruthy();
@@ -203,9 +203,9 @@ describe('ButtonLink', () => {
     describe('reverse', () => {
       it('matches snapshot', () => {
         const { container } = render(
-          <ButtonLink href="/" reverse>
+          <Button href="/" reverse>
             Submit
-          </ButtonLink>,
+          </Button>,
         );
 
         expect(container).toMatchSnapshot('ReverseButton');
@@ -213,9 +213,9 @@ describe('ButtonLink', () => {
 
       it('adds correct classes for type - reverse', () => {
         const { container } = render(
-          <ButtonLink href="/" reverse>
+          <Button href="/" reverse>
             Submit
-          </ButtonLink>,
+          </Button>,
         );
 
         expect(container.querySelector('.nhsuk-button--reverse')).toBeTruthy();
@@ -225,9 +225,9 @@ describe('ButtonLink', () => {
 
   it('adds aria disabled props to disabled button', () => {
     const { container } = render(
-      <ButtonLink href="/" disabled>
+      <Button href="/" disabled>
         Submit
-      </ButtonLink>,
+      </Button>,
     );
 
     expect(
@@ -241,15 +241,15 @@ describe('ButtonLink', () => {
   });
 });
 
-describe('ButtonWrapper', () => {
+describe('Button as a button', () => {
   it('renders a button when not given a href', () => {
-    const { container } = render(<ButtonWrapper>Submit</ButtonWrapper>);
+    const { container } = render(<Button>Submit</Button>);
 
     expect(container.querySelector('button.nhsuk-button')?.textContent).toBe('Submit');
   });
 
   it('renders an anchor when given a href', () => {
-    const { container } = render(<ButtonWrapper href="/">Submit</ButtonWrapper>);
+    const { container } = render(<Button href="/">Submit</Button>);
 
     expect(container.querySelector('a.nhsuk-button')?.textContent).toBe('Submit');
   });

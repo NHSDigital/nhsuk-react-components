@@ -1,3 +1,1 @@
-import DoAndDontList from './DoAndDontList';
-
-export default DoAndDontList;
+export { default } from './DoAndDontList';

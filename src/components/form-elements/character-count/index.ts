@@ -1,4 +1,1 @@
-import CharacterCount, { CharacterCountType } from './CharacterCount';
-
-export { CharacterCountType };
-export default CharacterCount;
+export { default, CharacterCountType } from './CharacterCount';

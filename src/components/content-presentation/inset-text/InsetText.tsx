@@ -5,7 +5,7 @@ interface InsetTextProps extends HTMLProps<HTMLDivElement> {
   visuallyHiddenText?: string | false;
 }
 
-const InsetText: FC<InsetTextProps> = ({
+const InsetTextComponent: FC<InsetTextProps> = ({
   className,
   children,
   visuallyHiddenText = 'Information: ',
@@ -19,4 +19,4 @@ const InsetText: FC<InsetTextProps> = ({
   </div>
 );
 
-export default InsetText;
+export default InsetTextComponent;

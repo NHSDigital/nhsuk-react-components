@@ -44,7 +44,12 @@ interface FieldsetProps extends HTMLProps<HTMLFieldSetElement> {
   disableErrorLine?: boolean;
 }
 
-const FieldSet = ({ className, fieldsetRef, disableErrorLine, ...rest }: FieldsetProps) => {
+const FieldsetComponent = ({
+  className,
+  fieldsetRef,
+  disableErrorLine,
+  ...rest
+}: FieldsetProps) => {
   return (
     <FormGroup enableErrorLine={!disableErrorLine}>
       <fieldset className={classNames('nhsuk-fieldset', className)} ref={fieldsetRef} {...rest} />
@@ -52,6 +57,6 @@ const FieldSet = ({ className, fieldsetRef, disableErrorLine, ...rest }: Fieldse
   );
 };
 
-FieldSet.Legend = Legend;
+FieldsetComponent.Legend = Legend;
 
-export default FieldSet;
+export default FieldsetComponent;

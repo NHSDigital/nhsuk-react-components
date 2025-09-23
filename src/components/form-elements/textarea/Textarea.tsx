@@ -6,7 +6,7 @@ import SingleInputFormGroup from '@components/utils/SingleInputFormGroup';
 type TextareaProps = HTMLProps<HTMLTextAreaElement> &
   FormElementProps & { textareaRef?: MutableRefObject<HTMLTextAreaElement | null> };
 
-const Textarea: FC<TextareaProps> = ({ children, ...props }) => (
+const TextareaComponent: FC<TextareaProps> = ({ children, ...props }) => (
   <SingleInputFormGroup<TextareaProps> inputType="textarea" {...props}>
     {({ className, error, textareaRef, ...rest }) => (
       <textarea
@@ -20,4 +20,4 @@ const Textarea: FC<TextareaProps> = ({ children, ...props }) => (
   </SingleInputFormGroup>
 );
 
-export default Textarea;
+export default TextareaComponent;

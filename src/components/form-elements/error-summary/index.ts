@@ -1,3 +1,1 @@
-import ErrorSummary from './ErrorSummary';
-
-export default ErrorSummary;
+export { default } from './ErrorSummary';
