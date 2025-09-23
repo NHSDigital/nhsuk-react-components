@@ -27,7 +27,6 @@ interface DateInputElement extends Omit<HTMLInputElement, 'value' | 'onChange'> 
 interface DateInputProps
   extends Omit<HTMLProps<HTMLDivElement>, 'value' | 'defaultValue' | 'label' | 'onChange'>,
     FormElementProps {
-  autoSelectNext?: boolean;
   value?: Partial<DateInputValue>;
   defaultValue?: Partial<DateInputValue>;
   onChange?: EventHandler<DateInputChangeEvent>;
@@ -36,15 +35,12 @@ interface DateInputProps
 type InputType = 'day' | 'month' | 'year';
 
 const DateInputComponent = ({
-  autoSelectNext,
   children,
   onChange,
   value,
   defaultValue,
   ...rest
 }: DateInputProps) => {
-  let monthRef: HTMLInputElement | null = null;
-  let yearRef: HTMLInputElement | null = null;
   const [internalDate, setInternalDate] = useState<DateInputValue>({
     day: value?.day ?? '',
     month: value?.month ?? '',
@@ -61,17 +57,7 @@ const DateInputComponent = ({
     return setInternalDate(newState);
   }, [value]);
 
-  const handleFocusNextInput = (inputType: InputType, value: string): void => {
-    if (!autoSelectNext) return;
-    if (inputType === 'day' && value.length === 2 && monthRef) {
-      monthRef.focus();
-    } else if (inputType === 'month' && value.length === 2 && yearRef) {
-      yearRef.focus();
-    }
-  };
-
   const handleChange = (inputType: InputType, event: ChangeEvent<HTMLInputElement>): void => {
-    handleFocusNextInput(inputType, event.target.value);
     event.stopPropagation();
 
     const newEventValue: DateInputValue = {
@@ -89,18 +75,13 @@ const DateInputComponent = ({
     setInternalDate(newEventValue);
   };
 
-  const registerRef = (inputType: InputType, ref: HTMLInputElement | null): void => {
-    if (inputType === 'month') monthRef = ref;
-    if (inputType === 'year') yearRef = ref;
-  };
-
   return (
     <SingleInputFormGroup<Omit<DateInputProps, 'value' | 'defaultValue'>>
       inputType="dateinput"
       {...rest}
     >
       {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
-      {({ className, name, id, error, autoSelectNext, ...restRenderProps }) => {
+      {({ className, name, id, error, ...restRenderProps }) => {
         const contextValue: IDateInputContext = {
           id,
           name,
@@ -108,7 +89,6 @@ const DateInputComponent = ({
           value,
           defaultValue,
           handleChange,
-          registerRef,
         };
         return (
           <div className={classNames('nhsuk-date-input', className)} {...restRenderProps} id={id}>

@@ -60,20 +60,6 @@ export const StandardWithError: Story = {
   ),
 };
 
-export const StandardWithAutoSelect: Story = {
-  render: () => (
-    <div style={{ padding: 20 }}>
-      <h2>Scenario: autoSelectNext prop is set to enable the auto focus functionality</h2>
-      <h5>Expected Behaviour</h5>
-      <ul className="nhsuk-hint">
-        <li>When day field has 2 or month field has 2 characters, the next field is focused</li>
-      </ul>
-      <h5>Component</h5>
-      <DateInput autoSelectNext />
-    </div>
-  ),
-};
-
 export const PrePopulatedIndividualComponents: Story = {
   render: () => {
     const defaultValue = { day: '20', month: '09', year: '1996' };

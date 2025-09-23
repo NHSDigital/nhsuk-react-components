@@ -41,7 +41,6 @@ const IndividualDateInput: FC<IndividualDateInputProps> = ({
     value: ctxValue,
     defaultValue: ctxDefaultValue,
     handleChange: ctxHandleChange,
-    registerRef,
   } = useContext<IDateInputContext>(DateInputContext);
 
   const { className: labelClassName, ...restLabelProps } = labelProps || {};
@@ -61,7 +60,6 @@ const IndividualDateInput: FC<IndividualDateInputProps> = ({
   };
 
   const refCallback = (ref: HTMLInputElement | null) => {
-    registerRef(inputType, ref);
     if (inputRef) inputRef(ref);
   };
 
