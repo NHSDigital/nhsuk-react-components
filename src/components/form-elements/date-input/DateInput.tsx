@@ -74,21 +74,19 @@ const DateInputComponent = ({
     handleFocusNextInput(inputType, event.target.value);
     event.stopPropagation();
 
-    if (onChange) {
-      const newEventValue: DateInputValue = {
-        ...internalDate,
-        [inputType]: event.target.value,
-      };
+    const newEventValue: DateInputValue = {
+      ...internalDate,
+      [inputType]: event.target.value,
+    };
 
-      const newEvent: ChangeEvent<DateInputElement> = {
-        ...event,
-        target: { ...event.target, value: newEventValue },
-        currentTarget: { ...event.currentTarget, value: newEventValue },
-      };
+    const newEvent: ChangeEvent<DateInputElement> = {
+      ...event,
+      target: { ...event.target, value: newEventValue },
+      currentTarget: { ...event.currentTarget, value: newEventValue },
+    };
 
-      onChange(newEvent);
-      setInternalDate(newEventValue);
-    }
+    onChange?.(newEvent);
+    setInternalDate(newEventValue);
   };
 
   const registerRef = (inputType: InputType, ref: HTMLInputElement | null): void => {
