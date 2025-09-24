@@ -1,8 +1,8 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
 
-export interface BaseIconSVGProps extends HTMLProps<SVGSVGElement> {
-  crossOrigin?: '' | 'anonymous' | 'use-credentials';
+export interface BaseIconSVGProps extends ComponentPropsWithoutRef<'svg'> {
+  title?: string;
   modifier?:
     | 'arrow-left'
     | 'arrow-right'

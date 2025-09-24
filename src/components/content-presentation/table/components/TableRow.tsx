@@ -1,11 +1,18 @@
 'use client';
 import classNames from 'classnames';
-import React, { Children, cloneElement, FC, HTMLProps, useContext, useEffect } from 'react';
+import React, {
+  Children,
+  ComponentPropsWithoutRef,
+  FC,
+  cloneElement,
+  useContext,
+  useEffect,
+} from 'react';
 import TableContext from '../TableContext';
 import { getHeadingsFromChildren, isTableCell } from '../TableHelpers';
 import TableSectionContext, { TableSection } from '../TableSectionContext';
 
-const TableRow: FC<HTMLProps<HTMLTableRowElement>> = ({ className, children, ...rest }) => {
+const TableRow: FC<ComponentPropsWithoutRef<'tr'>> = ({ children, className, ...rest }) => {
   const section = useContext(TableSectionContext);
   const { isResponsive, headings, setHeadings } = useContext(TableContext);
 
@@ -39,6 +46,7 @@ const TableRow: FC<HTMLProps<HTMLTableRowElement>> = ({ className, children, ...
     </tr>
   );
 };
+
 TableRow.displayName = 'Table.Row';
 
 export default TableRow;

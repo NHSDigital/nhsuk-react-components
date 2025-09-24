@@ -1,7 +1,7 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
 
-export interface ErrorMessageProps extends HTMLProps<HTMLSpanElement> {
+export interface ErrorMessageProps extends ComponentPropsWithoutRef<'span'> {
   visuallyHiddenText?: string;
 }
 

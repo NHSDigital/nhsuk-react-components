@@ -1,9 +1,8 @@
-import React, { FC, HTMLProps, useRef, useEffect, useState } from 'react';
+import React, { ComponentPropsWithoutRef, FC, useRef, useEffect, useState } from 'react';
 import { Button } from 'nhsuk-frontend';
 import classNames from 'classnames';
 
-export interface ButtonProps extends HTMLProps<HTMLButtonElement> {
-  type?: 'button' | 'submit' | 'reset';
+export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
   href?: never;
   secondary?: boolean;
   reverse?: boolean;
@@ -12,9 +11,9 @@ export interface ButtonProps extends HTMLProps<HTMLButtonElement> {
   preventDoubleClick?: boolean;
 }
 
-export interface ButtonLinkProps extends HTMLProps<HTMLAnchorElement> {
+export interface ButtonLinkProps extends ComponentPropsWithoutRef<'a'> {
+  href: string;
   type?: never;
-  href?: string;
   secondary?: boolean;
   reverse?: boolean;
   warning?: boolean;
@@ -124,13 +123,16 @@ export const ButtonLinkComponent: FC<ButtonLinkProps> = ({
   );
 };
 
-const ButtonWrapper: FC<ButtonLinkProps | ButtonProps> = ({ as, ...rest }) =>
-  'href' in rest || as === 'a' ? (
-    <ButtonLinkComponent {...(rest as ButtonLinkProps)} />
+const ButtonWrapper: FC<ButtonLinkProps | ButtonProps> = (props) => {
+  return props.as === 'a' || ('href' in props && typeof props.href === 'string') ? (
+    <ButtonLinkComponent {...props} />
   ) : (
-    <ButtonComponent {...(rest as ButtonProps)} />
+    <ButtonComponent {...props} />
   );
+};
 
+ButtonLinkComponent.displayName = 'Button.Link';
+ButtonComponent.displayName = 'Button';
 ButtonWrapper.displayName = 'Button';
 
 export default ButtonWrapper;

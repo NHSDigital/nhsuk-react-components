@@ -1,8 +1,8 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
 import { ArrowLeft, ArrowRight } from '@components/content-presentation/icons';
 
-interface PaginationLinkProps extends HTMLProps<HTMLAnchorElement> {
+interface PaginationLinkProps extends ComponentPropsWithoutRef<'a'> {
   previous?: boolean;
   next?: boolean;
 }
@@ -41,11 +41,9 @@ const PaginationLink: FC<PaginationLinkProps> = ({
   </li>
 );
 
-interface PaginationComponent extends FC<HTMLProps<HTMLDivElement>> {
-  Link: FC<PaginationLinkProps>;
-}
+type PaginationProps = ComponentPropsWithoutRef<'nav'>;
 
-const PaginationComponent: PaginationComponent = ({
+const PaginationComponent: FC<PaginationProps> = ({
   className,
   children,
   role = 'navigation',
@@ -65,6 +63,6 @@ const PaginationComponent: PaginationComponent = ({
 PaginationComponent.displayName = 'Pagination';
 PaginationLink.displayName = 'Pagination.Link';
 
-PaginationComponent.Link = PaginationLink;
-
-export default PaginationComponent;
+export default Object.assign(PaginationComponent, {
+  Link: PaginationLink,
+});

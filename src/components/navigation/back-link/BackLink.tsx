@@ -2,7 +2,9 @@ import React, { FC } from 'react';
 import classNames from 'classnames';
 import { AsElementLink } from '@util/types/LinkTypes';
 
-const BackLinkComponent: FC<AsElementLink<HTMLAnchorElement>> = ({
+export type BackLinkProps = AsElementLink<HTMLAnchorElement>;
+
+const BackLinkComponent: FC<BackLinkProps> = ({
   children = 'Back',
   className,
   asElement: Element = 'a',

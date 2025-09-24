@@ -3,7 +3,9 @@ import classNames from 'classnames';
 import { ArrowRightCircle } from '@components/content-presentation/icons';
 import { AsElementLink } from '@util/types/LinkTypes';
 
-const ActionLinkComponent: FC<AsElementLink<HTMLAnchorElement>> = ({
+type ActionLinkProps = AsElementLink<HTMLAnchorElement>;
+
+const ActionLinkComponent: FC<ActionLinkProps> = ({
   children,
   asElement: Element = 'a',
   className,

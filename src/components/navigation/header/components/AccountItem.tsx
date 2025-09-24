@@ -1,10 +1,10 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
 import { User as UserIcon } from '@components/content-presentation/icons';
 
 export interface AccountItemProps
-  extends Pick<HTMLProps<HTMLAnchorElement>, 'href' | 'children' | 'className'>,
-    Pick<HTMLProps<HTMLFormElement>, 'action' | 'method'> {
+  extends Pick<ComponentPropsWithoutRef<'a'>, 'href' | 'children' | 'className'>,
+    Pick<ComponentPropsWithoutRef<'form'>, 'action' | 'method'> {
   icon?: boolean;
 }
 

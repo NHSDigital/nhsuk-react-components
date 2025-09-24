@@ -1,11 +1,12 @@
-import React, { HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef } from 'react';
 import { render } from '@testing-library/react';
 import { axe, toHaveNoViolations } from 'jest-axe';
+import { FormElementProps } from '@util/types/FormTypes';
 import FormGroup, { FormGroupProps } from '../FormGroup';
 
 expect.extend(toHaveNoViolations);
 
-type InputProps = HTMLProps<HTMLInputElement> & { error?: boolean };
+type InputProps = ComponentPropsWithoutRef<'input'> & Pick<FormElementProps, 'error'>;
 type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>;
 
 const renderFormGroupComponent = ({

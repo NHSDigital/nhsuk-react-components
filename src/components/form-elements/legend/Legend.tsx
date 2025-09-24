@@ -1,11 +1,12 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
 import { NHSUKSize } from '@util/types/NHSUKTypes';
-import HeadingLevel, { HeadingLevelType } from '@components/utils/HeadingLevel';
+import HeadingLevel, { HeadingLevelProps } from '@components/utils/HeadingLevel';
 
-export interface LegendProps extends Omit<HTMLProps<HTMLLegendElement>, 'size'> {
+export interface LegendProps
+  extends ComponentPropsWithoutRef<'legend'>,
+    Pick<HeadingLevelProps, 'headingLevel'> {
   isPageHeading?: boolean;
-  headingLevel?: HeadingLevelType;
   size?: NHSUKSize;
 }
 

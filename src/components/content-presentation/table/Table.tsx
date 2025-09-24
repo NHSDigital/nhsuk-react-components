@@ -1,37 +1,35 @@
-import React, { ComponentProps, FC, HTMLProps, ReactNode, useMemo, useState } from 'react';
+import React, {
+  ComponentPropsWithRef,
+  ComponentPropsWithoutRef,
+  FC,
+  ReactNode,
+  useMemo,
+  useState,
+} from 'react';
 import classNames from 'classnames';
 import TableBody from './components/TableBody';
 import TableCaption from './components/TableCaption';
-import TableCell, { TableCellProps } from './components/TableCell';
+import TableCell from './components/TableCell';
 import TableContainer from './components/TableContainer';
 import TableHead from './components/TableHead';
 import TableRow from './components/TableRow';
-import TablePanel, { TablePanelProps } from './components/TablePanel';
+import TablePanel from './components/TablePanel';
 import TableContext, { ITableContext } from './TableContext';
 
-interface TableProps extends HTMLProps<HTMLTableElement> {
+interface TableProps extends ComponentPropsWithoutRef<'table'> {
   responsive?: boolean;
   caption?: ReactNode;
-  captionProps?: ComponentProps<typeof TableCaption>;
+  captionProps?: ComponentPropsWithRef<'caption'>;
 }
 
-interface TableComponent extends FC<TableProps> {
-  Body: FC<HTMLProps<HTMLTableSectionElement>>;
-  Cell: FC<TableCellProps>;
-  Container: FC<HTMLProps<HTMLDivElement>>;
-  Head: FC<HTMLProps<HTMLTableSectionElement>>;
-  Panel: FC<TablePanelProps>;
-  Row: FC<HTMLProps<HTMLTableRowElement>>;
-}
-
-const TableComponent = ({
+const TableComponent: FC<TableProps> = ({
   caption,
   captionProps,
   children,
   className,
   responsive = false,
   ...rest
-}: TableProps) => {
+}) => {
   const [headings, setHeadings] = useState<string[]>([]);
 
   const contextValue: ITableContext = useMemo(() => {
@@ -61,11 +59,11 @@ const TableComponent = ({
 
 TableComponent.displayName = 'Table';
 
-TableComponent.Container = TableContainer;
-TableComponent.Panel = TablePanel;
-TableComponent.Head = TableHead;
-TableComponent.Body = TableBody;
-TableComponent.Row = TableRow;
-TableComponent.Cell = TableCell;
-
-export default TableComponent;
+export default Object.assign(TableComponent, {
+  Container: TableContainer,
+  Panel: TablePanel,
+  Head: TableHead,
+  Body: TableBody,
+  Row: TableRow,
+  Cell: TableCell,
+});

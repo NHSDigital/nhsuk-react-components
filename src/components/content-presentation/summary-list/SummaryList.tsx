@@ -1,34 +1,27 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
 
-const SummaryListRow: FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => (
+const SummaryListRow: FC<ComponentPropsWithoutRef<'div'>> = ({ className, ...rest }) => (
   <div className={classNames('nhsuk-summary-list__row', className)} {...rest} />
 );
 
-const SummaryListKey: FC<HTMLProps<HTMLDListElement>> = ({ className, ...rest }) => (
+const SummaryListKey: FC<ComponentPropsWithoutRef<'dt'>> = ({ className, ...rest }) => (
   <dt className={classNames('nhsuk-summary-list__key', className)} {...rest} />
 );
 
-const SummaryListValue: FC<HTMLProps<HTMLDListElement>> = ({ className, ...rest }) => (
+const SummaryListValue: FC<ComponentPropsWithoutRef<'dd'>> = ({ className, ...rest }) => (
   <dd className={classNames('nhsuk-summary-list__value', className)} {...rest} />
 );
 
-const SummaryListActions: FC<HTMLProps<HTMLDListElement>> = ({ className, ...rest }) => (
+const SummaryListActions: FC<ComponentPropsWithoutRef<'dd'>> = ({ className, ...rest }) => (
   <dd className={classNames('nhsuk-summary-list__actions', className)} {...rest} />
 );
 
-interface SummaryListProps extends HTMLProps<HTMLDListElement> {
+interface SummaryListProps extends ComponentPropsWithoutRef<'dl'> {
   noBorder?: boolean;
 }
 
-interface SummaryListComponent extends FC<SummaryListProps> {
-  Row: FC<HTMLProps<HTMLDivElement>>;
-  Key: FC<HTMLProps<HTMLDListElement>>;
-  Value: FC<HTMLProps<HTMLDListElement>>;
-  Actions: FC<HTMLProps<HTMLDListElement>>;
-}
-
-const SummaryListComponent: SummaryListComponent = ({ className, noBorder, ...rest }) => (
+const SummaryListComponent: FC<SummaryListProps> = ({ className, noBorder, ...rest }) => (
   <dl
     className={classNames(
       'nhsuk-summary-list',
@@ -45,9 +38,9 @@ SummaryListKey.displayName = 'SummaryList.Key';
 SummaryListValue.displayName = 'SummaryList.Value';
 SummaryListActions.displayName = 'SummaryList.Actions';
 
-SummaryListComponent.Row = SummaryListRow;
-SummaryListComponent.Key = SummaryListKey;
-SummaryListComponent.Value = SummaryListValue;
-SummaryListComponent.Actions = SummaryListActions;
-
-export default SummaryListComponent;
+export default Object.assign(SummaryListComponent, {
+  Row: SummaryListRow,
+  Key: SummaryListKey,
+  Value: SummaryListValue,
+  Actions: SummaryListActions,
+});

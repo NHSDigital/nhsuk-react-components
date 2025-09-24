@@ -1,10 +1,10 @@
-import React, { HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
 import Legend from '../legend/Legend';
 
-export type FieldsetProps = HTMLProps<HTMLFieldSetElement>;
+export type FieldsetProps = ComponentPropsWithoutRef<'fieldset'>;
 
-const FieldsetComponent = ({ children, className, ...rest }: FieldsetProps) => {
+const FieldsetComponent: FC<FieldsetProps> = ({ children, className, ...rest }) => {
   if (!children) {
     return null;
   }
@@ -18,6 +18,6 @@ const FieldsetComponent = ({ children, className, ...rest }: FieldsetProps) => {
 
 FieldsetComponent.displayName = 'Fieldset';
 
-FieldsetComponent.Legend = Legend;
-
-export default FieldsetComponent;
+export default Object.assign(FieldsetComponent, {
+  Legend,
+});

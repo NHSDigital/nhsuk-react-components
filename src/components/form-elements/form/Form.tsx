@@ -1,7 +1,7 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import FormContext from './FormContext';
 
-type FormProps = HTMLProps<HTMLFormElement> & {
+type FormProps = ComponentPropsWithoutRef<'form'> & {
   disableErrorFromComponents?: boolean;
 };
 

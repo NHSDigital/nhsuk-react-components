@@ -1,6 +1,13 @@
 'use client';
 
-import React, { ChangeEvent, EventHandler, HTMLProps, useEffect, useState } from 'react';
+import React, {
+  ChangeEvent,
+  ComponentPropsWithoutRef,
+  EventHandler,
+  FC,
+  useEffect,
+  useState,
+} from 'react';
 import classNames from 'classnames';
 import { DayInput, MonthInput, YearInput } from './components/IndividualDateInputs';
 import FormGroup from '@components/utils/FormGroup';
@@ -25,7 +32,7 @@ interface DateInputElement extends Omit<HTMLInputElement, 'value' | 'onChange'> 
 }
 
 interface DateInputProps
-  extends Omit<HTMLProps<HTMLDivElement>, 'value' | 'defaultValue' | 'label' | 'onChange'>,
+  extends Omit<ComponentPropsWithoutRef<'div'>, 'defaultValue' | 'onChange'>,
     Omit<FormElementProps, 'label' | 'labelProps'> {
   value?: Partial<DateInputValue>;
   defaultValue?: Partial<DateInputValue>;
@@ -34,13 +41,13 @@ interface DateInputProps
 
 type InputType = 'day' | 'month' | 'year';
 
-const DateInputComponent = ({
+const DateInputComponent: FC<DateInputProps> = ({
   children,
   onChange,
   value,
   defaultValue,
   ...rest
-}: DateInputProps) => {
+}) => {
   const [internalDate, setInternalDate] = useState<DateInputValue>({
     day: value?.day ?? '',
     month: value?.month ?? '',
@@ -96,9 +103,9 @@ const DateInputComponent = ({
             <DateInputContext.Provider value={contextValue}>
               {children || (
                 <>
-                  <DateInputComponent.Day />
-                  <DateInputComponent.Month />
-                  <DateInputComponent.Year />
+                  <DayInput />
+                  <MonthInput />
+                  <YearInput />
                 </>
               )}
             </DateInputContext.Provider>
@@ -111,8 +118,8 @@ const DateInputComponent = ({
 
 DateInputComponent.displayName = 'DateInput';
 
-DateInputComponent.Day = DayInput;
-DateInputComponent.Month = MonthInput;
-DateInputComponent.Year = YearInput;
-
-export default DateInputComponent;
+export default Object.assign(DateInputComponent, {
+  Day: DayInput,
+  Month: MonthInput,
+  Year: YearInput,
+});

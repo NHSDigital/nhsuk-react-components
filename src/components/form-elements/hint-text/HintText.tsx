@@ -1,9 +1,9 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
 
-export type HintTextProps = HTMLProps<HTMLDivElement>;
+export type HintTextProps = ComponentPropsWithoutRef<'div'>;
 
-const HintTextComponent: FC<HintTextProps> = ({ className, children, ...rest }) => {
+const HintTextComponent: FC<HintTextProps> = ({ children, className, ...rest }) => {
   if (!children) {
     return null;
   }

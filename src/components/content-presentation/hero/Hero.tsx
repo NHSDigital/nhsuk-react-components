@@ -1,9 +1,9 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
 import { Container, Row, Col } from '../../layout';
-import HeadingLevel, { HeadingLevelType } from '@components/utils/HeadingLevel';
+import HeadingLevel, { HeadingLevelProps } from '@components/utils/HeadingLevel';
 
-interface HeroContentProps extends HTMLProps<HTMLDivElement> {
+interface HeroContentProps extends ComponentPropsWithoutRef<'div'> {
   hasImage: boolean;
 }
 
@@ -29,11 +29,7 @@ const HeroContent: FC<HeroContentProps> = ({ children, hasImage }) => {
   );
 };
 
-interface HeroHeadingProps extends HTMLProps<HTMLHeadingElement> {
-  headingLevel?: HeadingLevelType;
-}
-
-const HeroHeading: FC<HeroHeadingProps> = ({ className, headingLevel = 'h1', ...rest }) => (
+const HeroHeading: FC<HeadingLevelProps> = ({ className, headingLevel = 'h1', ...rest }) => (
   <HeadingLevel
     className={classNames('nhsuk-u-margin-bottom-3', className)}
     headingLevel={headingLevel}
@@ -41,20 +37,15 @@ const HeroHeading: FC<HeroHeadingProps> = ({ className, headingLevel = 'h1', ...
   />
 );
 
-const HeroText: FC<HTMLProps<HTMLParagraphElement>> = ({ className, ...rest }) => (
+const HeroText: FC<ComponentPropsWithoutRef<'p'>> = ({ className, ...rest }) => (
   <p className={classNames('nhsuk-body-l nhsuk-u-margin-bottom-0', className)} {...rest} />
 );
 
-interface HeroProps extends HTMLProps<HTMLDivElement> {
+interface HeroProps extends ComponentPropsWithoutRef<'div'> {
   imageSrc?: string;
 }
 
-interface HeroComponent extends FC<HeroProps> {
-  Heading: FC<HeroHeadingProps>;
-  Text: FC<HTMLProps<HTMLParagraphElement>>;
-}
-
-const HeroComponent: HeroComponent = ({ className, children, imageSrc, ...rest }) => (
+const HeroComponent: FC<HeroProps> = ({ className, children, imageSrc, ...rest }) => (
   <section
     className={classNames(
       'nhsuk-hero',
@@ -79,7 +70,7 @@ HeroComponent.displayName = 'Hero';
 HeroHeading.displayName = 'Hero.Heading';
 HeroText.displayName = 'Hero.Text';
 
-HeroComponent.Heading = HeroHeading;
-HeroComponent.Text = HeroText;
-
-export default HeroComponent;
+export default Object.assign(HeroComponent, {
+  Heading: HeroHeading,
+  Text: HeroText,
+});

@@ -1,4 +1,4 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
 import CardContext from './CardContext';
 import CardContent from './components/CardContent';
@@ -11,22 +11,12 @@ import CardGroupItem from './components/CardGroupItem';
 import { CardType } from '@util/types/NHSUKTypes';
 import { cardTypeIsCareCard } from '@util/types/TypeGuards';
 
-interface CardProps extends HTMLProps<HTMLDivElement> {
+interface CardProps extends ComponentPropsWithoutRef<'div'> {
   clickable?: boolean;
   cardType?: CardType;
 }
 
-interface ICard extends FC<CardProps> {
-  Content: typeof CardContent;
-  Description: typeof CardDescription;
-  Image: typeof CardImage;
-  Link: typeof CardLink;
-  Heading: typeof CardHeading;
-  Group: typeof CardGroup;
-  GroupItem: typeof CardGroupItem;
-}
-
-const CardComponent: ICard = ({ className, clickable, children, cardType, ...rest }) => {
+const CardComponent: FC<CardProps> = ({ className, clickable, children, cardType, ...rest }) => {
   let cardClassNames = classNames(
     'nhsuk-card',
     { 'nhsuk-card--clickable': clickable },
@@ -58,12 +48,12 @@ const CardComponent: ICard = ({ className, clickable, children, cardType, ...res
 
 CardComponent.displayName = 'Card';
 
-CardComponent.Heading = CardHeading;
-CardComponent.Description = CardDescription;
-CardComponent.Image = CardImage;
-CardComponent.Link = CardLink;
-CardComponent.Content = CardContent;
-CardComponent.Group = CardGroup;
-CardComponent.GroupItem = CardGroupItem;
-
-export default CardComponent;
+export default Object.assign(CardComponent, {
+  Heading: CardHeading,
+  Description: CardDescription,
+  Image: CardImage,
+  Link: CardLink,
+  Content: CardContent,
+  Group: CardGroup,
+  GroupItem: CardGroupItem,
+});

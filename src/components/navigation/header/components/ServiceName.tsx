@@ -1,8 +1,8 @@
-import React, { FC, HTMLProps, useContext } from 'react';
+import React, { ComponentPropsWithoutRef, FC, useContext } from 'react';
 import HeaderContext, { IHeaderContext } from '../HeaderContext';
 
 export type ServiceNameProps = NonNullable<IHeaderContext['serviceProps']>;
-export type ServiceProps = Pick<HTMLProps<HTMLDivElement>, 'children'>;
+export type ServiceProps = Pick<ComponentPropsWithoutRef<'div'>, 'children'>;
 
 const ServiceName: FC<ServiceNameProps> = (service) =>
   service.href ? (

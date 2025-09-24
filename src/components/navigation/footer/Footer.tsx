@@ -1,4 +1,4 @@
-import React, { Children, FC, HTMLProps } from 'react';
+import React, { Children, ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
 import { Container } from '@components/layout';
 import { childIsOfComponentType } from '@util/types/TypeGuards';
@@ -26,7 +26,7 @@ const FooterMeta: FC<FooterMetaProps> = ({
   );
 };
 
-type FooterListProps = HTMLProps<HTMLUListElement>;
+type FooterListProps = ComponentPropsWithoutRef<'ul'>;
 
 const FooterList: FC<FooterListProps> = ({ className, children, ...rest }) => (
   <ul className={classNames('nhsuk-footer__list', className)} {...rest}>
@@ -34,13 +34,13 @@ const FooterList: FC<FooterListProps> = ({ className, children, ...rest }) => (
   </ul>
 );
 
-const FooterListItem: FC<HTMLProps<HTMLAnchorElement>> = ({ className, ...rest }) => (
+const FooterListItem: FC<ComponentPropsWithoutRef<'a'>> = ({ className, ...rest }) => (
   <li className="nhsuk-footer__list-item">
     <a className={classNames('nhsuk-footer__list-item-link', className)} {...rest} />
   </li>
 );
 
-const FooterCopyright: FC<HTMLProps<HTMLParagraphElement>> = ({
+const FooterCopyright: FC<ComponentPropsWithoutRef<'p'>> = ({
   children = '© NHS England',
   className,
   ...rest
@@ -50,18 +50,11 @@ const FooterCopyright: FC<HTMLProps<HTMLParagraphElement>> = ({
   </p>
 );
 
-interface FooterProps extends HTMLProps<HTMLDivElement> {
+interface FooterProps extends ComponentPropsWithoutRef<'div'> {
   containerClassName?: string;
 }
 
-interface FooterComponent extends FC<FooterProps> {
-  Meta: FC<FooterMetaProps>;
-  List: FC<FooterListProps>;
-  ListItem: FC<HTMLProps<HTMLAnchorElement>>;
-  Copyright: FC<HTMLProps<HTMLParagraphElement>>;
-}
-
-const FooterComponent: FooterComponent = ({ className, containerClassName, children, ...rest }) => {
+const FooterComponent: FC<FooterProps> = ({ className, containerClassName, children, ...rest }) => {
   const items = Children.toArray(children);
   const meta = items.filter((child) => childIsOfComponentType(child, FooterMeta));
   const columns = items.filter((child) => childIsOfComponentType(child, FooterList));
@@ -97,9 +90,9 @@ FooterList.displayName = 'Footer.List';
 FooterListItem.displayName = 'Footer.ListItem';
 FooterCopyright.displayName = 'Footer.Copyright';
 
-FooterComponent.Meta = FooterMeta;
-FooterComponent.List = FooterList;
-FooterComponent.ListItem = FooterListItem;
-FooterComponent.Copyright = FooterCopyright;
-
-export default FooterComponent;
+export default Object.assign(FooterComponent, {
+  Meta: FooterMeta,
+  List: FooterList,
+  ListItem: FooterListItem,
+  Copyright: FooterCopyright,
+});

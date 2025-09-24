@@ -1,6 +1,7 @@
 'use client';
 import React, {
   ComponentPropsWithoutRef,
+  FC,
   useState,
   useEffect,
   useMemo,
@@ -28,7 +29,7 @@ interface HeaderProps extends ComponentPropsWithoutRef<'div'> {
   white?: boolean;
 }
 
-const HeaderComponent = ({
+const HeaderComponent: FC<HeaderProps> = ({
   className,
   containerClasses,
   children,
@@ -37,7 +38,7 @@ const HeaderComponent = ({
   organisation,
   white,
   ...rest
-}: HeaderProps) => {
+}) => {
   const moduleRef = useRef<HTMLDivElement>(null);
 
   const [logoProps, setLogoProps] = useState(logo);
@@ -141,11 +142,11 @@ const HeaderComponent = ({
 
 HeaderComponent.displayName = 'Header';
 
-HeaderComponent.Account = Account;
-HeaderComponent.AccountItem = AccountItem;
-HeaderComponent.Logo = Logo;
-HeaderComponent.Search = Search;
-HeaderComponent.Navigation = Navigation;
-HeaderComponent.NavigationItem = NavigationItem;
-
-export default HeaderComponent;
+export default Object.assign(HeaderComponent, {
+  Account,
+  AccountItem,
+  Logo,
+  Search,
+  Navigation,
+  NavigationItem,
+});

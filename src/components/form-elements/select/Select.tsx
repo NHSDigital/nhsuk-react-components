@@ -1,20 +1,17 @@
-import React, { FC, HTMLProps, MutableRefObject } from 'react';
+import React, { ComponentPropsWithoutRef, FC, MutableRefObject } from 'react';
 
 import classNames from 'classnames';
 import { FormElementProps } from '@util/types/FormTypes';
 import FormGroup from '@components/utils/FormGroup';
 
-//  SelectProps = HTMLProps<HTMLSelectElement> & FormElementProps;
-interface ISelectProps extends HTMLProps<HTMLSelectElement>, FormElementProps {
+export interface SelectProps
+  extends ComponentPropsWithoutRef<'select'>,
+    Omit<FormElementProps, 'fieldsetProps' | 'legend' | 'legendProps'> {
   selectRef?: MutableRefObject<HTMLSelectElement | null>;
 }
 
-interface ISelect extends FC<ISelectProps> {
-  Option: FC<HTMLProps<HTMLOptionElement>>;
-}
-
-const SelectComponent: ISelect = ({ children, ...rest }) => (
-  <FormGroup<ISelectProps> inputType="select" {...rest}>
+const SelectComponent: FC<SelectProps> = ({ children, ...rest }) => (
+  <FormGroup<SelectProps> inputType="select" {...rest}>
     {({ className, error, selectRef, ...restRenderProps }) => (
       <select
         className={classNames('nhsuk-select', { 'nhsuk-select--error': error }, className)}
@@ -27,11 +24,11 @@ const SelectComponent: ISelect = ({ children, ...rest }) => (
   </FormGroup>
 );
 
-const Option: FC<HTMLProps<HTMLOptionElement>> = (props) => <option {...props} />;
+const Option: FC<ComponentPropsWithoutRef<'option'>> = (props) => <option {...props} />;
 
 SelectComponent.displayName = 'Select';
 Option.displayName = 'Select.Option';
 
-SelectComponent.Option = Option;
-
-export default SelectComponent;
+export default Object.assign(SelectComponent, {
+  Option,
+});

@@ -1,7 +1,10 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
 
-export type AccountProps = Pick<HTMLProps<HTMLElement>, 'aria-label' | 'children' | 'className'>;
+export type AccountProps = Pick<
+  ComponentPropsWithoutRef<'nav'>,
+  'aria-label' | 'children' | 'className'
+>;
 
 const Account: FC<AccountProps> = ({
   className,

@@ -1,12 +1,12 @@
 'use client';
-import React, { FC, HTMLProps, useEffect, useRef, useState } from 'react';
+import React, { ComponentPropsWithoutRef, FC, useEffect, useRef, useState } from 'react';
 import { CharacterCount } from 'nhsuk-frontend';
 import classNames from 'classnames';
 import FormGroup from '@components/utils/FormGroup';
 import { FormElementProps } from '@util/types/FormTypes';
 
 export interface CharacterCountProps
-  extends HTMLProps<HTMLTextAreaElement>,
+  extends ComponentPropsWithoutRef<'textarea'>,
     Omit<FormElementProps, 'fieldsetProps' | 'legend' | 'legendProps'> {
   maxLength?: number;
   maxWords?: number;

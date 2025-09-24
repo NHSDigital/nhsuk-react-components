@@ -1,7 +1,7 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
 
-interface TagProps extends HTMLProps<HTMLSpanElement> {
+interface TagProps extends ComponentPropsWithoutRef<'strong'> {
   modifier?:
     | 'white'
     | 'grey'

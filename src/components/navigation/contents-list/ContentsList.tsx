@@ -1,7 +1,7 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
 
-interface ContentsListItemProps extends HTMLProps<HTMLAnchorElement> {
+interface ContentsListItemProps extends ComponentPropsWithoutRef<'a'> {
   current?: boolean;
 }
 
@@ -18,15 +18,11 @@ const ContentsListItem: FC<ContentsListItemProps> = ({ className, current, ...re
   </li>
 );
 
-interface ContentsListProps extends HTMLProps<HTMLDivElement> {
+interface ContentsListProps extends ComponentPropsWithoutRef<'div'> {
   visuallyHiddenText?: string;
 }
 
-interface ContentsListComponent extends FC<ContentsListProps> {
-  Item: FC<ContentsListItemProps>;
-}
-
-const ContentsListComponent: ContentsListComponent = ({
+const ContentsListComponent: FC<ContentsListProps> = ({
   className,
   children,
   role = 'navigation',
@@ -48,6 +44,6 @@ const ContentsListComponent: ContentsListComponent = ({
 ContentsListComponent.displayName = 'ContentsList';
 ContentsListItem.displayName = 'ContentsList.Item';
 
-ContentsListComponent.Item = ContentsListItem;
-
-export default ContentsListComponent;
+export default Object.assign(ContentsListComponent, {
+  Item: ContentsListItem,
+});

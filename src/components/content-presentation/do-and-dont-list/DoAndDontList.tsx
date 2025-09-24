@@ -1,24 +1,21 @@
 'use client';
-import React, { FC, HTMLProps, createContext, useContext, ReactNode } from 'react';
+import React, { ComponentPropsWithoutRef, FC, createContext, useContext, ReactNode } from 'react';
 import classNames from 'classnames';
 import { Tick, Cross } from '@components/content-presentation/icons';
-import HeadingLevel, { HeadingLevelType } from '@components/utils/HeadingLevel';
+import HeadingLevel, { HeadingLevelProps } from '@components/utils/HeadingLevel';
 
 type ListType = 'do' | 'dont';
 
-interface DoAndDontListProps extends HTMLProps<HTMLDivElement> {
+interface DoAndDontListProps
+  extends ComponentPropsWithoutRef<'div'>,
+    Pick<HeadingLevelProps, 'headingLevel'> {
   listType: ListType;
   heading?: string;
-  headingLevel?: HeadingLevelType;
-}
-
-interface DoAndDontListComponent extends FC<DoAndDontListProps> {
-  Item: FC<DoAndDontItemProps>;
 }
 
 const DoAndDontListContext = createContext<ListType>('do');
 
-const DoAndDontListComponent: DoAndDontListComponent = ({
+const DoAndDontListComponent: FC<DoAndDontListProps> = ({
   className,
   listType,
   children,
@@ -44,7 +41,7 @@ const DoAndDontListComponent: DoAndDontListComponent = ({
   );
 };
 
-interface DoAndDontItemProps extends HTMLProps<HTMLLIElement> {
+interface DoAndDontItemProps extends ComponentPropsWithoutRef<'li'> {
   listItemType?: ListType;
   prefixText?: ReactNode;
 }
@@ -74,6 +71,6 @@ const DoAndDontItem: FC<DoAndDontItemProps> = ({ prefixText, listItemType, child
 DoAndDontListComponent.displayName = 'DoAndDontList';
 DoAndDontItem.displayName = 'DoAndDontList.Item';
 
-DoAndDontListComponent.Item = DoAndDontItem;
-
-export default DoAndDontListComponent;
+export default Object.assign(DoAndDontListComponent, {
+  Item: DoAndDontItem,
+});

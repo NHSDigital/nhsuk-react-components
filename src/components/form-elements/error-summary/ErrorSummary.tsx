@@ -1,10 +1,7 @@
 import React, {
   Children,
-  ComponentProps,
+  ComponentPropsWithoutRef,
   FC,
-  ForwardRefExoticComponent,
-  PropsWithoutRef,
-  RefAttributes,
   createRef,
   forwardRef,
   useState,
@@ -14,7 +11,9 @@ import classNames from 'classnames';
 import { childIsOfComponentType } from '@util/types/TypeGuards';
 import { ErrorSummary } from 'nhsuk-frontend';
 
-const Title: FC<ComponentProps<'h2'>> = ({ children, className, ...rest }) => {
+type TitleProps = ComponentPropsWithoutRef<'h2'>;
+
+const Title: FC<TitleProps> = ({ children, className, ...rest }) => {
   return (
     <h2 className={classNames('nhsuk-error-summary__title', className)} {...rest}>
       {children}
@@ -22,7 +21,9 @@ const Title: FC<ComponentProps<'h2'>> = ({ children, className, ...rest }) => {
   );
 };
 
-const List: FC<ComponentProps<'ul'>> = ({ children, className, ...rest }) => {
+type ListProps = ComponentPropsWithoutRef<'ul'>;
+
+const List: FC<ListProps> = ({ children, className, ...rest }) => {
   if (!children) {
     return null;
   }
@@ -34,7 +35,9 @@ const List: FC<ComponentProps<'ul'>> = ({ children, className, ...rest }) => {
   );
 };
 
-const ListItem: FC<ComponentProps<'a'>> = ({ children, href, ...rest }) => {
+type ListItemProps = ComponentPropsWithoutRef<'a'>;
+
+const ListItem: FC<ListItemProps> = ({ children, href, ...rest }) => {
   if (!children) {
     return null;
   }
@@ -52,20 +55,11 @@ const ListItem: FC<ComponentProps<'a'>> = ({ children, href, ...rest }) => {
   );
 };
 
-interface ErrorSummaryProps extends ComponentProps<'div'> {
+interface ErrorSummaryProps extends ComponentPropsWithoutRef<'div'> {
   disableAutoFocus?: boolean;
 }
 
-interface ErrorSummaryComponent
-  extends ForwardRefExoticComponent<
-    PropsWithoutRef<ErrorSummaryProps> & RefAttributes<HTMLDivElement>
-  > {
-  Title: FC<ComponentProps<'h2'>>;
-  List: FC<ComponentProps<'ul'>>;
-  ListItem: FC<ComponentProps<'a'>>;
-}
-
-const ErrorSummaryDiv = forwardRef<HTMLDivElement, ErrorSummaryProps>(
+const ErrorSummaryComponent = forwardRef<HTMLDivElement, ErrorSummaryProps>(
   ({ children, className, disableAutoFocus, ...rest }, forwardedRef) => {
     const [moduleRef] = useState(() => forwardedRef || createRef<HTMLDivElement>());
     const [instance, setInstance] = useState<ErrorSummary>();
@@ -103,15 +97,13 @@ const ErrorSummaryDiv = forwardRef<HTMLDivElement, ErrorSummaryProps>(
   },
 );
 
+ErrorSummaryComponent.displayName = 'ErrorSummary';
 Title.displayName = 'ErrorSummary.Title';
 List.displayName = 'ErrorSummary.List';
 ListItem.displayName = 'ErrorSummary.ListItem';
-ErrorSummaryDiv.displayName = 'ErrorSummary';
 
-const ErrorSummaryComponent: ErrorSummaryComponent = Object.assign(ErrorSummaryDiv, {
+export default Object.assign(ErrorSummaryComponent, {
   Title,
   List,
   ListItem,
 });
-
-export default ErrorSummaryComponent;

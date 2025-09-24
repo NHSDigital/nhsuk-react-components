@@ -1,7 +1,7 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import { Search as SearchIcon } from '@components/content-presentation/icons';
 
-export interface SearchProps extends HTMLProps<HTMLFormElement> {
+export interface SearchProps extends ComponentPropsWithoutRef<'form'> {
   name?: string;
   placeholder?: string;
   visuallyHiddenLabel?: string;

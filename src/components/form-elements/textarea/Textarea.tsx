@@ -1,10 +1,11 @@
-import React, { FC, HTMLProps, MutableRefObject } from 'react';
+import React, { ComponentPropsWithoutRef, FC, MutableRefObject } from 'react';
 import classNames from 'classnames';
 import FormGroup from '@components/utils/FormGroup';
 import { FormElementProps } from '@util/types/FormTypes';
 
-type TextareaProps = HTMLProps<HTMLTextAreaElement> &
-  FormElementProps & { textareaRef?: MutableRefObject<HTMLTextAreaElement | null> };
+interface TextareaProps extends ComponentPropsWithoutRef<'textarea'>, FormElementProps {
+  textareaRef?: MutableRefObject<HTMLTextAreaElement | null>;
+}
 
 const TextareaComponent: FC<TextareaProps> = (props) => (
   <FormGroup<TextareaProps> inputType="textarea" {...props}>

@@ -1,24 +1,25 @@
-import React, { FC, HTMLProps, MutableRefObject } from 'react';
+import React, { ComponentPropsWithoutRef, FC, MutableRefObject } from 'react';
 import classNames from 'classnames';
 import FormGroup from '@components/utils/FormGroup';
 import { InputWidth } from '@util/types/NHSUKTypes';
 import { FormElementProps } from '@util/types/FormTypes';
 
-interface TextInputProps extends HTMLProps<HTMLInputElement>, FormElementProps {
+interface TextInputProps
+  extends ComponentPropsWithoutRef<'input'>,
+    Omit<FormElementProps, 'fieldsetProps' | 'legend' | 'legendProps'> {
   inputRef?: MutableRefObject<HTMLInputElement | null>;
   width?: InputWidth;
-  disableErrorLine?: boolean;
   prefix?: string;
   suffix?: string;
 }
 
-const TextInputPrefix: FC<{ prefix: string }> = ({ prefix }) => (
+const TextInputPrefix: FC<Pick<TextInputProps, 'prefix'>> = ({ prefix }) => (
   <div className="nhsuk-input__prefix" aria-hidden="true">
     {prefix}
   </div>
 );
 
-const TextInputSuffix: FC<{ suffix: string }> = ({ suffix }) => (
+const TextInputSuffix: FC<Pick<TextInputProps, 'suffix'>> = ({ suffix }) => (
   <div className="nhsuk-input__suffix" aria-hidden="true">
     {suffix}
   </div>

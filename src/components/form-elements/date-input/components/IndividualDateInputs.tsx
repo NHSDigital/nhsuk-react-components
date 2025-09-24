@@ -1,14 +1,15 @@
 'use client';
-import React, { FC, HTMLProps, useContext, ChangeEvent } from 'react';
+import React, { ComponentPropsWithoutRef, FC, useContext, ChangeEvent } from 'react';
 import classNames from 'classnames';
-import Label, { LabelProps } from '../../label/Label';
+import { FormElementProps } from '@util/types/FormTypes';
+import Label from '../../label/Label';
 import DateInputContext, { IDateInputContext } from '../DateInputContext';
 
-export interface IndividualDateInputProps extends HTMLProps<HTMLInputElement> {
-  labelProps?: LabelProps;
+export interface IndividualDateInputProps
+  extends ComponentPropsWithoutRef<'input'>,
+    Pick<FormElementProps, 'label' | 'labelProps' | 'error'> {
   inputType: 'day' | 'month' | 'year';
   inputRef?: (ref: HTMLInputElement | null) => void;
-  error?: boolean;
 }
 
 const labels: Record<'day' | 'month' | 'year', string> = {

@@ -1,5 +1,5 @@
 'use client';
-import React, { ReactNode, useState, useEffect, HTMLProps, useContext } from 'react';
+import React, { ComponentPropsWithoutRef, ReactNode, useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import ErrorMessage from '../form-elements/error-message/ErrorMessage';
 import Fieldset from '../form-elements/fieldset/Fieldset';
@@ -12,22 +12,24 @@ import { FormElementProps } from '../../util/types/FormTypes';
 import FormGroupContext, { IFormGroupContext } from './FormGroupContext';
 
 type ExcludedProps =
-  | 'legend'
-  | 'legendProps'
-  | 'fieldsetProps'
-  | 'hint'
-  | 'hintProps'
-  | 'label'
-  | 'labelProps'
-  | 'errorProps'
-  | 'inputType'
-  | 'disableErrorLine';
+  | Extract<
+      keyof FormElementProps,
+      | 'legend'
+      | 'legendProps'
+      | 'fieldsetProps'
+      | 'hint'
+      | 'hintProps'
+      | 'label'
+      | 'labelProps'
+      | 'errorProps'
+      | 'disableErrorLine'
+    >
+  | 'inputType';
 
-type BaseFormElementRenderProps = HTMLProps<
-  HTMLInputElement | HTMLDivElement | HTMLSelectElement | HTMLTextAreaElement
-> & {
-  error?: string | boolean;
-};
+type BaseFormElementRenderProps = ComponentPropsWithoutRef<
+  'div' | 'input' | 'select' | 'textarea'
+> &
+  Pick<FormElementProps, 'error'>;
 
 type FormElementRenderProps<T> = Omit<T, ExcludedProps> & {
   id: string;

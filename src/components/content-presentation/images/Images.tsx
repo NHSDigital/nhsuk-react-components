@@ -1,10 +1,7 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
 
-interface ImageProps extends HTMLProps<HTMLImageElement> {
-  // Overriding the default crossOrigin the default is crossOrigin: string | undefined
-  // which causes a typescript "incompatible types" error.
-  crossOrigin?: 'anonymous' | 'use-credentials' | undefined;
+interface ImageProps extends ComponentPropsWithoutRef<'img'> {
   caption?: string;
 }
 

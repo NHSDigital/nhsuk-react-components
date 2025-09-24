@@ -1,4 +1,4 @@
-import React, { ComponentProps } from 'react';
+import React, { ComponentPropsWithoutRef } from 'react';
 import { render } from '@testing-library/react';
 import Tag from '../Tag';
 
@@ -15,7 +15,7 @@ describe('Tag', () => {
     expect(container.querySelector('strong.nhsuk-tag')).toBeTruthy();
   });
 
-  it.each<ComponentProps<typeof Tag>['modifier']>([
+  it.each<ComponentPropsWithoutRef<typeof Tag>['modifier']>([
     'white',
     'grey',
     'green',

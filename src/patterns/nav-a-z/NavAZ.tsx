@@ -1,4 +1,4 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
 import { AsElementLink } from '@util/types/LinkTypes';
 
@@ -36,19 +36,14 @@ const processLetters = (
   return null;
 };
 
-interface NavAZProps extends HTMLProps<HTMLDivElement> {
+interface NavAZProps extends ComponentPropsWithoutRef<'div'> {
   fullAlphabet?: boolean;
   removedLetters?: Array<string>;
   disabledLetters?: Array<string>;
   letters?: Array<string>;
 }
 
-interface NavAZ extends FC<NavAZProps> {
-  LinkItem: FC<AsElementLink<HTMLAnchorElement>>;
-  DisabledItem: FC<HTMLProps<HTMLSpanElement>>;
-}
-
-const NavAZ: NavAZ = ({
+const NavAZ: FC<NavAZProps> = ({
   className,
   children,
   fullAlphabet,
@@ -88,7 +83,7 @@ const LinkItem: FC<AsElementLink<HTMLAnchorElement>> = ({
   </li>
 );
 
-const DisabledItem: FC<HTMLProps<HTMLSpanElement>> = ({ className, ...rest }) => (
+const DisabledItem: FC<ComponentPropsWithoutRef<'span'>> = ({ className, ...rest }) => (
   <li className="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1">
     <span
       className={classNames(
@@ -107,7 +102,7 @@ NavAZ.displayName = 'NavAZ';
 LinkItem.displayName = 'NavAZ.LinkItem';
 DisabledItem.displayName = 'NavAZ.DisabledItem';
 
-NavAZ.LinkItem = LinkItem;
-NavAZ.DisabledItem = DisabledItem;
-
-export default NavAZ;
+export default Object.assign(NavAZ, {
+  LinkItem,
+  DisabledItem,
+});

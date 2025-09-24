@@ -1,6 +1,6 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { HTMLAttributes, FC } from 'react';
 
-interface HeadingLevelProps extends HTMLProps<HTMLHeadingElement> {
+export interface HeadingLevelProps extends HTMLAttributes<HTMLHeadingElement> {
   headingLevel?: HeadingLevelType;
 }
 

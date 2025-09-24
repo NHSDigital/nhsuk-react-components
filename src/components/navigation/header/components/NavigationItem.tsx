@@ -1,4 +1,4 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
 import { AsElementLink } from '@util/types/LinkTypes';
 
@@ -25,7 +25,7 @@ const NavigationItem: FC<NavigationItemProps> = ({
 
   // Wrap active links in strong element so users who override colours
   // or styles still have some indicator of the current nav item.
-  const InnerElement: FC<HTMLProps<HTMLElement>> = ({ children }) => {
+  const InnerElement: FC<ComponentPropsWithoutRef<'strong'>> = ({ children }) => {
     return ariaCurrent ? (
       <strong className="nhsuk-header__navigation-item-current-fallback">{children}</strong>
     ) : (

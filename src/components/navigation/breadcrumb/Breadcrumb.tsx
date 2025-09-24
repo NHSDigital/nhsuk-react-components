@@ -1,12 +1,17 @@
-import React, { Children, FC, HTMLProps, ReactNode } from 'react';
+import React, { Children, ComponentPropsWithoutRef, FC, ReactNode } from 'react';
 import classNames from 'classnames';
 import { AsElementLink } from '@util/types/LinkTypes';
 import { childIsOfComponentType } from '@util/types/TypeGuards';
 import BackLink from '../back-link';
 
-type Item = FC<AsElementLink<HTMLAnchorElement>>;
+export type ItemProps = AsElementLink<HTMLAnchorElement>;
 
-const Item: Item = ({ className, children, asElement: Element = 'a', ...rest }) => (
+const Item: FC<ItemProps> = ({
+  className,
+  children,
+  asElement: Element = 'a',
+  ...rest
+}) => (
   <li className="nhsuk-breadcrumb__list-item">
     <Element className={classNames('nhsuk-breadcrumb__link', className)} {...rest}>
       {children}
@@ -14,33 +19,28 @@ const Item: Item = ({ className, children, asElement: Element = 'a', ...rest }) 
   </li>
 );
 
-type Back = typeof BackLink;
+export type BackProps = AsElementLink<HTMLAnchorElement>;
 
-const Back: Back = ({ children, ...rest }) => (
+const Back: FC<BackProps> = ({ children, ...rest }) => (
   <BackLink {...rest}>
     <span className="nhsuk-u-visually-hidden">Back to&nbsp;</span>
     {children}
   </BackLink>
 );
 
-interface BreadcrumbComponent extends FC<HTMLProps<HTMLDivElement>> {
-  Item: Item;
-  Back: Back;
-}
+export type BreadcrumbProps = ComponentPropsWithoutRef<'nav'>;
 
-type SplitChildren = {
-  ItemChildren: Array<ReactNode>;
-  OtherChildren: Array<ReactNode>;
-};
-
-const BreadcrumbComponent: BreadcrumbComponent = ({
+const BreadcrumbComponent: FC<BreadcrumbProps> = ({
   className,
   children,
   'aria-label': ariaLabel = 'Breadcrumb',
   ...rest
 }) => {
   // Split off any "Item" components
-  const { ItemChildren, OtherChildren } = Children.toArray(children).reduce<SplitChildren>(
+  const { ItemChildren, OtherChildren } = Children.toArray(children).reduce<{
+    ItemChildren: Array<ReactNode>;
+    OtherChildren: Array<ReactNode>;
+  }>(
     (prev, child) => {
       if (childIsOfComponentType(child, Item)) {
         prev.ItemChildren.push(child);
@@ -67,7 +67,7 @@ BreadcrumbComponent.displayName = 'Breadcrumb';
 Item.displayName = 'Breadcrumb.Item';
 Back.displayName = 'Breadcrumb.Back';
 
-BreadcrumbComponent.Item = Item;
-BreadcrumbComponent.Back = Back;
-
-export default BreadcrumbComponent;
+export default Object.assign(BreadcrumbComponent, {
+  Item,
+  Back,
+});

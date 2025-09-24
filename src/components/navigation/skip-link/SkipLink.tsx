@@ -1,13 +1,15 @@
-import React, { ComponentProps, useEffect, useRef, useState } from 'react';
+import React, { ComponentPropsWithoutRef, FC, useEffect, useRef, useState } from 'react';
 import { SkipLink } from 'nhsuk-frontend';
 import classNames from 'classnames';
 
-const SkipLinkComponent = ({
+export type SkipLinkProps = ComponentPropsWithoutRef<'a'>;
+
+const SkipLinkComponent: FC<SkipLinkProps> = ({
   children = 'Skip to main content',
   className,
   href = '#maincontent',
   ...rest
-}: ComponentProps<'a'>) => {
+}) => {
   const moduleRef = useRef<HTMLAnchorElement>(null);
   const [instance, setInstance] = useState<SkipLink>();
 

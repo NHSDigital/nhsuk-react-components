@@ -1,17 +1,24 @@
 'use client';
-import React, { FC, HTMLProps, useContext, ReactNode, useEffect, useState } from 'react';
+import React, {
+  ComponentPropsWithoutRef,
+  FC,
+  useContext,
+  ReactNode,
+  useEffect,
+  useState,
+} from 'react';
 import classNames from 'classnames';
+import { FormElementProps } from '@util/types/FormTypes';
 import { RadiosContext, IRadiosContext } from '../RadioContext';
-import HintText, { HintTextProps } from '../../hint-text/HintText';
-import Label, { LabelProps } from '../../label/Label';
+import HintText from '../../hint-text/HintText';
+import Label from '../../label/Label';
 
-export interface RadiosItemProps extends HTMLProps<HTMLInputElement> {
-  hint?: string;
-  hintProps?: HintTextProps;
-  labelProps?: LabelProps;
+export interface RadiosItemProps
+  extends ComponentPropsWithoutRef<'input'>,
+    Pick<FormElementProps, 'hint' | 'hintProps' | 'labelProps'> {
   conditional?: ReactNode;
   forceShowConditional?: boolean;
-  conditionalWrapperProps?: HTMLProps<HTMLDivElement>;
+  conditionalWrapperProps?: ComponentPropsWithoutRef<'div'>;
   inputRef?: (inputRef: HTMLInputElement | null) => void;
 }
 

@@ -1,59 +1,50 @@
 'use client';
 import classNames from 'classnames';
-import React, { FC, HTMLAttributes, useEffect, useRef, useState } from 'react';
-import HeadingLevel, { HeadingLevelType } from '@components/utils/HeadingLevel';
+import React, { ComponentPropsWithoutRef, FC, useEffect, useRef, useState } from 'react';
+import HeadingLevel, { HeadingLevelProps } from '@components/utils/HeadingLevel';
 import { Tabs } from 'nhsuk-frontend';
 
-type TabsProps = HTMLAttributes<HTMLDivElement>;
+export type TabsProps = ComponentPropsWithoutRef<'div'>;
 
-type TabTitleProps = { children: React.ReactNode; headingLevel?: HeadingLevelType };
+export type TabTitleProps = HeadingLevelProps;
 
-type TabListProps = {
-  children: React.ReactNode;
-};
+export type TabListProps = ComponentPropsWithoutRef<'ul'>;
 
-type TabListItemProps = {
+export interface TabListItemProps extends ComponentPropsWithoutRef<'a'> {
   id: string;
-  children: React.ReactNode;
-};
+}
 
-type TabContentsProps = {
+export interface TabContentsProps extends ComponentPropsWithoutRef<'div'> {
   id: string;
-  children: React.ReactNode;
-};
+}
 
-const TabTitle: FC<TabTitleProps> = ({ children, headingLevel = 'h2' }) => (
-  <HeadingLevel className="nhsuk-tabs__title" headingLevel={headingLevel}>
+const TabTitle: FC<TabTitleProps> = ({ children, headingLevel = 'h2', ...rest }) => (
+  <HeadingLevel className="nhsuk-tabs__title" headingLevel={headingLevel} {...rest}>
     {children}
   </HeadingLevel>
 );
 
-const TabList: FC<TabListProps> = ({ children }) => (
-  <ul className="nhsuk-tabs__list">{children}</ul>
+const TabList: FC<TabListProps> = ({ children, ...rest }) => (
+  <ul className="nhsuk-tabs__list" {...rest}>
+    {children}
+  </ul>
 );
 
-const TabListItem: FC<TabListItemProps> = ({ id, children }) => (
+const TabListItem: FC<TabListItemProps> = ({ children, id, ...rest }) => (
   <li className="nhsuk-tabs__list-item">
-    <a className="nhsuk-tabs__tab" href={`#${id}`}>
+    <a className="nhsuk-tabs__tab" href={`#${id}`} {...rest}>
       {children}
     </a>
   </li>
 );
 
-const TabContents: FC<TabContentsProps> = ({ id, children }) => (
-  <div className="nhsuk-tabs__panel" id={id}>
+const TabContents: FC<TabContentsProps> = ({ children, id, ...rest }) => (
+  <div className="nhsuk-tabs__panel" id={id} {...rest}>
     {children}
   </div>
 );
 
-interface TabsComponent extends FC<TabsProps> {
-  Title: FC<TabTitleProps>;
-  List: FC<TabListProps>;
-  ListItem: FC<TabListItemProps>;
-  Contents: FC<TabContentsProps>;
-}
-
-const TabsComponent: TabsComponent = ({ className, children, ...rest }) => {
+const TabsComponent: FC<TabsProps> = ({ className, children, ...rest }) => {
   const moduleRef = useRef<HTMLDivElement>(null);
   const [instance, setInstance] = useState<Tabs>();
 
@@ -83,9 +74,9 @@ TabList.displayName = 'Tabs.List';
 TabListItem.displayName = 'Tabs.ListItem';
 TabContents.displayName = 'Tabs.Contents';
 
-TabsComponent.Title = TabTitle;
-TabsComponent.List = TabList;
-TabsComponent.ListItem = TabListItem;
-TabsComponent.Contents = TabContents;
-
-export default TabsComponent;
+export default Object.assign(TabsComponent, {
+  Title: TabTitle,
+  List: TabList,
+  ListItem: TabListItem,
+  Contents: TabContents,
+});

@@ -1,4 +1,4 @@
-import React, { HTMLProps, useEffect, useRef, useState } from 'react';
+import React, { ComponentPropsWithoutRef, FC, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '@util/types/FormTypes';
 import { RadiosContext, IRadiosContext } from './RadioContext';
@@ -9,13 +9,13 @@ import { generateRandomName } from '@util/RandomID';
 import { Radios } from 'nhsuk-frontend';
 
 interface RadiosProps
-  extends HTMLProps<HTMLDivElement>,
+  extends ComponentPropsWithoutRef<'div'>,
     Omit<FormElementProps, 'label' | 'labelProps'> {
   inline?: boolean;
   idPrefix?: string;
 }
 
-const RadiosComponent = ({ children, idPrefix, ...rest }: RadiosProps) => {
+const RadiosComponent: FC<RadiosProps> = ({ children, idPrefix, ...rest }) => {
   const moduleRef = useRef<HTMLDivElement>(null);
   const [instance, setInstance] = useState<Radios>();
   const [selectedRadio, setSelectedRadio] = useState<string>();
@@ -98,7 +98,7 @@ const RadiosComponent = ({ children, idPrefix, ...rest }: RadiosProps) => {
 
 RadiosComponent.displayName = 'Radios';
 
-RadiosComponent.Item = RadiosItem;
-RadiosComponent.Divider = RadiosDivider;
-
-export default RadiosComponent;
+export default Object.assign(RadiosComponent, {
+  Item: RadiosItem,
+  Divider: RadiosDivider,
+});

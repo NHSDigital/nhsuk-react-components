@@ -1,7 +1,7 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
 
-interface ContainerProps extends HTMLProps<HTMLDivElement> {
+export interface ContainerProps extends ComponentPropsWithoutRef<'div'> {
   fluid?: boolean;
 }
 

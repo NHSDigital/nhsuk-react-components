@@ -1,9 +1,10 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
 
-const TableCaption: FC<HTMLProps<HTMLTableCaptionElement>> = ({ className, ...rest }) => (
+const TableCaption: FC<ComponentPropsWithoutRef<'caption'>> = ({ className, ...rest }) => (
   <caption className={classNames('nhsuk-table__caption', className)} {...rest} />
 );
+
 TableCaption.displayName = 'Table.Caption';
 
 export default TableCaption;

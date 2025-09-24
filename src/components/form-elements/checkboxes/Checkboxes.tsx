@@ -1,6 +1,6 @@
 'use client';
 
-import React, { HTMLProps, useEffect, useRef, useState } from 'react';
+import React, { ComponentPropsWithoutRef, FC, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '@util/types/FormTypes';
 import FormGroup from '@components/utils/FormGroup';
@@ -10,13 +10,13 @@ import CheckboxesDivider from './components/Divider';
 import { generateRandomName } from '@util/RandomID';
 import { Checkboxes } from 'nhsuk-frontend';
 
-interface CheckboxesProps
-  extends HTMLProps<HTMLDivElement>,
+export interface CheckboxesProps
+  extends ComponentPropsWithoutRef<'div'>,
     Omit<FormElementProps, 'label' | 'labelProps'> {
   idPrefix?: string;
 }
 
-const CheckboxesComponent = ({ children, idPrefix, ...rest }: CheckboxesProps) => {
+const CheckboxesComponent: FC<CheckboxesProps> = ({ children, idPrefix, ...rest }) => {
   const moduleRef = useRef<HTMLDivElement>(null);
   const [instance, setInstance] = useState<Checkboxes>();
 
@@ -90,7 +90,7 @@ const CheckboxesComponent = ({ children, idPrefix, ...rest }: CheckboxesProps) =
 
 CheckboxesComponent.displayName = 'Checkboxes';
 
-CheckboxesComponent.Item = CheckboxesItem;
-CheckboxesComponent.Divider = CheckboxesDivider;
-
-export default CheckboxesComponent;
+export default Object.assign(CheckboxesComponent, {
+  Item: CheckboxesItem,
+  Divider: CheckboxesDivider,
+});

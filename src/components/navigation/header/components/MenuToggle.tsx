@@ -1,6 +1,6 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef , FC } from 'react';
 
-export type MenuToggleProps = HTMLProps<HTMLButtonElement>;
+export type MenuToggleProps = ComponentPropsWithoutRef<'button'>;
 
 const MenuToggle: FC<MenuToggleProps> = () => (
   <li className="nhsuk-header__menu" hidden>

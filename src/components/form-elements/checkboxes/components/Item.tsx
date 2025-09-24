@@ -1,8 +1,8 @@
 'use client';
 
 import React, {
+  ComponentPropsWithoutRef,
   FC,
-  HTMLProps,
   useContext,
   ReactNode,
   useEffect,
@@ -10,21 +10,21 @@ import React, {
   MutableRefObject,
 } from 'react';
 import classNames from 'classnames';
+import { FormElementProps } from '@util/types/FormTypes';
 import CheckboxContext, { ICheckboxContext } from '../CheckboxContext';
-import Label, { LabelProps } from '../../label/Label';
-import HintText, { HintTextProps } from '../../hint-text/HintText';
+import Label from '../../label/Label';
+import HintText from '../../hint-text/HintText';
 import { HTMLAttributesWithData } from '@util/types/NHSUKTypes';
 
-type CheckboxesItemProps = Omit<HTMLProps<HTMLInputElement>, 'label'> & {
-  labelProps?: LabelProps;
-  hint?: string;
-  hintProps?: HintTextProps;
+export interface CheckboxesItemProps
+  extends ComponentPropsWithoutRef<'input'>,
+    Pick<FormElementProps, 'hint' | 'hintProps' | 'labelProps'> {
   conditional?: ReactNode;
   forceShowConditional?: boolean;
-  conditionalWrapperProps?: HTMLProps<HTMLDivElement>;
+  conditionalWrapperProps?: ComponentPropsWithoutRef<'div'>;
   inputRef?: MutableRefObject<HTMLInputElement | null>;
   exclusive?: boolean;
-};
+}
 
 const CheckboxesItem: FC<CheckboxesItemProps> = ({
   id,
