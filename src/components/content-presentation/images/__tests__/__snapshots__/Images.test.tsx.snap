@@ -6,6 +6,7 @@ exports[`Images matches snapshot: Images 1`] = `
     class="nhsuk-image"
   >
     <img
+      alt=""
       class="nhsuk-image__img"
     />
   </figure>
