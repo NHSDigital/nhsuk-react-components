@@ -1,5 +1,5 @@
 import React from 'react';
-import { CharacterCount, CharacterCountType, HintText, Label, Textarea } from '../../src';
+import { CharacterCount } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
 /**
@@ -21,22 +21,13 @@ type Story = StoryObj<typeof CharacterCount>;
 export const Standard: Story = {
   render: () => (
     <CharacterCount
+      label="Can you provide more detail?"
+      labelProps={{ isPageHeading: true, size: 'l' }}
+      hint="Do not include personal information like your name, date of birth or NHS number"
+      name="example"
       maxLength={200}
-      countType={CharacterCountType.Characters}
-      textAreaId="more-detail"
-    >
-      <Label htmlFor="more-detail">Can you provide more detail?</Label>
-      <HintText id="more-detail-hint">
-        Do not include personal information like your name, date of birth or NHS number.
-      </HintText>
-      <Textarea
-        id="more-detail"
-        className="nhsuk-js-character-count"
-        name="more-detail"
-        aria-describedby="more-detail-hint"
-        rows={5}
-      />
-    </CharacterCount>
+      rows={5}
+    />
   ),
 };
 
@@ -48,46 +39,31 @@ export const Standard: Story = {
 export const WordCountLimit: Story = {
   render: () => (
     <CharacterCount
-      maxLength={150}
-      countType={CharacterCountType.Words}
-      textAreaId="job-description-detail"
-    >
-      <Label htmlFor="job-description-detail" size="l">
-        Enter a job description
-      </Label>
-      <Textarea
-        id="job-description-detail"
-        className="nhsuk-js-character-count"
-        name="job-description-detail"
-        rows={5}
-      />
-    </CharacterCount>
+      label="Can you provide more detail?"
+      labelProps={{ isPageHeading: true, size: 'l' }}
+      hint="Do not include personal information like your name, date of birth or NHS number"
+      name="example"
+      maxWords={150}
+      rows={5}
+    />
   ),
 };
 
 /**
  * If the limit is much higher than most users are likely to reach, you can choose to only display the message after a user has entered a certain amount.
  *
- * Use the `thresholdPercent` prop to only show the count message when users have reached that percentage of the limit.
+ * Use the `threshold` prop to only show the count message when users have reached that percentage of the limit.
  */
-export const MessageThresholdPercentage: Story = {
+export const MessageThreshold: Story = {
   render: () => (
     <CharacterCount
+      label="Can you provide more detail?"
+      labelProps={{ isPageHeading: true, size: 'l' }}
+      hint="Do not include personal information like your name, date of birth or NHS number"
+      name="example"
       maxLength={112}
-      countType={CharacterCountType.Characters}
-      textAreaId="threshold"
-      thresholdPercent={75}
-    >
-      <Label htmlFor="threshold">Can you provide more detail?</Label>
-      <Textarea
-        id="threshold"
-        className="nhsuk-js-character-count"
-        name="threshold"
-        defaultValue={
-          'Type another letter into this field after this message to see the threshold feature'
-        }
-        rows={5}
-      />
-    </CharacterCount>
+      threshold={75}
+      rows={5}
+    />
   ),
 };

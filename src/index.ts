@@ -3,10 +3,7 @@ export { default as BackLink } from './components/navigation/back-link';
 export { default as Breadcrumb } from './components/navigation/breadcrumb';
 export { default as Button } from './components/form-elements/button';
 export { default as Card } from './components/navigation/card';
-export {
-  default as CharacterCount,
-  CharacterCountType,
-} from './components/form-elements/character-count';
+export { default as CharacterCount } from './components/form-elements/character-count';
 export { default as Checkboxes } from './components/form-elements/checkboxes';
 export { default as ContentsList } from './components/navigation/contents-list';
 export { default as DateInput } from './components/form-elements/date-input';

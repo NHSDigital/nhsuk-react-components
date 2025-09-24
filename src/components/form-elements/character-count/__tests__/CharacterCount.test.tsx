@@ -1,36 +1,19 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import CharacterCount, { CharacterCountType } from '../CharacterCount';
-import Label from '@components/form-elements/label/Label';
-import HintText from '@components/form-elements/hint-text/HintText';
-import Textarea from '@components/form-elements/textarea/Textarea';
+import CharacterCount from '../CharacterCount';
 
 describe('Character Count', () => {
-  const children = (
-    <>
-      <Label htmlFor="more-detail">Can you provide more detail?</Label>
-      <HintText id="more-detail-hint">
-        Do not include personal information like your name, date of birth or NHS number.
-      </HintText>
-      <Textarea
-        id="more-detail"
-        className="nhsuk-js-character-count"
-        name="more-detail"
-        aria-describedby="more-detail-hint"
-        rows={5}
-      />
-    </>
-  );
-
   it('Matches snapshot', () => {
     const { container } = render(
       <CharacterCount
+        label="Can you provide more detail?"
+        labelProps={{ isPageHeading: true, size: 'l' }}
+        hint="Do not include personal information like your name, date of birth or NHS number"
+        id="more-detail"
+        name="more-detail"
         maxLength={200}
-        countType={CharacterCountType.Characters}
-        textAreaId="more-detail"
-      >
-        {children}
-      </CharacterCount>,
+        rows={5}
+      />,
     );
 
     expect(container).toMatchSnapshot();
@@ -39,57 +22,61 @@ describe('Character Count', () => {
   it('Sets the data-maxlength attribute when counting characters', () => {
     const { container } = render(
       <CharacterCount
+        label="Can you provide more detail?"
+        labelProps={{ isPageHeading: true, size: 'l' }}
+        hint="Do not include personal information like your name, date of birth or NHS number"
+        id="more-detail"
+        name="more-detail"
         maxLength={200}
-        countType={CharacterCountType.Characters}
-        textAreaId="more-detail"
-      >
-        {children}
-      </CharacterCount>,
+        rows={5}
+      />,
     );
 
-    expect(container.querySelector('.nhsuk-character-count')?.getAttribute('data-maxlength')).toBe(
-      '200',
-    );
-    expect(
-      container.querySelector('.nhsuk-character-count')?.getAttribute('data-maxwords'),
-    ).toBeNull();
-    expect(
-      container.querySelector('.nhsuk-character-count')?.getAttribute('data-threshold'),
-    ).toBeNull();
+    const characterCountEl = container.querySelector('.nhsuk-character-count');
+
+    expect(characterCountEl).toHaveAttribute('data-maxlength', '200');
+    expect(characterCountEl).not.toHaveAttribute('data-maxwords');
+    expect(characterCountEl).not.toHaveAttribute('data-threshold');
   });
 
   it('Sets the data-maxwords attribute when counting words', () => {
     const { container } = render(
-      <CharacterCount maxLength={200} countType={CharacterCountType.Words} textAreaId="more-detail">
-        {children}
-      </CharacterCount>,
+      <CharacterCount
+        label="Can you provide more detail?"
+        labelProps={{ isPageHeading: true, size: 'l' }}
+        hint="Do not include personal information like your name, date of birth or NHS number"
+        id="more-detail"
+        name="more-detail"
+        maxWords={200}
+        rows={5}
+      />,
     );
 
-    expect(container.querySelector('.nhsuk-character-count')?.getAttribute('data-maxwords')).toBe(
-      '200',
-    );
-    expect(
-      container.querySelector('.nhsuk-character-count')?.getAttribute('data-maxlength'),
-    ).toBeNull();
-    expect(
-      container.querySelector('.nhsuk-character-count')?.getAttribute('data-threshold'),
-    ).toBeNull();
+    const characterCountEl = container.querySelector('.nhsuk-character-count');
+
+    expect(characterCountEl).not.toHaveAttribute('data-maxlength');
+    expect(characterCountEl).toHaveAttribute('data-maxwords', '200');
+    expect(characterCountEl).not.toHaveAttribute('data-threshold');
   });
 
   it('Sets the data-threshold attribute when threshold is specified', () => {
     const { container } = render(
       <CharacterCount
+        label="Can you provide more detail?"
+        labelProps={{ isPageHeading: true, size: 'l' }}
+        hint="Do not include personal information like your name, date of birth or NHS number"
+        id="more-detail"
+        name="more-detail"
         maxLength={200}
-        countType={CharacterCountType.Characters}
-        thresholdPercent={50}
-        textAreaId="more-detail"
-      >
-        {children}
-      </CharacterCount>,
+        threshold={50}
+        rows={5}
+      />,
     );
 
-    expect(container.querySelector('.nhsuk-character-count')?.getAttribute('data-threshold')).toBe(
-      '50',
-    );
+    const characterCountEl = container.querySelector('.nhsuk-character-count');
+
+    expect(characterCountEl).toHaveAttribute('data-maxlength', '200');
+    expect(characterCountEl).not.toHaveAttribute('data-maxwords');
+    expect(characterCountEl).toHaveAttribute('data-threshold', '50');
   });
 });

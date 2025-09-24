@@ -15,7 +15,6 @@ describe('Index', () => {
       'Button',
       'Card',
       'CharacterCount',
-      'CharacterCountType',
       'Checkboxes',
       'ChevronRightCircleIcon',
       'Clearfix',

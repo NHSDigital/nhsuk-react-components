@@ -10,7 +10,12 @@ export interface FormElementProps {
   errorProps?: ErrorMessageProps;
   hint?: string;
   hintProps?: HintTextProps;
-  formGroupProps?: HTMLProps<HTMLDivElement>;
+  formGroupProps?: HTMLProps<HTMLDivElement> & {
+    'data-module'?: string;
+    'data-maxlength'?: number;
+    'data-maxwords'?: number;
+    'data-threshold'?: number;
+  };
   disableErrorLine?: boolean;
   id?: string;
   name?: string;

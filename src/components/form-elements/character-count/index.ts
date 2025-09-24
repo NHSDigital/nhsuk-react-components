@@ -1,1 +1,1 @@
-export { default, CharacterCountType } from './CharacterCount';
+export { default } from './CharacterCount';

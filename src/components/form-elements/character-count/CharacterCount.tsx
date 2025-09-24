@@ -1,27 +1,23 @@
 'use client';
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { FC, HTMLProps, useEffect, useRef, useState } from 'react';
 import { CharacterCount } from 'nhsuk-frontend';
-import { HTMLAttributesWithData } from '@util/types/NHSUKTypes';
+import classNames from 'classnames';
+import SingleInputFormGroup from '@components/utils/SingleInputFormGroup';
+import { FormElementProps } from '@util/types/FormTypes';
 
-export enum CharacterCountType {
-  Characters,
-  Words,
+export interface CharacterCountProps
+  extends HTMLProps<HTMLTextAreaElement>,
+    Omit<FormElementProps, 'fieldsetProps' | 'legend' | 'legendProps'> {
+  maxLength?: number;
+  maxWords?: number;
+  threshold?: number;
 }
-
-type CharacterCountProps = React.HTMLAttributes<HTMLDivElement> & {
-  children: React.ReactNode;
-  maxLength: number;
-  countType: CharacterCountType;
-  textAreaId: string;
-  thresholdPercent?: number;
-};
 
 const CharacterCountComponent: FC<CharacterCountProps> = ({
   children,
   maxLength,
-  countType,
-  textAreaId,
-  thresholdPercent,
+  maxWords,
+  threshold,
   ...rest
 }) => {
   const moduleRef = useRef<HTMLDivElement>(null);
@@ -35,28 +31,41 @@ const CharacterCountComponent: FC<CharacterCountProps> = ({
     setInstance(new CharacterCount(moduleRef.current));
   }, [moduleRef, instance]);
 
-  const characterCountProps: HTMLAttributesWithData<HTMLDivElement> =
-    countType === CharacterCountType.Characters
-      ? { ...rest, ['data-maxlength']: maxLength }
-      : { ...rest, ['data-maxwords']: maxLength };
-
-  if (thresholdPercent) {
-    characterCountProps['data-threshold'] = thresholdPercent;
-  }
-
   return (
-    <div
-      className="nhsuk-character-count"
-      data-module="nhsuk-character-count"
-      ref={moduleRef}
-      {...characterCountProps}
+    <SingleInputFormGroup<CharacterCountProps>
+      inputType="textarea"
+      formGroupProps={{
+        className: 'nhsuk-character-count',
+        'data-module': 'nhsuk-character-count',
+        'data-maxlength': maxLength,
+        'data-maxwords': maxWords,
+        'data-threshold': threshold,
+        ref: moduleRef,
+      }}
+      {...rest}
     >
-      <div className="nhsuk-form-group">{children}</div>
-
-      <div className="nhsuk-hint nhsuk-character-count__message" id={`${textAreaId}-info`}>
-        You can enter up to {maxLength} characters
-      </div>
-    </div>
+      {({ className, id, error, 'aria-describedby': ariaDescribedBy, ...rest }) => (
+        <>
+          <textarea
+            className={classNames(
+              'nhsuk-textarea',
+              { 'nhsuk-textarea--error': error },
+              'nhsuk-js-character-count',
+              className,
+            )}
+            id={id}
+            aria-describedby={`${id}-info ${ariaDescribedBy}`}
+            {...rest}
+          />
+          <div className="nhsuk-hint nhsuk-character-count__message" id={`${id}-info`}>
+            {maxWords
+              ? `You can enter up to ${maxWords} words`
+              : `You can enter up to ${maxLength} characters`}
+          </div>
+          {children}
+        </>
+      )}
+    </SingleInputFormGroup>
   );
 };
 
