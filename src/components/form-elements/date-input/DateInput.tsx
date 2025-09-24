@@ -3,7 +3,7 @@
 import React, { ChangeEvent, EventHandler, HTMLProps, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { DayInput, MonthInput, YearInput } from './components/IndividualDateInputs';
-import SingleInputFormGroup from '@components/utils/SingleInputFormGroup';
+import FormGroup from '@components/utils/FormGroup';
 import DateInputContext, { IDateInputContext } from './DateInputContext';
 import { FormElementProps } from '@util/types/FormTypes';
 
@@ -26,7 +26,7 @@ interface DateInputElement extends Omit<HTMLInputElement, 'value' | 'onChange'> 
 
 interface DateInputProps
   extends Omit<HTMLProps<HTMLDivElement>, 'value' | 'defaultValue' | 'label' | 'onChange'>,
-    FormElementProps {
+    Omit<FormElementProps, 'label' | 'labelProps'> {
   value?: Partial<DateInputValue>;
   defaultValue?: Partial<DateInputValue>;
   onChange?: EventHandler<DateInputChangeEvent>;
@@ -76,7 +76,7 @@ const DateInputComponent = ({
   };
 
   return (
-    <SingleInputFormGroup<Omit<DateInputProps, 'value' | 'defaultValue'>>
+    <FormGroup<Omit<DateInputProps, 'value' | 'defaultValue'>>
       fieldsetProps={{ role: 'group' }}
       inputType="dateinput"
       {...rest}
@@ -105,7 +105,7 @@ const DateInputComponent = ({
           </div>
         );
       }}
-    </SingleInputFormGroup>
+    </FormGroup>
   );
 };
 

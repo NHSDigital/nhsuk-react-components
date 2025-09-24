@@ -2,13 +2,15 @@ import React, { HTMLProps, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '@util/types/FormTypes';
 import { RadiosContext, IRadiosContext } from './RadioContext';
-import SingleInputFormGroup from '@components/utils/SingleInputFormGroup';
+import FormGroup from '@components/utils/FormGroup';
 import RadiosDivider from './components/Divider';
 import RadiosItem from './components/Item';
 import { generateRandomName } from '@util/RandomID';
 import { Radios } from 'nhsuk-frontend';
 
-interface RadiosProps extends HTMLProps<HTMLDivElement>, FormElementProps {
+interface RadiosProps
+  extends HTMLProps<HTMLDivElement>,
+    Omit<FormElementProps, 'label' | 'labelProps'> {
   inline?: boolean;
   idPrefix?: string;
 }
@@ -65,7 +67,7 @@ const RadiosComponent = ({ children, idPrefix, ...rest }: RadiosProps) => {
   };
 
   return (
-    <SingleInputFormGroup<RadiosProps> inputType="radios" {...rest}>
+    <FormGroup<RadiosProps> inputType="radios" {...rest}>
       {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
       {({ className, inline, name, id, error, ...restRenderProps }) => {
         resetRadioIds();
@@ -90,7 +92,7 @@ const RadiosComponent = ({ children, idPrefix, ...rest }: RadiosProps) => {
           </div>
         );
       }}
-    </SingleInputFormGroup>
+    </FormGroup>
   );
 };
 

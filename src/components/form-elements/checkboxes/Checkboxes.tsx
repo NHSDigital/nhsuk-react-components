@@ -3,14 +3,16 @@
 import React, { HTMLProps, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '@util/types/FormTypes';
-import SingleInputFormGroup from '@components/utils/SingleInputFormGroup';
+import FormGroup from '@components/utils/FormGroup';
 import CheckboxContext, { ICheckboxContext } from './CheckboxContext';
 import CheckboxesItem from './components/Item';
 import CheckboxesDivider from './components/Divider';
 import { generateRandomName } from '@util/RandomID';
 import { Checkboxes } from 'nhsuk-frontend';
 
-interface CheckboxesProps extends HTMLProps<HTMLDivElement>, FormElementProps {
+interface CheckboxesProps
+  extends HTMLProps<HTMLDivElement>,
+    Omit<FormElementProps, 'label' | 'labelProps'> {
   idPrefix?: string;
 }
 
@@ -60,7 +62,7 @@ const CheckboxesComponent = ({ children, idPrefix, ...rest }: CheckboxesProps) =
   };
 
   return (
-    <SingleInputFormGroup<CheckboxesProps> inputType="checkboxes" {...rest}>
+    <FormGroup<CheckboxesProps> inputType="checkboxes" {...rest}>
       {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
       {({ className, name, id, idPrefix, error, ...restRenderProps }) => {
         resetCheckboxIds();
@@ -82,7 +84,7 @@ const CheckboxesComponent = ({ children, idPrefix, ...rest }: CheckboxesProps) =
           </div>
         );
       }}
-    </SingleInputFormGroup>
+    </FormGroup>
   );
 };
 

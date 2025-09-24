@@ -5,80 +5,85 @@ exports[`DateInput matches snapshot 1`] = `
   <div
     class="nhsuk-form-group"
   >
-    <div
-      class="nhsuk-date-input"
-      id="testInput"
+    <fieldset
+      class="nhsuk-fieldset"
+      role="group"
     >
       <div
-        class="nhsuk-date-input__item"
+        class="nhsuk-date-input"
+        id="testInput"
       >
         <div
-          class="nhsuk-form-group"
+          class="nhsuk-date-input__item"
         >
-          <label
-            class="nhsuk-label nhsuk-date-input__label"
-            for="testInput-day"
-            id="testInput-day--label"
+          <div
+            class="nhsuk-form-group"
           >
-            Day
-          </label>
-          <input
-            class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
-            id="testInput-day"
-            inputmode="numeric"
-            name="testInput-day"
-            type="text"
-            value=""
-          />
+            <label
+              class="nhsuk-label nhsuk-date-input__label"
+              for="testInput-day"
+              id="testInput-day--label"
+            >
+              Day
+            </label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+              id="testInput-day"
+              inputmode="numeric"
+              name="testInput-day"
+              type="text"
+              value=""
+            />
+          </div>
         </div>
-      </div>
-      <div
-        class="nhsuk-date-input__item"
-      >
         <div
-          class="nhsuk-form-group"
+          class="nhsuk-date-input__item"
         >
-          <label
-            class="nhsuk-label nhsuk-date-input__label"
-            for="testInput-month"
-            id="testInput-month--label"
+          <div
+            class="nhsuk-form-group"
           >
-            Month
-          </label>
-          <input
-            class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
-            id="testInput-month"
-            inputmode="numeric"
-            name="testInput-month"
-            type="text"
-            value=""
-          />
+            <label
+              class="nhsuk-label nhsuk-date-input__label"
+              for="testInput-month"
+              id="testInput-month--label"
+            >
+              Month
+            </label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+              id="testInput-month"
+              inputmode="numeric"
+              name="testInput-month"
+              type="text"
+              value=""
+            />
+          </div>
         </div>
-      </div>
-      <div
-        class="nhsuk-date-input__item"
-      >
         <div
-          class="nhsuk-form-group"
+          class="nhsuk-date-input__item"
         >
-          <label
-            class="nhsuk-label nhsuk-date-input__label"
-            for="testInput-year"
-            id="testInput-year--label"
+          <div
+            class="nhsuk-form-group"
           >
-            Year
-          </label>
-          <input
-            class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
-            id="testInput-year"
-            inputmode="numeric"
-            name="testInput-year"
-            type="text"
-            value=""
-          />
+            <label
+              class="nhsuk-label nhsuk-date-input__label"
+              for="testInput-year"
+              id="testInput-year--label"
+            >
+              Year
+            </label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
+              id="testInput-year"
+              inputmode="numeric"
+              name="testInput-year"
+              type="text"
+              value=""
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </fieldset>
   </div>
 </div>
 `;

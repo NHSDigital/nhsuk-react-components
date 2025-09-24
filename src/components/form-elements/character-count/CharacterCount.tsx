@@ -2,7 +2,7 @@
 import React, { FC, HTMLProps, useEffect, useRef, useState } from 'react';
 import { CharacterCount } from 'nhsuk-frontend';
 import classNames from 'classnames';
-import SingleInputFormGroup from '@components/utils/SingleInputFormGroup';
+import FormGroup from '@components/utils/FormGroup';
 import { FormElementProps } from '@util/types/FormTypes';
 
 export interface CharacterCountProps
@@ -32,7 +32,7 @@ const CharacterCountComponent: FC<CharacterCountProps> = ({
   }, [moduleRef, instance]);
 
   return (
-    <SingleInputFormGroup<CharacterCountProps>
+    <FormGroup<CharacterCountProps>
       inputType="textarea"
       formGroupProps={{
         className: 'nhsuk-character-count',
@@ -65,7 +65,7 @@ const CharacterCountComponent: FC<CharacterCountProps> = ({
           {children}
         </>
       )}
-    </SingleInputFormGroup>
+    </FormGroup>
   );
 };
 

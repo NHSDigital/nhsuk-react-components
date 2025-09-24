@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect, SyntheticEvent } from 'react';
-import { Fieldset, Checkboxes, TextInput, Button } from '../../src';
+import { Checkboxes, TextInput, Button } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
 /**
@@ -46,19 +46,18 @@ type CheckboxState = {
 export const Standard: Story = {
   render: (args) => (
     <form>
-      <Fieldset aria-describedby="nationality--hint">
-        <Fieldset.Legend>What is your nationality?</Fieldset.Legend>
-        <Checkboxes
-          idPrefix={args.idPrefix}
-          name="nationality"
-          id="nationality"
-          hint="If you have more than 1 nationality, select all options that are relevant to you."
-        >
-          <Checkboxes.Item value="british">British</Checkboxes.Item>
-          <Checkboxes.Item value="irish">Irish</Checkboxes.Item>
-          <Checkboxes.Item value="other">Citizen of another country</Checkboxes.Item>
-        </Checkboxes>
-      </Fieldset>
+      <Checkboxes
+        legend="What is your nationality?"
+        legendProps={{ size: 'l' }}
+        hint="If you have more than 1 nationality, select all options that are relevant to you"
+        idPrefix={args.idPrefix}
+        name="nationality"
+        id="nationality"
+      >
+        <Checkboxes.Item value="british">British</Checkboxes.Item>
+        <Checkboxes.Item value="irish">Irish</Checkboxes.Item>
+        <Checkboxes.Item value="other">Citizen of another country</Checkboxes.Item>
+      </Checkboxes>
     </form>
   ),
 };
@@ -66,28 +65,25 @@ export const Standard: Story = {
 export const WithHintText: Story = {
   render: (args) => (
     <form>
-      <Fieldset>
-        <Fieldset.Legend isPageHeading>How do you want to sign in?</Fieldset.Legend>
-        <Checkboxes>
-          <Checkboxes.Item
-            id="government-gateway"
-            name="gateway"
-            type="checkbox"
-            value="gov-gateway"
-            hint="You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before."
-          >
-            Sign in with Government Gateway
-          </Checkboxes.Item>
-          <Checkboxes.Item
-            id="nhsuk-login"
-            name="verify"
-            value="nhsuk-verify"
-            hint="You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
-          >
-            Sign in with NHS.UK login
-          </Checkboxes.Item>
-        </Checkboxes>
-      </Fieldset>
+      <Checkboxes legend="How do you want to sign in?" legendProps={{ size: 'l' }}>
+        <Checkboxes.Item
+          id="government-gateway"
+          name="gateway"
+          type="checkbox"
+          value="gov-gateway"
+          hint="You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before."
+        >
+          Sign in with Government Gateway
+        </Checkboxes.Item>
+        <Checkboxes.Item
+          id="nhsuk-login"
+          name="verify"
+          value="nhsuk-verify"
+          hint="You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
+        >
+          Sign in with NHS.UK login
+        </Checkboxes.Item>
+      </Checkboxes>
     </form>
   ),
 };
@@ -109,16 +105,17 @@ export const WithDisabledItem: Story = {
 export const WithConditionalContent: Story = {
   render: (args) => (
     <form>
-      <Fieldset aria-describedby="waste--hint">
-        <Fieldset.Legend isPageHeading>
-          Which types of waste do you transport regularly?
-        </Fieldset.Legend>
-        <Checkboxes id="waste" name="waste" hint="Select all that apply">
-          <Checkboxes.Item conditional={<p>This includes rocks and earth.</p>} value="mines">
-            Waste from mines or quarries
-          </Checkboxes.Item>
-        </Checkboxes>
-      </Fieldset>
+      <Checkboxes
+        legend="What types of waste do you transport regularly?"
+        legendProps={{ size: 'l' }}
+        hint="Select all that apply"
+        id="waste"
+        name="waste"
+      >
+        <Checkboxes.Item conditional={<p>This includes rocks and earth.</p>} value="mines">
+          Waste from mines or quarries
+        </Checkboxes.Item>
+      </Checkboxes>
     </form>
   ),
 };
@@ -126,16 +123,17 @@ export const WithConditionalContent: Story = {
 export const WithLegendAsPageHeading: Story = {
   render: (args) => (
     <form>
-      <Fieldset aria-describedby="waste--hint">
-        <Fieldset.Legend isPageHeading>
-          Which types of waste do you transport regularly?
-        </Fieldset.Legend>
-        <Checkboxes id="waste" name="waste" hint="Select all that apply">
-          <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
-          <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
-          <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
-        </Checkboxes>
-      </Fieldset>
+      <Checkboxes
+        legend="Which types of waste do you transport regularly?"
+        legendProps={{ isPageHeading: true }}
+        hint="Select all that apply"
+        id="waste"
+        name="waste"
+      >
+        <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
+        <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
+        <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
+      </Checkboxes>
     </form>
   ),
 };
@@ -143,18 +141,21 @@ export const WithLegendAsPageHeading: Story = {
 export const WithExclusiveNoneOption: Story = {
   render: (args) => (
     <form>
-      <Fieldset aria-describedby="symptoms--hint">
-        <Fieldset.Legend isPageHeading>Do you have any of these symptoms?</Fieldset.Legend>
-        <Checkboxes id="symptoms" name="symptoms" hint="Select all the symptoms you have.">
-          <Checkboxes.Item value="sore-throat">Sore throat</Checkboxes.Item>
-          <Checkboxes.Item value="runny-nose">Runny nose</Checkboxes.Item>
-          <Checkboxes.Item value="muscle-pain">Muscle or joint pain</Checkboxes.Item>
-          <Checkboxes.Divider />
-          <Checkboxes.Item value="none" exclusive>
-            None
-          </Checkboxes.Item>
-        </Checkboxes>
-      </Fieldset>
+      <Checkboxes
+        legend="Do you have any of these symptoms?"
+        legendProps={{ size: 'l' }}
+        hint="Select all the symptoms you have"
+        id="symptoms"
+        name="symptoms"
+      >
+        <Checkboxes.Item value="sore-throat">Sore throat</Checkboxes.Item>
+        <Checkboxes.Item value="runny-nose">Runny nose</Checkboxes.Item>
+        <Checkboxes.Item value="muscle-pain">Muscle or joint pain</Checkboxes.Item>
+        <Checkboxes.Divider />
+        <Checkboxes.Item value="none" exclusive>
+          None
+        </Checkboxes.Item>
+      </Checkboxes>
     </form>
   ),
 };
@@ -165,16 +166,18 @@ export const WithErrorBoolean: Story = {
     const [errorToggle, setErrorToggle] = useState(true);
     return (
       <form>
-        <Fieldset aria-describedby="waste-hint">
-          <Fieldset.Legend isPageHeading>
-            Which types of waste do you transport regularly?
-          </Fieldset.Legend>
-          <Checkboxes error={errorToggle} id="waste" name="waste" hint="Select all that apply">
-            <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
-            <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
-            <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
-          </Checkboxes>
-        </Fieldset>
+        <Checkboxes
+          legend="Which types of waste do you transport regularly?"
+          legendProps={{ size: 'l' }}
+          hint="Select all that apply"
+          error={errorToggle}
+          id="waste"
+          name="waste"
+        >
+          <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
+          <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
+          <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
+        </Checkboxes>
         <Button
           onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
             e.preventDefault();
@@ -196,16 +199,18 @@ export const WithErrorString: Story = {
     const [error, setError] = useState('Please select an option');
     return (
       <form>
-        <Fieldset aria-describedby="waste-hint">
-          <Fieldset.Legend isPageHeading>
-            Which types of waste do you transport regularly?
-          </Fieldset.Legend>
-          <Checkboxes id="waste" name="waste" hint="Select all that apply" error={error}>
-            <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
-            <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
-            <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
-          </Checkboxes>
-        </Fieldset>
+        <Checkboxes
+          legend="Which types of waste do you transport regularly?"
+          legendProps={{ size: 'l' }}
+          hint="Select all that apply"
+          error={error}
+          id="waste"
+          name="waste"
+        >
+          <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
+          <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
+          <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
+        </Checkboxes>
         <TextInput
           label="Error Value"
           value={error}
