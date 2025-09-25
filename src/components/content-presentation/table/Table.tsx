@@ -1,14 +1,7 @@
-import React, {
-  ComponentPropsWithRef,
-  ComponentPropsWithoutRef,
-  FC,
-  ReactNode,
-  useMemo,
-  useState,
-} from 'react';
+import React, { ComponentPropsWithoutRef, FC, ReactNode, useMemo, useState } from 'react';
 import classNames from 'classnames';
 import TableBody from './components/TableBody';
-import TableCaption from './components/TableCaption';
+import TableCaption, { TableCaptionProps } from './components/TableCaption';
 import TableCell from './components/TableCell';
 import TableContainer from './components/TableContainer';
 import TableHead from './components/TableHead';
@@ -19,7 +12,7 @@ import TableContext, { ITableContext } from './TableContext';
 interface TableProps extends ComponentPropsWithoutRef<'table'> {
   responsive?: boolean;
   caption?: ReactNode;
-  captionProps?: ComponentPropsWithRef<'caption'>;
+  captionProps?: TableCaptionProps;
 }
 
 const TableComponent: FC<TableProps> = ({

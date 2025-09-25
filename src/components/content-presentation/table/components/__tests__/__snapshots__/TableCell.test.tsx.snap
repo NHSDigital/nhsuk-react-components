@@ -2,8 +2,22 @@
 
 exports[`Table.Cell matches snapshot 1`] = `
 <div>
-  <td
-    class="nhsuk-table__cell"
-  />
+  <table
+    class="nhsuk-table"
+  >
+    <tbody
+      class="nhsuk-table__body"
+    >
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          Cell
+        </td>
+      </tr>
+    </tbody>
+  </table>
 </div>
 `;

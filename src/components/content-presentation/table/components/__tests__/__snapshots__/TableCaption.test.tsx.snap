@@ -2,8 +2,70 @@
 
 exports[`TableCaption matches snapshot 1`] = `
 <div>
-  <caption
-    class="nhsuk-table__caption"
-  />
+  <table
+    class="nhsuk-table"
+  >
+    <caption
+      class="nhsuk-table__caption"
+    >
+      Caption
+    </caption>
+  </table>
+</div>
+`;
+
+exports[`TableCaption renders with custom size l 1`] = `
+<div>
+  <table
+    class="nhsuk-table"
+  >
+    <caption
+      class="nhsuk-table__caption nhsuk-table__caption--l"
+    >
+      Caption
+    </caption>
+  </table>
+</div>
+`;
+
+exports[`TableCaption renders with custom size m 1`] = `
+<div>
+  <table
+    class="nhsuk-table"
+  >
+    <caption
+      class="nhsuk-table__caption nhsuk-table__caption--m"
+    >
+      Caption
+    </caption>
+  </table>
+</div>
+`;
+
+exports[`TableCaption renders with custom size s 1`] = `
+<div>
+  <table
+    class="nhsuk-table"
+  >
+    <caption
+      class="nhsuk-table__caption nhsuk-table__caption--s"
+    >
+      Caption
+    </caption>
+  </table>
+</div>
+`;
+
+exports[`TableCaption renders with custom size xl 1`] = `
+<div>
+  <table
+    class="nhsuk-table"
+  >
+    <caption
+      class="nhsuk-table__caption nhsuk-table__caption--xl"
+    >
+      Caption
+    </caption>
+  </table>
 </div>
 `;
