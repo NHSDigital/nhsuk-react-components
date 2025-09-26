@@ -8,10 +8,11 @@ import React, {
   useEffect,
 } from 'react';
 import classNames from 'classnames';
+import { AsElementLink } from '@util/types/LinkTypes';
 import { childIsOfComponentType } from '@util/types/TypeGuards';
 import { ErrorSummary } from 'nhsuk-frontend';
 
-type TitleProps = ComponentPropsWithoutRef<'h2'>;
+export type TitleProps = ComponentPropsWithoutRef<'h2'>;
 
 const Title: FC<TitleProps> = ({ children, className, ...rest }) => {
   return (
@@ -35,25 +36,27 @@ const List: FC<ListProps> = ({ children, className, ...rest }) => {
   );
 };
 
-type ListItemProps = ComponentPropsWithoutRef<'a'>;
+type ListItemProps = AsElementLink<HTMLAnchorElement>;
 
-const ListItem: FC<ListItemProps> = ({ children, href, ...rest }) => {
+const ListItem = forwardRef<HTMLAnchorElement, ListItemProps>((props, forwardedRef) => {
+  const { children, asElement: Element = 'a', ...rest } = props;
+
   if (!children) {
     return null;
   }
 
   return (
     <li>
-      {href ? (
-        <a href={href} {...rest}>
+      {props.asElement ?? props.href ? (
+        <Element ref={forwardedRef} {...rest}>
           {children}
-        </a>
+        </Element>
       ) : (
         <>{children}</>
       )}
     </li>
   );
-};
+});
 
 interface ErrorSummaryProps extends ComponentPropsWithoutRef<'div'> {
   disableAutoFocus?: boolean;
@@ -65,7 +68,7 @@ const ErrorSummaryComponent = forwardRef<HTMLDivElement, ErrorSummaryProps>(
     const [instance, setInstance] = useState<ErrorSummary>();
 
     useEffect(() => {
-      if (!moduleRef || !('current' in moduleRef) || instance) {
+      if (!('current' in moduleRef) || !moduleRef.current || instance) {
         return;
       }
 

@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
+import React, { FC } from 'react';
 import classNames from 'classnames';
 import { AsElementLink } from '@util/types/LinkTypes';
 
@@ -6,6 +6,16 @@ export interface NavigationItemProps extends AsElementLink<HTMLAnchorElement> {
   active?: boolean;
   current?: boolean;
 }
+
+const NavigationItemInner: FC<NavigationItemProps> = ({ active, children, current }) => {
+  // Wrap active links in strong element so users who override colours
+  // or styles still have some indicator of the current nav item
+  return active ?? current ? (
+    <strong className="nhsuk-header__navigation-item-current-fallback">{children}</strong>
+  ) : (
+    children
+  );
+};
 
 const NavigationItem: FC<NavigationItemProps> = ({
   className,
@@ -23,16 +33,6 @@ const NavigationItem: FC<NavigationItemProps> = ({
     ariaCurrent = 'true';
   }
 
-  // Wrap active links in strong element so users who override colours
-  // or styles still have some indicator of the current nav item.
-  const InnerElement: FC<ComponentPropsWithoutRef<'strong'>> = ({ children }) => {
-    return ariaCurrent ? (
-      <strong className="nhsuk-header__navigation-item-current-fallback">{children}</strong>
-    ) : (
-      <>{children}</>
-    );
-  };
-
   return (
     <li
       className={classNames(
@@ -42,7 +42,7 @@ const NavigationItem: FC<NavigationItemProps> = ({
       )}
     >
       <Element className="nhsuk-header__navigation-link" aria-current={ariaCurrent} {...rest}>
-        <InnerElement>{children}</InnerElement>
+        <NavigationItemInner {...rest}>{children}</NavigationItemInner>
       </Element>
     </li>
   );

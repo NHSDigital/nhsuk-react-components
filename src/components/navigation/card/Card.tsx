@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
+import React, { ComponentPropsWithoutRef, forwardRef } from 'react';
 import classNames from 'classnames';
 import CardContext from './CardContext';
 import CardContent from './components/CardContent';
@@ -11,12 +11,14 @@ import CardGroupItem from './components/CardGroupItem';
 import { CardType } from '@util/types/NHSUKTypes';
 import { cardTypeIsCareCard } from '@util/types/TypeGuards';
 
-interface CardProps extends ComponentPropsWithoutRef<'div'> {
+export interface CardProps extends ComponentPropsWithoutRef<'div'> {
   clickable?: boolean;
   cardType?: CardType;
 }
 
-const CardComponent: FC<CardProps> = ({ className, clickable, children, cardType, ...rest }) => {
+const CardComponent = forwardRef<HTMLDivElement, CardProps>((props, forwardedRef) => {
+  const { className, clickable, children, cardType, ...rest } = props;
+
   let cardClassNames = classNames(
     'nhsuk-card',
     { 'nhsuk-card--clickable': clickable },
@@ -34,7 +36,7 @@ const CardComponent: FC<CardProps> = ({ className, clickable, children, cardType
   }
 
   return (
-    <div className={cardClassNames} {...rest}>
+    <div className={cardClassNames} ref={forwardedRef} {...rest}>
       <CardContext.Provider
         value={{
           cardType,
@@ -44,7 +46,7 @@ const CardComponent: FC<CardProps> = ({ className, clickable, children, cardType
       </CardContext.Provider>
     </div>
   );
-};
+});
 
 CardComponent.displayName = 'Card';
 

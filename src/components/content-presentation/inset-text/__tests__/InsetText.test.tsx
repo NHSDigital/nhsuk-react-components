@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
 import InsetText from '../';
 
@@ -7,6 +7,17 @@ describe('InsetText', () => {
     const { container } = render(<InsetText />);
 
     expect(container).toMatchSnapshot('InsetText');
+  });
+
+  it('forwards refs', () => {
+    const ref = createRef<HTMLDivElement>();
+
+    const { container } = render(<InsetText ref={ref} />);
+
+    const insetTextEl = container.querySelector('div');
+
+    expect(ref.current).toBe(insetTextEl);
+    expect(ref.current).toHaveClass('nhsuk-inset-text');
   });
 
   it('has default visually hidden text', () => {

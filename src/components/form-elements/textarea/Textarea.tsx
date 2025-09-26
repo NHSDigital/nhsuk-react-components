@@ -1,26 +1,25 @@
-import React, { ComponentPropsWithoutRef, FC, MutableRefObject } from 'react';
+import React, { ComponentPropsWithoutRef, forwardRef } from 'react';
 import classNames from 'classnames';
 import FormGroup from '@components/utils/FormGroup';
 import { FormElementProps } from '@util/types/FormTypes';
 
-interface TextareaProps extends ComponentPropsWithoutRef<'textarea'>, FormElementProps {
-  textareaRef?: MutableRefObject<HTMLTextAreaElement | null>;
-}
+export type TextareaProps = ComponentPropsWithoutRef<'textarea'> &
+  Omit<FormElementProps, 'fieldsetProps' | 'legend' | 'legendProps'>;
 
-const TextareaComponent: FC<TextareaProps> = (props) => (
+const TextareaComponent = forwardRef<HTMLTextAreaElement, TextareaProps>((props, forwardedRef) => (
   <FormGroup<TextareaProps> inputType="textarea" {...props}>
-    {({ children, className, error, textareaRef, ...rest }) => (
+    {({ children, className, error, ...rest }) => (
       <>
         <textarea
           className={classNames('nhsuk-textarea', { 'nhsuk-textarea--error': error }, className)}
-          ref={textareaRef}
+          ref={forwardedRef}
           {...rest}
         />
         {children}
       </>
     )}
   </FormGroup>
-);
+));
 
 TextareaComponent.displayName = 'Textarea';
 

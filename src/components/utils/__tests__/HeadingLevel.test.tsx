@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 import HeadingLevel, { HeadingLevelProps } from '../HeadingLevel';
 
 describe('HeadingLevel', () => {
-  it.each<HeadingLevelProps>([
+  it.each<Required<Pick<HeadingLevelProps, 'headingLevel'>>>([
     { headingLevel: 'h1' },
     { headingLevel: 'h2' },
     { headingLevel: 'h3' },
@@ -13,7 +13,7 @@ describe('HeadingLevel', () => {
   ])('renders the correct elements - %s', (props) => {
     const { container } = render(<HeadingLevel {...props} />);
 
-    const headingEl = container.querySelector(props.headingLevel!);
+    const headingEl = container.querySelector(props.headingLevel);
 
     expect(headingEl).toHaveProperty('tagName', props?.headingLevel?.toUpperCase());
   });

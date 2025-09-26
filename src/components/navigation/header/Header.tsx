@@ -1,12 +1,12 @@
 'use client';
 import React, {
   ComponentPropsWithoutRef,
-  FC,
   useState,
   useEffect,
   useMemo,
-  useRef,
   Children,
+  forwardRef,
+  createRef,
 } from 'react';
 import classNames from 'classnames';
 import { Container } from '@components/layout';
@@ -21,7 +21,7 @@ import Search from './components/Search';
 import ServiceName from './components/ServiceName';
 import { Header } from 'nhsuk-frontend';
 
-interface HeaderProps extends ComponentPropsWithoutRef<'div'> {
+export interface HeaderProps extends ComponentPropsWithoutRef<'div'> {
   containerClasses?: string;
   logo?: IHeaderContext['logoProps'];
   service?: IHeaderContext['serviceProps'];
@@ -29,17 +29,11 @@ interface HeaderProps extends ComponentPropsWithoutRef<'div'> {
   white?: boolean;
 }
 
-const HeaderComponent: FC<HeaderProps> = ({
-  className,
-  containerClasses,
-  children,
-  logo,
-  service,
-  organisation,
-  white,
-  ...rest
-}) => {
-  const moduleRef = useRef<HTMLDivElement>(null);
+const HeaderComponent = forwardRef<HTMLElement, HeaderProps>((props, forwardedRef) => {
+  const { className, containerClasses, children, logo, service, organisation, white, ...rest } =
+    props;
+
+  const [moduleRef] = useState(() => forwardedRef || createRef<HTMLElement>());
 
   const [logoProps, setLogoProps] = useState(logo);
   const [serviceProps, setServiceProps] = useState(service);
@@ -75,7 +69,7 @@ const HeaderComponent: FC<HeaderProps> = ({
   }, [organisation]);
 
   useEffect(() => {
-    if (!moduleRef.current || instance) {
+    if (!('current' in moduleRef) || !moduleRef.current || instance) {
       if (!instance) {
         return;
       }
@@ -138,7 +132,7 @@ const HeaderComponent: FC<HeaderProps> = ({
       </HeaderContext.Provider>
     </header>
   );
-};
+});
 
 HeaderComponent.displayName = 'Header';
 

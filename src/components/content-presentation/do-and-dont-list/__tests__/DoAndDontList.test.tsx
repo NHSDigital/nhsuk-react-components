@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
 import DoAndDontList from '../';
 
@@ -8,6 +8,17 @@ describe('DoAndDontList', () => {
       const { container } = render(<DoAndDontList listType="do" />);
 
       expect(container).toMatchSnapshot('DoDontList-Do');
+    });
+
+    it('forwards refs', () => {
+      const ref = createRef<HTMLDivElement>();
+
+      const { container } = render(<DoAndDontList listType="do" ref={ref} />);
+
+      const listEl = container.querySelector('div');
+
+      expect(ref.current).toBe(listEl);
+      expect(ref.current).toHaveClass('nhsuk-do-dont-list');
     });
 
     it('adds the correct headings', () => {

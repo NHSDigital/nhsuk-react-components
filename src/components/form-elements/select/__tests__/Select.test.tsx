@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { createRef, useRef } from 'react';
 import { render, fireEvent } from '@testing-library/react';
 import Select from '../Select';
 
@@ -14,10 +14,10 @@ describe('Select', () => {
       onHandle();
     };
 
-    return <Select onClick={handleClick} selectRef={ref} />;
+    return <Select onClick={handleClick} ref={ref} />;
   };
 
-  it('Matches the snapshot', () => {
+  it('matches snapshot', () => {
     const { container } = render(
       <Select id="test-select">
         <Select.Option value="1">Option 1</Select.Option>
@@ -26,6 +26,22 @@ describe('Select', () => {
     );
 
     expect(container).toMatchSnapshot();
+  });
+
+  it('forwards refs', () => {
+    const groupRef = createRef<HTMLDivElement>();
+    const fieldRef = createRef<HTMLSelectElement>();
+
+    const { container } = render(<Select formGroupProps={{ ref: groupRef }} ref={fieldRef} />);
+
+    const groupEl = container.querySelector('div');
+    const selectEl = container.querySelector('select');
+
+    expect(groupRef.current).toBe(groupEl);
+    expect(groupRef.current).toHaveClass('nhsuk-form-group');
+
+    expect(fieldRef.current).toBe(selectEl);
+    expect(fieldRef.current).toHaveClass('nhsuk-select');
   });
 
   it.each([true, false])('Adds the appropriate class if error is specified as %s', (error) => {

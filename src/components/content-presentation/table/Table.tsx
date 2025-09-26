@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef, FC, ReactNode, useMemo, useState } from 'react';
+import React, { ComponentPropsWithoutRef, ReactNode, forwardRef, useMemo, useState } from 'react';
 import classNames from 'classnames';
 import TableBody from './components/TableBody';
 import TableCaption, { TableCaptionProps } from './components/TableCaption';
@@ -9,20 +9,15 @@ import TableRow from './components/TableRow';
 import TablePanel from './components/TablePanel';
 import TableContext, { ITableContext } from './TableContext';
 
-interface TableProps extends ComponentPropsWithoutRef<'table'> {
+export interface TableProps extends ComponentPropsWithoutRef<'table'> {
   responsive?: boolean;
   caption?: ReactNode;
   captionProps?: TableCaptionProps;
 }
 
-const TableComponent: FC<TableProps> = ({
-  caption,
-  captionProps,
-  children,
-  className,
-  responsive = false,
-  ...rest
-}) => {
+const TableComponent = forwardRef<HTMLTableElement, TableProps>((props, forwardedRef) => {
+  const { caption, captionProps, children, className, responsive = false, ...rest } = props;
+
   const [headings, setHeadings] = useState<string[]>([]);
 
   const contextValue: ITableContext = useMemo(() => {
@@ -41,6 +36,7 @@ const TableComponent: FC<TableProps> = ({
           { 'nhsuk-table-responsive': responsive },
           className,
         )}
+        ref={forwardedRef}
         {...rest}
       >
         {caption && <TableCaption {...captionProps}>{caption}</TableCaption>}
@@ -48,7 +44,7 @@ const TableComponent: FC<TableProps> = ({
       </table>
     </TableContext.Provider>
   );
-};
+});
 
 TableComponent.displayName = 'Table';
 

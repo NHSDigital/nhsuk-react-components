@@ -31,7 +31,7 @@ type BaseFormElementRenderProps = ComponentPropsWithoutRef<
 > &
   Pick<FormElementProps, 'error'>;
 
-type FormElementRenderProps<T> = Omit<T, ExcludedProps> & {
+export type FormElementRenderProps<T> = Omit<T, ExcludedProps> & {
   id: string;
   name: string;
 };

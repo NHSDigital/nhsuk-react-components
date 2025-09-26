@@ -1,8 +1,9 @@
-import React, { ComponentPropsWithoutRef, FC, useRef, useEffect, useState } from 'react';
+import React, { ForwardedRef, MouseEvent, useEffect, useState, forwardRef, createRef } from 'react';
+import { AsElementLink } from '@util/types/LinkTypes';
 import { Button } from 'nhsuk-frontend';
 import classNames from 'classnames';
 
-export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
+export interface ButtonProps extends AsElementLink<HTMLButtonElement> {
   href?: never;
   secondary?: boolean;
   reverse?: boolean;
@@ -11,7 +12,7 @@ export interface ButtonProps extends ComponentPropsWithoutRef<'button'> {
   preventDoubleClick?: boolean;
 }
 
-export interface ButtonLinkProps extends ComponentPropsWithoutRef<'a'> {
+export interface ButtonLinkProps extends AsElementLink<HTMLAnchorElement> {
   href: string;
   type?: never;
   secondary?: boolean;
@@ -21,22 +22,25 @@ export interface ButtonLinkProps extends ComponentPropsWithoutRef<'a'> {
   preventDoubleClick?: boolean;
 }
 
-export const ButtonComponent: FC<ButtonProps> = ({
-  className,
-  disabled,
-  secondary,
-  reverse,
-  warning,
-  type = 'submit',
-  preventDoubleClick,
-  onClick,
-  ...rest
-}) => {
-  const moduleRef = useRef<HTMLButtonElement>(null);
+const ButtonComponent = forwardRef<HTMLButtonElement, ButtonProps>((props, forwardedRef) => {
+  const {
+    className,
+    asElement: Element = 'button',
+    disabled,
+    secondary,
+    reverse,
+    warning,
+    type = 'submit',
+    preventDoubleClick,
+    onClick,
+    ...rest
+  } = props;
+
+  const [moduleRef] = useState(() => forwardedRef || createRef<HTMLButtonElement>());
   const [instance, setInstance] = useState<Button>();
 
   useEffect(() => {
-    if (!moduleRef.current || instance) {
+    if (!('current' in moduleRef) || !moduleRef.current || instance) {
       return;
     }
 
@@ -44,7 +48,7 @@ export const ButtonComponent: FC<ButtonProps> = ({
   }, [moduleRef, instance]);
 
   return (
-    <button
+    <Element
       className={classNames(
         'nhsuk-button',
         { 'nhsuk-button--secondary': secondary },
@@ -57,7 +61,7 @@ export const ButtonComponent: FC<ButtonProps> = ({
       disabled={disabled}
       aria-disabled={disabled ? 'true' : undefined}
       type={type}
-      onClick={(event) => {
+      onClick={(event: MouseEvent<HTMLButtonElement>) => {
         if (event.nativeEvent.defaultPrevented) {
           event.preventDefault();
           return;
@@ -69,67 +73,70 @@ export const ButtonComponent: FC<ButtonProps> = ({
       {...rest}
     />
   );
-};
+});
 
-export const ButtonLinkComponent: FC<ButtonLinkProps> = ({
-  className,
-  children,
-  secondary,
-  reverse,
-  warning,
-  href,
-  preventDoubleClick,
-  onClick,
-  ...rest
-}) => {
-  const moduleRef = useRef<HTMLAnchorElement>(null);
-  const [instance, setInstance] = useState<Button>();
+const ButtonLinkComponent = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
+  (props, forwardedRef) => {
+    const {
+      className,
+      asElement: Element = 'a',
+      secondary,
+      reverse,
+      warning,
+      preventDoubleClick,
+      onClick,
+      ...rest
+    } = props;
 
-  useEffect(() => {
-    if (!moduleRef.current || instance) {
-      return;
-    }
+    const [moduleRef] = useState(() => forwardedRef || createRef<HTMLAnchorElement>());
+    const [instance, setInstance] = useState<Button>();
 
-    setInstance(new Button(moduleRef.current));
-  }, [moduleRef, instance]);
+    useEffect(() => {
+      if (!('current' in moduleRef) || !moduleRef.current || instance) {
+        return;
+      }
 
-  return (
-    <a
-      href={href}
-      className={classNames(
-        'nhsuk-button',
-        { 'nhsuk-button--secondary': secondary },
-        { 'nhsuk-button--reverse': reverse },
-        { 'nhsuk-button--warning': warning },
-        className,
-      )}
-      data-module="nhsuk-button"
-      data-prevent-double-click={preventDoubleClick === true ? 'true' : undefined}
-      role="button"
-      draggable="false"
-      onClick={(event) => {
-        if (event.nativeEvent.defaultPrevented) {
-          event.preventDefault();
-          return;
-        }
+      setInstance(new Button(moduleRef.current));
+    }, [moduleRef, instance]);
 
-        onClick?.(event);
-      }}
-      ref={moduleRef}
-      {...rest}
-    >
-      {children}
-    </a>
-  );
-};
+    return (
+      <Element
+        className={classNames(
+          'nhsuk-button',
+          { 'nhsuk-button--secondary': secondary },
+          { 'nhsuk-button--reverse': reverse },
+          { 'nhsuk-button--warning': warning },
+          className,
+        )}
+        data-module="nhsuk-button"
+        data-prevent-double-click={preventDoubleClick === true ? 'true' : undefined}
+        role="button"
+        draggable="false"
+        onClick={(event: MouseEvent<HTMLAnchorElement>) => {
+          if (event.nativeEvent.defaultPrevented) {
+            event.preventDefault();
+            return;
+          }
 
-const ButtonWrapper: FC<ButtonLinkProps | ButtonProps> = (props) => {
+          onClick?.(event);
+        }}
+        ref={moduleRef}
+        {...rest}
+      />
+    );
+  },
+);
+
+const ButtonWrapper = forwardRef<
+  HTMLAnchorElement | HTMLButtonElement,
+  ButtonLinkProps | ButtonProps
+>((props, forwardedRef) => {
   return props.as === 'a' || ('href' in props && typeof props.href === 'string') ? (
-    <ButtonLinkComponent {...props} />
+    <ButtonLinkComponent ref={forwardedRef as ForwardedRef<HTMLAnchorElement>} {...props} />
   ) : (
-    <ButtonComponent {...props} />
+    <ButtonComponent ref={forwardedRef as ForwardedRef<HTMLButtonElement>} {...props} />
   );
-};
+});
 
 ButtonLinkComponent.displayName = 'Button.Link';
 ButtonComponent.displayName = 'Button';

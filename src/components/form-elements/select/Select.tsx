@@ -1,30 +1,31 @@
-import React, { ComponentPropsWithoutRef, FC, MutableRefObject } from 'react';
+import React, { ComponentPropsWithoutRef, forwardRef } from 'react';
 
 import classNames from 'classnames';
 import { FormElementProps } from '@util/types/FormTypes';
 import FormGroup from '@components/utils/FormGroup';
 
-export interface SelectProps
-  extends ComponentPropsWithoutRef<'select'>,
-    Omit<FormElementProps, 'fieldsetProps' | 'legend' | 'legendProps'> {
-  selectRef?: MutableRefObject<HTMLSelectElement | null>;
-}
+export type SelectProps = ComponentPropsWithoutRef<'select'> &
+  Omit<FormElementProps, 'fieldsetProps' | 'legend' | 'legendProps'>;
 
-const SelectComponent: FC<SelectProps> = ({ children, ...rest }) => (
-  <FormGroup<SelectProps> inputType="select" {...rest}>
-    {({ className, error, selectRef, ...restRenderProps }) => (
-      <select
-        className={classNames('nhsuk-select', { 'nhsuk-select--error': error }, className)}
-        ref={selectRef}
-        {...restRenderProps}
-      >
-        {children}
-      </select>
-    )}
-  </FormGroup>
+const SelectComponent = forwardRef<HTMLSelectElement, SelectProps>(
+  ({ children, ...rest }, forwardedRef) => (
+    <FormGroup<SelectProps> inputType="select" {...rest}>
+      {({ className, error, ...restRenderProps }) => (
+        <select
+          className={classNames('nhsuk-select', { 'nhsuk-select--error': error }, className)}
+          ref={forwardedRef}
+          {...restRenderProps}
+        >
+          {children}
+        </select>
+      )}
+    </FormGroup>
+  ),
 );
 
-const Option: FC<ComponentPropsWithoutRef<'option'>> = (props) => <option {...props} />;
+const Option = forwardRef<HTMLOptionElement, ComponentPropsWithoutRef<'option'>>(
+  (props, forwardedRef) => <option ref={forwardedRef} {...props} />,
+);
 
 SelectComponent.displayName = 'Select';
 Option.displayName = 'Select.Option';

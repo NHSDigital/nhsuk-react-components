@@ -1,7 +1,7 @@
 import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
 
-interface ReviewDateProps extends ComponentPropsWithoutRef<'div'> {
+export interface ReviewDateProps extends ComponentPropsWithoutRef<'div'> {
   lastReviewed?: string;
   nextReview?: string;
 }

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Character Count Matches snapshot 1`] = `
+exports[`Character Count matches snapshot 1`] = `
 <div>
   <div
     class="nhsuk-form-group nhsuk-character-count"

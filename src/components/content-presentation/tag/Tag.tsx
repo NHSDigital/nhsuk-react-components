@@ -1,7 +1,7 @@
 import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
 
-interface TagProps extends ComponentPropsWithoutRef<'strong'> {
+export interface TagProps extends ComponentPropsWithoutRef<'strong'> {
   modifier?:
     | 'white'
     | 'grey'

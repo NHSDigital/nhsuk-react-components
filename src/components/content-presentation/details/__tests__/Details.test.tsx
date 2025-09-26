@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
 import Details from '../';
 
@@ -19,6 +19,17 @@ describe('Details', () => {
     const { container } = render(<Details expander />);
 
     expect(container.querySelector('.nhsuk-expander')).toBeTruthy();
+  });
+
+  it('forwards refs', () => {
+    const ref = createRef<HTMLDetailsElement>();
+
+    const { container } = render(<Details ref={ref} />);
+
+    const detailsEl = container.querySelector('details');
+
+    expect(ref.current).toBe(detailsEl);
+    expect(ref.current).toHaveClass('nhsuk-details');
   });
 
   describe('Details.Summary', () => {

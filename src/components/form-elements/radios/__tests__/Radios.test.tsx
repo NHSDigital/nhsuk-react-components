@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import React from 'react';
+import React, { createRef } from 'react';
 import Radios from '../Radios';
 
 describe('Radios', () => {
@@ -16,6 +16,31 @@ describe('Radios', () => {
     );
 
     expect(container).toMatchSnapshot();
+  });
+
+  it('forwards refs', () => {
+    const groupRef = createRef<HTMLDivElement>();
+    const moduleRef = createRef<HTMLDivElement>();
+    const fieldRef = createRef<HTMLInputElement>();
+
+    const { container } = render(
+      <Radios formGroupProps={{ ref: groupRef }} ref={moduleRef}>
+        <Radios.Item ref={fieldRef}>Yes</Radios.Item>
+      </Radios>,
+    );
+
+    const groupEl = container.querySelectorAll('div')[0];
+    const moduleEl = container.querySelectorAll('div')[1];
+    const inputEl = container.querySelector('input');
+
+    expect(groupRef.current).toBe(groupEl);
+    expect(groupRef.current).toHaveClass('nhsuk-form-group');
+
+    expect(moduleRef.current).toBe(moduleEl);
+    expect(moduleRef.current).toHaveClass('nhsuk-radios');
+
+    expect(fieldRef.current).toBe(inputEl);
+    expect(fieldRef.current).toHaveClass('nhsuk-radios__input');
   });
 
   it('does not render the conditional content if checked is false', () => {

@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef, FC, useEffect, useRef, useState } from 'react';
+import React, { ComponentPropsWithoutRef, createRef, forwardRef, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '@util/types/FormTypes';
 import { RadiosContext, IRadiosContext } from './RadioContext';
@@ -8,15 +8,17 @@ import RadiosItem from './components/Item';
 import { generateRandomName } from '@util/RandomID';
 import { Radios } from 'nhsuk-frontend';
 
-interface RadiosProps
+export interface RadiosProps
   extends ComponentPropsWithoutRef<'div'>,
     Omit<FormElementProps, 'label' | 'labelProps'> {
   inline?: boolean;
   idPrefix?: string;
 }
 
-const RadiosComponent: FC<RadiosProps> = ({ children, idPrefix, ...rest }) => {
-  const moduleRef = useRef<HTMLDivElement>(null);
+const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwardedRef) => {
+  const { children, idPrefix, ...rest } = props;
+
+  const [moduleRef] = useState(() => forwardedRef || createRef<HTMLDivElement>());
   const [instance, setInstance] = useState<Radios>();
   const [selectedRadio, setSelectedRadio] = useState<string>();
 
@@ -25,7 +27,7 @@ const RadiosComponent: FC<RadiosProps> = ({ children, idPrefix, ...rest }) => {
   let _radioIds: Record<string, string> = {};
 
   useEffect(() => {
-    if (!moduleRef.current || instance) {
+    if (!('current' in moduleRef) || !moduleRef.current || instance) {
       return;
     }
 
@@ -94,7 +96,7 @@ const RadiosComponent: FC<RadiosProps> = ({ children, idPrefix, ...rest }) => {
       }}
     </FormGroup>
   );
-};
+});
 
 RadiosComponent.displayName = 'Radios';
 

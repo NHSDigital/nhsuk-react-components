@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
 import Images from '../';
 
@@ -8,6 +8,17 @@ describe('Images', () => {
 
     expect(container.querySelector('.nhsuk-image')).toBeTruthy();
     expect(container).toMatchSnapshot('Images');
+  });
+
+  it('forwards refs', () => {
+    const ref = createRef<HTMLElement>();
+
+    const { container } = render(<Images ref={ref} />);
+
+    const figureEl = container.querySelector('figure');
+
+    expect(ref.current).toBe(figureEl);
+    expect(ref.current).toHaveClass('nhsuk-image');
   });
 
   it('renders caption', () => {

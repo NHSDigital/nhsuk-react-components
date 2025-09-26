@@ -1,21 +1,30 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
+import React, { ComponentPropsWithoutRef, FC, forwardRef } from 'react';
 import classNames from 'classnames';
 
-interface DetailsProps extends ComponentPropsWithoutRef<'details'> {
+export interface DetailsProps extends ComponentPropsWithoutRef<'details'> {
   expander?: boolean;
 }
 
-const DetailsComponent: FC<DetailsProps> = ({ className, expander, ...rest }) => (
-  <details
-    className={classNames('nhsuk-details', { 'nhsuk-expander': expander }, className)}
-    {...rest}
-  />
+const DetailsComponent = forwardRef<HTMLDetailsElement, DetailsProps>(
+  ({ className, expander, ...rest }, forwardedRef) => (
+    <details
+      className={classNames('nhsuk-details', { 'nhsuk-expander': expander }, className)}
+      ref={forwardedRef}
+      {...rest}
+    />
+  ),
 );
 
-const DetailsSummary: FC<ComponentPropsWithoutRef<'div'>> = ({ className, children, ...rest }) => (
-  <summary className={classNames('nhsuk-details__summary', className)} {...rest}>
-    <span className="nhsuk-details__summary-text">{children}</span>
-  </summary>
+const DetailsSummary = forwardRef<HTMLElement, ComponentPropsWithoutRef<'div'>>(
+  ({ children, className, ...rest }, forwardedRef) => (
+    <summary
+      className={classNames('nhsuk-details__summary', className)}
+      ref={forwardedRef}
+      {...rest}
+    >
+      <span className="nhsuk-details__summary-text">{children}</span>
+    </summary>
+  ),
 );
 
 const DetailsText: FC<ComponentPropsWithoutRef<'div'>> = ({ className, ...rest }) => (
@@ -34,5 +43,5 @@ ExpanderGroup.displayName = 'Details.ExpanderGroup';
 export default Object.assign(DetailsComponent, {
   Summary: DetailsSummary,
   Text: DetailsText,
-  ExpanderGroup: ExpanderGroup,
+  ExpanderGroup,
 });

@@ -1,11 +1,12 @@
 'use client';
 import React, {
+  ComponentPropsWithRef,
   ComponentPropsWithoutRef,
-  FC,
   useContext,
   ReactNode,
   useEffect,
   useState,
+  forwardRef,
 } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '@util/types/FormTypes';
@@ -18,27 +19,26 @@ export interface RadiosItemProps
     Pick<FormElementProps, 'hint' | 'hintProps' | 'labelProps'> {
   conditional?: ReactNode;
   forceShowConditional?: boolean;
-  conditionalWrapperProps?: ComponentPropsWithoutRef<'div'>;
-  inputRef?: (inputRef: HTMLInputElement | null) => void;
+  conditionalProps?: ComponentPropsWithRef<'div'>;
 }
 
-const RadiosItem: FC<RadiosItemProps> = ({
-  className,
-  children,
-  id,
-  hint,
-  hintProps,
-  labelProps,
-  conditional,
-  forceShowConditional,
-  conditionalWrapperProps,
-  checked,
-  defaultChecked,
-  onChange,
-  inputRef,
-  type = 'radio',
-  ...rest
-}) => {
+const RadiosItem = forwardRef<HTMLInputElement, RadiosItemProps>((props, forwardedRef) => {
+  const {
+    className,
+    children,
+    id,
+    hint,
+    hintProps,
+    labelProps,
+    conditional,
+    forceShowConditional,
+    conditionalProps,
+    checked,
+    defaultChecked,
+    onChange,
+    ...rest
+  } = props;
+
   const { name, getRadioId, setSelected, selectedRadio, leaseReference, unleaseReference } =
     useContext<IRadiosContext>(RadiosContext);
   const [radioReference] = useState<string>(leaseReference());
@@ -66,12 +66,12 @@ const RadiosItem: FC<RadiosItemProps> = ({
           className={classNames('nhsuk-radios__input', className)}
           id={inputID}
           name={name}
-          type={type}
+          type="radio"
           aria-controls={conditional ? `${inputID}--conditional` : undefined}
           aria-describedby={hint ? `${inputID}--hint` : undefined}
           checked={checked}
           defaultChecked={defaultChecked}
-          ref={inputRef}
+          ref={forwardedRef}
           {...rest}
         />
         <Label
@@ -92,14 +92,14 @@ const RadiosItem: FC<RadiosItemProps> = ({
             'nhsuk-radios__conditional--hidden': !(shouldShowConditional || forceShowConditional),
           })}
           id={`${inputID}--conditional`}
-          {...conditionalWrapperProps}
+          {...conditionalProps}
         >
           {conditional}
         </div>
       )}
     </>
   );
-};
+});
 
 RadiosItem.displayName = 'Radios.Item';
 

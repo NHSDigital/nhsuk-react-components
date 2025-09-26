@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Select Matches the snapshot 1`] = `
+exports[`Select matches snapshot 1`] = `
 <div>
   <div
     class="nhsuk-form-group"

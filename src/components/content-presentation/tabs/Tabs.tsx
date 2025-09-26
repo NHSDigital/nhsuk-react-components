@@ -1,6 +1,13 @@
 'use client';
 import classNames from 'classnames';
-import React, { ComponentPropsWithoutRef, FC, useEffect, useRef, useState } from 'react';
+import React, {
+  ComponentPropsWithoutRef,
+  FC,
+  createRef,
+  forwardRef,
+  useEffect,
+  useState,
+} from 'react';
 import HeadingLevel, { HeadingLevelProps } from '@components/utils/HeadingLevel';
 import { Tabs } from 'nhsuk-frontend';
 
@@ -44,12 +51,14 @@ const TabContents: FC<TabContentsProps> = ({ children, id, ...rest }) => (
   </div>
 );
 
-const TabsComponent: FC<TabsProps> = ({ className, children, ...rest }) => {
-  const moduleRef = useRef<HTMLDivElement>(null);
+const TabsComponent = forwardRef<HTMLDivElement, TabsProps>((props, forwardedRef) => {
+  const { children, className, ...rest } = props;
+
+  const [moduleRef] = useState(() => forwardedRef || createRef<HTMLDivElement>());
   const [instance, setInstance] = useState<Tabs>();
 
   useEffect(() => {
-    if (!moduleRef.current || instance) {
+    if (!('current' in moduleRef) || !moduleRef.current || instance) {
       return;
     }
 
@@ -66,7 +75,7 @@ const TabsComponent: FC<TabsProps> = ({ className, children, ...rest }) => {
       {children}
     </div>
   );
-};
+});
 
 TabsComponent.displayName = 'Tabs';
 TabTitle.displayName = 'Tabs.Title';

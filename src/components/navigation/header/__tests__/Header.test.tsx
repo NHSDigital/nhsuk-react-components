@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ComponentProps, createRef } from 'react';
 import { render } from '@testing-library/react';
 import Header from '../Header';
 
@@ -22,6 +22,21 @@ describe('Header', () => {
     );
 
     expect(container).toMatchSnapshot();
+  });
+
+  it('forwards refs', () => {
+    const ref = createRef<HTMLElement>();
+
+    const { container } = render(
+      <Header ref={ref}>
+        <Header.Logo href="/" />
+      </Header>,
+    );
+
+    const headerEl = container.querySelector('header');
+
+    expect(ref.current).toBe(headerEl);
+    expect(ref.current).toHaveClass('nhsuk-header');
   });
 
   it('sets organisation className', () => {
@@ -181,6 +196,94 @@ describe('Header', () => {
       expect(logoEl).toHaveAccessibleName('NHS');
       expect(organisationLogoEl).not.toBeInTheDocument();
       expect(organisationNameEl).toHaveTextContent('Anytown AnyplaceAnywhere');
+    });
+  });
+
+  describe('Header.Account', () => {
+    it('matches snapshot', () => {
+      const { container } = render(
+        <Header>
+          <Header.Logo />
+          <Header.Account>
+            <Header.AccountItem href="#" icon={true}>
+              florence.nightingale@nhs.net
+            </Header.AccountItem>
+            <Header.AccountItem formProps={{ action: '/log-out', method: 'post' }}>
+              Log out
+            </Header.AccountItem>
+          </Header.Account>
+        </Header>,
+      );
+
+      expect(container).toMatchSnapshot();
+    });
+
+    it('forwards refs', () => {
+      const ref1 = createRef<HTMLButtonElement>();
+      const ref2 = createRef<HTMLAnchorElement>();
+
+      const { container } = render(
+        <Header>
+          <Header.Logo />
+          <Header.Account>
+            <Header.AccountItem href="#" icon={true} ref={ref1}>
+              florence.nightingale@nhs.net
+            </Header.AccountItem>
+            <Header.AccountItem formProps={{ action: '/log-out', method: 'post' }} ref={ref2}>
+              Log out
+            </Header.AccountItem>
+          </Header.Account>
+        </Header>,
+      );
+
+      const accountItemEl1 = container.querySelector('a');
+      const accountItemEl2 = container.querySelector('button');
+
+      expect(ref1.current).toBe(accountItemEl1);
+      expect(ref1.current).toHaveClass('nhsuk-header__account-link');
+
+      expect(ref2.current).toBe(accountItemEl2);
+      expect(ref2.current).toHaveClass('nhsuk-header__account-button');
+    });
+
+    it('renders as custom element', () => {
+      function CustomLink({ children, href, ...rest }: ComponentProps<'a'>) {
+        return (
+          <a href={href} {...rest} data-custom-link="true">
+            {children}
+          </a>
+        );
+      }
+
+      function CustomButton(props: ComponentProps<'button'>) {
+        return <button {...props} data-custom-button="true" />;
+      }
+
+      const { container } = render(
+        <Header>
+          <Header.Logo />
+          <Header.Account>
+            <Header.AccountItem asElement={CustomLink} href="#" icon={true}>
+              florence.nightingale@nhs.net
+            </Header.AccountItem>
+            <Header.AccountItem
+              asElement={CustomButton}
+              formProps={{ action: '/log-out', method: 'post' }}
+            >
+              Log out
+            </Header.AccountItem>
+          </Header.Account>
+        </Header>,
+      );
+
+      const accountItemEl1 = container.querySelector('a');
+      const accountItemEl2 = container.querySelector('button');
+
+      expect(accountItemEl1).toHaveTextContent('florence.nightingale@nhs.net');
+      expect(accountItemEl1?.dataset).toHaveProperty('customLink', 'true');
+
+      expect(accountItemEl2).toHaveTextContent('Log out');
+      expect(accountItemEl2?.dataset).toHaveProperty('customButton', 'true');
     });
   });
 });

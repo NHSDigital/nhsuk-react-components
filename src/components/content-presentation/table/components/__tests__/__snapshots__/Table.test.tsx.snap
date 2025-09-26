@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table matches snapshot 1`] = `
+<div>
+  <table
+    class="nhsuk-table"
+  />
+</div>
+`;

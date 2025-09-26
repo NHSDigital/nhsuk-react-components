@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
 import SummaryList from '../';
 
@@ -7,6 +7,17 @@ describe('SummaryList', () => {
     const { container } = render(<SummaryList />);
 
     expect(container).toMatchSnapshot('SummaryList');
+  });
+
+  it('forwards refs', () => {
+    const ref = createRef<HTMLDListElement>();
+
+    const { container } = render(<SummaryList ref={ref} />);
+
+    const insetTextEl = container.querySelector('dl');
+
+    expect(ref.current).toBe(insetTextEl);
+    expect(ref.current).toHaveClass('nhsuk-summary-list');
   });
 
   it('adds css classes when noBorder prop supplied', () => {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
 import WarningCallout from '../WarningCallout';
 
@@ -15,6 +15,17 @@ describe('WarningCallout', () => {
     );
 
     expect(container).toMatchSnapshot('WarningCallout');
+  });
+
+  it('forwards refs', () => {
+    const ref = createRef<HTMLDivElement>();
+
+    const { container } = render(<WarningCallout ref={ref} />);
+
+    const warningCalloutEl = container.querySelector('div');
+
+    expect(ref.current).toBe(warningCalloutEl);
+    expect(ref.current).toHaveClass('nhsuk-warning-callout');
   });
 
   it('omits visually hidden text when unnecessary', () => {

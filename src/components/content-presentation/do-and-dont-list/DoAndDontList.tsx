@@ -1,12 +1,19 @@
 'use client';
-import React, { ComponentPropsWithoutRef, FC, createContext, useContext, ReactNode } from 'react';
+import React, {
+  ComponentPropsWithoutRef,
+  FC,
+  createContext,
+  useContext,
+  ReactNode,
+  forwardRef,
+} from 'react';
 import classNames from 'classnames';
 import { Tick, Cross } from '@components/content-presentation/icons';
 import HeadingLevel, { HeadingLevelProps } from '@components/utils/HeadingLevel';
 
 type ListType = 'do' | 'dont';
 
-interface DoAndDontListProps
+export interface DoAndDontListProps
   extends ComponentPropsWithoutRef<'div'>,
     Pick<HeadingLevelProps, 'headingLevel'> {
   listType: ListType;
@@ -15,16 +22,9 @@ interface DoAndDontListProps
 
 const DoAndDontListContext = createContext<ListType>('do');
 
-const DoAndDontListComponent: FC<DoAndDontListProps> = ({
-  className,
-  listType,
-  children,
-  heading,
-  headingLevel,
-  ...rest
-}) => {
-  return (
-    <div className={classNames('nhsuk-do-dont-list', className)} {...rest}>
+const DoAndDontListComponent = forwardRef<HTMLDivElement, DoAndDontListProps>(
+  ({ className, listType, children, heading, headingLevel, ...rest }, forwardedRef) => (
+    <div className={classNames('nhsuk-do-dont-list', className)} ref={forwardedRef} {...rest}>
       <HeadingLevel className="nhsuk-do-dont-list__label" headingLevel={headingLevel}>
         {heading || (listType === 'do' ? 'Do' : "Don't")}
       </HeadingLevel>
@@ -38,10 +38,10 @@ const DoAndDontListComponent: FC<DoAndDontListProps> = ({
         <DoAndDontListContext.Provider value={listType}>{children}</DoAndDontListContext.Provider>
       </ul>
     </div>
-  );
-};
+  ),
+);
 
-interface DoAndDontItemProps extends ComponentPropsWithoutRef<'li'> {
+export interface DoAndDontItemProps extends ComponentPropsWithoutRef<'li'> {
   listItemType?: ListType;
   prefixText?: ReactNode;
 }

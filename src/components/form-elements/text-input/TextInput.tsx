@@ -1,13 +1,12 @@
-import React, { ComponentPropsWithoutRef, FC, MutableRefObject } from 'react';
+import React, { ComponentPropsWithoutRef, FC, forwardRef } from 'react';
 import classNames from 'classnames';
 import FormGroup from '@components/utils/FormGroup';
 import { InputWidth } from '@util/types/NHSUKTypes';
 import { FormElementProps } from '@util/types/FormTypes';
 
-interface TextInputProps
+export interface TextInputProps
   extends ComponentPropsWithoutRef<'input'>,
     Omit<FormElementProps, 'fieldsetProps' | 'legend' | 'legendProps'> {
-  inputRef?: MutableRefObject<HTMLInputElement | null>;
   width?: InputWidth;
   prefix?: string;
   suffix?: string;
@@ -25,9 +24,9 @@ const TextInputSuffix: FC<Pick<TextInputProps, 'suffix'>> = ({ suffix }) => (
   </div>
 );
 
-const TextInputComponent: FC<TextInputProps> = (props) => (
+const TextInputComponent = forwardRef<HTMLInputElement, TextInputProps>((props, forwardedRef) => (
   <FormGroup<TextInputProps> {...props} inputType="input">
-    {({ width, className, error, inputRef, type = 'text', prefix, suffix, ...rest }) => {
+    {({ width, className, error, type = 'text', prefix, suffix, ...rest }) => {
       const Input = (
         <input
           className={classNames(
@@ -36,7 +35,7 @@ const TextInputComponent: FC<TextInputProps> = (props) => (
             { 'nhsuk-input--error': error },
             className,
           )}
-          ref={inputRef}
+          ref={forwardedRef}
           type={type}
           {...rest}
         />
@@ -53,7 +52,7 @@ const TextInputComponent: FC<TextInputProps> = (props) => (
       );
     }}
   </FormGroup>
-);
+));
 
 TextInputComponent.displayName = 'TextInput';
 

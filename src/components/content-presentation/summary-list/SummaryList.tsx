@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
+import React, { ComponentPropsWithoutRef, FC, forwardRef } from 'react';
 import classNames from 'classnames';
 
 const SummaryListRow: FC<ComponentPropsWithoutRef<'div'>> = ({ className, ...rest }) => (
@@ -17,19 +17,22 @@ const SummaryListActions: FC<ComponentPropsWithoutRef<'dd'>> = ({ className, ...
   <dd className={classNames('nhsuk-summary-list__actions', className)} {...rest} />
 );
 
-interface SummaryListProps extends ComponentPropsWithoutRef<'dl'> {
+export interface SummaryListProps extends ComponentPropsWithoutRef<'dl'> {
   noBorder?: boolean;
 }
 
-const SummaryListComponent: FC<SummaryListProps> = ({ className, noBorder, ...rest }) => (
-  <dl
-    className={classNames(
-      'nhsuk-summary-list',
-      { 'nhsuk-summary-list--no-border': noBorder },
-      className,
-    )}
-    {...rest}
-  />
+const SummaryListComponent = forwardRef<HTMLDListElement, SummaryListProps>(
+  ({ className, noBorder, ...rest }, forwardedRef) => (
+    <dl
+      className={classNames(
+        'nhsuk-summary-list',
+        { 'nhsuk-summary-list--no-border': noBorder },
+        className,
+      )}
+      ref={forwardedRef}
+      {...rest}
+    />
+  ),
 );
 
 SummaryListComponent.displayName = 'SummaryList';

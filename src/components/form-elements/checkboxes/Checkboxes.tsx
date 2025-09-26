@@ -1,6 +1,6 @@
 'use client';
 
-import React, { ComponentPropsWithoutRef, FC, useEffect, useRef, useState } from 'react';
+import React, { ComponentPropsWithoutRef, createRef, forwardRef, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '@util/types/FormTypes';
 import FormGroup from '@components/utils/FormGroup';
@@ -16,8 +16,10 @@ export interface CheckboxesProps
   idPrefix?: string;
 }
 
-const CheckboxesComponent: FC<CheckboxesProps> = ({ children, idPrefix, ...rest }) => {
-  const moduleRef = useRef<HTMLDivElement>(null);
+const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, forwardedRef) => {
+  const { children, idPrefix, ...rest } = props;
+
+  const [moduleRef] = useState(() => forwardedRef || createRef<HTMLDivElement>());
   const [instance, setInstance] = useState<Checkboxes>();
 
   const _boxReferences: string[] = [];
@@ -25,7 +27,7 @@ const CheckboxesComponent: FC<CheckboxesProps> = ({ children, idPrefix, ...rest 
   let _boxIds: Record<string, string> = {};
 
   useEffect(() => {
-    if (!moduleRef.current || instance) {
+    if (!('current' in moduleRef) || !moduleRef.current || instance) {
       return;
     }
 
@@ -86,7 +88,7 @@ const CheckboxesComponent: FC<CheckboxesProps> = ({ children, idPrefix, ...rest 
       }}
     </FormGroup>
   );
-};
+});
 
 CheckboxesComponent.displayName = 'Checkboxes';
 

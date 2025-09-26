@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import Tabs, { TabTitleProps } from '../Tabs';
 
-describe('The tabs component', () => {
-  it('Matches the snapshot', () => {
+describe('Tabs', () => {
+  it('matches snapshot', () => {
     const { container } = render(
       <Tabs>
         <Tabs.Title>Contents</Tabs.Title>
@@ -30,7 +30,25 @@ describe('The tabs component', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('Switches the visibility of tabs when clicked', () => {
+  it('forwards refs', () => {
+    const ref = createRef<HTMLDivElement>();
+
+    const { container } = render(
+      <Tabs ref={ref}>
+        <Tabs.List>
+          <Tabs.ListItem id="tab-one">Tab One</Tabs.ListItem>
+          <Tabs.ListItem id="tab-two">Tab Two</Tabs.ListItem>
+        </Tabs.List>
+      </Tabs>,
+    );
+
+    const tabsEl = container.querySelector('div');
+
+    expect(ref.current).toBe(tabsEl);
+    expect(ref.current).toHaveClass('nhsuk-tabs');
+  });
+
+  it('switches visibility of tabs when clicked', () => {
     const { container } = render(
       <Tabs>
         <Tabs.Title>Contents</Tabs.Title>
@@ -69,14 +87,14 @@ describe('The tabs component', () => {
     ).toEqual(true);
   });
 
-  describe('The tabs title', () => {
+  describe('Tabs.Title', () => {
     it.each<TabTitleProps | undefined>([
       undefined,
       { headingLevel: 'h1' },
       { headingLevel: 'h2' },
       { headingLevel: 'h3' },
       { headingLevel: 'h4' },
-    ])('Renders the chosen heading level $headingLevel if specified', (props) => {
+    ])('renders heading level $headingLevel if specified', (props) => {
       const { container } = render(<Tabs.Title {...props}>Test title</Tabs.Title>);
 
       const title = container.querySelector('.nhsuk-tabs__title');
@@ -85,8 +103,8 @@ describe('The tabs component', () => {
     });
   });
 
-  describe('The tab list', () => {
-    it('Renders the expected children', () => {
+  describe('Tabs.List', () => {
+    it('renders expected children', () => {
       const { container } = render(
         <Tabs.List>
           <div id="list-contents" />
@@ -99,8 +117,8 @@ describe('The tabs component', () => {
     });
   });
 
-  describe('The tab list item', () => {
-    it('Sets the href to be the passed in id prop', () => {
+  describe('Tabs.ListItem', () => {
+    it('sets the href to be the passed in id prop', () => {
       const { container } = render(
         <Tabs.ListItem id="test-id">
           <div id="list-item-contents" />
@@ -110,7 +128,7 @@ describe('The tabs component', () => {
       expect(container.querySelector('.nhsuk-tabs__tab')?.getAttribute('href')).toBe('#test-id');
     });
 
-    it('Renders the expected children', () => {
+    it('renders expected children', () => {
       const { container } = render(
         <Tabs.ListItem id="test-id">
           <div id="list-item-contents" />
@@ -123,8 +141,8 @@ describe('The tabs component', () => {
     });
   });
 
-  describe('The tab contents', () => {
-    it('Renders the expected children', () => {
+  describe('Tab.Contents', () => {
+    it('renders expected children', () => {
       const { container } = render(
         <Tabs.Contents id="test-contents">
           <div id="tab-contents" />

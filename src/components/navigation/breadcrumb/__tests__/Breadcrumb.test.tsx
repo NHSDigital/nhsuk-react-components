@@ -1,4 +1,4 @@
-import React, { ElementType } from 'react';
+import React, { ComponentProps, createRef } from 'react';
 import { render } from '@testing-library/react';
 import Breadcrumb from '../';
 
@@ -7,6 +7,17 @@ describe('Breadcrumb', () => {
     const { container } = render(<Breadcrumb />);
 
     expect(container).toMatchSnapshot('BaseBreadcrumbs');
+  });
+
+  it('forwards refs', () => {
+    const ref = createRef<HTMLElement>();
+
+    const { container } = render(<Breadcrumb ref={ref} />);
+
+    const breadcrumbEl = container.querySelector('nav');
+
+    expect(ref.current).toBe(breadcrumbEl);
+    expect(ref.current).toHaveClass('nhsuk-breadcrumb');
   });
 
   it('renders with children', () => {
@@ -65,8 +76,8 @@ describe('Breadcrumb', () => {
     },
   );
 
-  describe('The BreadcrumbBack component', () => {
-    it('Renders as expected with visually hidden text', () => {
+  describe('Breadcrumb back link', () => {
+    it('renders as expected with visually hidden text', () => {
       const { container } = render(
         <Breadcrumb>
           <Breadcrumb.Back href="/back">Breadcrumb 2</Breadcrumb.Back>
@@ -78,21 +89,43 @@ describe('Breadcrumb', () => {
       expect(hiddenSpan?.textContent).toBe('Back to ');
     });
 
-    it.each<ElementType | undefined>([undefined, 'button'])(
-      'Renders with asElement when specified as %s',
-      (asElement) => {
-        const { container } = render(
-          <Breadcrumb>
-            <Breadcrumb.Back href="/back" asElement={asElement}>
-              Breadcrumb 2
-            </Breadcrumb.Back>
-          </Breadcrumb>,
+    it('renders as custom element', () => {
+      function CustomLink({ children, href, ...rest }: ComponentProps<'a'>) {
+        return (
+          <a href={href} {...rest} data-custom-link="true">
+            {children}
+          </a>
         );
+      }
 
-        const component = container.querySelector('.nhsuk-back-link');
+      const { container } = render(
+        <Breadcrumb>
+          <Breadcrumb.Back href="/back" asElement={CustomLink}>
+            Breadcrumb 2
+          </Breadcrumb.Back>
+        </Breadcrumb>,
+      );
 
-        expect(component?.nodeName).toBe(asElement?.toString()?.toUpperCase() ?? 'A');
-      },
-    );
+      const backLinkEl = container.querySelector('a');
+
+      expect(backLinkEl?.dataset).toHaveProperty('customLink', 'true');
+    });
+
+    it('forwards refs', () => {
+      const ref = createRef<HTMLAnchorElement>();
+
+      const { container } = render(
+        <Breadcrumb>
+          <Breadcrumb.Back href="/back" ref={ref}>
+            Breadcrumb 2
+          </Breadcrumb.Back>
+        </Breadcrumb>,
+      );
+
+      const backLinkEl = container.querySelector('a');
+
+      expect(ref.current).toBe(backLinkEl);
+      expect(ref.current).toHaveClass('nhsuk-back-link');
+    });
   });
 });

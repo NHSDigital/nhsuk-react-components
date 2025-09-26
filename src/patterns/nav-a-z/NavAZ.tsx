@@ -1,4 +1,4 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
+import React, { ComponentPropsWithoutRef, FC, forwardRef } from 'react';
 import classNames from 'classnames';
 import { AsElementLink } from '@util/types/LinkTypes';
 
@@ -36,34 +36,39 @@ const processLetters = (
   return null;
 };
 
-interface NavAZProps extends ComponentPropsWithoutRef<'div'> {
+export interface NavAZProps extends ComponentPropsWithoutRef<'div'> {
   fullAlphabet?: boolean;
   removedLetters?: Array<string>;
   disabledLetters?: Array<string>;
   letters?: Array<string>;
 }
 
-const NavAZ: FC<NavAZProps> = ({
-  className,
-  children,
-  fullAlphabet,
-  removedLetters,
-  disabledLetters,
-  letters,
-  'aria-label': ariaLabel = 'A to Z Navigation',
-  ...rest
-}) => (
-  <nav
-    className={classNames('nhsuk-u-margin-bottom-4', 'nhsuk-u-margin-top-4', className)}
-    aria-label={ariaLabel}
-    role="navigation"
-    {...rest}
-  >
-    <ol className="nhsuk-list nhsuk-u-clear nhsuk-u-margin-0">
-      {processLetters(children, fullAlphabet, removedLetters, disabledLetters, letters)}
-    </ol>
-  </nav>
-);
+const NavAZ = forwardRef<HTMLElement, NavAZProps>((props, forwardedRef) => {
+  const {
+    className,
+    children,
+    fullAlphabet,
+    removedLetters,
+    disabledLetters,
+    letters,
+    'aria-label': ariaLabel = 'A to Z Navigation',
+    ...rest
+  } = props;
+
+  return (
+    <nav
+      className={classNames('nhsuk-u-margin-bottom-4', 'nhsuk-u-margin-top-4', className)}
+      aria-label={ariaLabel}
+      role="navigation"
+      ref={forwardedRef}
+      {...rest}
+    >
+      <ol className="nhsuk-list nhsuk-u-clear nhsuk-u-margin-0">
+        {processLetters(children, fullAlphabet, removedLetters, disabledLetters, letters)}
+      </ol>
+    </nav>
+  );
+});
 
 const LinkItem: FC<AsElementLink<HTMLAnchorElement>> = ({
   className,

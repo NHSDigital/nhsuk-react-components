@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
 import Hero from '..';
 
@@ -8,6 +8,17 @@ describe('Hero', () => {
 
     expect(container.querySelector('.nhsuk-hero--image')).toBeFalsy();
     expect(container).toMatchSnapshot('Hero');
+  });
+
+  it('forwards refs', () => {
+    const ref = createRef<HTMLElement>();
+
+    const { container } = render(<Hero ref={ref} />);
+
+    const heroEl = container.querySelector('section');
+
+    expect(ref.current).toBe(heroEl);
+    expect(ref.current).toHaveClass('nhsuk-hero');
   });
 
   it('adds correct attributes when imageSrc is provided', () => {

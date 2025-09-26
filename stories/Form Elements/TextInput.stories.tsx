@@ -10,7 +10,7 @@ const meta: Meta<typeof TextInput> = {
     label: 'National Insurance number',
   },
   argTypes: {
-    inputRef: { table: { disable: true } },
+    ref: { table: { disable: true } },
   },
 };
 

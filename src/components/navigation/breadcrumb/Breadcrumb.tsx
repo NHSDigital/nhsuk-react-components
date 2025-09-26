@@ -1,4 +1,4 @@
-import React, { Children, ComponentPropsWithoutRef, FC, ReactNode } from 'react';
+import React, { Children, ComponentPropsWithoutRef, ReactNode, forwardRef } from 'react';
 import classNames from 'classnames';
 import { AsElementLink } from '@util/types/LinkTypes';
 import { childIsOfComponentType } from '@util/types/TypeGuards';
@@ -6,36 +6,32 @@ import BackLink from '../back-link';
 
 export type ItemProps = AsElementLink<HTMLAnchorElement>;
 
-const Item: FC<ItemProps> = ({
-  className,
-  children,
-  asElement: Element = 'a',
-  ...rest
-}) => (
-  <li className="nhsuk-breadcrumb__list-item">
-    <Element className={classNames('nhsuk-breadcrumb__link', className)} {...rest}>
-      {children}
-    </Element>
-  </li>
+const Item = forwardRef<HTMLAnchorElement, ItemProps>(
+  ({ className, asElement: Element = 'a', ...rest }, forwardedRef) => (
+    <li className="nhsuk-breadcrumb__list-item">
+      <Element
+        className={classNames('nhsuk-breadcrumb__link', className)}
+        ref={forwardedRef}
+        {...rest}
+      />
+    </li>
+  ),
 );
 
 export type BackProps = AsElementLink<HTMLAnchorElement>;
 
-const Back: FC<BackProps> = ({ children, ...rest }) => (
-  <BackLink {...rest}>
+const Back = forwardRef<HTMLAnchorElement, BackProps>(({ children, ...rest }, forwardedRef) => (
+  <BackLink ref={forwardedRef} {...rest}>
     <span className="nhsuk-u-visually-hidden">Back to&nbsp;</span>
     {children}
   </BackLink>
-);
+));
 
 export type BreadcrumbProps = ComponentPropsWithoutRef<'nav'>;
 
-const BreadcrumbComponent: FC<BreadcrumbProps> = ({
-  className,
-  children,
-  'aria-label': ariaLabel = 'Breadcrumb',
-  ...rest
-}) => {
+const BreadcrumbComponent = forwardRef<HTMLElement, BreadcrumbProps>((props, forwardedRef) => {
+  const { children, className, 'aria-label': ariaLabel = 'Breadcrumb', ...rest } = props;
+
   // Split off any "Item" components
   const { ItemChildren, OtherChildren } = Children.toArray(children).reduce<{
     ItemChildren: Array<ReactNode>;
@@ -56,12 +52,17 @@ const BreadcrumbComponent: FC<BreadcrumbProps> = ({
   );
 
   return (
-    <nav className={classNames('nhsuk-breadcrumb', className)} aria-label={ariaLabel} {...rest}>
+    <nav
+      className={classNames('nhsuk-breadcrumb', className)}
+      aria-label={ariaLabel}
+      ref={forwardedRef}
+      {...rest}
+    >
       <ol className="nhsuk-breadcrumb__list">{ItemChildren}</ol>
       {OtherChildren}
     </nav>
   );
-};
+});
 
 BreadcrumbComponent.displayName = 'Breadcrumb';
 Item.displayName = 'Breadcrumb.Item';

@@ -1,48 +1,81 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
+import React, { ComponentPropsWithRef, ForwardedRef, ReactNode, forwardRef } from 'react';
 import classNames from 'classnames';
 import { User as UserIcon } from '@components/content-presentation/icons';
+import { AsElementLink } from '@util/types/LinkTypes';
 
-export interface AccountItemProps
-  extends Pick<ComponentPropsWithoutRef<'a'>, 'href' | 'children' | 'className'>,
-    Pick<ComponentPropsWithoutRef<'form'>, 'action' | 'method'> {
+export interface AccountItemButtonProps extends AsElementLink<HTMLButtonElement> {
+  as?: 'button';
+  formProps?: ComponentPropsWithRef<'form'>;
   icon?: boolean;
 }
 
-const AccountItem: FC<AccountItemProps> = ({ icon, children }) => (
-  <>
-    {icon ? <UserIcon /> : null}
-    {children}
-  </>
+export interface AccountItemLinkProps extends AsElementLink<HTMLAnchorElement> {
+  href: string;
+  as?: 'a';
+  icon?: boolean;
+}
+
+const AccountItemButton = forwardRef<HTMLButtonElement, AccountItemButtonProps>(
+  (props, forwardedRef) => {
+    const { className, as, asElement: Element = as ?? 'button', ...rest } = props;
+    const { formProps, ...buttonRest } = rest;
+
+    return (
+      <form className="nhsuk-header__account-form" {...formProps}>
+        <Element
+          className={classNames('nhsuk-header__account-button', className)}
+          ref={forwardedRef}
+          {...buttonRest}
+        />
+      </form>
+    );
+  },
 );
 
-const AccountItemWrapper: FC<AccountItemProps> = ({ className, ...rest }) => {
-  const InnerElement: FC<AccountItemProps> = ({ method = 'post', href, action, children }) => {
-    if (href) {
-      return (
-        <a href={href} className="nhsuk-header__account-link">
-          <AccountItem {...rest}>{children}</AccountItem>
-        </a>
-      );
-    } else if (action) {
-      return (
-        <form className="nhsuk-header__account-form" action={action} method={method}>
-          <button className="nhsuk-header__account-button">
-            <AccountItem {...rest}>{children}</AccountItem>
-          </button>
-        </form>
-      );
-    }
+const AccountItemLink = forwardRef<HTMLAnchorElement, AccountItemLinkProps>(
+  ({ className, as, asElement: Element = as ?? 'a', ...rest }, forwardedRef) => (
+    <Element
+      className={classNames('nhsuk-header__account-link', className)}
+      ref={forwardedRef}
+      {...rest}
+    />
+  ),
+);
 
-    return <AccountItem {...rest}>{children}</AccountItem>;
-  };
+const AccountItem = forwardRef<
+  HTMLAnchorElement | HTMLButtonElement,
+  AccountItemButtonProps | AccountItemLinkProps
+>(({ children, className, icon, ...rest }, forwardedRef) => {
+  let element: ReactNode;
 
-  return (
-    <li className={classNames('nhsuk-header__account-item', className)}>
-      <InnerElement {...rest} />
-    </li>
-  );
-};
+  if (rest.as === 'a' || 'href' in rest) {
+    element = (
+      <AccountItemLink ref={forwardedRef as ForwardedRef<HTMLAnchorElement>} {...rest}>
+        {icon ? <UserIcon /> : null}
+        {children}
+      </AccountItemLink>
+    );
+  } else if (rest.as === 'button' || 'formProps' in rest) {
+    element = (
+      <AccountItemButton ref={forwardedRef as ForwardedRef<HTMLButtonElement>} {...rest}>
+        {icon ? <UserIcon /> : null}
+        {children}
+      </AccountItemButton>
+    );
+  } else {
+    element = (
+      <>
+        {icon ? <UserIcon /> : null}
+        {children}
+      </>
+    );
+  }
 
-AccountItemWrapper.displayName = 'Header.AccountItem';
+  return <li className={classNames('nhsuk-header__account-item', className)}>{element}</li>;
+});
 
-export default AccountItemWrapper;
+AccountItem.displayName = 'Header.AccountItem';
+AccountItemLink.displayName = 'Header.AccountItemLink';
+AccountItemButton.displayName = 'Header.AccountItemButton';
+
+export default AccountItem;

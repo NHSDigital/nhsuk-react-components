@@ -297,9 +297,9 @@ export const NoIDSupplied: Story = {
         </ul>
         <h5>Component</h5>
         <Checkboxes>
-          <Checkboxes.Item inputRef={checkbox1Ref}>Box 1</Checkboxes.Item>
-          <Checkboxes.Item inputRef={checkbox2Ref}>Box 2</Checkboxes.Item>
-          <Checkboxes.Item inputRef={checkbox3Ref}>Box 3</Checkboxes.Item>
+          <Checkboxes.Item ref={checkbox1Ref}>Box 1</Checkboxes.Item>
+          <Checkboxes.Item ref={checkbox2Ref}>Box 2</Checkboxes.Item>
+          <Checkboxes.Item ref={checkbox3Ref}>Box 3</Checkboxes.Item>
         </Checkboxes>
       </form>
     );
@@ -381,9 +381,9 @@ export const NameSupplied: Story = {
         </ul>
         <h5>Component</h5>
         <Checkboxes name="name-supplied">
-          <Checkboxes.Item inputRef={checkbox1Ref}>Box 1</Checkboxes.Item>
-          <Checkboxes.Item inputRef={checkbox2Ref}>Box 2</Checkboxes.Item>
-          <Checkboxes.Item inputRef={checkbox3Ref}>Box 3</Checkboxes.Item>
+          <Checkboxes.Item ref={checkbox1Ref}>Box 1</Checkboxes.Item>
+          <Checkboxes.Item ref={checkbox2Ref}>Box 2</Checkboxes.Item>
+          <Checkboxes.Item ref={checkbox3Ref}>Box 3</Checkboxes.Item>
         </Checkboxes>
       </form>
     );
@@ -466,9 +466,9 @@ export const IDPrefixSupplied: Story = {
         </ul>
         <h5>Component</h5>
         <Checkboxes idPrefix="idprefix">
-          <Checkboxes.Item inputRef={checkbox1Ref}>Box 1</Checkboxes.Item>
-          <Checkboxes.Item inputRef={checkbox2Ref}>Box 2</Checkboxes.Item>
-          <Checkboxes.Item inputRef={checkbox3Ref}>Box 3</Checkboxes.Item>
+          <Checkboxes.Item ref={checkbox1Ref}>Box 1</Checkboxes.Item>
+          <Checkboxes.Item ref={checkbox2Ref}>Box 2</Checkboxes.Item>
+          <Checkboxes.Item ref={checkbox3Ref}>Box 3</Checkboxes.Item>
         </Checkboxes>
       </form>
     );
@@ -551,9 +551,9 @@ export const IDPrefixAndNameSupplied: Story = {
         </ul>
         <h5>Component</h5>
         <Checkboxes idPrefix="idprefix" name="testname">
-          <Checkboxes.Item inputRef={checkbox1Ref}>Box 1</Checkboxes.Item>
-          <Checkboxes.Item inputRef={checkbox2Ref}>Box 2</Checkboxes.Item>
-          <Checkboxes.Item inputRef={checkbox3Ref}>Box 3</Checkboxes.Item>
+          <Checkboxes.Item ref={checkbox1Ref}>Box 1</Checkboxes.Item>
+          <Checkboxes.Item ref={checkbox2Ref}>Box 2</Checkboxes.Item>
+          <Checkboxes.Item ref={checkbox3Ref}>Box 3</Checkboxes.Item>
         </Checkboxes>
       </form>
     );

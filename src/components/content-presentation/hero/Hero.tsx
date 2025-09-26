@@ -1,9 +1,9 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
+import React, { ComponentPropsWithoutRef, FC, forwardRef } from 'react';
 import classNames from 'classnames';
 import { Container, Row, Col } from '../../layout';
 import HeadingLevel, { HeadingLevelProps } from '@components/utils/HeadingLevel';
 
-interface HeroContentProps extends ComponentPropsWithoutRef<'div'> {
+export interface HeroContentProps extends ComponentPropsWithoutRef<'div'> {
   hasImage: boolean;
 }
 
@@ -41,29 +41,32 @@ const HeroText: FC<ComponentPropsWithoutRef<'p'>> = ({ className, ...rest }) => 
   <p className={classNames('nhsuk-body-l nhsuk-u-margin-bottom-0', className)} {...rest} />
 );
 
-interface HeroProps extends ComponentPropsWithoutRef<'div'> {
+export interface HeroProps extends ComponentPropsWithoutRef<'div'> {
   imageSrc?: string;
 }
 
-const HeroComponent: FC<HeroProps> = ({ className, children, imageSrc, ...rest }) => (
-  <section
-    className={classNames(
-      'nhsuk-hero',
-      { 'nhsuk-hero--image': imageSrc },
-      { 'nhsuk-hero--image-description': imageSrc && children },
-      className,
-    )}
-    style={imageSrc ? { backgroundImage: `url('${imageSrc}')` } : undefined}
-    {...rest}
-  >
-    {imageSrc ? (
-      <div className="nhsuk-hero__overlay">
+const HeroComponent = forwardRef<HTMLElement, HeroProps>(
+  ({ children, className, imageSrc, ...rest }, forwardedRef) => (
+    <section
+      className={classNames(
+        'nhsuk-hero',
+        { 'nhsuk-hero--image': imageSrc },
+        { 'nhsuk-hero--image-description': imageSrc && children },
+        className,
+      )}
+      style={imageSrc ? { backgroundImage: `url('${imageSrc}')` } : undefined}
+      ref={forwardedRef}
+      {...rest}
+    >
+      {imageSrc ? (
+        <div className="nhsuk-hero__overlay">
+          <HeroContent hasImage={Boolean(imageSrc)}>{children}</HeroContent>
+        </div>
+      ) : (
         <HeroContent hasImage={Boolean(imageSrc)}>{children}</HeroContent>
-      </div>
-    ) : (
-      <HeroContent hasImage={Boolean(imageSrc)}>{children}</HeroContent>
-    )}
-  </section>
+      )}
+    </section>
+  ),
 );
 
 HeroComponent.displayName = 'Hero';

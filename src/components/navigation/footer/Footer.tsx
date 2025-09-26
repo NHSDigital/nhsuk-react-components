@@ -1,9 +1,10 @@
-import React, { Children, ComponentPropsWithoutRef, FC } from 'react';
+import React, { Children, ComponentPropsWithoutRef, FC, forwardRef } from 'react';
 import classNames from 'classnames';
 import { Container } from '@components/layout';
+import { AsElementLink } from '@util/types/LinkTypes';
 import { childIsOfComponentType } from '@util/types/TypeGuards';
 
-interface FooterMetaProps extends FooterListProps {
+export interface FooterMetaProps extends FooterListProps {
   visuallyHiddenText?: string;
 }
 
@@ -28,16 +29,24 @@ const FooterMeta: FC<FooterMetaProps> = ({
 
 type FooterListProps = ComponentPropsWithoutRef<'ul'>;
 
-const FooterList: FC<FooterListProps> = ({ className, children, ...rest }) => (
+const FooterList: FC<FooterListProps> = ({ children, className, ...rest }) => (
   <ul className={classNames('nhsuk-footer__list', className)} {...rest}>
     {children}
   </ul>
 );
 
-const FooterListItem: FC<ComponentPropsWithoutRef<'a'>> = ({ className, ...rest }) => (
-  <li className="nhsuk-footer__list-item">
-    <a className={classNames('nhsuk-footer__list-item-link', className)} {...rest} />
-  </li>
+type FooterListItemProps = AsElementLink<HTMLAnchorElement>;
+
+const FooterListItem = forwardRef<HTMLAnchorElement, FooterListItemProps>(
+  ({ className, asElement: Element = 'a', ...rest }, forwardedRef) => (
+    <li className="nhsuk-footer__list-item">
+      <Element
+        className={classNames('nhsuk-footer__list-item-link', className)}
+        ref={forwardedRef}
+        {...rest}
+      />
+    </li>
+  ),
 );
 
 const FooterCopyright: FC<ComponentPropsWithoutRef<'p'>> = ({
@@ -50,39 +59,46 @@ const FooterCopyright: FC<ComponentPropsWithoutRef<'p'>> = ({
   </p>
 );
 
-interface FooterProps extends ComponentPropsWithoutRef<'div'> {
+export interface FooterProps extends ComponentPropsWithoutRef<'div'> {
   containerClassName?: string;
 }
 
-const FooterComponent: FC<FooterProps> = ({ className, containerClassName, children, ...rest }) => {
-  const items = Children.toArray(children);
-  const meta = items.filter((child) => childIsOfComponentType(child, FooterMeta));
-  const columns = items.filter((child) => childIsOfComponentType(child, FooterList));
+const FooterComponent = forwardRef<HTMLElement, FooterProps>(
+  ({ className, containerClassName, children, ...rest }, forwardedRef) => {
+    const items = Children.toArray(children);
+    const meta = items.filter((child) => childIsOfComponentType(child, FooterMeta));
+    const columns = items.filter((child) => childIsOfComponentType(child, FooterList));
 
-  const columnsPerRow = 4;
-  const columnsTotal = Math.ceil(columns.length / columnsPerRow);
+    const columnsPerRow = 4;
+    const columnsTotal = Math.ceil(columns.length / columnsPerRow);
 
-  const rows = Array.from({ length: columnsTotal }, (column, index) =>
-    columns.slice(index * columnsPerRow, index * columnsPerRow + columnsPerRow),
-  );
+    const rows = Array.from({ length: columnsTotal }, (column, index) =>
+      columns.slice(index * columnsPerRow, index * columnsPerRow + columnsPerRow),
+    );
 
-  return (
-    <footer className={classNames('nhsuk-footer', className)} role="contentinfo" {...rest}>
-      <Container className={containerClassName}>
-        {rows.map((row, rowIndex) => (
-          <div className="nhsuk-footer__navigation nhsuk-grid-row" key={`row-${rowIndex}`}>
-            {row.map((column, columnIndex) => (
-              <div className="nhsuk-grid-column-one-quarter" key={`column-${columnIndex}`}>
-                {column}
-              </div>
-            ))}
-          </div>
-        ))}
-        {meta}
-      </Container>
-    </footer>
-  );
-};
+    return (
+      <footer
+        className={classNames('nhsuk-footer', className)}
+        role="contentinfo"
+        ref={forwardedRef}
+        {...rest}
+      >
+        <Container className={containerClassName}>
+          {rows.map((row, rowIndex) => (
+            <div className="nhsuk-footer__navigation nhsuk-grid-row" key={`row-${rowIndex}`}>
+              {row.map((column, columnIndex) => (
+                <div className="nhsuk-grid-column-one-quarter" key={`column-${columnIndex}`}>
+                  {column}
+                </div>
+              ))}
+            </div>
+          ))}
+          {meta}
+        </Container>
+      </footer>
+    );
+  },
+);
 
 FooterComponent.displayName = 'Footer';
 FooterMeta.displayName = 'Footer.Meta';

@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { ComponentProps } from 'react';
 import { Header } from '../../src';
-import { AsElementLink } from '../../src/util/types/LinkTypes';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Header> = {
@@ -94,7 +93,9 @@ export const HeaderWithAccount: Story = {
         <Header.AccountItem href="#" icon>
           florence.nightingale@nhs.net
         </Header.AccountItem>
-        <Header.AccountItem href="#">Log out</Header.AccountItem>
+        <Header.AccountItem formProps={{ action: '/log-out', method: 'post' }}>
+          Log out
+        </Header.AccountItem>
       </Header.Account>
     </Header>
   ),
@@ -114,7 +115,9 @@ export const HeaderWithAccountComplex: Story = {
           Florence Nightingale (Regional Manager)
         </Header.AccountItem>
         <Header.AccountItem href="#">Change role</Header.AccountItem>
-        <Header.AccountItem href="#">Log out</Header.AccountItem>
+        <Header.AccountItem formProps={{ action: '/log-out', method: 'post' }}>
+          Log out
+        </Header.AccountItem>
       </Header.Account>
       <Header.Navigation>
         <Header.NavigationItem href="#">Home</Header.NavigationItem>
@@ -201,7 +204,13 @@ export const HeaderOrganisationalWhiteWithNavigationWhite: Story = {
 
 export const HeaderWithCustomNavItemComponent: Story = {
   render: (args) => {
-    const customElement = (props: AsElementLink<HTMLDivElement>) => <div {...props} />;
+    function CustomLink({ children, href, ...rest }: ComponentProps<'a'>) {
+      return (
+        <a href={href} {...rest} data-custom-link="true">
+          {children}
+        </a>
+      );
+    }
 
     return (
       <Header
@@ -214,7 +223,7 @@ export const HeaderWithCustomNavItemComponent: Story = {
         <Header.Logo href="/" />
         <Header.Search />
         <Header.Navigation white>
-          <Header.NavigationItem to="/" asElement={customElement}>
+          <Header.NavigationItem to="/" asElement={CustomLink}>
             Link to props
           </Header.NavigationItem>
           <Header.NavigationItem href="#">Your hospital visit</Header.NavigationItem>

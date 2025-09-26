@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { createRef, useRef } from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import TextInput from '../TextInput';
 import { InputWidth } from '@util/types/NHSUKTypes';
@@ -15,8 +15,32 @@ describe('TextInput', () => {
       onHandle();
     };
 
-    return <TextInput type="button" onClick={handleClick} inputRef={ref} />;
+    return <TextInput type="button" onClick={handleClick} ref={ref} />;
   };
+
+  it('matches snapshot', () => {
+    const { container } = render(
+      <TextInput label="What is your NHS number?" labelProps={{ size: 'l' }} id="nhs-number" />,
+    );
+
+    expect(container).toMatchSnapshot('TextInput');
+  });
+
+  it('forwards refs', () => {
+    const groupRef = createRef<HTMLDivElement>();
+    const fieldRef = createRef<HTMLInputElement>();
+
+    const { container } = render(<TextInput formGroupProps={{ ref: groupRef }} ref={fieldRef} />);
+
+    const groupEl = container.querySelector('div');
+    const inputEl = container.querySelector('input');
+
+    expect(groupRef.current).toBe(groupEl);
+    expect(groupRef.current).toHaveClass('nhsuk-form-group');
+
+    expect(fieldRef.current).toBe(inputEl);
+    expect(fieldRef.current).toHaveClass('nhsuk-input');
+  });
 
   it('should handle click where ref Exists', () => {
     const useRefSpy = jest

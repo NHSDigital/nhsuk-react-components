@@ -1,5 +1,5 @@
 'use client';
-import React, { FC, useContext } from 'react';
+import React, { forwardRef, useContext } from 'react';
 import classNames from 'classnames';
 import HeadingLevel, { HeadingLevelProps } from '@components/utils/HeadingLevel';
 import CardContext from '../CardContext';
@@ -17,32 +17,27 @@ const genHiddenText = (cardType: CareCardType): string => {
   }
 };
 
-const CareHeading: FC<HeadingLevelProps & { careType: CareCardType }> = ({
-  className,
-  children,
-  careType,
-  headingLevel = 'h2',
-  role = 'text',
-  ...rest
-}) => {
-  return (
+const CareHeading = forwardRef<HTMLHeadingElement, HeadingLevelProps & { careType: CareCardType }>(
+  ({ children, className, careType, headingLevel = 'h2', ...rest }, forwardedRef) => (
     <div className="nhsuk-card--care__heading-container">
       <HeadingLevel
         className={classNames('nhsuk-card--care__heading', className)}
         headingLevel={headingLevel}
+        ref={forwardedRef}
         {...rest}
       >
-        <span role={role}>
+        {/* eslint-disable-next-line jsx-a11y/aria-role */}
+        <span role="text">
           <span className="nhsuk-u-visually-hidden">{genHiddenText(careType)}</span>
           {children}
         </span>
       </HeadingLevel>
       <span className="nhsuk-card--care__arrow" aria-hidden="true"></span>
     </div>
-  );
-};
+  ),
+);
 
-const CardHeading: FC<HeadingLevelProps> = (props) => {
+const CardHeading = forwardRef<HTMLHeadingElement, HeadingLevelProps>((props, forwardedRef) => {
   const { cardType } = useContext(CardContext);
 
   if (cardTypeIsCareCard(cardType)) {
@@ -59,11 +54,13 @@ const CardHeading: FC<HeadingLevelProps> = (props) => {
         className,
       )}
       headingLevel={headingLevel}
+      ref={forwardedRef}
       {...rest}
     />
   );
-};
+});
 
+CareHeading.displayName = 'Card.CareHeading';
 CardHeading.displayName = 'Card.Heading';
 
 export default CardHeading;

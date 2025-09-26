@@ -1,12 +1,14 @@
 'use client';
-import React, { ComponentPropsWithoutRef, FC, useContext } from 'react';
+import React, { ComponentPropsWithoutRef, forwardRef, useContext } from 'react';
 import classNames from 'classnames';
 import CardContext from '../CardContext';
 
 export type CardContentProps = ComponentPropsWithoutRef<'div'>;
 
-const CardContent: FC<CardContentProps> = ({ className, ...rest }) => {
+const CardContent = forwardRef<HTMLDivElement, CardContentProps>((props, forwardedRef) => {
   const { cardType } = useContext(CardContext);
+  const { className, ...rest } = props;
+
   return (
     <div
       className={classNames(
@@ -16,10 +18,11 @@ const CardContent: FC<CardContentProps> = ({ className, ...rest }) => {
         { 'nhsuk-card__content--secondary': cardType === 'secondary' },
         className,
       )}
+      ref={forwardedRef}
       {...rest}
     />
   );
-};
+});
 
 CardContent.displayName = 'Card.Content';
 
