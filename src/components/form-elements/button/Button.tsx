@@ -1,6 +1,6 @@
 import React, { ForwardedRef, MouseEvent, useEffect, useState, forwardRef, createRef } from 'react';
 import { AsElementLink } from '@util/types/LinkTypes';
-import { Button } from 'nhsuk-frontend';
+import { type Button } from 'nhsuk-frontend';
 import classNames from 'classnames';
 
 export interface ButtonProps extends AsElementLink<HTMLButtonElement> {
@@ -44,7 +44,11 @@ const ButtonComponent = forwardRef<HTMLButtonElement, ButtonProps>((props, forwa
       return;
     }
 
-    setInstance(new Button(moduleRef.current));
+    const { current: $root } = moduleRef;
+
+    import('nhsuk-frontend').then(({ Button }) => {
+      setInstance(new Button($root));
+    });
   }, [moduleRef, instance]);
 
   return (
@@ -96,7 +100,11 @@ const ButtonLinkComponent = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
         return;
       }
 
-      setInstance(new Button(moduleRef.current));
+      const { current: $root } = moduleRef;
+
+      import('nhsuk-frontend').then(({ Button }) => {
+        setInstance(new Button($root));
+      });
     }, [moduleRef, instance]);
 
     return (

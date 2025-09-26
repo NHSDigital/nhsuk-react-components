@@ -1,5 +1,3 @@
-'use client';
-
 import React, { ComponentPropsWithoutRef, createRef, forwardRef, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '@util/types/FormTypes';
@@ -8,7 +6,7 @@ import CheckboxContext, { ICheckboxContext } from './CheckboxContext';
 import CheckboxesItem from './components/Item';
 import CheckboxesDivider from './components/Divider';
 import { generateRandomName } from '@util/RandomID';
-import { Checkboxes } from 'nhsuk-frontend';
+import { type Checkboxes } from 'nhsuk-frontend';
 
 export interface CheckboxesProps
   extends ComponentPropsWithoutRef<'div'>,
@@ -31,7 +29,11 @@ const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, 
       return;
     }
 
-    setInstance(new Checkboxes(moduleRef.current));
+    const { current: $root } = moduleRef;
+
+    import('nhsuk-frontend').then(({ Checkboxes }) => {
+      setInstance(new Checkboxes($root));
+    });
   }, [moduleRef, instance]);
 
   const getBoxId = (id: string, reference: string): string => {

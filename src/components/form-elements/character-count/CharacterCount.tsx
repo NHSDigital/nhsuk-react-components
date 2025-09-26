@@ -1,6 +1,5 @@
-'use client';
 import React, { ComponentPropsWithoutRef, createRef, forwardRef, useEffect, useState } from 'react';
-import { CharacterCount } from 'nhsuk-frontend';
+import { type CharacterCount } from 'nhsuk-frontend';
 import classNames from 'classnames';
 import FormGroup from '@components/utils/FormGroup';
 import { FormElementProps } from '@util/types/FormTypes';
@@ -23,7 +22,11 @@ const CharacterCountComponent = forwardRef<HTMLTextAreaElement, CharacterCountPr
         return;
       }
 
-      setInstance(new CharacterCount(moduleRef.current));
+      const { current: $root } = moduleRef;
+
+      import('nhsuk-frontend').then(({ CharacterCount }) => {
+        setInstance(new CharacterCount($root));
+      });
     }, [moduleRef, instance]);
 
     return (

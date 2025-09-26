@@ -1,4 +1,3 @@
-'use client';
 import React, { forwardRef, useContext } from 'react';
 import classNames from 'classnames';
 import HeadingLevel, { HeadingLevelProps } from '@components/utils/HeadingLevel';

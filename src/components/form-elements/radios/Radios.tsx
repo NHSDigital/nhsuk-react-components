@@ -6,7 +6,7 @@ import FormGroup from '@components/utils/FormGroup';
 import RadiosDivider from './components/Divider';
 import RadiosItem from './components/Item';
 import { generateRandomName } from '@util/RandomID';
-import { Radios } from 'nhsuk-frontend';
+import { type Radios } from 'nhsuk-frontend';
 
 export interface RadiosProps
   extends ComponentPropsWithoutRef<'div'>,
@@ -31,7 +31,11 @@ const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwarde
       return;
     }
 
-    setInstance(new Radios(moduleRef.current));
+    const { current: $root } = moduleRef;
+
+    import('nhsuk-frontend').then(({ Radios }) => {
+      setInstance(new Radios($root));
+    });
   }, [moduleRef, instance]);
 
   const getRadioId = (id: string, reference: string): string => {

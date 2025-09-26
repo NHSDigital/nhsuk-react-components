@@ -1,4 +1,3 @@
-'use client';
 import classNames from 'classnames';
 import React, {
   ComponentPropsWithoutRef,
@@ -9,7 +8,7 @@ import React, {
   useState,
 } from 'react';
 import HeadingLevel, { HeadingLevelProps } from '@components/utils/HeadingLevel';
-import { Tabs } from 'nhsuk-frontend';
+import { type Tabs } from 'nhsuk-frontend';
 
 export type TabsProps = ComponentPropsWithoutRef<'div'>;
 
@@ -62,7 +61,11 @@ const TabsComponent = forwardRef<HTMLDivElement, TabsProps>((props, forwardedRef
       return;
     }
 
-    setInstance(new Tabs(moduleRef.current));
+    const { current: $root } = moduleRef;
+
+    import('nhsuk-frontend').then(({ Tabs }) => {
+      setInstance(new Tabs($root));
+    });
   }, [moduleRef, instance]);
 
   return (

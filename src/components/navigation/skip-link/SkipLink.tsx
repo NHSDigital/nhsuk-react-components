@@ -1,5 +1,5 @@
 import React, { ComponentPropsWithoutRef, createRef, forwardRef, useEffect, useState } from 'react';
-import { SkipLink } from 'nhsuk-frontend';
+import { type SkipLink } from 'nhsuk-frontend';
 import classNames from 'classnames';
 
 export type SkipLinkProps = ComponentPropsWithoutRef<'a'>;
@@ -15,7 +15,11 @@ const SkipLinkComponent = forwardRef<HTMLAnchorElement, SkipLinkProps>((props, f
       return;
     }
 
-    setInstance(new SkipLink(moduleRef.current));
+    const { current: $root } = moduleRef;
+
+    import('nhsuk-frontend').then(({ SkipLink }) => {
+      setInstance(new SkipLink($root));
+    });
   }, [moduleRef, instance]);
 
   return (

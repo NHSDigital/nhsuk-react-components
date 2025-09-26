@@ -1,4 +1,3 @@
-'use client';
 import React, { ComponentPropsWithoutRef, forwardRef, useContext } from 'react';
 import classNames from 'classnames';
 import CardContext from '../CardContext';

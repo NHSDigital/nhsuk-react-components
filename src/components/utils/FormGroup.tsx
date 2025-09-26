@@ -1,4 +1,3 @@
-'use client';
 import React, { ComponentPropsWithoutRef, ReactNode, useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import ErrorMessage from '../form-elements/error-message/ErrorMessage';

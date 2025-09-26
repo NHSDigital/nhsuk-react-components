@@ -1,4 +1,3 @@
-'use client';
 import React, {
   ComponentPropsWithoutRef,
   useState,
@@ -19,7 +18,7 @@ import Navigation from './components/Navigation';
 import NavigationItem from './components/NavigationItem';
 import Search from './components/Search';
 import ServiceName from './components/ServiceName';
-import { Header } from 'nhsuk-frontend';
+import { type Header } from 'nhsuk-frontend';
 
 export interface HeaderProps extends ComponentPropsWithoutRef<'div'> {
   containerClasses?: string;
@@ -87,7 +86,11 @@ const HeaderComponent = forwardRef<HTMLElement, HeaderProps>((props, forwardedRe
       return;
     }
 
-    setInstance(new Header(moduleRef.current));
+    const { current: $root } = moduleRef;
+
+    import('nhsuk-frontend').then(({ Header }) => {
+      setInstance(new Header($root));
+    });
   }, [moduleRef, instance, menuOpen]);
 
   const contextValue: IHeaderContext = useMemo(() => {

@@ -10,7 +10,7 @@ import React, {
 import classNames from 'classnames';
 import { AsElementLink } from '@util/types/LinkTypes';
 import { childIsOfComponentType } from '@util/types/TypeGuards';
-import { ErrorSummary } from 'nhsuk-frontend';
+import { type ErrorSummary } from 'nhsuk-frontend';
 
 export type TitleProps = ComponentPropsWithoutRef<'h2'>;
 
@@ -58,7 +58,7 @@ const ListItem = forwardRef<HTMLAnchorElement, ListItemProps>((props, forwardedR
   );
 });
 
-interface ErrorSummaryProps extends ComponentPropsWithoutRef<'div'> {
+export interface ErrorSummaryProps extends ComponentPropsWithoutRef<'div'> {
   disableAutoFocus?: boolean;
 }
 
@@ -72,7 +72,11 @@ const ErrorSummaryComponent = forwardRef<HTMLDivElement, ErrorSummaryProps>(
         return;
       }
 
-      setInstance(new ErrorSummary(moduleRef.current));
+      const { current: $root } = moduleRef;
+
+      import('nhsuk-frontend').then(({ ErrorSummary }) => {
+        setInstance(new ErrorSummary($root));
+      });
     }, [moduleRef, instance]);
 
     const items = Children.toArray(children);

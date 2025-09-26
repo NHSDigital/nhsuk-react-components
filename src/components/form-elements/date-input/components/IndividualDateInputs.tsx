@@ -1,4 +1,3 @@
-'use client';
 import React, { ComponentPropsWithoutRef, useContext, ChangeEvent, forwardRef } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '@util/types/FormTypes';
