@@ -5,18 +5,15 @@ exports[`DoAndDontList DoDontList.Item matches snapshot: DoDontList.Item 1`] = `
   <li>
     <svg
       aria-hidden="true"
-      class="nhsuk-icon nhsuk-icon__tick"
-      height="34"
+      class="nhsuk-icon nhsuk-icon--tick"
+      focusable="false"
+      height="16"
       viewBox="0 0 24 24"
-      width="34"
+      width="16"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
-        d="M18.4 7.8l-8.5 8.4L5.6 12"
-        fill="none"
-        stroke="#007f3b"
-        stroke-linecap="round"
-        stroke-width="4"
+        d="M11.4 18.8a2 2 0 0 1-2.7.1h-.1L4 14.1a1.5 1.5 0 0 1 2.1-2L10 16l8.1-8.1a1.5 1.5 0 1 1 2.2 2l-8.9 9Z"
       />
     </svg>
     Text

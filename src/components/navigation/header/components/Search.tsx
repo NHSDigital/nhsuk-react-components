@@ -40,7 +40,7 @@ const Search: FC<SearchProps> = ({
             {...rest}
           />
           <button className="nhsuk-search__submit" type="submit">
-            <SearchIcon width={27} height={27} />
+            <SearchIcon />
             <span className="nhsuk-u-visually-hidden">Search</span>
           </button>
         </form>

@@ -17,6 +17,7 @@ describe('Index', () => {
       'CharacterCount',
       'CharacterCountType',
       'Checkboxes',
+      'ChevronRightCircleIcon',
       'Clearfix',
       'Col',
       'Container',
@@ -56,6 +57,7 @@ describe('Index', () => {
       'TextInput',
       'TickIcon',
       'useFormContext',
+      'UserIcon',
       'WarningCallout',
     ]);
   });

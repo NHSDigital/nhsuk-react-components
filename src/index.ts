@@ -24,9 +24,11 @@ export {
   ArrowLeft as ArrowLeftIcon,
   ArrowRight as ArrowRightIcon,
   ArrowRightCircle as ArrowRightCircleIcon,
+  ChevronRightCircle as ChevronRightCircleIcon,
   Cross as CrossIcon,
   Search as SearchIcon,
   Tick as TickIcon,
+  User as UserIcon,
 } from './components/content-presentation/icons';
 export { default as Images } from './components/content-presentation/images';
 export { default as TextInput } from './components/form-elements/text-input';
