@@ -1,5 +1,26 @@
+import { TextDecoder, TextEncoder } from 'util';
 import '@testing-library/jest-dom';
 import { outdent } from 'outdent';
+
+/**
+ * Polyfill TextEncoder/TextDecoder for ReactDOM
+ *
+ * @see {@link https://github.com/jsdom/jsdom/issues/1695}
+ */
+Object.defineProperties(window, {
+  TextEncoder: {
+    value: TextEncoder,
+    configurable: true,
+    enumerable: false,
+    writable: true,
+  },
+  TextDecoder: {
+    value: TextDecoder,
+    configurable: true,
+    enumerable: false,
+    writable: true,
+  },
+});
 
 /**
  * Polyfill Element methods for NHS.UK frontend error summary
