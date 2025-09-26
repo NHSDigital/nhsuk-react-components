@@ -1,54 +1,84 @@
 import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
+import { renderClient, renderServer } from '@util/components';
 import ErrorSummary from '../';
 
 describe('ErrorSummary', () => {
-  it('matches snapshot', () => {
-    const { container } = render(<ErrorSummary />);
+  it('matches snapshot', async () => {
+    const { container } = await renderClient(<ErrorSummary />, {
+      moduleName: 'nhsuk-error-summary',
+    });
 
-    expect(container).toMatchSnapshot('ErrorSummary');
+    expect(container).toMatchSnapshot();
   });
 
-  it('forwards refs', () => {
-    const ref = createRef<HTMLDivElement>();
-    const { container } = render(<ErrorSummary ref={ref} />);
+  it('matches snapshot (via server)', async () => {
+    const { container, element } = await renderServer(<ErrorSummary />, {
+      moduleName: 'nhsuk-error-summary',
+    });
 
-    const errorSummaryEl = container.querySelector('div');
+    expect(container).toMatchSnapshot('server');
+
+    await renderClient(element, {
+      moduleName: 'nhsuk-error-summary',
+      hydrate: true,
+      container,
+    });
+
+    expect(container).toMatchSnapshot('client');
+  });
+
+  it('forwards refs', async () => {
+    const ref = createRef<HTMLDivElement>();
+
+    const { modules } = await renderClient(<ErrorSummary ref={ref} />, {
+      moduleName: 'nhsuk-error-summary',
+    });
+
+    const [errorSummaryEl] = modules;
 
     expect(ref.current).toBe(errorSummaryEl);
     expect(ref.current).toHaveClass('nhsuk-error-summary');
   });
 
-  it('is focused automatically', () => {
-    const { container } = render(<ErrorSummary />);
+  it('is focused automatically', async () => {
+    const { modules } = await renderClient(<ErrorSummary />, {
+      moduleName: 'nhsuk-error-summary',
+    });
 
-    const errorSummaryEl = container.querySelector('div');
-
+    const [errorSummaryEl] = modules;
     expect(document.activeElement).toBe(errorSummaryEl);
   });
 
-  it('is focused automatically with forwarded ref', () => {
+  it('is focused automatically with forwarded ref', async () => {
     const ref = createRef<HTMLDivElement>();
-    const { container } = render(<ErrorSummary ref={ref} />);
 
-    const errorSummaryEl = container.querySelector('div');
+    const { modules } = await renderClient(<ErrorSummary ref={ref} />, {
+      moduleName: 'nhsuk-error-summary',
+    });
+
+    const [errorSummaryEl] = modules;
 
     expect(document.activeElement).toBe(errorSummaryEl);
   });
 
-  it('has default props', () => {
-    const { container } = render(<ErrorSummary />);
+  it('has default props', async () => {
+    const { modules } = await renderClient(<ErrorSummary />, {
+      moduleName: 'nhsuk-error-summary',
+    });
 
-    const errorSummaryEl = container.querySelector('div');
+    const [errorSummaryEl] = modules;
 
     expect(errorSummaryEl?.getAttribute('tabindex')).toBe('-1');
     expect(errorSummaryEl?.firstElementChild?.getAttribute('role')).toBe('alert');
   });
 
-  it('has default props with forwarded ref', () => {
-    const { container } = render(<ErrorSummary />);
+  it('has default props with forwarded ref', async () => {
+    const { modules } = await renderClient(<ErrorSummary />, {
+      moduleName: 'nhsuk-error-summary',
+    });
 
-    const errorSummaryEl = container.querySelector('div');
+    const [errorSummaryEl] = modules;
 
     expect(errorSummaryEl?.getAttribute('tabindex')).toBe('-1');
     expect(errorSummaryEl?.firstElementChild?.getAttribute('role')).toBe('alert');

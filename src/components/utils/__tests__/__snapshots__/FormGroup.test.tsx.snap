@@ -1,5 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`FormGroup matches snapshot (via server): client 1`] = `
+<div>
+  <div
+    class="nhsuk-form-group"
+  >
+    <input
+      id="testId"
+      name="testId"
+    />
+  </div>
+</div>
+`;
+
+exports[`FormGroup matches snapshot (via server): server 1`] = `
+<div>
+  <div
+    class="nhsuk-form-group"
+  >
+    <input
+      id="testId"
+      name="testId"
+    />
+  </div>
+</div>
+`;
+
 exports[`FormGroup matches snapshot 1`] = `
 <div>
   <div

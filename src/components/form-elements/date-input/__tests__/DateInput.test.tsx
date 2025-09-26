@@ -1,15 +1,64 @@
 import React, { createRef } from 'react';
-import { render, fireEvent } from '@testing-library/react';
+import { fireEvent } from '@testing-library/react';
 import DateInput, { DateInputChangeEvent } from '../DateInput';
+import { renderClient, renderServer } from '@util/components';
 
 describe('DateInput', () => {
-  it('matches snapshot', () => {
-    const { container } = render(<DateInput id="testInput" name="testInput" />);
+  it('matches snapshot', async () => {
+    const { container } = await renderClient(
+      <DateInput
+        hint="For example, 15 3 1984"
+        legend="What is your date of birth?"
+        legendProps={{ size: 'l' }}
+        id="date-input"
+      />,
+      { className: 'nhsuk-date-input' },
+    );
 
     expect(container).toMatchSnapshot();
   });
 
-  it('forwards refs', () => {
+  it('matches snapshot with custom date fields', async () => {
+    const { container } = await renderClient(
+      <DateInput
+        hint="For example, 15 3 1984"
+        legend="What is your date of birth?"
+        legendProps={{ size: 'l' }}
+        id="date-input"
+      >
+        <DateInput.Day defaultValue="31" />
+        <DateInput.Month defaultValue="3" />
+        <DateInput.Year defaultValue="1984" />
+      </DateInput>,
+      { className: 'nhsuk-date-input' },
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('matches snapshot (via server)', async () => {
+    const { container, element } = await renderServer(
+      <DateInput
+        hint="For example, 15 3 1984"
+        legend="What is your date of birth?"
+        legendProps={{ size: 'l' }}
+        id="date-input"
+      />,
+      { className: 'nhsuk-date-input' },
+    );
+
+    expect(container).toMatchSnapshot('server');
+
+    await renderClient(element, {
+      className: 'nhsuk-date-input',
+      hydrate: true,
+      container,
+    });
+
+    expect(container).toMatchSnapshot('client');
+  });
+
+  it('forwards refs', async () => {
     const groupRef = createRef<HTMLDivElement>();
     const moduleRef = createRef<HTMLDivElement>();
     const fieldRefs = [
@@ -18,16 +67,24 @@ describe('DateInput', () => {
       createRef<HTMLInputElement>(),
     ];
 
-    const { container } = render(
-      <DateInput formGroupProps={{ ref: groupRef }} ref={moduleRef}>
+    const { container, modules } = await renderClient(
+      <DateInput
+        hint="For example, 15 3 1984"
+        legend="What is your date of birth?"
+        legendProps={{ size: 'l' }}
+        formGroupProps={{ ref: groupRef }}
+        ref={moduleRef}
+      >
         <DateInput.Day ref={fieldRefs[0]} />
         <DateInput.Month ref={fieldRefs[1]} />
         <DateInput.Year ref={fieldRefs[2]} />
       </DateInput>,
+      { className: 'nhsuk-date-input' },
     );
 
+    const [moduleEl] = modules;
+
     const groupEl = container.querySelectorAll('div')[0];
-    const moduleEl = container.querySelectorAll('div')[1];
     const inputEls = container.querySelectorAll('input');
 
     expect(groupRef.current).toBe(groupEl);
@@ -46,55 +103,58 @@ describe('DateInput', () => {
     expect(fieldRefs[2].current).toHaveClass('nhsuk-date-input__input');
   });
 
-  it('invokes the provided onChange function prop if provided', () => {
-    let onChangeParam: DateInputChangeEvent | undefined;
-    const onChange = jest.fn().mockImplementation((val) => (onChangeParam = val));
+  it('invokes the provided onChange function prop if provided', async () => {
+    const onChange = jest.fn();
 
-    const { container } = render(<DateInput id="testInput" name="testInput" onChange={onChange} />);
+    const { modules } = await renderClient(<DateInput onChange={onChange} />, {
+      className: 'nhsuk-input',
+    });
 
-    const dayInput = container.querySelector('#testInput-day')!;
-    const monthInput = container.querySelector('#testInput-month')!;
-    const yearInput = container.querySelector('#testInput-year')!;
+    const [dayInput, monthInput, yearInput] = modules;
 
     fireEvent.change(dayInput, { target: { value: '21' } });
 
     expect(onChange).toHaveBeenCalledTimes(1);
-    expect(onChangeParam?.currentTarget.value).toEqual({
-      day: '21',
-      month: '',
-      year: '',
-    });
+    expect(onChange).toHaveBeenCalledWith(
+      expect.objectContaining<Partial<DateInputChangeEvent>>({
+        target: expect.objectContaining({
+          value: {
+            day: '21',
+            month: '',
+            year: '',
+          },
+        }),
+      }),
+    );
 
-    fireEvent.change(monthInput, { target: { value: '03' } });
+    fireEvent.change(monthInput, { target: { value: '3' } });
 
     expect(onChange).toHaveBeenCalledTimes(2);
-    expect(onChangeParam?.currentTarget.value).toEqual({
-      day: '21',
-      month: '03',
-      year: '',
-    });
+    expect(onChange).toHaveBeenCalledWith(
+      expect.objectContaining<Partial<DateInputChangeEvent>>({
+        target: expect.objectContaining({
+          value: {
+            day: '21',
+            month: '3',
+            year: '',
+          },
+        }),
+      }),
+    );
 
     fireEvent.change(yearInput, { target: { value: '2024' } });
 
     expect(onChange).toHaveBeenCalledTimes(3);
-    expect(onChangeParam?.currentTarget.value).toEqual({
-      day: '21',
-      month: '03',
-      year: '2024',
-    });
-  });
-
-  it('renders the specified children instead of date fields if provided', () => {
-    const { container } = render(
-      <DateInput id="testInput" name="testInput">
-        <div id="testDiv"></div>
-      </DateInput>,
+    expect(onChange).toHaveBeenCalledWith(
+      expect.objectContaining<Partial<DateInputChangeEvent>>({
+        target: expect.objectContaining({
+          value: {
+            day: '21',
+            month: '3',
+            year: '2024',
+          },
+        }),
+      }),
     );
-
-    expect(container.querySelector('#testInput-day')).toBeNull();
-    expect(container.querySelector('#testInput-month')).toBeNull();
-    expect(container.querySelector('#testInput-year')).toBeNull();
-
-    expect(container.querySelector('#testDiv')).not.toBeNull();
   });
 });

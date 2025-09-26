@@ -1,10 +1,10 @@
 import React, { ComponentProps, createRef } from 'react';
-import { render } from '@testing-library/react';
 import Header from '../Header';
+import { renderClient, renderServer } from '@util/components';
 
 describe('Header', () => {
-  it('matches snapshot', () => {
-    const { container } = render(
+  it('matches snapshot', async () => {
+    const { container } = await renderClient(
       <Header>
         <Header.Logo href="/" />
         <Header.Search />
@@ -19,62 +19,98 @@ describe('Header', () => {
           <Header.NavigationItem href="/">Home</Header.NavigationItem>
         </Header.Navigation>
       </Header>,
+      { moduleName: 'nhsuk-header' },
     );
 
     expect(container).toMatchSnapshot();
   });
 
-  it('forwards refs', () => {
+  it('matches snapshot (via server)', async () => {
+    const { container, element } = await renderServer(
+      <Header>
+        <Header.Logo href="/" />
+        <Header.Search />
+        <Header.Navigation>
+          <Header.NavigationItem href="/conditions">Health A-Z</Header.NavigationItem>
+          <Header.NavigationItem href="/live-well">Live Well</Header.NavigationItem>
+          <Header.NavigationItem href="/social-care-and-support">
+            Care and support
+          </Header.NavigationItem>
+          <Header.NavigationItem href="/news">Health news</Header.NavigationItem>
+          <Header.NavigationItem href="/service-search">Services near you</Header.NavigationItem>
+          <Header.NavigationItem href="/">Home</Header.NavigationItem>
+        </Header.Navigation>
+      </Header>,
+      { moduleName: 'nhsuk-header' },
+    );
+
+    expect(container).toMatchSnapshot('server');
+
+    await renderClient(element, {
+      moduleName: 'nhsuk-header',
+      hydrate: true,
+      container,
+    });
+
+    expect(container).toMatchSnapshot('client');
+  });
+
+  it('forwards refs', async () => {
     const ref = createRef<HTMLElement>();
 
-    const { container } = render(
+    const { modules } = await renderClient(
       <Header ref={ref}>
         <Header.Logo href="/" />
       </Header>,
+      { moduleName: 'nhsuk-header' },
     );
 
-    const headerEl = container.querySelector('header');
+    const [headerEl] = modules;
 
     expect(ref.current).toBe(headerEl);
     expect(ref.current).toHaveClass('nhsuk-header');
   });
 
-  it('sets organisation className', () => {
-    const { container } = render(<Header organisation={{ name: 'Organisation' }}></Header>);
+  it('sets organisation className', async () => {
+    const { modules } = await renderClient(
+      <Header organisation={{ name: 'Organisation' }}></Header>,
+      { moduleName: 'nhsuk-header' },
+    );
 
-    const headerEl = container.querySelector('.nhsuk-header');
-
+    const [headerEl] = modules;
     expect(headerEl).toHaveClass('nhsuk-header--organisation');
   });
 
-  it('sets white className', () => {
-    const { container } = render(<Header white></Header>);
+  it('sets white className', async () => {
+    const { modules } = await renderClient(<Header white></Header>, {
+      moduleName: 'nhsuk-header',
+    });
 
-    const headerEl = container.querySelector('.nhsuk-header');
-
+    const [headerEl] = modules;
     expect(headerEl).toHaveClass('nhsuk-header--white');
   });
 
-  it('sets white navigation className', () => {
-    const { container } = render(
+  it('sets white navigation className', async () => {
+    const { container } = await renderClient(
       <Header>
         <Header.Navigation white>
           <Header.NavigationItem href="/">Home</Header.NavigationItem>
         </Header.Navigation>
       </Header>,
+      { moduleName: 'nhsuk-header' },
     );
 
     const headerNavigationEl = container.querySelector('.nhsuk-header__navigation');
-
     expect(headerNavigationEl).toHaveClass('nhsuk-header__navigation--white');
   });
 
   describe('Header.Logo', () => {
-    it('renders logo only', () => {
-      const { container } = render(
+    it('renders logo only', async () => {
+      const { container } = await renderClient(
         <Header>
           <Header.Logo />
         </Header>,
+        { moduleName: 'nhsuk-header' },
       );
 
       const linkEl = container.querySelector('.nhsuk-header__service a');
@@ -84,11 +120,12 @@ describe('Header', () => {
       expect(logoEl).toHaveAccessibleName('NHS');
     });
 
-    it('renders logo only (with link)', () => {
-      const { container } = render(
+    it('renders logo only (with link)', async () => {
+      const { container } = await renderClient(
         <Header>
           <Header.Logo href="/" />
         </Header>,
+        { moduleName: 'nhsuk-header' },
       );
 
       const linkEl = container.querySelector('.nhsuk-header__service a');
@@ -99,11 +136,12 @@ describe('Header', () => {
       expect(logoEl).toHaveAccessibleName('NHS');
     });
 
-    it('renders logo and organisation name', () => {
-      const { container } = render(
+    it('renders logo and organisation name', async () => {
+      const { container } = await renderClient(
         <Header organisation={{ name: 'Test organisation' }}>
           <Header.Logo />
         </Header>,
+        { moduleName: 'nhsuk-header' },
       );
 
       const linkEl = container.querySelector('.nhsuk-header__service a');
@@ -117,11 +155,12 @@ describe('Header', () => {
       expect(organisationNameEl).toHaveTextContent('Test organisation');
     });
 
-    it('renders logo (with link) and organisation name', () => {
-      const { container } = render(
+    it('renders logo (with link) and organisation name', async () => {
+      const { container } = await renderClient(
         <Header organisation={{ name: 'Test organisation' }}>
           <Header.Logo href="/" />
         </Header>,
+        { moduleName: 'nhsuk-header' },
       );
 
       const linkEl = container.querySelector('.nhsuk-header__service a');
@@ -136,11 +175,12 @@ describe('Header', () => {
       expect(organisationNameEl).toHaveTextContent('Test organisation');
     });
 
-    it('renders logo (custom src) and organisation name', () => {
-      const { container } = render(
+    it('renders logo (custom src) and organisation name', async () => {
+      const { container } = await renderClient(
         <Header organisation={{ name: 'Test organisation' }}>
           <Header.Logo src="custom.svg" />
         </Header>,
+        { moduleName: 'nhsuk-header' },
       );
 
       const linkEl = container.querySelector('.nhsuk-header__service a');
@@ -154,11 +194,12 @@ describe('Header', () => {
       expect(organisationNameEl).toHaveTextContent('Test organisation');
     });
 
-    it('renders logo (with link, custom src) and organisation name', () => {
-      const { container } = render(
+    it('renders logo (with link, custom src) and organisation name', async () => {
+      const { container } = await renderClient(
         <Header organisation={{ name: 'Test organisation' }}>
           <Header.Logo href="/" src="custom.svg" />
         </Header>,
+        { moduleName: 'nhsuk-header' },
       );
 
       const linkEl = container.querySelector('.nhsuk-header__service a');
@@ -173,8 +214,8 @@ describe('Header', () => {
       expect(organisationNameEl).toHaveTextContent('Test organisation');
     });
 
-    it('renders logo (with link) and organisation name (split, with descriptor)', () => {
-      const { container } = render(
+    it('renders logo (with link) and organisation name (split, with descriptor)', async () => {
+      const { container } = await renderClient(
         <Header
           organisation={{
             name: 'Anytown Anyplace',
@@ -184,6 +225,7 @@ describe('Header', () => {
         >
           <Header.Logo href="/" />
         </Header>,
+        { moduleName: 'nhsuk-header' },
       );
 
       const linkEl = container.querySelector('.nhsuk-header__service a');
@@ -200,8 +242,8 @@ describe('Header', () => {
   });
 
   describe('Header.Account', () => {
-    it('matches snapshot', () => {
-      const { container } = render(
+    it('matches snapshot', async () => {
+      const { container } = await renderClient(
         <Header>
           <Header.Logo />
           <Header.Account>
@@ -213,16 +255,17 @@ describe('Header', () => {
             </Header.AccountItem>
           </Header.Account>
         </Header>,
+        { moduleName: 'nhsuk-header' },
       );
 
       expect(container).toMatchSnapshot();
     });
 
-    it('forwards refs', () => {
+    it('forwards refs', async () => {
       const ref1 = createRef<HTMLButtonElement>();
       const ref2 = createRef<HTMLAnchorElement>();
 
-      const { container } = render(
+      const { container } = await renderClient(
         <Header>
           <Header.Logo />
           <Header.Account>
@@ -234,6 +277,7 @@ describe('Header', () => {
             </Header.AccountItem>
           </Header.Account>
         </Header>,
+        { moduleName: 'nhsuk-header' },
       );
 
       const accountItemEl1 = container.querySelector('a');
@@ -246,7 +290,7 @@ describe('Header', () => {
       expect(ref2.current).toHaveClass('nhsuk-header__account-button');
     });
 
-    it('renders as custom element', () => {
+    it('renders as custom element', async () => {
       function CustomLink({ children, href, ...rest }: ComponentProps<'a'>) {
         return (
           <a href={href} {...rest} data-custom-link="true">
@@ -259,7 +303,7 @@ describe('Header', () => {
         return <button {...props} data-custom-button="true" />;
       }
 
-      const { container } = render(
+      const { container } = await renderClient(
         <Header>
           <Header.Logo />
           <Header.Account>
@@ -274,6 +318,7 @@ describe('Header', () => {
             </Header.AccountItem>
           </Header.Account>
         </Header>,
+        { moduleName: 'nhsuk-header' },
       );
 
       const accountItemEl1 = container.querySelector('a');

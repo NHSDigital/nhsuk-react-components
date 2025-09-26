@@ -1,5 +1,46 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`SkipLink matches snapshot (via server): client 1`] = `
+<div>
+  <a
+    class="nhsuk-skip-link"
+    data-module="nhsuk-skip-link"
+    data-nhsuk-skip-link-init=""
+    href="#maincontent"
+  >
+    Skip to main content
+  </a>
+  <div
+    class="nhsuk-width-container"
+  >
+    <main
+      class="nhsuk-main-wrapper"
+      id="maincontent"
+    />
+  </div>
+</div>
+`;
+
+exports[`SkipLink matches snapshot (via server): server 1`] = `
+<div>
+  <a
+    class="nhsuk-skip-link"
+    data-module="nhsuk-skip-link"
+    href="#maincontent"
+  >
+    Skip to main content
+  </a>
+  <div
+    class="nhsuk-width-container"
+  >
+    <main
+      class="nhsuk-main-wrapper"
+      id="maincontent"
+    />
+  </div>
+</div>
+`;
+
 exports[`SkipLink matches snapshot: SkipLink 1`] = `
 <div>
   <a

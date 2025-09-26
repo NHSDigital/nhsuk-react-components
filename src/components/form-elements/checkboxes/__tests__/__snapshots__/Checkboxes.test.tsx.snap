@@ -1,5 +1,150 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Checkboxes matches snapshot (via server): client 1`] = `
+<div>
+  <div
+    class="nhsuk-form-group"
+  >
+    <div
+      class="nhsuk-checkboxes"
+      data-module="nhsuk-checkboxes"
+      data-nhsuk-checkboxes-init=""
+      id="example"
+    >
+      <div
+        class="nhsuk-checkboxes__item"
+      >
+        <input
+          class="nhsuk-checkboxes__input"
+          data-checkbox-exclusive-group="example"
+          id="example-1"
+          name="example"
+          type="checkbox"
+          value="animal"
+        />
+        <label
+          class="nhsuk-label nhsuk-checkboxes__label"
+          for="example-1"
+          id="example-1--label"
+        >
+          Waste from animal carcasses
+        </label>
+      </div>
+      <div
+        class="nhsuk-checkboxes__item"
+      >
+        <input
+          class="nhsuk-checkboxes__input"
+          data-checkbox-exclusive-group="example"
+          id="example-2"
+          name="example"
+          type="checkbox"
+          value="mines"
+        />
+        <label
+          class="nhsuk-label nhsuk-checkboxes__label"
+          for="example-2"
+          id="example-2--label"
+        >
+          Waste from mines or quarries
+        </label>
+      </div>
+      <div
+        class="nhsuk-checkboxes__item"
+      >
+        <input
+          class="nhsuk-checkboxes__input"
+          data-checkbox-exclusive-group="example"
+          id="example-3"
+          name="example"
+          type="checkbox"
+          value="farm"
+        />
+        <label
+          class="nhsuk-label nhsuk-checkboxes__label"
+          for="example-3"
+          id="example-3--label"
+        >
+          Farm or agricultural waste
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Checkboxes matches snapshot (via server): server 1`] = `
+<div>
+  <div
+    class="nhsuk-form-group"
+  >
+    <div
+      class="nhsuk-checkboxes"
+      data-module="nhsuk-checkboxes"
+      id="example"
+    >
+      <div
+        class="nhsuk-checkboxes__item"
+      >
+        <input
+          class="nhsuk-checkboxes__input"
+          data-checkbox-exclusive-group="example"
+          id="example-1"
+          name="example"
+          type="checkbox"
+          value="animal"
+        />
+        <label
+          class="nhsuk-label nhsuk-checkboxes__label"
+          for="example-1"
+          id="example-1--label"
+        >
+          Waste from animal carcasses
+        </label>
+      </div>
+      <div
+        class="nhsuk-checkboxes__item"
+      >
+        <input
+          class="nhsuk-checkboxes__input"
+          data-checkbox-exclusive-group="example"
+          id="example-2"
+          name="example"
+          type="checkbox"
+          value="mines"
+        />
+        <label
+          class="nhsuk-label nhsuk-checkboxes__label"
+          for="example-2"
+          id="example-2--label"
+        >
+          Waste from mines or quarries
+        </label>
+      </div>
+      <div
+        class="nhsuk-checkboxes__item"
+      >
+        <input
+          class="nhsuk-checkboxes__input"
+          data-checkbox-exclusive-group="example"
+          id="example-3"
+          name="example"
+          type="checkbox"
+          value="farm"
+        />
+        <label
+          class="nhsuk-label nhsuk-checkboxes__label"
+          for="example-3"
+          id="example-3--label"
+        >
+          Farm or agricultural waste
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Checkboxes matches snapshot 1`] = `
 <div>
   <div

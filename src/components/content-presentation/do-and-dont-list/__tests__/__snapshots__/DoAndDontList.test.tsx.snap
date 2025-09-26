@@ -21,6 +21,40 @@ exports[`DoAndDontList DoDontList.Item matches snapshot: DoDontList.Item 1`] = `
 </div>
 `;
 
+exports[`DoAndDontList list type "do" matches snapshot (via server): client 1`] = `
+<div>
+  <div
+    class="nhsuk-do-dont-list"
+  >
+    <h3
+      class="nhsuk-do-dont-list__label"
+    >
+      Do
+    </h3>
+    <ul
+      class="nhsuk-list nhsuk-list--tick"
+    />
+  </div>
+</div>
+`;
+
+exports[`DoAndDontList list type "do" matches snapshot (via server): server 1`] = `
+<div>
+  <div
+    class="nhsuk-do-dont-list"
+  >
+    <h3
+      class="nhsuk-do-dont-list__label"
+    >
+      Do
+    </h3>
+    <ul
+      class="nhsuk-list nhsuk-list--tick"
+    />
+  </div>
+</div>
+`;
+
 exports[`DoAndDontList list type "do" matches snapshot: DoDontList-Do 1`] = `
 <div>
   <div
@@ -33,6 +67,40 @@ exports[`DoAndDontList list type "do" matches snapshot: DoDontList-Do 1`] = `
     </h3>
     <ul
       class="nhsuk-list nhsuk-list--tick"
+    />
+  </div>
+</div>
+`;
+
+exports[`DoAndDontList list type "dont" matches snapshot (via server): client 1`] = `
+<div>
+  <div
+    class="nhsuk-do-dont-list"
+  >
+    <h3
+      class="nhsuk-do-dont-list__label"
+    >
+      Don't
+    </h3>
+    <ul
+      class="nhsuk-list nhsuk-list--cross"
+    />
+  </div>
+</div>
+`;
+
+exports[`DoAndDontList list type "dont" matches snapshot (via server): server 1`] = `
+<div>
+  <div
+    class="nhsuk-do-dont-list"
+  >
+    <h3
+      class="nhsuk-do-dont-list__label"
+    >
+      Don't
+    </h3>
+    <ul
+      class="nhsuk-list nhsuk-list--cross"
     />
   </div>
 </div>

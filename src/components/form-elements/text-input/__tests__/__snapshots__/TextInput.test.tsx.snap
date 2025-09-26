@@ -1,5 +1,49 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`TextInput matches snapshot (via server): client 1`] = `
+<div>
+  <div
+    class="nhsuk-form-group"
+  >
+    <label
+      class="nhsuk-label nhsuk-label--l"
+      for="nhs-number"
+      id="nhs-number--label"
+    >
+      What is your NHS number?
+    </label>
+    <input
+      class="nhsuk-input"
+      id="nhs-number"
+      name="nhs-number"
+      type="text"
+    />
+  </div>
+</div>
+`;
+
+exports[`TextInput matches snapshot (via server): server 1`] = `
+<div>
+  <div
+    class="nhsuk-form-group"
+  >
+    <label
+      class="nhsuk-label nhsuk-label--l"
+      for="nhs-number"
+      id="nhs-number--label"
+    >
+      What is your NHS number?
+    </label>
+    <input
+      class="nhsuk-input"
+      id="nhs-number"
+      name="nhs-number"
+      type="text"
+    />
+  </div>
+</div>
+`;
+
 exports[`TextInput matches snapshot: TextInput 1`] = `
 <div>
   <div

@@ -1,135 +1,159 @@
-import React, { ComponentPropsWithoutRef } from 'react';
-import { render } from '@testing-library/react';
+import React from 'react';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import { FormElementProps } from '@util/types/FormTypes';
-import FormGroup, { FormGroupProps } from '../FormGroup';
+import FormGroup, { FormElementRenderProps } from '../FormGroup';
+import { TextInputProps } from '../../form-elements/text-input/TextInput';
+import { renderClient, renderServer } from '@util/components';
 
 expect.extend(toHaveNoViolations);
 
-type InputProps = ComponentPropsWithoutRef<'input'> & Pick<FormElementProps, 'error'>;
-type Optional<T, K extends keyof T> = Pick<Partial<T>, K> & Omit<T, K>;
-
-const renderFormGroupComponent = ({
-  children = (props) => <input {...props} />,
-  ...rest
-}: Optional<FormGroupProps<InputProps>, 'children'>) =>
-  render(<FormGroup<InputProps> {...rest}>{children}</FormGroup>);
-
 describe('FormGroup', () => {
-  it('matches snapshot', () => {
-    const { container } = renderFormGroupComponent({ inputType: 'input', id: 'testId' });
+  let renderProps: FormElementRenderProps<TextInputProps> | undefined;
+
+  beforeEach(() => {
+    renderProps = undefined;
+  });
+
+  it('matches snapshot', async () => {
+    const { container } = await renderClient(
+      <FormGroup<TextInputProps> inputType="input" id="testId">
+        {(props) => <input {...props} />}
+      </FormGroup>,
+      { className: 'nhsuk-form-group' },
+    );
 
     expect(container).toMatchSnapshot();
   });
 
-  it('generates a random ID for the input', () => {
-    let renderProps;
-    renderFormGroupComponent({
-      inputType: 'input',
-      children: (props) => {
-        renderProps = props;
-        return <input {...props} />;
-      },
+  it('matches snapshot (via server)', async () => {
+    const { container, element } = await renderServer(
+      <FormGroup<TextInputProps> inputType="input" id="testId">
+        {(props) => <input {...props} />}
+      </FormGroup>,
+      { className: 'nhsuk-form-group' },
+    );
+
+    expect(container).toMatchSnapshot('server');
+
+    await renderClient(element, {
+      className: 'nhsuk-form-group',
+      hydrate: true,
+      container,
     });
 
-    expect(renderProps).not.toBe(null);
-    expect(renderProps!.id).toHaveLength(11);
-    expect(renderProps!.id).toContain('input');
+    expect(container).toMatchSnapshot('client');
   });
 
-  it('allows passing of custom IDs', () => {
-    let renderProps;
-    renderFormGroupComponent({
-      inputType: 'input',
-      id: 'TestID2ElectricBoogaloo',
-      children: (props) => {
-        renderProps = props;
-        return <input {...props} />;
-      },
-    });
+  it('generates a random ID for the input', async () => {
+    await renderClient(
+      <FormGroup<TextInputProps> inputType="input">
+        {(props) => {
+          renderProps = props;
+          return <input {...props} />;
+        }}
+      </FormGroup>,
+      { className: 'nhsuk-form-group' },
+    );
 
     expect(renderProps).not.toBe(null);
-    expect(renderProps!.id).toBe('TestID2ElectricBoogaloo');
+    expect(renderProps?.id).toHaveLength(11);
+    expect(renderProps?.id).toContain('input');
   });
 
-  it('passes correct props for hint (generated id)', () => {
-    let renderProps;
-    const { container } = renderFormGroupComponent({
-      inputType: 'input',
-      hint: 'This is a test hint',
-      children: (props) => {
-        renderProps = props;
-        return <input {...props} />;
-      },
-    });
+  it('allows passing of custom IDs', async () => {
+    await renderClient(
+      <FormGroup<TextInputProps> inputType="input" id="TestID2ElectricBoogaloo">
+        {(props) => {
+          renderProps = props;
+          return <input {...props} />;
+        }}
+      </FormGroup>,
+      { className: 'nhsuk-form-group' },
+    );
 
     expect(renderProps).not.toBe(null);
-    expect(renderProps!.id).toHaveLength(11);
-    expect(renderProps!.id).toContain('input');
+    expect(renderProps?.id).toBe('TestID2ElectricBoogaloo');
+  });
+
+  it('passes correct props for hint (generated id)', async () => {
+    const { container } = await renderClient(
+      <FormGroup<TextInputProps> inputType="input" hint="This is a test hint">
+        {(props) => {
+          renderProps = props;
+          return <input {...props} />;
+        }}
+      </FormGroup>,
+      { className: 'nhsuk-form-group' },
+    );
+
+    expect(renderProps).not.toBe(null);
+    expect(renderProps?.id).toHaveLength(11);
+    expect(renderProps?.id).toContain('input');
 
     expect(container.querySelector('input')?.getAttribute('aria-describedby')).toBe(
-      `${renderProps!.id}--hint`,
+      `${renderProps?.id}--hint`,
     );
     expect(container.querySelector('.nhsuk-hint')?.getAttribute('id')).toBe(
-      `${renderProps!.id}--hint`,
+      `${renderProps?.id}--hint`,
     );
   });
 
-  it('passes correct props for hint (custom id)', () => {
-    let renderProps;
-    const { container } = renderFormGroupComponent({
-      inputType: 'input',
-      hint: 'This is a test hint',
-      id: 'testID',
-      children: (props) => {
-        renderProps = props;
-        return <input {...props} />;
-      },
-    });
+  it('passes correct props for hint (custom id)', async () => {
+    const { container } = await renderClient(
+      <FormGroup<TextInputProps> inputType="input" hint="This is a test hint" id="testID">
+        {(props) => {
+          renderProps = props;
+          return <input {...props} />;
+        }}
+      </FormGroup>,
+      { className: 'nhsuk-form-group' },
+    );
 
     expect(renderProps).not.toBe(null);
-    expect(renderProps!.id).toBe('testID');
+    expect(renderProps?.id).toBe('testID');
 
     expect(container.querySelector('input')?.getAttribute('aria-describedby')).toBe('testID--hint');
     expect(container.querySelector('.nhsuk-hint')?.getAttribute('id')).toBe('testID--hint');
   });
 
-  it('passes correct props for label (generated id)', () => {
-    let renderProps;
-    const { container } = renderFormGroupComponent({
-      inputType: 'input',
-      label: 'This is a test label',
-      children: (props) => {
-        renderProps = props;
-        return <input {...props} />;
-      },
-    });
+  it('passes correct props for label (generated id)', async () => {
+    const { container } = await renderClient(
+      <FormGroup<TextInputProps> inputType="input" label="This is a test label">
+        {(props) => {
+          renderProps = props;
+          return <input {...props} />;
+        }}
+      </FormGroup>,
+      { className: 'nhsuk-form-group' },
+    );
 
     expect(renderProps).not.toBe(null);
-    expect(renderProps!.id).toHaveLength(11);
-    expect(renderProps!.id).toContain('input');
+    expect(renderProps?.id).toHaveLength(11);
+    expect(renderProps?.id).toContain('input');
 
     expect(container.querySelector('.nhsuk-label')?.getAttribute('id')).toBe(
-      `${renderProps!.id}--label`,
+      `${renderProps?.id}--label`,
     );
-    expect(container.querySelector('.nhsuk-label')?.getAttribute('for')).toBe(renderProps!.id);
+    expect(container.querySelector('.nhsuk-label')?.getAttribute('for')).toBe(renderProps?.id);
   });
 
-  it('passes correct props for label (custom id)', () => {
-    let renderProps;
-    const { container } = renderFormGroupComponent({
-      inputType: 'input',
-      label: 'This is a test label',
-      labelProps: { title: 'TestTitle' },
-      id: 'testID',
-      children: (props) => {
-        renderProps = props;
-        return <input {...props} />;
-      },
-    });
+  it('passes correct props for label (custom id)', async () => {
+    const { container } = await renderClient(
+      <FormGroup<TextInputProps>
+        inputType="input"
+        label="This is a test label"
+        labelProps={{ title: 'TestTitle' }}
+        id="testID"
+      >
+        {(props) => {
+          renderProps = props;
+          return <input {...props} />;
+        }}
+      </FormGroup>,
+      { className: 'nhsuk-form-group' },
+    );
 
     expect(renderProps).not.toBe(null);
-    expect(renderProps!.id).toBe('testID');
+    expect(renderProps?.id).toBe('testID');
 
     expect(container.querySelector('.nhsuk-label')?.getAttribute('id')).toBe('testID--label');
     expect(container.querySelector('.nhsuk-label')?.getAttribute('for')).toBe('testID');
@@ -137,25 +161,28 @@ describe('FormGroup', () => {
     expect(container.querySelector('.nhsuk-label')?.getAttribute('title')).toBe('TestTitle');
   });
 
-  it('passes correct props for error (generated id)', () => {
-    let renderProps;
-    const { container } = renderFormGroupComponent({
-      inputType: 'input',
-      error: 'This is a test error',
-      errorProps: { title: 'TestTitle' },
-      children: (props) => {
-        renderProps = props;
-        return <input {...props} />;
-      },
-    });
+  it('passes correct props for error (generated id)', async () => {
+    const { container } = await renderClient(
+      <FormGroup<TextInputProps>
+        inputType="input"
+        error="This is a test error"
+        errorProps={{ title: 'TestTitle' }}
+      >
+        {(props) => {
+          renderProps = props;
+          return <input {...props} />;
+        }}
+      </FormGroup>,
+      { className: 'nhsuk-form-group' },
+    );
 
     expect(renderProps).not.toBe(null);
-    expect(renderProps!.id).toHaveLength(11);
-    expect(renderProps!.id).toContain('input');
-    expect(renderProps!['aria-describedby']).toBe(`${renderProps!.id}--error-message`);
+    expect(renderProps?.id).toHaveLength(11);
+    expect(renderProps?.id).toContain('input');
+    expect(renderProps!['aria-describedby']).toBe(`${renderProps?.id}--error-message`);
 
     expect(container.querySelector('.nhsuk-error-message')?.getAttribute('id')).toBe(
-      `${renderProps!.id}--error-message`,
+      `${renderProps?.id}--error-message`,
     );
     expect(container.querySelector('.nhsuk-error-message')?.textContent).toBe(
       'Error: This is a test error',
@@ -165,21 +192,24 @@ describe('FormGroup', () => {
     );
   });
 
-  it('passes correct props for error (custom id)', () => {
-    let renderProps;
-    const { container } = renderFormGroupComponent({
-      inputType: 'input',
-      error: 'This is a test error',
-      errorProps: { title: 'TestTitle' },
-      id: 'testID',
-      children: (props) => {
-        renderProps = props;
-        return <input {...props} />;
-      },
-    });
+  it('passes correct props for error (custom id)', async () => {
+    const { container } = await renderClient(
+      <FormGroup<TextInputProps>
+        inputType="input"
+        error="This is a test error"
+        errorProps={{ title: 'TestTitle' }}
+        id="testID"
+      >
+        {(props) => {
+          renderProps = props;
+          return <input {...props} />;
+        }}
+      </FormGroup>,
+      { className: 'nhsuk-form-group' },
+    );
 
     expect(renderProps).not.toBe(null);
-    expect(renderProps!.id).toBe('testID');
+    expect(renderProps?.id).toBe('testID');
     expect(renderProps!['aria-describedby']).toBe(`testID--error-message`);
 
     expect(container.querySelector('.nhsuk-error-message')?.getAttribute('id')).toBe(
@@ -194,13 +224,14 @@ describe('FormGroup', () => {
   });
 
   describe('applies the correct classes when errored', () => {
-    it('string component', () => {
-      const { container } = renderFormGroupComponent({
-        inputType: 'input',
-        error: "Oh no there's an error!",
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        children: ({ error, ...rest }) => <input {...rest} />,
-      });
+    it('string component', async () => {
+      const { container } = await renderClient(
+        <FormGroup<TextInputProps> inputType="input" error="Oh no there's an error!">
+          {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
+          {({ error, ...rest }) => <input {...rest} />}
+        </FormGroup>,
+        { className: 'nhsuk-form-group' },
+      );
 
       expect(container.querySelector('div.nhsuk-form-group')?.classList).toContain(
         'nhsuk-form-group--error',
@@ -211,13 +242,14 @@ describe('FormGroup', () => {
       );
     });
 
-    it('boolean component', () => {
-      const { container } = renderFormGroupComponent({
-        inputType: 'input',
-        error: true,
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-        children: ({ error, ...rest }) => <input {...rest} />,
-      });
+    it('boolean component', async () => {
+      const { container } = await renderClient(
+        <FormGroup<TextInputProps> inputType="input" error>
+          {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
+          {({ error, ...rest }) => <input {...rest} />}
+        </FormGroup>,
+        { className: 'nhsuk-form-group' },
+      );
 
       expect(container.querySelector('div.nhsuk-form-group')?.classList).toContain(
         'nhsuk-form-group--error',
@@ -227,28 +259,33 @@ describe('FormGroup', () => {
   });
 
   it('should produce an accessible component', async () => {
-    const { container } = render(
+    const { container } = await renderClient(
       <main>
-        <FormGroup<InputProps> inputType="input" error label="Form Label">
+        <FormGroup<TextInputProps> inputType="input" error label="Form Label">
           {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
           {({ error, ...rest }) => <input {...rest} />}
         </FormGroup>
       </main>,
+      { className: 'nhsuk-form-group' },
     );
-    const html = container.innerHTML;
 
+    const html = container.innerHTML;
     expect(await axe(html)).toHaveNoViolations();
   });
 
-  it('should add hint ID and error ID to the aria-describedby of the input', () => {
-    const { container } = renderFormGroupComponent({
-      inputType: 'input',
-      id: 'error-and-hint',
-      error: 'This is an error',
-      hint: 'This is a hint',
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      children: ({ error, ...rest }) => <input {...rest} />,
-    });
+  it('should add hint ID and error ID to the aria-describedby of the input', async () => {
+    const { container } = await renderClient(
+      <FormGroup<TextInputProps>
+        inputType="input"
+        id="error-and-hint"
+        error="This is an error"
+        hint="This is a hint"
+      >
+        {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
+        {({ error, ...rest }) => <input {...rest} />}
+      </FormGroup>,
+      { className: 'nhsuk-form-group' },
+    );
 
     const inputElement = container.querySelector('input');
     expect(inputElement).not.toBeNull();
@@ -257,12 +294,14 @@ describe('FormGroup', () => {
     );
   });
 
-  it('should have no aria-describedby when there is no hint or label', () => {
-    const { container } = renderFormGroupComponent({
-      inputType: 'input',
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      children: ({ error, ...rest }) => <input {...rest} />,
-    });
+  it('should have no aria-describedby when there is no hint or label', async () => {
+    const { container } = await renderClient(
+      <FormGroup<TextInputProps> inputType="input">
+        {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
+        {({ error, ...rest }) => <input {...rest} />}
+      </FormGroup>,
+      { className: 'nhsuk-form-group' },
+    );
 
     const inputElement = container.querySelector('input');
     expect(inputElement).not.toBeNull();

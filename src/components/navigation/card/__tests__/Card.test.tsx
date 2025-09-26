@@ -3,10 +3,11 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import { CardType } from '@util/types/NHSUKTypes';
 import Card from '../Card';
+import { renderClient, renderServer } from '@util/components';
 
 describe('Card', () => {
-  it('matches snapshot', () => {
-    const { container } = render(
+  it('matches snapshot', async () => {
+    const { container } = await renderClient(
       <Card>
         <Card.Image src="imageSrc" alt="imageAlt" />
         <Card.Content>
@@ -16,9 +17,35 @@ describe('Card', () => {
           </Card.Description>
         </Card.Content>
       </Card>,
+      { className: 'nhsuk-card' },
     );
 
     expect(container).toMatchSnapshot();
+  });
+
+  it('matches snapshot (via server)', async () => {
+    const { container, element } = await renderServer(
+      <Card>
+        <Card.Image src="imageSrc" alt="imageAlt" />
+        <Card.Content>
+          <Card.Heading>If you need help now but it&apos;s not an emergency</Card.Heading>
+          <Card.Description>
+            Go to <a href="#">111.nhs.uk</a> or <a href="#">call 111</a>
+          </Card.Description>
+        </Card.Content>
+      </Card>,
+      { className: 'nhsuk-card' },
+    );
+
+    expect(container).toMatchSnapshot('server');
+
+    await renderClient(element, {
+      className: 'nhsuk-card',
+      hydrate: true,
+      container,
+    });
+
+    expect(container).toMatchSnapshot('client');
   });
 
   it('can render Card.Link as different elements', () => {

@@ -1,26 +1,52 @@
 import React, { createRef } from 'react';
-import { render } from '@testing-library/react';
+import { renderClient, renderServer } from '@util/components';
 import Textarea from '../';
 
 describe('Textarea', () => {
-  it('matches snapshot', () => {
-    const { container } = render(
+  it('matches snapshot', async () => {
+    const { container } = await renderClient(
       <Textarea
         label="Can you provide more detail?"
         labelProps={{ size: 'l' }}
         hint="Do not include personal information like your name, date of birth or NHS number"
         id="more-detail"
       />,
+      { className: 'nhsuk-textarea' },
     );
 
     expect(container).toMatchSnapshot('Textarea');
   });
 
-  it('forwards refs', () => {
+  it('matches snapshot (via server)', async () => {
+    const { container, element } = await renderServer(
+      <Textarea
+        label="Can you provide more detail?"
+        labelProps={{ size: 'l' }}
+        hint="Do not include personal information like your name, date of birth or NHS number"
+        id="more-detail"
+      />,
+      { className: 'nhsuk-textarea' },
+    );
+
+    expect(container).toMatchSnapshot('server');
+
+    await renderClient(element, {
+      className: 'nhsuk-textarea',
+      hydrate: true,
+      container,
+    });
+
+    expect(container).toMatchSnapshot('client');
+  });
+
+  it('forwards refs', async () => {
     const groupRef = createRef<HTMLDivElement>();
     const fieldRef = createRef<HTMLTextAreaElement>();
 
-    const { container } = render(<Textarea formGroupProps={{ ref: groupRef }} ref={fieldRef} />);
+    const { container } = await renderClient(
+      <Textarea formGroupProps={{ ref: groupRef }} ref={fieldRef} />,
+      { className: 'nhsuk-textarea' },
+    );
 
     const groupEl = container.querySelector('div');
     const textareaEl = container.querySelector('textarea');

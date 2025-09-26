@@ -1,19 +1,40 @@
 import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
 import DoAndDontList from '../';
+import { renderClient, renderServer } from '@util/components';
 
 describe('DoAndDontList', () => {
   describe('list type "do"', () => {
-    it('matches snapshot', () => {
-      const { container } = render(<DoAndDontList listType="do" />);
+    it('matches snapshot', async () => {
+      const { container } = await renderClient(<DoAndDontList listType="do" />, {
+        className: 'nhsuk-do-dont-list',
+      });
 
       expect(container).toMatchSnapshot('DoDontList-Do');
     });
 
-    it('forwards refs', () => {
+    it('matches snapshot (via server)', async () => {
+      const { container, element } = await renderServer(<DoAndDontList listType="do" />, {
+        className: 'nhsuk-do-dont-list',
+      });
+
+      expect(container).toMatchSnapshot('server');
+
+      await renderClient(element, {
+        className: 'nhsuk-do-dont-list',
+        hydrate: true,
+        container,
+      });
+
+      expect(container).toMatchSnapshot('client');
+    });
+
+    it('forwards refs', async () => {
       const ref = createRef<HTMLDivElement>();
 
-      const { container } = render(<DoAndDontList listType="do" ref={ref} />);
+      const { container } = await renderClient(<DoAndDontList listType="do" ref={ref} />, {
+        className: 'nhsuk-do-dont-list',
+      });
 
       const listEl = container.querySelector('div');
 
@@ -49,10 +70,28 @@ describe('DoAndDontList', () => {
   });
 
   describe('list type "dont"', () => {
-    it('matches snapshot', () => {
-      const { container } = render(<DoAndDontList listType="dont" />);
+    it('matches snapshot', async () => {
+      const { container } = await renderClient(<DoAndDontList listType="dont" />, {
+        className: 'nhsuk-do-dont-list',
+      });
 
       expect(container).toMatchSnapshot('DoDontList-Dont');
+    });
+
+    it('matches snapshot (via server)', async () => {
+      const { container, element } = await renderServer(<DoAndDontList listType="dont" />, {
+        className: 'nhsuk-do-dont-list',
+      });
+
+      expect(container).toMatchSnapshot('server');
+
+      await renderClient(element, {
+        className: 'nhsuk-do-dont-list',
+        hydrate: true,
+        container,
+      });
+
+      expect(container).toMatchSnapshot('client');
     });
 
     it('adds the correct headings', () => {

@@ -40,7 +40,43 @@ exports[`ErrorSummary ErrorSummary.Title matches snapshot: ErrorSummary.Title 1`
 </div>
 `;
 
-exports[`ErrorSummary matches snapshot: ErrorSummary 1`] = `
+exports[`ErrorSummary matches snapshot (via server): client 1`] = `
+<div>
+  <div
+    class="nhsuk-error-summary"
+    data-module="nhsuk-error-summary"
+    data-nhsuk-error-summary-init=""
+    tabindex="-1"
+  >
+    <div
+      role="alert"
+    >
+      <div
+        class="nhsuk-error-summary__body"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ErrorSummary matches snapshot (via server): server 1`] = `
+<div>
+  <div
+    class="nhsuk-error-summary"
+    data-module="nhsuk-error-summary"
+  >
+    <div
+      role="alert"
+    >
+      <div
+        class="nhsuk-error-summary__body"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`ErrorSummary matches snapshot 1`] = `
 <div>
   <div
     class="nhsuk-error-summary"

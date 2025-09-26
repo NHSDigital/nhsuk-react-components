@@ -1,6 +1,7 @@
 import React, { createRef, useRef } from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import TextInput from '../TextInput';
+import { renderClient, renderServer } from '@util/components';
 import { InputWidth } from '@util/types/NHSUKTypes';
 
 describe('TextInput', () => {
@@ -18,12 +19,30 @@ describe('TextInput', () => {
     return <TextInput type="button" onClick={handleClick} ref={ref} />;
   };
 
-  it('matches snapshot', () => {
-    const { container } = render(
+  it('matches snapshot', async () => {
+    const { container } = await renderClient(
       <TextInput label="What is your NHS number?" labelProps={{ size: 'l' }} id="nhs-number" />,
+      { className: 'nhsuk-input' },
     );
 
     expect(container).toMatchSnapshot('TextInput');
+  });
+
+  it('matches snapshot (via server)', async () => {
+    const { container, element } = await renderServer(
+      <TextInput label="What is your NHS number?" labelProps={{ size: 'l' }} id="nhs-number" />,
+      { className: 'nhsuk-input' },
+    );
+
+    expect(container).toMatchSnapshot('server');
+
+    await renderClient(element, {
+      className: 'nhsuk-input',
+      hydrate: true,
+      container,
+    });
+
+    expect(container).toMatchSnapshot('client');
   });
 
   it('forwards refs', () => {
@@ -50,7 +69,7 @@ describe('TextInput', () => {
     const { container } = render(<TextInputComp onHandle={mock} />);
 
     const textInputEl = container.querySelector('input')!;
-    fireEvent.click(textInputEl);
+    textInputEl.click();
 
     expect(useRefSpy).toBeCalledWith(null);
     expect(mock).toBeCalledTimes(1);

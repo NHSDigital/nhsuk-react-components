@@ -146,6 +146,84 @@ exports[`Card Care card variant urgent matches the snapshot 1`] = `
 </div>
 `;
 
+exports[`Card matches snapshot (via server): client 1`] = `
+<div>
+  <div
+    class="nhsuk-card"
+  >
+    <img
+      alt="imageAlt"
+      class="nhsuk-card__img"
+      src="imageSrc"
+    />
+    <div
+      class="nhsuk-card__content"
+    >
+      <h2
+        class="nhsuk-card__heading"
+      >
+        If you need help now but it's not an emergency
+      </h2>
+      <p
+        class="nhsuk-card__description"
+      >
+        Go to 
+        <a
+          href="#"
+        >
+          111.nhs.uk
+        </a>
+         or 
+        <a
+          href="#"
+        >
+          call 111
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Card matches snapshot (via server): server 1`] = `
+<div>
+  <div
+    class="nhsuk-card"
+  >
+    <img
+      alt="imageAlt"
+      class="nhsuk-card__img"
+      src="imageSrc"
+    />
+    <div
+      class="nhsuk-card__content"
+    >
+      <h2
+        class="nhsuk-card__heading"
+      >
+        If you need help now but it's not an emergency
+      </h2>
+      <p
+        class="nhsuk-card__description"
+      >
+        Go to 
+        <a
+          href="#"
+        >
+          111.nhs.uk
+        </a>
+         or 
+        <a
+          href="#"
+        >
+          call 111
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Card matches snapshot 1`] = `
 <div>
   <div

@@ -1,46 +1,49 @@
 import React, { createRef } from 'react';
-import { render } from '@testing-library/react';
 import Checkboxes from '../';
+import { renderClient, renderServer } from '@util/components';
 
 describe('Checkboxes', () => {
-  it('matches snapshot', () => {
-    const { container } = render(
+  it('matches snapshot', async () => {
+    const { container } = await renderClient(
       <Checkboxes id="example" name="example">
         <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
         <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
         <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
       </Checkboxes>,
+      { moduleName: 'nhsuk-checkboxes' },
     );
 
     expect(container).toMatchSnapshot();
   });
 
-  it('matches snapshot with string error', () => {
-    const { container } = render(
+  it('matches snapshot with string error', async () => {
+    const { container } = await renderClient(
       <Checkboxes id="example" name="example" error="Example error">
         <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
         <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
         <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
       </Checkboxes>,
+      { moduleName: 'nhsuk-checkboxes' },
     );
 
     expect(container).toMatchSnapshot();
   });
 
-  it('matches snapshot with boolean error', () => {
-    const { container } = render(
+  it('matches snapshot with boolean error', async () => {
+    const { container } = await renderClient(
       <Checkboxes id="example" name="example" error={true}>
         <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
         <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
         <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
       </Checkboxes>,
+      { moduleName: 'nhsuk-checkboxes' },
     );
 
     expect(container).toMatchSnapshot();
   });
 
-  it('matches snapshot with an exclusive checkbox', () => {
-    const { container } = render(
+  it('matches snapshot with an exclusive checkbox', async () => {
+    const { container } = await renderClient(
       <Checkboxes id="example" name="example">
         <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
         <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
@@ -50,20 +53,43 @@ describe('Checkboxes', () => {
           None
         </Checkboxes.Item>
       </Checkboxes>,
+      { moduleName: 'nhsuk-checkboxes' },
     );
 
     expect(container).toMatchSnapshot();
   });
 
-  it('forwards refs', () => {
+  it('matches snapshot (via server)', async () => {
+    const { container, element } = await renderServer(
+      <Checkboxes id="example" name="example">
+        <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
+        <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
+        <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
+      </Checkboxes>,
+      { moduleName: 'nhsuk-checkboxes' },
+    );
+
+    expect(container).toMatchSnapshot('server');
+
+    await renderClient(element, {
+      moduleName: 'nhsuk-checkboxes',
+      hydrate: true,
+      container,
+    });
+
+    expect(container).toMatchSnapshot('client');
+  });
+
+  it('forwards refs', async () => {
     const groupRef = createRef<HTMLDivElement>();
     const moduleRef = createRef<HTMLDivElement>();
     const fieldRef = createRef<HTMLInputElement>();
 
-    const { container } = render(
+    const { container } = await renderClient(
       <Checkboxes formGroupProps={{ ref: groupRef }} ref={moduleRef}>
         <Checkboxes.Item ref={fieldRef}>Yes</Checkboxes.Item>
       </Checkboxes>,
+      { moduleName: 'nhsuk-checkboxes' },
     );
 
     const groupEl = container.querySelectorAll('div')[0];
@@ -80,8 +106,8 @@ describe('Checkboxes', () => {
     expect(fieldRef.current).toHaveClass('nhsuk-checkboxes__input');
   });
 
-  it('sets data-exclusive attribute when exclusive is true for a checkbox', () => {
-    const { container } = render(
+  it('sets data-exclusive attribute when exclusive is true for a checkbox', async () => {
+    const { container } = await renderClient(
       <Checkboxes id="example" name="example">
         <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
         <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
@@ -90,6 +116,7 @@ describe('Checkboxes', () => {
           None
         </Checkboxes.Item>
       </Checkboxes>,
+      { moduleName: 'nhsuk-checkboxes' },
     );
 
     expect(container.querySelector('#none')?.getAttribute('data-checkbox-exclusive')).toBe('true');

@@ -1,10 +1,10 @@
 import React, { createRef } from 'react';
-import { render } from '@testing-library/react';
 import CharacterCount from '../CharacterCount';
+import { renderClient, renderServer } from '@util/components';
 
 describe('Character Count', () => {
-  it('matches snapshot', () => {
-    const { container } = render(
+  it('matches snapshot', async () => {
+    const { container } = await renderClient(
       <CharacterCount
         label="Can you provide more detail?"
         labelProps={{ isPageHeading: true, size: 'l' }}
@@ -14,17 +14,44 @@ describe('Character Count', () => {
         maxLength={200}
         rows={5}
       />,
+      { moduleName: 'nhsuk-character-count' },
     );
 
     expect(container).toMatchSnapshot();
   });
 
-  it('forwards refs', () => {
+  it('matches snapshot (via server)', async () => {
+    const { container, element } = await renderServer(
+      <CharacterCount
+        label="Can you provide more detail?"
+        labelProps={{ isPageHeading: true, size: 'l' }}
+        hint="Do not include personal information like your name, date of birth or NHS number"
+        id="more-detail"
+        name="more-detail"
+        maxLength={200}
+        rows={5}
+      />,
+      { moduleName: 'nhsuk-character-count' },
+    );
+
+    expect(container).toMatchSnapshot('server');
+
+    await renderClient(element, {
+      moduleName: 'nhsuk-character-count',
+      hydrate: true,
+      container,
+    });
+
+    expect(container).toMatchSnapshot('client');
+  });
+
+  it('forwards refs', async () => {
     const groupRef = createRef<HTMLDivElement>();
     const fieldRef = createRef<HTMLTextAreaElement>();
 
-    const { container } = render(
+    const { container } = await renderClient(
       <CharacterCount formGroupProps={{ ref: groupRef }} ref={fieldRef} />,
+      { moduleName: 'nhsuk-character-count' },
     );
 
     const groupEl = container.querySelector('div');
@@ -37,8 +64,8 @@ describe('Character Count', () => {
     expect(fieldRef.current).toHaveClass('nhsuk-textarea');
   });
 
-  it('sets data-maxlength attribute when counting characters', () => {
-    const { container } = render(
+  it('sets data-maxlength attribute when counting characters', async () => {
+    const { modules } = await renderClient(
       <CharacterCount
         label="Can you provide more detail?"
         labelProps={{ isPageHeading: true, size: 'l' }}
@@ -48,17 +75,18 @@ describe('Character Count', () => {
         maxLength={200}
         rows={5}
       />,
+      { moduleName: 'nhsuk-character-count' },
     );
 
-    const characterCountEl = container.querySelector('.nhsuk-character-count');
+    const [characterCountEl] = modules;
 
     expect(characterCountEl).toHaveAttribute('data-maxlength', '200');
     expect(characterCountEl).not.toHaveAttribute('data-maxwords');
     expect(characterCountEl).not.toHaveAttribute('data-threshold');
   });
 
-  it('sets data-maxwords attribute when counting words', () => {
-    const { container } = render(
+  it('sets data-maxwords attribute when counting words', async () => {
+    const { modules } = await renderClient(
       <CharacterCount
         label="Can you provide more detail?"
         labelProps={{ isPageHeading: true, size: 'l' }}
@@ -68,17 +96,18 @@ describe('Character Count', () => {
         maxWords={200}
         rows={5}
       />,
+      { moduleName: 'nhsuk-character-count' },
     );
 
-    const characterCountEl = container.querySelector('.nhsuk-character-count');
+    const [characterCountEl] = modules;
 
     expect(characterCountEl).not.toHaveAttribute('data-maxlength');
     expect(characterCountEl).toHaveAttribute('data-maxwords', '200');
     expect(characterCountEl).not.toHaveAttribute('data-threshold');
   });
 
-  it('sets data-threshold attribute when threshold is specified', () => {
-    const { container } = render(
+  it('sets data-threshold attribute when threshold is specified', async () => {
+    const { modules } = await renderClient(
       <CharacterCount
         label="Can you provide more detail?"
         labelProps={{ isPageHeading: true, size: 'l' }}
@@ -89,9 +118,10 @@ describe('Character Count', () => {
         threshold={50}
         rows={5}
       />,
+      { moduleName: 'nhsuk-character-count' },
     );
 
-    const characterCountEl = container.querySelector('.nhsuk-character-count');
+    const [characterCountEl] = modules;
 
     expect(characterCountEl).toHaveAttribute('data-maxlength', '200');
     expect(characterCountEl).not.toHaveAttribute('data-maxwords');

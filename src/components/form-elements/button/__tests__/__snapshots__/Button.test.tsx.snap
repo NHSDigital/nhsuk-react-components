@@ -10,7 +10,7 @@ exports[`Button as a link button types reverse matches snapshot: ReverseButton 1
     href="/"
     role="button"
   >
-    Submit
+    Log out
   </a>
 </div>
 `;
@@ -25,12 +25,12 @@ exports[`Button as a link button types secondary matches snapshot: SecondaryButt
     href="/"
     role="button"
   >
-    Submit
+    Find my location
   </a>
 </div>
 `;
 
-exports[`Button as a link matches snapshot: PlainButton 1`] = `
+exports[`Button as a link matches snapshot: LinkButton 1`] = `
 <div>
   <a
     class="nhsuk-button"
@@ -40,7 +40,7 @@ exports[`Button as a link matches snapshot: PlainButton 1`] = `
     href="/"
     role="button"
   >
-    Submit
+    Find my location
   </a>
 </div>
 `;
@@ -55,12 +55,12 @@ exports[`Button disabled matches snapshot: DisabledButton 1`] = `
     disabled=""
     type="submit"
   >
-    Submit
+    Save and continue
   </button>
 </div>
 `;
 
-exports[`Button matches snapshot: PlainButton 1`] = `
+exports[`Button matches snapshot (via server): client 1`] = `
 <div>
   <button
     class="nhsuk-button"
@@ -68,7 +68,32 @@ exports[`Button matches snapshot: PlainButton 1`] = `
     data-nhsuk-button-init=""
     type="submit"
   >
-    Submit
+    Save and continue
+  </button>
+</div>
+`;
+
+exports[`Button matches snapshot (via server): server 1`] = `
+<div>
+  <button
+    class="nhsuk-button"
+    data-module="nhsuk-button"
+    type="submit"
+  >
+    Save and continue
+  </button>
+</div>
+`;
+
+exports[`Button matches snapshot 1`] = `
+<div>
+  <button
+    class="nhsuk-button"
+    data-module="nhsuk-button"
+    data-nhsuk-button-init=""
+    type="submit"
+  >
+    Save and continue
   </button>
 </div>
 `;
@@ -81,7 +106,7 @@ exports[`Button reverse matches snapshot: ReverseButton 1`] = `
     data-nhsuk-button-init=""
     type="submit"
   >
-    Submit
+    Save and continue
   </button>
 </div>
 `;
@@ -94,7 +119,7 @@ exports[`Button secondary matches snapshot: SecondaryButton 1`] = `
     data-nhsuk-button-init=""
     type="submit"
   >
-    Submit
+    Save and continue
   </button>
 </div>
 `;

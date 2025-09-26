@@ -1,10 +1,11 @@
 import React, { createRef } from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import { render } from '@testing-library/react';
+import { renderClient, renderServer } from '@util/components';
 import Tabs, { TabTitleProps } from '../Tabs';
 
 describe('Tabs', () => {
-  it('matches snapshot', () => {
-    const { container } = render(
+  it('matches snapshot', async () => {
+    const { container } = await renderClient(
       <Tabs>
         <Tabs.Title>Contents</Tabs.Title>
         <Tabs.List>
@@ -25,21 +26,59 @@ describe('Tabs', () => {
           <div>Past month contents go here</div>
         </Tabs.Contents>
       </Tabs>,
+      { moduleName: 'nhsuk-tabs' },
     );
 
     expect(container).toMatchSnapshot();
   });
 
-  it('forwards refs', () => {
+  it('matches snapshot (via server)', async () => {
+    const { container, element } = await renderServer(
+      <Tabs>
+        <Tabs.Title>Contents</Tabs.Title>
+        <Tabs.List>
+          <Tabs.ListItem id="past-day">Past day</Tabs.ListItem>
+          <Tabs.ListItem id="past-week">Past week</Tabs.ListItem>
+          <Tabs.ListItem id="past-month">Past month</Tabs.ListItem>
+        </Tabs.List>
+
+        <Tabs.Contents id="past-day">
+          <div>Past day contents go here</div>
+        </Tabs.Contents>
+
+        <Tabs.Contents id="past-week">
+          <div>Past week contents go here</div>
+        </Tabs.Contents>
+
+        <Tabs.Contents id="past-month">
+          <div>Past month contents go here</div>
+        </Tabs.Contents>
+      </Tabs>,
+      { moduleName: 'nhsuk-tabs' },
+    );
+
+    expect(container).toMatchSnapshot('server');
+
+    await renderClient(element, {
+      moduleName: 'nhsuk-tabs',
+      hydrate: true,
+      container,
+    });
+
+    expect(container).toMatchSnapshot('client');
+  });
+
+  it('forwards refs', async () => {
     const ref = createRef<HTMLDivElement>();
 
-    const { container } = render(
+    const { container } = await renderClient(
       <Tabs ref={ref}>
         <Tabs.List>
           <Tabs.ListItem id="tab-one">Tab One</Tabs.ListItem>
           <Tabs.ListItem id="tab-two">Tab Two</Tabs.ListItem>
         </Tabs.List>
       </Tabs>,
+      { moduleName: 'nhsuk-tabs' },
     );
 
     const tabsEl = container.querySelector('div');
@@ -48,8 +87,8 @@ describe('Tabs', () => {
     expect(ref.current).toHaveClass('nhsuk-tabs');
   });
 
-  it('switches visibility of tabs when clicked', () => {
-    const { container } = render(
+  it('switches visibility of tabs when clicked', async () => {
+    const { container } = await renderClient(
       <Tabs>
         <Tabs.Title>Contents</Tabs.Title>
         <Tabs.List>
@@ -65,26 +104,19 @@ describe('Tabs', () => {
           <div>Tab two contents go here</div>
         </Tabs.Contents>
       </Tabs>,
+      { moduleName: 'nhsuk-tabs' },
     );
 
-    const firstTabLink = container.querySelector('#tab_tab-one');
-    const secondTabLink = container.querySelector('#tab_tab-two');
+    const firstTabLink = container.querySelector<HTMLAnchorElement>('#tab_tab-one');
+    const secondTabLink = container.querySelector<HTMLAnchorElement>('#tab_tab-two');
 
-    expect(
-      firstTabLink?.parentElement?.classList.contains('nhsuk-tabs__list-item--selected'),
-    ).toEqual(true);
-    expect(
-      secondTabLink?.parentElement?.classList.contains('nhsuk-tabs__list-item--selected'),
-    ).toEqual(false);
+    expect(firstTabLink?.parentElement).toHaveClass('nhsuk-tabs__list-item--selected');
+    expect(secondTabLink?.parentElement).not.toHaveClass('nhsuk-tabs__list-item--selected');
 
-    fireEvent.click(secondTabLink!);
+    secondTabLink?.click();
 
-    expect(
-      firstTabLink?.parentElement?.classList.contains('nhsuk-tabs__list-item--selected'),
-    ).toEqual(false);
-    expect(
-      secondTabLink?.parentElement?.classList.contains('nhsuk-tabs__list-item--selected'),
-    ).toEqual(true);
+    expect(firstTabLink?.parentElement).not.toHaveClass('nhsuk-tabs__list-item--selected');
+    expect(secondTabLink?.parentElement).toHaveClass('nhsuk-tabs__list-item--selected');
   });
 
   describe('Tabs.Title', () => {
@@ -135,9 +167,11 @@ describe('Tabs', () => {
         </Tabs.ListItem>,
       );
 
-      const tabElement = container.querySelector('.nhsuk-tabs__tab');
+      const tabsItemEl = container.querySelector('.nhsuk-tabs__list-item a');
+      const tabsItemContentsEl = container.querySelector<HTMLElement>('#list-item-contents');
 
-      expect(tabElement?.querySelector('#list-item-contents')).toBeTruthy();
+      expect(tabsItemEl).toHaveAttribute('href', '#test-id');
+      expect(tabsItemEl).toContainElement(tabsItemContentsEl);
     });
   });
 
@@ -149,9 +183,11 @@ describe('Tabs', () => {
         </Tabs.Contents>,
       );
 
-      const tabElement = container.querySelector('#test-contents');
+      const tabsPanelEl = container.querySelector('.nhsuk-tabs__panel');
+      const tabsPanelContentsEl = container.querySelector<HTMLElement>('#tab-contents');
 
-      expect(tabElement?.querySelector('#tab-contents')).toBeTruthy();
+      expect(tabsPanelEl).toHaveAttribute('id', 'test-contents');
+      expect(tabsPanelEl).toContainElement(tabsPanelContentsEl);
     });
   });
 });
