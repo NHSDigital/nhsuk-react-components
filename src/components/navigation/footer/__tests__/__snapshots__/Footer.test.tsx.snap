@@ -3,8 +3,10 @@
 exports[`Footer Footer.Copyright matches snapshot: Footer.Copyright 1`] = `
 <div>
   <p
-    class="nhsuk-footer__copyright"
-  />
+    class="nhsuk-body-s"
+  >
+    © NHS England
+  </p>
 </div>
 `;
 
@@ -28,27 +30,37 @@ exports[`Footer Footer.ListItem matches snapshot: Footer.ListItem 1`] = `
 </div>
 `;
 
+exports[`Footer Footer.Meta matches snapshot: Footer.Meta 1`] = `
+<div>
+  <div
+    class="nhsuk-footer__meta"
+  >
+    <h2
+      class="nhsuk-u-visually-hidden"
+    >
+      Support links
+    </h2>
+    <ul
+      class="nhsuk-footer__list"
+    />
+    <p
+      class="nhsuk-body-s"
+    >
+      © NHS England
+    </p>
+  </div>
+</div>
+`;
+
 exports[`Footer matches snapshot: Footer 1`] = `
 <div>
   <footer
+    class="nhsuk-footer"
     role="contentinfo"
   >
     <div
-      class="nhsuk-footer-container"
-    >
-      <div
-        class="nhsuk-width-container"
-      >
-        <h2
-          class="nhsuk-u-visually-hidden"
-        >
-          Support links
-        </h2>
-        <div
-          class="nhsuk-footer"
-        />
-      </div>
-    </div>
+      class="nhsuk-width-container"
+    />
   </footer>
 </div>
 `;
