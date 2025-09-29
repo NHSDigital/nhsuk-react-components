@@ -22,7 +22,9 @@ export async function renderServer(element: JSX.Element, options: RenderOptions 
 
   // Find rendered modules
   const modules = [...container.querySelectorAll<HTMLElement>(selector)];
-  expect(modules.length).toBeGreaterThan(0);
+  if (!modules.length) {
+    throw new Error(`renderServer: No modules found: ${selector}`);
+  }
 
   return { container, element, modules };
 }
@@ -39,13 +41,13 @@ export async function renderClient(element: JSX.Element, options: RenderOptions 
 
   // Find rendered modules
   const modules = [...container.querySelectorAll<HTMLElement>(selector)];
-  expect(modules.length).toBeGreaterThan(0);
+  if (!modules.length) {
+    throw new Error(`renderClient: No modules found: ${selector}`);
+  }
 
   // Verify module initialisation
-  if (moduleName) {
-    for (const $root of modules) {
-      expect($root).toHaveAttribute(`data-${moduleName}-init`);
-    }
+  if (moduleName && !modules.every(($root) => $root.hasAttribute(`data-${moduleName}-init`))) {
+    throw new Error(`renderClient: Not all modules are initialised: ${selector}`);
   }
 
   return { container, element, modules };
