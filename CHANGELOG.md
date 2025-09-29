@@ -1,6 +1,12 @@
 # NHS.UK React components
 
-## 5.0.0 - TBC
+## Unreleased
+
+This version provides support for nhsuk-frontend version 10.
+
+For a full list of changes in this release please refer to the [migration doc](https://github.com/NHSDigital/nhsuk-react-components/blob/main/docs/upgrade-to-6.0.md).
+
+## 5.0.0 - 4 November 2024
 
 This version provides support for nhsuk-frontend version 9.
 
