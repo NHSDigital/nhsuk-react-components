@@ -10,20 +10,30 @@ import TablePanel from './components/TablePanel';
 import TableContext, { ITableContext } from './TableContext';
 
 export interface TableProps extends ComponentPropsWithoutRef<'table'> {
+  firstCellIsHeader?: boolean;
   responsive?: boolean;
   caption?: ReactNode;
   captionProps?: TableCaptionProps;
 }
 
 const TableComponent = forwardRef<HTMLTableElement, TableProps>((props, forwardedRef) => {
-  const { caption, captionProps, children, className, responsive = false, ...rest } = props;
+  const {
+    caption,
+    captionProps,
+    children,
+    className,
+    firstCellIsHeader = false,
+    responsive = false,
+    ...rest
+  } = props;
 
-  const [headings, setHeadings] = useState<string[]>([]);
+  const [headings, setHeadings] = useState<ReactNode[]>([]);
 
   const contextValue: ITableContext = useMemo(() => {
     return {
-      isResponsive: Boolean(responsive),
+      firstCellIsHeader,
       headings,
+      responsive,
       setHeadings,
     };
   }, [responsive, headings, setHeadings]);
@@ -36,6 +46,7 @@ const TableComponent = forwardRef<HTMLTableElement, TableProps>((props, forwarde
           { 'nhsuk-table-responsive': responsive },
           className,
         )}
+        role={responsive ? 'table' : undefined}
         ref={forwardedRef}
         {...rest}
       >

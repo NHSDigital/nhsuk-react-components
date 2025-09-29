@@ -13,35 +13,27 @@ import TableSectionContext, { TableSection } from '../TableSectionContext';
 
 const TableRow: FC<ComponentPropsWithoutRef<'tr'>> = ({ children, className, ...rest }) => {
   const section = useContext(TableSectionContext);
-  const { isResponsive, headings, setHeadings } = useContext(TableContext);
+  const { responsive, setHeadings } = useContext(TableContext);
 
   useEffect(() => {
-    if (isResponsive && section === TableSection.HEAD) {
+    if (responsive && section === TableSection.HEAD) {
       setHeadings(getHeadingsFromChildren(children));
     }
-  }, [isResponsive, section, children]);
+  }, [responsive, section, children]);
 
-  if (isResponsive && section === TableSection.BODY) {
-    const tableCells = Children.map(children, (child, index) => {
-      if (isTableCell(child)) {
-        return cloneElement(child, {
-          _responsive: isResponsive,
-          _responsiveHeading: `${headings[index] || ''} `,
-        });
-      }
-      return child;
-    });
-
-    return (
-      <tr className={classNames('nhsuk-table__row', className)} {...rest}>
-        {tableCells}
-      </tr>
-    );
-  }
+  const tableCells = Children.map(children, (child, index) => {
+    return section === TableSection.BODY && isTableCell(child)
+      ? cloneElement(child, { index })
+      : child;
+  });
 
   return (
-    <tr className={classNames('nhsuk-table__row', className)} {...rest}>
-      {children}
+    <tr
+      className={classNames('nhsuk-table__row', className)}
+      role={responsive ? 'row' : undefined}
+      {...rest}
+    >
+      {tableCells}
     </tr>
   );
 };

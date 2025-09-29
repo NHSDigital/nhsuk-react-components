@@ -402,6 +402,36 @@ For accessibility reasons, you must make the following changes:
 - remove the `disableHeadingFocus` prop
 - remove custom `onClick` handlers
 
+### Tables
+
+To align with NHS.UK frontend, you must make the following changes:
+
+- rename the `Table` prop `isResponsive` to `responsive`
+- rename the `Table.Cell` prop `isNumeric` to `format="numeric"`
+- remove unnecessary role attributes from tables, sections, rows and cells
+
+```patch
+- <Table caption="Number of cases" isResponsive>
++ <Table caption="Number of cases" responsive>
+-   <Table.Head role="rowgroup">
++   <Table.Head>
+-     <Table.Row role="row">
++     <Table.Row>
+        <Table.Cell>Location</Table.Cell>
+        <Table.Cell>Number of cases</Table.Cell>
+      </Table.Row>
+    </Table.Head>
+    <Table.Body>
+-     <Table.Row role="row">
++     <Table.Row>
+        <Table.Cell>England</Table.Cell>
+-       <Table.Cell isNumeric>4,000</Table.Cell>
++       <Table.Cell format="numeric">4,000</Table.Cell>
+      </Table.Row>
+    </Table.Body>
+  </Table>
+```
+
 ### Textarea
 
 You must rename the `Textarea` prop `textareaRef` to `ref` for consistency with other components:

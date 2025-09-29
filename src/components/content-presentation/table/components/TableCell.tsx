@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import React, { ComponentPropsWithoutRef, FC, useContext } from 'react';
 import useDevWarning from '@util/hooks/UseDevWarning';
+import TableContext, { ITableContext } from '../TableContext';
 import TableSectionContext, { TableSection } from '../TableSectionContext';
 
 const CellOutsideOfSectionWarning =
@@ -9,36 +10,47 @@ const CellOutsideOfSectionWarning =
 export interface TableCellProps
   extends ComponentPropsWithoutRef<'th'>,
     ComponentPropsWithoutRef<'td'> {
-  _responsive?: boolean;
-  _responsiveHeading?: string;
-  isNumeric?: boolean;
+  index?: number;
+  format?: 'numeric';
 }
 
-const TableCell: FC<TableCellProps> = ({
-  className,
-  _responsive = false,
-  _responsiveHeading = '',
-  isNumeric,
-  children,
-  ...rest
-}) => {
-  const section = useContext(TableSectionContext);
+const TableCell: FC<TableCellProps> = ({ className, format, children, index = -1, ...rest }) => {
+  const { firstCellIsHeader, headings, responsive } = useContext<ITableContext>(TableContext);
+  const section = useContext<TableSection>(TableSectionContext);
+
   useDevWarning(CellOutsideOfSectionWarning, () => section === TableSection.NONE);
 
-  const cellClass = section === TableSection.HEAD ? 'nhsuk-table__header' : 'nhsuk-table__cell';
-  const classes = classNames(cellClass, { [`${cellClass}--numeric`]: isNumeric }, className);
+  const isColHeader = section === TableSection.HEAD;
+  const isRowHeader = section === TableSection.BODY && firstCellIsHeader && index === 0;
 
   return (
     <>
-      {section === TableSection.HEAD ? (
-        <th className={classes} scope="col" {...rest}>
+      {isColHeader || isRowHeader ? (
+        <th
+          className={classNames(
+            'nhsuk-table__header',
+            { [`nhsuk-table__header--${format}`]: !!format && !isRowHeader },
+            className,
+          )}
+          scope={isRowHeader ? 'row' : 'col'}
+          role={isRowHeader ? 'rowheader' : responsive ? 'columnheader' : undefined}
+          {...rest}
+        >
           {children}
         </th>
       ) : (
-        <td className={classes} role={_responsive ? 'cell' : undefined} {...rest}>
-          {_responsive && (
+        <td
+          className={classNames(
+            'nhsuk-table__cell',
+            { [`nhsuk-table__cell--${format}`]: !!format },
+            className,
+          )}
+          role={responsive ? 'cell' : undefined}
+          {...rest}
+        >
+          {responsive && !!headings[index] && (
             <span className="nhsuk-table-responsive__heading" aria-hidden>
-              {_responsiveHeading}
+              {headings[index]}{' '}
             </span>
           )}
           {children}

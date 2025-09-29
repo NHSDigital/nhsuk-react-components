@@ -69,7 +69,7 @@ export const ResponsiveTable: Story = {
   args: { responsive: true },
   render: ({ responsive }) => (
     <Table responsive={responsive} caption="Ibuprofen syrup dosages for children">
-      <Table.Head role="rowgroup">
+      <Table.Head>
         <Table.Row>
           <Table.Cell>Age</Table.Cell>
           <Table.Cell>How much?</Table.Cell>
@@ -97,6 +97,49 @@ export const ResponsiveTable: Story = {
   ),
 };
 
+export const FirstCellAsHeader: Story = {
+  render: (args) => (
+    <Table firstCellIsHeader>
+      <Table.Head>
+        <Table.Row>
+          <Table.Cell>Day of the week</Table.Cell>
+          <Table.Cell>Opening hours</Table.Cell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        <Table.Row>
+          <Table.Cell>Monday</Table.Cell>
+          <Table.Cell>9am to 6pm</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>Tuesday</Table.Cell>
+          <Table.Cell>9am to 6pm</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>Wednesday</Table.Cell>
+          <Table.Cell>9am to 6pm</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>Thursday</Table.Cell>
+          <Table.Cell>9am to 6pm</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>Friday</Table.Cell>
+          <Table.Cell>9am to 6pm</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>Saturday</Table.Cell>
+          <Table.Cell>9am to 1pm</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>Sunday</Table.Cell>
+          <Table.Cell>Closed</Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
+  ),
+};
+
 export const NumericCells: Story = {
   render: (args) => (
     <Row>
@@ -106,21 +149,21 @@ export const NumericCells: Story = {
           <Table.Head>
             <Table.Row>
               <Table.Cell>Location</Table.Cell>
-              <Table.Cell isNumeric>Number of cases</Table.Cell>
+              <Table.Cell format="numeric">Number of cases</Table.Cell>
             </Table.Row>
           </Table.Head>
           <Table.Body>
             <Table.Row>
               <Table.Cell>England</Table.Cell>
-              <Table.Cell isNumeric>4,000</Table.Cell>
+              <Table.Cell format="numeric">4,000</Table.Cell>
             </Table.Row>
             <Table.Row>
               <Table.Cell>Wales</Table.Cell>
-              <Table.Cell isNumeric>2,500</Table.Cell>
+              <Table.Cell format="numeric">2,500</Table.Cell>
             </Table.Row>
             <Table.Row>
               <Table.Cell>Scotland</Table.Cell>
-              <Table.Cell isNumeric>600</Table.Cell>
+              <Table.Cell format="numeric">600</Table.Cell>
             </Table.Row>
           </Table.Body>
         </Table>

@@ -68,7 +68,7 @@ describe('Table.Cell', () => {
     expect(cellWrapper).toBeTruthy();
   });
 
-  it('adds responsive heading when _responsive=True', () => {
+  it('adds responsive heading when responsive', () => {
     const { container } = render(
       <Table responsive>
         <Table.Head>
@@ -90,12 +90,12 @@ describe('Table.Cell', () => {
     expect(spanWrapper?.textContent).toBe('TestHeading ');
   });
 
-  it('adds the numeric class when isNumeric is true', () => {
+  it('adds the numeric class when `format: numeric` is set', () => {
     const { container } = render(
       <table>
         <tbody>
           <tr>
-            <Table.Cell data-test="cell" isNumeric />
+            <Table.Cell data-test="cell" format="numeric" />
           </tr>
         </tbody>
       </table>,
@@ -105,12 +105,12 @@ describe('Table.Cell', () => {
     expect(cell).toBeTruthy();
   });
 
-  it('adds the numeric header class when isNumeric is true', () => {
+  it('adds the numeric header class when `format: numeric` is set', () => {
     const { container } = render(
       <table>
         <Table.Head>
           <tr>
-            <Table.Cell data-test="cell" isNumeric />
+            <Table.Cell data-test="cell" format="numeric" />
           </tr>
         </Table.Head>
       </table>,
@@ -120,7 +120,7 @@ describe('Table.Cell', () => {
     expect(cell).toBeTruthy();
   });
 
-  it('does not add the numeric header when isNumeric is false', () => {
+  it('does not add the numeric header when `format: numeric` is omitted', () => {
     const { container } = render(
       <table>
         <Table.Head>
