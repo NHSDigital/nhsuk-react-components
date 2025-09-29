@@ -6,7 +6,8 @@ import DateInputContext, { IDateInputContext } from '../DateInputContext';
 
 export interface IndividualDateInputProps
   extends ComponentPropsWithoutRef<'input'>,
-    Pick<FormElementProps, 'label' | 'labelProps' | 'error'> {
+    Pick<FormElementProps, 'label' | 'labelProps'> {
+  error?: string | false;
   inputType: 'day' | 'month' | 'year';
 }
 

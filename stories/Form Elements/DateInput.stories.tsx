@@ -52,12 +52,12 @@ export const StandardWithError: Story = {
         hint="For example, 15 3 1984"
         legend="What is your date of birth?"
         legendProps={{ size: 'l' }}
-        error="Enter your date of birth"
+        error="Date of birth must include a day"
         onChange={(e) => console.log(e.target.value)}
       >
-        <DateInput.Day error={false} />
-        <DateInput.Month />
-        <DateInput.Year />
+        <DateInput.Day />
+        <DateInput.Month error={false} />
+        <DateInput.Year error={false} />
       </DateInput>
     </div>
   ),

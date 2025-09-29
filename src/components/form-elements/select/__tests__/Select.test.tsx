@@ -69,20 +69,20 @@ describe('Select', () => {
     expect(fieldRef.current).toHaveClass('nhsuk-select');
   });
 
-  it.each([true, false])(
-    'Adds the appropriate class if error is specified as %s',
-    async (error) => {
-      const { container } = await renderClient(<Select id="test-select" error={error} />, {
-        className: 'nhsuk-select',
-      });
+  it('sets the error class when error message is provided', async () => {
+    const { modules } = await renderClient(
+      <>
+        <Select error={undefined} />
+        <Select error={'Select a location'} />
+      </>,
+      { className: 'nhsuk-select' },
+    );
 
-      if (error) {
-        expect(container.querySelector('#test-select')).toHaveClass('nhsuk-select--error');
-      } else {
-        expect(container.querySelector('#test-select')).not.toHaveClass('nhsuk-select--error');
-      }
-    },
-  );
+    const [selectEl1, selectEl2] = modules;
+
+    expect(selectEl1).not.toHaveClass('nhsuk-select--error');
+    expect(selectEl2).toHaveClass('nhsuk-select--error');
+  });
 
   it('should handle DOM events where ref Exists', () => {
     const useRefSpy = jest

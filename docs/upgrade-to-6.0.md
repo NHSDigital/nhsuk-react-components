@@ -54,6 +54,21 @@ You must make the following changes to `<Fieldset.Legend>` components:
   </Fieldset>
 ```
 
+### Make sure error message text is added
+
+For accessibility reasons and to align with NHS.UK frontend, the boolean `error: true` prop must be replaced with an error message string:
+
+```patch
+  <TextInput
+    label="What is your NHS number?"
+    labelProps={{ isPageHeading: true, size: 'l' }}
+-   error
++   error="Enter NHS number"
+  />
+```
+
+Read about [our guidance on error messages](https://service-manual.nhs.uk/design-system/components/error-message) on the design system in the NHS digital service manual.
+
 ### Make sure heading levels are lowercase
 
 If you are using the `headingLevel` prop you will need to update any uppercase values to lowercase:
@@ -298,7 +313,7 @@ After:
 To align with NHS.UK frontend, the radios component automatically renders its own fieldset, legend and associated ARIA attributes. You must also rename the `Radios.Radio` component to `Radios.Item` as shown:
 
 ```patch
-- <Fieldset>
+- <Fieldset disableErrorLine="false">
 -   <Fieldset.Legend>Have you changed your name?</Fieldset.Legend>
 -   <Radios>
 +   <Radios legend="Have you changed your name?">
@@ -310,12 +325,14 @@ To align with NHS.UK frontend, the radios component automatically renders its ow
 - </Fieldset>
 ```
 
+The prop `disableErrorLine` is no longer necessary.
+
 ### Checkboxes
 
 To align with NHS.UK frontend, the checkboxes component automatically renders its own fieldset, legend and associated ARIA attributes. You must also rename the `Checkboxes.Box` component to `Checkboxes.Item` as shown:
 
 ```patch
-- <Fieldset>
+- <Fieldset disableErrorLine="false">
 -   <Fieldset.Legend>What is your nationality?</Fieldset.Legend>
 -   <Checkboxes>
 +   <Checkboxes legend="What is your nationality?">
@@ -335,6 +352,8 @@ You must also rename the `Checkboxes.Item` prop `inputRef` to `ref` for consiste
 - <Checkboxes.Item inputRef={ref}>Example</Checkboxes.Item>
 + <Checkboxes.Item ref={ref}>Example</Checkboxes.Item>
 ```
+
+The prop `disableErrorLine` is no longer necessary.
 
 ### Error summary
 

@@ -40,38 +40,8 @@ export const TextareaWithAutoCompleteAttribute: Story = {
   },
 };
 
-export const TextareaWithErrorBoolean: Story = {
-  render: function TextareaWithErrorBooleanRender() {
-    const [error, setError] = useState<boolean>(true);
-
-    return (
-      <>
-        <Textarea
-          label="Can you provide more detail?"
-          labelProps={{ size: 'l' }}
-          hint="Do not include personal information, like your name, date of birth or NHS number"
-          error={error}
-          id="with-error-message"
-          name="with-error-message"
-          rows={5}
-        />
-        <Button
-          onClick={(e: MouseEvent<HTMLButtonElement>) => {
-            e.preventDefault();
-            setError(!error);
-          }}
-        >
-          Toggle Error
-        </Button>
-      </>
-    );
-  },
-
-  name: 'Textarea With Error (Boolean)',
-};
-
-export const TextareaWithErrorString: Story = {
-  render: function TextareaWithErrorStringRender() {
+export const TextareaWithError: Story = {
+  render: function TextareaWithErrorRender() {
     const [error, setError] = useState<string>('You must provide an explanation');
     return (
       <>

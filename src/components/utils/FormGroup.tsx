@@ -55,7 +55,6 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
     errorProps,
     formGroupProps,
     inputType,
-    disableErrorLine,
     name,
     'aria-describedby': ariaDescribedBy,
     ...rest
@@ -70,7 +69,7 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
   const hintID = `${elementID}--hint`;
 
   const hasFieldset = !!(legend || legendProps || fieldsetProps);
-  const hasError = !disableErrorFromComponents && !disableErrorLine && error;
+  const hasError = !disableErrorFromComponents && !!error;
 
   // Build list of IDs for aria-describedby
   const ariaDescribedByIds = ariaDescribedBy ? [ariaDescribedBy] : [];

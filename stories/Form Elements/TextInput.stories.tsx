@@ -42,15 +42,7 @@ export const WithLabelAsPageHeading: Story = {
   },
 };
 
-export const WithErrorBoolean: Story = {
-  args: {
-    error: true,
-    hint: 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.',
-  },
-  name: 'With Error (Boolean)',
-};
-
-export const WithErrorString: Story = {
+export const WithError: Story = {
   args: {
     error: 'Error message goes here',
     hint: 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.',

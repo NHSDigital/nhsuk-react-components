@@ -241,27 +241,17 @@ describe('FormGroup', () => {
         "Error: Oh no there's an error!",
       );
     });
-
-    it('boolean component', async () => {
-      const { container } = await renderClient(
-        <FormGroup<TextInputProps> inputType="input" error>
-          {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
-          {({ error, ...rest }) => <input {...rest} />}
-        </FormGroup>,
-        { className: 'nhsuk-form-group' },
-      );
-
-      expect(container.querySelector('div.nhsuk-form-group')?.classList).toContain(
-        'nhsuk-form-group--error',
-      );
-      expect(container.querySelector('.nhsuk-error-message')).toBeFalsy();
-    });
   });
 
   it('should produce an accessible component', async () => {
     const { container } = await renderClient(
       <main>
-        <FormGroup<TextInputProps> inputType="input" error label="Form Label">
+        <FormGroup<TextInputProps>
+          inputType="input"
+          error="This is an error"
+          hint="This is a hint"
+          label="Form Label"
+        >
           {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
           {({ error, ...rest }) => <input {...rest} />}
         </FormGroup>

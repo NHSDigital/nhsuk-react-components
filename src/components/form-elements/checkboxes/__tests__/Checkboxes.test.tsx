@@ -16,22 +16,9 @@ describe('Checkboxes', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('matches snapshot with string error', async () => {
+  it('matches snapshot with error message', async () => {
     const { container } = await renderClient(
       <Checkboxes id="example" name="example" error="Example error">
-        <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
-        <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
-        <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
-      </Checkboxes>,
-      { moduleName: 'nhsuk-checkboxes' },
-    );
-
-    expect(container).toMatchSnapshot();
-  });
-
-  it('matches snapshot with boolean error', async () => {
-    const { container } = await renderClient(
-      <Checkboxes id="example" name="example" error={true}>
         <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
         <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
         <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>

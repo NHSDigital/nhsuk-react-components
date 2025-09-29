@@ -11,7 +11,7 @@ export interface FormElementProps {
   legendProps?: LegendProps;
   label?: string;
   labelProps?: LabelProps;
-  error?: string | boolean;
+  error?: string;
   errorProps?: ErrorMessageProps;
   hint?: string;
   hintProps?: HintTextProps;
@@ -21,7 +21,6 @@ export interface FormElementProps {
     'data-maxwords'?: number;
     'data-threshold'?: number;
   };
-  disableErrorLine?: boolean;
   id?: string;
   name?: string;
   'aria-describedby'?: string;

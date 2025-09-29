@@ -33,33 +33,8 @@ export const SelectWithHintText: Story = {
   ),
 };
 
-export const SelectWithErrorBoolean: Story = {
-  render: function SelectWithErrorBooleanRender() {
-    const [error, setError] = useState<boolean>(true);
-    return (
-      <>
-        <Select label="Label text goes here" labelProps={{ size: 'l' }} error={error}>
-          <Select.Option value="1">NHS.UK frontend option 1</Select.Option>
-          <Select.Option value="2">NHS.UK frontend option 2</Select.Option>
-          <Select.Option value="3">NHS.UK frontend option 3</Select.Option>
-        </Select>
-        <Button
-          onClick={(e: MouseEvent<HTMLButtonElement>) => {
-            e.preventDefault();
-            setError(!error);
-          }}
-        >
-          Toggle Error
-        </Button>
-      </>
-    );
-  },
-
-  name: 'Select With Error (Boolean)',
-};
-
-export const SelectWithErrorString: Story = {
-  render: function SelectWithErrorStringRender() {
+export const SelectWithError: Story = {
+  render: function SelectWithErrorRender() {
     const [error, setError] = useState<string>('Error message goes here');
     return (
       <>

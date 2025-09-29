@@ -18,6 +18,21 @@ describe('DateInput', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('matches snapshot with error message', async () => {
+    const { container } = await renderClient(
+      <DateInput
+        hint="For example, 15 3 1984"
+        legend="What is your date of birth?"
+        legendProps={{ size: 'l' }}
+        id="date-input"
+        error="Date of birth must include a day"
+      />,
+      { className: 'nhsuk-date-input' },
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('matches snapshot with custom date fields', async () => {
     const { container } = await renderClient(
       <DateInput
@@ -29,6 +44,25 @@ describe('DateInput', () => {
         <DateInput.Day defaultValue="31" />
         <DateInput.Month defaultValue="3" />
         <DateInput.Year defaultValue="1984" />
+      </DateInput>,
+      { className: 'nhsuk-date-input' },
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('matches snapshot with custom date fields and error message', async () => {
+    const { container } = await renderClient(
+      <DateInput
+        hint="For example, 15 3 1984"
+        legend="What is your date of birth?"
+        legendProps={{ size: 'l' }}
+        id="date-input"
+        error="Date of birth must include a day"
+      >
+        <DateInput.Day />
+        <DateInput.Month defaultValue="3" error={false} />
+        <DateInput.Year defaultValue="1984" error={false} />
       </DateInput>,
       { className: 'nhsuk-date-input' },
     );

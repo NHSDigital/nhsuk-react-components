@@ -160,40 +160,7 @@ export const WithExclusiveNoneOption: Story = {
   ),
 };
 
-export const WithErrorBoolean: Story = {
-  render: (args) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [errorToggle, setErrorToggle] = useState(true);
-    return (
-      <form>
-        <Checkboxes
-          legend="Which types of waste do you transport regularly?"
-          legendProps={{ size: 'l' }}
-          hint="Select all that apply"
-          error={errorToggle}
-          id="waste"
-          name="waste"
-        >
-          <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
-          <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
-          <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
-        </Checkboxes>
-        <Button
-          onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-            e.preventDefault();
-            setErrorToggle(!errorToggle);
-          }}
-        >
-          Toggle Error
-        </Button>
-      </form>
-    );
-  },
-
-  name: 'With Error (Boolean)',
-};
-
-export const WithErrorString: Story = {
+export const WithError: Story = {
   render: (args) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [error, setError] = useState('Please select an option');

@@ -153,43 +153,9 @@ export const RadiosWithoutFieldset: Story = {
   ),
 };
 
-export const RadiosWithErrorBoolean: Story = {
-  render: function RadiosWithErrorBooleanRender() {
-    const [error, setError] = useState<boolean>(true);
-    return (
-      <>
-        <Radios
-          legend="Have you changed your name?"
-          legendProps={{ size: 'l' }}
-          hint="This includes changing your last name or spelling your name differently"
-          name="example-with-err-boolean"
-          error={error}
-        >
-          <Radios.Item id="example-1" value="yes">
-            Yes
-          </Radios.Item>
-          <Radios.Item id="example-2" value="no" checked>
-            No
-          </Radios.Item>
-        </Radios>
-        <Button
-          onClick={(e: MouseEvent<HTMLButtonElement>) => {
-            e.preventDefault();
-            setError(!error);
-          }}
-        >
-          Toggle Error
-        </Button>
-      </>
-    );
-  },
-
-  name: 'Radios With Error (Boolean)',
-};
-
-export const RadiosWithErrorString: Story = {
-  render: function RadiosWithErrorStringRender() {
-    const [error, setError] = useState('Please select an option');
+export const RadiosWithError: Story = {
+  render: function RadiosWithErrorRender() {
+    const [error, setError] = useState('Select yes if you have changed your name');
     return (
       <>
         <Radios

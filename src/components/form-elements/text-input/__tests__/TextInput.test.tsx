@@ -90,20 +90,20 @@ describe('TextInput', () => {
     },
   );
 
-  it.each<string | boolean | undefined>([undefined, true, false, 'error'])(
-    'Sets the error class if specified with %s',
-    (error) => {
-      const { container } = render(<TextInput error={error} />);
+  it('Sets the error class when error message is provided', async () => {
+    const { modules } = await renderClient(
+      <>
+        <TextInput error={undefined} />
+        <TextInput error="Enter NHS number" />
+      </>,
+      { className: 'nhsuk-input' },
+    );
 
-      const input = container.querySelector('.nhsuk-input');
+    const [inputEl1, inputEl2] = modules;
 
-      if (error) {
-        expect(input).toHaveClass('nhsuk-input--error');
-      } else {
-        expect(input).not.toHaveClass('nhsuk-input--error');
-      }
-    },
-  );
+    expect(inputEl1).not.toHaveClass('nhsuk-input--error');
+    expect(inputEl2).toHaveClass('nhsuk-input--error');
+  });
 
   it('Sets the provided input width if specified', () => {
     const { container } = render(<TextInput width="5" />);
