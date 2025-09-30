@@ -1,35 +1,37 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC, forwardRef } from 'react';
 import classNames from 'classnames';
-import HeadingLevel, { HeadingLevelType } from '@components/utils/HeadingLevel';
+import HeadingLevel, { HeadingLevelProps } from '@components/utils/HeadingLevel';
 
-interface WarningCalloutLabelProps extends HTMLProps<HTMLHeadingElement> {
-  headingLevel?: HeadingLevelType;
-  visuallyHiddenText?: string | false;
-}
-
-const WarningCalloutLabel: FC<WarningCalloutLabelProps> = ({
-  className,
-  visuallyHiddenText = 'Important: ',
-  children,
-  ...rest
-}) => (
+const WarningCalloutHeading: FC<HeadingLevelProps> = ({ children, className, ...rest }) => (
   <HeadingLevel className={classNames('nhsuk-warning-callout__label', className)} {...rest}>
-    {/* eslint-disable-next-line jsx-a11y/aria-role */}
-    <span role="text">
-      {visuallyHiddenText && <span className="nhsuk-u-visually-hidden">{visuallyHiddenText}</span>}
-      {children}
-    </span>
+    {children?.toString().toLowerCase().includes('important') ? (
+      <>
+        {children}
+        <span className="nhsuk-u-visually-hidden">:</span>
+      </>
+    ) : (
+      <>
+        {/* eslint-disable-next-line jsx-a11y/aria-role */}
+        <span role="text">
+          <span className="nhsuk-u-visually-hidden">Important: </span>
+          {children}
+        </span>
+      </>
+    )}
   </HeadingLevel>
 );
 
-interface IWarningCallout extends FC<HTMLProps<HTMLDivElement>> {
-  Label: typeof WarningCalloutLabel;
-}
+type WarningCalloutProps = ComponentPropsWithoutRef<'div'>;
 
-const WarningCallout: IWarningCallout = ({ className, ...rest }) => (
-  <div className={classNames('nhsuk-warning-callout', className)} {...rest} />
+const WarningCalloutComponent = forwardRef<HTMLDivElement, WarningCalloutProps>(
+  ({ className, ...rest }, forwardedRef) => (
+    <div className={classNames('nhsuk-warning-callout', className)} ref={forwardedRef} {...rest} />
+  ),
 );
 
-WarningCallout.Label = WarningCalloutLabel;
+WarningCalloutComponent.displayName = 'WarningCallout';
+WarningCalloutHeading.displayName = 'WarningCallout.Heading';
 
-export default WarningCallout;
+export default Object.assign(WarningCalloutComponent, {
+  Heading: WarningCalloutHeading,
+});

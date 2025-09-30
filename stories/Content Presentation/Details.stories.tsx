@@ -3,7 +3,7 @@ import { Details } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
 /**
- * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/master/packages/components/contents-list" target="_blank">here</a>.
+ * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/contents-list" target="_blank">here</a>.
  *
  * ## Implementation Notes
  *
@@ -49,10 +49,6 @@ const meta: Meta<typeof Details> = {
 };
 export default meta;
 type Story = StoryObj<typeof Details>;
-
-Details.Summary.displayName = 'Details.Summary';
-Details.Text.displayName = 'Details.Text';
-Details.ExpanderGroup.displayName = 'Details.ExpanderGroup';
 
 export const Standard: Story = {
   argTypes: { expander: { table: { disable: true } } },

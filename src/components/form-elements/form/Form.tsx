@@ -1,14 +1,16 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import FormContext from './FormContext';
 
-type FormProps = HTMLProps<HTMLFormElement> & {
+type FormProps = ComponentPropsWithoutRef<'form'> & {
   disableErrorFromComponents?: boolean;
 };
 
-const Form: FC<FormProps> = ({ disableErrorFromComponents, ...rest }) => (
+const FormComponent: FC<FormProps> = ({ disableErrorFromComponents, ...rest }) => (
   <FormContext.Provider value={{ disableErrorFromComponents: Boolean(disableErrorFromComponents) }}>
     <form {...rest} />
   </FormContext.Provider>
 );
 
-export default Form;
+FormComponent.displayName = 'Form';
+
+export default FormComponent;

@@ -1,15 +1,15 @@
 import React, { useRef, useState, useEffect, SyntheticEvent } from 'react';
-import { Fieldset, Checkboxes, TextInput, Button } from '../../src';
+import { Checkboxes, TextInput } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
 /**
- * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/master/packages/components/checkboxes" target="_blank" rel="noopener noreferrer">here</a>.
+ * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/checkboxes" target="_blank" rel="noopener noreferrer">here</a>.
  *
  * ## Implementation Notes
  *
  * For details on the new form design pattern, check the documentation for the `Form` component.
  *
- * The `Checkbox` component provides a `CheckboxContext` context, which the `Checkbox.Box` components use. When each box initially renders, it will attempt to assign itself an `id` by calling the `getBoxId` method in the context. This will assign each box a sequential ID using either the `idPrefix` or `name` supplied to the Checkbox. If neither are provided, the element will generate it's own unique identifier.
+ * The `Checkbox` component provides a `CheckboxContext` context, which the `Checkboxes.Item` components use. When each box initially renders, it will attempt to assign itself an `id` by calling the `getBoxId` method in the context. This will assign each box a sequential ID using either the `idPrefix` or `name` supplied to the Checkbox. If neither are provided, the element will generate it's own unique identifier.
  *
  * ## Usage
  *
@@ -21,9 +21,9 @@ import { Meta, StoryObj } from '@storybook/react';
  * const Element = () => {
  *     return (
  *         <Checkboxes name="nationality" id="nationality">
- *             <Checkboxes.Box value="british">British</Checkboxes.Box>
- *             <Checkboxes.Box value="irish">Irish</Checkboxes.Box>
- *             <Checkboxes.Box value="other">Citizen of another country</Checkboxes.Box>
+ *             <Checkboxes.Item value="british">British</Checkboxes.Item>
+ *             <Checkboxes.Item value="irish">Irish</Checkboxes.Item>
+ *             <Checkboxes.Item value="other">Citizen of another country</Checkboxes.Item>
  *         </Checkboxes>
  *     );
  * }
@@ -46,19 +46,18 @@ type CheckboxState = {
 export const Standard: Story = {
   render: (args) => (
     <form>
-      <Fieldset aria-describedby="nationality--hint">
-        <Fieldset.Legend>What is your nationality?</Fieldset.Legend>
-        <Checkboxes
-          idPrefix={args.idPrefix}
-          name="nationality"
-          id="nationality"
-          hint="If you have more than 1 nationality, select all options that are relevant to you."
-        >
-          <Checkboxes.Box value="british">British</Checkboxes.Box>
-          <Checkboxes.Box value="irish">Irish</Checkboxes.Box>
-          <Checkboxes.Box value="other">Citizen of another country</Checkboxes.Box>
-        </Checkboxes>
-      </Fieldset>
+      <Checkboxes
+        legend="What is your nationality?"
+        legendProps={{ size: 'l' }}
+        hint="If you have more than 1 nationality, select all options that are relevant to you"
+        idPrefix={args.idPrefix}
+        name="nationality"
+        id="nationality"
+      >
+        <Checkboxes.Item value="british">British</Checkboxes.Item>
+        <Checkboxes.Item value="irish">Irish</Checkboxes.Item>
+        <Checkboxes.Item value="other">Citizen of another country</Checkboxes.Item>
+      </Checkboxes>
     </form>
   ),
 };
@@ -66,28 +65,25 @@ export const Standard: Story = {
 export const WithHintText: Story = {
   render: (args) => (
     <form>
-      <Fieldset>
-        <Fieldset.Legend isPageHeading>How do you want to sign in?</Fieldset.Legend>
-        <Checkboxes>
-          <Checkboxes.Box
-            id="government-gateway"
-            name="gateway"
-            type="checkbox"
-            value="gov-gateway"
-            hint="You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before."
-          >
-            Sign in with Government Gateway
-          </Checkboxes.Box>
-          <Checkboxes.Box
-            id="nhsuk-login"
-            name="verify"
-            value="nhsuk-verify"
-            hint="You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
-          >
-            Sign in with NHS.UK login
-          </Checkboxes.Box>
-        </Checkboxes>
-      </Fieldset>
+      <Checkboxes legend="How do you want to sign in?" legendProps={{ size: 'l' }}>
+        <Checkboxes.Item
+          id="government-gateway"
+          name="gateway"
+          type="checkbox"
+          value="gov-gateway"
+          hint="You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before."
+        >
+          Sign in with Government Gateway
+        </Checkboxes.Item>
+        <Checkboxes.Item
+          id="nhsuk-login"
+          name="verify"
+          value="nhsuk-verify"
+          hint="You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
+        >
+          Sign in with NHS.UK login
+        </Checkboxes.Item>
+      </Checkboxes>
     </form>
   ),
 };
@@ -96,11 +92,11 @@ export const WithDisabledItem: Story = {
   render: (args) => (
     <form>
       <Checkboxes id="colours" name="colours">
-        <Checkboxes.Box value="red">Red</Checkboxes.Box>
-        <Checkboxes.Box value="green">Green</Checkboxes.Box>
-        <Checkboxes.Box value="red" disabled>
+        <Checkboxes.Item value="red">Red</Checkboxes.Item>
+        <Checkboxes.Item value="green">Green</Checkboxes.Item>
+        <Checkboxes.Item value="red" disabled>
           Blue
-        </Checkboxes.Box>
+        </Checkboxes.Item>
       </Checkboxes>
     </form>
   ),
@@ -109,16 +105,17 @@ export const WithDisabledItem: Story = {
 export const WithConditionalContent: Story = {
   render: (args) => (
     <form>
-      <Fieldset aria-describedby="waste--hint">
-        <Fieldset.Legend isPageHeading>
-          Which types of waste do you transport regularly?
-        </Fieldset.Legend>
-        <Checkboxes id="waste" name="waste" hint="Select all that apply">
-          <Checkboxes.Box conditional={<p>This includes rocks and earth.</p>} value="mines">
-            Waste from mines or quarries
-          </Checkboxes.Box>
-        </Checkboxes>
-      </Fieldset>
+      <Checkboxes
+        legend="What types of waste do you transport regularly?"
+        legendProps={{ size: 'l' }}
+        hint="Select all that apply"
+        id="waste"
+        name="waste"
+      >
+        <Checkboxes.Item conditional={<p>This includes rocks and earth.</p>} value="mines">
+          Waste from mines or quarries
+        </Checkboxes.Item>
+      </Checkboxes>
     </form>
   ),
 };
@@ -126,16 +123,17 @@ export const WithConditionalContent: Story = {
 export const WithLegendAsPageHeading: Story = {
   render: (args) => (
     <form>
-      <Fieldset aria-describedby="waste--hint">
-        <Fieldset.Legend isPageHeading>
-          Which types of waste do you transport regularly?
-        </Fieldset.Legend>
-        <Checkboxes id="waste" name="waste" hint="Select all that apply">
-          <Checkboxes.Box value="animal">Waste from animal carcasses</Checkboxes.Box>
-          <Checkboxes.Box value="mines">Waste from mines or quarries</Checkboxes.Box>
-          <Checkboxes.Box value="farm">Farm or agricultural waste</Checkboxes.Box>
-        </Checkboxes>
-      </Fieldset>
+      <Checkboxes
+        legend="Which types of waste do you transport regularly?"
+        legendProps={{ isPageHeading: true, size: 'l' }}
+        hint="Select all that apply"
+        id="waste"
+        name="waste"
+      >
+        <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
+        <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
+        <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
+      </Checkboxes>
     </form>
   ),
 };
@@ -143,69 +141,43 @@ export const WithLegendAsPageHeading: Story = {
 export const WithExclusiveNoneOption: Story = {
   render: (args) => (
     <form>
-      <Fieldset aria-describedby="symptoms--hint">
-        <Fieldset.Legend isPageHeading>Do you have any of these symptoms?</Fieldset.Legend>
-        <Checkboxes id="symptoms" name="symptoms" hint="Select all the symptoms you have.">
-          <Checkboxes.Box value="sore-throat">Sore throat</Checkboxes.Box>
-          <Checkboxes.Box value="runny-nose">Runny nose</Checkboxes.Box>
-          <Checkboxes.Box value="muscle-pain">Muscle or joint pain</Checkboxes.Box>
-          <Checkboxes.Divider />
-          <Checkboxes.Box value="none" exclusive>
-            None
-          </Checkboxes.Box>
-        </Checkboxes>
-      </Fieldset>
+      <Checkboxes
+        legend="Do you have any of these symptoms?"
+        legendProps={{ size: 'l' }}
+        hint="Select all the symptoms you have"
+        id="symptoms"
+        name="symptoms"
+      >
+        <Checkboxes.Item value="sore-throat">Sore throat</Checkboxes.Item>
+        <Checkboxes.Item value="runny-nose">Runny nose</Checkboxes.Item>
+        <Checkboxes.Item value="muscle-pain">Muscle or joint pain</Checkboxes.Item>
+        <Checkboxes.Divider />
+        <Checkboxes.Item value="none" exclusive>
+          None
+        </Checkboxes.Item>
+      </Checkboxes>
     </form>
   ),
 };
 
-export const WithErrorBoolean: Story = {
-  render: (args) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [errorToggle, setErrorToggle] = useState(true);
-    return (
-      <form>
-        <Fieldset aria-describedby="waste-hint">
-          <Fieldset.Legend isPageHeading>
-            Which types of waste do you transport regularly?
-          </Fieldset.Legend>
-          <Checkboxes error={errorToggle} id="waste" name="waste" hint="Select all that apply">
-            <Checkboxes.Box value="animal">Waste from animal carcasses</Checkboxes.Box>
-            <Checkboxes.Box value="mines">Waste from mines or quarries</Checkboxes.Box>
-            <Checkboxes.Box value="farm">Farm or agricultural waste</Checkboxes.Box>
-          </Checkboxes>
-        </Fieldset>
-        <Button
-          onClick={(e: React.MouseEvent<HTMLButtonElement>) => {
-            e.preventDefault();
-            setErrorToggle(!errorToggle);
-          }}
-        >
-          Toggle Error
-        </Button>
-      </form>
-    );
-  },
-
-  name: 'With Error (Boolean)',
-};
-
-export const WithErrorString: Story = {
+export const WithError: Story = {
   render: (args) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [error, setError] = useState('Please select an option');
     return (
       <form>
-        <Fieldset aria-describedby="waste-hint">
-          <Fieldset.Legend isPageHeading>
-            Which types of waste do you transport regularly?
-          </Fieldset.Legend>
-          <Checkboxes id="waste" name="waste" hint="Select all that apply" error={error}>
-            <Checkboxes.Box value="animal">Waste from animal carcasses</Checkboxes.Box>
-            <Checkboxes.Box value="mines">Waste from mines or quarries</Checkboxes.Box>
-            <Checkboxes.Box value="farm">Farm or agricultural waste</Checkboxes.Box>
-          </Checkboxes>
-        </Fieldset>
+        <Checkboxes
+          legend="Which types of waste do you transport regularly?"
+          legendProps={{ size: 'l' }}
+          hint="Select all that apply"
+          error={error}
+          id="waste"
+          name="waste"
+        >
+          <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
+          <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
+          <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
+        </Checkboxes>
         <TextInput
           label="Error Value"
           value={error}
@@ -292,9 +264,9 @@ export const NoIDSupplied: Story = {
         </ul>
         <h5>Component</h5>
         <Checkboxes>
-          <Checkboxes.Box inputRef={checkbox1Ref}>Box 1</Checkboxes.Box>
-          <Checkboxes.Box inputRef={checkbox2Ref}>Box 2</Checkboxes.Box>
-          <Checkboxes.Box inputRef={checkbox3Ref}>Box 3</Checkboxes.Box>
+          <Checkboxes.Item ref={checkbox1Ref}>Box 1</Checkboxes.Item>
+          <Checkboxes.Item ref={checkbox2Ref}>Box 2</Checkboxes.Item>
+          <Checkboxes.Item ref={checkbox3Ref}>Box 3</Checkboxes.Item>
         </Checkboxes>
       </form>
     );
@@ -376,9 +348,9 @@ export const NameSupplied: Story = {
         </ul>
         <h5>Component</h5>
         <Checkboxes name="name-supplied">
-          <Checkboxes.Box inputRef={checkbox1Ref}>Box 1</Checkboxes.Box>
-          <Checkboxes.Box inputRef={checkbox2Ref}>Box 2</Checkboxes.Box>
-          <Checkboxes.Box inputRef={checkbox3Ref}>Box 3</Checkboxes.Box>
+          <Checkboxes.Item ref={checkbox1Ref}>Box 1</Checkboxes.Item>
+          <Checkboxes.Item ref={checkbox2Ref}>Box 2</Checkboxes.Item>
+          <Checkboxes.Item ref={checkbox3Ref}>Box 3</Checkboxes.Item>
         </Checkboxes>
       </form>
     );
@@ -461,9 +433,9 @@ export const IDPrefixSupplied: Story = {
         </ul>
         <h5>Component</h5>
         <Checkboxes idPrefix="idprefix">
-          <Checkboxes.Box inputRef={checkbox1Ref}>Box 1</Checkboxes.Box>
-          <Checkboxes.Box inputRef={checkbox2Ref}>Box 2</Checkboxes.Box>
-          <Checkboxes.Box inputRef={checkbox3Ref}>Box 3</Checkboxes.Box>
+          <Checkboxes.Item ref={checkbox1Ref}>Box 1</Checkboxes.Item>
+          <Checkboxes.Item ref={checkbox2Ref}>Box 2</Checkboxes.Item>
+          <Checkboxes.Item ref={checkbox3Ref}>Box 3</Checkboxes.Item>
         </Checkboxes>
       </form>
     );
@@ -546,9 +518,9 @@ export const IDPrefixAndNameSupplied: Story = {
         </ul>
         <h5>Component</h5>
         <Checkboxes idPrefix="idprefix" name="testname">
-          <Checkboxes.Box inputRef={checkbox1Ref}>Box 1</Checkboxes.Box>
-          <Checkboxes.Box inputRef={checkbox2Ref}>Box 2</Checkboxes.Box>
-          <Checkboxes.Box inputRef={checkbox3Ref}>Box 3</Checkboxes.Box>
+          <Checkboxes.Item ref={checkbox1Ref}>Box 1</Checkboxes.Item>
+          <Checkboxes.Item ref={checkbox2Ref}>Box 2</Checkboxes.Item>
+          <Checkboxes.Item ref={checkbox3Ref}>Box 3</Checkboxes.Item>
         </Checkboxes>
       </form>
     );
@@ -592,9 +564,9 @@ export const OnChangeAndOnInputHandlers: Story = {
         </ul>
         <h5>Component</h5>
         <Checkboxes onChange={handleChange} onInput={handleInput}>
-          <Checkboxes.Box value="1">Box 1</Checkboxes.Box>
-          <Checkboxes.Box value="2">Box 2</Checkboxes.Box>
-          <Checkboxes.Box value="3">Box 3</Checkboxes.Box>
+          <Checkboxes.Item value="1">Box 1</Checkboxes.Item>
+          <Checkboxes.Item value="2">Box 2</Checkboxes.Item>
+          <Checkboxes.Item value="3">Box 3</Checkboxes.Item>
         </Checkboxes>
         <br />
         <h5>Current Value</h5>

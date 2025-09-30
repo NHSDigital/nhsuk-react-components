@@ -3,7 +3,7 @@ import { Fieldset, TextInput } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
 /**
- * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/master/packages/components/fieldset" target="_blank" rel="noopener noreferrer">here</a>.
+ * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/fieldset" target="_blank" rel="noopener noreferrer">here</a>.
  *
  * ## Implementation Notes
  *
@@ -21,7 +21,7 @@ import { Meta, StoryObj } from '@storybook/react';
  * const Element = () => {
  *     return (
  *         <Fieldset>
- *             <Fieldset.Legend>What is your address?</Fieldset.Legend>
+ *             <Fieldset.Legend size="l">What is your address?</Fieldset.Legend>
  *         </Fieldset>
  *     );
  * }
@@ -30,18 +30,45 @@ import { Meta, StoryObj } from '@storybook/react';
 const meta: Meta<typeof Fieldset> = {
   title: 'Form Elements/Fieldset',
   component: Fieldset,
-  args: {
-    children: 'What is your address?',
-  },
 };
 export default meta;
 type Story = StoryObj<typeof Fieldset>;
 
-Fieldset.Legend.displayName = 'Fieldset.Legend';
+export const Standard: Story = {
+  render: (args) => (
+    <Fieldset>
+      <Fieldset.Legend size="l">What is your address?</Fieldset.Legend>
+      <TextInput
+        label="Address line 1"
+        id="address-line-1"
+        name="addressLine1"
+        autoComplete="address-line1"
+      />
+      <TextInput
+        label="Address line 2 (optional)"
+        id="address-line-2"
+        name="addressLine2"
+        autoComplete="address-line2"
+      />
+      <TextInput
+        label="Town or city"
+        id="address-town"
+        name="addressTown"
+        autoComplete="address-level2"
+        className="nhsuk-u-width-two-thirds"
+      />
+      <TextInput
+        label="Postcode"
+        id="address-postcode"
+        name="addressPostcode"
+        autoComplete="postal-code"
+        className="nhsuk-input--width-10"
+      />
+    </Fieldset>
+  ),
+};
 
-export const Standard: Story = {};
-
-export const AsAPageHeading: Story = {
+export const WithLegendAsAPageHeading: Story = {
   render: (args) => (
     <Fieldset>
       <Fieldset.Legend isPageHeading>What is your address?</Fieldset.Legend>
@@ -49,7 +76,17 @@ export const AsAPageHeading: Story = {
   ),
 };
 
-export const WithCustomLegendSize: Story = {
+export const WithCustomLegendSizeS: Story = {
+  name: 'With Bold Text (S)',
+  render: (args) => (
+    <Fieldset>
+      <Fieldset.Legend size="s">What is your address?</Fieldset.Legend>
+    </Fieldset>
+  ),
+};
+
+export const WithCustomLegendSizeM: Story = {
+  name: 'With Custom Size (M)',
   render: (args) => (
     <Fieldset>
       <Fieldset.Legend size="m">What is your address?</Fieldset.Legend>
@@ -57,11 +94,20 @@ export const WithCustomLegendSize: Story = {
   ),
 };
 
-export const WithFormElement: Story = {
-  render: () => (
+export const WithCustomLegendSizeL: Story = {
+  name: 'With Custom Size (L)',
+  render: (args) => (
     <Fieldset>
-      <Fieldset.Legend size="m">Input below</Fieldset.Legend>
-      <TextInput id="test-input" />
+      <Fieldset.Legend size="l">What is your address?</Fieldset.Legend>
+    </Fieldset>
+  ),
+};
+
+export const WithCustomLegendSizeXL: Story = {
+  name: 'With Custom Size (XL)',
+  render: (args) => (
+    <Fieldset>
+      <Fieldset.Legend size="xl">What is your address?</Fieldset.Legend>
     </Fieldset>
   ),
 };

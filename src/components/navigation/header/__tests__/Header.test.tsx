@@ -1,304 +1,334 @@
-import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
+import React, { ComponentProps, createRef } from 'react';
 import Header from '../Header';
+import { renderClient, renderServer } from '@util/components';
 
-describe('The header component', () => {
-  it('Matches the snapshot', () => {
-    const { container } = render(
+describe('Header', () => {
+  it('matches snapshot', async () => {
+    const { container } = await renderClient(
       <Header>
-        <Header.Container>
-          <Header.Logo href="/" />
-          <Header.Content>
-            <Header.Search />
-          </Header.Content>
-        </Header.Container>
-        <Header.Nav>
-          <Header.NavItem href="/conditions">Health A-Z</Header.NavItem>
-          <Header.NavItem href="/live-well">Live Well</Header.NavItem>
-          <Header.NavItem href="/social-care-and-support">Care and support</Header.NavItem>
-          <Header.NavItem href="/news">Health news</Header.NavItem>
-          <Header.NavItem href="/service-search">Services near you</Header.NavItem>
-          <Header.NavItem href="/" home>
-            Home
-          </Header.NavItem>
-          <Header.NavDropdownMenu />
-        </Header.Nav>
+        <Header.Logo href="/" />
+        <Header.Search />
+        <Header.Navigation>
+          <Header.NavigationItem href="/conditions">Health A-Z</Header.NavigationItem>
+          <Header.NavigationItem href="/live-well">Live Well</Header.NavigationItem>
+          <Header.NavigationItem href="/social-care-and-support">
+            Care and support
+          </Header.NavigationItem>
+          <Header.NavigationItem href="/news">Health news</Header.NavigationItem>
+          <Header.NavigationItem href="/service-search">Services near you</Header.NavigationItem>
+          <Header.NavigationItem href="/">Home</Header.NavigationItem>
+        </Header.Navigation>
       </Header>,
+      { moduleName: 'nhsuk-header' },
     );
 
     expect(container).toMatchSnapshot();
   });
 
-  it.each`
-    transactional | orgName      | white
-    ${true}       | ${'org'}     | ${true}
-    ${false}      | ${undefined} | ${false}
-    ${undefined}  | ${'org'}     | ${true}
-    ${true}       | ${'org'}     | ${undefined}
-  `(
-    'Sets the appropriate classNames with transactional $transactional and orgName $orgName and white $white',
-    ({ transactional, orgName, white }) => {
-      const { container } = render(
-        <Header transactional={transactional} orgName={orgName} white={white}></Header>,
+  it('matches snapshot (via server)', async () => {
+    const { container, element } = await renderServer(
+      <Header>
+        <Header.Logo href="/" />
+        <Header.Search />
+        <Header.Navigation>
+          <Header.NavigationItem href="/conditions">Health A-Z</Header.NavigationItem>
+          <Header.NavigationItem href="/live-well">Live Well</Header.NavigationItem>
+          <Header.NavigationItem href="/social-care-and-support">
+            Care and support
+          </Header.NavigationItem>
+          <Header.NavigationItem href="/news">Health news</Header.NavigationItem>
+          <Header.NavigationItem href="/service-search">Services near you</Header.NavigationItem>
+          <Header.NavigationItem href="/">Home</Header.NavigationItem>
+        </Header.Navigation>
+      </Header>,
+      { moduleName: 'nhsuk-header' },
+    );
+
+    expect(container).toMatchSnapshot('server');
+
+    await renderClient(element, {
+      moduleName: 'nhsuk-header',
+      hydrate: true,
+      container,
+    });
+
+    expect(container).toMatchSnapshot('client');
+  });
+
+  it('forwards refs', async () => {
+    const ref = createRef<HTMLElement>();
+
+    const { modules } = await renderClient(
+      <Header ref={ref}>
+        <Header.Logo href="/" />
+      </Header>,
+      { moduleName: 'nhsuk-header' },
+    );
+
+    const [headerEl] = modules;
+
+    expect(ref.current).toBe(headerEl);
+    expect(ref.current).toHaveClass('nhsuk-header');
+  });
+
+  it('sets organisation className', async () => {
+    const { modules } = await renderClient(
+      <Header organisation={{ name: 'Organisation' }}></Header>,
+      { moduleName: 'nhsuk-header' },
+    );
+
+    const [headerEl] = modules;
+    expect(headerEl).toHaveClass('nhsuk-header--organisation');
+  });
+
+  it('sets white className', async () => {
+    const { modules } = await renderClient(<Header white></Header>, {
+      moduleName: 'nhsuk-header',
+    });
+
+    const [headerEl] = modules;
+    expect(headerEl).toHaveClass('nhsuk-header--white');
+  });
+
+  it('sets white navigation className', async () => {
+    const { container } = await renderClient(
+      <Header>
+        <Header.Navigation white>
+          <Header.NavigationItem href="/">Home</Header.NavigationItem>
+        </Header.Navigation>
+      </Header>,
+      { moduleName: 'nhsuk-header' },
+    );
+
+    const headerNavigationEl = container.querySelector('.nhsuk-header__navigation');
+    expect(headerNavigationEl).toHaveClass('nhsuk-header__navigation--white');
+  });
+
+  describe('Header.Logo', () => {
+    it('renders logo only', async () => {
+      const { container } = await renderClient(
+        <Header>
+          <Header.Logo />
+        </Header>,
+        { moduleName: 'nhsuk-header' },
       );
 
-      const headerElement = container.querySelector('.nhsuk-header');
+      const linkEl = container.querySelector('.nhsuk-header__service a');
+      const logoEl = container.querySelector('.nhsuk-header__logo');
 
-      if (transactional) {
-        expect(headerElement).toHaveClass('nhsuk-header__transactional');
-      } else {
-        expect(headerElement).not.toHaveClass('nhsuk-header__transactional');
+      expect(linkEl).not.toBeInTheDocument();
+      expect(logoEl).toHaveAccessibleName('NHS');
+    });
+
+    it('renders logo only (with link)', async () => {
+      const { container } = await renderClient(
+        <Header>
+          <Header.Logo href="/" />
+        </Header>,
+        { moduleName: 'nhsuk-header' },
+      );
+
+      const linkEl = container.querySelector('.nhsuk-header__service a');
+      const logoEl = container.querySelector('.nhsuk-header__logo');
+
+      expect(linkEl).toHaveAttribute('href', '/');
+      expect(linkEl).toHaveAccessibleName('NHS homepage');
+      expect(logoEl).toHaveAccessibleName('NHS');
+    });
+
+    it('renders logo and organisation name', async () => {
+      const { container } = await renderClient(
+        <Header organisation={{ name: 'Test organisation' }}>
+          <Header.Logo />
+        </Header>,
+        { moduleName: 'nhsuk-header' },
+      );
+
+      const linkEl = container.querySelector('.nhsuk-header__service a');
+      const logoEl = container.querySelector('.nhsuk-header__logo');
+      const organisationLogoEl = container.querySelector('.nhsuk-header__organisation-logo');
+      const organisationNameEl = container.querySelector('.nhsuk-header__organisation-name');
+
+      expect(linkEl).not.toBeInTheDocument();
+      expect(logoEl).toHaveAccessibleName('NHS');
+      expect(organisationLogoEl).not.toBeInTheDocument();
+      expect(organisationNameEl).toHaveTextContent('Test organisation');
+    });
+
+    it('renders logo (with link) and organisation name', async () => {
+      const { container } = await renderClient(
+        <Header organisation={{ name: 'Test organisation' }}>
+          <Header.Logo href="/" />
+        </Header>,
+        { moduleName: 'nhsuk-header' },
+      );
+
+      const linkEl = container.querySelector('.nhsuk-header__service a');
+      const logoEl = container.querySelector('.nhsuk-header__logo');
+      const organisationLogoEl = container.querySelector('.nhsuk-header__organisation-logo');
+      const organisationNameEl = container.querySelector('.nhsuk-header__organisation-name');
+
+      expect(linkEl).toHaveAttribute('href', '/');
+      expect(linkEl).toHaveAccessibleName('NHS Test organisation homepage');
+      expect(logoEl).toHaveAccessibleName('NHS');
+      expect(organisationLogoEl).not.toBeInTheDocument();
+      expect(organisationNameEl).toHaveTextContent('Test organisation');
+    });
+
+    it('renders logo (custom src) and organisation name', async () => {
+      const { container } = await renderClient(
+        <Header organisation={{ name: 'Test organisation' }}>
+          <Header.Logo src="custom.svg" />
+        </Header>,
+        { moduleName: 'nhsuk-header' },
+      );
+
+      const linkEl = container.querySelector('.nhsuk-header__service a');
+      const logoEl = container.querySelector('.nhsuk-header__logo');
+      const organisationLogoEl = container.querySelector('.nhsuk-header__organisation-logo');
+      const organisationNameEl = container.querySelector('.nhsuk-header__organisation-name');
+
+      expect(linkEl).not.toBeInTheDocument();
+      expect(logoEl).not.toBeInTheDocument();
+      expect(organisationLogoEl).toHaveAccessibleName('NHS');
+      expect(organisationNameEl).toHaveTextContent('Test organisation');
+    });
+
+    it('renders logo (with link, custom src) and organisation name', async () => {
+      const { container } = await renderClient(
+        <Header organisation={{ name: 'Test organisation' }}>
+          <Header.Logo href="/" src="custom.svg" />
+        </Header>,
+        { moduleName: 'nhsuk-header' },
+      );
+
+      const linkEl = container.querySelector('.nhsuk-header__service a');
+      const logoEl = container.querySelector('.nhsuk-header__logo');
+      const organisationLogoEl = container.querySelector('.nhsuk-header__organisation-logo');
+      const organisationNameEl = container.querySelector('.nhsuk-header__organisation-name');
+
+      expect(linkEl).toHaveAttribute('href', '/');
+      expect(linkEl).toHaveAccessibleName('NHS Test organisation homepage');
+      expect(logoEl).not.toBeInTheDocument();
+      expect(organisationLogoEl).toHaveAccessibleName('NHS');
+      expect(organisationNameEl).toHaveTextContent('Test organisation');
+    });
+
+    it('renders logo (with link) and organisation name (split, with descriptor)', async () => {
+      const { container } = await renderClient(
+        <Header
+          organisation={{
+            name: 'Anytown Anyplace',
+            split: 'Anywhere',
+            descriptor: 'NHS Foundation Trust',
+          }}
+        >
+          <Header.Logo href="/" />
+        </Header>,
+        { moduleName: 'nhsuk-header' },
+      );
+
+      const linkEl = container.querySelector('.nhsuk-header__service a');
+      const logoEl = container.querySelector('.nhsuk-header__logo');
+      const organisationLogoEl = container.querySelector('.nhsuk-header__organisation-logo');
+      const organisationNameEl = container.querySelector('.nhsuk-header__organisation-name');
+
+      expect(linkEl).toHaveAttribute('href', '/');
+      expect(linkEl).toHaveAccessibleName('NHS Anytown Anyplace Anywhere homepage');
+      expect(logoEl).toHaveAccessibleName('NHS');
+      expect(organisationLogoEl).not.toBeInTheDocument();
+      expect(organisationNameEl).toHaveTextContent('Anytown AnyplaceAnywhere');
+    });
+  });
+
+  describe('Header.Account', () => {
+    it('matches snapshot', async () => {
+      const { container } = await renderClient(
+        <Header>
+          <Header.Logo />
+          <Header.Account>
+            <Header.AccountItem href="#" icon={true}>
+              florence.nightingale@nhs.net
+            </Header.AccountItem>
+            <Header.AccountItem formProps={{ action: '/log-out', method: 'post' }}>
+              Log out
+            </Header.AccountItem>
+          </Header.Account>
+        </Header>,
+        { moduleName: 'nhsuk-header' },
+      );
+
+      expect(container).toMatchSnapshot();
+    });
+
+    it('forwards refs', async () => {
+      const ref1 = createRef<HTMLButtonElement>();
+      const ref2 = createRef<HTMLAnchorElement>();
+
+      const { container } = await renderClient(
+        <Header>
+          <Header.Logo />
+          <Header.Account>
+            <Header.AccountItem href="#" icon={true} ref={ref1}>
+              florence.nightingale@nhs.net
+            </Header.AccountItem>
+            <Header.AccountItem formProps={{ action: '/log-out', method: 'post' }} ref={ref2}>
+              Log out
+            </Header.AccountItem>
+          </Header.Account>
+        </Header>,
+        { moduleName: 'nhsuk-header' },
+      );
+
+      const accountItemEl1 = container.querySelector('a');
+      const accountItemEl2 = container.querySelector('button');
+
+      expect(ref1.current).toBe(accountItemEl1);
+      expect(ref1.current).toHaveClass('nhsuk-header__account-link');
+
+      expect(ref2.current).toBe(accountItemEl2);
+      expect(ref2.current).toHaveClass('nhsuk-header__account-button');
+    });
+
+    it('renders as custom element', async () => {
+      function CustomLink({ children, href, ...rest }: ComponentProps<'a'>) {
+        return (
+          <a href={href} {...rest} data-custom-link="true">
+            {children}
+          </a>
+        );
       }
 
-      if (orgName !== undefined) {
-        expect(headerElement).toHaveClass('nhsuk-header--organisation');
-      } else {
-        expect(headerElement).not.toHaveClass('nhsuk-header--organisation');
+      function CustomButton(props: ComponentProps<'button'>) {
+        return <button {...props} data-custom-button="true" />;
       }
 
-      if (white) {
-        expect(headerElement).toHaveClass('nhsuk-header--white');
-      } else {
-        expect(headerElement).not.toHaveClass('nhsuk-header--white');
-      }
-    },
-  );
-
-  describe('The Nav component', () => {
-    it.each`
-      numberOfLinks | expectedLeftAligned
-      ${0}          | ${true}
-      ${1}          | ${true}
-      ${2}          | ${true}
-      ${3}          | ${true}
-      ${4}          | ${false}
-      ${5}          | ${false}
-    `(
-      'When rendered with $numberOfLinks links then it is $expectedLeftAligned that the list has the left aligned class',
-      ({ numberOfLinks, expectedLeftAligned }) => {
-        const { container } = render(
-          <Header.Nav>
-            {[...Array(numberOfLinks)].map((_x, i) => (
-              <Header.NavItem key={i} />
-            ))}
-          </Header.Nav>,
-        );
-
-        const navList = container.getElementsByClassName('nhsuk-header__navigation-list')[0];
-
-        if (expectedLeftAligned) {
-          expect(navList).toHaveClass('nhsuk-header__navigation-list--left-aligned');
-        } else {
-          expect(navList).not.toHaveClass('nhsuk-header__navigation-list--left-aligned');
-        }
-      },
-    );
-
-    it('Only counts NavItem components when determining whether to set left aligned class', () => {
-      const { container } = render(
-        <Header.Nav>
-          <Header.NavItem />
-          <Header.NavItem />
-          <Header.NavItem />
-          <Header.Logo />
-        </Header.Nav>,
-      );
-
-      const navList = container.getElementsByClassName('nhsuk-header__navigation-list')[0];
-
-      expect(navList).toHaveClass('nhsuk-header__navigation-list--left-aligned');
-    });
-  });
-
-  describe('The NavDropdownMenu', () => {
-    it.each<string | undefined>([undefined, 'Dropdown Text'])(
-      'Renders as expected when passed a dropdownText of %s',
-      (dropdownText) => {
-        const { container } = render(
-          <Header>
-            <Header.NavDropdownMenu dropdownText={dropdownText}></Header.NavDropdownMenu>
-          </Header>,
-        );
-
-        const visuallyHiddenText = container.querySelector(
-          '.nhsuk-header__menu-toggle > .nhsuk-u-visually-hidden',
-        );
-
-        expect(visuallyHiddenText?.nextSibling?.textContent).toBe(dropdownText ?? 'More');
-      },
-    );
-
-    it('Invokes the onClick prop when button is clicked', () => {
-      const clickFn = jest.fn();
-      const { container } = render(
-        <Header>
-          <Header.NavDropdownMenu onClick={clickFn}></Header.NavDropdownMenu>
-        </Header>,
-      );
-
-      const buttonElement = container.querySelector('.nhsuk-header__menu-toggle');
-
-      expect(clickFn).not.toHaveBeenCalled();
-
-      fireEvent.click(buttonElement!);
-
-      expect(clickFn).toHaveBeenCalledTimes(1);
-    });
-  });
-
-  describe('The NavItem component', () => {
-    it.each<boolean | undefined>([undefined, false, true])(
-      'Sets the home className as expected when home is %s',
-      (home) => {
-        const { container } = render(
-          <Header>
-            <Header.Nav>
-              <Header.NavItem home={home} />
-            </Header.Nav>
-          </Header>,
-        );
-
-        const navItemElement = container.querySelector('.nhsuk-header__navigation-item');
-
-        if (home) {
-          expect(navItemElement).toHaveClass('nhsuk-header__navigation-item--home');
-        } else {
-          expect(navItemElement).not.toHaveClass('nhsuk-header__navigation-item--home');
-        }
-      },
-    );
-  });
-
-  describe('The Logo component', () => {
-    it('Sets logo only class if there is no menu or search', () => {
-      const { container } = render(
+      const { container } = await renderClient(
         <Header>
           <Header.Logo />
+          <Header.Account>
+            <Header.AccountItem asElement={CustomLink} href="#" icon={true}>
+              florence.nightingale@nhs.net
+            </Header.AccountItem>
+            <Header.AccountItem
+              asElement={CustomButton}
+              formProps={{ action: '/log-out', method: 'post' }}
+            >
+              Log out
+            </Header.AccountItem>
+          </Header.Account>
         </Header>,
+        { moduleName: 'nhsuk-header' },
       );
 
-      expect(container.querySelector('.nhsuk-header__logo')).toHaveClass(
-        'nhsuk-header__logo--only',
-      );
-    });
+      const accountItemEl1 = container.querySelector('a');
+      const accountItemEl2 = container.querySelector('button');
 
-    it('Does not set logo only class if there is a menu', () => {
-      const { container } = render(
-        <Header>
-          <Header.Nav>
-            <Header.NavDropdownMenu />
-          </Header.Nav>
-          <Header.Logo />
-        </Header>,
-      );
+      expect(accountItemEl1).toHaveTextContent('florence.nightingale@nhs.net');
+      expect(accountItemEl1?.dataset).toHaveProperty('customLink', 'true');
 
-      expect(container.querySelector('.nhsuk-header__logo')).not.toHaveClass(
-        'nhsuk-header__logo--only',
-      );
-    });
-
-    it('Does not set logo only class if there is a search', () => {
-      const { container } = render(
-        <Header>
-          <Header.Search />
-          <Header.Logo />
-        </Header>,
-      );
-
-      expect(container.querySelector('.nhsuk-header__logo')).not.toHaveClass(
-        'nhsuk-header__logo--only',
-      );
-    });
-
-    it('Does not set logo only class if there is a service name', () => {
-      const { container } = render(
-        <Header>
-          <Header.ServiceName>Test</Header.ServiceName>
-          <Header.Logo />
-        </Header>,
-      );
-
-      expect(container.querySelector('.nhsuk-header__logo')).not.toHaveClass(
-        'nhsuk-header__logo--only',
-      );
-    });
-
-    it('Sets the transactional class if the header is transactional', () => {
-      const { container } = render(
-        <Header transactional>
-          <Header.Logo />
-        </Header>,
-      );
-
-      expect(container.querySelector('.nhsuk-header__logo')).toHaveClass(
-        'nhsuk-header__transactional--logo',
-      );
-    });
-
-    it.each<string | undefined>([undefined, 'Test service'])(
-      'Renders as expected with the service name %s',
-      (serviceName) => {
-        const { container } = render(
-          <Header serviceName={serviceName}>
-            <Header.Logo />
-          </Header>,
-        );
-
-        if (serviceName) {
-          expect(container.querySelector('.nhsuk-header__link')).toHaveClass(
-            'nhsuk-header__link--service',
-          );
-
-          expect(container.querySelector('.nhsuk-header__service-name')?.textContent).toBe(
-            'Test service',
-          );
-        } else {
-          expect(container.querySelector('.nhsuk-header__link')).not.toHaveClass(
-            'nhsuk-header__link--service',
-          );
-
-          expect(container.querySelector('.nhsuk-header__service-name')).toBeNull();
-        }
-      },
-    );
-  });
-
-  describe('The OrganizationalLogo component', () => {
-    it('Is rendered when orgName is specified', () => {
-      const { container } = render(
-        <Header orgName="Test org">
-          <Header.Logo />
-        </Header>,
-      );
-
-      expect(container.querySelector('.nhsuk-organisation-name')?.textContent).toBe('Test org');
-      expect(container.querySelector('.nhsuk-organisation-name-split')).toBeNull();
-      expect(container.querySelector('.nhsuk-organisation-descriptor')).toBeNull();
-    });
-
-    it('Renders the orgName, orgSplit and orgDescriptor', () => {
-      const { container } = render(
-        <Header orgName="Test org" orgSplit="Org split" orgDescriptor="Org descriptor">
-          <Header.Logo />
-        </Header>,
-      );
-
-      expect(container.querySelector('.nhsuk-organisation-name-split')?.textContent).toBe(
-        'Org split',
-      );
-      expect(container.querySelector('.nhsuk-organisation-descriptor')?.textContent).toBe(
-        'Org descriptor',
-      );
-    });
-
-    it('Uses the logoUrl if specified', () => {
-      const { container } = render(
-        <Header orgName="Test org">
-          <Header.Logo logoUrl="Test url" />
-        </Header>,
-      );
-
-      expect(container.querySelector('.nhsuk-org-logo')?.getAttribute('src')).toBe('Test url');
+      expect(accountItemEl2).toHaveTextContent('Log out');
+      expect(accountItemEl2?.dataset).toHaveProperty('customButton', 'true');
     });
   });
 });

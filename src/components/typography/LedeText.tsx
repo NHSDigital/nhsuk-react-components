@@ -1,7 +1,7 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
 
-const LedeText: FC<HTMLProps<HTMLParagraphElement>> = ({ className, ...rest }) => (
+const LedeText: FC<ComponentPropsWithoutRef<'p'>> = ({ className, ...rest }) => (
   <p className={classNames('nhsuk-lede-text', className)} {...rest} />
 );
 

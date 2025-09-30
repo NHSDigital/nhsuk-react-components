@@ -1,10 +1,20 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
 
-export type HintTextProps = HTMLProps<HTMLDivElement>;
+export type HintTextProps = ComponentPropsWithoutRef<'div'>;
 
-const HintText: FC<HintTextProps> = ({ className, ...rest }) => (
-  <div className={classNames('nhsuk-hint', className)} {...rest} />
-);
+const HintTextComponent: FC<HintTextProps> = ({ children, className, ...rest }) => {
+  if (!children) {
+    return null;
+  }
 
-export default HintText;
+  return (
+    <div className={classNames('nhsuk-hint', className)} {...rest}>
+      {children}
+    </div>
+  );
+};
+
+HintTextComponent.displayName = 'HintText';
+
+export default HintTextComponent;

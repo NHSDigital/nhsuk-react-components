@@ -1,40 +1,88 @@
 import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
+import { renderClient, renderServer } from '@util/components';
 import ErrorSummary from '../';
 
 describe('ErrorSummary', () => {
-  it('matches snapshot', () => {
-    const { container } = render(<ErrorSummary />);
+  it('matches snapshot', async () => {
+    const { container } = await renderClient(<ErrorSummary />, {
+      moduleName: 'nhsuk-error-summary',
+    });
 
-    expect(container).toMatchSnapshot('ErrorSummary');
+    expect(container).toMatchSnapshot();
   });
 
-  it('forwards refs', () => {
+  it('matches snapshot (via server)', async () => {
+    const { container, element } = await renderServer(<ErrorSummary />, {
+      moduleName: 'nhsuk-error-summary',
+    });
+
+    expect(container).toMatchSnapshot('server');
+
+    await renderClient(element, {
+      moduleName: 'nhsuk-error-summary',
+      hydrate: true,
+      container,
+    });
+
+    expect(container).toMatchSnapshot('client');
+  });
+
+  it('forwards refs', async () => {
     const ref = createRef<HTMLDivElement>();
-    render(<ErrorSummary ref={ref} />);
 
-    expect(ref.current).not.toBeNull();
+    const { modules } = await renderClient(<ErrorSummary ref={ref} />, {
+      moduleName: 'nhsuk-error-summary',
+    });
+
+    const [errorSummaryEl] = modules;
+
+    expect(ref.current).toBe(errorSummaryEl);
+    expect(ref.current).toHaveClass('nhsuk-error-summary');
   });
 
-  it('has default props', () => {
-    const { container } = render(<ErrorSummary />);
+  it('is focused automatically', async () => {
+    const { modules } = await renderClient(<ErrorSummary />, {
+      moduleName: 'nhsuk-error-summary',
+    });
 
-    expect(container.querySelector('div')?.getAttribute('tabindex')).toBe('-1');
-    expect(container.querySelector('div')?.getAttribute('role')).toBe('alert');
-    expect(container.querySelector('div')?.getAttribute('aria-labelledby')).toBe('error-summary-title');
-  })
+    const [errorSummaryEl] = modules;
+    expect(document.activeElement).toBe(errorSummaryEl);
+  });
 
-  it('throws a dev warning if tabIndex is not -1', () => {
-    jest.spyOn(console, 'warn').mockImplementation(() => {});
-    render(<ErrorSummary tabIndex={0} />);
-    expect(console.warn).toHaveBeenCalledWith('The ErrorSummary component should always have a tabIndex of -1');
-  })
+  it('is focused automatically with forwarded ref', async () => {
+    const ref = createRef<HTMLDivElement>();
 
-  it('throws a dev warning if role is not alert', () => {
-    jest.spyOn(console, 'warn').mockImplementation(() => {});
-    render(<ErrorSummary role="status" />);
-    expect(console.warn).toHaveBeenCalledWith('The ErrorSummary component should always have a role of alert');
-  })
+    const { modules } = await renderClient(<ErrorSummary ref={ref} />, {
+      moduleName: 'nhsuk-error-summary',
+    });
+
+    const [errorSummaryEl] = modules;
+
+    expect(document.activeElement).toBe(errorSummaryEl);
+  });
+
+  it('has default props', async () => {
+    const { modules } = await renderClient(<ErrorSummary />, {
+      moduleName: 'nhsuk-error-summary',
+    });
+
+    const [errorSummaryEl] = modules;
+
+    expect(errorSummaryEl?.getAttribute('tabindex')).toBe('-1');
+    expect(errorSummaryEl?.firstElementChild?.getAttribute('role')).toBe('alert');
+  });
+
+  it('has default props with forwarded ref', async () => {
+    const { modules } = await renderClient(<ErrorSummary />, {
+      moduleName: 'nhsuk-error-summary',
+    });
+
+    const [errorSummaryEl] = modules;
+
+    expect(errorSummaryEl?.getAttribute('tabindex')).toBe('-1');
+    expect(errorSummaryEl?.firstElementChild?.getAttribute('role')).toBe('alert');
+  });
 
   describe('ErrorSummary.Title', () => {
     it('matches snapshot', () => {
@@ -46,16 +94,7 @@ describe('ErrorSummary', () => {
     it('renders a title', () => {
       const { container } = render(<ErrorSummary.Title>Title</ErrorSummary.Title>);
 
-      expect(container.textContent).toBe('Title');
-    });
-  });
-
-  describe('ErrorSummary.Body', () => {
-    it('matches snapshot', () => {
-      const { container } = render(<ErrorSummary.Body>Body</ErrorSummary.Body>);
-
-      expect(container.textContent).toBe('Body');
-      expect(container).toMatchSnapshot('ErrorSummary.Body');
+      expect(container).toHaveTextContent('Title');
     });
   });
 
@@ -69,21 +108,48 @@ describe('ErrorSummary', () => {
     it('renders children', () => {
       const { container } = render(<ErrorSummary.List>List</ErrorSummary.List>);
 
-      expect(container.textContent).toBe('List');
+      expect(container).toHaveTextContent('List');
+    });
+
+    it('renders null with no children', () => {
+      const { container } = render(<ErrorSummary.List />);
+
+      expect(container.querySelector('ul')).toBeNull();
     });
   });
 
   describe('ErrorSummary.ListItem', () => {
-    it('matches snapshot', () => {
-      const { container } = render(<ErrorSummary.Item>ListItem</ErrorSummary.Item>);
+    it('matches snapshot for items without links', () => {
+      const { container } = render(
+        <ErrorSummary.ListItem>List item without link</ErrorSummary.ListItem>,
+      );
 
-      expect(container).toMatchSnapshot('ErrorSummary.ListItem');
+      expect(container).toMatchSnapshot();
+    });
+
+    it('matches snapshot for items with links', () => {
+      const { container } = render(
+        <ErrorSummary.ListItem href="#example-error-1">List item with link</ErrorSummary.ListItem>,
+      );
+
+      expect(container).toMatchSnapshot();
     });
 
     it('renders children', () => {
-      const { container } = render(<ErrorSummary.Item>ListItem</ErrorSummary.Item>);
+      const { container } = render(
+        <ErrorSummary.ListItem href="#example-error-1">List item with link</ErrorSummary.ListItem>,
+      );
 
-      expect(container.querySelector('a')?.textContent).toBe('ListItem');
+      const errorLinkEls = container.querySelectorAll('a');
+
+      expect(errorLinkEls?.[0]).toHaveTextContent('List item with link');
+      expect(errorLinkEls?.[0]).toHaveAttribute('href', '#example-error-1');
+    });
+
+    it('renders null with no children', () => {
+      const { container } = render(<ErrorSummary.ListItem />);
+
+      expect(container.querySelector('li')).toBeNull();
     });
   });
 });

@@ -1,4 +1,4 @@
-import React, { ElementType } from 'react';
+import React, { ComponentProps, createRef } from 'react';
 import { render } from '@testing-library/react';
 import Breadcrumb from '../';
 
@@ -7,6 +7,17 @@ describe('Breadcrumb', () => {
     const { container } = render(<Breadcrumb />);
 
     expect(container).toMatchSnapshot('BaseBreadcrumbs');
+  });
+
+  it('forwards refs', () => {
+    const ref = createRef<HTMLElement>();
+
+    const { container } = render(<Breadcrumb ref={ref} />);
+
+    const breadcrumbEl = container.querySelector('nav');
+
+    expect(ref.current).toBe(breadcrumbEl);
+    expect(ref.current).toHaveClass('nhsuk-breadcrumb');
   });
 
   it('renders with children', () => {
@@ -35,13 +46,11 @@ describe('Breadcrumb', () => {
     expect(breadcrumbListItems.length).toBe(2);
 
     breadcrumbListItems.forEach((child) => {
-      expect(child.classList).toContain('nhsuk-breadcrumb__item');
+      expect(child.classList).toContain('nhsuk-breadcrumb__list-item');
     });
 
     expect(container.querySelector('#otherElement')?.textContent).toEqual('Test Element');
-    expect(container.querySelector('.nhsuk-breadcrumb__back')?.textContent).toBe(
-      'Back to &nbsp;Breadcrumb 2',
-    );
+    expect(container.querySelector('.nhsuk-back-link')?.textContent).toBe('Back to Breadcrumb 2');
   });
 
   it('passes through other children fine', () => {
@@ -67,41 +76,56 @@ describe('Breadcrumb', () => {
     },
   );
 
-  describe('The BreadcrumbBack component', () => {
-    it.each<string | undefined>([undefined, 'Accessible prefix'])(
-      'Renders as expected with visually hidden text when accessiblePrefix is specified as %s',
-      (accessiblePrefix) => {
-        const { container } = render(
-          <Breadcrumb>
-            <Breadcrumb.Back href="/back" accessiblePrefix={accessiblePrefix}>
-              Breadcrumb 2
-            </Breadcrumb.Back>
-          </Breadcrumb>,
+  describe('Breadcrumb back link', () => {
+    it('renders as expected with visually hidden text', () => {
+      const { container } = render(
+        <Breadcrumb>
+          <Breadcrumb.Back href="/back">Breadcrumb 2</Breadcrumb.Back>
+        </Breadcrumb>,
+      );
+
+      const hiddenSpan = container.querySelector('.nhsuk-back-link > .nhsuk-u-visually-hidden');
+
+      expect(hiddenSpan?.textContent).toBe('Back to ');
+    });
+
+    it('renders as custom element', () => {
+      function CustomLink({ children, href, ...rest }: ComponentProps<'a'>) {
+        return (
+          <a href={href} {...rest} data-custom-link="true">
+            {children}
+          </a>
         );
+      }
 
-        const hiddenSpan = container.querySelector(
-          '.nhsuk-breadcrumb__backlink > .nhsuk-u-visually-hidden',
-        );
+      const { container } = render(
+        <Breadcrumb>
+          <Breadcrumb.Back href="/back" asElement={CustomLink}>
+            Breadcrumb 2
+          </Breadcrumb.Back>
+        </Breadcrumb>,
+      );
 
-        expect(hiddenSpan?.textContent).toBe(accessiblePrefix ?? 'Back to &nbsp;');
-      },
-    );
+      const backLinkEl = container.querySelector('a');
 
-    it.each<ElementType | undefined>([undefined, 'button'])(
-      'Renders with asElement when specified as %s',
-      (asElement) => {
-        const { container } = render(
-          <Breadcrumb>
-            <Breadcrumb.Back href="/back" asElement={asElement}>
-              Breadcrumb 2
-            </Breadcrumb.Back>
-          </Breadcrumb>,
-        );
+      expect(backLinkEl?.dataset).toHaveProperty('customLink', 'true');
+    });
 
-        const component = container.querySelector('.nhsuk-breadcrumb__backlink');
+    it('forwards refs', () => {
+      const ref = createRef<HTMLAnchorElement>();
 
-        expect(component?.nodeName).toBe(asElement?.toString()?.toUpperCase() ?? 'A');
-      },
-    );
+      const { container } = render(
+        <Breadcrumb>
+          <Breadcrumb.Back href="/back" ref={ref}>
+            Breadcrumb 2
+          </Breadcrumb.Back>
+        </Breadcrumb>,
+      );
+
+      const backLinkEl = container.querySelector('a');
+
+      expect(ref.current).toBe(backLinkEl);
+      expect(ref.current).toHaveClass('nhsuk-back-link');
+    });
   });
 });

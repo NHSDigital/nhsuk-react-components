@@ -1,0 +1,463 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Table matches snapshot (via server): client 1`] = `
+<div>
+  <table
+    class="nhsuk-table"
+  >
+    <caption
+      class="nhsuk-table__caption"
+    >
+      Skin symptoms and possible causes
+    </caption>
+    <thead
+      class="nhsuk-table__head"
+    >
+      <tr
+        class="nhsuk-table__row"
+      >
+        <th
+          class="nhsuk-table__header"
+          scope="col"
+        >
+          Skin Symptoms
+        </th>
+        <th
+          class="nhsuk-table__header"
+          scope="col"
+        >
+          Possible cause
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="nhsuk-table__body"
+    >
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          Blisters on lips or around the mouth
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          cold sores
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          Itchy, dry, cracked, sore
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          eczema
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          Itchy blisters
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          shingles, chickenpox
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`Table matches snapshot (via server): server 1`] = `
+<div>
+  <table
+    class="nhsuk-table"
+  >
+    <caption
+      class="nhsuk-table__caption"
+    >
+      Skin symptoms and possible causes
+    </caption>
+    <thead
+      class="nhsuk-table__head"
+    >
+      <tr
+        class="nhsuk-table__row"
+      >
+        <th
+          class="nhsuk-table__header"
+          scope="col"
+        >
+          Skin Symptoms
+        </th>
+        <th
+          class="nhsuk-table__header"
+          scope="col"
+        >
+          Possible cause
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="nhsuk-table__body"
+    >
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          Blisters on lips or around the mouth
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          cold sores
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          Itchy, dry, cracked, sore
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          eczema
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          Itchy blisters
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          shingles, chickenpox
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`Table matches snapshot 1`] = `
+<div>
+  <table
+    class="nhsuk-table"
+  >
+    <caption
+      class="nhsuk-table__caption"
+    >
+      Skin symptoms and possible causes
+    </caption>
+    <thead
+      class="nhsuk-table__head"
+    >
+      <tr
+        class="nhsuk-table__row"
+      >
+        <th
+          class="nhsuk-table__header"
+          scope="col"
+        >
+          Skin Symptoms
+        </th>
+        <th
+          class="nhsuk-table__header"
+          scope="col"
+        >
+          Possible cause
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="nhsuk-table__body"
+    >
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          Blisters on lips or around the mouth
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          cold sores
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          Itchy, dry, cracked, sore
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          eczema
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          Itchy blisters
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          shingles, chickenpox
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`Table matches snapshot when first cell is header 1`] = `
+<div>
+  <table
+    class="nhsuk-table"
+  >
+    <caption
+      class="nhsuk-table__caption"
+    >
+      Skin symptoms and possible causes
+    </caption>
+    <thead
+      class="nhsuk-table__head"
+    >
+      <tr
+        class="nhsuk-table__row"
+      >
+        <th
+          class="nhsuk-table__header"
+          scope="col"
+        >
+          Skin Symptoms
+        </th>
+        <th
+          class="nhsuk-table__header"
+          scope="col"
+        >
+          Possible cause
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="nhsuk-table__body"
+    >
+      <tr
+        class="nhsuk-table__row"
+      >
+        <th
+          class="nhsuk-table__header"
+          role="rowheader"
+          scope="row"
+        >
+          Blisters on lips or around the mouth
+        </th>
+        <td
+          class="nhsuk-table__cell"
+        >
+          cold sores
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <th
+          class="nhsuk-table__header"
+          role="rowheader"
+          scope="row"
+        >
+          Itchy, dry, cracked, sore
+        </th>
+        <td
+          class="nhsuk-table__cell"
+        >
+          eczema
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <th
+          class="nhsuk-table__header"
+          role="rowheader"
+          scope="row"
+        >
+          Itchy blisters
+        </th>
+        <td
+          class="nhsuk-table__cell"
+        >
+          shingles, chickenpox
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`Table matches snapshot when responsive 1`] = `
+<div>
+  <table
+    class="nhsuk-table-responsive"
+    role="table"
+  >
+    <caption
+      class="nhsuk-table__caption"
+    >
+      Skin symptoms and possible causes
+    </caption>
+    <thead
+      class="nhsuk-table__head"
+      role="rowgroup"
+    >
+      <tr
+        class="nhsuk-table__row"
+        role="row"
+      >
+        <th
+          class="nhsuk-table__header"
+          role="columnheader"
+          scope="col"
+        >
+          Skin Symptoms
+        </th>
+        <th
+          class="nhsuk-table__header"
+          role="columnheader"
+          scope="col"
+        >
+          Possible cause
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="nhsuk-table__body"
+    >
+      <tr
+        class="nhsuk-table__row"
+        role="row"
+      >
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Skin Symptoms
+             
+          </span>
+          Blisters on lips or around the mouth
+        </td>
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Possible cause
+             
+          </span>
+          cold sores
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+        role="row"
+      >
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Skin Symptoms
+             
+          </span>
+          Itchy, dry, cracked, sore
+        </td>
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Possible cause
+             
+          </span>
+          eczema
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+        role="row"
+      >
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Skin Symptoms
+             
+          </span>
+          Itchy blisters
+        </td>
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Possible cause
+             
+          </span>
+          shingles, chickenpox
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

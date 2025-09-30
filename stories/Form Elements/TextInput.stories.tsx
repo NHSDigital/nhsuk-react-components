@@ -10,7 +10,7 @@ const meta: Meta<typeof TextInput> = {
     label: 'National Insurance number',
   },
   argTypes: {
-    inputRef: { table: { disable: true } },
+    ref: { table: { disable: true } },
   },
 };
 
@@ -24,32 +24,25 @@ export const WithHintText: Story = {
   },
 };
 
-export const AsPageHeading: Story = {
+export const WithLabelAsPageHeading: Story = {
   args: {
     labelProps: {
       isPageHeading: true,
-      size: "l"
+      size: 'l',
     },
     hint: 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.',
   },
   parameters: {
     docs: {
       description: {
-        story: 'To be used when the input label should also be a page heading - such as when it is the main question on a page.'
-      }
-    }
-  }
-};
-
-export const WithErrorBoolean: Story = {
-  args: {
-    error: true,
-    hint: 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.',
+        story:
+          'To be used when the input label should also be a page heading - such as when it is the main question on a page.',
+      },
+    },
   },
-  name: 'With Error (Boolean)',
 };
 
-export const WithErrorString: Story = {
+export const WithError: Story = {
   args: {
     error: 'Error message goes here',
     hint: 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.',

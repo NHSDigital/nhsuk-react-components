@@ -1,32 +1,32 @@
-import React, { FC, HTMLProps, MutableRefObject } from 'react';
+import React, { ComponentPropsWithoutRef, FC, forwardRef } from 'react';
 import classNames from 'classnames';
-import SingleInputFormGroup from '@components/utils/SingleInputFormGroup';
+import FormGroup from '@components/utils/FormGroup';
 import { InputWidth } from '@util/types/NHSUKTypes';
 import { FormElementProps } from '@util/types/FormTypes';
 
-interface TextInputProps extends HTMLProps<HTMLInputElement>, FormElementProps {
-  inputRef?: MutableRefObject<HTMLInputElement | null>;
+export interface TextInputProps
+  extends ComponentPropsWithoutRef<'input'>,
+    Omit<FormElementProps, 'fieldsetProps' | 'legend' | 'legendProps'> {
   width?: InputWidth;
-  disableErrorLine?: boolean;
   prefix?: string;
   suffix?: string;
 }
 
-const TextInputPrefix: FC<{ prefix: string }> = ({ prefix }) => (
+const TextInputPrefix: FC<Pick<TextInputProps, 'prefix'>> = ({ prefix }) => (
   <div className="nhsuk-input__prefix" aria-hidden="true">
     {prefix}
   </div>
 );
 
-const TextInputSuffix: FC<{ suffix: string }> = ({ suffix }) => (
+const TextInputSuffix: FC<Pick<TextInputProps, 'suffix'>> = ({ suffix }) => (
   <div className="nhsuk-input__suffix" aria-hidden="true">
     {suffix}
   </div>
 );
 
-const TextInput: FC<TextInputProps> = (props) => (
-  <SingleInputFormGroup<TextInputProps> {...props} inputType="input">
-    {({ width, className, error, inputRef, type = 'text', prefix, suffix, ...rest }) => {
+const TextInputComponent = forwardRef<HTMLInputElement, TextInputProps>((props, forwardedRef) => (
+  <FormGroup<TextInputProps> {...props} inputType="input">
+    {({ width, className, error, type = 'text', prefix, suffix, ...rest }) => {
       const Input = (
         <input
           className={classNames(
@@ -35,7 +35,7 @@ const TextInput: FC<TextInputProps> = (props) => (
             { 'nhsuk-input--error': error },
             className,
           )}
-          ref={inputRef}
+          ref={forwardedRef}
           type={type}
           {...rest}
         />
@@ -51,7 +51,9 @@ const TextInput: FC<TextInputProps> = (props) => (
         Input
       );
     }}
-  </SingleInputFormGroup>
-);
+  </FormGroup>
+));
 
-export default TextInput;
+TextInputComponent.displayName = 'TextInput';
+
+export default TextInputComponent;

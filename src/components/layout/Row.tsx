@@ -1,7 +1,9 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
 
-const Row: FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => (
+export type RowProps = ComponentPropsWithoutRef<'div'>;
+
+const Row: FC<RowProps> = ({ className, ...rest }) => (
   <div className={classNames('nhsuk-grid-row', className)} {...rest} />
 );
 

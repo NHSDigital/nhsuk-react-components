@@ -1,43 +1,65 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, forwardRef } from 'react';
 import classNames from 'classnames';
+import { AsElementLink } from '@util/types/LinkTypes';
 
-interface ContentsListItemProps extends HTMLProps<HTMLAnchorElement> {
-  current?: boolean;
+export interface ContentsListItemLinkProps extends AsElementLink<HTMLAnchorElement> {
+  current?: false;
 }
 
-const ContentsListItem: FC<ContentsListItemProps> = ({ className, current, ...rest }) => (
-  <li className={classNames('nhsuk-contents-list__item', className)}>
-    {current ? (
-      <span className="nhsuk-contents-list__current" {...rest} />
-    ) : (
-      <a className="nhsuk-contents-list__link" {...rest} />
-    )}
-  </li>
+export interface ContentsListItemSpanProps extends ComponentPropsWithoutRef<'span'> {
+  asElement?: never;
+  current: true;
+}
+
+export type ContentsListItemProps = ContentsListItemLinkProps | ContentsListItemSpanProps;
+
+const ContentsListItem = forwardRef<HTMLAnchorElement, ContentsListItemProps>(
+  ({ className, current, asElement: Element = 'a', ...rest }, forwardedRef) => {
+    return (
+      <li
+        className={classNames('nhsuk-contents-list__item', className)}
+        aria-current={current ? 'page' : undefined}
+      >
+        {current ? (
+          <span className="nhsuk-contents-list__current" {...rest} />
+        ) : (
+          <Element className="nhsuk-contents-list__link" ref={forwardedRef} {...rest} />
+        )}
+      </li>
+    );
+  },
 );
 
-interface ContentsListProps extends HTMLProps<HTMLDivElement> {
-  visuallyHiddenText?: false | string;
+export interface ContentsListProps extends ComponentPropsWithoutRef<'div'> {
+  visuallyHiddenText?: string;
 }
 
-interface ContentsList extends FC<ContentsListProps> {
-  Item: FC<ContentsListItemProps>;
-}
+const ContentsListComponent = forwardRef<HTMLElement, ContentsListProps>((props, forwardedRef) => {
+  const {
+    className,
+    children,
+    'aria-label': ariaLabel = 'Pages in this guide',
+    visuallyHiddenText = 'Contents',
+    ...rest
+  } = props;
 
-const ContentsList: ContentsList = ({
-  className,
-  children,
-  role = 'navigation',
-  visuallyHiddenText = 'Contents',
-  ...rest
-}) => (
-  <nav className={classNames('nhsuk-contents-list', className)} role={role} {...rest}>
-    {visuallyHiddenText !== false ? (
+  return (
+    <nav
+      className={classNames('nhsuk-contents-list', className)}
+      role="navigation"
+      aria-label={ariaLabel}
+      ref={forwardedRef}
+      {...rest}
+    >
       <h2 className="nhsuk-u-visually-hidden">{visuallyHiddenText}</h2>
-    ) : null}
-    <ol className="nhsuk-contents-list__list">{children}</ol>
-  </nav>
-);
+      <ol className="nhsuk-contents-list__list">{children}</ol>
+    </nav>
+  );
+});
 
-ContentsList.Item = ContentsListItem;
+ContentsListComponent.displayName = 'ContentsList';
+ContentsListItem.displayName = 'ContentsList.Item';
 
-export default ContentsList;
+export default Object.assign(ContentsListComponent, {
+  Item: ContentsListItem,
+});

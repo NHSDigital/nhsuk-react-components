@@ -1,132 +1,149 @@
-'use client';
-import React, { FC, HTMLProps, useContext, useState, useEffect, useMemo } from 'react';
+import React, {
+  ComponentPropsWithoutRef,
+  useState,
+  useEffect,
+  useMemo,
+  Children,
+  forwardRef,
+  createRef,
+} from 'react';
 import classNames from 'classnames';
-import NHSLogo, { NHSLogoNavProps } from './components/NHSLogo';
-import OrganisationalLogo, { OrganisationalLogoProps } from './components/OrganisationalLogo';
-import HeaderContext, { IHeaderContext } from './HeaderContext';
-import Search from './components/Search';
-import Nav from './components/Nav';
-import NavItem from './components/NavItem';
-import NavDropdownMenu from './components/NavDropdownMenu';
 import { Container } from '@components/layout';
-import Content from './components/Content';
-import TransactionalServiceName from './components/TransactionalServiceName';
-import HeaderJs from '@resources/header';
+import { childIsOfComponentType } from '@util/types/TypeGuards';
+import HeaderContext, { IHeaderContext } from './HeaderContext';
+import Account from './components/Account';
+import AccountItem from './components/AccountItem';
+import Logo from './components/Logo';
+import Navigation from './components/Navigation';
+import NavigationItem from './components/NavigationItem';
+import Search from './components/Search';
+import ServiceName from './components/ServiceName';
+import { type Header } from 'nhsuk-frontend';
 
-const BaseHeaderLogo: FC<OrganisationalLogoProps & NHSLogoNavProps> = (props) => {
-  const { orgName } = useContext<IHeaderContext>(HeaderContext);
-  if (orgName) {
-    return <OrganisationalLogo {...props} />;
-  }
-  return <NHSLogo {...props} />;
-};
-
-const HeaderContainer: FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => (
-  <Container className={classNames('nhsuk-header__container', className)} {...rest} />
-);
-
-interface HeaderProps extends HTMLProps<HTMLDivElement> {
-  transactional?: boolean;
-  orgName?: string;
-  orgSplit?: string;
-  orgDescriptor?: string;
-  serviceName?: string;
+export interface HeaderProps extends ComponentPropsWithoutRef<'div'> {
+  containerClasses?: string;
+  logo?: IHeaderContext['logoProps'];
+  service?: IHeaderContext['serviceProps'];
+  organisation?: IHeaderContext['organisationProps'];
   white?: boolean;
 }
 
-const Header = ({
-  className,
-  children,
-  transactional,
-  orgName,
-  orgSplit,
-  orgDescriptor,
-  role = 'banner',
-  serviceName,
-  white,
-  ...rest
-}: HeaderProps) => {
-  const [hasMenuToggle, setHasMenuToggle] = useState(false);
-  const [hasSearch, setHasSearch] = useState(false);
-  const [hasServiceName, setHasServiceName] = useState(false);
+const HeaderComponent = forwardRef<HTMLElement, HeaderProps>((props, forwardedRef) => {
+  const { className, containerClasses, children, logo, service, organisation, white, ...rest } =
+    props;
+
+  const [moduleRef] = useState(() => forwardedRef || createRef<HTMLElement>());
+
+  const [logoProps, setLogoProps] = useState(logo);
+  const [serviceProps, setServiceProps] = useState(service);
+  const [organisationProps, setOrganisationProps] = useState(organisation);
+  const [instance, setInstance] = useState<Header>();
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    HeaderJs();
-  }, []);
+    if (!logo) {
+      return;
+    }
 
-  const setMenuToggle = (toggle: boolean): void => {
-    setHasMenuToggle(toggle);
-  };
+    setLogoProps(logo);
+    return () => setLogoProps(undefined);
+  }, [logo]);
 
-  const setSearch = (toggle: boolean): void => {
-    setHasSearch(toggle);
-  };
+  useEffect(() => {
+    if (!service) {
+      return;
+    }
 
-  const toggleMenu = (): void => {
-    setMenuOpen(!menuOpen);
-  };
+    setServiceProps(service);
+    return () => setServiceProps(undefined);
+  }, [service]);
 
-  const setServiceName = (toggle: boolean): void => {
-    setHasServiceName(toggle);
-  };
+  useEffect(() => {
+    if (!organisation) {
+      return;
+    }
+
+    setOrganisationProps(organisation);
+    return () => setOrganisationProps(undefined);
+  }, [organisation]);
+
+  useEffect(() => {
+    if (!('current' in moduleRef) || !moduleRef.current || instance) {
+      if (!instance) {
+        return;
+      }
+
+      // Sync menu open state
+      if (menuOpen && !instance.menuIsOpen) {
+        instance.openMenu();
+      }
+
+      // Sync menu close state
+      if (!menuOpen && instance.menuIsOpen) {
+        instance.closeMenu();
+      }
+
+      return;
+    }
+
+    const { current: $root } = moduleRef;
+
+    import('nhsuk-frontend').then(({ Header }) => {
+      setInstance(new Header($root));
+    });
+  }, [moduleRef, instance, menuOpen]);
 
   const contextValue: IHeaderContext = useMemo(() => {
     return {
-      orgName,
-      orgSplit,
-      orgDescriptor,
-      serviceName,
-      hasSearch,
-      hasMenuToggle,
-      hasServiceName,
-      setMenuToggle,
-      setSearch,
-      setServiceName,
-      toggleMenu,
+      logoProps,
+      serviceProps,
+      organisationProps,
       menuOpen,
-      transactional: transactional ?? false,
+      setMenuOpen,
+      setLogoProps,
+      setServiceProps,
+      setOrganisationProps,
     };
-  }, [
-    orgName,
-    orgSplit,
-    orgDescriptor,
-    serviceName,
-    hasSearch,
-    hasMenuToggle,
-    hasServiceName,
-    setMenuToggle,
-    setSearch,
-    setServiceName,
-    toggleMenu,
-    menuOpen,
-    transactional,
-  ]);
+  }, [logoProps, serviceProps, organisationProps]);
+
+  const items = Children.toArray(children);
+  const childLogo = items.find((child) => childIsOfComponentType(child, Logo));
+  const childSearch = items.find((child) => childIsOfComponentType(child, Search));
+  const childNavigation = items.find((child) => childIsOfComponentType(child, Navigation));
+  const childAccount = items.find((child) => childIsOfComponentType(child, Account));
 
   return (
     <header
       className={classNames(
         'nhsuk-header',
-        { 'nhsuk-header__transactional': transactional },
-        { 'nhsuk-header--organisation': orgName },
-        { 'nhsuk-header--white': white },
+        { 'nhsuk-header--organisation': !!organisationProps },
+        { 'nhsuk-header--white': !!white },
         className,
       )}
-      role={role}
+      data-module="nhsuk-header"
+      role="banner"
+      ref={moduleRef}
       {...rest}
     >
-      <HeaderContext.Provider value={contextValue}>{children}</HeaderContext.Provider>
+      <HeaderContext.Provider value={contextValue}>
+        <Container className={classNames('nhsuk-header__container', containerClasses)}>
+          <ServiceName {...serviceProps}>{childLogo}</ServiceName>
+          {childSearch}
+          {childAccount}
+        </Container>
+        {childNavigation}
+      </HeaderContext.Provider>
     </header>
   );
-};
+});
 
-Header.Logo = BaseHeaderLogo;
-Header.Search = Search;
-Header.Nav = Nav;
-Header.NavItem = NavItem;
-Header.NavDropdownMenu = NavDropdownMenu;
-Header.Container = HeaderContainer;
-Header.Content = Content;
-Header.ServiceName = TransactionalServiceName;
+HeaderComponent.displayName = 'Header';
 
-export default Header;
+export default Object.assign(HeaderComponent, {
+  Account,
+  AccountItem,
+  Logo,
+  Search,
+  Navigation,
+  NavigationItem,
+});

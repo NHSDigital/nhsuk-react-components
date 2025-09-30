@@ -1,9 +1,9 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC, forwardRef } from 'react';
 import classNames from 'classnames';
 import { Container, Row, Col } from '../../layout';
-import HeadingLevel, { HeadingLevelType } from '@components/utils/HeadingLevel';
+import HeadingLevel, { HeadingLevelProps } from '@components/utils/HeadingLevel';
 
-interface HeroContentProps extends HTMLProps<HTMLDivElement> {
+export interface HeroContentProps extends ComponentPropsWithoutRef<'div'> {
   hasImage: boolean;
 }
 
@@ -29,11 +29,7 @@ const HeroContent: FC<HeroContentProps> = ({ children, hasImage }) => {
   );
 };
 
-interface HeroHeadingProps extends HTMLProps<HTMLHeadingElement> {
-  headingLevel?: HeadingLevelType;
-}
-
-const HeroHeading: FC<HeroHeadingProps> = ({ className, headingLevel = 'h1', ...rest }) => (
+const HeroHeading: FC<HeadingLevelProps> = ({ className, headingLevel = 'h1', ...rest }) => (
   <HeadingLevel
     className={classNames('nhsuk-u-margin-bottom-3', className)}
     headingLevel={headingLevel}
@@ -41,41 +37,43 @@ const HeroHeading: FC<HeroHeadingProps> = ({ className, headingLevel = 'h1', ...
   />
 );
 
-const HeroText: FC<HTMLProps<HTMLParagraphElement>> = ({ className, ...rest }) => (
+const HeroText: FC<ComponentPropsWithoutRef<'p'>> = ({ className, ...rest }) => (
   <p className={classNames('nhsuk-body-l nhsuk-u-margin-bottom-0', className)} {...rest} />
 );
 
-interface HeroProps extends HTMLProps<HTMLDivElement> {
+export interface HeroProps extends ComponentPropsWithoutRef<'div'> {
   imageSrc?: string;
 }
 
-interface Hero extends FC<HeroProps> {
-  Heading: FC<HeroHeadingProps>;
-  Text: FC<HTMLProps<HTMLParagraphElement>>;
-}
-
-const Hero: Hero = ({ className, children, imageSrc, ...rest }) => (
-  <section
-    className={classNames(
-      'nhsuk-hero',
-      { 'nhsuk-hero--image': imageSrc },
-      { 'nhsuk-hero--image-description': imageSrc && children },
-      className,
-    )}
-    style={imageSrc ? { backgroundImage: `url('${imageSrc}')` } : undefined}
-    {...rest}
-  >
-    {imageSrc ? (
-      <div className="nhsuk-hero__overlay">
+const HeroComponent = forwardRef<HTMLElement, HeroProps>(
+  ({ children, className, imageSrc, ...rest }, forwardedRef) => (
+    <section
+      className={classNames(
+        'nhsuk-hero',
+        { 'nhsuk-hero--image': imageSrc },
+        { 'nhsuk-hero--image-description': imageSrc && children },
+        className,
+      )}
+      style={imageSrc ? { backgroundImage: `url('${imageSrc}')` } : undefined}
+      ref={forwardedRef}
+      {...rest}
+    >
+      {imageSrc ? (
+        <div className="nhsuk-hero__overlay">
+          <HeroContent hasImage={Boolean(imageSrc)}>{children}</HeroContent>
+        </div>
+      ) : (
         <HeroContent hasImage={Boolean(imageSrc)}>{children}</HeroContent>
-      </div>
-    ) : (
-      <HeroContent hasImage={Boolean(imageSrc)}>{children}</HeroContent>
-    )}
-  </section>
+      )}
+    </section>
+  ),
 );
 
-Hero.Heading = HeroHeading;
-Hero.Text = HeroText;
+HeroComponent.displayName = 'Hero';
+HeroHeading.displayName = 'Hero.Heading';
+HeroText.displayName = 'Hero.Text';
 
-export default Hero;
+export default Object.assign(HeroComponent, {
+  Heading: HeroHeading,
+  Text: HeroText,
+});

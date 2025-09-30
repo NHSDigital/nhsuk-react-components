@@ -1,34 +1,35 @@
-import React, { FC, HTMLProps, MutableRefObject } from 'react';
+import React, { ComponentPropsWithoutRef, forwardRef } from 'react';
 
 import classNames from 'classnames';
 import { FormElementProps } from '@util/types/FormTypes';
-import SingleInputFormGroup from '@components/utils/SingleInputFormGroup';
+import FormGroup from '@components/utils/FormGroup';
 
-//  SelectProps = HTMLProps<HTMLSelectElement> & FormElementProps;
-interface ISelectProps extends HTMLProps<HTMLSelectElement>, FormElementProps {
-  selectRef?: MutableRefObject<HTMLSelectElement | null>;
-}
+export type SelectProps = ComponentPropsWithoutRef<'select'> &
+  Omit<FormElementProps, 'fieldsetProps' | 'legend' | 'legendProps'>;
 
-interface ISelect extends FC<ISelectProps> {
-  Option: FC<HTMLProps<HTMLOptionElement>>;
-}
-
-const Select: ISelect = ({ children, ...rest }) => (
-  <SingleInputFormGroup<ISelectProps> inputType="select" {...rest}>
-    {({ className, error, selectRef, ...restRenderProps }) => (
-      <select
-        className={classNames('nhsuk-select', { 'nhsuk-select--error': error }, className)}
-        ref={selectRef}
-        {...restRenderProps}
-      >
-        {children}
-      </select>
-    )}
-  </SingleInputFormGroup>
+const SelectComponent = forwardRef<HTMLSelectElement, SelectProps>(
+  ({ children, ...rest }, forwardedRef) => (
+    <FormGroup<SelectProps> inputType="select" {...rest}>
+      {({ className, error, ...restRenderProps }) => (
+        <select
+          className={classNames('nhsuk-select', { 'nhsuk-select--error': error }, className)}
+          ref={forwardedRef}
+          {...restRenderProps}
+        >
+          {children}
+        </select>
+      )}
+    </FormGroup>
+  ),
 );
 
-const Option: FC<HTMLProps<HTMLOptionElement>> = (props) => <option {...props} />;
+const Option = forwardRef<HTMLOptionElement, ComponentPropsWithoutRef<'option'>>(
+  (props, forwardedRef) => <option ref={forwardedRef} {...props} />,
+);
 
-Select.Option = Option;
+SelectComponent.displayName = 'Select';
+Option.displayName = 'Select.Option';
 
-export default Select;
+export default Object.assign(SelectComponent, {
+  Option,
+});

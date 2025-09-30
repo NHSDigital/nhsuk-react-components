@@ -3,13 +3,13 @@ import { ContentsList } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
 /**
- * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/master/packages/components/contents-list" target="_blank" rel="noopener noreferrer">here</a>.
+ * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/contents-list" target="_blank" rel="noopener noreferrer">here</a>.
  *
  * ## Implementation Notes
  *
  * The `ContentsList` component has one subcomponent: `ContentsList.Item`.
  *
- * There are two default props set to the ContentsList: `role: 'navigation'` and `visuallyHiddenText: 'Contents'`. These are only default props and can be overriden. `visuallyHiddenText={false}` will disable the visually hidden text.
+ * There are two default props set to the ContentsList: `role: 'navigation'` and `visuallyHiddenText: 'Contents'`. These are only default props and can be overriden.
  *
  * ## Usage
  *
@@ -21,7 +21,7 @@ import { Meta, StoryObj } from '@storybook/react';
  * const Element = () => {
  *     return (
  *         <ContentsList aria-label="Pages in this guide">
- *             <ContentsList.Item current aria-current="page">
+ *             <ContentsList.Item current>
  *                 What is AMD?
  *             </ContentsList.Item>
  *             <ContentsList.Item href="https://www.nhs.uk/conditions/age-related-macular-degeneration-amd/symptoms/">
@@ -48,14 +48,10 @@ const meta: Meta<typeof ContentsList> = {
 export default meta;
 type Story = StoryObj<typeof ContentsList>;
 
-ContentsList.Item.displayName = 'ContentsList.Item';
-
 export const Standard: Story = {
   render: (args) => (
     <ContentsList aria-label="Pages in this guide">
-      <ContentsList.Item current aria-current="page">
-        What is AMD?
-      </ContentsList.Item>
+      <ContentsList.Item current>What is AMD?</ContentsList.Item>
       <ContentsList.Item href="https://www.nhs.uk/conditions/age-related-macular-degeneration-amd/symptoms/">
         Symptoms
       </ContentsList.Item>

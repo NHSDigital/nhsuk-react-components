@@ -1,57 +1,23 @@
-import React, { FC, HTMLProps, MutableRefObject } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
-import { NHSUKSize } from '@util/types/NHSUKTypes';
-import HeadingLevel, { HeadingLevelType } from '@components/utils/HeadingLevel';
-import FormGroup from '@components/utils/FormGroup';
+import Legend from '../legend/Legend';
 
-interface LegendProps extends Omit<HTMLProps<HTMLLegendElement>, 'size'> {
-  isPageHeading?: boolean;
-  headingLevel?: HeadingLevelType;
-  size?: NHSUKSize;
-}
+export type FieldsetProps = ComponentPropsWithoutRef<'fieldset'>;
 
-const Legend: FC<LegendProps> = ({
-  className,
-  children,
-  isPageHeading,
-  headingLevel = 'h1',
-  size,
-  ...rest
-}) => (
-  <legend
-    className={classNames(
-      'nhsuk-fieldset__legend',
-      {
-        'nhsuk-fieldset__legend--xl': isPageHeading && !size,
-      },
-      { [`nhsuk-fieldset__legend--${size}`]: size },
-      className,
-    )}
-    {...rest}
-  >
-    {isPageHeading ? (
-      <HeadingLevel className="nhsuk-fieldset__heading" headingLevel={headingLevel}>
-        {children}
-      </HeadingLevel>
-    ) : (
-      children
-    )}
-  </legend>
-);
+const FieldsetComponent: FC<FieldsetProps> = ({ children, className, ...rest }) => {
+  if (!children) {
+    return null;
+  }
 
-interface FieldsetProps extends HTMLProps<HTMLFieldSetElement> {
-  fieldsetRef?: MutableRefObject<HTMLFieldSetElement | null>;
-  disableErrorLine?: boolean;
-}
-
-const FieldSet = ({ className, fieldsetRef, disableErrorLine, ...rest }: FieldsetProps) => {
   return (
-    <FormGroup enableErrorLine={!disableErrorLine}>
-      <fieldset className={classNames('nhsuk-fieldset', className)} ref={fieldsetRef} {...rest} />
-    </FormGroup>
+    <fieldset className={classNames('nhsuk-fieldset', className)} {...rest}>
+      {children}
+    </fieldset>
   );
 };
 
-FieldSet.Legend = Legend;
+FieldsetComponent.displayName = 'Fieldset';
 
-export default FieldSet;
+export default Object.assign(FieldsetComponent, {
+  Legend,
+});

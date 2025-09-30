@@ -1,4 +1,1 @@
-import ButtonElement from './Button';
-
-export default ButtonElement;
-export { Button, ButtonLink } from './Button';
+export { default } from './Button';

@@ -9,15 +9,13 @@ const meta: Meta<typeof WarningCallout> = {
 export default meta;
 type Story = StoryObj<typeof WarningCallout>;
 
-WarningCallout.Label.displayName = 'WarningCallout.Label';
-
 export const StandardWarningCallout: Story = {
   render: (args) => (
     <WarningCallout>
-      <WarningCallout.Label>School, nursery or work</WarningCallout.Label>
+      <WarningCallout.Heading>Important</WarningCallout.Heading>
       <p>
-        Stay away from school, nursery or work until all the spots have crusted over. This is
-        usually 5 days after the spots first appeared.
+        For safety, tell your doctor or pharmacist if you&apos;re taking any other medicines,
+        including herbal medicines, vitamins or supplements.
       </p>
     </WarningCallout>
   ),
@@ -25,12 +23,10 @@ export const StandardWarningCallout: Story = {
   name: 'WarningCallout',
 };
 
-export const WarningCalloutWithCustomVisuallyHiddenText: Story = {
+export const WarningCalloutWithCustomHeading: Story = {
   render: (args) => (
     <WarningCallout>
-      <WarningCallout.Label visuallyHiddenText="Not Important: ">
-        School, nursery or work
-      </WarningCallout.Label>
+      <WarningCallout.Heading>School, nursery or work</WarningCallout.Heading>
       <p>
         Stay away from school, nursery or work until all the spots have crusted over. This is
         usually 5 days after the spots first appeared.
@@ -39,23 +35,10 @@ export const WarningCalloutWithCustomVisuallyHiddenText: Story = {
   ),
 };
 
-export const WarningCalloutWithDisabledVisuallyHiddenText: Story = {
+export const WarningCalloutWithCustomHeadingLevel: Story = {
   render: (args) => (
     <WarningCallout>
-      <WarningCallout.Label visuallyHiddenText={false}>
-        School, nursery or work
-      </WarningCallout.Label>
-      <p>
-        Stay away from school, nursery or work until all the spots have crusted over. This is
-        usually 5 days after the spots first appeared.
-      </p>
-    </WarningCallout>
-  ),
-};
-
-export const WarningCalloutWithoutLabel: Story = {
-  render: (args) => (
-    <WarningCallout>
+      <WarningCallout.Heading headingLevel="h4">School, nursery or work</WarningCallout.Heading>
       <p>
         Stay away from school, nursery or work until all the spots have crusted over. This is
         usually 5 days after the spots first appeared.

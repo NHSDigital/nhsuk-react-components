@@ -1,64 +1,144 @@
-import React, { HTMLProps, useMemo, useState } from 'react';
+import React, { ComponentPropsWithoutRef, ReactNode, useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
+import ErrorMessage from '../form-elements/error-message/ErrorMessage';
+import Fieldset from '../form-elements/fieldset/Fieldset';
+import HintText from '../form-elements/hint-text/HintText';
+import Label from '../form-elements/label/Label';
+import Legend from '../form-elements/legend/Legend';
+import { useFormContext } from '../form-elements/form';
+import { generateRandomID } from '../../util/RandomID';
+import { FormElementProps } from '../../util/types/FormTypes';
 import FormGroupContext, { IFormGroupContext } from './FormGroupContext';
 
-interface FormGroupProps extends HTMLProps<HTMLDivElement> {
-  enableErrorLine?: boolean;
-}
+type ExcludedProps =
+  | Extract<
+      keyof FormElementProps,
+      | 'legend'
+      | 'legendProps'
+      | 'fieldsetProps'
+      | 'hint'
+      | 'hintProps'
+      | 'label'
+      | 'labelProps'
+      | 'errorProps'
+      | 'disableErrorLine'
+    >
+  | 'inputType';
 
-const FormGroup: React.FC<FormGroupProps> = ({
-  enableErrorLine = false,
-  className,
-  children,
-  ...rest
-}: FormGroupProps) => {
-  const [registeredComponents, setRegisteredComponents] = useState<string[]>([]);
-  const [erroredComponents, setErroredComponents] = useState<string[]>([]);
+type BaseFormElementRenderProps = ComponentPropsWithoutRef<
+  'div' | 'input' | 'select' | 'textarea'
+> &
+  Pick<FormElementProps, 'error'>;
 
-  const passError = (componentId: string, error: boolean): void => {
-    const existingError = erroredComponents.includes(componentId);
-    if (existingError && !error) {
-      setErroredComponents(erroredComponents.filter((id) => id !== componentId));
-      return;
-    }
-    if (!existingError && error) {
-      setErroredComponents([...erroredComponents, componentId]);
-    }
-  };
+export type FormElementRenderProps<T> = Omit<T, ExcludedProps> & {
+  id: string;
+  name: string;
+};
 
-  const registerComponent = (componentId: string, deregister = false): void => {
-    let newComponents = [...registeredComponents];
-    if (deregister) {
-      newComponents = newComponents.filter((id) => id !== componentId);
-    } else if (!registeredComponents.includes(componentId)) {
-      newComponents = [...newComponents, componentId];
-    }
-    setRegisteredComponents(newComponents);
-  };
+export type FormGroupProps<T> = FormElementProps & {
+  children: (props: FormElementRenderProps<T>) => ReactNode;
+  inputType: 'input' | 'radios' | 'select' | 'checkboxes' | 'dateinput' | 'textarea';
+};
 
-  const contextValue: IFormGroupContext = useMemo(() => {
-    return {
-      registerComponent: registerComponent,
-      passError: passError,
-    };
-  }, [registerComponent, passError]);
+const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T>): JSX.Element => {
+  const {
+    children,
+    hint,
+    label,
+    id,
+    legend,
+    legendProps,
+    fieldsetProps,
+    labelProps,
+    error,
+    hintProps,
+    errorProps,
+    formGroupProps,
+    inputType,
+    name,
+    'aria-describedby': ariaDescribedBy,
+    ...rest
+  } = props;
+  const [generatedID] = useState<string>(generateRandomID(inputType));
+  const { registerComponent, passError } = useContext<IFormGroupContext>(FormGroupContext);
+  const { disableErrorFromComponents } = useFormContext();
 
-  const containsFormElements = registeredComponents.length > 0;
-  const containsError = erroredComponents.length > 0;
+  const elementID = id ?? generatedID;
+  const labelID = `${elementID}--label`;
+  const errorID = `${elementID}--error-message`;
+  const hintID = `${elementID}--hint`;
+
+  const hasFieldset = !!(legend || legendProps || fieldsetProps);
+  const hasError = !disableErrorFromComponents && !!error;
+
+  // Build list of IDs for aria-describedby
+  const ariaDescribedByIds = ariaDescribedBy ? [ariaDescribedBy] : [];
+
+  // Add optional hint ID
+  if (hint) {
+    ariaDescribedByIds.push(hintID);
+  }
+
+  // Add optional error ID
+  if (hasError) {
+    ariaDescribedByIds.push(errorID);
+  }
+
+  const childProps = {
+    error,
+    name: name ?? elementID,
+    id: elementID,
+    ...rest,
+  } as FormElementRenderProps<T>;
+
+  useEffect(() => {
+    passError(elementID, disableErrorFromComponents ? false : Boolean(error));
+    return () => passError(elementID, false);
+  }, [elementID, error]);
+
+  useEffect(() => {
+    registerComponent(elementID);
+    return () => registerComponent(elementID, true);
+  }, []);
 
   return (
-    <FormGroupContext.Provider value={contextValue}>
-      <div
-        className={classNames(className, {
-          'nhsuk-form-group': containsFormElements,
-          'nhsuk-form-group--error':
-            enableErrorLine && containsFormElements ? containsError : false,
-        })}
-        {...rest}
-      >
-        {children}
-      </div>
-    </FormGroupContext.Provider>
+    <div
+      {...formGroupProps}
+      className={classNames(
+        'nhsuk-form-group',
+        { 'nhsuk-form-group--error': hasError },
+        formGroupProps?.className,
+      )}
+    >
+      {hasFieldset ? (
+        <Fieldset {...fieldsetProps} aria-describedby={ariaDescribedByIds.join(' ') || undefined}>
+          <Legend {...legendProps}>{legend}</Legend>
+          <HintText id={hintID} {...hintProps}>
+            {hint}
+          </HintText>
+          <ErrorMessage id={errorID} {...errorProps}>
+            {error}
+          </ErrorMessage>
+          {children(childProps)}
+        </Fieldset>
+      ) : (
+        <>
+          <Label id={labelID} htmlFor={elementID} {...labelProps}>
+            {label}
+          </Label>
+          <HintText id={hintID} {...hintProps}>
+            {hint}
+          </HintText>
+          <ErrorMessage id={errorID} {...errorProps}>
+            {error}
+          </ErrorMessage>
+          {children({
+            ...childProps,
+            'aria-describedby': ariaDescribedByIds.join(' ') || undefined,
+          })}
+        </>
+      )}
+    </div>
   );
 };
 

@@ -6,7 +6,11 @@ import TableHead from '../TableHead';
 
 describe('Table.Head', () => {
   it('matches snapshot', () => {
-    const { container } = render(<TableHead />);
+    const { container } = render(
+      <Table>
+        <TableHead />
+      </Table>,
+    );
 
     expect(container).toMatchSnapshot();
   });

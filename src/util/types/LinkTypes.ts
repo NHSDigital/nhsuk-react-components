@@ -1,6 +1,8 @@
-import { HTMLProps } from 'react';
+import { AnchorHTMLAttributes, ButtonHTMLAttributes, ElementType } from 'react';
 
-export interface AsElementLink<T extends HTMLElement> extends HTMLProps<T> {
-  asElement?: React.ElementType;
+export type AsElementLink<T extends HTMLElement> = (T extends HTMLButtonElement
+  ? ButtonHTMLAttributes<T>
+  : AnchorHTMLAttributes<T>) & {
+  asElement?: ElementType;
   to?: string;
-}
+};

@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`WarningCallout matches snapshot 1`] = `
+exports[`WarningCallout adds visually hidden text when necessary: WarningCalloutWithTextRole 1`] = `
 <div>
   <div
     class="nhsuk-warning-callout"
@@ -21,6 +21,28 @@ exports[`WarningCallout matches snapshot 1`] = `
     </h3>
     <p>
       Stay away from school, nursery or work until all the spots have crusted over. This is usually 5 days after the spots first appeared.
+    </p>
+  </div>
+</div>
+`;
+
+exports[`WarningCallout matches snapshot: WarningCallout 1`] = `
+<div>
+  <div
+    class="nhsuk-warning-callout"
+  >
+    <h3
+      class="nhsuk-warning-callout__label"
+    >
+      Important
+      <span
+        class="nhsuk-u-visually-hidden"
+      >
+        :
+      </span>
+    </h3>
+    <p>
+      For safety, tell your doctor or pharmacist if you're taking any other medicines, including herbal medicines, vitamins or supplements.
     </p>
   </div>
 </div>

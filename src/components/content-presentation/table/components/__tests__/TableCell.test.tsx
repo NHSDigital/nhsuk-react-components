@@ -1,26 +1,30 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-
 import Table from '../../Table';
-import TableBody from '../TableBody';
-import TableCell from '../TableCell';
-import TableHead from '../TableHead';
-import TableRow from '../TableRow';
 
 describe('Table.Cell', () => {
   it('matches snapshot', () => {
-    const { container } = render(<TableCell />);
+    const { container } = render(
+      <Table>
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell>Cell</Table.Cell>
+          </Table.Row>
+        </Table.Body>
+      </Table>,
+    );
 
     expect(container).toMatchSnapshot();
   });
 
   it('prints dev warning when used outside of a head or body', () => {
     jest.spyOn(console, 'warn').mockImplementation();
+
     render(
       <table>
         <thead>
           <tr>
-            <TableCell />
+            <Table.Cell>Cell</Table.Cell>
           </tr>
         </thead>
       </table>,
@@ -37,11 +41,11 @@ describe('Table.Cell', () => {
   it('returns th element when inside a Table.Head', () => {
     const { container } = render(
       <Table>
-        <TableHead>
-          <TableRow>
-            <TableCell id="test-id" />
-          </TableRow>
-        </TableHead>
+        <Table.Head>
+          <Table.Row>
+            <Table.Cell id="test-id">Cell</Table.Cell>
+          </Table.Row>
+        </Table.Head>
       </Table>,
     );
     const cellWrapper = container.querySelector('th.nhsuk-table__header');
@@ -52,11 +56,11 @@ describe('Table.Cell', () => {
   it('returns td element when inside a Table.Body', () => {
     const { container } = render(
       <Table>
-        <TableBody>
-          <TableRow>
-            <TableCell id="test-id" />
-          </TableRow>
-        </TableBody>
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell id="test-id" />
+          </Table.Row>
+        </Table.Body>
       </Table>,
     );
     const cellWrapper = container.querySelector('td.nhsuk-table__cell');
@@ -64,19 +68,19 @@ describe('Table.Cell', () => {
     expect(cellWrapper).toBeTruthy();
   });
 
-  it('adds responsive heading when _responsive=True', () => {
+  it('adds responsive heading when responsive', () => {
     const { container } = render(
       <Table responsive>
-        <TableHead>
-          <TableRow>
-            <TableCell>TestHeading</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          <TableRow>
-            <TableCell id="test-id" />
-          </TableRow>
-        </TableBody>
+        <Table.Head>
+          <Table.Row>
+            <Table.Cell>TestHeading</Table.Cell>
+          </Table.Row>
+        </Table.Head>
+        <Table.Body>
+          <Table.Row>
+            <Table.Cell id="test-id" />
+          </Table.Row>
+        </Table.Body>
       </Table>,
     );
     const cellElement = container.querySelector('td');
@@ -86,12 +90,12 @@ describe('Table.Cell', () => {
     expect(spanWrapper?.textContent).toBe('TestHeading ');
   });
 
-  it('adds the numeric class when isNumeric is true', () => {
+  it('adds the numeric class when `format: numeric` is set', () => {
     const { container } = render(
       <table>
         <tbody>
           <tr>
-            <TableCell data-test="cell" isNumeric />
+            <Table.Cell data-test="cell" format="numeric" />
           </tr>
         </tbody>
       </table>,
@@ -101,14 +105,14 @@ describe('Table.Cell', () => {
     expect(cell).toBeTruthy();
   });
 
-  it('adds the numeric header class when isNumeric is true', () => {
+  it('adds the numeric header class when `format: numeric` is set', () => {
     const { container } = render(
       <table>
-        <TableHead>
+        <Table.Head>
           <tr>
-            <TableCell data-test="cell" isNumeric />
+            <Table.Cell data-test="cell" format="numeric" />
           </tr>
-        </TableHead>
+        </Table.Head>
       </table>,
     );
     const cell = container.querySelector('th[data-test="cell"].nhsuk-table__header--numeric');
@@ -116,17 +120,17 @@ describe('Table.Cell', () => {
     expect(cell).toBeTruthy();
   });
 
-  it('does not add the numeric header when isNumeric is false', () => {
+  it('does not add the numeric header when `format: numeric` is omitted', () => {
     const { container } = render(
       <table>
-        <TableHead>
+        <Table.Head>
           <tr>
-            <TableCell data-test="header" />
+            <Table.Cell data-test="header" />
           </tr>
-        </TableHead>
+        </Table.Head>
         <tbody>
           <tr>
-            <TableCell data-test="cell" />
+            <Table.Cell data-test="cell" />
           </tr>
         </tbody>
       </table>,

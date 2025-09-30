@@ -2,8 +2,12 @@
 
 exports[`Table.Head matches snapshot 1`] = `
 <div>
-  <thead
-    class="nhsuk-table__head"
-  />
+  <table
+    class="nhsuk-table"
+  >
+    <thead
+      class="nhsuk-table__head"
+    />
+  </table>
 </div>
 `;

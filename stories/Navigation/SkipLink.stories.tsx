@@ -33,12 +33,9 @@ const meta: Meta<typeof SkipLink> = {
         <CodeText>tab</CodeText>
         to show the SkipLink
       </HintText>
-      <SkipLink
-        disableDefaultBehaviour={args.disableDefaultBehaviour}
-        disableHeadingFocus={args.disableHeadingFocus}
-      />
+      <SkipLink />
       <h1>Page heading</h1>
-      <div id="#maincontent">This is the main content</div>
+      <div id="maincontent">This is the main content</div>
     </>
   ),
 };
@@ -46,23 +43,4 @@ const meta: Meta<typeof SkipLink> = {
 export default meta;
 type Story = StoryObj<typeof SkipLink>;
 
-export const Standard: Story = {
-  args: {
-    disableDefaultBehaviour: false,
-    disableHeadingFocus: false,
-  },
-};
-
-export const SkipLinkWithDefaultBehaviourDisabled: Story = {
-  args: {
-    disableDefaultBehaviour: true,
-    disableHeadingFocus: false,
-  },
-};
-
-export const SkipLinkWithHeadingFocusDisabled: Story = {
-  args: {
-    disableDefaultBehaviour: false,
-    disableHeadingFocus: true,
-  },
-};
+export const Standard: Story = {};

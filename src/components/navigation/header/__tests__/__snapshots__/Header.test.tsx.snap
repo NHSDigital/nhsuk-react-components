@@ -1,110 +1,180 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The header component Matches the snapshot 1`] = `
+exports[`Header Header.Account matches snapshot 1`] = `
 <div>
   <header
     class="nhsuk-header"
+    data-module="nhsuk-header"
+    data-nhsuk-header-init=""
     role="banner"
   >
     <div
       class="nhsuk-width-container nhsuk-header__container"
     >
       <div
-        class="nhsuk-header__logo"
+        class="nhsuk-header__service"
+      >
+        <svg
+          aria-label="NHS"
+          class="nhsuk-header__logo"
+          focusable="false"
+          height="40"
+          role="img"
+          viewBox="0 0 200 80"
+          width="100"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title>
+            NHS
+          </title>
+          <path
+            d="M200 0v80H0V0h200Zm-27.5 5.5c-14.5 0-29 5-29 22 0 10.2 7.7 13.5 14.7 16.3l.7.3c5.4 2 10.1 3.9 10.1 8.4 0 6.5-8.5 7.5-14 7.5s-12.5-1.5-16-3.5L135 70c5.5 2 13.5 3.5 20 3.5 15.5 0 32-4.5 32-22.5 0-19.5-25.5-16.5-25.5-25.5 0-5.5 5.5-6.5 12.5-6.5a35 35 0 0 1 14.5 3l4-13.5c-4.5-2-12-3-20-3Zm-131 2h-22l-14 65H22l9-45h.5l13.5 45h21.5l14-65H64l-9 45h-.5l-13-45Zm63 0h-18l-13 65h17l6-28H117l-5.5 28H129l13.5-65H125L119.5 32h-20l5-24.5Z"
+            fill="currentcolor"
+          />
+        </svg>
+      </div>
+      <nav
+        aria-label="Account"
+        class="nhsuk-header__account"
+      >
+        <ul
+          class="nhsuk-header__account-list"
+        >
+          <li
+            class="nhsuk-header__account-item"
+          >
+            <a
+              class="nhsuk-header__account-link"
+              href="#"
+            >
+              <svg
+                aria-hidden="true"
+                class="nhsuk-icon nhsuk-icon--user"
+                focusable="false"
+                height="16"
+                viewBox="0 0 24 24"
+                width="16"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M12 1a11 11 0 1 1 0 22 11 11 0 0 1 0-22Zm0 2a9 9 0 0 0-5 16.5V18a4 4 0 0 1 4-4h2a4 4 0 0 1 4 4v1.5A9 9 0 0 0 12 3Zm0 3a3.5 3.5 0 1 1-3.5 3.5A3.4 3.4 0 0 1 12 6Z"
+                />
+              </svg>
+              florence.nightingale@nhs.net
+            </a>
+          </li>
+          <li
+            class="nhsuk-header__account-item"
+          >
+            <form
+              action="/log-out"
+              class="nhsuk-header__account-form"
+              method="post"
+            >
+              <button
+                class="nhsuk-header__account-button"
+              >
+                Log out
+              </button>
+            </form>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+</div>
+`;
+
+exports[`Header matches snapshot (via server): client 1`] = `
+<div>
+  <header
+    class="nhsuk-header"
+    data-module="nhsuk-header"
+    data-nhsuk-header-init=""
+    role="banner"
+  >
+    <div
+      class="nhsuk-width-container nhsuk-header__container"
+    >
+      <div
+        class="nhsuk-header__service"
       >
         <a
           aria-label="NHS homepage"
-          class="nhsuk-header__link"
+          class="nhsuk-header__service-logo"
           href="/"
         >
           <svg
-            aria-labelledby="nhsuk-logo_title"
-            class="nhsuk-logo"
+            aria-label="NHS"
+            class="nhsuk-header__logo"
+            focusable="false"
             height="40"
-            viewBox="0 0 40 16"
+            role="img"
+            viewBox="0 0 200 80"
             width="100"
             xmlns="http://www.w3.org/2000/svg"
           >
-            <title
-              id="nhsuk-logo_title"
-            >
-              NHS Logo
+            <title>
+              NHS
             </title>
             <path
-              class="nhsuk-logo__background"
-              d="M0 0h40v16H0z"
-              fill="#005eb8"
-            />
-            <path
-              class="nhsuk-logo__text"
-              d="M3.9 1.5h4.4l2.6 9h.1l1.8-9h3.3l-2.8 13H9l-2.7-9h-.1l-1.8 9H1.1M17.3 1.5h3.6l-1 4.9h4L25 1.5h3.5l-2.7 13h-3.5l1.1-5.6h-4.1l-1.2 5.6h-3.4M37.7 4.4c-.7-.3-1.6-.6-2.9-.6-1.4 0-2.5.2-2.5 1.3 0 1.8 5.1 1.2 5.1 5.1 0 3.6-3.3 4.5-6.4 4.5-1.3 0-2.9-.3-4-.7l.8-2.7c.7.4 2.1.7 3.2.7s2.8-.2 2.8-1.5c0-2.1-5.1-1.3-5.1-5 0-3.4 2.9-4.4 5.8-4.4 1.6 0 3.1.2 4 .6"
-              fill="#fff"
+              d="M200 0v80H0V0h200Zm-27.5 5.5c-14.5 0-29 5-29 22 0 10.2 7.7 13.5 14.7 16.3l.7.3c5.4 2 10.1 3.9 10.1 8.4 0 6.5-8.5 7.5-14 7.5s-12.5-1.5-16-3.5L135 70c5.5 2 13.5 3.5 20 3.5 15.5 0 32-4.5 32-22.5 0-19.5-25.5-16.5-25.5-25.5 0-5.5 5.5-6.5 12.5-6.5a35 35 0 0 1 14.5 3l4-13.5c-4.5-2-12-3-20-3Zm-131 2h-22l-14 65H22l9-45h.5l13.5 45h21.5l14-65H64l-9 45h-.5l-13-45Zm63 0h-18l-13 65h17l6-28H117l-5.5 28H129l13.5-65H125L119.5 32h-20l5-24.5Z"
+              fill="currentcolor"
             />
           </svg>
         </a>
       </div>
-      <div
-        class="nhsuk-header__content"
+      <search
+        class="nhsuk-header__search"
       >
-        <div
-          class="nhsuk-header__search"
+        <form
+          action="https://www.nhs.uk/search/"
+          class="nhsuk-header__search-form"
+          id="search"
+          method="get"
         >
-          <div
-            class="nhsuk-header__search-wrap"
+          <label
+            class="nhsuk-u-visually-hidden"
+            for="search-field"
           >
-            <form
-              class="nhsuk-header__search-form"
-              method="get"
-              role="search"
+            Search the NHS website
+          </label>
+          <input
+            autocomplete="off"
+            class="nhsuk-header__search-input nhsuk-input"
+            id="search-field"
+            name="q"
+            placeholder="Search"
+            type="search"
+          />
+          <button
+            class="nhsuk-header__search-submit"
+            type="submit"
+          >
+            <svg
+              aria-label="Search"
+              class="nhsuk-icon nhsuk-icon--search"
+              focusable="false"
+              height="16"
+              role="img"
+              viewBox="0 0 24 24"
+              width="16"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <label
-                class="nhsuk-u-visually-hidden"
-                for="search-field"
-              >
-                Search the NHS website
-              </label>
-              <input
-                autocomplete="off"
-                class="nhsuk-search__input"
-                id="search-field"
-                placeholder="Search"
-                role="search"
-                type="search"
+              <path
+                d="m20.7 19.3-4.1-4.1a7 7 0 1 0-1.4 1.4l4 4.1a1 1 0 0 0 1.5 0c.4-.4.4-1 0-1.4ZM6 11a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"
               />
-              <button
-                class="nhsuk-search__submit"
-                type="submit"
-              >
-                <svg
-                  aria-hidden="true"
-                  class="nhsuk-icon nhsuk-icon__search"
-                  height="27"
-                  viewBox="0 0 24 24"
-                  width="27"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M19.71 18.29l-4.11-4.1a7 7 0 1 0-1.41 1.41l4.1 4.11a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 10a5 5 0 1 1 5 5 5 5 0 0 1-5-5z"
-                  />
-                </svg>
-                <span
-                  class="nhsuk-u-visually-hidden"
-                >
-                  Search
-                </span>
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
+            </svg>
+          </button>
+        </form>
+      </search>
     </div>
-    <div
-      class="nhsuk-navigation-container"
+    <nav
+      aria-label="Menu"
+      class="nhsuk-header__navigation"
     >
-      <nav
-        class="nhsuk-navigation"
-        id="header-navigation"
-        role="navigation"
+      <div
+        class="nhsuk-width-container nhsuk-header__navigation-container"
       >
         <ul
           class="nhsuk-header__navigation-list"
@@ -160,7 +230,7 @@ exports[`The header component Matches the snapshot 1`] = `
             </a>
           </li>
           <li
-            class="nhsuk-header__navigation-item nhsuk-header__navigation-item--home"
+            class="nhsuk-header__navigation-item"
           >
             <a
               class="nhsuk-header__navigation-link"
@@ -170,38 +240,374 @@ exports[`The header component Matches the snapshot 1`] = `
             </a>
           </li>
           <li
-            class="nhsuk-mobile-menu-container"
+            class="nhsuk-header__menu"
+            hidden=""
           >
             <button
               aria-expanded="false"
               class="nhsuk-header__menu-toggle nhsuk-header__navigation-link"
+              id="toggle-menu"
             >
               <span
                 class="nhsuk-u-visually-hidden"
               >
-                Browse
+                Browse 
               </span>
               More
-              <svg
-                aria-hidden="true"
-                class="nhsuk-icon nhsuk-icon__chevron-down"
-                height="34"
-                viewBox="0 0 24 24"
-                width="34"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M15.5 12a1 1 0 0 1-.29.71l-5 5a1 1 0 0 1-1.42-1.42l4.3-4.29-4.3-4.29a1 1 0 0 1 1.42-1.42l5 5a1 1 0 0 1 .29.71z"
-                />
-              </svg>
             </button>
-            <ul
-              class="nhsuk-header__drop-down nhsuk-header__drop-down--hidden"
-            />
           </li>
         </ul>
-      </nav>
+      </div>
+    </nav>
+  </header>
+</div>
+`;
+
+exports[`Header matches snapshot (via server): server 1`] = `
+<div>
+  <header
+    class="nhsuk-header"
+    data-module="nhsuk-header"
+    role="banner"
+  >
+    <div
+      class="nhsuk-width-container nhsuk-header__container"
+    >
+      <div
+        class="nhsuk-header__service"
+      >
+        <svg
+          aria-label="NHS"
+          class="nhsuk-header__logo"
+          focusable="false"
+          height="40"
+          role="img"
+          viewBox="0 0 200 80"
+          width="100"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <title>
+            NHS
+          </title>
+          <path
+            d="M200 0v80H0V0h200Zm-27.5 5.5c-14.5 0-29 5-29 22 0 10.2 7.7 13.5 14.7 16.3l.7.3c5.4 2 10.1 3.9 10.1 8.4 0 6.5-8.5 7.5-14 7.5s-12.5-1.5-16-3.5L135 70c5.5 2 13.5 3.5 20 3.5 15.5 0 32-4.5 32-22.5 0-19.5-25.5-16.5-25.5-25.5 0-5.5 5.5-6.5 12.5-6.5a35 35 0 0 1 14.5 3l4-13.5c-4.5-2-12-3-20-3Zm-131 2h-22l-14 65H22l9-45h.5l13.5 45h21.5l14-65H64l-9 45h-.5l-13-45Zm63 0h-18l-13 65h17l6-28H117l-5.5 28H129l13.5-65H125L119.5 32h-20l5-24.5Z"
+            fill="currentcolor"
+          />
+        </svg>
+      </div>
+      <search
+        class="nhsuk-header__search"
+      >
+        <form
+          action="https://www.nhs.uk/search/"
+          class="nhsuk-header__search-form"
+          id="search"
+          method="get"
+        >
+          <label
+            class="nhsuk-u-visually-hidden"
+            for="search-field"
+          >
+            Search the NHS website
+          </label>
+          <input
+            autocomplete="off"
+            class="nhsuk-header__search-input nhsuk-input"
+            id="search-field"
+            name="q"
+            placeholder="Search"
+            type="search"
+          />
+          <button
+            class="nhsuk-header__search-submit"
+            type="submit"
+          >
+            <svg
+              aria-label="Search"
+              class="nhsuk-icon nhsuk-icon--search"
+              focusable="false"
+              height="16"
+              role="img"
+              viewBox="0 0 24 24"
+              width="16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="m20.7 19.3-4.1-4.1a7 7 0 1 0-1.4 1.4l4 4.1a1 1 0 0 0 1.5 0c.4-.4.4-1 0-1.4ZM6 11a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"
+              />
+            </svg>
+          </button>
+        </form>
+      </search>
     </div>
+    <nav
+      aria-label="Menu"
+      class="nhsuk-header__navigation"
+    >
+      <div
+        class="nhsuk-width-container nhsuk-header__navigation-container"
+      >
+        <ul
+          class="nhsuk-header__navigation-list"
+        >
+          <li
+            class="nhsuk-header__navigation-item"
+          >
+            <a
+              class="nhsuk-header__navigation-link"
+              href="/conditions"
+            >
+              Health A-Z
+            </a>
+          </li>
+          <li
+            class="nhsuk-header__navigation-item"
+          >
+            <a
+              class="nhsuk-header__navigation-link"
+              href="/live-well"
+            >
+              Live Well
+            </a>
+          </li>
+          <li
+            class="nhsuk-header__navigation-item"
+          >
+            <a
+              class="nhsuk-header__navigation-link"
+              href="/social-care-and-support"
+            >
+              Care and support
+            </a>
+          </li>
+          <li
+            class="nhsuk-header__navigation-item"
+          >
+            <a
+              class="nhsuk-header__navigation-link"
+              href="/news"
+            >
+              Health news
+            </a>
+          </li>
+          <li
+            class="nhsuk-header__navigation-item"
+          >
+            <a
+              class="nhsuk-header__navigation-link"
+              href="/service-search"
+            >
+              Services near you
+            </a>
+          </li>
+          <li
+            class="nhsuk-header__navigation-item"
+          >
+            <a
+              class="nhsuk-header__navigation-link"
+              href="/"
+            >
+              Home
+            </a>
+          </li>
+          <li
+            class="nhsuk-header__menu"
+            hidden=""
+          >
+            <button
+              aria-expanded="false"
+              class="nhsuk-header__menu-toggle nhsuk-header__navigation-link"
+              id="toggle-menu"
+            >
+              <span
+                class="nhsuk-u-visually-hidden"
+              >
+                Browse 
+              </span>
+              More
+            </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+</div>
+`;
+
+exports[`Header matches snapshot 1`] = `
+<div>
+  <header
+    class="nhsuk-header"
+    data-module="nhsuk-header"
+    data-nhsuk-header-init=""
+    role="banner"
+  >
+    <div
+      class="nhsuk-width-container nhsuk-header__container"
+    >
+      <div
+        class="nhsuk-header__service"
+      >
+        <a
+          aria-label="NHS homepage"
+          class="nhsuk-header__service-logo"
+          href="/"
+        >
+          <svg
+            aria-label="NHS"
+            class="nhsuk-header__logo"
+            focusable="false"
+            height="40"
+            role="img"
+            viewBox="0 0 200 80"
+            width="100"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>
+              NHS
+            </title>
+            <path
+              d="M200 0v80H0V0h200Zm-27.5 5.5c-14.5 0-29 5-29 22 0 10.2 7.7 13.5 14.7 16.3l.7.3c5.4 2 10.1 3.9 10.1 8.4 0 6.5-8.5 7.5-14 7.5s-12.5-1.5-16-3.5L135 70c5.5 2 13.5 3.5 20 3.5 15.5 0 32-4.5 32-22.5 0-19.5-25.5-16.5-25.5-25.5 0-5.5 5.5-6.5 12.5-6.5a35 35 0 0 1 14.5 3l4-13.5c-4.5-2-12-3-20-3Zm-131 2h-22l-14 65H22l9-45h.5l13.5 45h21.5l14-65H64l-9 45h-.5l-13-45Zm63 0h-18l-13 65h17l6-28H117l-5.5 28H129l13.5-65H125L119.5 32h-20l5-24.5Z"
+              fill="currentcolor"
+            />
+          </svg>
+        </a>
+      </div>
+      <search
+        class="nhsuk-header__search"
+      >
+        <form
+          action="https://www.nhs.uk/search/"
+          class="nhsuk-header__search-form"
+          id="search"
+          method="get"
+        >
+          <label
+            class="nhsuk-u-visually-hidden"
+            for="search-field"
+          >
+            Search the NHS website
+          </label>
+          <input
+            autocomplete="off"
+            class="nhsuk-header__search-input nhsuk-input"
+            id="search-field"
+            name="q"
+            placeholder="Search"
+            type="search"
+          />
+          <button
+            class="nhsuk-header__search-submit"
+            type="submit"
+          >
+            <svg
+              aria-label="Search"
+              class="nhsuk-icon nhsuk-icon--search"
+              focusable="false"
+              height="16"
+              role="img"
+              viewBox="0 0 24 24"
+              width="16"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="m20.7 19.3-4.1-4.1a7 7 0 1 0-1.4 1.4l4 4.1a1 1 0 0 0 1.5 0c.4-.4.4-1 0-1.4ZM6 11a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"
+              />
+            </svg>
+          </button>
+        </form>
+      </search>
+    </div>
+    <nav
+      aria-label="Menu"
+      class="nhsuk-header__navigation"
+    >
+      <div
+        class="nhsuk-width-container nhsuk-header__navigation-container"
+      >
+        <ul
+          class="nhsuk-header__navigation-list"
+        >
+          <li
+            class="nhsuk-header__navigation-item"
+          >
+            <a
+              class="nhsuk-header__navigation-link"
+              href="/conditions"
+            >
+              Health A-Z
+            </a>
+          </li>
+          <li
+            class="nhsuk-header__navigation-item"
+          >
+            <a
+              class="nhsuk-header__navigation-link"
+              href="/live-well"
+            >
+              Live Well
+            </a>
+          </li>
+          <li
+            class="nhsuk-header__navigation-item"
+          >
+            <a
+              class="nhsuk-header__navigation-link"
+              href="/social-care-and-support"
+            >
+              Care and support
+            </a>
+          </li>
+          <li
+            class="nhsuk-header__navigation-item"
+          >
+            <a
+              class="nhsuk-header__navigation-link"
+              href="/news"
+            >
+              Health news
+            </a>
+          </li>
+          <li
+            class="nhsuk-header__navigation-item"
+          >
+            <a
+              class="nhsuk-header__navigation-link"
+              href="/service-search"
+            >
+              Services near you
+            </a>
+          </li>
+          <li
+            class="nhsuk-header__navigation-item"
+          >
+            <a
+              class="nhsuk-header__navigation-link"
+              href="/"
+            >
+              Home
+            </a>
+          </li>
+          <li
+            class="nhsuk-header__menu"
+            hidden=""
+          >
+            <button
+              aria-expanded="false"
+              class="nhsuk-header__menu-toggle nhsuk-header__navigation-link"
+              id="toggle-menu"
+            >
+              <span
+                class="nhsuk-u-visually-hidden"
+              >
+                Browse 
+              </span>
+              More
+            </button>
+          </li>
+        </ul>
+      </div>
+    </nav>
   </header>
 </div>
 `;

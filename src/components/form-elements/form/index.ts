@@ -1,5 +1,1 @@
-import Form from './Form';
-
-export { useFormContext } from './FormContext';
-
-export default Form;
+export { default, useFormContext } from './FormContext';

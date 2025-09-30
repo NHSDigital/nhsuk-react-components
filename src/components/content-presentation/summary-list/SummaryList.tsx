@@ -1,47 +1,49 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC, forwardRef } from 'react';
 import classNames from 'classnames';
 
-const SummaryListRow: FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => (
+const SummaryListRow: FC<ComponentPropsWithoutRef<'div'>> = ({ className, ...rest }) => (
   <div className={classNames('nhsuk-summary-list__row', className)} {...rest} />
 );
 
-const SummaryListKey: FC<HTMLProps<HTMLDListElement>> = ({ className, ...rest }) => (
+const SummaryListKey: FC<ComponentPropsWithoutRef<'dt'>> = ({ className, ...rest }) => (
   <dt className={classNames('nhsuk-summary-list__key', className)} {...rest} />
 );
 
-const SummaryListValue: FC<HTMLProps<HTMLDListElement>> = ({ className, ...rest }) => (
+const SummaryListValue: FC<ComponentPropsWithoutRef<'dd'>> = ({ className, ...rest }) => (
   <dd className={classNames('nhsuk-summary-list__value', className)} {...rest} />
 );
 
-const SummaryListActions: FC<HTMLProps<HTMLDListElement>> = ({ className, ...rest }) => (
+const SummaryListActions: FC<ComponentPropsWithoutRef<'dd'>> = ({ className, ...rest }) => (
   <dd className={classNames('nhsuk-summary-list__actions', className)} {...rest} />
 );
 
-interface SummaryListProps extends HTMLProps<HTMLDListElement> {
+export interface SummaryListProps extends ComponentPropsWithoutRef<'dl'> {
   noBorder?: boolean;
 }
 
-interface SummaryList extends FC<SummaryListProps> {
-  Row: FC<HTMLProps<HTMLDivElement>>;
-  Key: FC<HTMLProps<HTMLDListElement>>;
-  Value: FC<HTMLProps<HTMLDListElement>>;
-  Actions: FC<HTMLProps<HTMLDListElement>>;
-}
-
-const SummaryList: SummaryList = ({ className, noBorder, ...rest }) => (
-  <dl
-    className={classNames(
-      'nhsuk-summary-list',
-      { 'nhsuk-summary-list--no-border': noBorder },
-      className,
-    )}
-    {...rest}
-  />
+const SummaryListComponent = forwardRef<HTMLDListElement, SummaryListProps>(
+  ({ className, noBorder, ...rest }, forwardedRef) => (
+    <dl
+      className={classNames(
+        'nhsuk-summary-list',
+        { 'nhsuk-summary-list--no-border': noBorder },
+        className,
+      )}
+      ref={forwardedRef}
+      {...rest}
+    />
+  ),
 );
 
-SummaryList.Row = SummaryListRow;
-SummaryList.Key = SummaryListKey;
-SummaryList.Value = SummaryListValue;
-SummaryList.Actions = SummaryListActions;
+SummaryListComponent.displayName = 'SummaryList';
+SummaryListRow.displayName = 'SummaryList.Row';
+SummaryListKey.displayName = 'SummaryList.Key';
+SummaryListValue.displayName = 'SummaryList.Value';
+SummaryListActions.displayName = 'SummaryList.Actions';
 
-export default SummaryList;
+export default Object.assign(SummaryListComponent, {
+  Row: SummaryListRow,
+  Key: SummaryListKey,
+  Value: SummaryListValue,
+  Actions: SummaryListActions,
+});

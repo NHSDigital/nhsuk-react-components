@@ -1,4 +1,4 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC, forwardRef } from 'react';
 import classNames from 'classnames';
 import { AsElementLink } from '@util/types/LinkTypes';
 
@@ -36,47 +36,47 @@ const processLetters = (
   return null;
 };
 
-interface NavAZProps extends HTMLProps<HTMLDivElement> {
+export interface NavAZProps extends ComponentPropsWithoutRef<'div'> {
   fullAlphabet?: boolean;
   removedLetters?: Array<string>;
   disabledLetters?: Array<string>;
   letters?: Array<string>;
 }
 
-interface NavAZ extends FC<NavAZProps> {
-  LinkItem: FC<AsElementLink<HTMLAnchorElement>>;
-  DisabledItem: FC<HTMLProps<HTMLSpanElement>>;
-}
+const NavAZ = forwardRef<HTMLElement, NavAZProps>((props, forwardedRef) => {
+  const {
+    className,
+    children,
+    fullAlphabet,
+    removedLetters,
+    disabledLetters,
+    letters,
+    'aria-label': ariaLabel = 'A to Z Navigation',
+    ...rest
+  } = props;
 
-const NavAZ: NavAZ = ({
-  className,
-  children,
-  fullAlphabet,
-  removedLetters,
-  disabledLetters,
-  letters,
-  'aria-label': ariaLabel = 'A to Z Navigation',
-  ...rest
-}) => (
-  <nav
-    className={classNames('nhsuk-u-margin-bottom-4', 'nhsuk-u-margin-top-4', className)}
-    aria-label={ariaLabel}
-    role="navigation"
-    {...rest}
-  >
-    <ol className="nhsuk-list nhsuk-u-clear nhsuk-u-margin-0">
-      {processLetters(children, fullAlphabet, removedLetters, disabledLetters, letters)}
-    </ol>
-  </nav>
-);
+  return (
+    <nav
+      className={classNames('nhsuk-u-margin-bottom-4', 'nhsuk-u-margin-top-4', className)}
+      aria-label={ariaLabel}
+      role="navigation"
+      ref={forwardedRef}
+      {...rest}
+    >
+      <ol className="nhsuk-list nhsuk-u-clear nhsuk-u-margin-0">
+        {processLetters(children, fullAlphabet, removedLetters, disabledLetters, letters)}
+      </ol>
+    </nav>
+  );
+});
 
 const LinkItem: FC<AsElementLink<HTMLAnchorElement>> = ({
   className,
-  asElement: Component = 'a',
+  asElement: Element = 'a',
   ...rest
 }) => (
   <li className="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1">
-    <Component
+    <Element
       className={classNames(
         'nhsuk-u-font-size-22',
         'nhsuk-u-padding-2',
@@ -88,14 +88,14 @@ const LinkItem: FC<AsElementLink<HTMLAnchorElement>> = ({
   </li>
 );
 
-const DisabledItem: FC<HTMLProps<HTMLSpanElement>> = ({ className, ...rest }) => (
+const DisabledItem: FC<ComponentPropsWithoutRef<'span'>> = ({ className, ...rest }) => (
   <li className="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1">
     <span
       className={classNames(
         'nhsuk-u-font-size-22',
         'nhsuk-u-padding-2',
         'nhsuk-u-display-block',
-        'nhsuk-u-secondary-text-color',
+        'nhsuk-u-secondary-text-colour',
         className,
       )}
       {...rest}
@@ -103,7 +103,11 @@ const DisabledItem: FC<HTMLProps<HTMLSpanElement>> = ({ className, ...rest }) =>
   </li>
 );
 
-NavAZ.LinkItem = LinkItem;
-NavAZ.DisabledItem = DisabledItem;
+NavAZ.displayName = 'NavAZ';
+LinkItem.displayName = 'NavAZ.LinkItem';
+DisabledItem.displayName = 'NavAZ.DisabledItem';
 
-export default NavAZ;
+export default Object.assign(NavAZ, {
+  LinkItem,
+  DisabledItem,
+});

@@ -1,89 +1,130 @@
-import React from 'react';
-import { render } from '@testing-library/react';
-import CharacterCount, { CharacterCountType } from '../CharacterCount';
-import Label from '@components/form-elements/label/Label';
-import HintText from '@components/form-elements/hint-text/HintText';
-import Textarea from '@components/form-elements/textarea/Textarea';
+import React, { createRef } from 'react';
+import CharacterCount from '../CharacterCount';
+import { renderClient, renderServer } from '@util/components';
 
 describe('Character Count', () => {
-  it('Matches snapshot', () => {
-    const { container } = render(
+  it('matches snapshot', async () => {
+    const { container } = await renderClient(
       <CharacterCount
+        label="Can you provide more detail?"
+        labelProps={{ isPageHeading: true, size: 'l' }}
+        hint="Do not include personal information like your name, date of birth or NHS number"
+        id="more-detail"
+        name="more-detail"
         maxLength={200}
-        countType={CharacterCountType.Characters}
-        textAreaId="more-detail"
-      >
-        <Label htmlFor="more-detail">Can you provide more detail?</Label>
-        <HintText id="more-detail-hint">
-          Do not include personal information like your name, date of birth or NHS number.
-        </HintText>
-        <Textarea
-          id="more-detail"
-          className="nhsuk-js-character-count"
-          name="more-detail"
-          aria-describedby="more-detail-hint"
-          rows={5}
-        />
-      </CharacterCount>,
+        rows={5}
+      />,
+      { moduleName: 'nhsuk-character-count' },
     );
 
     expect(container).toMatchSnapshot();
   });
 
-  it('Sets the data-maxlength attribute when counting characters', () => {
-    const { container } = render(
+  it('matches snapshot (via server)', async () => {
+    const { container, element } = await renderServer(
       <CharacterCount
+        label="Can you provide more detail?"
+        labelProps={{ isPageHeading: true, size: 'l' }}
+        hint="Do not include personal information like your name, date of birth or NHS number"
+        id="more-detail"
+        name="more-detail"
         maxLength={200}
-        countType={CharacterCountType.Characters}
-        textAreaId="more-detail"
-      >
-        <div />
-      </CharacterCount>,
+        rows={5}
+      />,
+      { moduleName: 'nhsuk-character-count' },
     );
 
-    expect(container.querySelector('.nhsuk-character-count')?.getAttribute('data-maxlength')).toBe(
-      '200',
-    );
-    expect(
-      container.querySelector('.nhsuk-character-count')?.getAttribute('data-maxwords'),
-    ).toBeNull();
-    expect(
-      container.querySelector('.nhsuk-character-count')?.getAttribute('data-threshold'),
-    ).toBeNull();
+    expect(container).toMatchSnapshot('server');
+
+    await renderClient(element, {
+      moduleName: 'nhsuk-character-count',
+      hydrate: true,
+      container,
+    });
+
+    expect(container).toMatchSnapshot('client');
   });
 
-  it('Sets the data-maxwords attribute when counting words', () => {
-    const { container } = render(
-      <CharacterCount maxLength={200} countType={CharacterCountType.Words} textAreaId="more-detail">
-        <div />
-      </CharacterCount>,
+  it('forwards refs', async () => {
+    const groupRef = createRef<HTMLDivElement>();
+    const fieldRef = createRef<HTMLTextAreaElement>();
+
+    const { container } = await renderClient(
+      <CharacterCount formGroupProps={{ ref: groupRef }} ref={fieldRef} />,
+      { moduleName: 'nhsuk-character-count' },
     );
 
-    expect(container.querySelector('.nhsuk-character-count')?.getAttribute('data-maxwords')).toBe(
-      '200',
-    );
-    expect(
-      container.querySelector('.nhsuk-character-count')?.getAttribute('data-maxlength'),
-    ).toBeNull();
-    expect(
-      container.querySelector('.nhsuk-character-count')?.getAttribute('data-threshold'),
-    ).toBeNull();
+    const groupEl = container.querySelector('div');
+    const textareaEl = container.querySelector('textarea');
+
+    expect(groupRef.current).toBe(groupEl);
+    expect(groupRef.current).toHaveClass('nhsuk-form-group', 'nhsuk-character-count');
+
+    expect(fieldRef.current).toBe(textareaEl);
+    expect(fieldRef.current).toHaveClass('nhsuk-textarea');
   });
 
-  it('Sets the data-threshold attribute when threshold is specified', () => {
-    const { container } = render(
+  it('sets data-maxlength attribute when counting characters', async () => {
+    const { modules } = await renderClient(
       <CharacterCount
+        label="Can you provide more detail?"
+        labelProps={{ isPageHeading: true, size: 'l' }}
+        hint="Do not include personal information like your name, date of birth or NHS number"
+        id="more-detail"
+        name="more-detail"
         maxLength={200}
-        countType={CharacterCountType.Characters}
-        thresholdPercent={50}
-        textAreaId="more-detail"
-      >
-        <div />
-      </CharacterCount>,
+        rows={5}
+      />,
+      { moduleName: 'nhsuk-character-count' },
     );
 
-    expect(container.querySelector('.nhsuk-character-count')?.getAttribute('data-threshold')).toBe(
-      '50',
+    const [characterCountEl] = modules;
+
+    expect(characterCountEl).toHaveAttribute('data-maxlength', '200');
+    expect(characterCountEl).not.toHaveAttribute('data-maxwords');
+    expect(characterCountEl).not.toHaveAttribute('data-threshold');
+  });
+
+  it('sets data-maxwords attribute when counting words', async () => {
+    const { modules } = await renderClient(
+      <CharacterCount
+        label="Can you provide more detail?"
+        labelProps={{ isPageHeading: true, size: 'l' }}
+        hint="Do not include personal information like your name, date of birth or NHS number"
+        id="more-detail"
+        name="more-detail"
+        maxWords={200}
+        rows={5}
+      />,
+      { moduleName: 'nhsuk-character-count' },
     );
+
+    const [characterCountEl] = modules;
+
+    expect(characterCountEl).not.toHaveAttribute('data-maxlength');
+    expect(characterCountEl).toHaveAttribute('data-maxwords', '200');
+    expect(characterCountEl).not.toHaveAttribute('data-threshold');
+  });
+
+  it('sets data-threshold attribute when threshold is specified', async () => {
+    const { modules } = await renderClient(
+      <CharacterCount
+        label="Can you provide more detail?"
+        labelProps={{ isPageHeading: true, size: 'l' }}
+        hint="Do not include personal information like your name, date of birth or NHS number"
+        id="more-detail"
+        name="more-detail"
+        maxLength={200}
+        threshold={50}
+        rows={5}
+      />,
+      { moduleName: 'nhsuk-character-count' },
+    );
+
+    const [characterCountEl] = modules;
+
+    expect(characterCountEl).toHaveAttribute('data-maxlength', '200');
+    expect(characterCountEl).not.toHaveAttribute('data-maxwords');
+    expect(characterCountEl).toHaveAttribute('data-threshold', '50');
   });
 });

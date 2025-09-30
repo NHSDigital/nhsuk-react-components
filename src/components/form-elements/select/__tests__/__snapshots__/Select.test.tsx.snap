@@ -1,6 +1,56 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Select Matches the snapshot 1`] = `
+exports[`Select matches snapshot (via server): client 1`] = `
+<div>
+  <div
+    class="nhsuk-form-group"
+  >
+    <select
+      class="nhsuk-select"
+      id="test-select"
+      name="test-select"
+    >
+      <option
+        value="1"
+      >
+        Option 1
+      </option>
+      <option
+        value="2"
+      >
+        Option 2
+      </option>
+    </select>
+  </div>
+</div>
+`;
+
+exports[`Select matches snapshot (via server): server 1`] = `
+<div>
+  <div
+    class="nhsuk-form-group"
+  >
+    <select
+      class="nhsuk-select"
+      id="test-select"
+      name="test-select"
+    >
+      <option
+        value="1"
+      >
+        Option 1
+      </option>
+      <option
+        value="2"
+      >
+        Option 2
+      </option>
+    </select>
+  </div>
+</div>
+`;
+
+exports[`Select matches snapshot 1`] = `
 <div>
   <div
     class="nhsuk-form-group"

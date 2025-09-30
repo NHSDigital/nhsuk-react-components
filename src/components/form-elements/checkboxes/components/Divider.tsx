@@ -4,8 +4,10 @@ type DividerProps = {
   dividerText?: string;
 };
 
-const Divider: FC<DividerProps> = ({ dividerText = 'or' }) => (
+const CheckboxesDivider: FC<DividerProps> = ({ dividerText = 'or' }) => (
   <div className="nhsuk-checkboxes__divider">{dividerText}</div>
 );
 
-export default Divider;
+CheckboxesDivider.displayName = 'Checkboxes.Divider';
+
+export default CheckboxesDivider;

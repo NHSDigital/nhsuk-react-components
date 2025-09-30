@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Textarea matches snapshot (via server): client 1`] = `
+<div>
+  <div
+    class="nhsuk-form-group"
+  >
+    <label
+      class="nhsuk-label nhsuk-label--l"
+      for="more-detail"
+      id="more-detail--label"
+    >
+      Can you provide more detail?
+    </label>
+    <div
+      class="nhsuk-hint"
+      id="more-detail--hint"
+    >
+      Do not include personal information like your name, date of birth or NHS number
+    </div>
+    <textarea
+      aria-describedby="more-detail--hint"
+      class="nhsuk-textarea"
+      id="more-detail"
+      name="more-detail"
+    />
+  </div>
+</div>
+`;
+
+exports[`Textarea matches snapshot (via server): server 1`] = `
+<div>
+  <div
+    class="nhsuk-form-group"
+  >
+    <label
+      class="nhsuk-label nhsuk-label--l"
+      for="more-detail"
+      id="more-detail--label"
+    >
+      Can you provide more detail?
+    </label>
+    <div
+      class="nhsuk-hint"
+      id="more-detail--hint"
+    >
+      Do not include personal information like your name, date of birth or NHS number
+    </div>
+    <textarea
+      aria-describedby="more-detail--hint"
+      class="nhsuk-textarea"
+      id="more-detail"
+      name="more-detail"
+    />
+  </div>
+</div>
+`;
+
+exports[`Textarea matches snapshot: Textarea 1`] = `
+<div>
+  <div
+    class="nhsuk-form-group"
+  >
+    <label
+      class="nhsuk-label nhsuk-label--l"
+      for="more-detail"
+      id="more-detail--label"
+    >
+      Can you provide more detail?
+    </label>
+    <div
+      class="nhsuk-hint"
+      id="more-detail--hint"
+    >
+      Do not include personal information like your name, date of birth or NHS number
+    </div>
+    <textarea
+      aria-describedby="more-detail--hint"
+      class="nhsuk-textarea"
+      id="more-detail"
+      name="more-detail"
+    />
+  </div>
+</div>
+`;

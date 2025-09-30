@@ -1,22 +1,17 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, forwardRef } from 'react';
 import classNames from 'classnames';
 
-interface InsetTextProps extends HTMLProps<HTMLDivElement> {
-  visuallyHiddenText?: string | false;
-}
+type InsetTextProps = ComponentPropsWithoutRef<'div'>;
 
-const InsetText: FC<InsetTextProps> = ({
-  className,
-  children,
-  visuallyHiddenText = 'Information: ',
-  ...rest
-}) => (
-  <div className={classNames('nhsuk-inset-text', className)} {...rest}>
-    {visuallyHiddenText ? (
-      <span className="nhsuk-u-visually-hidden">{visuallyHiddenText}</span>
-    ) : null}
-    {children}
-  </div>
+const InsetTextComponent = forwardRef<HTMLDivElement, InsetTextProps>(
+  ({ className, children, ...rest }, forwardedRef) => (
+    <div className={classNames('nhsuk-inset-text', className)} ref={forwardedRef} {...rest}>
+      <span className="nhsuk-u-visually-hidden">Information: </span>
+      {children}
+    </div>
+  ),
 );
 
-export default InsetText;
+InsetTextComponent.displayName = 'InsetText';
+
+export default InsetTextComponent;

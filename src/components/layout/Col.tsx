@@ -1,8 +1,8 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
 import { ColWidth } from '@util/types/NHSUKTypes';
 
-interface ColProps extends HTMLProps<HTMLDivElement> {
+export interface ColProps extends ComponentPropsWithoutRef<'div'> {
   width: ColWidth;
 }
 

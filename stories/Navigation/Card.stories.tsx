@@ -12,14 +12,6 @@ const meta: Meta<typeof Card> = {
 export default meta;
 type Story = StoryObj<typeof Card>;
 
-Card.Content.displayName = 'Card.Content';
-Card.Heading.displayName = 'Card.Heading';
-Card.Description.displayName = 'Card.Description';
-Card.Link.displayName = 'Card.Link';
-Card.Image.displayName = 'Card.Image';
-Card.Group.displayName = 'Card.Group';
-Card.GroupItem.displayName = 'Card.GroupItem';
-
 export const Standard: Story = {
   render: (args) => (
     <Card>
@@ -75,6 +67,27 @@ export const FeatureCard: Story = {
       <Card.Content>
         <Card.Heading>Feature card heading</Card.Heading>
         <Card.Description>Feature card description</Card.Description>
+      </Card.Content>
+    </Card>
+  ),
+};
+
+export const FeatureCardWithList: Story = {
+  render: () => (
+    <Card cardType="feature">
+      <Card.Content>
+        <Card.Heading>Feature card heading</Card.Heading>
+        <ul className="nhsuk-list nhsuk-list--border">
+          <li>
+            <a href="/conditions/abdominal-aortic-aneurysm/">AAA</a>
+          </li>
+          <li>
+            <a href="/conditions/abdominal-aortic-aneurysm/">Abdominal aortic aneurysm</a>
+          </li>
+          <li>
+            <a href="/conditions/abscess/">Abscess</a>
+          </li>
+        </ul>
       </Card.Content>
     </Card>
   ),
@@ -231,42 +244,6 @@ export const EmergencyCareCard: Story = {
         <p>A mental health emergency should be taken as seriously as a medical emergency.</p>
         <p>
           <a href="">Find your nearest A&E</a>
-        </p>
-      </Card.Content>
-    </Card>
-  ),
-};
-
-/**
- * By default, CareCard components prepend hidden text before the title. These are:
- *
- * - ("non-urgent") Non-urgent advice:
- * - ("urgent") Urgent advice:
- * - ("immediate") Immediate action required:
- *
- * If you wish to disable this behaviour, pass the prop `visuallyHiddenText={false}` to the `CareCard.Heading` component or specify your own visually hidden text by using `visuallyHiddenText="Custom"`.
- *
- * You can change the heading type (i.e. `h1`, `h2` and so on) of the title by passing the prop `headingLevel="<headingLevel>"` to the `CareCard.Heading`.
- */
-export const WithCustomVisuallyHiddenText: Story = {
-  args: { cardType: 'non-urgent' },
-  render: (args) => (
-    <Card cardType={args.cardType}>
-      <Card.Heading visuallyHiddenText="Custom visually hidden text">
-        Speak to a GP if:
-      </Card.Heading>
-      <Card.Content>
-        <ul>
-          <li>you&apos;re not sure it&apos;s chickenpox</li>
-          <li>the skin around the blisters is red, hot or painful (signs of infection)</li>
-          <li>
-            your child is <a href="">dehydrated</a>
-          </li>
-          <li>you&apos;re concerned about your child or they get worse</li>
-        </ul>
-        <p>
-          Tell the receptionist you think it&apos;s chickenpox before going in. They may recommend a
-          special appointment time if other patients are at risk.
         </p>
       </Card.Content>
     </Card>

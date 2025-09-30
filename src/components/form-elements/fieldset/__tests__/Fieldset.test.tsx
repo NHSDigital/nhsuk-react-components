@@ -20,28 +20,9 @@ describe('Fieldset', () => {
     expect(container.textContent).toBe('Text');
   });
 
-  it('Wraps children in form group if the fieldset contains form elements', () => {
-    const { container } = render(
-      <Fieldset>
-        <TextInput />
-      </Fieldset>,
-    );
+  it('renders null with no children', () => {
+    const { container } = render(<Fieldset />);
 
-    expect(container.firstChild).toHaveClass('nhsuk-form-group');
-  });
-
-  describe('Fieldset.Legend', () => {
-    it('matches snapshot', () => {
-      const { container } = render(<Fieldset.Legend>Text</Fieldset.Legend>);
-
-      expect(container).toMatchSnapshot('FieldsetLegend');
-    });
-
-    it('renders as page heading', () => {
-      const { container } = render(<Fieldset.Legend isPageHeading>Text</Fieldset.Legend>);
-
-      expect(container.querySelector('.nhsuk-fieldset__legend--xl')).toBeTruthy();
-      expect(container.querySelector('.nhsuk-fieldset__heading')?.textContent).toBe('Text');
-    });
+    expect(container.querySelector('fieldset')).toBeNull();
   });
 });

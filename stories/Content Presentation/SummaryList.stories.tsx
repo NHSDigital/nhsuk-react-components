@@ -3,14 +3,13 @@ import React from 'react';
 import { SummaryList, BodyText } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
-
 /**
  * ## Implementation notes
  *
  * When providing action links, you must include visually hidden text. This means a screen reader user will hear a meaningful action, like "Change name" or "Change date of birth".'
- * 
+ *
  * Example of an action link:
- * 
+ *
  * ```jsx
  *  <a href="#">
  *   Change
@@ -21,20 +20,12 @@ import { Meta, StoryObj } from '@storybook/react';
  * ```
  */
 
-
 const meta: Meta<typeof SummaryList> = {
   title: 'Content Presentation/SummaryList',
   component: SummaryList,
 };
 export default meta;
 type Story = StoryObj<typeof SummaryList>;
-
-SummaryList.Row.displayName = 'SummaryList.Row';
-SummaryList.Key.displayName = 'SummaryList.Key';
-SummaryList.Value.displayName = 'SummaryList.Value';
-SummaryList.Actions.displayName = 'SummaryList.Actions';
-
-
 
 export const Standard: Story = {
   argTypes: {
@@ -96,13 +87,12 @@ export const Standard: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Change links must include visually hidden text. This means a screen reader user will hear a meaningful action, like "Change name" or "Change date of birth".'
-      }
-    }
-  }
+        story:
+          'Change links must include visually hidden text. This means a screen reader user will hear a meaningful action, like "Change name" or "Change date of birth".',
+      },
+    },
+  },
 };
-
-
 
 export const SummaryListWithoutActions: Story = {
   args: { noBorder: false },

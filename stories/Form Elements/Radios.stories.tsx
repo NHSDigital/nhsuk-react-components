@@ -1,5 +1,5 @@
-import React, { useState, MouseEvent } from 'react';
-import { Radios, Fieldset, Button, TextInput, Checkboxes } from '../../src';
+import React, { useState } from 'react';
+import { Radios, TextInput, Checkboxes } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Radios> = {
@@ -9,63 +9,57 @@ const meta: Meta<typeof Radios> = {
 export default meta;
 type Story = StoryObj<typeof Radios>;
 
-Radios.Radio.displayName = 'Radios.Radio';
-Radios.Divider.displayName = 'Radios.Divider';
-
 export const StandardRadios: Story = {
   render: (args) => (
-    <Fieldset>
-      <Fieldset.Legend>Have you changed your name?</Fieldset.Legend>
-      <Radios
-        name="example"
-        id="standard-example"
-        hint="This includes changing your last name or spelling your name differently."
-      >
-        <Radios.Radio value="yes">Yes</Radios.Radio>
-        <Radios.Radio value="no" checked>
-          No
-        </Radios.Radio>
-      </Radios>
-    </Fieldset>
+    <Radios
+      legend="Have you changed your name?"
+      legendProps={{ size: 'l' }}
+      hint="This includes changing your last name or spelling your name differently"
+      name="example"
+      id="standard-example"
+    >
+      <Radios.Item value="yes">Yes</Radios.Item>
+      <Radios.Item value="no" checked>
+        No
+      </Radios.Item>
+    </Radios>
   ),
 };
 
 export const InlineRadios: Story = {
   render: (args) => (
-    <Fieldset>
-      <Fieldset.Legend>Have you changed your name?</Fieldset.Legend>
-      <Radios
-        name="example"
-        inline
-        id="inline-example"
-        hint="This includes changing your last name or spelling your name differently."
-      >
-        <Radios.Radio value="yes">Yes</Radios.Radio>
-        <Radios.Radio value="no" checked>
-          No
-        </Radios.Radio>
-      </Radios>
-    </Fieldset>
+    <Radios
+      legend="Have you changed your name?"
+      legendProps={{ size: 'l' }}
+      hint="This includes changing your last name or spelling your name differently"
+      name="example"
+      id="inline-example"
+      inline
+    >
+      <Radios.Item value="yes">Yes</Radios.Item>
+      <Radios.Item value="no" checked>
+        No
+      </Radios.Item>
+    </Radios>
   ),
 };
 
 export const DisabledRadios: Story = {
   render: (args) => (
-    <Fieldset>
-      <Fieldset.Legend>Have you changed your name?</Fieldset.Legend>
-      <Radios
-        name="example"
-        id="disabled-example"
-        hint="This includes changing your last name or spelling your name differently."
-      >
-        <Radios.Radio disabled value="yes">
-          Yes
-        </Radios.Radio>
-        <Radios.Radio disabled value="no">
-          No
-        </Radios.Radio>
-      </Radios>
-    </Fieldset>
+    <Radios
+      legend="Have you changed your name?"
+      legendProps={{ size: 'l' }}
+      hint="This includes changing your last name or spelling your name differently"
+      name="example"
+      id="disabled-example"
+    >
+      <Radios.Item disabled value="yes">
+        Yes
+      </Radios.Item>
+      <Radios.Item disabled value="no">
+        No
+      </Radios.Item>
+    </Radios>
   ),
 };
 
@@ -73,34 +67,37 @@ export const RadiosWithConditionalContent: Story = {
   render: (args) => {
     const impairmentsForm = (
       <Checkboxes name="impairments" id="impairments">
-        <Checkboxes.Box value="autism">Autism</Checkboxes.Box>
-        <Checkboxes.Box value="developmental-conditions">
+        <Checkboxes.Item value="autism">Autism</Checkboxes.Item>
+        <Checkboxes.Item value="developmental-conditions">
           Developmental conditions (excluding autism)
-        </Checkboxes.Box>
-        <Checkboxes.Box value="dementia">Dementia</Checkboxes.Box>
-        <Checkboxes.Box value="learning-disability">Learning disability</Checkboxes.Box>
-        <Checkboxes.Box value="mental-health-condition">Mental Health Condition</Checkboxes.Box>
-        <Checkboxes.Box value="physical-disability">Physical disability</Checkboxes.Box>
-        <Checkboxes.Box value="sensory-disability">
+        </Checkboxes.Item>
+        <Checkboxes.Item value="dementia">Dementia</Checkboxes.Item>
+        <Checkboxes.Item value="learning-disability">Learning disability</Checkboxes.Item>
+        <Checkboxes.Item value="mental-health-condition">Mental Health Condition</Checkboxes.Item>
+        <Checkboxes.Item value="physical-disability">Physical disability</Checkboxes.Item>
+        <Checkboxes.Item value="sensory-disability">
           Sensory disability - such as sight, hearing or verbal
-        </Checkboxes.Box>
-        <Checkboxes.Box value="long-term-condition">Long-term condition</Checkboxes.Box>
+        </Checkboxes.Item>
+        <Checkboxes.Item value="long-term-condition">Long-term condition</Checkboxes.Item>
       </Checkboxes>
     );
 
     return (
       <form style={{ padding: 20 }}>
-        <Fieldset>
-          <Fieldset.Legend>Impairment requirement</Fieldset.Legend>
-          <Radios name="example" id="example-conditional" hint="Select relevant options.">
-            <Radios.Radio id="hello1" value="yes" conditional={impairmentsForm}>
-              Patient requires an impairment to be added
-            </Radios.Radio>
-            <Radios.Radio id="hello2" value="no">
-              Patient would prefer not to say
-            </Radios.Radio>
-          </Radios>
-        </Fieldset>
+        <Radios
+          legend="Impairment requirement"
+          legendProps={{ size: 'l' }}
+          hint="Select relevant options"
+          name="example"
+          id="example-conditional"
+        >
+          <Radios.Item id="hello1" value="yes" conditional={impairmentsForm}>
+            Patient requires an impairment to be added
+          </Radios.Item>
+          <Radios.Item id="hello2" value="no">
+            Patient would prefer not to say
+          </Radios.Item>
+        </Radios>
       </form>
     );
   },
@@ -108,105 +105,73 @@ export const RadiosWithConditionalContent: Story = {
 
 export const RadiosWithADivider: Story = {
   render: (args) => (
-    <Fieldset>
-      <Fieldset.Legend>How do you want to sign in?</Fieldset.Legend>
-      <Radios name="example" id="example-divider">
-        <Radios.Radio value="government-gateway">Use Government Gateway</Radios.Radio>
-        <Radios.Radio value="nhsuk-login">Use NHS.UK login</Radios.Radio>
-        <Radios.Divider>or</Radios.Divider>
-        <Radios.Radio value="create-account">Create an account</Radios.Radio>
-      </Radios>
-    </Fieldset>
+    <Radios
+      legend="How do you want to sign in?"
+      legendProps={{ size: 'l' }}
+      name="example"
+      id="example-divider"
+    >
+      <Radios.Item value="government-gateway">Use Government Gateway</Radios.Item>
+      <Radios.Item value="nhsuk-login">Use NHS.UK login</Radios.Item>
+      <Radios.Divider>or</Radios.Divider>
+      <Radios.Item value="create-account">Create an account</Radios.Item>
+    </Radios>
   ),
 };
 
 export const RadiosWithHintsOnItems: Story = {
   render: (args) => (
-    <Fieldset>
-      <Fieldset.Legend>How do you want to sign in?</Fieldset.Legend>
-      <Radios name="example" id="example-with-hints">
-        <Radios.Radio
-          value="government-gateway"
-          hint="You&#39;ll have a user ID if you've registered for self-assessment or filed a tax return online before."
-        >
-          Use Government Gateway
-        </Radios.Radio>
-        <Radios.Radio
-          value="nhsuk-login"
-          hint="You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
-        >
-          Use NHS.UK login
-        </Radios.Radio>
-      </Radios>
-    </Fieldset>
+    <Radios
+      legend="How do you want to sign in?"
+      legendProps={{ size: 'l' }}
+      name="example"
+      id="example-with-hints"
+    >
+      <Radios.Item
+        value="government-gateway"
+        hint="You&#39;ll have a user ID if you've registered for self-assessment or filed a tax return online before."
+      >
+        Use Government Gateway
+      </Radios.Item>
+      <Radios.Item
+        value="nhsuk-login"
+        hint="You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
+      >
+        Use NHS.UK login
+      </Radios.Item>
+    </Radios>
   ),
 };
 
 export const RadiosWithoutFieldset: Story = {
   render: (args) => (
     <Radios name="colours" id="colours">
-      <Radios.Radio value="red">Red</Radios.Radio>
-      <Radios.Radio value="green">Green</Radios.Radio>
-      <Radios.Radio value="blue">Blue</Radios.Radio>
+      <Radios.Item value="red">Red</Radios.Item>
+      <Radios.Item value="green">Green</Radios.Item>
+      <Radios.Item value="blue">Blue</Radios.Item>
     </Radios>
   ),
 };
 
-export const RadiosWithErrorBoolean: Story = {
-  render: function RadiosWithErrorBooleanRender() {
-    const [error, setError] = useState<boolean>(true);
+export const RadiosWithError: Story = {
+  render: function RadiosWithErrorRender() {
+    const [error, setError] = useState('Select yes if you have changed your name');
     return (
       <>
-        <Fieldset>
-          <Fieldset.Legend>Have you changed your name?</Fieldset.Legend>
-          <Radios
-            name="example-with-err-boolean"
-            error={error}
-            hint="This includes changing your last name or spelling your name differently."
-          >
-            <Radios.Radio id="example-1" value="yes">
-              Yes
-            </Radios.Radio>
-            <Radios.Radio id="example-2" value="no" checked>
-              No
-            </Radios.Radio>
-          </Radios>
-        </Fieldset>
-        <Button
-          onClick={(e: MouseEvent<HTMLButtonElement>) => {
-            e.preventDefault();
-            setError(!error);
-          }}
+        <Radios
+          legend="Have you changed your name?"
+          legendProps={{ size: 'l' }}
+          hint="This includes changing your last name or spelling your name differently"
+          name="example-with-err-string"
+          error={error}
         >
-          Toggle Error
-        </Button>
-      </>
-    );
-  },
-
-  name: 'Radios With Error (Boolean)',
-};
-
-export const RadiosWithErrorString: Story = {
-  render: function RadiosWithErrorStringRender() {
-    const [error, setError] = useState('Please select an option');
-    return (
-      <>
-        <Fieldset>
-          <Fieldset.Legend>Have you changed your name?</Fieldset.Legend>
-          <Radios
-            name="example-with-err-string"
-            error={error}
-            hint="This includes changing your last name or spelling your name differently."
-          >
-            <Radios.Radio id="example-1" value="yes">
-              Yes
-            </Radios.Radio>
-            <Radios.Radio id="example-2" value="no" checked>
-              No
-            </Radios.Radio>
-          </Radios>
-        </Fieldset>
+          <Radios.Item id="example-1" value="yes">
+            Yes
+          </Radios.Item>
+          <Radios.Item id="example-2" value="no" checked>
+            No
+          </Radios.Item>
+        </Radios>
         <TextInput value={error} onChange={(e) => setError(e.currentTarget.value)} />
       </>
     );

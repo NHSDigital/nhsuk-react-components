@@ -1,25 +1,8 @@
 import React, { FC } from 'react';
+import { BaseIconSVGProps, BaseIconSVG } from '../BaseIcon';
 
-export const ChevronRightCircle: FC = () => (
-  <svg
-    className="nhsuk-icon nhsuk-icon nhsuk-icon__chevron-right-circle"
-    xmlns="http://www.w3.org/2000/svg"
-    width="27"
-    height="27"
-    aria-hidden="true"
-    focusable="false"
-  >
-    <circle cx="13.333" cy="13.333" r="13.333" fill="" />
-    <g
-      data-name="Group 1"
-      fill="none"
-      stroke="#fff"
-      strokeLinecap="round"
-      strokeMiterlimit="10"
-      strokeWidth="2.667"
-    >
-      <path d="M15.438 13l-3.771 3.771" />
-      <path data-name="Path" d="M11.667 9.229L15.438 13" />
-    </g>
-  </svg>
+export const ChevronRightCircle: FC<BaseIconSVGProps> = (props) => (
+  <BaseIconSVG modifier="chevron-right-circle" {...props}>
+    <path d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20Zm-.3 5.8a1 1 0 1 0-1.5 1.4l2.9 2.8-2.9 2.8a1 1 0 0 0 1.5 1.4l3.5-3.5c.4-.4.4-1 0-1.4Z" />
+  </BaseIconSVG>
 );

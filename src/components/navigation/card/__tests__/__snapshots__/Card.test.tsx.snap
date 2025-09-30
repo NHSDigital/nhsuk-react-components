@@ -72,7 +72,7 @@ exports[`Card Care card variant emergency matches the snapshot 1`] = `
           >
             Immediate action required: 
           </span>
-          Emergency heading
+          Emergency heading (red and black)
         </span>
       </h2>
       <span
@@ -103,7 +103,7 @@ exports[`Card Care card variant non-urgent matches the snapshot 1`] = `
           >
             Non-urgent advice: 
           </span>
-          Non urgent heading
+          Non urgent heading (blue)
         </span>
       </h2>
       <span
@@ -134,13 +134,91 @@ exports[`Card Care card variant urgent matches the snapshot 1`] = `
           >
             Urgent advice: 
           </span>
-          Urgent heading
+          Urgent heading (red)
         </span>
       </h2>
       <span
         aria-hidden="true"
         class="nhsuk-card--care__arrow"
       />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Card matches snapshot (via server): client 1`] = `
+<div>
+  <div
+    class="nhsuk-card"
+  >
+    <img
+      alt="imageAlt"
+      class="nhsuk-card__img"
+      src="imageSrc"
+    />
+    <div
+      class="nhsuk-card__content"
+    >
+      <h2
+        class="nhsuk-card__heading"
+      >
+        If you need help now but it's not an emergency
+      </h2>
+      <p
+        class="nhsuk-card__description"
+      >
+        Go to 
+        <a
+          href="#"
+        >
+          111.nhs.uk
+        </a>
+         or 
+        <a
+          href="#"
+        >
+          call 111
+        </a>
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Card matches snapshot (via server): server 1`] = `
+<div>
+  <div
+    class="nhsuk-card"
+  >
+    <img
+      alt="imageAlt"
+      class="nhsuk-card__img"
+      src="imageSrc"
+    />
+    <div
+      class="nhsuk-card__content"
+    >
+      <h2
+        class="nhsuk-card__heading"
+      >
+        If you need help now but it's not an emergency
+      </h2>
+      <p
+        class="nhsuk-card__description"
+      >
+        Go to 
+        <a
+          href="#"
+        >
+          111.nhs.uk
+        </a>
+         or 
+        <a
+          href="#"
+        >
+          call 111
+        </a>
+      </p>
     </div>
   </div>
 </div>

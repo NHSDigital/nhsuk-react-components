@@ -1,164 +1,153 @@
-import React, {
-  EventHandler,
-  FC,
-  HTMLProps,
-  KeyboardEvent,
-  SyntheticEvent,
-  useCallback,
-  useRef,
-} from 'react';
+import React, { ForwardedRef, MouseEvent, useEffect, useState, forwardRef, createRef } from 'react';
+import { AsElementLink } from '@util/types/LinkTypes';
+import { type Button } from 'nhsuk-frontend';
 import classNames from 'classnames';
 
-// Debounce timeout - default 1 second
-export const DefaultButtonDebounceTimeout = 1000;
-
-export interface ButtonProps extends HTMLProps<HTMLButtonElement> {
-  type?: 'button' | 'submit' | 'reset';
-  disabled?: boolean;
+export interface ButtonProps extends AsElementLink<HTMLButtonElement> {
+  href?: never;
   secondary?: boolean;
   reverse?: boolean;
   warning?: boolean;
   as?: 'button';
   preventDoubleClick?: boolean;
-  debounceTimeout?: number;
 }
 
-export interface ButtonLinkProps extends HTMLProps<HTMLAnchorElement> {
-  disabled?: boolean;
+export interface ButtonLinkProps extends AsElementLink<HTMLAnchorElement> {
+  href: string;
+  type?: never;
   secondary?: boolean;
   reverse?: boolean;
   warning?: boolean;
   as?: 'a';
   preventDoubleClick?: boolean;
-  debounceTimeout?: number;
 }
 
-const useDebounceTimeout = (
-  fn?: EventHandler<SyntheticEvent>,
-  timeout: number = DefaultButtonDebounceTimeout,
-) => {
-  const timeoutRef = useRef<number>();
+const ButtonComponent = forwardRef<HTMLButtonElement, ButtonProps>((props, forwardedRef) => {
+  const {
+    className,
+    asElement: Element = 'button',
+    disabled,
+    secondary,
+    reverse,
+    warning,
+    type = 'submit',
+    preventDoubleClick,
+    onClick,
+    ...rest
+  } = props;
 
-  if (!fn) return undefined;
+  const [moduleRef] = useState(() => forwardedRef || createRef<HTMLButtonElement>());
+  const [instance, setInstance] = useState<Button>();
 
-  const handler: EventHandler<SyntheticEvent> = (event) => {
-    event.persist();
-
-    if (timeoutRef.current) {
-      event.preventDefault();
-      event.stopPropagation();
+  useEffect(() => {
+    if (!('current' in moduleRef) || !moduleRef.current || instance) {
       return;
     }
 
-    fn(event);
+    const { current: $root } = moduleRef;
 
-    timeoutRef.current = window.setTimeout(() => {
-      timeoutRef.current = undefined;
-    }, timeout);
-  };
-
-  return handler;
-};
-
-export const Button: FC<ButtonProps> = ({
-  className,
-  disabled,
-  secondary,
-  reverse,
-  warning,
-  type = 'submit',
-  preventDoubleClick = false,
-  debounceTimeout = DefaultButtonDebounceTimeout,
-  onClick,
-  ...rest
-}) => {
-  const debouncedHandleClick = useDebounceTimeout(onClick, debounceTimeout);
+    import('nhsuk-frontend').then(({ Button }) => {
+      setInstance(new Button($root));
+    });
+  }, [moduleRef, instance]);
 
   return (
-    // eslint-disable-next-line react/button-has-type
-    <button
+    <Element
       className={classNames(
         'nhsuk-button',
-        { 'nhsuk-button--disabled': disabled },
         { 'nhsuk-button--secondary': secondary },
         { 'nhsuk-button--reverse': reverse },
         { 'nhsuk-button--warning': warning },
         className,
       )}
+      data-module="nhsuk-button"
+      data-prevent-double-click={preventDoubleClick === true ? 'true' : undefined}
       disabled={disabled}
-      aria-disabled={disabled ? 'true' : 'false'}
+      aria-disabled={disabled ? 'true' : undefined}
       type={type}
-      onClick={preventDoubleClick ? debouncedHandleClick : onClick}
+      onClick={(event: MouseEvent<HTMLButtonElement>) => {
+        if (event.nativeEvent.defaultPrevented) {
+          event.preventDefault();
+          return;
+        }
+
+        onClick?.(event);
+      }}
+      ref={moduleRef}
       {...rest}
     />
   );
-};
-export const ButtonLink: FC<ButtonLinkProps> = ({
-  className,
-  role = 'button',
-  draggable = false,
-  children,
-  disabled,
-  secondary,
-  reverse,
-  warning,
-  preventDoubleClick = false,
-  debounceTimeout = DefaultButtonDebounceTimeout,
-  onClick,
-  ...rest
-}) => {
-  const debouncedHandleClick = useDebounceTimeout(onClick, debounceTimeout);
+});
 
-  /**
-   * Recreate the shim behaviour from NHS.UK/GOV.UK Frontend
-   * https://github.com/alphagov/govuk-frontend/blob/main/packages/govuk-frontend/src/govuk/components/button/button.mjs
-   * https://github.com/nhsuk/nhsuk-frontend/blob/main/packages/components/button/button.js
-   */
-  const handleKeyDown = useCallback(
-    (event: KeyboardEvent<HTMLAnchorElement>) => {
-      const { currentTarget } = event;
+const ButtonLinkComponent = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
+  (props, forwardedRef) => {
+    const {
+      className,
+      asElement: Element = 'a',
+      secondary,
+      reverse,
+      warning,
+      preventDoubleClick,
+      onClick,
+      ...rest
+    } = props;
 
-      if (role === 'button' && event.key === ' ') {
-        event.preventDefault();
-        currentTarget.click();
+    const [moduleRef] = useState(() => forwardedRef || createRef<HTMLAnchorElement>());
+    const [instance, setInstance] = useState<Button>();
+
+    useEffect(() => {
+      if (!('current' in moduleRef) || !moduleRef.current || instance) {
+        return;
       }
-    },
-    [role],
-  );
 
-  return (
-    <a
-      className={classNames(
-        'nhsuk-button',
-        { 'nhsuk-button--disabled': disabled },
-        { 'nhsuk-button--secondary': secondary },
-        { 'nhsuk-button--reverse': reverse },
-        { 'nhsuk-button--warning': warning },
-        className,
-      )}
-      role={role}
-      aria-disabled={disabled ? 'true' : 'false'}
-      draggable={draggable}
-      onKeyDown={handleKeyDown}
-      onClick={preventDoubleClick ? debouncedHandleClick : onClick}
-      {...rest}
-    >
-      {children}
-    </a>
-  );
-};
+      const { current: $root } = moduleRef;
 
-const ButtonWrapper: FC<ButtonLinkProps | ButtonProps> = ({ href, as, ...rest }) => {
-  if (as === 'a') {
-    return <ButtonLink href={href} {...(rest as ButtonLinkProps)} />;
-  }
-  if (as === 'button') {
-    return <Button {...(rest as ButtonProps)} />;
-  }
-  if (href) {
-    return <ButtonLink href={href} {...(rest as ButtonLinkProps)} />;
-  }
-  return <Button {...(rest as ButtonProps)} />;
-};
+      import('nhsuk-frontend').then(({ Button }) => {
+        setInstance(new Button($root));
+      });
+    }, [moduleRef, instance]);
+
+    return (
+      <Element
+        className={classNames(
+          'nhsuk-button',
+          { 'nhsuk-button--secondary': secondary },
+          { 'nhsuk-button--reverse': reverse },
+          { 'nhsuk-button--warning': warning },
+          className,
+        )}
+        data-module="nhsuk-button"
+        data-prevent-double-click={preventDoubleClick === true ? 'true' : undefined}
+        role="button"
+        draggable="false"
+        onClick={(event: MouseEvent<HTMLAnchorElement>) => {
+          if (event.nativeEvent.defaultPrevented) {
+            event.preventDefault();
+            return;
+          }
+
+          onClick?.(event);
+        }}
+        ref={moduleRef}
+        {...rest}
+      />
+    );
+  },
+);
+
+const ButtonWrapper = forwardRef<
+  HTMLAnchorElement | HTMLButtonElement,
+  ButtonLinkProps | ButtonProps
+>((props, forwardedRef) => {
+  return props.as === 'a' || ('href' in props && typeof props.href === 'string') ? (
+    <ButtonLinkComponent ref={forwardedRef as ForwardedRef<HTMLAnchorElement>} {...props} />
+  ) : (
+    <ButtonComponent ref={forwardedRef as ForwardedRef<HTMLButtonElement>} {...props} />
+  );
+});
+
+ButtonLinkComponent.displayName = 'Button.Link';
+ButtonComponent.displayName = 'Button';
+ButtonWrapper.displayName = 'Button';
 
 export default ButtonWrapper;

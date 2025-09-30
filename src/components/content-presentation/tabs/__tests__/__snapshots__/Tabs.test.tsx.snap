@@ -1,10 +1,183 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`The tabs component Matches the snapshot 1`] = `
+exports[`Tabs matches snapshot (via server): client 1`] = `
 <div>
   <div
     class="nhsuk-tabs"
     data-module="nhsuk-tabs"
+    data-nhsuk-tabs-init=""
+  >
+    <h2
+      class="nhsuk-tabs__title"
+    >
+      Contents
+    </h2>
+    <ul
+      class="nhsuk-tabs__list"
+      role="tablist"
+    >
+      <li
+        class="nhsuk-tabs__list-item nhsuk-tabs__list-item--selected"
+        role="presentation"
+      >
+        <a
+          aria-controls="past-day"
+          aria-selected="true"
+          class="nhsuk-tabs__tab"
+          href="#past-day"
+          id="tab_past-day"
+          role="tab"
+          tabindex="0"
+        >
+          Past day
+        </a>
+      </li>
+      <li
+        class="nhsuk-tabs__list-item"
+        role="presentation"
+      >
+        <a
+          aria-controls="past-week"
+          aria-selected="false"
+          class="nhsuk-tabs__tab"
+          href="#past-week"
+          id="tab_past-week"
+          role="tab"
+          tabindex="-1"
+        >
+          Past week
+        </a>
+      </li>
+      <li
+        class="nhsuk-tabs__list-item"
+        role="presentation"
+      >
+        <a
+          aria-controls="past-month"
+          aria-selected="false"
+          class="nhsuk-tabs__tab"
+          href="#past-month"
+          id="tab_past-month"
+          role="tab"
+          tabindex="-1"
+        >
+          Past month
+        </a>
+      </li>
+    </ul>
+    <div
+      aria-labelledby="tab_past-day"
+      class="nhsuk-tabs__panel"
+      id="past-day"
+      role="tabpanel"
+    >
+      <div>
+        Past day contents go here
+      </div>
+    </div>
+    <div
+      aria-labelledby="tab_past-week"
+      class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden"
+      id="past-week"
+      role="tabpanel"
+    >
+      <div>
+        Past week contents go here
+      </div>
+    </div>
+    <div
+      aria-labelledby="tab_past-month"
+      class="nhsuk-tabs__panel nhsuk-tabs__panel--hidden"
+      id="past-month"
+      role="tabpanel"
+    >
+      <div>
+        Past month contents go here
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Tabs matches snapshot (via server): server 1`] = `
+<div>
+  <div
+    class="nhsuk-tabs"
+    data-module="nhsuk-tabs"
+  >
+    <h2
+      class="nhsuk-tabs__title"
+    >
+      Contents
+    </h2>
+    <ul
+      class="nhsuk-tabs__list"
+    >
+      <li
+        class="nhsuk-tabs__list-item"
+      >
+        <a
+          class="nhsuk-tabs__tab"
+          href="#past-day"
+        >
+          Past day
+        </a>
+      </li>
+      <li
+        class="nhsuk-tabs__list-item"
+      >
+        <a
+          class="nhsuk-tabs__tab"
+          href="#past-week"
+        >
+          Past week
+        </a>
+      </li>
+      <li
+        class="nhsuk-tabs__list-item"
+      >
+        <a
+          class="nhsuk-tabs__tab"
+          href="#past-month"
+        >
+          Past month
+        </a>
+      </li>
+    </ul>
+    <div
+      class="nhsuk-tabs__panel"
+      id="past-day"
+    >
+      <div>
+        Past day contents go here
+      </div>
+    </div>
+    <div
+      class="nhsuk-tabs__panel"
+      id="past-week"
+    >
+      <div>
+        Past week contents go here
+      </div>
+    </div>
+    <div
+      class="nhsuk-tabs__panel"
+      id="past-month"
+    >
+      <div>
+        Past month contents go here
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Tabs matches snapshot 1`] = `
+<div>
+  <div
+    class="nhsuk-tabs"
+    data-module="nhsuk-tabs"
+    data-nhsuk-tabs-init=""
   >
     <h2
       class="nhsuk-tabs__title"

@@ -14,16 +14,16 @@ export const StandardTag: Story = { args: { children: 'Standard' } };
 export const AllColours: Story = {
   render: (args) => (
     <div className="tag-wrapper">
-      <Tag color="white">Started</Tag>
-      <Tag color="grey">Not started</Tag>
-      <Tag color="green">New</Tag>
-      <Tag color="aqua-green">Active</Tag>
-      <Tag color="blue">Pending</Tag>
-      <Tag color="purple">Received</Tag>
-      <Tag color="pink">Sent</Tag>
-      <Tag color="red">Rejected</Tag>
-      <Tag color="orange">Declined</Tag>
-      <Tag color="yellow">Delayed</Tag>
+      <Tag modifier="white">Started</Tag>
+      <Tag modifier="grey">Not started</Tag>
+      <Tag modifier="green">New</Tag>
+      <Tag modifier="aqua-green">Active</Tag>
+      <Tag modifier="blue">Pending</Tag>
+      <Tag modifier="purple">Received</Tag>
+      <Tag modifier="pink">Sent</Tag>
+      <Tag modifier="red">Rejected</Tag>
+      <Tag modifier="orange">Declined</Tag>
+      <Tag modifier="yellow">Delayed</Tag>
     </div>
   ),
 };

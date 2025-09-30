@@ -1,13 +1,45 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
 import DoAndDontList from '../';
+import { renderClient, renderServer } from '@util/components';
 
 describe('DoAndDontList', () => {
   describe('list type "do"', () => {
-    it('matches snapshot', () => {
-      const { container } = render(<DoAndDontList listType="do" />);
+    it('matches snapshot', async () => {
+      const { container } = await renderClient(<DoAndDontList listType="do" />, {
+        className: 'nhsuk-do-dont-list',
+      });
 
       expect(container).toMatchSnapshot('DoDontList-Do');
+    });
+
+    it('matches snapshot (via server)', async () => {
+      const { container, element } = await renderServer(<DoAndDontList listType="do" />, {
+        className: 'nhsuk-do-dont-list',
+      });
+
+      expect(container).toMatchSnapshot('server');
+
+      await renderClient(element, {
+        className: 'nhsuk-do-dont-list',
+        hydrate: true,
+        container,
+      });
+
+      expect(container).toMatchSnapshot('client');
+    });
+
+    it('forwards refs', async () => {
+      const ref = createRef<HTMLDivElement>();
+
+      const { container } = await renderClient(<DoAndDontList listType="do" ref={ref} />, {
+        className: 'nhsuk-do-dont-list',
+      });
+
+      const listEl = container.querySelector('div');
+
+      expect(ref.current).toBe(listEl);
+      expect(ref.current).toHaveClass('nhsuk-do-dont-list');
     });
 
     it('adds the correct headings', () => {
@@ -38,10 +70,28 @@ describe('DoAndDontList', () => {
   });
 
   describe('list type "dont"', () => {
-    it('matches snapshot', () => {
-      const { container } = render(<DoAndDontList listType="dont" />);
+    it('matches snapshot', async () => {
+      const { container } = await renderClient(<DoAndDontList listType="dont" />, {
+        className: 'nhsuk-do-dont-list',
+      });
 
       expect(container).toMatchSnapshot('DoDontList-Dont');
+    });
+
+    it('matches snapshot (via server)', async () => {
+      const { container, element } = await renderServer(<DoAndDontList listType="dont" />, {
+        className: 'nhsuk-do-dont-list',
+      });
+
+      expect(container).toMatchSnapshot('server');
+
+      await renderClient(element, {
+        className: 'nhsuk-do-dont-list',
+        hydrate: true,
+        container,
+      });
+
+      expect(container).toMatchSnapshot('client');
     });
 
     it('adds the correct headings', () => {
@@ -73,8 +123,8 @@ describe('DoAndDontList', () => {
           </DoAndDontList>,
         );
 
-        expect(container.querySelector('.nhsuk-icon__tick')).toBeTruthy();
-        expect(container.querySelector('.nhsuk-icon__cross')).toBeFalsy();
+        expect(container.querySelector('.nhsuk-icon--tick')).toBeTruthy();
+        expect(container.querySelector('.nhsuk-icon--cross')).toBeFalsy();
       });
 
       it('items render custom prefix text', () => {
@@ -116,8 +166,8 @@ describe('DoAndDontList', () => {
           </DoAndDontList>,
         );
 
-        expect(container.querySelector('.nhsuk-icon__tick')).toBeFalsy();
-        expect(container.querySelector('.nhsuk-icon__cross')).toBeTruthy();
+        expect(container.querySelector('.nhsuk-icon--tick')).toBeFalsy();
+        expect(container.querySelector('.nhsuk-icon--cross')).toBeTruthy();
       });
 
       it("item includes 'do not' by default", () => {

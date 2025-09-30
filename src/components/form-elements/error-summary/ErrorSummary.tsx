@@ -1,82 +1,114 @@
 import React, {
+  Children,
+  ComponentPropsWithoutRef,
   FC,
-  ForwardRefExoticComponent,
+  createRef,
   forwardRef,
-  HTMLProps,
-  PropsWithoutRef,
-  RefAttributes,
+  useState,
+  useEffect,
 } from 'react';
 import classNames from 'classnames';
-import useDevWarning from '@util/hooks/UseDevWarning';
+import { AsElementLink } from '@util/types/LinkTypes';
+import { childIsOfComponentType } from '@util/types/TypeGuards';
+import { type ErrorSummary } from 'nhsuk-frontend';
 
-const DefaultErrorSummaryTitleID = 'error-summary-title';
+export type TitleProps = ComponentPropsWithoutRef<'h2'>;
 
-const ErrorSummaryTitle: FC<HTMLProps<HTMLHeadingElement>> = ({
-  className,
-  id = DefaultErrorSummaryTitleID,
-  ...rest
-}) => (
-  <h2 className={classNames('nhsuk-error-summary__title', className)} id={id} {...rest} />
-);
+const Title: FC<TitleProps> = ({ children, className, ...rest }) => {
+  return (
+    <h2 className={classNames('nhsuk-error-summary__title', className)} {...rest}>
+      {children}
+    </h2>
+  );
+};
 
+type ListProps = ComponentPropsWithoutRef<'ul'>;
 
-const ErrorSummaryBody: FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => (
-  <div className={classNames('nhsuk-error-summary__body', className)} {...rest} />
-);
+const List: FC<ListProps> = ({ children, className, ...rest }) => {
+  if (!children) {
+    return null;
+  }
 
-const ErrorSummaryList: FC<HTMLProps<HTMLUListElement>> = ({ className, ...rest }) => (
-  <ul className={classNames('nhsuk-list', 'nhsuk-error-summary__list', className)} {...rest} />
-);
+  return (
+    <ul className={classNames('nhsuk-list', 'nhsuk-error-summary__list', className)} {...rest}>
+      {children}
+    </ul>
+  );
+};
 
-const ErrorSummaryListItem: FC<HTMLProps<HTMLAnchorElement>> = (props) => (
-  <li>
-    <a {...props} />
-  </li>
-);
+type ListItemProps = AsElementLink<HTMLAnchorElement>;
 
-interface ErrorSummary
-  extends ForwardRefExoticComponent<
-    PropsWithoutRef<HTMLProps<HTMLDivElement>> & RefAttributes<HTMLDivElement>
-  > {
-  Title: FC<HTMLProps<HTMLHeadingElement>>;
-  Body: FC<HTMLProps<HTMLDivElement>>;
-  List: FC<HTMLProps<HTMLUListElement>>;
-  Item: FC<HTMLProps<HTMLAnchorElement>>;
+const ListItem = forwardRef<HTMLAnchorElement, ListItemProps>((props, forwardedRef) => {
+  const { children, asElement: Element = 'a', ...rest } = props;
+
+  if (!children) {
+    return null;
+  }
+
+  return (
+    <li>
+      {(props.asElement ?? props.href) ? (
+        <Element ref={forwardedRef} {...rest}>
+          {children}
+        </Element>
+      ) : (
+        <>{children}</>
+      )}
+    </li>
+  );
+});
+
+export interface ErrorSummaryProps extends ComponentPropsWithoutRef<'div'> {
+  disableAutoFocus?: boolean;
 }
 
-const ErrorSummaryDiv = forwardRef<HTMLDivElement, HTMLProps<HTMLDivElement>>(
-  ({
-    className,
-    tabIndex = -1,
-    role = 'alert',
-    'aria-labelledby': ariaLabelledBy = DefaultErrorSummaryTitleID,
-    ...rest
-  },
-  ref
-) => {
-    useDevWarning('The ErrorSummary component should always have a tabIndex of -1', () => tabIndex !== -1)
-    useDevWarning('The ErrorSummary component should always have a role of alert', () => role !== 'alert')
-  
+const ErrorSummaryComponent = forwardRef<HTMLDivElement, ErrorSummaryProps>(
+  ({ children, className, disableAutoFocus, ...rest }, forwardedRef) => {
+    const [moduleRef] = useState(() => forwardedRef || createRef<HTMLDivElement>());
+    const [instance, setInstance] = useState<ErrorSummary>();
+
+    useEffect(() => {
+      if (!('current' in moduleRef) || !moduleRef.current || instance) {
+        return;
+      }
+
+      const { current: $root } = moduleRef;
+
+      import('nhsuk-frontend').then(({ ErrorSummary }) => {
+        setInstance(new ErrorSummary($root));
+      });
+    }, [moduleRef, instance]);
+
+    const items = Children.toArray(children);
+    const title = items.find((child) => childIsOfComponentType(child, Title));
+    const bodyItems = items.filter((child) => !childIsOfComponentType(child, Title));
+
     return (
       <div
         className={classNames('nhsuk-error-summary', className)}
-        ref={ref}
-        tabIndex={tabIndex}
-        role={role}
-        aria-labelledby={ariaLabelledBy}
+        data-module="nhsuk-error-summary"
+        data-disable-auto-focus={disableAutoFocus}
+        ref={moduleRef}
         {...rest}
-      />
-    )
+      >
+        {/* Keep the role="alert" in a seperate child container to prevent a race condition between
+        the focusing js at the alert, resulting in information getting missed in screen reader announcements */}
+        <div role="alert">
+          {title}
+          <div className="nhsuk-error-summary__body">{bodyItems}</div>
+        </div>
+      </div>
+    );
+  },
+);
+
+ErrorSummaryComponent.displayName = 'ErrorSummary';
+Title.displayName = 'ErrorSummary.Title';
+List.displayName = 'ErrorSummary.List';
+ListItem.displayName = 'ErrorSummary.ListItem';
+
+export default Object.assign(ErrorSummaryComponent, {
+  Title,
+  List,
+  ListItem,
 });
-
-
-ErrorSummaryDiv.displayName = 'ErrorSummary';
-
-const ErrorSummary: ErrorSummary = Object.assign(ErrorSummaryDiv, {
-  Title: ErrorSummaryTitle,
-  Body: ErrorSummaryBody,
-  List: ErrorSummaryList,
-  Item: ErrorSummaryListItem,
-});
-
-export default ErrorSummary;

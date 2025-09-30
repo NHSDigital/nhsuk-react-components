@@ -1,87 +1,622 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`DateInput matches snapshot (via server): client 1`] = `
+<div>
+  <div
+    class="nhsuk-form-group"
+  >
+    <fieldset
+      aria-describedby="date-input--hint"
+      class="nhsuk-fieldset"
+      role="group"
+    >
+      <legend
+        class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l"
+      >
+        What is your date of birth?
+      </legend>
+      <div
+        class="nhsuk-hint"
+        id="date-input--hint"
+      >
+        For example, 15 3 1984
+      </div>
+      <div
+        class="nhsuk-date-input"
+        id="date-input"
+      >
+        <div
+          class="nhsuk-date-input__item"
+        >
+          <div
+            class="nhsuk-form-group"
+          >
+            <label
+              class="nhsuk-label nhsuk-date-input__label"
+              for="date-input-day"
+              id="date-input-day--label"
+            >
+              Day
+            </label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+              id="date-input-day"
+              inputmode="numeric"
+              name="date-input-day"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          class="nhsuk-date-input__item"
+        >
+          <div
+            class="nhsuk-form-group"
+          >
+            <label
+              class="nhsuk-label nhsuk-date-input__label"
+              for="date-input-month"
+              id="date-input-month--label"
+            >
+              Month
+            </label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+              id="date-input-month"
+              inputmode="numeric"
+              name="date-input-month"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          class="nhsuk-date-input__item"
+        >
+          <div
+            class="nhsuk-form-group"
+          >
+            <label
+              class="nhsuk-label nhsuk-date-input__label"
+              for="date-input-year"
+              id="date-input-year--label"
+            >
+              Year
+            </label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
+              id="date-input-year"
+              inputmode="numeric"
+              name="date-input-year"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+`;
+
+exports[`DateInput matches snapshot (via server): server 1`] = `
+<div>
+  <div
+    class="nhsuk-form-group"
+  >
+    <fieldset
+      aria-describedby="date-input--hint"
+      class="nhsuk-fieldset"
+      role="group"
+    >
+      <legend
+        class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l"
+      >
+        What is your date of birth?
+      </legend>
+      <div
+        class="nhsuk-hint"
+        id="date-input--hint"
+      >
+        For example, 15 3 1984
+      </div>
+      <div
+        class="nhsuk-date-input"
+        id="date-input"
+      >
+        <div
+          class="nhsuk-date-input__item"
+        >
+          <div
+            class="nhsuk-form-group"
+          >
+            <label
+              class="nhsuk-label nhsuk-date-input__label"
+              for="date-input-day"
+              id="date-input-day--label"
+            >
+              Day
+            </label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+              id="date-input-day"
+              inputmode="numeric"
+              name="date-input-day"
+              type="text"
+            />
+          </div>
+        </div>
+        <div
+          class="nhsuk-date-input__item"
+        >
+          <div
+            class="nhsuk-form-group"
+          >
+            <label
+              class="nhsuk-label nhsuk-date-input__label"
+              for="date-input-month"
+              id="date-input-month--label"
+            >
+              Month
+            </label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+              id="date-input-month"
+              inputmode="numeric"
+              name="date-input-month"
+              type="text"
+            />
+          </div>
+        </div>
+        <div
+          class="nhsuk-date-input__item"
+        >
+          <div
+            class="nhsuk-form-group"
+          >
+            <label
+              class="nhsuk-label nhsuk-date-input__label"
+              for="date-input-year"
+              id="date-input-year--label"
+            >
+              Year
+            </label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
+              id="date-input-year"
+              inputmode="numeric"
+              name="date-input-year"
+              type="text"
+            />
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+`;
+
 exports[`DateInput matches snapshot 1`] = `
 <div>
   <div
     class="nhsuk-form-group"
   >
-    <div
-      class="nhsuk-date-input"
-      id="testInput"
+    <fieldset
+      aria-describedby="date-input--hint"
+      class="nhsuk-fieldset"
+      role="group"
     >
-      <div
-        class="nhsuk-date-input__item"
+      <legend
+        class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l"
       >
-        <div
-          class="nhsuk-form-group"
-        >
-          <label
-            class="nhsuk-label nhsuk-date-input__label"
-            for="testInput-day"
-            id="testInput-day--label"
-          >
-            Day
-          </label>
-          <input
-            class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
-            id="testInput-day"
-            inputmode="numeric"
-            name="testInput-day"
-            pattern="[0-9]*"
-            type="text"
-            value=""
-          />
-        </div>
+        What is your date of birth?
+      </legend>
+      <div
+        class="nhsuk-hint"
+        id="date-input--hint"
+      >
+        For example, 15 3 1984
       </div>
       <div
-        class="nhsuk-date-input__item"
+        class="nhsuk-date-input"
+        id="date-input"
       >
         <div
-          class="nhsuk-form-group"
+          class="nhsuk-date-input__item"
         >
-          <label
-            class="nhsuk-label nhsuk-date-input__label"
-            for="testInput-month"
-            id="testInput-month--label"
+          <div
+            class="nhsuk-form-group"
           >
-            Month
-          </label>
-          <input
-            class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
-            id="testInput-month"
-            inputmode="numeric"
-            name="testInput-month"
-            pattern="[0-9]*"
-            type="text"
-            value=""
-          />
+            <label
+              class="nhsuk-label nhsuk-date-input__label"
+              for="date-input-day"
+              id="date-input-day--label"
+            >
+              Day
+            </label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+              id="date-input-day"
+              inputmode="numeric"
+              name="date-input-day"
+              type="text"
+              value=""
+            />
+          </div>
         </div>
+        <div
+          class="nhsuk-date-input__item"
+        >
+          <div
+            class="nhsuk-form-group"
+          >
+            <label
+              class="nhsuk-label nhsuk-date-input__label"
+              for="date-input-month"
+              id="date-input-month--label"
+            >
+              Month
+            </label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+              id="date-input-month"
+              inputmode="numeric"
+              name="date-input-month"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          class="nhsuk-date-input__item"
+        >
+          <div
+            class="nhsuk-form-group"
+          >
+            <label
+              class="nhsuk-label nhsuk-date-input__label"
+              for="date-input-year"
+              id="date-input-year--label"
+            >
+              Year
+            </label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
+              id="date-input-year"
+              inputmode="numeric"
+              name="date-input-year"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+`;
+
+exports[`DateInput matches snapshot with custom date fields 1`] = `
+<div>
+  <div
+    class="nhsuk-form-group"
+  >
+    <fieldset
+      aria-describedby="date-input--hint"
+      class="nhsuk-fieldset"
+      role="group"
+    >
+      <legend
+        class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l"
+      >
+        What is your date of birth?
+      </legend>
+      <div
+        class="nhsuk-hint"
+        id="date-input--hint"
+      >
+        For example, 15 3 1984
       </div>
       <div
-        class="nhsuk-date-input__item"
+        class="nhsuk-date-input"
+        id="date-input"
       >
         <div
-          class="nhsuk-form-group"
+          class="nhsuk-date-input__item"
         >
-          <label
-            class="nhsuk-label nhsuk-date-input__label"
-            for="testInput-year"
-            id="testInput-year--label"
+          <div
+            class="nhsuk-form-group"
           >
-            Year
-          </label>
-          <input
-            class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
-            id="testInput-year"
-            inputmode="numeric"
-            name="testInput-year"
-            pattern="[0-9]*"
-            type="text"
-            value=""
-          />
+            <label
+              class="nhsuk-label nhsuk-date-input__label"
+              for="date-input-day"
+              id="date-input-day--label"
+            >
+              Day
+            </label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+              id="date-input-day"
+              inputmode="numeric"
+              name="date-input-day"
+              type="text"
+              value="31"
+            />
+          </div>
+        </div>
+        <div
+          class="nhsuk-date-input__item"
+        >
+          <div
+            class="nhsuk-form-group"
+          >
+            <label
+              class="nhsuk-label nhsuk-date-input__label"
+              for="date-input-month"
+              id="date-input-month--label"
+            >
+              Month
+            </label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+              id="date-input-month"
+              inputmode="numeric"
+              name="date-input-month"
+              type="text"
+              value="3"
+            />
+          </div>
+        </div>
+        <div
+          class="nhsuk-date-input__item"
+        >
+          <div
+            class="nhsuk-form-group"
+          >
+            <label
+              class="nhsuk-label nhsuk-date-input__label"
+              for="date-input-year"
+              id="date-input-year--label"
+            >
+              Year
+            </label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
+              id="date-input-year"
+              inputmode="numeric"
+              name="date-input-year"
+              type="text"
+              value="1984"
+            />
+          </div>
         </div>
       </div>
-    </div>
+    </fieldset>
+  </div>
+</div>
+`;
+
+exports[`DateInput matches snapshot with custom date fields and error message 1`] = `
+<div>
+  <div
+    class="nhsuk-form-group nhsuk-form-group--error"
+  >
+    <fieldset
+      aria-describedby="date-input--hint date-input--error-message"
+      class="nhsuk-fieldset"
+      role="group"
+    >
+      <legend
+        class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l"
+      >
+        What is your date of birth?
+      </legend>
+      <div
+        class="nhsuk-hint"
+        id="date-input--hint"
+      >
+        For example, 15 3 1984
+      </div>
+      <span
+        class="nhsuk-error-message"
+        id="date-input--error-message"
+      >
+        <span
+          class="nhsuk-u-visually-hidden"
+        >
+          Error:
+        </span>
+         
+        Date of birth must include a day
+      </span>
+      <div
+        class="nhsuk-date-input"
+        id="date-input"
+      >
+        <div
+          class="nhsuk-date-input__item"
+        >
+          <div
+            class="nhsuk-form-group"
+          >
+            <label
+              class="nhsuk-label nhsuk-date-input__label"
+              for="date-input-day"
+              id="date-input-day--label"
+            >
+              Day
+            </label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 nhsuk-input--error"
+              id="date-input-day"
+              inputmode="numeric"
+              name="date-input-day"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          class="nhsuk-date-input__item"
+        >
+          <div
+            class="nhsuk-form-group"
+          >
+            <label
+              class="nhsuk-label nhsuk-date-input__label"
+              for="date-input-month"
+              id="date-input-month--label"
+            >
+              Month
+            </label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2"
+              id="date-input-month"
+              inputmode="numeric"
+              name="date-input-month"
+              type="text"
+              value="3"
+            />
+          </div>
+        </div>
+        <div
+          class="nhsuk-date-input__item"
+        >
+          <div
+            class="nhsuk-form-group"
+          >
+            <label
+              class="nhsuk-label nhsuk-date-input__label"
+              for="date-input-year"
+              id="date-input-year--label"
+            >
+              Year
+            </label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4"
+              id="date-input-year"
+              inputmode="numeric"
+              name="date-input-year"
+              type="text"
+              value="1984"
+            />
+          </div>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+`;
+
+exports[`DateInput matches snapshot with error message 1`] = `
+<div>
+  <div
+    class="nhsuk-form-group nhsuk-form-group--error"
+  >
+    <fieldset
+      aria-describedby="date-input--hint date-input--error-message"
+      class="nhsuk-fieldset"
+      role="group"
+    >
+      <legend
+        class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l"
+      >
+        What is your date of birth?
+      </legend>
+      <div
+        class="nhsuk-hint"
+        id="date-input--hint"
+      >
+        For example, 15 3 1984
+      </div>
+      <span
+        class="nhsuk-error-message"
+        id="date-input--error-message"
+      >
+        <span
+          class="nhsuk-u-visually-hidden"
+        >
+          Error:
+        </span>
+         
+        Date of birth must include a day
+      </span>
+      <div
+        class="nhsuk-date-input"
+        id="date-input"
+      >
+        <div
+          class="nhsuk-date-input__item"
+        >
+          <div
+            class="nhsuk-form-group"
+          >
+            <label
+              class="nhsuk-label nhsuk-date-input__label"
+              for="date-input-day"
+              id="date-input-day--label"
+            >
+              Day
+            </label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 nhsuk-input--error"
+              id="date-input-day"
+              inputmode="numeric"
+              name="date-input-day"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          class="nhsuk-date-input__item"
+        >
+          <div
+            class="nhsuk-form-group"
+          >
+            <label
+              class="nhsuk-label nhsuk-date-input__label"
+              for="date-input-month"
+              id="date-input-month--label"
+            >
+              Month
+            </label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2 nhsuk-input--error"
+              id="date-input-month"
+              inputmode="numeric"
+              name="date-input-month"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+        <div
+          class="nhsuk-date-input__item"
+        >
+          <div
+            class="nhsuk-form-group"
+          >
+            <label
+              class="nhsuk-label nhsuk-date-input__label"
+              for="date-input-year"
+              id="date-input-year--label"
+            >
+              Year
+            </label>
+            <input
+              class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4 nhsuk-input--error"
+              id="date-input-year"
+              inputmode="numeric"
+              name="date-input-year"
+              type="text"
+              value=""
+            />
+          </div>
+        </div>
+      </div>
+    </fieldset>
   </div>
 </div>
 `;

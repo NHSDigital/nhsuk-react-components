@@ -1,5 +1,108 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Radios matches snapshot (via server): client 1`] = `
+<div>
+  <div
+    class="nhsuk-form-group"
+  >
+    <div
+      class="nhsuk-radios"
+      data-module="nhsuk-radios"
+      data-nhsuk-radios-init=""
+      id="example"
+    >
+      <div
+        class="nhsuk-radios__item"
+      >
+        <input
+          class="nhsuk-radios__input"
+          id="example-1"
+          name="example"
+          type="radio"
+          value="yes"
+        />
+        <label
+          class="nhsuk-label nhsuk-radios__label"
+          for="example-1"
+          id="example-1--label"
+        >
+          Yes
+        </label>
+      </div>
+      <div
+        class="nhsuk-radios__item"
+      >
+        <input
+          class="nhsuk-radios__input"
+          id="example-2"
+          name="example"
+          type="radio"
+          value="no"
+        />
+        <label
+          class="nhsuk-label nhsuk-radios__label"
+          for="example-2"
+          id="example-2--label"
+        >
+          No
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Radios matches snapshot (via server): server 1`] = `
+<div>
+  <div
+    class="nhsuk-form-group"
+  >
+    <div
+      class="nhsuk-radios"
+      data-module="nhsuk-radios"
+      id="example"
+    >
+      <div
+        class="nhsuk-radios__item"
+      >
+        <input
+          class="nhsuk-radios__input"
+          id="example-1"
+          name="example"
+          type="radio"
+          value="yes"
+        />
+        <label
+          class="nhsuk-label nhsuk-radios__label"
+          for="example-1"
+          id="example-1--label"
+        >
+          Yes
+        </label>
+      </div>
+      <div
+        class="nhsuk-radios__item"
+      >
+        <input
+          class="nhsuk-radios__input"
+          id="example-2"
+          name="example"
+          type="radio"
+          value="no"
+        />
+        <label
+          class="nhsuk-label nhsuk-radios__label"
+          for="example-2"
+          id="example-2--label"
+        >
+          No
+        </label>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
 exports[`Radios matches snapshot 1`] = `
 <div>
   <div
@@ -7,6 +110,8 @@ exports[`Radios matches snapshot 1`] = `
   >
     <div
       class="nhsuk-radios"
+      data-module="nhsuk-radios"
+      data-nhsuk-radios-init=""
       id="example"
     >
       <div

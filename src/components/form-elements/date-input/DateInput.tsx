@@ -1,9 +1,15 @@
-'use client';
-
-import React, { HTMLProps, ChangeEvent, useEffect, useState } from 'react';
+import React, {
+  ChangeEvent,
+  ComponentPropsWithoutRef,
+  EventHandler,
+  useEffect,
+  useState,
+  createRef,
+  forwardRef,
+} from 'react';
 import classNames from 'classnames';
 import { DayInput, MonthInput, YearInput } from './components/IndividualDateInputs';
-import SingleInputFormGroup from '@components/utils/SingleInputFormGroup';
+import FormGroup from '@components/utils/FormGroup';
 import DateInputContext, { IDateInputContext } from './DateInputContext';
 import { FormElementProps } from '@util/types/FormTypes';
 
@@ -13,118 +19,110 @@ type DateInputValue = {
   year: string;
 };
 
-export type DateInputChangeEvent = ChangeEvent<HTMLInputElement> & {
-  target: HTMLInputElement & { value: DateInputValue };
-  currentTarget: HTMLInputElement & { value: DateInputValue };
-};
+export interface DateInputChangeEvent
+  extends Omit<ChangeEvent<DateInputElement>, 'target' | 'currentTarget'> {
+  target: DateInputElement;
+  currentTarget: DateInputElement;
+}
+
+interface DateInputElement extends Omit<HTMLInputElement, 'value' | 'onChange'> {
+  value?: Partial<DateInputValue>;
+  onChange?: EventHandler<DateInputChangeEvent>;
+}
 
 interface DateInputProps
-  extends Omit<HTMLProps<HTMLDivElement>, 'value' | 'defaultValue'>,
-    FormElementProps {
-  autoSelectNext?: boolean;
+  extends Omit<ComponentPropsWithoutRef<'div'>, 'defaultValue' | 'onChange'>,
+    Omit<FormElementProps, 'label' | 'labelProps'> {
   value?: Partial<DateInputValue>;
   defaultValue?: Partial<DateInputValue>;
-  onChange?: (e: DateInputChangeEvent) => void;
+  onChange?: EventHandler<DateInputChangeEvent>;
 }
 
 type InputType = 'day' | 'month' | 'year';
 
-const DateInput = ({
-  autoSelectNext,
-  children,
-  onChange,
-  value,
-  defaultValue,
-  ...rest
-}: DateInputProps) => {
-  let monthRef: HTMLInputElement | null = null;
-  let yearRef: HTMLInputElement | null = null;
-  const [internalDate, setInternalDate] = useState<Record<InputType, string>>({
-    day: value?.day ?? '',
-    month: value?.month ?? '',
-    year: value?.year ?? '',
-  });
+const DateInputComponent = forwardRef<HTMLDivElement, DateInputProps>(
+  ({ children, onChange, value, defaultValue, formGroupProps, ...rest }, forwardedRef) => {
+    const [moduleRef] = useState(() => formGroupProps?.ref || createRef<HTMLDivElement>());
 
-  useEffect(() => {
-    const newState = { ...internalDate };
-    const { day, month, year } = value ?? {};
-    if (day && day !== internalDate.day) newState.day = day;
-    if (month && month !== internalDate.month) newState.month = month;
-    if (year && year !== internalDate.year) newState.year = year;
+    const [internalDate, setInternalDate] = useState<DateInputValue>({
+      day: value?.day ?? '',
+      month: value?.month ?? '',
+      year: value?.year ?? '',
+    });
 
-    return setInternalDate(newState);
-  }, [value]);
+    useEffect(() => {
+      const newState = { ...internalDate };
+      const { day, month, year } = value ?? {};
+      if (day && day !== internalDate.day) newState.day = day;
+      if (month && month !== internalDate.month) newState.month = month;
+      if (year && year !== internalDate.year) newState.year = year;
 
-  const handleFocusNextInput = (inputType: InputType, value: string): void => {
-    if (!autoSelectNext) return;
-    if (inputType === 'day' && value.length === 2 && monthRef) {
-      monthRef.focus();
-    } else if (inputType === 'month' && value.length === 2 && yearRef) {
-      yearRef.focus();
-    }
-  };
+      return setInternalDate(newState);
+    }, [value]);
 
-  const handleChange = (inputType: InputType, event: ChangeEvent<HTMLInputElement>): void => {
-    handleFocusNextInput(inputType, event.target.value);
-    event.stopPropagation();
+    const handleChange = (inputType: InputType, event: ChangeEvent<HTMLInputElement>): void => {
+      event.stopPropagation();
 
-    if (onChange) {
-      const newEventValue = {
+      const newEventValue: DateInputValue = {
         ...internalDate,
         [inputType]: event.target.value,
       };
-      const newEvent = {
+
+      const newEvent: ChangeEvent<DateInputElement> = {
         ...event,
         target: { ...event.target, value: newEventValue },
         currentTarget: { ...event.currentTarget, value: newEventValue },
-      } as DateInputChangeEvent;
+      };
 
-      onChange(newEvent);
+      onChange?.(newEvent);
       setInternalDate(newEventValue);
-    }
-  };
+    };
 
-  const registerRef = (inputType: InputType, ref: HTMLInputElement | null): void => {
-    if (inputType === 'month') monthRef = ref;
-    if (inputType === 'year') yearRef = ref;
-  };
+    return (
+      <FormGroup<Omit<DateInputProps, 'value' | 'defaultValue'>>
+        formGroupProps={{ ...formGroupProps, ref: moduleRef }}
+        fieldsetProps={{ role: 'group' }}
+        inputType="dateinput"
+        {...rest}
+      >
+        {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
+        {({ className, name, id, error, ...restRenderProps }) => {
+          const contextValue: IDateInputContext = {
+            id,
+            name,
+            error,
+            value,
+            defaultValue,
+            handleChange,
+          };
+          return (
+            <div
+              className={classNames('nhsuk-date-input', className)}
+              id={id}
+              ref={forwardedRef}
+              {...restRenderProps}
+            >
+              <DateInputContext.Provider value={contextValue}>
+                {children || (
+                  <>
+                    <DayInput />
+                    <MonthInput />
+                    <YearInput />
+                  </>
+                )}
+              </DateInputContext.Provider>
+            </div>
+          );
+        }}
+      </FormGroup>
+    );
+  },
+);
 
-  return (
-    <SingleInputFormGroup<Omit<DateInputProps, 'value' | 'defaultValue'>>
-      inputType="dateinput"
-      {...rest}
-    >
-      {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
-      {({ className, name, id, error, autoSelectNext, ...restRenderProps }) => {
-        const contextValue: IDateInputContext = {
-          id,
-          name,
-          error,
-          value,
-          defaultValue,
-          handleChange,
-          registerRef,
-        };
-        return (
-          <div className={classNames('nhsuk-date-input', className)} {...restRenderProps} id={id}>
-            <DateInputContext.Provider value={contextValue}>
-              {children || (
-                <>
-                  <DateInput.Day />
-                  <DateInput.Month />
-                  <DateInput.Year />
-                </>
-              )}
-            </DateInputContext.Provider>
-          </div>
-        );
-      }}
-    </SingleInputFormGroup>
-  );
-};
+DateInputComponent.displayName = 'DateInput';
 
-DateInput.Day = DayInput;
-DateInput.Month = MonthInput;
-DateInput.Year = YearInput;
-
-export default DateInput;
+export default Object.assign(DateInputComponent, {
+  Day: DayInput,
+  Month: MonthInput,
+  Year: YearInput,
+});

@@ -1,52 +1,45 @@
-import React, { FC, HTMLProps, useContext, useEffect } from 'react';
-import classNames from 'classnames';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import { Search as SearchIcon } from '@components/content-presentation/icons';
-import HeaderContext, { IHeaderContext } from '../HeaderContext';
 
-export interface SearchProps extends HTMLProps<HTMLInputElement> {
-  visuallyHiddenText?: string;
+export interface SearchProps extends ComponentPropsWithoutRef<'form'> {
+  name?: string;
+  placeholder?: string;
+  visuallyHiddenLabel?: string;
+  visuallyHiddenButton?: string;
 }
 
 const Search: FC<SearchProps> = ({
-  action,
+  action = 'https://www.nhs.uk/search/',
   method = 'get',
-  type = 'search',
-  id = 'search-field',
-  visuallyHiddenText = 'Search the NHS website',
-  autoComplete = 'off',
-  role = 'search',
+  id = 'search',
+  name = 'q',
   placeholder = 'Search',
+  visuallyHiddenLabel = 'Search the NHS website',
+  visuallyHiddenButton = 'Search',
   ...rest
 }) => {
-  const { setSearch } = useContext<IHeaderContext>(HeaderContext);
-  useEffect(() => {
-    setSearch(true);
-    return () => setSearch(false);
-  }, []);
   return (
-    <div className="nhsuk-header__search">
-      <div className={classNames('nhsuk-header__search-wrap')}>
-        <form className="nhsuk-header__search-form" action={action} method={method} role="search">
-          <label className="nhsuk-u-visually-hidden" htmlFor={id}>
-            {visuallyHiddenText}
-          </label>
-          <input
-            className="nhsuk-search__input"
-            id={id}
-            type={type}
-            autoComplete={autoComplete}
-            role={role}
-            placeholder={placeholder}
-            {...rest}
-          />
-          <button className="nhsuk-search__submit" type="submit">
-            <SearchIcon width={27} height={27} />
-            <span className="nhsuk-u-visually-hidden">Search</span>
-          </button>
-        </form>
-      </div>
-    </div>
+    <search className="nhsuk-header__search">
+      <form className="nhsuk-header__search-form" id={id} action={action} method={method} {...rest}>
+        <label className="nhsuk-u-visually-hidden" htmlFor="search-field">
+          {visuallyHiddenLabel}
+        </label>
+        <input
+          className="nhsuk-header__search-input nhsuk-input"
+          id="search-field"
+          name={name}
+          type="search"
+          placeholder={placeholder}
+          autoComplete="off"
+        />
+        <button className="nhsuk-header__search-submit" type="submit">
+          <SearchIcon title={visuallyHiddenButton} />
+        </button>
+      </form>
+    </search>
   );
 };
+
+Search.displayName = 'Header.Search';
 
 export default Search;

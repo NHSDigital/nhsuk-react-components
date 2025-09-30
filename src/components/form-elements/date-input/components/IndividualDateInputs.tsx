@@ -1,14 +1,14 @@
-'use client';
-import React, { FC, HTMLProps, useContext, ChangeEvent } from 'react';
+import React, { ComponentPropsWithoutRef, useContext, ChangeEvent, forwardRef } from 'react';
 import classNames from 'classnames';
-import Label, { LabelProps } from '../../label/Label';
+import { FormElementProps } from '@util/types/FormTypes';
+import Label from '../../label/Label';
 import DateInputContext, { IDateInputContext } from '../DateInputContext';
 
-export interface IndividualDateInputProps extends HTMLProps<HTMLInputElement> {
-  labelProps?: LabelProps;
+export interface IndividualDateInputProps
+  extends ComponentPropsWithoutRef<'input'>,
+    Pick<FormElementProps, 'label' | 'labelProps'> {
+  error?: string | false;
   inputType: 'day' | 'month' | 'year';
-  inputRef?: (ref: HTMLInputElement | null) => void;
-  error?: boolean;
 }
 
 const labels: Record<'day' | 'month' | 'year', string> = {
@@ -17,97 +17,95 @@ const labels: Record<'day' | 'month' | 'year', string> = {
   year: 'Year',
 };
 
-const IndividualDateInput: FC<IndividualDateInputProps> = ({
-  label,
-  labelProps,
-  inputType,
-  className,
-  id,
-  name,
-  onChange,
-  inputRef,
-  error,
-  value,
-  defaultValue,
-  pattern = '[0-9]*',
-  inputMode = 'numeric',
-  type = 'text',
-  ...rest
-}) => {
-  const {
-    id: ctxId,
-    name: ctxName,
-    error: ctxError,
-    value: ctxValue,
-    defaultValue: ctxDefaultValue,
-    handleChange: ctxHandleChange,
-    registerRef,
-  } = useContext<IDateInputContext>(DateInputContext);
+const IndividualDateInput = forwardRef<HTMLInputElement, IndividualDateInputProps>(
+  (props, forwardedRef) => {
+    const {
+      label,
+      labelProps,
+      inputType,
+      className,
+      id,
+      name,
+      onChange,
+      error,
+      value,
+      defaultValue,
+      ...rest
+    } = props;
 
-  const { className: labelClassName, ...restLabelProps } = labelProps || {};
+    const {
+      id: ctxId,
+      name: ctxName,
+      error: ctxError,
+      value: ctxValue,
+      defaultValue: ctxDefaultValue,
+      handleChange: ctxHandleChange,
+    } = useContext<IDateInputContext>(DateInputContext);
 
-  const inputID = id || `${ctxId}-${inputType}`;
-  const inputName = name || `${ctxName}-${inputType}`;
-  const inputValue = value !== undefined ? value : ctxValue?.[inputType];
-  const inputDefaultValue =
-    defaultValue !== undefined ? defaultValue : ctxDefaultValue?.[inputType];
+    const { className: labelClassName, ...restLabelProps } = labelProps || {};
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    e.persist();
-    if (onChange) onChange(e);
-    if (!e.isPropagationStopped()) {
-      ctxHandleChange(inputType, e);
-    }
-  };
+    const inputID = id || `${ctxId}-${inputType}`;
+    const inputName = name || `${ctxName}-${inputType}`;
+    const inputValue = value === undefined ? ctxValue?.[inputType] : value;
+    const inputDefaultValue =
+      defaultValue === undefined ? ctxDefaultValue?.[inputType] : defaultValue;
 
-  const refCallback = (ref: HTMLInputElement | null) => {
-    registerRef(inputType, ref);
-    if (inputRef) inputRef(ref);
-  };
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+      e.persist();
+      if (onChange) onChange(e);
+      if (!e.isPropagationStopped()) {
+        ctxHandleChange(inputType, e);
+      }
+    };
 
-  return (
-    <div className="nhsuk-date-input__item">
-      <div className="nhsuk-form-group">
-        <Label
-          className={classNames('nhsuk-date-input__label', labelClassName)}
-          id={`${inputID}--label`}
-          htmlFor={inputID}
-          {...restLabelProps}
-        >
-          {label || labels[inputType]}
-        </Label>
-        <input
-          className={classNames(
-            'nhsuk-input nhsuk-date-input__input',
-            { 'nhsuk-input--width-2': inputType === 'day' || inputType === 'month' },
-            { 'nhsuk-input--width-4': inputType === 'year' },
-            { 'nhsuk-input--error': error === undefined ? ctxError : error },
-            className,
-          )}
-          value={inputValue}
-          defaultValue={inputDefaultValue}
-          id={inputID}
-          name={inputName}
-          onChange={handleChange}
-          ref={refCallback}
-          pattern={pattern}
-          inputMode={inputMode}
-          type={type}
-          {...rest}
-        />
+    return (
+      <div className="nhsuk-date-input__item">
+        <div className="nhsuk-form-group">
+          <Label
+            className={classNames('nhsuk-date-input__label', labelClassName)}
+            id={`${inputID}--label`}
+            htmlFor={inputID}
+            {...restLabelProps}
+          >
+            {label || labels[inputType]}
+          </Label>
+          <input
+            className={classNames(
+              'nhsuk-input nhsuk-date-input__input',
+              { 'nhsuk-input--width-2': inputType === 'day' || inputType === 'month' },
+              { 'nhsuk-input--width-4': inputType === 'year' },
+              { 'nhsuk-input--error': error === undefined ? ctxError : error },
+              className,
+            )}
+            value={inputValue}
+            defaultValue={inputDefaultValue}
+            id={inputID}
+            name={inputName}
+            onChange={handleChange}
+            ref={forwardedRef}
+            inputMode="numeric"
+            type="text"
+            {...rest}
+          />
+        </div>
       </div>
-    </div>
-  );
-};
-
-export const DayInput: FC<Omit<IndividualDateInputProps, 'inputType'>> = (props) => (
-  <IndividualDateInput inputType="day" {...props} />
+    );
+  },
 );
 
-export const MonthInput: FC<Omit<IndividualDateInputProps, 'inputType'>> = (props) => (
-  <IndividualDateInput inputType="month" {...props} />
+export const DayInput = forwardRef<HTMLInputElement, Omit<IndividualDateInputProps, 'inputType'>>(
+  (props, forwardedRef) => <IndividualDateInput inputType="day" ref={forwardedRef} {...props} />,
 );
 
-export const YearInput: FC<Omit<IndividualDateInputProps, 'inputType'>> = (props) => (
-  <IndividualDateInput inputType="year" {...props} />
+export const MonthInput = forwardRef<HTMLInputElement, Omit<IndividualDateInputProps, 'inputType'>>(
+  (props, forwardedRef) => <IndividualDateInput inputType="month" ref={forwardedRef} {...props} />,
 );
+
+export const YearInput = forwardRef<HTMLInputElement, Omit<IndividualDateInputProps, 'inputType'>>(
+  (props, forwardedRef) => <IndividualDateInput inputType="year" ref={forwardedRef} {...props} />,
+);
+
+IndividualDateInput.displayName = 'DateInput.Field';
+DayInput.displayName = 'DateInput.Day';
+MonthInput.displayName = 'DateInput.Month';
+YearInput.displayName = 'DateInput.Year';

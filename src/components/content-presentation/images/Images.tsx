@@ -1,19 +1,19 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, forwardRef } from 'react';
 import classNames from 'classnames';
 
-interface ImageProps extends HTMLProps<HTMLImageElement> {
-  // Overriding the default crossOrigin the default is crossOrigin: string | undefined
-  // which causes a typescript "incompatible types" error.
-  crossOrigin?: 'anonymous' | 'use-credentials' | undefined;
+export interface ImagesProps extends ComponentPropsWithoutRef<'img'> {
   caption?: string;
 }
 
-const Images: FC<ImageProps> = ({ className, caption, ...rest }) => (
-  <figure className="nhsuk-image">
-    {/* eslint-disable-next-line jsx-a11y/alt-text */}
-    <img className={classNames('nhsuk-image__img', className)} {...rest} />
-    {caption ? <figcaption className="nhsuk-image__caption">{caption}</figcaption> : null}
-  </figure>
+const ImagesComponent = forwardRef<HTMLElement, ImagesProps>(
+  ({ alt = '', className, caption, ...rest }, forwardedRef) => (
+    <figure className="nhsuk-image" ref={forwardedRef}>
+      <img className={classNames('nhsuk-image__img', className)} alt={alt} {...rest} />
+      {caption ? <figcaption className="nhsuk-image__caption">{caption}</figcaption> : null}
+    </figure>
+  ),
 );
 
-export default Images;
+ImagesComponent.displayName = 'Images';
+
+export default ImagesComponent;

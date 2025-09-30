@@ -1,11 +1,11 @@
-import React from 'react';
-import { fireEvent, render } from '@testing-library/react';
-import Tabs from '../Tabs';
-import { HeadingLevelType } from '@components/utils/HeadingLevel';
+import React, { createRef } from 'react';
+import { render } from '@testing-library/react';
+import { renderClient, renderServer } from '@util/components';
+import Tabs, { TabTitleProps } from '../Tabs';
 
-describe('The tabs component', () => {
-  it('Matches the snapshot', () => {
-    const { container } = render(
+describe('Tabs', () => {
+  it('matches snapshot', async () => {
+    const { container } = await renderClient(
       <Tabs>
         <Tabs.Title>Contents</Tabs.Title>
         <Tabs.List>
@@ -26,13 +26,69 @@ describe('The tabs component', () => {
           <div>Past month contents go here</div>
         </Tabs.Contents>
       </Tabs>,
+      { moduleName: 'nhsuk-tabs' },
     );
 
     expect(container).toMatchSnapshot();
   });
 
-  it('Switches the visibility of tabs when clicked', () => {
-    const { container } = render(
+  it('matches snapshot (via server)', async () => {
+    const { container, element } = await renderServer(
+      <Tabs>
+        <Tabs.Title>Contents</Tabs.Title>
+        <Tabs.List>
+          <Tabs.ListItem id="past-day">Past day</Tabs.ListItem>
+          <Tabs.ListItem id="past-week">Past week</Tabs.ListItem>
+          <Tabs.ListItem id="past-month">Past month</Tabs.ListItem>
+        </Tabs.List>
+
+        <Tabs.Contents id="past-day">
+          <div>Past day contents go here</div>
+        </Tabs.Contents>
+
+        <Tabs.Contents id="past-week">
+          <div>Past week contents go here</div>
+        </Tabs.Contents>
+
+        <Tabs.Contents id="past-month">
+          <div>Past month contents go here</div>
+        </Tabs.Contents>
+      </Tabs>,
+      { moduleName: 'nhsuk-tabs' },
+    );
+
+    expect(container).toMatchSnapshot('server');
+
+    await renderClient(element, {
+      moduleName: 'nhsuk-tabs',
+      hydrate: true,
+      container,
+    });
+
+    expect(container).toMatchSnapshot('client');
+  });
+
+  it('forwards refs', async () => {
+    const ref = createRef<HTMLDivElement>();
+
+    const { container } = await renderClient(
+      <Tabs ref={ref}>
+        <Tabs.List>
+          <Tabs.ListItem id="tab-one">Tab One</Tabs.ListItem>
+          <Tabs.ListItem id="tab-two">Tab Two</Tabs.ListItem>
+        </Tabs.List>
+      </Tabs>,
+      { moduleName: 'nhsuk-tabs' },
+    );
+
+    const tabsEl = container.querySelector('div');
+
+    expect(ref.current).toBe(tabsEl);
+    expect(ref.current).toHaveClass('nhsuk-tabs');
+  });
+
+  it('switches visibility of tabs when clicked', async () => {
+    const { container } = await renderClient(
       <Tabs>
         <Tabs.Title>Contents</Tabs.Title>
         <Tabs.List>
@@ -48,52 +104,39 @@ describe('The tabs component', () => {
           <div>Tab two contents go here</div>
         </Tabs.Contents>
       </Tabs>,
+      { moduleName: 'nhsuk-tabs' },
     );
 
-    const firstTabLink = container.querySelector('#tab_tab-one');
-    const secondTabLink = container.querySelector('#tab_tab-two');
+    const firstTabLink = container.querySelector<HTMLAnchorElement>('#tab_tab-one');
+    const secondTabLink = container.querySelector<HTMLAnchorElement>('#tab_tab-two');
 
-    expect(
-      firstTabLink?.parentElement?.classList.contains('nhsuk-tabs__list-item--selected'),
-    ).toEqual(true);
-    expect(
-      secondTabLink?.parentElement?.classList.contains('nhsuk-tabs__list-item--selected'),
-    ).toEqual(false);
+    expect(firstTabLink?.parentElement).toHaveClass('nhsuk-tabs__list-item--selected');
+    expect(secondTabLink?.parentElement).not.toHaveClass('nhsuk-tabs__list-item--selected');
 
-    fireEvent.click(secondTabLink!);
+    secondTabLink?.click();
 
-    expect(
-      firstTabLink?.parentElement?.classList.contains('nhsuk-tabs__list-item--selected'),
-    ).toEqual(false);
-    expect(
-      secondTabLink?.parentElement?.classList.contains('nhsuk-tabs__list-item--selected'),
-    ).toEqual(true);
+    expect(firstTabLink?.parentElement).not.toHaveClass('nhsuk-tabs__list-item--selected');
+    expect(secondTabLink?.parentElement).toHaveClass('nhsuk-tabs__list-item--selected');
   });
 
-  describe('The tabs title', () => {
-    it.each`
-      headingLevel
-      ${undefined}
-      ${'H1'}
-      ${'H2'}
-      ${'H3'}
-      ${'H4'}
-    `(
-      'Renders the chosen heading level $headingLevel if specified',
-      ({ headingLevel }: { headingLevel: HeadingLevelType }) => {
-        const { container } = render(
-          <Tabs.Title headingLevel={headingLevel}>Test title</Tabs.Title>,
-        );
+  describe('Tabs.Title', () => {
+    it.each<TabTitleProps | undefined>([
+      undefined,
+      { headingLevel: 'h1' },
+      { headingLevel: 'h2' },
+      { headingLevel: 'h3' },
+      { headingLevel: 'h4' },
+    ])('renders heading level $headingLevel if specified', (props) => {
+      const { container } = render(<Tabs.Title {...props}>Test title</Tabs.Title>);
 
-        const title = container.querySelector('.nhsuk-tabs__title');
+      const title = container.querySelector('.nhsuk-tabs__title');
 
-        expect(title?.nodeName).toEqual(headingLevel ?? 'H2');
-      },
-    );
+      expect(title).toHaveProperty('tagName', props?.headingLevel?.toUpperCase() ?? 'H2');
+    });
   });
 
-  describe('The tab list', () => {
-    it('Renders the expected children', () => {
+  describe('Tabs.List', () => {
+    it('renders expected children', () => {
       const { container } = render(
         <Tabs.List>
           <div id="list-contents" />
@@ -106,8 +149,8 @@ describe('The tabs component', () => {
     });
   });
 
-  describe('The tab list item', () => {
-    it('Sets the href to be the passed in id prop', () => {
+  describe('Tabs.ListItem', () => {
+    it('sets the href to be the passed in id prop', () => {
       const { container } = render(
         <Tabs.ListItem id="test-id">
           <div id="list-item-contents" />
@@ -117,30 +160,34 @@ describe('The tabs component', () => {
       expect(container.querySelector('.nhsuk-tabs__tab')?.getAttribute('href')).toBe('#test-id');
     });
 
-    it('Renders the expected children', () => {
+    it('renders expected children', () => {
       const { container } = render(
         <Tabs.ListItem id="test-id">
           <div id="list-item-contents" />
         </Tabs.ListItem>,
       );
 
-      const tabElement = container.querySelector('.nhsuk-tabs__tab');
+      const tabsItemEl = container.querySelector('.nhsuk-tabs__list-item a');
+      const tabsItemContentsEl = container.querySelector<HTMLElement>('#list-item-contents');
 
-      expect(tabElement?.querySelector('#list-item-contents')).toBeTruthy();
+      expect(tabsItemEl).toHaveAttribute('href', '#test-id');
+      expect(tabsItemEl).toContainElement(tabsItemContentsEl);
     });
   });
 
-  describe('The tab contents', () => {
-    it('Renders the expected children', () => {
+  describe('Tab.Contents', () => {
+    it('renders expected children', () => {
       const { container } = render(
         <Tabs.Contents id="test-contents">
           <div id="tab-contents" />
         </Tabs.Contents>,
       );
 
-      const tabElement = container.querySelector('#test-contents');
+      const tabsPanelEl = container.querySelector('.nhsuk-tabs__panel');
+      const tabsPanelContentsEl = container.querySelector<HTMLElement>('#tab-contents');
 
-      expect(tabElement?.querySelector('#tab-contents')).toBeTruthy();
+      expect(tabsPanelEl).toHaveAttribute('id', 'test-contents');
+      expect(tabsPanelEl).toContainElement(tabsPanelContentsEl);
     });
   });
 });

@@ -1,10 +1,10 @@
-import React, { FC, ComponentProps, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
-import HeadingLevel from '@components/utils/HeadingLevel';
+import HeadingLevel, { HeadingLevelProps } from '@components/utils/HeadingLevel';
 
-export interface TablePanelProps extends HTMLProps<HTMLDivElement> {
+export interface TablePanelProps extends ComponentPropsWithoutRef<'div'> {
   heading?: string;
-  headingProps?: ComponentProps<typeof HeadingLevel>;
+  headingProps?: HeadingLevelProps;
 }
 
 const TablePanel: FC<TablePanelProps> = ({
@@ -17,7 +17,6 @@ const TablePanel: FC<TablePanelProps> = ({
   <div className={classNames('nhsuk-table__panel-with-heading-tab', className)} {...rest}>
     {heading && (
       <HeadingLevel
-        headingLevel="h3"
         {...headingProps}
         className={classNames('nhsuk-table__heading-tab', headingProps?.className)}
       >
@@ -27,5 +26,7 @@ const TablePanel: FC<TablePanelProps> = ({
     {children}
   </div>
 );
+
+TablePanel.displayName = 'Table.Panel';
 
 export default TablePanel;

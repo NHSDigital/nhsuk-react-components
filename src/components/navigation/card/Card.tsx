@@ -1,4 +1,4 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, forwardRef } from 'react';
 import classNames from 'classnames';
 import CardContext from './CardContext';
 import CardContent from './components/CardContent';
@@ -11,22 +11,14 @@ import CardGroupItem from './components/CardGroupItem';
 import { CardType } from '@util/types/NHSUKTypes';
 import { cardTypeIsCareCard } from '@util/types/TypeGuards';
 
-interface CardProps extends HTMLProps<HTMLDivElement> {
+export interface CardProps extends ComponentPropsWithoutRef<'div'> {
   clickable?: boolean;
   cardType?: CardType;
 }
 
-interface ICard extends FC<CardProps> {
-  Content: typeof CardContent;
-  Description: typeof CardDescription;
-  Image: typeof CardImage;
-  Link: typeof CardLink;
-  Heading: typeof CardHeading;
-  Group: typeof CardGroup;
-  GroupItem: typeof CardGroupItem;
-}
+const CardComponent = forwardRef<HTMLDivElement, CardProps>((props, forwardedRef) => {
+  const { className, clickable, children, cardType, ...rest } = props;
 
-const Card: ICard = ({ className, clickable, children, cardType, ...rest }) => {
   let cardClassNames = classNames(
     'nhsuk-card',
     { 'nhsuk-card--clickable': clickable },
@@ -44,7 +36,7 @@ const Card: ICard = ({ className, clickable, children, cardType, ...rest }) => {
   }
 
   return (
-    <div className={cardClassNames} {...rest}>
+    <div className={cardClassNames} ref={forwardedRef} {...rest}>
       <CardContext.Provider
         value={{
           cardType,
@@ -54,14 +46,16 @@ const Card: ICard = ({ className, clickable, children, cardType, ...rest }) => {
       </CardContext.Provider>
     </div>
   );
-};
+});
 
-Card.Heading = CardHeading;
-Card.Description = CardDescription;
-Card.Image = CardImage;
-Card.Link = CardLink;
-Card.Content = CardContent;
-Card.Group = CardGroup;
-Card.GroupItem = CardGroupItem;
+CardComponent.displayName = 'Card';
 
-export default Card;
+export default Object.assign(CardComponent, {
+  Heading: CardHeading,
+  Description: CardDescription,
+  Image: CardImage,
+  Link: CardLink,
+  Content: CardContent,
+  Group: CardGroup,
+  GroupItem: CardGroupItem,
+});

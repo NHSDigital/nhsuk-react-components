@@ -1,11 +1,15 @@
-import React, { FC } from 'react';
+import React, { forwardRef } from 'react';
 import classNames from 'classnames';
 import { AsElementLink } from '@util/types/LinkTypes';
 
-const CardLink: FC<AsElementLink<HTMLAnchorElement>> = ({
-  className,
-  asElement: Component = 'a',
-  ...rest
-}) => <Component className={classNames('nhsuk-card__link', className)} {...rest} />;
+export type CardLinkProps = AsElementLink<HTMLAnchorElement>;
+
+const CardLink = forwardRef<HTMLAnchorElement, CardLinkProps>(
+  ({ className, asElement: Element = 'a', ...rest }, forwardedRef) => (
+    <Element className={classNames('nhsuk-card__link', className)} ref={forwardedRef} {...rest} />
+  ),
+);
+
+CardLink.displayName = 'Card.Link';
 
 export default CardLink;

@@ -1,40 +1,47 @@
-import React, { FC, HTMLProps } from 'react';
+import React, { ComponentPropsWithoutRef, FC, forwardRef } from 'react';
 import classNames from 'classnames';
 
-interface DetailsProps extends HTMLProps<HTMLDetailsElement> {
+export interface DetailsProps extends ComponentPropsWithoutRef<'details'> {
   expander?: boolean;
 }
 
-interface Details extends FC<DetailsProps> {
-  Summary: FC<HTMLProps<HTMLDivElement>>;
-  Text: FC<HTMLProps<HTMLDivElement>>;
-  ExpanderGroup: FC<HTMLProps<HTMLDivElement>>;
-}
-
-// TODO: Check if standard NHS.UK polyfill "details.polyfill.js" is required
-const Details: Details = ({ className, expander, ...rest }) => (
-  <details
-    className={classNames('nhsuk-details', { 'nhsuk-expander': expander }, className)}
-    {...rest}
-  />
+const DetailsComponent = forwardRef<HTMLDetailsElement, DetailsProps>(
+  ({ className, expander, ...rest }, forwardedRef) => (
+    <details
+      className={classNames('nhsuk-details', { 'nhsuk-expander': expander }, className)}
+      ref={forwardedRef}
+      {...rest}
+    />
+  ),
 );
 
-const DetailsSummary: FC<HTMLProps<HTMLDivElement>> = ({ className, children, ...rest }) => (
-  <summary className={classNames('nhsuk-details__summary', className)} {...rest}>
-    <span className="nhsuk-details__summary-text">{children}</span>
-  </summary>
+const DetailsSummary = forwardRef<HTMLElement, ComponentPropsWithoutRef<'div'>>(
+  ({ children, className, ...rest }, forwardedRef) => (
+    <summary
+      className={classNames('nhsuk-details__summary', className)}
+      ref={forwardedRef}
+      {...rest}
+    >
+      <span className="nhsuk-details__summary-text">{children}</span>
+    </summary>
+  ),
 );
 
-const DetailsText: FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => (
+const DetailsText: FC<ComponentPropsWithoutRef<'div'>> = ({ className, ...rest }) => (
   <div className={classNames('nhsuk-details__text', className)} {...rest} />
 );
 
-const ExpanderGroup: FC<HTMLProps<HTMLDivElement>> = ({ className, ...rest }) => (
+const ExpanderGroup: FC<ComponentPropsWithoutRef<'div'>> = ({ className, ...rest }) => (
   <div className={classNames('nhsuk-expander-group', className)} {...rest} />
 );
 
-Details.Summary = DetailsSummary;
-Details.Text = DetailsText;
-Details.ExpanderGroup = ExpanderGroup;
+DetailsComponent.displayName = 'Details';
+DetailsSummary.displayName = 'Details.Summary';
+DetailsText.displayName = 'Details.Text';
+ExpanderGroup.displayName = 'Details.ExpanderGroup';
 
-export default Details;
+export default Object.assign(DetailsComponent, {
+  Summary: DetailsSummary,
+  Text: DetailsText,
+  ExpanderGroup,
+});

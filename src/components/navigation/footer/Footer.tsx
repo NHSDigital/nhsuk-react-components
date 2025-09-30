@@ -1,102 +1,114 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import React, { Children, FC, HTMLProps, cloneElement } from 'react';
+import React, { Children, ComponentPropsWithoutRef, FC, forwardRef } from 'react';
 import classNames from 'classnames';
 import { Container } from '@components/layout';
+import { AsElementLink } from '@util/types/LinkTypes';
 import { childIsOfComponentType } from '@util/types/TypeGuards';
 
-type FooterListProps = HTMLProps<HTMLOListElement> & { singleColumn?: boolean };
+export interface FooterMetaProps extends FooterListProps {
+  visuallyHiddenText?: string;
+}
 
-const FooterList: FC<FooterListProps> = ({
-  className,
+const FooterMeta: FC<FooterMetaProps> = ({
   children,
-  singleColumn = false,
+  visuallyHiddenText = 'Support links',
   ...rest
 }) => {
-  let newChildren = children;
+  const items = Children.toArray(children);
 
-  if (singleColumn) {
-    newChildren = Children.map(newChildren, (child) =>
-      childIsOfComponentType(child, FooterListItem) ? cloneElement(child, { singleColumn }) : child,
-    );
-  }
+  const metaItems = items.filter((child) => childIsOfComponentType(child, FooterListItem));
+  const metaCopyright = items.filter((child) => childIsOfComponentType(child, FooterCopyright));
 
   return (
-    <ul className={classNames('nhsuk-footer__list', className)} {...rest}>
-      {newChildren}
-    </ul>
+    <div className="nhsuk-footer__meta">
+      <h2 className="nhsuk-u-visually-hidden">{visuallyHiddenText}</h2>
+      <FooterList {...rest}>{metaItems}</FooterList>
+      {metaCopyright.length ? metaCopyright : <FooterCopyright />}
+    </div>
   );
 };
 
-const FooterListItem: FC<HTMLProps<HTMLAnchorElement> & { singleColumn?: boolean }> = ({
+type FooterListProps = ComponentPropsWithoutRef<'ul'>;
+
+const FooterList: FC<FooterListProps> = ({ children, className, ...rest }) => (
+  <ul className={classNames('nhsuk-footer__list', className)} {...rest}>
+    {children}
+  </ul>
+);
+
+type FooterListItemProps = AsElementLink<HTMLAnchorElement>;
+
+const FooterListItem = forwardRef<HTMLAnchorElement, FooterListItemProps>(
+  ({ className, asElement: Element = 'a', ...rest }, forwardedRef) => (
+    <li className="nhsuk-footer__list-item">
+      <Element
+        className={classNames('nhsuk-footer__list-item-link', className)}
+        ref={forwardedRef}
+        {...rest}
+      />
+    </li>
+  ),
+);
+
+const FooterCopyright: FC<ComponentPropsWithoutRef<'p'>> = ({
+  children = '© NHS England',
   className,
-  singleColumn = false,
   ...rest
 }) => (
-  <li
-    className={classNames(
-      'nhsuk-footer__list-item',
-      singleColumn ? 'nhsuk-footer-default__list-item' : '',
-    )}
-  >
-    <a className={classNames('nhsuk-footer__list-item-link', className)} {...rest} />
-  </li>
+  <p className={classNames('nhsuk-body-s', className)} {...rest}>
+    {children}
+  </p>
 );
 
-const FooterCopyright: FC<HTMLProps<HTMLParagraphElement>> = ({ className, ...rest }) => (
-  <p className={classNames('nhsuk-footer__copyright', className)} {...rest} />
-);
-
-interface FooterProps extends HTMLProps<HTMLDivElement> {
-  visuallyHiddenText?: false | string;
+export interface FooterProps extends ComponentPropsWithoutRef<'div'> {
+  containerClassName?: string;
 }
 
-interface Footer extends FC<FooterProps> {
-  List: FC<FooterListProps>;
-  ListItem: FC<HTMLProps<HTMLAnchorElement>>;
-  Copyright: FC<HTMLProps<HTMLParagraphElement>>;
-}
+const FooterComponent = forwardRef<HTMLElement, FooterProps>(
+  ({ className, containerClassName, children, ...rest }, forwardedRef) => {
+    const items = Children.toArray(children);
+    const meta = items.filter((child) => childIsOfComponentType(child, FooterMeta));
+    const columns = items.filter((child) => childIsOfComponentType(child, FooterList));
 
-const Footer: Footer = ({ className, children, visuallyHiddenText = 'Support links', ...rest }) => {
-  const footerCols = Children.toArray(children).filter((child) =>
-    childIsOfComponentType(child, FooterList),
-  );
-  const footerCopyright = Children.toArray(children).filter((child) =>
-    childIsOfComponentType(child, FooterCopyright),
-  );
+    const columnsPerRow = 4;
+    const columnsTotal = Math.ceil(columns.length / columnsPerRow);
 
-  let newChildren;
-  const footerHasMultipleColumns = footerCols.length > 1;
-
-  if (footerHasMultipleColumns) {
-    // Remove the copyright from being rendered inside the 'nhsuk-footer' div
-    newChildren = Children.toArray(children).filter(
-      (child) => !childIsOfComponentType(child, FooterCopyright),
+    const rows = Array.from({ length: columnsTotal }, (column, index) =>
+      columns.slice(index * columnsPerRow, index * columnsPerRow + columnsPerRow),
     );
-  } else {
-    newChildren = Children.map(children, (child) =>
-      childIsOfComponentType(child, FooterList)
-        ? cloneElement(child, { singleColumn: true })
-        : child,
-    );
-  }
 
-  return (
-    <footer role="contentinfo" {...rest}>
-      <div className={classNames('nhsuk-footer-container', className)}>
-        <Container>
-          {visuallyHiddenText ? (
-            <h2 className="nhsuk-u-visually-hidden">{visuallyHiddenText}</h2>
-          ) : null}
-          <div className="nhsuk-footer">{newChildren}</div>
-          {footerHasMultipleColumns ? <div>{footerCopyright}</div> : undefined}
+    return (
+      <footer
+        className={classNames('nhsuk-footer', className)}
+        role="contentinfo"
+        ref={forwardedRef}
+        {...rest}
+      >
+        <Container className={containerClassName}>
+          {rows.map((row, rowIndex) => (
+            <div className="nhsuk-footer__navigation nhsuk-grid-row" key={`row-${rowIndex}`}>
+              {row.map((column, columnIndex) => (
+                <div className="nhsuk-grid-column-one-quarter" key={`column-${columnIndex}`}>
+                  {column}
+                </div>
+              ))}
+            </div>
+          ))}
+          {meta}
         </Container>
-      </div>
-    </footer>
-  );
-};
+      </footer>
+    );
+  },
+);
 
-Footer.List = FooterList;
-Footer.ListItem = FooterListItem;
-Footer.Copyright = FooterCopyright;
+FooterComponent.displayName = 'Footer';
+FooterMeta.displayName = 'Footer.Meta';
+FooterList.displayName = 'Footer.List';
+FooterListItem.displayName = 'Footer.ListItem';
+FooterCopyright.displayName = 'Footer.Copyright';
 
-export default Footer;
+export default Object.assign(FooterComponent, {
+  Meta: FooterMeta,
+  List: FooterList,
+  ListItem: FooterListItem,
+  Copyright: FooterCopyright,
+});

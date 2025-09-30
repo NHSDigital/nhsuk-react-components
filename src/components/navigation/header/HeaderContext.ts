@@ -1,34 +1,36 @@
-import { createContext } from 'react';
+import { Dispatch, SetStateAction, createContext } from 'react';
 
 export interface IHeaderContext {
-  orgName: string | undefined;
-  serviceName: string | undefined;
-  orgSplit: string | undefined;
-  orgDescriptor: string | undefined;
-  setSearch: (toggle: boolean) => void;
-  setMenuToggle: (toggle: boolean) => void;
-  setServiceName: (toggle: boolean) => void;
-  toggleMenu: () => void;
-  hasSearch: boolean;
-  hasMenuToggle: boolean;
-  hasServiceName: boolean;
+  logoProps?: {
+    href?: string;
+    src?: string;
+    alt?: string;
+    'aria-label'?: string;
+  };
+  serviceProps?: {
+    href?: string;
+    text?: string;
+  };
+  organisationProps?: {
+    name?: string;
+    split?: string;
+    descriptor?: string;
+  };
   menuOpen: boolean;
-  transactional: boolean;
+  setMenuOpen: Dispatch<SetStateAction<IHeaderContext['menuOpen']>>;
+  setLogoProps: Dispatch<SetStateAction<IHeaderContext['logoProps']>>;
+  setServiceProps: Dispatch<SetStateAction<IHeaderContext['serviceProps']>>;
+  setOrganisationProps: Dispatch<SetStateAction<IHeaderContext['organisationProps']>>;
 }
 
 export default createContext<IHeaderContext>({
   /* eslint-disable @typescript-eslint/no-empty-function */
-  orgName: undefined,
-  serviceName: undefined,
-  orgSplit: undefined,
-  orgDescriptor: undefined,
-  setSearch: () => {},
-  setMenuToggle: () => {},
-  setServiceName: () => {},
-  hasSearch: false,
-  hasMenuToggle: false,
-  hasServiceName: false,
-  toggleMenu: () => {},
+  logoProps: undefined,
+  serviceProps: undefined,
+  organisationProps: undefined,
   menuOpen: false,
-  transactional: false,
+  setMenuOpen: () => {},
+  setLogoProps: () => {},
+  setServiceProps: () => {},
+  setOrganisationProps: () => {},
 });

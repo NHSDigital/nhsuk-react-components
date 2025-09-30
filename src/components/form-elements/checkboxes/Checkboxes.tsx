@@ -1,27 +1,40 @@
-'use client';
-
-import React, { HTMLProps, useEffect } from 'react';
+import React, { ComponentPropsWithoutRef, createRef, forwardRef, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { FormElementProps } from '@util/types/FormTypes';
-import SingleInputFormGroup from '@components/utils/SingleInputFormGroup';
+import FormGroup from '@components/utils/FormGroup';
 import CheckboxContext, { ICheckboxContext } from './CheckboxContext';
-import Box from './components/Box';
-import Divider from './components/Divider';
+import CheckboxesItem from './components/Item';
+import CheckboxesDivider from './components/Divider';
 import { generateRandomName } from '@util/RandomID';
-import CheckboxJs from '@resources/checkboxes';
+import { type Checkboxes } from 'nhsuk-frontend';
 
-interface CheckboxesProps extends HTMLProps<HTMLDivElement>, FormElementProps {
+export interface CheckboxesProps
+  extends ComponentPropsWithoutRef<'div'>,
+    Omit<FormElementProps, 'label' | 'labelProps'> {
   idPrefix?: string;
 }
 
-const Checkboxes = ({ children, idPrefix, ...rest }: CheckboxesProps) => {
+const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, forwardedRef) => {
+  const { children, idPrefix, ...rest } = props;
+
+  const [moduleRef] = useState(() => forwardedRef || createRef<HTMLDivElement>());
+  const [instance, setInstance] = useState<Checkboxes>();
+
   const _boxReferences: string[] = [];
   let _boxCount: number = 0;
   let _boxIds: Record<string, string> = {};
 
   useEffect(() => {
-    CheckboxJs();
-  }, []);
+    if (!('current' in moduleRef) || !moduleRef.current || instance) {
+      return;
+    }
+
+    const { current: $root } = moduleRef;
+
+    import('nhsuk-frontend').then(({ Checkboxes }) => {
+      setInstance(new Checkboxes($root));
+    });
+  }, [moduleRef, instance]);
 
   const getBoxId = (id: string, reference: string): string => {
     if (reference in _boxIds) {
@@ -53,7 +66,7 @@ const Checkboxes = ({ children, idPrefix, ...rest }: CheckboxesProps) => {
   };
 
   return (
-    <SingleInputFormGroup<CheckboxesProps> inputType="checkboxes" {...rest}>
+    <FormGroup<CheckboxesProps> inputType="checkboxes" {...rest}>
       {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
       {({ className, name, id, idPrefix, error, ...restRenderProps }) => {
         resetCheckboxIds();
@@ -64,16 +77,24 @@ const Checkboxes = ({ children, idPrefix, ...rest }: CheckboxesProps) => {
           unleaseReference,
         };
         return (
-          <div className={classNames('nhsuk-checkboxes', className)} id={id} {...restRenderProps}>
+          <div
+            className={classNames('nhsuk-checkboxes', className)}
+            data-module="nhsuk-checkboxes"
+            id={id}
+            ref={moduleRef}
+            {...restRenderProps}
+          >
             <CheckboxContext.Provider value={contextValue}>{children}</CheckboxContext.Provider>
           </div>
         );
       }}
-    </SingleInputFormGroup>
+    </FormGroup>
   );
-};
+});
 
-Checkboxes.Box = Box;
-Checkboxes.Divider = Divider;
+CheckboxesComponent.displayName = 'Checkboxes';
 
-export default Checkboxes;
+export default Object.assign(CheckboxesComponent, {
+  Item: CheckboxesItem,
+  Divider: CheckboxesDivider,
+});
