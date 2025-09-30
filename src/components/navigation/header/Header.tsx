@@ -107,10 +107,10 @@ const HeaderComponent = forwardRef<HTMLElement, HeaderProps>((props, forwardedRe
   }, [logoProps, serviceProps, organisationProps]);
 
   const items = Children.toArray(children);
-  const [childLogo] = items.filter((child) => childIsOfComponentType(child, Logo));
-  const [childSearch] = items.filter((child) => childIsOfComponentType(child, Search));
-  const [childNavigation] = items.filter((child) => childIsOfComponentType(child, Navigation));
-  const [childAccount] = items.filter((child) => childIsOfComponentType(child, Account));
+  const childLogo = items.find((child) => childIsOfComponentType(child, Logo));
+  const childSearch = items.find((child) => childIsOfComponentType(child, Search));
+  const childNavigation = items.find((child) => childIsOfComponentType(child, Navigation));
+  const childAccount = items.find((child) => childIsOfComponentType(child, Account));
 
   return (
     <header

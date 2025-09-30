@@ -46,9 +46,9 @@ const IndividualDateInput = forwardRef<HTMLInputElement, IndividualDateInputProp
 
     const inputID = id || `${ctxId}-${inputType}`;
     const inputName = name || `${ctxName}-${inputType}`;
-    const inputValue = value !== undefined ? value : ctxValue?.[inputType];
+    const inputValue = value === undefined ? ctxValue?.[inputType] : value;
     const inputDefaultValue =
-      defaultValue !== undefined ? defaultValue : ctxDefaultValue?.[inputType];
+      defaultValue === undefined ? ctxDefaultValue?.[inputType] : defaultValue;
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
       e.persist();

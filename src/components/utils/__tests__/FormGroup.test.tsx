@@ -54,7 +54,6 @@ describe('FormGroup', () => {
       { className: 'nhsuk-form-group' },
     );
 
-    expect(renderProps).not.toBe(null);
     expect(renderProps?.id).toHaveLength(11);
     expect(renderProps?.id).toContain('input');
   });
@@ -70,7 +69,6 @@ describe('FormGroup', () => {
       { className: 'nhsuk-form-group' },
     );
 
-    expect(renderProps).not.toBe(null);
     expect(renderProps?.id).toBe('TestID2ElectricBoogaloo');
   });
 
@@ -85,16 +83,14 @@ describe('FormGroup', () => {
       { className: 'nhsuk-form-group' },
     );
 
-    expect(renderProps).not.toBe(null);
     expect(renderProps?.id).toHaveLength(11);
     expect(renderProps?.id).toContain('input');
 
-    expect(container.querySelector('input')?.getAttribute('aria-describedby')).toBe(
-      `${renderProps?.id}--hint`,
-    );
-    expect(container.querySelector('.nhsuk-hint')?.getAttribute('id')).toBe(
-      `${renderProps?.id}--hint`,
-    );
+    const hintEl = container.querySelector('.nhsuk-hint');
+    const inputEl = container.querySelector('input');
+
+    expect(hintEl).toHaveProperty('id', `${renderProps?.id}--hint`);
+    expect(inputEl?.getAttribute('aria-describedby')).toBe(`${renderProps?.id}--hint`);
   });
 
   it('passes correct props for hint (custom id)', async () => {
@@ -108,11 +104,13 @@ describe('FormGroup', () => {
       { className: 'nhsuk-form-group' },
     );
 
-    expect(renderProps).not.toBe(null);
     expect(renderProps?.id).toBe('testID');
 
-    expect(container.querySelector('input')?.getAttribute('aria-describedby')).toBe('testID--hint');
-    expect(container.querySelector('.nhsuk-hint')?.getAttribute('id')).toBe('testID--hint');
+    const hintEl = container.querySelector('.nhsuk-hint');
+    const inputEl = container.querySelector('input');
+
+    expect(hintEl).toHaveProperty('id', 'testID--hint');
+    expect(inputEl?.getAttribute('aria-describedby')).toBe('testID--hint');
   });
 
   it('passes correct props for label (generated id)', async () => {
@@ -126,7 +124,6 @@ describe('FormGroup', () => {
       { className: 'nhsuk-form-group' },
     );
 
-    expect(renderProps).not.toBe(null);
     expect(renderProps?.id).toHaveLength(11);
     expect(renderProps?.id).toContain('input');
 
@@ -152,7 +149,6 @@ describe('FormGroup', () => {
       { className: 'nhsuk-form-group' },
     );
 
-    expect(renderProps).not.toBe(null);
     expect(renderProps?.id).toBe('testID');
 
     expect(container.querySelector('.nhsuk-label')?.getAttribute('id')).toBe('testID--label');
@@ -176,7 +172,6 @@ describe('FormGroup', () => {
       { className: 'nhsuk-form-group' },
     );
 
-    expect(renderProps).not.toBe(null);
     expect(renderProps?.id).toHaveLength(11);
     expect(renderProps?.id).toContain('input');
     expect(renderProps!['aria-describedby']).toBe(`${renderProps?.id}--error-message`);
@@ -208,7 +203,6 @@ describe('FormGroup', () => {
       { className: 'nhsuk-form-group' },
     );
 
-    expect(renderProps).not.toBe(null);
     expect(renderProps?.id).toBe('testID');
     expect(renderProps!['aria-describedby']).toBe(`testID--error-message`);
 
@@ -277,9 +271,8 @@ describe('FormGroup', () => {
       { className: 'nhsuk-form-group' },
     );
 
-    const inputElement = container.querySelector('input');
-    expect(inputElement).not.toBeNull();
-    expect(inputElement?.getAttribute('aria-describedby')).toBe(
+    const inputEl = container.querySelector('input');
+    expect(inputEl?.getAttribute('aria-describedby')).toBe(
       'error-and-hint--hint error-and-hint--error-message',
     );
   });
@@ -293,9 +286,7 @@ describe('FormGroup', () => {
       { className: 'nhsuk-form-group' },
     );
 
-    const inputElement = container.querySelector('input');
-    expect(inputElement).not.toBeNull();
-
-    expect(inputElement?.getAttribute('aria-describedby')).toBe(null);
+    const inputEl = container.querySelector('input');
+    expect(inputEl?.getAttribute('aria-describedby')).toBe(null);
   });
 });

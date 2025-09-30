@@ -106,6 +106,8 @@ describe('Checkboxes', () => {
       { moduleName: 'nhsuk-checkboxes' },
     );
 
-    expect(container.querySelector('#none')?.getAttribute('data-checkbox-exclusive')).toBe('true');
+    const inputEl = container.querySelector<HTMLInputElement>('#none');
+
+    expect(inputEl?.dataset).toHaveProperty('checkboxExclusive', 'true');
   });
 });

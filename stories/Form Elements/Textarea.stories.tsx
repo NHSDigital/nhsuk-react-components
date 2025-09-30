@@ -1,5 +1,5 @@
-import React, { MouseEvent, useState } from 'react';
-import { Textarea, Button, TextInput } from '../../src';
+import React, { useState } from 'react';
+import { Textarea, TextInput } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
 const meta: Meta<typeof Textarea> = {

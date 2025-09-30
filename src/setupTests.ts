@@ -7,7 +7,7 @@ import { outdent } from 'outdent';
  *
  * @see {@link https://github.com/jsdom/jsdom/issues/1695}
  */
-Object.defineProperties(window, {
+Object.defineProperties(globalThis, {
   TextEncoder: {
     value: TextEncoder,
     configurable: true,
@@ -32,9 +32,9 @@ Object.defineProperties(Element.prototype, {
 });
 
 /**
- * Polyfill `window.matchMedia()` for NHS.UK frontend tabs
+ * Polyfill `matchMedia()` for NHS.UK frontend tabs
  */
-Object.defineProperty(window, 'matchMedia', {
+Object.defineProperty(globalThis, 'matchMedia', {
   writable: true,
   value: jest.fn().mockImplementation((query) => ({
     matches: true,

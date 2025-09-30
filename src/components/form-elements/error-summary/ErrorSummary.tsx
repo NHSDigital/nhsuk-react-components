@@ -47,7 +47,7 @@ const ListItem = forwardRef<HTMLAnchorElement, ListItemProps>((props, forwardedR
 
   return (
     <li>
-      {props.asElement ?? props.href ? (
+      {(props.asElement ?? props.href) ? (
         <Element ref={forwardedRef} {...rest}>
           {children}
         </Element>
@@ -80,16 +80,14 @@ const ErrorSummaryComponent = forwardRef<HTMLDivElement, ErrorSummaryProps>(
     }, [moduleRef, instance]);
 
     const items = Children.toArray(children);
-    const [title] = items.filter((child) => childIsOfComponentType(child, Title));
+    const title = items.find((child) => childIsOfComponentType(child, Title));
     const bodyItems = items.filter((child) => !childIsOfComponentType(child, Title));
 
     return (
       <div
         className={classNames('nhsuk-error-summary', className)}
         data-module="nhsuk-error-summary"
-        data-disable-auto-focus={
-          typeof disableAutoFocus !== 'undefined' ? disableAutoFocus : undefined
-        }
+        data-disable-auto-focus={disableAutoFocus}
         ref={moduleRef}
         {...rest}
       >

@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect, SyntheticEvent } from 'react';
-import { Checkboxes, TextInput, Button } from '../../src';
+import { Checkboxes, TextInput } from '../../src';
 import { Meta, StoryObj } from '@storybook/react';
 
 /**
