@@ -1,6 +1,6 @@
 import React, { ComponentProps } from 'react';
 import { Header } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Header> = {
   title: 'Navigation/Header',
@@ -10,7 +10,7 @@ export default meta;
 type Story = StoryObj<typeof Header>;
 
 export const HeaderDefault: Story = {
-  render: (args) => (
+  render: () => (
     <Header
       service={{
         text: 'Digital service manual',
@@ -34,7 +34,7 @@ export const HeaderDefault: Story = {
 };
 
 export const HeaderBasic: Story = {
-  render: (args) => (
+  render: () => (
     <Header>
       <Header.Logo href="/" />
     </Header>
@@ -42,7 +42,7 @@ export const HeaderBasic: Story = {
 };
 
 export const HeaderWithServiceName: Story = {
-  render: (args) => (
+  render: () => (
     <Header
       service={{
         text: 'Manage patients',
@@ -55,7 +55,7 @@ export const HeaderWithServiceName: Story = {
 };
 
 export const HeaderWithSearch: Story = {
-  render: (args) => (
+  render: () => (
     <Header>
       <Header.Logo href="/" />
       <Header.Search />
@@ -64,7 +64,7 @@ export const HeaderWithSearch: Story = {
 };
 
 export const HeaderWithNavigation: Story = {
-  render: (args) => (
+  render: () => (
     <Header>
       <Header.Logo href="/" />
       <Header.Navigation>
@@ -81,7 +81,7 @@ export const HeaderWithNavigation: Story = {
 };
 
 export const HeaderWithAccount: Story = {
-  render: (args) => (
+  render: () => (
     <Header
       service={{
         text: 'Manage patients',
@@ -102,7 +102,7 @@ export const HeaderWithAccount: Story = {
 };
 
 export const HeaderWithAccountComplex: Story = {
-  render: (args) => (
+  render: () => (
     <Header
       service={{
         text: 'Manage patients',
@@ -129,7 +129,7 @@ export const HeaderWithAccountComplex: Story = {
 };
 
 export const HeaderOrganisationalBlueWithNavigation: Story = {
-  render: (args) => (
+  render: () => (
     <Header
       organisation={{
         name: 'Anytown Anyplace',
@@ -153,7 +153,7 @@ export const HeaderOrganisationalBlueWithNavigation: Story = {
 };
 
 export const HeaderOrganisationalWhiteWithNavigation: Story = {
-  render: (args) => (
+  render: () => (
     <Header
       className="nhsuk-header--white"
       organisation={{
@@ -178,7 +178,7 @@ export const HeaderOrganisationalWhiteWithNavigation: Story = {
 };
 
 export const HeaderOrganisationalWhiteWithNavigationWhite: Story = {
-  render: (args) => (
+  render: () => (
     <Header
       className="nhsuk-header--white"
       organisation={{
@@ -203,7 +203,7 @@ export const HeaderOrganisationalWhiteWithNavigationWhite: Story = {
 };
 
 export const HeaderWithCustomNavItemComponent: Story = {
-  render: (args) => {
+  render: () => {
     function CustomLink({ children, href, ...rest }: ComponentProps<'a'>) {
       return (
         <a href={href} {...rest} data-custom-link="true">

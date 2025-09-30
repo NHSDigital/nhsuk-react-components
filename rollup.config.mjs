@@ -20,7 +20,12 @@ const onWarnSuppression = {
   },
 };
 
-const commonPlugins = [external(), tsPaths(), resolve(), commonjs()];
+const commonPlugins = [
+  external(),
+  tsPaths(),
+  resolve({ extensions: ['.mjs', '.js', '.ts', '.tsx'] }),
+  commonjs(),
+];
 
 export default [
   // cjs export
@@ -45,6 +50,7 @@ export default [
     ],
     ...onWarnSuppression,
   },
+
   // esm export
   {
     input: 'src/index.ts',
@@ -62,10 +68,9 @@ export default [
       typescript({
         tsconfig: 'bundle-base.tsconfig.json',
         compilerOptions: {
-          declaration: true,
-          declarationDir: 'dist/esm',
-          emitDeclarationOnly: true,
-          outDir: 'dist/esm',
+          declaration: false,
+          emitDeclarationOnly: false,
+          outDir: undefined,
         },
       }),
       preserveDirectives(),
@@ -73,14 +78,26 @@ export default [
     ],
     ...onWarnSuppression,
   },
-  // type bundling
+
+  // d.ts bundle  ⬅️ only changes are here
   {
     input: 'src/index.ts',
-    output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-    external: [],
+    output: [{ file: 'dist/index.d.ts', format: 'es' }],
+
+    // Keep styles and React types external so dts doesn't try to inline them
+    external: [
+      /^react($|\/)/,
+      /^react-dom($|\/)/,
+      /^@types\/react($|\/)/,
+      /^@types\/react-dom($|\/)/,
+    ],
+
     plugins: [
       dts({
+        respectExternal: true,
+        // helps avoid lib type conflicts; also carry through your tsconfig paths
         compilerOptions: {
+          skipLibCheck: true,
           paths: tsBuildConfig.compilerOptions.paths,
         },
       }),

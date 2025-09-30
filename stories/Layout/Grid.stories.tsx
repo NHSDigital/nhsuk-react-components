@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col, Card, Container } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta = {
   title: 'Layout/Grid',
@@ -8,7 +8,7 @@ const meta: Meta = {
 export default meta;
 
 export const Grid: StoryObj = {
-  render: (args) => (
+  render: () => (
     <Container>
       <Row>
         <Col width="full">

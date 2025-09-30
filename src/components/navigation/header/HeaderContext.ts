@@ -24,7 +24,6 @@ export interface IHeaderContext {
 }
 
 export default createContext<IHeaderContext>({
-  /* eslint-disable @typescript-eslint/no-empty-function */
   logoProps: undefined,
   serviceProps: undefined,
   organisationProps: undefined,

@@ -8,7 +8,6 @@ export interface ICheckboxContext {
 }
 
 export default createContext<ICheckboxContext>({
-  /* eslint-disable @typescript-eslint/no-empty-function */
   name: '',
   getBoxId: () => undefined,
   leaseReference: () => '',

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Radios, TextInput, Checkboxes } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Radios> = {
   title: 'Form Elements/Radios',
@@ -10,7 +10,7 @@ export default meta;
 type Story = StoryObj<typeof Radios>;
 
 export const StandardRadios: Story = {
-  render: (args) => (
+  render: () => (
     <Radios
       legend="Have you changed your name?"
       legendProps={{ size: 'l' }}
@@ -27,7 +27,7 @@ export const StandardRadios: Story = {
 };
 
 export const InlineRadios: Story = {
-  render: (args) => (
+  render: () => (
     <Radios
       legend="Have you changed your name?"
       legendProps={{ size: 'l' }}
@@ -45,7 +45,7 @@ export const InlineRadios: Story = {
 };
 
 export const DisabledRadios: Story = {
-  render: (args) => (
+  render: () => (
     <Radios
       legend="Have you changed your name?"
       legendProps={{ size: 'l' }}
@@ -64,7 +64,7 @@ export const DisabledRadios: Story = {
 };
 
 export const RadiosWithConditionalContent: Story = {
-  render: (args) => {
+  render: () => {
     const impairmentsForm = (
       <Checkboxes name="impairments" id="impairments">
         <Checkboxes.Item value="autism">Autism</Checkboxes.Item>
@@ -104,7 +104,7 @@ export const RadiosWithConditionalContent: Story = {
 };
 
 export const RadiosWithADivider: Story = {
-  render: (args) => (
+  render: () => (
     <Radios
       legend="How do you want to sign in?"
       legendProps={{ size: 'l' }}
@@ -120,7 +120,7 @@ export const RadiosWithADivider: Story = {
 };
 
 export const RadiosWithHintsOnItems: Story = {
-  render: (args) => (
+  render: () => (
     <Radios
       legend="How do you want to sign in?"
       legendProps={{ size: 'l' }}
@@ -144,7 +144,7 @@ export const RadiosWithHintsOnItems: Story = {
 };
 
 export const RadiosWithoutFieldset: Story = {
-  render: (args) => (
+  render: () => (
     <Radios name="colours" id="colours">
       <Radios.Item value="red">Red</Radios.Item>
       <Radios.Item value="green">Green</Radios.Item>

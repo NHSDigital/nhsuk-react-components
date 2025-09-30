@@ -1,4 +1,4 @@
-import { addons } from '@storybook/manager-api';
+import { addons } from 'storybook/manager-api';
 import nhsTheme from './theme';
 import { startCase, upperFirst } from 'lodash';
 

@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`DateInput matches snapshot (via server): client 1`] = `
 <div>
@@ -44,7 +44,6 @@ exports[`DateInput matches snapshot (via server): client 1`] = `
               inputmode="numeric"
               name="date-input-day"
               type="text"
-              value=""
             />
           </div>
         </div>
@@ -67,7 +66,6 @@ exports[`DateInput matches snapshot (via server): client 1`] = `
               inputmode="numeric"
               name="date-input-month"
               type="text"
-              value=""
             />
           </div>
         </div>
@@ -90,7 +88,6 @@ exports[`DateInput matches snapshot (via server): client 1`] = `
               inputmode="numeric"
               name="date-input-year"
               type="text"
-              value=""
             />
           </div>
         </div>
@@ -241,7 +238,6 @@ exports[`DateInput matches snapshot 1`] = `
               inputmode="numeric"
               name="date-input-day"
               type="text"
-              value=""
             />
           </div>
         </div>
@@ -264,7 +260,6 @@ exports[`DateInput matches snapshot 1`] = `
               inputmode="numeric"
               name="date-input-month"
               type="text"
-              value=""
             />
           </div>
         </div>
@@ -287,7 +282,6 @@ exports[`DateInput matches snapshot 1`] = `
               inputmode="numeric"
               name="date-input-year"
               type="text"
-              value=""
             />
           </div>
         </div>
@@ -453,7 +447,6 @@ exports[`DateInput matches snapshot with custom date fields and error message 1`
               inputmode="numeric"
               name="date-input-day"
               type="text"
-              value=""
             />
           </div>
         </div>
@@ -565,7 +558,6 @@ exports[`DateInput matches snapshot with error message 1`] = `
               inputmode="numeric"
               name="date-input-day"
               type="text"
-              value=""
             />
           </div>
         </div>
@@ -588,7 +580,6 @@ exports[`DateInput matches snapshot with error message 1`] = `
               inputmode="numeric"
               name="date-input-month"
               type="text"
-              value=""
             />
           </div>
         </div>
@@ -611,7 +602,6 @@ exports[`DateInput matches snapshot with error message 1`] = `
               inputmode="numeric"
               name="date-input-year"
               type="text"
-              value=""
             />
           </div>
         </div>

@@ -6,19 +6,11 @@ import { CardType, CareCardType } from './NHSUKTypes';
  * Assert that a child item is of the given component type.
  */
 export const childIsOfComponentType = (
-  child:
-    | string
-    | number
-    | boolean
-    | ReactElement<any, string | JSXElementConstructor<any>>
-    | Iterable<ReactNode>
-    | ReactPortal
-    | null
-    | undefined,
+  child: ReactNode,
   component: FC,
 ): child is
-  | React.ReactElement<any, string | React.JSXElementConstructor<any>>
-  | React.ReactPortal =>
+  | ReactElement<any, string | JSXElementConstructor<any>>
+  | ReactPortal =>
   child !== undefined &&
   child !== null &&
   typeof child === 'object' &&

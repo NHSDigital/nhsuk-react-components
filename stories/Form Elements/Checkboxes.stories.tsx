@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect, SyntheticEvent } from 'react';
 import { Checkboxes, TextInput } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 /**
  * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/checkboxes" target="_blank" rel="noopener noreferrer">here</a>.
@@ -63,7 +63,7 @@ export const Standard: Story = {
 };
 
 export const WithHintText: Story = {
-  render: (args) => (
+  render: () => (
     <form>
       <Checkboxes legend="How do you want to sign in?" legendProps={{ size: 'l' }}>
         <Checkboxes.Item
@@ -89,7 +89,7 @@ export const WithHintText: Story = {
 };
 
 export const WithDisabledItem: Story = {
-  render: (args) => (
+  render: () => (
     <form>
       <Checkboxes id="colours" name="colours">
         <Checkboxes.Item value="red">Red</Checkboxes.Item>
@@ -103,7 +103,7 @@ export const WithDisabledItem: Story = {
 };
 
 export const WithConditionalContent: Story = {
-  render: (args) => (
+  render: () => (
     <form>
       <Checkboxes
         legend="What types of waste do you transport regularly?"
@@ -121,7 +121,7 @@ export const WithConditionalContent: Story = {
 };
 
 export const WithLegendAsPageHeading: Story = {
-  render: (args) => (
+  render: () => (
     <form>
       <Checkboxes
         legend="Which types of waste do you transport regularly?"
@@ -139,7 +139,7 @@ export const WithLegendAsPageHeading: Story = {
 };
 
 export const WithExclusiveNoneOption: Story = {
-  render: (args) => (
+  render: () => (
     <form>
       <Checkboxes
         legend="Do you have any of these symptoms?"
@@ -161,7 +161,7 @@ export const WithExclusiveNoneOption: Story = {
 };
 
 export const WithError: Story = {
-  render: (args) => {
+  render: () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [error, setError] = useState('Please select an option');
     return (

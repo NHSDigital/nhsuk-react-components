@@ -1,5 +1,8 @@
-import { create } from '@storybook/theming/create';
-const version = require('../package.json').version;
+import { create } from 'storybook/theming/create';
+import packageJson from '../package.json' assert { type: 'json' };
+
+const version = packageJson.version;
+
 
 export default create({
   base: 'light',

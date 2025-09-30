@@ -94,7 +94,7 @@ describe('Select', () => {
     const selectEl = container.querySelector('select')!;
     selectEl.click();
 
-    expect(useRefSpy).toBeCalledWith(null);
-    expect(mock).toBeCalledTimes(1);
+    expect(useRefSpy).toHaveBeenCalledWith(null);
+    expect(mock).toHaveBeenCalledTimes(1);
   });
 });

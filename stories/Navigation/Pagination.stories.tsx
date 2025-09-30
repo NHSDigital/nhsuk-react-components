@@ -1,6 +1,6 @@
 import React from 'react';
 import { Pagination } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react-vite';
 
 const meta: Meta<typeof Pagination> = {
   title: 'Navigation/Pagination',
@@ -10,7 +10,7 @@ export default meta;
 type Story = StoryObj<typeof Pagination>;
 
 export const Standard: Story = {
-  render: (args) => (
+  render: () => (
     <Pagination>
       <Pagination.Link previous href="/section/treatments">
         Treatments
