@@ -43,6 +43,7 @@ class GetStartedButton extends PureComponent {
 - [Upgrading to 3.0](/docs/upgrade-to-3.0.md)
 - [Upgrading to 4.0](/docs/upgrade-to-4.0.md)
 - [Upgrading to 5.0](/docs/upgrade-to-5.0.md)
+- [Upgrading to 6.0](/docs/upgrade-to-6.0.md)
 
 ## Maintainers
 
