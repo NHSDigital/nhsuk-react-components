@@ -10,16 +10,6 @@ import preserveDirectives from 'rollup-plugin-preserve-directives';
 import tsBuildConfig from './bundle-base.tsconfig.json' with { type: 'json' };
 import packageJson from './package.json' with { type: 'json' };
 
-// suppresses warnings printed to console as part of bundling components with directives present.
-const onWarnSuppression = {
-  onwarn(warning, warn) {
-    if (warning.code === 'MODULE_LEVEL_DIRECTIVE' && warning.message.includes(`"use client"`)) {
-      return;
-    }
-    warn(warning);
-  },
-};
-
 const commonPlugins = [external(), tsPaths(), resolve(), commonjs()];
 
 export default [
