@@ -51,14 +51,24 @@ const DateInputComponent = forwardRef<HTMLDivElement, DateInputProps>(
     });
 
     useEffect(() => {
-      const newState = { ...internalDate };
-      const { day, month, year } = value ?? {};
-      if (day && day !== internalDate.day) newState.day = day;
-      if (month && month !== internalDate.month) newState.month = month;
-      if (year && year !== internalDate.year) newState.year = year;
+      if (!value) {
+        return;
+      }
 
-      return setInternalDate(newState);
-    }, [value]);
+      if (
+        value.day === internalDate.day &&
+        value.month === internalDate.month &&
+        value.year === internalDate.year
+      ) {
+        return;
+      }
+
+      return setInternalDate({
+        day: value.day ?? internalDate.day,
+        month: value.month ?? internalDate.month,
+        year: value.year ?? internalDate.year,
+      });
+    }, [internalDate, value]);
 
     const handleChange = (inputType: InputType, event: ChangeEvent<HTMLInputElement>): void => {
       event.stopPropagation();

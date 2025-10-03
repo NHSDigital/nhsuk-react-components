@@ -45,7 +45,7 @@ const TableComponent = forwardRef<HTMLTableElement, TableProps>((props, forwarde
       responsive,
       setHeadings,
     };
-  }, [responsive, headings, setHeadings]);
+  }, [firstCellIsHeader, headings, responsive, setHeadings]);
 
   return (
     <TableContext.Provider value={contextValue}>
