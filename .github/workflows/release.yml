@@ -28,10 +28,10 @@ jobs:
         run: yarn
 
       - name: Lint
-        run: yarn lint:ci
+        run: yarn lint
 
       - name: Jest Tests
-        run: yarn test:ci
+        run: yarn test --coverage
 
       - name: Typescript build
         run: yarn build
