@@ -1,5 +1,4 @@
-import { render } from '@testing-library/react';
-import { createRef, useRef } from 'react';
+import { createRef } from 'react';
 import { Select } from '..';
 import { renderClient, renderServer } from '#util/components';
 
@@ -7,16 +6,6 @@ describe('Select', () => {
   afterEach(() => {
     jest.restoreAllMocks();
   });
-
-  const SelectComp = ({ onHandle }: { onHandle: () => void }) => {
-    const ref = useRef<HTMLSelectElement | null>(null);
-    const handleClick = () => {
-      if (!ref.current) return;
-      onHandle();
-    };
-
-    return <Select onClick={handleClick} ref={ref} />;
-  };
 
   it('matches snapshot', async () => {
     const { container } = await renderClient(
@@ -84,17 +73,22 @@ describe('Select', () => {
     expect(selectEl2).toHaveClass('nhsuk-select--error');
   });
 
-  it('should handle DOM events where ref Exists', () => {
-    const useRefSpy = jest
-      .spyOn(React, 'useRef')
-      .mockReturnValueOnce({ current: document.createElement('select') });
+  it('should handle DOM events where ref exists', async () => {
+    const ref = createRef<HTMLSelectElement>();
     const mock = jest.fn();
-    const { container } = render(<SelectComp onHandle={mock} />);
 
-    const selectEl = container.querySelector('select')!;
+    const handleClick = () => {
+      if (!ref.current) return;
+      mock();
+    };
+
+    const { modules } = await renderClient(<Select onClick={handleClick} ref={ref} />, {
+      className: 'nhsuk-select',
+    });
+
+    const [selectEl] = modules;
     selectEl.click();
 
-    expect(useRefSpy).toBeCalledWith(null);
     expect(mock).toBeCalledTimes(1);
   });
 });

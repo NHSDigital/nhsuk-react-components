@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { createRef, useRef } from 'react';
+import { createRef } from 'react';
 import { TextInput } from '..';
 import { renderClient, renderServer } from '#util/components';
 import { type InputWidth } from '#util/types';
@@ -8,16 +8,6 @@ describe('TextInput', () => {
   afterEach(() => {
     jest.restoreAllMocks();
   });
-
-  const TextInputComp = ({ onHandle }: { onHandle: () => void }) => {
-    const ref = useRef(null);
-    const handleClick = () => {
-      if (!ref.current) return;
-      onHandle();
-    };
-
-    return <TextInput type="button" onClick={handleClick} ref={ref} />;
-  };
 
   it('matches snapshot', async () => {
     const { container } = await renderClient(
@@ -61,17 +51,22 @@ describe('TextInput', () => {
     expect(fieldRef.current).toHaveClass('nhsuk-input');
   });
 
-  it('should handle click where ref Exists', () => {
-    const useRefSpy = jest
-      .spyOn(React, 'useRef')
-      .mockReturnValueOnce({ current: document.createElement('button') });
+  it('should handle DOM events where ref exists', async () => {
+    const ref = createRef<HTMLInputElement>();
     const mock = jest.fn();
-    const { container } = render(<TextInputComp onHandle={mock} />);
 
-    const textInputEl = container.querySelector('input')!;
+    const handleClick = () => {
+      if (!ref.current) return;
+      mock();
+    };
+
+    const { modules } = await renderClient(<TextInput onClick={handleClick} ref={ref} />, {
+      className: 'nhsuk-input',
+    });
+
+    const [textInputEl] = modules;
     textInputEl.click();
 
-    expect(useRefSpy).toBeCalledWith(null);
     expect(mock).toBeCalledTimes(1);
   });
 
