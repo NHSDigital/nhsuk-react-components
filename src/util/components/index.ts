@@ -21,7 +21,7 @@ export async function renderServer(element: JSX.Element, options: RenderOptions 
   container.innerHTML = renderToString(element, serverOptions);
 
   // Find rendered modules
-  const modules = [...container.querySelectorAll<HTMLElement>(selector)];
+  const modules = Array.from(container.querySelectorAll<HTMLElement>(selector));
   if (!modules.length) {
     throw new Error(`renderServer: No modules found: ${selector}`);
   }
@@ -40,7 +40,7 @@ export async function renderClient(element: JSX.Element, options: RenderOptions 
   const { container } = await act(() => render(element, renderOptions));
 
   // Find rendered modules
-  const modules = [...container.querySelectorAll<HTMLElement>(selector)];
+  const modules = Array.from(container.querySelectorAll<HTMLElement>(selector));
   if (!modules.length) {
     throw new Error(`renderClient: No modules found: ${selector}`);
   }
