@@ -5,6 +5,7 @@
     "name": "NHS England"
   },
   "files": [
+    "src",
     "dist"
   ],
   "sideEffects": false,

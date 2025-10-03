@@ -26,6 +26,7 @@ export default defineConfig(
           preserveModules: true,
           preserveModulesRoot: 'src',
           sourcemap: true,
+          sourcemapExcludeSources: true,
         },
       ],
       plugins: [
