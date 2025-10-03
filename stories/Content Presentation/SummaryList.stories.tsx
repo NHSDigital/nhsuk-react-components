@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { SummaryList, BodyText } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { BodyText, SummaryList } from 'nhsuk-react-components';
 
 /**
  * ## Implementation notes

@@ -1,10 +1,8 @@
-import { CardType } from '@util/types/NHSUKTypes';
 import { createContext } from 'react';
+import { type CardType } from '#util/types';
 
 export interface ICardContext {
   cardType?: CardType;
 }
 
-const CardContext = createContext<ICardContext>({});
-
-export default CardContext;
+export const CardContext = createContext<ICardContext>({});

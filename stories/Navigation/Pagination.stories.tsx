@@ -1,6 +1,6 @@
+import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { Pagination } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Pagination } from 'nhsuk-react-components';
 
 const meta: Meta<typeof Pagination> = {
   title: 'Navigation/Pagination',

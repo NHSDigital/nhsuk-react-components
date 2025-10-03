@@ -1,6 +1,6 @@
-import React from 'react';
 import { render } from '@testing-library/react';
-import BodyText from '../BodyText';
+import React from 'react';
+import { BodyText } from '..';
 
 describe('BodyText', () => {
   it('matches snapshot', () => {

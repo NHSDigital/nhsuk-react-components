@@ -1,24 +1,26 @@
+import classNames from 'classnames';
+import { type Header as HeaderModule } from 'nhsuk-frontend';
 import React, {
-  ComponentPropsWithoutRef,
-  useState,
+  Children,
+  createRef,
+  forwardRef,
   useEffect,
   useMemo,
-  Children,
-  forwardRef,
-  createRef,
+  useState,
+  type ComponentPropsWithoutRef,
 } from 'react';
-import classNames from 'classnames';
-import { Container } from '@components/layout';
-import { childIsOfComponentType } from '@util/types/TypeGuards';
-import HeaderContext, { IHeaderContext } from './HeaderContext';
-import Account from './components/Account';
-import AccountItem from './components/AccountItem';
-import Logo from './components/Logo';
-import Navigation from './components/Navigation';
-import NavigationItem from './components/NavigationItem';
-import Search from './components/Search';
-import ServiceName from './components/ServiceName';
-import { type Header } from 'nhsuk-frontend';
+import {
+  Account,
+  AccountItem,
+  Logo,
+  Navigation,
+  NavigationItem,
+  Search,
+  ServiceName,
+} from './components';
+import { HeaderContext, type IHeaderContext } from '.';
+import { Container } from '#components/layout';
+import { childIsOfComponentType } from '#util/types';
 
 export interface HeaderProps extends ComponentPropsWithoutRef<'div'> {
   containerClasses?: string;
@@ -37,7 +39,7 @@ const HeaderComponent = forwardRef<HTMLElement, HeaderProps>((props, forwardedRe
   const [logoProps, setLogoProps] = useState(logo);
   const [serviceProps, setServiceProps] = useState(service);
   const [organisationProps, setOrganisationProps] = useState(organisation);
-  const [instance, setInstance] = useState<Header>();
+  const [instance, setInstance] = useState<HeaderModule>();
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -139,7 +141,7 @@ const HeaderComponent = forwardRef<HTMLElement, HeaderProps>((props, forwardedRe
 
 HeaderComponent.displayName = 'Header';
 
-export default Object.assign(HeaderComponent, {
+export const Header = Object.assign(HeaderComponent, {
   Account,
   AccountItem,
   Logo,

@@ -1,6 +1,6 @@
-import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
-import Images from '../';
+import React, { createRef } from 'react';
+import { Images } from '..';
 
 describe('Images', () => {
   it('matches snapshot', () => {

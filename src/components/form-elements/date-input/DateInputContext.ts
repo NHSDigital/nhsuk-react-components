@@ -1,4 +1,4 @@
-import { createContext, ChangeEvent } from 'react';
+import { createContext, type ChangeEvent } from 'react';
 
 export type IDateInputContext = {
   id: string;
@@ -9,12 +9,10 @@ export type IDateInputContext = {
   handleChange: (inputType: 'day' | 'month' | 'year', event: ChangeEvent<HTMLInputElement>) => void;
 };
 
-const DateInputContext = createContext<IDateInputContext>({
+export const DateInputContext = createContext<IDateInputContext>({
   /* eslint-disable @typescript-eslint/no-empty-function */
   id: '',
   name: '',
   handleChange: () => {},
   error: undefined,
 });
-
-export default DateInputContext;

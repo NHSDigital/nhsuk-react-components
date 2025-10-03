@@ -1,9 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
+import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { Card } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
-import { ColWidth } from '../../src/util/types/NHSUKTypes';
-import { ChevronRightCircle } from '@components/content-presentation/icons';
+import { Card, ChevronRightCircleIcon } from 'nhsuk-react-components';
 
 const meta: Meta<typeof Card> = {
   title: 'Navigation/Card',
@@ -11,6 +9,7 @@ const meta: Meta<typeof Card> = {
 };
 export default meta;
 type Story = StoryObj<typeof Card>;
+type StoryGroup = StoryObj<typeof Card.GroupItem>;
 
 export const Standard: Story = {
   render: (args) => (
@@ -101,7 +100,7 @@ export const PrimaryCardWithChevron: Story = {
           <Card.Link href="#">Primary card heading</Card.Link>
         </Card.Heading>
         <Card.Description>Primary card description</Card.Description>
-        <ChevronRightCircle />
+        <ChevronRightCircleIcon />
       </Card.Content>
     </Card>
   ),
@@ -120,7 +119,7 @@ export const SecondaryCard: Story = {
   ),
 };
 
-export const CardGroup: Story = {
+export const CardGroup: StoryGroup = {
   args: { width: 'one-half' },
   argTypes: {
     width: {
@@ -130,7 +129,7 @@ export const CardGroup: Story = {
   },
   render: (args) => (
     <Card.Group>
-      <Card.GroupItem width={args.width as ColWidth}>
+      <Card.GroupItem width={args.width}>
         <Card clickable>
           <Card.Content>
             <Card.Heading className="nhsuk-heading-m">
@@ -142,7 +141,7 @@ export const CardGroup: Story = {
           </Card.Content>
         </Card>
       </Card.GroupItem>
-      <Card.GroupItem width={args.width as ColWidth}>
+      <Card.GroupItem width={args.width}>
         <Card clickable>
           <Card.Content>
             <Card.Heading className="nhsuk-heading-m">
@@ -154,7 +153,7 @@ export const CardGroup: Story = {
           </Card.Content>
         </Card>
       </Card.GroupItem>
-      <Card.GroupItem width={args.width as ColWidth}>
+      <Card.GroupItem width={args.width}>
         <Card clickable>
           <Card.Content>
             <Card.Heading className="nhsuk-heading-m">
@@ -166,7 +165,7 @@ export const CardGroup: Story = {
           </Card.Content>
         </Card>
       </Card.GroupItem>
-      <Card.GroupItem width={args.width as ColWidth}>
+      <Card.GroupItem width={args.width}>
         <Card clickable>
           <Card.Content>
             <Card.Heading className="nhsuk-heading-m">

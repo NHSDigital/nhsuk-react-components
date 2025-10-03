@@ -1,12 +1,12 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
-import { NHSUKSize } from '@util/types/NHSUKTypes';
+import React, { type ComponentPropsWithoutRef, type FC } from 'react';
+import { type NHSUKSize } from '#util/types';
 
 export interface TableCaptionProps extends ComponentPropsWithoutRef<'caption'> {
   size?: NHSUKSize;
 }
 
-const TableCaption: FC<TableCaptionProps> = ({ className, size, ...rest }) => (
+export const TableCaption: FC<TableCaptionProps> = ({ className, size, ...rest }) => (
   <caption
     className={classNames(
       'nhsuk-table__caption',
@@ -18,5 +18,3 @@ const TableCaption: FC<TableCaptionProps> = ({ className, size, ...rest }) => (
 );
 
 TableCaption.displayName = 'Table.Caption';
-
-export default TableCaption;

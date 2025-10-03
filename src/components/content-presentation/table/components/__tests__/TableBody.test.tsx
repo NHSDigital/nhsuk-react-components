@@ -1,8 +1,7 @@
-import React, { useContext } from 'react';
 import { render } from '@testing-library/react';
-import Table from '../../Table';
-import TableSectionContext, { TableSection } from '../../TableSectionContext';
-import TableBody from '../TableBody';
+import React, { useContext } from 'react';
+import { TableBody } from '..';
+import { Table, TableSection, TableSectionContext } from '../..';
 
 describe('Table.Body', () => {
   it('matches snapshot', () => {

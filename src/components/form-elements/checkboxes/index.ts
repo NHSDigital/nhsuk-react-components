@@ -1,1 +1,2 @@
-export { default } from './Checkboxes';
+export * from './CheckboxesContext';
+export * from './Checkboxes';

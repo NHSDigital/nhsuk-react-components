@@ -1,6 +1,6 @@
-import React, { ComponentPropsWithoutRef, FC, forwardRef } from 'react';
 import classNames from 'classnames';
-import HeadingLevel, { HeadingLevelProps } from '@components/utils/HeadingLevel';
+import React, { forwardRef, type ComponentPropsWithoutRef, type FC } from 'react';
+import { HeadingLevel, type HeadingLevelProps } from '#components/utils';
 
 const WarningCalloutHeading: FC<HeadingLevelProps> = ({ children, className, ...rest }) => (
   <HeadingLevel className={classNames('nhsuk-warning-callout__label', className)} {...rest}>
@@ -21,7 +21,7 @@ const WarningCalloutHeading: FC<HeadingLevelProps> = ({ children, className, ...
   </HeadingLevel>
 );
 
-type WarningCalloutProps = ComponentPropsWithoutRef<'div'>;
+export type WarningCalloutProps = ComponentPropsWithoutRef<'div'>;
 
 const WarningCalloutComponent = forwardRef<HTMLDivElement, WarningCalloutProps>(
   ({ className, ...rest }, forwardedRef) => (
@@ -32,6 +32,6 @@ const WarningCalloutComponent = forwardRef<HTMLDivElement, WarningCalloutProps>(
 WarningCalloutComponent.displayName = 'WarningCallout';
 WarningCalloutHeading.displayName = 'WarningCallout.Heading';
 
-export default Object.assign(WarningCalloutComponent, {
+export const WarningCallout = Object.assign(WarningCalloutComponent, {
   Heading: WarningCalloutHeading,
 });

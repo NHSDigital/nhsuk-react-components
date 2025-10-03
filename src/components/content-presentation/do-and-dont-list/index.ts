@@ -1,1 +1,1 @@
-export { default } from './DoAndDontList';
+export * from './DoAndDontList';

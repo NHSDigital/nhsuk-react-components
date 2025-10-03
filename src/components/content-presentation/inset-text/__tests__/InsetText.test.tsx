@@ -1,6 +1,6 @@
-import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
-import InsetText from '../';
+import React, { createRef } from 'react';
+import { InsetText } from '..';
 
 describe('InsetText', () => {
   it('matches snapshot', () => {

@@ -1,19 +1,17 @@
-import React, { forwardRef } from 'react';
 import classNames from 'classnames';
-import { ArrowRightCircle } from '@components/content-presentation/icons';
-import { AsElementLink } from '@util/types/LinkTypes';
+import React, { forwardRef } from 'react';
+import { ArrowRightCircleIcon } from '#components/content-presentation';
+import { type AsElementLink } from '#util/types';
 
-type ActionLinkProps = AsElementLink<HTMLAnchorElement>;
+export type ActionLinkProps = AsElementLink<HTMLAnchorElement>;
 
-const ActionLinkComponent = forwardRef<HTMLAnchorElement, ActionLinkProps>(
+export const ActionLink = forwardRef<HTMLAnchorElement, ActionLinkProps>(
   ({ children, className, asElement: Element = 'a', ...rest }, forwardedRef) => (
     <Element className={classNames('nhsuk-action-link', className)} ref={forwardedRef} {...rest}>
-      <ArrowRightCircle />
+      <ArrowRightCircleIcon />
       <span className="nhsuk-action-link__text">{children}</span>
     </Element>
   ),
 );
 
-ActionLinkComponent.displayName = 'ActionLink';
-
-export default ActionLinkComponent;
+ActionLink.displayName = 'ActionLink';

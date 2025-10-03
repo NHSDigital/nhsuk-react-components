@@ -1,9 +1,10 @@
-import React, { ComponentPropsWithoutRef, FC, useContext } from 'react';
 import classNames from 'classnames';
-import TableContext, { ITableContext } from '../TableContext';
-import TableSectionContext, { TableSection } from '../TableSectionContext';
+import React, { useContext, type ComponentPropsWithoutRef, type FC } from 'react';
+import { TableContext, TableSection, TableSectionContext, type ITableContext } from '..';
 
-const TableHead: FC<ComponentPropsWithoutRef<'thead'>> = ({ children, className, ...rest }) => {
+export type TableHeadProps = ComponentPropsWithoutRef<'thead'>;
+
+export const TableHead: FC<TableHeadProps> = ({ children, className, ...rest }) => {
   const { responsive } = useContext<ITableContext>(TableContext);
 
   return (
@@ -20,5 +21,3 @@ const TableHead: FC<ComponentPropsWithoutRef<'thead'>> = ({ children, className,
 };
 
 TableHead.displayName = 'Table.Head';
-
-export default TableHead;

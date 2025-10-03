@@ -1,15 +1,16 @@
-import React, { ComponentPropsWithoutRef, forwardRef } from 'react';
 import classNames from 'classnames';
-import CardContext from './CardContext';
-import CardContent from './components/CardContent';
-import CardDescription from './components/CardDescription';
-import CardImage from './components/CardImage';
-import CardLink from './components/CardLink';
-import CardHeading from './components/CardHeading';
-import CardGroup from './components/CardGroup';
-import CardGroupItem from './components/CardGroupItem';
-import { CardType } from '@util/types/NHSUKTypes';
-import { cardTypeIsCareCard } from '@util/types/TypeGuards';
+import React, { forwardRef, type ComponentPropsWithoutRef } from 'react';
+import {
+  CardContent,
+  CardDescription,
+  CardGroup,
+  CardGroupItem,
+  CardHeading,
+  CardImage,
+  CardLink,
+} from './components';
+import { CardContext } from '.';
+import { cardTypeIsCareCard, type CardType } from '#util/types';
 
 export interface CardProps extends ComponentPropsWithoutRef<'div'> {
   clickable?: boolean;
@@ -50,7 +51,7 @@ const CardComponent = forwardRef<HTMLDivElement, CardProps>((props, forwardedRef
 
 CardComponent.displayName = 'Card';
 
-export default Object.assign(CardComponent, {
+export const Card = Object.assign(CardComponent, {
   Heading: CardHeading,
   Description: CardDescription,
   Image: CardImage,

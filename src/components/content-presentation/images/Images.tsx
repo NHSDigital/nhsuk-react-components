@@ -1,11 +1,11 @@
-import React, { ComponentPropsWithoutRef, forwardRef } from 'react';
 import classNames from 'classnames';
+import React, { forwardRef, type ComponentPropsWithoutRef } from 'react';
 
 export interface ImagesProps extends ComponentPropsWithoutRef<'img'> {
   caption?: string;
 }
 
-const ImagesComponent = forwardRef<HTMLElement, ImagesProps>(
+export const Images = forwardRef<HTMLElement, ImagesProps>(
   ({ alt = '', className, caption, ...rest }, forwardedRef) => (
     <figure className="nhsuk-image" ref={forwardedRef}>
       <img className={classNames('nhsuk-image__img', className)} alt={alt} {...rest} />
@@ -14,6 +14,4 @@ const ImagesComponent = forwardRef<HTMLElement, ImagesProps>(
   ),
 );
 
-ImagesComponent.displayName = 'Images';
-
-export default ImagesComponent;
+Images.displayName = 'Images';

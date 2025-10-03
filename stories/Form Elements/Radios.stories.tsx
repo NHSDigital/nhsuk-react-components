@@ -1,6 +1,6 @@
+import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { Radios, TextInput, Checkboxes } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Checkboxes, Radios, TextInput } from 'nhsuk-react-components';
 
 const meta: Meta<typeof Radios> = {
   title: 'Form Elements/Radios',

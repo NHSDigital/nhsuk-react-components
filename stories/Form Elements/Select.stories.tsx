@@ -1,6 +1,6 @@
+import { type Meta, type StoryObj } from '@storybook/react';
 import React, { useState } from 'react';
-import { Select, TextInput } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Select, TextInput } from 'nhsuk-react-components';
 
 const meta: Meta<typeof Select> = {
   title: 'Form Elements/Select',

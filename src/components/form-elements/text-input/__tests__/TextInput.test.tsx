@@ -1,8 +1,8 @@
-import React, { createRef, useRef } from 'react';
 import { render } from '@testing-library/react';
-import TextInput from '../TextInput';
-import { renderClient, renderServer } from '@util/components';
-import { InputWidth } from '@util/types/NHSUKTypes';
+import React, { createRef, useRef } from 'react';
+import { TextInput } from '..';
+import { renderClient, renderServer } from '#util/components';
+import { type InputWidth } from '#util/types';
 
 describe('TextInput', () => {
   afterEach(() => {

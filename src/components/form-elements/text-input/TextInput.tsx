@@ -1,8 +1,7 @@
-import React, { ComponentPropsWithoutRef, FC, forwardRef } from 'react';
 import classNames from 'classnames';
-import FormGroup from '@components/utils/FormGroup';
-import { InputWidth } from '@util/types/NHSUKTypes';
-import { FormElementProps } from '@util/types/FormTypes';
+import React, { forwardRef, type ComponentPropsWithoutRef, type FC } from 'react';
+import { FormGroup } from '#components/utils';
+import { type FormElementProps, type InputWidth } from '#util/types';
 
 export interface TextInputProps
   extends ComponentPropsWithoutRef<'input'>,
@@ -24,7 +23,7 @@ const TextInputSuffix: FC<Pick<TextInputProps, 'suffix'>> = ({ suffix }) => (
   </div>
 );
 
-const TextInputComponent = forwardRef<HTMLInputElement, TextInputProps>((props, forwardedRef) => (
+export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, forwardedRef) => (
   <FormGroup<TextInputProps> {...props} inputType="input">
     {({ width, className, error, type = 'text', prefix, suffix, ...rest }) => {
       const Input = (
@@ -54,6 +53,4 @@ const TextInputComponent = forwardRef<HTMLInputElement, TextInputProps>((props, 
   </FormGroup>
 ));
 
-TextInputComponent.displayName = 'TextInput';
-
-export default TextInputComponent;
+TextInput.displayName = 'TextInput';

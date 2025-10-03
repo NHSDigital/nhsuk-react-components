@@ -1,6 +1,6 @@
-import React from 'react';
 import { render } from '@testing-library/react';
-import HeadingLevel, { HeadingLevelProps } from '../HeadingLevel';
+import React from 'react';
+import { HeadingLevel, type HeadingLevelProps } from '..';
 
 describe('HeadingLevel', () => {
   it.each<Required<Pick<HeadingLevelProps, 'headingLevel'>>>([

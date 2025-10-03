@@ -1,6 +1,6 @@
-import React from 'react';
 import { render } from '@testing-library/react';
-import Container from '../Container';
+import React from 'react';
+import { Container } from '..';
 
 describe('Container', () => {
   it('matches snapshot', () => {

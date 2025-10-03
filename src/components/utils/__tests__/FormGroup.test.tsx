@@ -1,8 +1,8 @@
-import React from 'react';
 import { axe, toHaveNoViolations } from 'jest-axe';
-import FormGroup, { FormElementRenderProps } from '../FormGroup';
-import { TextInputProps } from '../../form-elements/text-input/TextInput';
-import { renderClient, renderServer } from '@util/components';
+import React from 'react';
+import { FormGroup, type FormElementRenderProps } from '..';
+import { type TextInputProps } from '#components/form-elements';
+import { renderClient, renderServer } from '#util/components';
 
 expect.extend(toHaveNoViolations);
 

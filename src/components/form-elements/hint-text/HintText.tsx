@@ -1,9 +1,9 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
+import React, { type ComponentPropsWithoutRef, type FC } from 'react';
 
 export type HintTextProps = ComponentPropsWithoutRef<'div'>;
 
-const HintTextComponent: FC<HintTextProps> = ({ children, className, ...rest }) => {
+export const HintText: FC<HintTextProps> = ({ children, className, ...rest }) => {
   if (!children) {
     return null;
   }
@@ -15,6 +15,4 @@ const HintTextComponent: FC<HintTextProps> = ({ children, className, ...rest }) 
   );
 };
 
-HintTextComponent.displayName = 'HintText';
-
-export default HintTextComponent;
+HintText.displayName = 'HintText';

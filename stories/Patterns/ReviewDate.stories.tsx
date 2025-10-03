@@ -1,5 +1,5 @@
-import { ReviewDate } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react';
+import { ReviewDate } from 'nhsuk-react-components';
 
 const meta: Meta<typeof ReviewDate> = {
   title: 'Patterns/ReviewDate',

@@ -9,6 +9,24 @@
     "dist"
   ],
   "sideEffects": false,
+  "imports": {
+    "#components/*": {
+      "import": "./dist/esm/components/*",
+      "require": "./dist/cjs/components/*"
+    },
+    "#patterns/*": {
+      "import": "./dist/esm/patterns/*",
+      "require": "./dist/cjs/patterns/*"
+    },
+    "#patterns": {
+      "import": "./dist/esm/patterns/index.js",
+      "require": "./dist/cjs/patterns/index.js"
+    },
+    "#util/*": {
+      "import": "./dist/esm/util/*",
+      "require": "./dist/cjs/util/*"
+    }
+  },
   "exports": {
     ".": {
       "import": {
@@ -68,6 +86,7 @@
     "@typescript-eslint/eslint-plugin": "^7.1.0",
     "@typescript-eslint/parser": "^7.1.0",
     "babel-jest": "^29.7.0",
+    "babel-plugin-module-resolver": "^5.0.2",
     "chromatic": "^6.17.3",
     "eslint": "^8.57.0",
     "eslint-config-airbnb": "^19.0.4",

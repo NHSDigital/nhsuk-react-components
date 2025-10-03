@@ -14,14 +14,13 @@
     "strictNullChecks": true,
     "target": "ESNext",
     "types": [],
+    "verbatimModuleSyntax": true,
     "paths": {
-      "@components/*": ["./src/components/*"],
-      "@content-presentation/*": ["./src/components/content-presentation/*"],
-      "@form-elements/*": ["./src/components/form-elements/*"],
-      "@navigation/*": ["./src/components/navigation/*"],
-      "@typography/*": ["./src/components/typography/*"],
-      "@util/*": ["./src/util/*"],
-      "@patterns/*": ["./src/patterns/*"]
+      "#components/*": ["./src/components/*"],
+      "#patterns/*": ["./src/patterns/*"],
+      "#patterns": ["./src/patterns/index"],
+      "#util/*": ["./src/util/*"],
+      "nhsuk-react-components": ["./src/index.ts"]
     }
   },
   "exclude": ["./dist", "./node_modules"]

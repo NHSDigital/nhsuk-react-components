@@ -1,8 +1,10 @@
 import classNames from 'classnames';
-import React, { ComponentPropsWithoutRef, FC } from 'react';
-import TableSectionContext, { TableSection } from '../TableSectionContext';
+import React, { type ComponentPropsWithoutRef, type FC } from 'react';
+import { TableSection, TableSectionContext } from '..';
 
-const TableBody: FC<ComponentPropsWithoutRef<'tbody'>> = ({ children, className, ...rest }) => (
+export type TableBodyProps = ComponentPropsWithoutRef<'tbody'>;
+
+export const TableBody: FC<TableBodyProps> = ({ children, className, ...rest }) => (
   <tbody className={classNames('nhsuk-table__body', className)} {...rest}>
     <TableSectionContext.Provider value={TableSection.BODY}>
       {children}
@@ -11,5 +13,3 @@ const TableBody: FC<ComponentPropsWithoutRef<'tbody'>> = ({ children, className,
 );
 
 TableBody.displayName = 'Table.Body';
-
-export default TableBody;

@@ -1,4 +1,4 @@
-import { Dispatch, SetStateAction, createContext } from 'react';
+import { createContext, type Dispatch, type SetStateAction } from 'react';
 
 export interface IHeaderContext {
   logoProps?: {
@@ -23,7 +23,7 @@ export interface IHeaderContext {
   setOrganisationProps: Dispatch<SetStateAction<IHeaderContext['organisationProps']>>;
 }
 
-export default createContext<IHeaderContext>({
+export const HeaderContext = createContext<IHeaderContext>({
   /* eslint-disable @typescript-eslint/no-empty-function */
   logoProps: undefined,
   serviceProps: undefined,

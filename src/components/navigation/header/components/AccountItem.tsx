@@ -1,7 +1,12 @@
-import React, { ComponentPropsWithRef, ForwardedRef, ReactNode, forwardRef } from 'react';
 import classNames from 'classnames';
-import { User as UserIcon } from '@components/content-presentation/icons';
-import { AsElementLink } from '@util/types/LinkTypes';
+import React, {
+  forwardRef,
+  type ComponentPropsWithRef,
+  type ForwardedRef,
+  type ReactNode,
+} from 'react';
+import { UserIcon } from '#components/content-presentation';
+import { type AsElementLink } from '#util/types';
 
 export interface AccountItemButtonProps extends AsElementLink<HTMLButtonElement> {
   as?: 'button';
@@ -42,7 +47,7 @@ const AccountItemLink = forwardRef<HTMLAnchorElement, AccountItemLinkProps>(
   ),
 );
 
-const AccountItem = forwardRef<
+export const AccountItem = forwardRef<
   HTMLAnchorElement | HTMLButtonElement,
   AccountItemButtonProps | AccountItemLinkProps
 >(({ children, className, icon, ...rest }, forwardedRef) => {
@@ -77,5 +82,3 @@ const AccountItem = forwardRef<
 AccountItem.displayName = 'Header.AccountItem';
 AccountItemLink.displayName = 'Header.AccountItemLink';
 AccountItemButton.displayName = 'Header.AccountItemButton';
-
-export default AccountItem;

@@ -1,13 +1,13 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
-import HeadingLevel, { HeadingLevelProps } from '@components/utils/HeadingLevel';
+import React, { type ComponentPropsWithoutRef, type FC } from 'react';
+import { HeadingLevel, type HeadingLevelProps } from '#components/utils';
 
 export interface TablePanelProps extends ComponentPropsWithoutRef<'div'> {
   heading?: string;
   headingProps?: HeadingLevelProps;
 }
 
-const TablePanel: FC<TablePanelProps> = ({
+export const TablePanel: FC<TablePanelProps> = ({
   className,
   heading,
   headingProps,
@@ -28,5 +28,3 @@ const TablePanel: FC<TablePanelProps> = ({
 );
 
 TablePanel.displayName = 'Table.Panel';
-
-export default TablePanel;

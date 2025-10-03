@@ -1,4 +1,4 @@
-import { ReactNode, createContext } from 'react';
+import { createContext, type ReactNode } from 'react';
 
 export interface ITableContext {
   firstCellIsHeader: boolean;
@@ -7,12 +7,10 @@ export interface ITableContext {
   setHeadings(headings: ReactNode[]): void;
 }
 
-const TableContext = createContext<ITableContext>({
+export const TableContext = createContext<ITableContext>({
   /* eslint-disable @typescript-eslint/no-empty-function */
   firstCellIsHeader: false,
   headings: [],
   responsive: false,
   setHeadings: () => {},
 });
-
-export default TableContext;
