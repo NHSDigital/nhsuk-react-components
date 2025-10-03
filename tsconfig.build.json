@@ -1,0 +1,18 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
+    "jsx": "react",
+    "lib": ["ESNext", "DOM"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "sourceMap": true,
+    "target": "ES2015",
+    "types": ["node"]
+  },
+  "include": ["./src"],
+  "exclude": ["**/__mocks__", "**/__tests__", "./src/setupTests.ts"]
+}

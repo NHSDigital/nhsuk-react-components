@@ -27,7 +27,7 @@ import React, { PureComponent } from 'react';
 import { Button } from 'nhsuk-react-components';
 
 // Or you can import components directly
-import Button from 'nhsuk-react-components/lib/components/button';
+import Button from 'nhsuk-react-components/dist/esm/components/button';
 
 class GetStartedButton extends PureComponent {
   render() {

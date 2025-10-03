@@ -1,79 +1,47 @@
-import resolve from '@rollup/plugin-node-resolve';
+import { join } from 'node:path';
 import commonjs from '@rollup/plugin-commonjs';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
-import terser from '@rollup/plugin-terser';
-import external from 'rollup-plugin-peer-deps-external';
-import { dts } from 'rollup-plugin-dts';
-import tsPaths from 'rollup-plugin-tsconfig-paths';
-import preserveDirectives from 'rollup-plugin-preserve-directives';
-
-import tsBuildConfig from './bundle-base.tsconfig.json' with { type: 'json' };
+import { defineConfig } from 'rollup';
 import packageJson from './package.json' with { type: 'json' };
+import tsBuildConfig from './tsconfig.build.json' with { type: 'json' };
 
-const commonPlugins = [external(), tsPaths(), resolve(), commonjs()];
+const { outDir } = tsBuildConfig.compilerOptions;
 
-export default [
-  // cjs export
-  {
-    input: 'src/index.ts',
-    output: [
-      {
-        file: packageJson.main,
-        format: 'cjs',
-        sourcemap: true,
-      },
-    ],
-    plugins: [
-      ...commonPlugins,
-      typescript({
-        tsconfig: 'bundle-base.tsconfig.json',
-        compilerOptions: {
-          declaration: false,
+export default defineConfig(
+  /** @type {const} */ (['cjs', 'esm']).map(
+    /**
+     * Rollup options for each module format
+     *
+     * @param {ModuleFormat} format
+     * @returns {RollupOptions}
+     */
+    (format) => ({
+      input: 'src/index.ts',
+      external: Object.keys(packageJson.peerDependencies),
+      output: [
+        {
+          dir: join(outDir, format),
+          format,
+          preserveModules: true,
+          preserveModulesRoot: 'src',
+          sourcemap: true,
         },
-      }),
-      terser(),
-    ],
-    ...onWarnSuppression,
-  },
-  // esm export
-  {
-    input: 'src/index.ts',
-    output: [
-      {
-        dir: packageJson.module,
-        format: 'esm',
-        sourcemap: true,
-        preserveModules: true,
-        preserveModulesRoot: 'src',
-      },
-    ],
-    plugins: [
-      ...commonPlugins,
-      typescript({
-        tsconfig: 'bundle-base.tsconfig.json',
-        compilerOptions: {
-          declaration: true,
-          declarationDir: 'dist/esm',
-          emitDeclarationOnly: true,
-          outDir: 'dist/esm',
-        },
-      }),
-      preserveDirectives(),
-      terser({ compress: { directives: false } }),
-    ],
-    ...onWarnSuppression,
-  },
-  // type bundling
-  {
-    input: 'src/index.ts',
-    output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-    external: [],
-    plugins: [
-      dts({
-        compilerOptions: {
-          paths: tsBuildConfig.compilerOptions.paths,
-        },
-      }),
-    ],
-  },
-];
+      ],
+      plugins: [
+        nodeResolve(),
+        commonjs(),
+        typescript({
+          tsconfig: 'tsconfig.build.json',
+          compilerOptions: {
+            outDir: join(outDir, format),
+          },
+        }),
+      ],
+    }),
+  ),
+);
+
+/**
+ * @import { ModuleFormat, RollupOptions } from 'rollup'
+ */
