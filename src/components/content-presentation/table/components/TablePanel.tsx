@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { type ComponentPropsWithoutRef, type FC } from 'react';
+import { type ComponentPropsWithoutRef, type FC } from 'react';
 import { HeadingLevel, type HeadingLevelProps } from '#components/utils';
 
 export interface TablePanelProps extends ComponentPropsWithoutRef<'div'> {

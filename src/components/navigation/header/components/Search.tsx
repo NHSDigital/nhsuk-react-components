@@ -1,4 +1,4 @@
-import React, { type ComponentPropsWithoutRef, type FC } from 'react';
+import { type ComponentPropsWithoutRef, type FC } from 'react';
 import { SearchIcon } from '#components/content-presentation';
 
 export interface SearchProps extends ComponentPropsWithoutRef<'form'> {

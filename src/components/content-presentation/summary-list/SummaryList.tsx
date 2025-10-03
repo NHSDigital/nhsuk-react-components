@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { forwardRef, type ComponentPropsWithoutRef, type FC } from 'react';
+import { forwardRef, type ComponentPropsWithoutRef, type FC } from 'react';
 
 const SummaryListRow: FC<ComponentPropsWithoutRef<'div'>> = ({ className, ...rest }) => (
   <div className={classNames('nhsuk-summary-list__row', className)} {...rest} />

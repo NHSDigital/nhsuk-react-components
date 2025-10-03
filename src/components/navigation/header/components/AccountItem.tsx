@@ -1,10 +1,5 @@
 import classNames from 'classnames';
-import React, {
-  forwardRef,
-  type ComponentPropsWithRef,
-  type ForwardedRef,
-  type ReactNode,
-} from 'react';
+import { forwardRef, type ComponentPropsWithRef, type ForwardedRef, type ReactNode } from 'react';
 import { UserIcon } from '#components/content-presentation';
 import { type AsElementLink } from '#util/types';
 

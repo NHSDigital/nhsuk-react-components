@@ -1,4 +1,4 @@
-import React, { createRef, forwardRef, type ComponentProps, type Ref } from 'react';
+import { createRef, forwardRef, type ComponentProps, type Ref } from 'react';
 import { Button } from '..';
 import { renderClient, renderServer } from '#util/components';
 

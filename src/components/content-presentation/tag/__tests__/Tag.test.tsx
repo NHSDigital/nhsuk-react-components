@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import React, { type ComponentPropsWithoutRef } from 'react';
+import { type ComponentPropsWithoutRef } from 'react';
 import { Tag } from '..';
 
 describe('Tag', () => {

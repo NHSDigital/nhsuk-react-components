@@ -26,6 +26,7 @@ module.exports = {
       '@babel/preset-react',
       {
         development: NODE_ENV === 'development',
+        runtime: 'automatic',
         useBuiltIns: true,
       },
     ],

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { forwardRef, type ComponentPropsWithoutRef, type FC } from 'react';
+import { forwardRef, type ComponentPropsWithoutRef, type FC } from 'react';
 import { FormGroup } from '#components/utils';
 import { type FormElementProps, type InputWidth } from '#util/types';
 

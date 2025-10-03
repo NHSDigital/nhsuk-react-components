@@ -1,4 +1,4 @@
-import React, { forwardRef, type ElementType, type HTMLAttributes } from 'react';
+import { forwardRef, type ElementType, type HTMLAttributes } from 'react';
 
 export interface HeadingLevelProps extends HTMLAttributes<HTMLHeadingElement> {
   headingLevel?: Extract<ElementType, 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'>;
