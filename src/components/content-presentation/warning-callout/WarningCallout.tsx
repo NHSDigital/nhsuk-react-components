@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { forwardRef, type ComponentPropsWithoutRef, type FC } from 'react';
+import { forwardRef, type ComponentPropsWithoutRef, type FC } from 'react';
 import { HeadingLevel, type HeadingLevelProps } from '#components/utils';
 
 const WarningCalloutHeading: FC<HeadingLevelProps> = ({ children, className, ...rest }) => (

@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { type Button as ButtonModule } from 'nhsuk-frontend';
-import React, {
+import {
   createRef,
   forwardRef,
   useEffect,

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { Children, forwardRef, type ComponentPropsWithoutRef, type ReactNode } from 'react';
+import { Children, forwardRef, type ComponentPropsWithoutRef, type ReactNode } from 'react';
 import { BackLink } from '..';
 import { childIsOfComponentType, type AsElementLink } from '#util/types';
 

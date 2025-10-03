@@ -1,10 +1,5 @@
 import classNames from 'classnames';
-import React, {
-  forwardRef,
-  useContext,
-  type ChangeEvent,
-  type ComponentPropsWithoutRef,
-} from 'react';
+import { forwardRef, useContext, type ChangeEvent, type ComponentPropsWithoutRef } from 'react';
 import { DateInputContext, type IDateInputContext } from '..';
 import { Label } from '#components/form-elements';
 import { type FormElementProps } from '#util/types';

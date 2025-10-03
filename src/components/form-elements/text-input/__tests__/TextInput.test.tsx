@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import React, { createRef, useRef } from 'react';
+import { createRef, useRef } from 'react';
 import { TextInput } from '..';
 import { renderClient, renderServer } from '#util/components';
 import { type InputWidth } from '#util/types';

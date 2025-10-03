@@ -1,3 +1,5 @@
+import { type HTMLAttributes } from 'react';
+
 export type NHSUKSize = 's' | 'm' | 'l' | 'xl';
 
 export type InputWidth = '2' | '3' | '4' | '5' | '10' | '20' | '30' | 2 | 3 | 4 | 5 | 10 | 20 | 30;
@@ -14,6 +16,6 @@ export type ColWidth =
   | 'one-third'
   | 'one-quarter';
 
-export type HTMLAttributesWithData<T> = React.HTMLAttributes<T> & {
+export type HTMLAttributesWithData<T> = HTMLAttributes<T> & {
   [key: `data-${string}`]: unknown;
 };

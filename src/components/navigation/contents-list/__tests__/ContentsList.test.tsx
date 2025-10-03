@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import React, { createRef, type ComponentProps } from 'react';
+import { createRef, type ComponentProps } from 'react';
 import { ContentsList } from '..';
 
 describe('ContentsList', () => {

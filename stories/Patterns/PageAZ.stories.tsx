@@ -1,5 +1,4 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import React from 'react';
 import { Card, Col, Container, HeadingLevel, NavAZ, Row } from 'nhsuk-react-components';
 
 /**

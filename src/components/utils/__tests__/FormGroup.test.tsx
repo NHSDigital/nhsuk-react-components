@@ -1,5 +1,4 @@
 import { axe, toHaveNoViolations } from 'jest-axe';
-import React from 'react';
 import { FormGroup, type FormElementRenderProps } from '..';
 import { type TextInputProps } from '#components/form-elements';
 import { renderClient, renderServer } from '#util/components';

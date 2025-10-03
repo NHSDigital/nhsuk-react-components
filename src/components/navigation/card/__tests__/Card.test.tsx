@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { render } from '@testing-library/react';
-import React from 'react';
 import { Card } from '..';
 import { renderClient, renderServer } from '#util/components';
 import { type CardType } from '#util/types';

@@ -1,4 +1,4 @@
-import React, { useContext, type ComponentPropsWithoutRef, type FC } from 'react';
+import { useContext, type ComponentPropsWithoutRef, type FC } from 'react';
 import { HeaderContext, type IHeaderContext } from '..';
 
 export type ServiceNameInnerProps = NonNullable<IHeaderContext['serviceProps']>;

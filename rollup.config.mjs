@@ -28,7 +28,8 @@ export default defineConfig(
           sourcemapExcludeSources: true,
         },
       ],
-      external,
+      external: ['react/jsx-runtime', ...external],
+      jsx: /** @type {const} */ ('react-jsx'),
       treeshake: false,
       plugins: [
         nodeResolve({

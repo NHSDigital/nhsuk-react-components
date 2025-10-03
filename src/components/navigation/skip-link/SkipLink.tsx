@@ -1,12 +1,6 @@
 import classNames from 'classnames';
 import { type SkipLink as SkipLinkModule } from 'nhsuk-frontend';
-import React, {
-  createRef,
-  forwardRef,
-  useEffect,
-  useState,
-  type ComponentPropsWithoutRef,
-} from 'react';
+import { createRef, forwardRef, useEffect, useState, type ComponentPropsWithoutRef } from 'react';
 
 export type SkipLinkProps = ComponentPropsWithoutRef<'a'>;
 

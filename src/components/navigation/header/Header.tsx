@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { type Header as HeaderModule } from 'nhsuk-frontend';
-import React, {
+import {
   Children,
   createRef,
   forwardRef,

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, type FC } from 'react';
+import { useContext, useEffect, type FC } from 'react';
 import { HeaderContext, type IHeaderContext } from '..';
 
 export type LogoProps = NonNullable<IHeaderContext['logoProps']>;

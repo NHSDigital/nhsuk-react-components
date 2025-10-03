@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { Children, forwardRef, type ComponentPropsWithoutRef, type FC } from 'react';
+import { Children, forwardRef, type ComponentPropsWithoutRef, type FC } from 'react';
 import { Container } from '#components/layout';
 import { childIsOfComponentType, type AsElementLink } from '#util/types';
 

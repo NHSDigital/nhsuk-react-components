@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { useContext, type ComponentPropsWithoutRef, type FC } from 'react';
+import { useContext, type ComponentPropsWithoutRef, type FC } from 'react';
 import { TableContext, TableSection, TableSectionContext, type ITableContext } from '..';
 
 export type TableHeadProps = ComponentPropsWithoutRef<'thead'>;

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { useContext, useEffect, type ComponentPropsWithoutRef, type FC } from 'react';
+import { useContext, useEffect, type ComponentPropsWithoutRef, type FC } from 'react';
 import { HeaderContext, type IHeaderContext } from '..';
 import { MenuToggle } from '.';
 import { Container } from '#components/layout';

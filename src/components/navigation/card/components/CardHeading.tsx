@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { forwardRef, useContext } from 'react';
+import { forwardRef, useContext } from 'react';
 import { CardContext } from '..';
 import { HeadingLevel, type HeadingLevelProps } from '#components/utils';
 import { cardTypeIsCareCard, type CareCardType } from '#util/types';

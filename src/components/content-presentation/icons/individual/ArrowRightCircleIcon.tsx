@@ -1,4 +1,4 @@
-import React, { type FC } from 'react';
+import { type FC } from 'react';
 import { Icon, type IconProps } from '..';
 
 export const ArrowRightCircleIcon: FC<IconProps> = (props) => (

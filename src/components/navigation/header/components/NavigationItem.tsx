@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { type FC } from 'react';
+import { type FC } from 'react';
 import { type AsElementLink } from '#util/types';
 
 export interface NavigationItemProps extends AsElementLink<HTMLAnchorElement> {

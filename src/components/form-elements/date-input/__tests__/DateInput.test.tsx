@@ -1,5 +1,5 @@
 import { fireEvent } from '@testing-library/react';
-import React, { createRef } from 'react';
+import { createRef } from 'react';
 import { DateInput, type DateInputChangeEvent } from '..';
 import { renderClient, renderServer } from '#util/components';
 

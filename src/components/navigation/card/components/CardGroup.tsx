@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { type ComponentPropsWithoutRef, type FC } from 'react';
+import { type ComponentPropsWithoutRef, type FC } from 'react';
 import { Row } from '#components/layout';
 
 export const CardGroup: FC<ComponentPropsWithoutRef<'div'>> = ({ className, ...rest }) => (
