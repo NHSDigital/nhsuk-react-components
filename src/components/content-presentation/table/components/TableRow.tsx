@@ -19,7 +19,7 @@ export const TableRow: FC<ComponentPropsWithoutRef<'tr'>> = ({ children, classNa
     if (responsive && section === TableSection.HEAD) {
       setHeadings(getHeadingsFromChildren(children));
     }
-  }, [responsive, section, children]);
+  }, [children, responsive, section, setHeadings]);
 
   const tableCells = Children.map(children, (child, index) => {
     return section === TableSection.BODY && isTableCell(child)

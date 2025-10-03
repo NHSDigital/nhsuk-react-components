@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import {
   createRef,
   forwardRef,
-  useEffect,
   useState,
   type ChangeEvent,
   type ComponentPropsWithoutRef,
@@ -49,16 +48,6 @@ const DateInputComponent = forwardRef<HTMLDivElement, DateInputProps>(
       month: value?.month ?? '',
       year: value?.year ?? '',
     });
-
-    useEffect(() => {
-      const newState = { ...internalDate };
-      const { day, month, year } = value ?? {};
-      if (day && day !== internalDate.day) newState.day = day;
-      if (month && month !== internalDate.month) newState.month = month;
-      if (year && year !== internalDate.year) newState.year = year;
-
-      return setInternalDate(newState);
-    }, [value]);
 
     const handleChange = (inputType: InputType, event: ChangeEvent<HTMLInputElement>): void => {
       event.stopPropagation();

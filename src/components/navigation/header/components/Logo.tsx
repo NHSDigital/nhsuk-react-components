@@ -14,7 +14,7 @@ export const Logo: FC<LogoProps> = (logo) => {
 
     setLogoProps(logo);
     return () => setLogoProps(undefined);
-  }, [logo]);
+  }, [logo, setLogoProps]);
 
   const { alt = 'NHS' } = logo;
 

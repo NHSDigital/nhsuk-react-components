@@ -26,7 +26,7 @@ export const Navigation: FC<NavigationProps> = ({
 
     setMenuOpen(open);
     return () => setMenuOpen(false);
-  }, [open]);
+  }, [open, setMenuOpen]);
 
   return (
     <nav

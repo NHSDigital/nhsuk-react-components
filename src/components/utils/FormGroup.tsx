@@ -103,12 +103,12 @@ export const FormGroup = <T extends BaseFormElementRenderProps>(
   useEffect(() => {
     passError(elementID, disableErrorFromComponents ? false : Boolean(error));
     return () => passError(elementID, false);
-  }, [elementID, error]);
+  }, [disableErrorFromComponents, elementID, error, passError]);
 
   useEffect(() => {
     registerComponent(elementID);
     return () => registerComponent(elementID, true);
-  }, []);
+  }, [elementID, registerComponent]);
 
   return (
     <div

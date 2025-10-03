@@ -106,7 +106,7 @@ const HeaderComponent = forwardRef<HTMLElement, HeaderProps>((props, forwardedRe
       setServiceProps,
       setOrganisationProps,
     };
-  }, [logoProps, serviceProps, organisationProps]);
+  }, [logoProps, serviceProps, organisationProps, menuOpen]);
 
   const items = Children.toArray(children);
   const childLogo = items.find((child) => childIsOfComponentType(child, Logo));
