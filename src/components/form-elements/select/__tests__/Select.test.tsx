@@ -1,7 +1,7 @@
-import React, { createRef, useRef } from 'react';
 import { render } from '@testing-library/react';
-import Select from '../Select';
-import { renderClient, renderServer } from '@util/components';
+import React, { createRef, useRef } from 'react';
+import { Select } from '..';
+import { renderClient, renderServer } from '#util/components';
 
 describe('Select', () => {
   afterEach(() => {

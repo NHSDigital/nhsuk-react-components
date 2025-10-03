@@ -1,6 +1,6 @@
 import React, { createRef } from 'react';
-import { renderClient, renderServer } from '@util/components';
-import Table from '../..';
+import { Table } from '../..';
+import { renderClient, renderServer } from '#util/components';
 
 describe('Table', () => {
   const Example = (props: Parameters<typeof Table>[0]) => (

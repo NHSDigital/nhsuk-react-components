@@ -1,6 +1,6 @@
-import React, { useRef, useState, useEffect, SyntheticEvent } from 'react';
-import { Checkboxes, TextInput } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react';
+import React, { useEffect, useRef, useState, type SyntheticEvent } from 'react';
+import { Checkboxes, TextInput } from 'nhsuk-react-components';
 
 /**
  * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/checkboxes" target="_blank" rel="noopener noreferrer">here</a>.
@@ -9,7 +9,7 @@ import { Meta, StoryObj } from '@storybook/react';
  *
  * For details on the new form design pattern, check the documentation for the `Form` component.
  *
- * The `Checkbox` component provides a `CheckboxContext` context, which the `Checkboxes.Item` components use. When each box initially renders, it will attempt to assign itself an `id` by calling the `getBoxId` method in the context. This will assign each box a sequential ID using either the `idPrefix` or `name` supplied to the Checkbox. If neither are provided, the element will generate it's own unique identifier.
+ * The `Checkbox` component provides a `CheckboxesContext` context, which the `Checkboxes.Item` components use. When each box initially renders, it will attempt to assign itself an `id` by calling the `getBoxId` method in the context. This will assign each box a sequential ID using either the `idPrefix` or `name` supplied to the Checkbox. If neither are provided, the element will generate it's own unique identifier.
  *
  * ## Usage
  *

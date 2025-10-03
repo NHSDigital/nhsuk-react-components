@@ -1,17 +1,16 @@
+import classNames from 'classnames';
 import React, {
-  ComponentPropsWithRef,
-  ComponentPropsWithoutRef,
+  forwardRef,
   useContext,
-  ReactNode,
   useEffect,
   useState,
-  forwardRef,
+  type ComponentPropsWithRef,
+  type ComponentPropsWithoutRef,
+  type ReactNode,
 } from 'react';
-import classNames from 'classnames';
-import { FormElementProps } from '@util/types/FormTypes';
-import { RadiosContext, IRadiosContext } from '../RadioContext';
-import HintText from '../../hint-text/HintText';
-import Label from '../../label/Label';
+import { RadiosContext, type IRadiosContext } from '..';
+import { HintText, Label } from '#components/form-elements';
+import { type FormElementProps } from '#util/types';
 
 export interface RadiosItemProps
   extends ComponentPropsWithoutRef<'input'>,
@@ -21,7 +20,7 @@ export interface RadiosItemProps
   conditionalProps?: ComponentPropsWithRef<'div'>;
 }
 
-const RadiosItem = forwardRef<HTMLInputElement, RadiosItemProps>((props, forwardedRef) => {
+export const RadiosItem = forwardRef<HTMLInputElement, RadiosItemProps>((props, forwardedRef) => {
   const {
     className,
     children,
@@ -101,5 +100,3 @@ const RadiosItem = forwardRef<HTMLInputElement, RadiosItemProps>((props, forward
 });
 
 RadiosItem.displayName = 'Radios.Item';
-
-export default RadiosItem;

@@ -1,6 +1,6 @@
-import React, { ComponentProps, createRef } from 'react';
 import { render } from '@testing-library/react';
-import BackLink from '../';
+import React, { createRef, type ComponentProps } from 'react';
+import { BackLink } from '..';
 
 describe('BackLink', () => {
   it('matches snapshot', () => {

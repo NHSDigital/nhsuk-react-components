@@ -1,6 +1,6 @@
+import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { Col, HintText, Row, Table } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { Col, HintText, Row, Table } from 'nhsuk-react-components';
 
 const meta: Meta<typeof Table> = {
   title: 'Content Presentation/Table',

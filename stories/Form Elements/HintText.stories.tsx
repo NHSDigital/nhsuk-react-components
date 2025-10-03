@@ -1,6 +1,6 @@
+import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { HintText } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { HintText } from 'nhsuk-react-components';
 
 const meta: Meta<typeof HintText> = {
   title: 'Form Elements/HintText',

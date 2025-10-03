@@ -1,8 +1,8 @@
-import React, { ComponentPropsWithoutRef , FC } from 'react';
+import React, { type ComponentPropsWithoutRef, type FC } from 'react';
 
 export type MenuToggleProps = ComponentPropsWithoutRef<'button'>;
 
-const MenuToggle: FC<MenuToggleProps> = (props) => (
+export const MenuToggle: FC<MenuToggleProps> = (props) => (
   <li className="nhsuk-header__menu" hidden>
     <button
       className="nhsuk-header__menu-toggle nhsuk-header__navigation-link"
@@ -14,5 +14,3 @@ const MenuToggle: FC<MenuToggleProps> = (props) => (
     </button>
   </li>
 );
-
-export default MenuToggle;

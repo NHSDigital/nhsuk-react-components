@@ -1,13 +1,22 @@
-import React, { ComponentPropsWithoutRef, ReactNode, forwardRef, useMemo, useState } from 'react';
 import classNames from 'classnames';
-import TableBody from './components/TableBody';
-import TableCaption, { TableCaptionProps } from './components/TableCaption';
-import TableCell from './components/TableCell';
-import TableContainer from './components/TableContainer';
-import TableHead from './components/TableHead';
-import TableRow from './components/TableRow';
-import TablePanel from './components/TablePanel';
-import TableContext, { ITableContext } from './TableContext';
+import React, {
+  forwardRef,
+  useMemo,
+  useState,
+  type ComponentPropsWithoutRef,
+  type ReactNode,
+} from 'react';
+import {
+  TableBody,
+  TableCaption,
+  TableCell,
+  TableContainer,
+  TableHead,
+  TablePanel,
+  TableRow,
+  type TableCaptionProps,
+} from './components';
+import { TableContext, type ITableContext } from '.';
 
 export interface TableProps extends ComponentPropsWithoutRef<'table'> {
   firstCellIsHeader?: boolean;
@@ -59,7 +68,7 @@ const TableComponent = forwardRef<HTMLTableElement, TableProps>((props, forwarde
 
 TableComponent.displayName = 'Table';
 
-export default Object.assign(TableComponent, {
+export const Table = Object.assign(TableComponent, {
   Container: TableContainer,
   Panel: TablePanel,
   Head: TableHead,

@@ -5,9 +5,7 @@ export type IFormGroupContext = {
   registerComponent: (componentId: string, deregister?: boolean) => void;
 };
 
-const FormGroupContext = createContext<IFormGroupContext>({
+export const FormGroupContext = createContext<IFormGroupContext>({
   passError: () => {},
   registerComponent: () => {},
 });
-
-export default FormGroupContext;

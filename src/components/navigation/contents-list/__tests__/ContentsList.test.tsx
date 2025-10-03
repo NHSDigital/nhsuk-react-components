@@ -1,6 +1,6 @@
-import React, { createRef, ComponentProps } from 'react';
 import { render } from '@testing-library/react';
-import ContentsList from '../';
+import React, { createRef, type ComponentProps } from 'react';
+import { ContentsList } from '..';
 
 describe('ContentsList', () => {
   it('matches snapshot', () => {

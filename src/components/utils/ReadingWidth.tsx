@@ -1,8 +1,6 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
+import React, { type ComponentPropsWithoutRef, type FC } from 'react';
 
-const ReadingWidth: FC<ComponentPropsWithoutRef<'div'>> = ({ className, ...rest }) => (
+export const ReadingWidth: FC<ComponentPropsWithoutRef<'div'>> = ({ className, ...rest }) => (
   <div className={classNames('nhsuk-u-reading-width', className)} {...rest} />
 );
-
-export default ReadingWidth;

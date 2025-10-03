@@ -1,5 +1,5 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
+import React, { type ComponentPropsWithoutRef, type FC } from 'react';
 
 export interface TagProps extends ComponentPropsWithoutRef<'strong'> {
   modifier?:
@@ -20,13 +20,11 @@ export interface TagProps extends ComponentPropsWithoutRef<'strong'> {
   color?: TagProps['modifier'];
 }
 
-const TagComponent: FC<TagProps> = ({ className, color, modifier = color, ...rest }) => (
+export const Tag: FC<TagProps> = ({ className, color, modifier = color, ...rest }) => (
   <strong
     className={classNames('nhsuk-tag', { [`nhsuk-tag--${modifier}`]: modifier }, className)}
     {...rest}
   />
 );
 
-TagComponent.displayName = 'Tag';
-
-export default TagComponent;
+Tag.displayName = 'Tag';

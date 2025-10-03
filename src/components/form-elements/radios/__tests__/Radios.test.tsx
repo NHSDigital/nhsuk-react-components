@@ -1,6 +1,6 @@
 import React, { createRef } from 'react';
-import Radios from '../Radios';
-import { renderClient, renderServer } from '@util/components';
+import { Radios } from '..';
+import { renderClient, renderServer } from '#util/components';
 
 describe('Radios', () => {
   it('matches snapshot', async () => {

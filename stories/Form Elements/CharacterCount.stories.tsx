@@ -1,6 +1,6 @@
+import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { CharacterCount } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { CharacterCount } from 'nhsuk-react-components';
 
 /**
  * Help users know how much text they can enter when there is a limit on the number of characters.

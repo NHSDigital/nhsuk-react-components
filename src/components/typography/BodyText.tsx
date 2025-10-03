@@ -1,8 +1,6 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
+import React, { type ComponentPropsWithoutRef, type FC } from 'react';
 
-const BodyText: FC<ComponentPropsWithoutRef<'p'>> = ({ className, ...rest }) => (
+export const BodyText: FC<ComponentPropsWithoutRef<'p'>> = ({ className, ...rest }) => (
   <p className={classNames('nhsuk-body', className)} {...rest} />
 );
-
-export default BodyText;

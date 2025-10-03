@@ -1,12 +1,12 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
+import React, { type ComponentPropsWithoutRef, type FC } from 'react';
 
 export type AccountProps = Pick<
   ComponentPropsWithoutRef<'nav'>,
   'aria-label' | 'children' | 'className'
 >;
 
-const Account: FC<AccountProps> = ({
+export const Account: FC<AccountProps> = ({
   className,
   children,
   'aria-label': ariaLabel = 'Account',
@@ -17,5 +17,3 @@ const Account: FC<AccountProps> = ({
 );
 
 Account.displayName = 'Header.Account';
-
-export default Account;

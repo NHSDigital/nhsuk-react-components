@@ -2,9 +2,9 @@ import { Dispatch, SetStateAction, createContext } from 'react';
 
 export interface IHeaderContext {
   logoProps?: {
-    href?: string;
-    src?: string;
-    alt?: string;
+    'href'?: string;
+    'src'?: string;
+    'alt'?: string;
     'aria-label'?: string;
   };
   serviceProps?: {
@@ -23,7 +23,7 @@ export interface IHeaderContext {
   setOrganisationProps: Dispatch<SetStateAction<IHeaderContext['organisationProps']>>;
 }
 
-export default createContext<IHeaderContext>({
+export const HeaderContext = createContext<IHeaderContext>({
   /* eslint-disable @typescript-eslint/no-empty-function */
   logoProps: undefined,
   serviceProps: undefined,

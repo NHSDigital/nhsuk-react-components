@@ -1,7 +1,7 @@
-import React from 'react';
 import { render } from '@testing-library/react';
-import type { NHSUKSize } from '@util/types/NHSUKTypes';
-import Label from '../Label';
+import React from 'react';
+import { Label } from '..';
+import { type NHSUKSize } from '#util/types';
 
 describe('Label', () => {
   it('can be defaulted', () => {

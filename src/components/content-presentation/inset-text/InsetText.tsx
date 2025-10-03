@@ -1,9 +1,9 @@
-import React, { ComponentPropsWithoutRef, forwardRef } from 'react';
 import classNames from 'classnames';
+import React, { forwardRef, type ComponentPropsWithoutRef } from 'react';
 
-type InsetTextProps = ComponentPropsWithoutRef<'div'>;
+export type InsetTextProps = ComponentPropsWithoutRef<'div'>;
 
-const InsetTextComponent = forwardRef<HTMLDivElement, InsetTextProps>(
+export const InsetText = forwardRef<HTMLDivElement, InsetTextProps>(
   ({ className, children, ...rest }, forwardedRef) => (
     <div className={classNames('nhsuk-inset-text', className)} ref={forwardedRef} {...rest}>
       <span className="nhsuk-u-visually-hidden">Information: </span>
@@ -12,6 +12,4 @@ const InsetTextComponent = forwardRef<HTMLDivElement, InsetTextProps>(
   ),
 );
 
-InsetTextComponent.displayName = 'InsetText';
-
-export default InsetTextComponent;
+InsetText.displayName = 'InsetText';

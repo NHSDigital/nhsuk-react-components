@@ -1,1 +1,1 @@
-export { default } from './HintText';
+export * from './HintText';
