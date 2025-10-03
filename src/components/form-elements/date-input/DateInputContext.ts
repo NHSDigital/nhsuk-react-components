@@ -10,7 +10,6 @@ export type IDateInputContext = {
 };
 
 export const DateInputContext = createContext<IDateInputContext>({
-  /* eslint-disable @typescript-eslint/no-empty-function */
   id: '',
   name: '',
   handleChange: () => {},
