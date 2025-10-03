@@ -1,5 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import { Card, Col, Container, HeadingLevel, NavAZ, Row } from 'nhsuk-react-components';
+import { Card, Col, Container, HeadingLevel, Row } from '#components';
+import { NavAZ } from '#patterns';
 
 /**
  * A to Z is a way of presenting a number of pages alphabetically.

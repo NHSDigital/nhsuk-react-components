@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import { NavAZ } from 'nhsuk-react-components';
+import { NavAZ } from '#patterns';
 
 /**
  * This component is generally used as part of the 'A to Z page' pattern.

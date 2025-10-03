@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
 import { useEffect, useRef, useState, type SyntheticEvent } from 'react';
-import { Checkboxes, TextInput } from 'nhsuk-react-components';
+import { Checkboxes, TextInput } from '#components';
 
 /**
  * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/checkboxes" target="_blank" rel="noopener noreferrer">here</a>.

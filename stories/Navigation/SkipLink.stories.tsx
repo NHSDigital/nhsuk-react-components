@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import React, { type FC, type ReactNode } from 'react';
-import { HintText, SkipLink } from 'nhsuk-react-components';
+import { type FC, type ReactNode } from 'react';
+import { HintText, SkipLink } from '#components';
 
 const CodeText: FC<{ children: ReactNode }> = ({ children }) => (
   <span

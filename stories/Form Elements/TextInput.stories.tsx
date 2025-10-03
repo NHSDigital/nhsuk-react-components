@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import { TextInput } from 'nhsuk-react-components';
+import { TextInput } from '#components';
 
 const meta: Meta<typeof TextInput> = {
   title: 'Form Elements/TextInput',

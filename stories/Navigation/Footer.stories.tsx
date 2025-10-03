@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import { Footer } from 'nhsuk-react-components';
+import { Footer } from '#components';
 
 const meta: Meta<typeof Footer> = {
   title: 'Navigation/Footer',

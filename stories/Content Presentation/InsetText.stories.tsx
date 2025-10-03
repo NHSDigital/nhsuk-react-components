@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import { InsetText } from 'nhsuk-react-components';
+import { InsetText } from '#components';
 
 const meta: Meta<typeof InsetText> = {
   title: 'Content Presentation/InsetText',

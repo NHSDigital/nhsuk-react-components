@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import React, { type ComponentProps } from 'react';
-import { Header } from 'nhsuk-react-components';
+import { type ComponentProps } from 'react';
+import { Header } from '#components';
 
 const meta: Meta<typeof Header> = {
   title: 'Navigation/Header',

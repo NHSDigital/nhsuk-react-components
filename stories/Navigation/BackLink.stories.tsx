@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import { BackLink } from 'nhsuk-react-components';
+import { BackLink } from '#components';
 
 const meta: Meta<typeof BackLink> = {
   title: 'Navigation/BackLink',

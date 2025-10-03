@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { type Meta, type StoryObj } from '@storybook/react';
-import { Card, ChevronRightCircleIcon } from 'nhsuk-react-components';
+import { Card, ChevronRightCircleIcon } from '#components';
 
 const meta: Meta<typeof Card> = {
   title: 'Navigation/Card',
