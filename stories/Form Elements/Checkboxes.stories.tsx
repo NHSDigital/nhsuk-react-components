@@ -225,7 +225,7 @@ export const NoIDSupplied: Story = {
           id: checkbox3Ref.current?.id,
         },
       });
-    }, [checkbox1Ref.current, checkbox2Ref.current, checkbox3Ref.current]);
+    }, []);
 
     return (
       <form style={{ padding: 20 }}>
@@ -309,7 +309,7 @@ export const NameSupplied: Story = {
           id: checkbox3Ref.current?.id,
         },
       });
-    }, [checkbox1Ref.current, checkbox2Ref.current, checkbox3Ref.current]);
+    }, []);
 
     return (
       <form style={{ padding: 20 }}>
@@ -393,7 +393,7 @@ export const IDPrefixSupplied: Story = {
           id: checkbox3Ref.current?.id,
         },
       });
-    }, [checkbox1Ref.current, checkbox2Ref.current, checkbox3Ref.current]);
+    }, []);
 
     return (
       <form style={{ padding: 20 }}>
@@ -478,7 +478,7 @@ export const IDPrefixAndNameSupplied: Story = {
           id: checkbox3Ref.current?.id,
         },
       });
-    }, [checkbox1Ref.current, checkbox2Ref.current, checkbox3Ref.current]);
+    }, []);
 
     return (
       <form style={{ padding: 20 }}>
