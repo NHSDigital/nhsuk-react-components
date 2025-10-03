@@ -71,8 +71,8 @@ describe('TextInput', () => {
     const textInputEl = container.querySelector('input')!;
     textInputEl.click();
 
-    expect(useRefSpy).toBeCalledWith(null);
-    expect(mock).toBeCalledTimes(1);
+    expect(useRefSpy).toHaveBeenCalledWith(null);
+    expect(mock).toHaveBeenCalledTimes(1);
   });
 
   it.each<InputWidth | undefined>([undefined, '5', '10'])(
