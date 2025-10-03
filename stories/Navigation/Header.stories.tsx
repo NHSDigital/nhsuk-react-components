@@ -1,6 +1,6 @@
-import React, { ComponentProps } from 'react';
-import { Header } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react';
+import React, { type ComponentProps } from 'react';
+import { Header } from 'nhsuk-react-components';
 
 const meta: Meta<typeof Header> = {
   title: 'Navigation/Header',

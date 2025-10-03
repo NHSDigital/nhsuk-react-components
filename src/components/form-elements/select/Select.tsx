@@ -1,8 +1,7 @@
-import React, { ComponentPropsWithoutRef, forwardRef } from 'react';
-
 import classNames from 'classnames';
-import { FormElementProps } from '@util/types/FormTypes';
-import FormGroup from '@components/utils/FormGroup';
+import React, { forwardRef, type ComponentPropsWithoutRef } from 'react';
+import { FormGroup } from '#components/utils';
+import { type FormElementProps } from '#util/types';
 
 export type SelectProps = ComponentPropsWithoutRef<'select'> &
   Omit<FormElementProps, 'fieldsetProps' | 'legend' | 'legendProps'>;
@@ -30,6 +29,6 @@ const Option = forwardRef<HTMLOptionElement, ComponentPropsWithoutRef<'option'>>
 SelectComponent.displayName = 'Select';
 Option.displayName = 'Select.Option';
 
-export default Object.assign(SelectComponent, {
+export const Select = Object.assign(SelectComponent, {
   Option,
 });

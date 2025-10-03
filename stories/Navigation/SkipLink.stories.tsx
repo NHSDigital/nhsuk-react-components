@@ -1,12 +1,8 @@
-import React from 'react';
-import { SkipLink, HintText } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react';
+import React, { type FC, type ReactNode } from 'react';
+import { HintText, SkipLink } from 'nhsuk-react-components';
 
-const CodeText: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}: {
-  children: React.ReactNode;
-}) => (
+const CodeText: FC<{ children: ReactNode }> = ({ children }) => (
   <span
     style={{
       fontFamily: 'monospace',

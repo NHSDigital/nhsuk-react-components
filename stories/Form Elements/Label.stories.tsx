@@ -1,5 +1,5 @@
-import { Label } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react';
+import { Label } from 'nhsuk-react-components';
 
 const meta: Meta<typeof Label> = {
   title: 'Form Elements/Label',

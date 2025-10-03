@@ -1,6 +1,6 @@
-import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
-import SummaryList from '../';
+import React, { createRef } from 'react';
+import { SummaryList } from '..';
 
 describe('SummaryList', () => {
   it('matches snapshot', () => {

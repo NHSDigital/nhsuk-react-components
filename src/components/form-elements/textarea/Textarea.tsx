@@ -1,12 +1,12 @@
-import React, { ComponentPropsWithoutRef, forwardRef } from 'react';
 import classNames from 'classnames';
-import FormGroup from '@components/utils/FormGroup';
-import { FormElementProps } from '@util/types/FormTypes';
+import React, { forwardRef, type ComponentPropsWithoutRef } from 'react';
+import { FormGroup } from '#components/utils';
+import { type FormElementProps } from '#util/types';
 
 export type TextareaProps = ComponentPropsWithoutRef<'textarea'> &
   Omit<FormElementProps, 'fieldsetProps' | 'legend' | 'legendProps'>;
 
-const TextareaComponent = forwardRef<HTMLTextAreaElement, TextareaProps>((props, forwardedRef) => (
+export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, forwardedRef) => (
   <FormGroup<TextareaProps> inputType="textarea" {...props}>
     {({ children, className, error, ...rest }) => (
       <>
@@ -21,6 +21,4 @@ const TextareaComponent = forwardRef<HTMLTextAreaElement, TextareaProps>((props,
   </FormGroup>
 ));
 
-TextareaComponent.displayName = 'Textarea';
-
-export default TextareaComponent;
+Textarea.displayName = 'Textarea';

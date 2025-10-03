@@ -1,7 +1,7 @@
-import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
-import DoAndDontList from '../';
-import { renderClient, renderServer } from '@util/components';
+import React, { createRef } from 'react';
+import { DoAndDontList } from '..';
+import { renderClient, renderServer } from '#util/components';
 
 describe('DoAndDontList', () => {
   describe('list type "do"', () => {

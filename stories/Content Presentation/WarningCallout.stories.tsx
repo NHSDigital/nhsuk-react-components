@@ -1,6 +1,6 @@
+import { type Meta, type StoryObj } from '@storybook/react';
 import React from 'react';
-import { WarningCallout } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { WarningCallout } from 'nhsuk-react-components';
 
 const meta: Meta<typeof WarningCallout> = {
   title: 'Content Presentation/WarningCallout',

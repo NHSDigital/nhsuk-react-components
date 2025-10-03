@@ -1,7 +1,7 @@
-import React from 'react';
 import { render } from '@testing-library/react';
-import { NHSUKSize } from '@util/types/NHSUKTypes';
-import Legend from '..';
+import React from 'react';
+import { Legend } from '..';
+import { type NHSUKSize } from '#util/types';
 
 describe('Legend', () => {
   it('matches snapshot', () => {

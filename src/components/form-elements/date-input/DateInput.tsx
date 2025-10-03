@@ -1,19 +1,19 @@
+import classNames from 'classnames';
 import React, {
-  ChangeEvent,
-  ComponentPropsWithoutRef,
-  EventHandler,
-  useEffect,
-  useState,
   createRef,
   forwardRef,
+  useEffect,
+  useState,
+  type ChangeEvent,
+  type ComponentPropsWithoutRef,
+  type EventHandler,
 } from 'react';
-import classNames from 'classnames';
-import { DayInput, MonthInput, YearInput } from './components/IndividualDateInputs';
-import FormGroup from '@components/utils/FormGroup';
-import DateInputContext, { IDateInputContext } from './DateInputContext';
-import { FormElementProps } from '@util/types/FormTypes';
+import { DayInput, MonthInput, YearInput } from './components';
+import { DateInputContext, type IDateInputContext } from '.';
+import { FormGroup } from '#components/utils';
+import { type FormElementProps } from '#util/types';
 
-type DateInputValue = {
+export type DateInputValue = {
   day: string;
   month: string;
   year: string;
@@ -121,7 +121,7 @@ const DateInputComponent = forwardRef<HTMLDivElement, DateInputProps>(
 
 DateInputComponent.displayName = 'DateInput';
 
-export default Object.assign(DateInputComponent, {
+export const DateInput = Object.assign(DateInputComponent, {
   Day: DayInput,
   Month: MonthInput,
   Year: YearInput,

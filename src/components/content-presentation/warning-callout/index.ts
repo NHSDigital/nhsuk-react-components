@@ -1,1 +1,1 @@
-export { default } from './WarningCallout';
+export * from './WarningCallout';

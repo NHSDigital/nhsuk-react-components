@@ -1,1 +1,1 @@
-export { default } from './CharacterCount';
+export * from './CharacterCount';

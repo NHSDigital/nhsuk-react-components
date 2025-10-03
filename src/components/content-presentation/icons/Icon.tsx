@@ -1,7 +1,7 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
+import React, { type ComponentPropsWithoutRef, type FC } from 'react';
 
-export interface BaseIconSVGProps extends ComponentPropsWithoutRef<'svg'> {
+export interface IconProps extends ComponentPropsWithoutRef<'svg'> {
   title?: string;
   modifier?:
     | 'arrow-left'
@@ -16,10 +16,10 @@ export interface BaseIconSVGProps extends ComponentPropsWithoutRef<'svg'> {
   /**
    * @deprecated Use `modifier` instead.
    */
-  iconType?: BaseIconSVGProps['modifier'];
+  iconType?: IconProps['modifier'];
 }
 
-export const BaseIconSVG: FC<BaseIconSVGProps> = ({
+export const Icon: FC<IconProps> = ({
   className,
   children,
   iconType,
