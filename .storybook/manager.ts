@@ -9,7 +9,7 @@ const sentenceCase = (string) => {
 
 addons.setConfig({
   sidebar: {
-    renderLabel: ({ name, type }) => sentenceCase(name),
+    renderLabel: ({ name }) => sentenceCase(name),
   },
   theme: nhsTheme,
 });
