@@ -21,7 +21,7 @@ yarn add nhsuk-react-components
 ## Usage
 
 ```jsx
-import React, { PureComponent } from 'react';
+import { PureComponent } from 'react';
 
 // You can import components from the global module
 import { Button } from 'nhsuk-react-components';

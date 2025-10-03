@@ -1,4 +1,4 @@
-import React, { type ComponentPropsWithoutRef, type FC } from 'react';
+import { type ComponentPropsWithoutRef, type FC } from 'react';
 import { FormContext } from '.';
 
 export type FormProps = ComponentPropsWithoutRef<'form'> & {

@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.base.json",
   "compilerOptions": {
-    "jsx": "react",
+    "jsx": "react-jsxdev",
     "lib": ["ESNext", "DOM"],
     "target": "ES2015",
     "types": ["jest", "node"]

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { forwardRef, type ComponentPropsWithoutRef } from 'react';
+import { forwardRef, type ComponentPropsWithoutRef } from 'react';
 import { ArrowLeftIcon, ArrowRightIcon } from '#components/content-presentation';
 import { type AsElementLink } from '#util/types';
 

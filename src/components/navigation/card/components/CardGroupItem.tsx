@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { type FC } from 'react';
+import { type FC } from 'react';
 import { Col, type ColProps } from '#components/layout';
 
 export const CardGroupItem: FC<ColProps> = ({ className, ...rest }) => (

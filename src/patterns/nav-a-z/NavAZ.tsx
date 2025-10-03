@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { forwardRef, type ComponentPropsWithoutRef, type FC, type ReactNode } from 'react';
+import { forwardRef, type ComponentPropsWithoutRef, type FC, type ReactNode } from 'react';
 import { type AsElementLink } from '#util/types';
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';

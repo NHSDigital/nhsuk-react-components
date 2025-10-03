@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { type AsElementLink } from '#util/types';
 
 export type CardLinkProps = AsElementLink<HTMLAnchorElement>;

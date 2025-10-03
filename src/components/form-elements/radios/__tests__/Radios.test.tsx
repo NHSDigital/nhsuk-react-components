@@ -1,4 +1,4 @@
-import React, { createRef } from 'react';
+import { createRef } from 'react';
 import { Radios } from '..';
 import { renderClient, renderServer } from '#util/components';
 

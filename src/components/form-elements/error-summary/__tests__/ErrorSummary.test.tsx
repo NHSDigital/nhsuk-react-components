@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import React, { createRef } from 'react';
+import { createRef } from 'react';
 import { ErrorSummary } from '..';
 import { renderClient, renderServer } from '#util/components';
 

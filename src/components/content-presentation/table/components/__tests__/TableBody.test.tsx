@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import React, { useContext } from 'react';
+import { useContext } from 'react';
 import { TableBody } from '..';
 import { Table, TableSection, TableSectionContext } from '../..';
 

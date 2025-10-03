@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import React, { type ComponentPropsWithoutRef, type FC } from 'react';
+import { type ComponentPropsWithoutRef, type FC } from 'react';
 import { type NHSUKSize } from '#util/types';
 
 export interface LabelProps extends ComponentPropsWithoutRef<'label'> {

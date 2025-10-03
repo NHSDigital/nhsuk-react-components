@@ -1,5 +1,4 @@
 import { render } from '@testing-library/react';
-import React from 'react';
 import { Footer } from '..';
 
 jest.spyOn(console, 'warn').mockImplementation();

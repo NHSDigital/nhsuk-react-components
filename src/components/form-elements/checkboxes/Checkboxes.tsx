@@ -1,12 +1,6 @@
 import classNames from 'classnames';
 import { type Checkboxes as CheckboxesModule } from 'nhsuk-frontend';
-import React, {
-  createRef,
-  forwardRef,
-  useEffect,
-  useState,
-  type ComponentPropsWithoutRef,
-} from 'react';
+import { createRef, forwardRef, useEffect, useState, type ComponentPropsWithoutRef } from 'react';
 import { CheckboxesDivider, CheckboxesItem } from './components';
 import { CheckboxesContext, type ICheckboxesContext } from '.';
 import { FormGroup } from '#components/utils';
