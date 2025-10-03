@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { forwardRef, useContext, type ChangeEvent, type ComponentPropsWithoutRef } from 'react';
-import { DateInputContext, type IDateInputContext } from '..';
-import { Label } from '#components/form-elements';
+import { DateInputContext, type IDateInputContext } from '../DateInputContext';
+import { Label } from '#components/form-elements/label';
 import { type FormElementProps } from '#util/types';
 
 export interface IndividualDateInputProps

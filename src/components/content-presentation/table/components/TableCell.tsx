@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import { useContext, type ComponentPropsWithoutRef, type FC } from 'react';
-import { TableContext, TableSection, TableSectionContext, type ITableContext } from '..';
+import { TableContext, type ITableContext } from '../TableContext';
+import { TableSection, TableSectionContext } from '../TableSectionContext';
 import { useDevWarning } from '#util/hooks';
 
 const CellOutsideOfSectionWarning =

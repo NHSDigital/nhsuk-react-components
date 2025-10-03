@@ -1,5 +1,5 @@
 import { useContext, type ComponentPropsWithoutRef, type FC } from 'react';
-import { HeaderContext, type IHeaderContext } from '..';
+import { HeaderContext, type IHeaderContext } from '../HeaderContext';
 
 export type ServiceNameInnerProps = NonNullable<IHeaderContext['serviceProps']>;
 export type ServiceNameProps = Pick<ComponentPropsWithoutRef<'div'>, 'children'>;

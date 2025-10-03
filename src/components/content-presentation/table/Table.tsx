@@ -16,7 +16,7 @@ import {
   TableRow,
   type TableCaptionProps,
 } from './components';
-import { TableContext, type ITableContext } from '.';
+import { TableContext, type ITableContext } from './TableContext';
 
 export interface TableProps extends ComponentPropsWithoutRef<'table'> {
   firstCellIsHeader?: boolean;

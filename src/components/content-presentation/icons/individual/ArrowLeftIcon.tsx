@@ -1,5 +1,5 @@
 import { type FC } from 'react';
-import { Icon, type IconProps } from '..';
+import { Icon, type IconProps } from '../Icon';
 
 export const ArrowLeftIcon: FC<IconProps> = (props) => (
   <Icon modifier="arrow-left" {...props}>

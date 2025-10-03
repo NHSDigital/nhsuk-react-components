@@ -18,7 +18,7 @@ import {
   Search,
   ServiceName,
 } from './components';
-import { HeaderContext, type IHeaderContext } from '.';
+import { HeaderContext, type IHeaderContext } from './HeaderContext';
 import { Container } from '#components/layout';
 import { childIsOfComponentType } from '#util/types';
 
