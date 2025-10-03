@@ -9,7 +9,7 @@ import {
   type EventHandler,
 } from 'react';
 import { DayInput, MonthInput, YearInput } from './components';
-import { DateInputContext, type IDateInputContext } from '.';
+import { DateInputContext, type IDateInputContext } from './DateInputContext';
 import { FormGroup } from '#components/utils';
 import { type FormElementProps } from '#util/types';
 

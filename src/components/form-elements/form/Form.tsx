@@ -1,5 +1,5 @@
 import { type ComponentPropsWithoutRef, type FC } from 'react';
-import { FormContext } from '.';
+import { FormContext } from './FormContext';
 
 export type FormProps = ComponentPropsWithoutRef<'form'> & {
   disableErrorFromComponents?: boolean;

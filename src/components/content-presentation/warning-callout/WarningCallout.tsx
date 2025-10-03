@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { forwardRef, type ComponentPropsWithoutRef, type FC } from 'react';
-import { HeadingLevel, type HeadingLevelProps } from '#components/utils';
+import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel';
 
 const WarningCalloutHeading: FC<HeadingLevelProps> = ({ children, className, ...rest }) => (
   <HeadingLevel className={classNames('nhsuk-warning-callout__label', className)} {...rest}>

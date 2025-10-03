@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { useContext, useEffect, type ComponentPropsWithoutRef, type FC } from 'react';
-import { HeaderContext, type IHeaderContext } from '..';
-import { MenuToggle } from '.';
+import { HeaderContext, type IHeaderContext } from '../HeaderContext';
+import { MenuToggle } from './MenuToggle';
 import { Container } from '#components/layout';
 
 export interface NavigationProps extends ComponentPropsWithoutRef<'nav'> {

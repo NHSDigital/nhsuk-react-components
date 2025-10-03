@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { Children, forwardRef, type ComponentPropsWithoutRef, type ReactNode } from 'react';
-import { BackLink } from '..';
+import { BackLink } from '#components/navigation/back-link';
 import { AsElementLink, childIsOfComponentType } from '#util/types';
 
 export type ItemProps = AsElementLink<HTMLAnchorElement>;
