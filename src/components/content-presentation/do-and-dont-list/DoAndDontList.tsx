@@ -1,14 +1,14 @@
-import React, {
-  ComponentPropsWithoutRef,
-  FC,
-  createContext,
-  useContext,
-  ReactNode,
-  forwardRef,
-} from 'react';
 import classNames from 'classnames';
-import { Tick, Cross } from '@components/content-presentation/icons';
-import HeadingLevel, { HeadingLevelProps } from '@components/utils/HeadingLevel';
+import {
+  createContext,
+  forwardRef,
+  useContext,
+  type ComponentPropsWithoutRef,
+  type FC,
+  type ReactNode,
+} from 'react';
+import { CrossIcon, TickIcon } from '../icons';
+import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel';
 
 type ListType = 'do' | 'dont';
 
@@ -53,12 +53,12 @@ const DoAndDontItem: FC<DoAndDontItemProps> = ({ prefixText, listItemType, child
     <li {...rest}>
       {(listItemType || listItem) === 'do' ? (
         <>
-          <Tick />
+          <TickIcon />
           {actualPrefix}
         </>
       ) : (
         <>
-          <Cross />
+          <CrossIcon />
           {actualPrefix}
         </>
       )}
@@ -70,6 +70,6 @@ const DoAndDontItem: FC<DoAndDontItemProps> = ({ prefixText, listItemType, child
 DoAndDontListComponent.displayName = 'DoAndDontList';
 DoAndDontItem.displayName = 'DoAndDontList.Item';
 
-export default Object.assign(DoAndDontListComponent, {
+export const DoAndDontList = Object.assign(DoAndDontListComponent, {
   Item: DoAndDontItem,
 });

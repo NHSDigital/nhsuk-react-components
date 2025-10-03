@@ -1,17 +1,17 @@
-import React, {
-  ComponentPropsWithRef,
-  ComponentPropsWithoutRef,
+import classNames from 'classnames';
+import {
+  forwardRef,
   useContext,
-  ReactNode,
   useEffect,
   useState,
-  forwardRef,
+  type ComponentPropsWithRef,
+  type ComponentPropsWithoutRef,
+  type ReactNode,
 } from 'react';
-import classNames from 'classnames';
-import { FormElementProps } from '@util/types/FormTypes';
-import { RadiosContext, IRadiosContext } from '../RadioContext';
-import HintText from '../../hint-text/HintText';
-import Label from '../../label/Label';
+import { RadiosContext, type IRadiosContext } from '../RadiosContext';
+import { HintText } from '#components/form-elements/hint-text';
+import { Label } from '#components/form-elements/label';
+import { type FormElementProps } from '#util/types';
 
 export interface RadiosItemProps
   extends ComponentPropsWithoutRef<'input'>,
@@ -21,7 +21,7 @@ export interface RadiosItemProps
   conditionalProps?: ComponentPropsWithRef<'div'>;
 }
 
-const RadiosItem = forwardRef<HTMLInputElement, RadiosItemProps>((props, forwardedRef) => {
+export const RadiosItem = forwardRef<HTMLInputElement, RadiosItemProps>((props, forwardedRef) => {
   const {
     className,
     children,
@@ -48,11 +48,11 @@ const RadiosItem = forwardRef<HTMLInputElement, RadiosItemProps>((props, forward
 
   useEffect(() => {
     if (defaultChecked) setSelected(radioReference);
-  }, []);
+  }, [defaultChecked, setSelected, radioReference]);
 
   useEffect(() => {
     if (checked) setSelected(radioReference);
-  }, [checked]);
+  }, [checked, setSelected, radioReference]);
 
   return (
     <>
@@ -101,5 +101,3 @@ const RadiosItem = forwardRef<HTMLInputElement, RadiosItemProps>((props, forward
 });
 
 RadiosItem.displayName = 'Radios.Item';
-
-export default RadiosItem;

@@ -1,6 +1,5 @@
-import React from 'react';
 import { render } from '@testing-library/react';
-import TablePanel from '../TablePanel';
+import { TablePanel } from '..';
 
 describe('Table.Panel', () => {
   it('matches snapshot', () => {

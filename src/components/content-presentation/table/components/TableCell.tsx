@@ -1,8 +1,8 @@
 import classNames from 'classnames';
-import React, { ComponentPropsWithoutRef, FC, useContext } from 'react';
-import useDevWarning from '@util/hooks/UseDevWarning';
-import TableContext, { ITableContext } from '../TableContext';
-import TableSectionContext, { TableSection } from '../TableSectionContext';
+import { useContext, type ComponentPropsWithoutRef, type FC } from 'react';
+import { TableContext, type ITableContext } from '../TableContext';
+import { TableSection, TableSectionContext } from '../TableSectionContext';
+import { useDevWarning } from '#util/hooks';
 
 const CellOutsideOfSectionWarning =
   'Table.Cell used outside of a Table.Head or Table.Body component. Unable to determine section type from context.';
@@ -14,7 +14,13 @@ export interface TableCellProps
   format?: 'numeric';
 }
 
-const TableCell: FC<TableCellProps> = ({ className, format, children, index = -1, ...rest }) => {
+export const TableCell: FC<TableCellProps> = ({
+  className,
+  format,
+  children,
+  index = -1,
+  ...rest
+}) => {
   const { firstCellIsHeader, headings, responsive } = useContext<ITableContext>(TableContext);
   const section = useContext<TableSection>(TableSectionContext);
 
@@ -61,5 +67,3 @@ const TableCell: FC<TableCellProps> = ({ className, format, children, index = -1
 };
 
 TableCell.displayName = 'Table.Cell';
-
-export default TableCell;

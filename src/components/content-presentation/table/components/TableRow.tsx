@@ -1,17 +1,17 @@
 import classNames from 'classnames';
-import React, {
+import {
   Children,
-  ComponentPropsWithoutRef,
-  FC,
   cloneElement,
   useContext,
   useEffect,
+  type ComponentPropsWithoutRef,
+  type FC,
 } from 'react';
-import TableContext from '../TableContext';
+import { TableContext } from '../TableContext';
+import { TableSection, TableSectionContext } from '../TableSectionContext';
 import { getHeadingsFromChildren, isTableCell } from '../TableHelpers';
-import TableSectionContext, { TableSection } from '../TableSectionContext';
 
-const TableRow: FC<ComponentPropsWithoutRef<'tr'>> = ({ children, className, ...rest }) => {
+export const TableRow: FC<ComponentPropsWithoutRef<'tr'>> = ({ children, className, ...rest }) => {
   const section = useContext(TableSectionContext);
   const { responsive, setHeadings } = useContext(TableContext);
 
@@ -19,7 +19,7 @@ const TableRow: FC<ComponentPropsWithoutRef<'tr'>> = ({ children, className, ...
     if (responsive && section === TableSection.HEAD) {
       setHeadings(getHeadingsFromChildren(children));
     }
-  }, [responsive, section, children]);
+  }, [children, responsive, section, setHeadings]);
 
   const tableCells = Children.map(children, (child, index) => {
     return section === TableSection.BODY && isTableCell(child)
@@ -39,5 +39,3 @@ const TableRow: FC<ComponentPropsWithoutRef<'tr'>> = ({ children, className, ...
 };
 
 TableRow.displayName = 'Table.Row';
-
-export default TableRow;

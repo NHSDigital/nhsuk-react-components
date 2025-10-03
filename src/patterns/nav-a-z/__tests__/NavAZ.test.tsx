@@ -1,6 +1,5 @@
-import React from 'react';
-import { screen, render } from '@testing-library/react';
-import NavAZ from '../';
+import { render, screen } from '@testing-library/react';
+import { NavAZ } from '..';
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 

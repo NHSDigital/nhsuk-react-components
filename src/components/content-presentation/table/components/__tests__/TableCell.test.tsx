@@ -1,6 +1,5 @@
-import React from 'react';
 import { render } from '@testing-library/react';
-import Table from '../../Table';
+import { Table } from '../..';
 
 describe('Table.Cell', () => {
   it('matches snapshot', () => {
@@ -30,9 +29,7 @@ describe('Table.Cell', () => {
       </table>,
     );
 
-    // eslint-disable-next-line no-console
     expect(console.warn).toHaveBeenCalledTimes(1);
-    // eslint-disable-next-line no-console
     expect(console.warn).toHaveBeenLastCalledWith(
       'Table.Cell used outside of a Table.Head or Table.Body component. Unable to determine section type from context.',
     );

@@ -1,6 +1,6 @@
-import React, { ComponentProps, createRef } from 'react';
 import { render } from '@testing-library/react';
-import ActionLink from '../ActionLink';
+import { createRef, type ComponentProps } from 'react';
+import { ActionLink } from '..';
 
 describe('ActionLink', () => {
   it('matches snapshot', () => {

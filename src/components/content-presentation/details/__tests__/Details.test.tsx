@@ -1,7 +1,7 @@
-import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
-import { renderClient, renderServer } from '@util/components';
-import Details from '../';
+import { createRef } from 'react';
+import { Details } from '..';
+import { renderClient, renderServer } from '#util/components';
 
 describe('Details', () => {
   it('matches snapshot', async () => {

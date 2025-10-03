@@ -1,0 +1,27 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "esModuleInterop": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "strictBindCallApply": true,
+    "strictFunctionTypes": true,
+    "strictNullChecks": true,
+    "target": "ESNext",
+    "types": [],
+    "paths": {
+      "#components/*": ["./src/components/*"],
+      "#components": ["./src/components/index.ts"],
+      "#patterns/*": ["./src/patterns/*"],
+      "#patterns": ["./src/patterns/index.ts"],
+      "#util/*": ["./src/util/*"],
+      "nhsuk-react-components": ["./src/index.ts"]
+    }
+  },
+  "exclude": ["./dist", "./node_modules"]
+}

@@ -1,5 +1,5 @@
-import React, { ComponentPropsWithoutRef, FC, forwardRef } from 'react';
 import classNames from 'classnames';
+import { forwardRef, type ComponentPropsWithoutRef, type FC } from 'react';
 
 export interface DetailsProps extends ComponentPropsWithoutRef<'details'> {
   expander?: boolean;
@@ -40,7 +40,7 @@ DetailsSummary.displayName = 'Details.Summary';
 DetailsText.displayName = 'Details.Text';
 ExpanderGroup.displayName = 'Details.ExpanderGroup';
 
-export default Object.assign(DetailsComponent, {
+export const Details = Object.assign(DetailsComponent, {
   Summary: DetailsSummary,
   Text: DetailsText,
   ExpanderGroup,

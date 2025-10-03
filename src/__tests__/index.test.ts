@@ -1,10 +1,11 @@
-import * as index from '../index';
+import * as index from '..';
 
 describe('Index', () => {
   it('contains all expected elements', () => {
     const sortedIndex = Object.keys(index).sort((a, b) => a.localeCompare(b));
 
     expect(sortedIndex).toEqual([
+      '__esModule', // Synthetic default export
       'ActionLink',
       'ArrowLeftIcon',
       'ArrowRightCircleIcon',
@@ -14,8 +15,10 @@ describe('Index', () => {
       'Breadcrumb',
       'Button',
       'Card',
+      'CardContext',
       'CharacterCount',
       'Checkboxes',
+      'CheckboxesContext',
       'ChevronRightCircleIcon',
       'Clearfix',
       'Col',
@@ -23,6 +26,7 @@ describe('Index', () => {
       'ContentsList',
       'CrossIcon',
       'DateInput',
+      'DateInputContext',
       'Details',
       'DoAndDontList',
       'ErrorMessage',
@@ -30,10 +34,15 @@ describe('Index', () => {
       'Fieldset',
       'Footer',
       'Form',
+      'FormContext',
       'FormGroup',
+      'FormGroupContext',
       'Header',
+      'HeaderContext',
+      'HeadingLevel',
       'Hero',
       'HintText',
+      'Icon',
       'Images',
       'InsetText',
       'Label',
@@ -42,6 +51,7 @@ describe('Index', () => {
       'NavAZ',
       'Pagination',
       'Radios',
+      'RadiosContext',
       'ReadingWidth',
       'ReviewDate',
       'Row',
@@ -50,6 +60,9 @@ describe('Index', () => {
       'SkipLink',
       'SummaryList',
       'Table',
+      'TableContext',
+      'TableSection',
+      'TableSectionContext',
       'Tabs',
       'Tag',
       'Textarea',

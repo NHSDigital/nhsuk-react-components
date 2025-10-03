@@ -21,13 +21,13 @@ yarn add nhsuk-react-components
 ## Usage
 
 ```jsx
-import React, { PureComponent } from 'react';
+import { PureComponent } from 'react';
 
 // You can import components from the global module
 import { Button } from 'nhsuk-react-components';
 
 // Or you can import components directly
-import Button from 'nhsuk-react-components/lib/components/button';
+import { Button } from 'nhsuk-react-components/dist/esm/components/button';
 
 class GetStartedButton extends PureComponent {
   render() {
@@ -43,6 +43,7 @@ class GetStartedButton extends PureComponent {
 - [Upgrading to 3.0](/docs/upgrade-to-3.0.md)
 - [Upgrading to 4.0](/docs/upgrade-to-4.0.md)
 - [Upgrading to 5.0](/docs/upgrade-to-5.0.md)
+- [Upgrading to 6.0](/docs/upgrade-to-6.0.md)
 
 ## Maintainers
 

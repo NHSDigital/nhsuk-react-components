@@ -1,7 +1,6 @@
-import React from 'react';
 import { render } from '@testing-library/react';
-import Fieldset from '../';
-import TextInput from '@components/form-elements/text-input';
+import { Fieldset } from '..';
+import { TextInput } from '../..';
 
 describe('Fieldset', () => {
   it('matches snapshot', () => {

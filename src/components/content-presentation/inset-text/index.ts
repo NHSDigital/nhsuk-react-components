@@ -1,1 +1,1 @@
-export { default } from './InsetText';
+export * from './InsetText';

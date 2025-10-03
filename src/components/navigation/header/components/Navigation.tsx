@@ -1,15 +1,15 @@
-import React, { ComponentPropsWithoutRef , FC, useContext, useEffect } from 'react';
 import classNames from 'classnames';
-import { Container } from '@components/layout';
-import HeaderContext, { IHeaderContext } from '../HeaderContext';
-import MenuToggle from './MenuToggle';
+import { useContext, useEffect, type ComponentPropsWithoutRef, type FC } from 'react';
+import { HeaderContext, type IHeaderContext } from '../HeaderContext';
+import { MenuToggle } from './MenuToggle';
+import { Container } from '#components/layout';
 
 export interface NavigationProps extends ComponentPropsWithoutRef<'nav'> {
   white?: boolean;
   open?: boolean;
 }
 
-const Navigation: FC<NavigationProps> = ({
+export const Navigation: FC<NavigationProps> = ({
   className,
   children,
   white,
@@ -26,7 +26,7 @@ const Navigation: FC<NavigationProps> = ({
 
     setMenuOpen(open);
     return () => setMenuOpen(false);
-  }, [open]);
+  }, [open, setMenuOpen]);
 
   return (
     <nav
@@ -49,5 +49,3 @@ const Navigation: FC<NavigationProps> = ({
 };
 
 Navigation.displayName = 'Header.Navigation';
-
-export default Navigation;

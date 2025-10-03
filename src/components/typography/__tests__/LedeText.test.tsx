@@ -1,6 +1,5 @@
-import React from 'react';
 import { render } from '@testing-library/react';
-import LedeText from '../LedeText';
+import { LedeText } from '..';
 
 describe('LedeText', () => {
   it('matches snapshot', () => {

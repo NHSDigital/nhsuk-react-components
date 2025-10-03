@@ -1,7 +1,7 @@
-import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
-import { renderClient, renderServer } from '@util/components';
-import Tabs, { TabTitleProps } from '../Tabs';
+import { createRef } from 'react';
+import { Tabs, type TabTitleProps } from '..';
+import { renderClient, renderServer } from '#util/components';
 
 describe('Tabs', () => {
   it('matches snapshot', async () => {

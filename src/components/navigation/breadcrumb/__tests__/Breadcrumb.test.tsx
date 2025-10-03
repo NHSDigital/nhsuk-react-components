@@ -1,6 +1,6 @@
-import React, { ComponentProps, createRef } from 'react';
 import { render } from '@testing-library/react';
-import Breadcrumb from '../';
+import { createRef, type ComponentProps } from 'react';
+import { Breadcrumb } from '..';
 
 describe('Breadcrumb', () => {
   it('base element matches snapshot', () => {

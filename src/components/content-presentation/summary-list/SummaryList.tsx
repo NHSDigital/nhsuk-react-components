@@ -1,5 +1,5 @@
-import React, { ComponentPropsWithoutRef, FC, forwardRef } from 'react';
 import classNames from 'classnames';
+import { forwardRef, type ComponentPropsWithoutRef, type FC } from 'react';
 
 const SummaryListRow: FC<ComponentPropsWithoutRef<'div'>> = ({ className, ...rest }) => (
   <div className={classNames('nhsuk-summary-list__row', className)} {...rest} />
@@ -41,7 +41,7 @@ SummaryListKey.displayName = 'SummaryList.Key';
 SummaryListValue.displayName = 'SummaryList.Value';
 SummaryListActions.displayName = 'SummaryList.Actions';
 
-export default Object.assign(SummaryListComponent, {
+export const SummaryList = Object.assign(SummaryListComponent, {
   Row: SummaryListRow,
   Key: SummaryListKey,
   Value: SummaryListValue,
