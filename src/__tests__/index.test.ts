@@ -5,6 +5,7 @@ describe('Index', () => {
     const sortedIndex = Object.keys(index).sort((a, b) => a.localeCompare(b));
 
     expect(sortedIndex).toEqual([
+      '__esModule', // Synthetic default export
       'ActionLink',
       'ArrowLeftIcon',
       'ArrowRightCircleIcon',
