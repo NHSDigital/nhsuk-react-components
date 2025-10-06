@@ -9,7 +9,8 @@ import {
   type ComponentPropsWithoutRef,
   type FC,
 } from 'react';
-import { childIsOfComponentType, type AsElementLink } from '#util/types';
+import { childIsOfComponentType } from '#util/types/TypeGuards';
+import { type AsElementLink } from '#util/types/LinkTypes';
 
 export type TitleProps = ComponentPropsWithoutRef<'h2'>;
 

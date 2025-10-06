@@ -1,5 +1,5 @@
 import { type FC } from 'react';
-import { Icon, type IconProps } from '..';
+import { Icon, type IconProps } from '../Icon';
 
 export const CrossIcon: FC<IconProps> = (props) => (
   <Icon modifier="cross" {...props}>

@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithoutRef, type FC } from 'react';
-import { Legend } from '..';
+import { Legend } from '#components/form-elements/legend';
 
 export type FieldsetProps = ComponentPropsWithoutRef<'fieldset'>;
 

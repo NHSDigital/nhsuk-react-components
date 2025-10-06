@@ -1,5 +1,5 @@
 import { Children, isValidElement, type ReactElement, type ReactNode } from 'react';
-import { TableCell, type TableCellProps } from './components';
+import { TableCell, type TableCellProps } from './components/TableCell';
 
 export const isTableCell = (
   child: ReactNode,

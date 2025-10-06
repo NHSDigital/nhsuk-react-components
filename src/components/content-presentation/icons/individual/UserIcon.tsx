@@ -1,5 +1,5 @@
 import { type FC } from 'react';
-import { Icon, type IconProps } from '..';
+import { Icon, type IconProps } from '../Icon';
 
 export const UserIcon: FC<IconProps> = (props) => (
   <Icon modifier="user" {...props}>

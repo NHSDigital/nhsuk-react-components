@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { type CharacterCount as CharacterCountModule } from 'nhsuk-frontend';
 import { createRef, forwardRef, useEffect, useState, type ComponentPropsWithoutRef } from 'react';
 import { FormGroup } from '#components/utils';
-import { type FormElementProps } from '#util/types';
+import { type FormElementProps } from '#util/types/FormTypes';
 
 export interface CharacterCountProps
   extends ComponentPropsWithoutRef<'textarea'>,

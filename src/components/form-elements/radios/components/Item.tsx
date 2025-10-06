@@ -8,9 +8,10 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from 'react';
-import { RadiosContext, type IRadiosContext } from '..';
-import { HintText, Label } from '#components/form-elements';
-import { type FormElementProps } from '#util/types';
+import { RadiosContext, type IRadiosContext } from '../RadiosContext';
+import { HintText } from '#components/form-elements/hint-text';
+import { Label } from '#components/form-elements/label';
+import { type FormElementProps } from '#util/types/FormTypes';
 
 export interface RadiosItemProps
   extends ComponentPropsWithoutRef<'input'>,

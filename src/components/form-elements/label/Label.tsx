@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithoutRef, type FC } from 'react';
-import { type NHSUKSize } from '#util/types';
+import { type NHSUKSize } from '#util/types/NHSUKTypes';
 
 export interface LabelProps extends ComponentPropsWithoutRef<'label'> {
   isPageHeading?: boolean;

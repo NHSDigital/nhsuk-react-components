@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { forwardRef, type ComponentPropsWithoutRef } from 'react';
 import { FormGroup } from '#components/utils';
-import { type FormElementProps } from '#util/types';
+import { type FormElementProps } from '#util/types/FormTypes';
 
 export type SelectProps = ComponentPropsWithoutRef<'select'> &
   Omit<FormElementProps, 'fieldsetProps' | 'legend' | 'legendProps'>;

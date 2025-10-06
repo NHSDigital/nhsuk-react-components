@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { forwardRef } from 'react';
 import { ArrowRightCircleIcon } from '#components/content-presentation';
-import { type AsElementLink } from '#util/types';
+import { type AsElementLink } from '#util/types/LinkTypes';
 
 export type ActionLinkProps = AsElementLink<HTMLAnchorElement>;
 

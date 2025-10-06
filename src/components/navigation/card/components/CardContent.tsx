@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { forwardRef, useContext, type ComponentPropsWithoutRef } from 'react';
-import { CardContext } from '..';
+import { CardContext } from '../CardContext';
 
 export type CardContentProps = ComponentPropsWithoutRef<'div'>;
 

@@ -9,7 +9,7 @@ import {
   CardImage,
   CardLink,
 } from './components';
-import { CardContext } from '.';
+import { CardContext } from './CardContext';
 import { cardTypeIsCareCard, type CardType } from '#util/types';
 
 export interface CardProps extends ComponentPropsWithoutRef<'div'> {

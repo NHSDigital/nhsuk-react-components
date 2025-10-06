@@ -1,11 +1,10 @@
 import { type ComponentPropsWithRef } from 'react';
-import {
-  type ErrorMessageProps,
-  type FieldsetProps,
-  type HintTextProps,
-  type LabelProps,
-  type LegendProps,
-} from '#components/form-elements';
+
+import { type ErrorMessageProps } from '#components/form-elements/error-message';
+import { type FieldsetProps } from '#components/form-elements/fieldset';
+import { type HintTextProps } from '#components/form-elements/hint-text';
+import { type LabelProps } from '#components/form-elements/label';
+import { type LegendProps } from '#components/form-elements/legend';
 
 export interface FormElementProps {
   fieldsetProps?: FieldsetProps;

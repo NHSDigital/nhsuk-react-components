@@ -8,7 +8,7 @@ import {
   type ComponentPropsWithoutRef,
   type FC,
 } from 'react';
-import { HeadingLevel, type HeadingLevelProps } from '#components/utils';
+import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel';
 
 export type TabsProps = ComponentPropsWithoutRef<'div'>;
 

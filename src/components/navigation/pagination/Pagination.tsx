@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { forwardRef, type ComponentPropsWithoutRef } from 'react';
 import { ArrowLeftIcon, ArrowRightIcon } from '#components/content-presentation';
-import { type AsElementLink } from '#util/types';
+import { type AsElementLink } from '#util/types/LinkTypes';
 
 export interface PaginationLinkProps extends AsElementLink<HTMLAnchorElement> {
   previous?: boolean;

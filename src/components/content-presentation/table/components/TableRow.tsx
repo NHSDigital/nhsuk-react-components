@@ -7,7 +7,8 @@ import {
   type ComponentPropsWithoutRef,
   type FC,
 } from 'react';
-import { TableContext, TableSection, TableSectionContext } from '..';
+import { TableContext } from '../TableContext';
+import { TableSection, TableSectionContext } from '../TableSectionContext';
 import { getHeadingsFromChildren, isTableCell } from '../TableHelpers';
 
 export const TableRow: FC<ComponentPropsWithoutRef<'tr'>> = ({ children, className, ...rest }) => {

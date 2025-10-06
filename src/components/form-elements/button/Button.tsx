@@ -8,7 +8,7 @@ import {
   type ForwardedRef,
   type MouseEvent,
 } from 'react';
-import { type AsElementLink } from '#util/types';
+import { type AsElementLink } from '#util/types/LinkTypes';
 
 export interface ButtonProps extends AsElementLink<HTMLButtonElement> {
   href?: never;
