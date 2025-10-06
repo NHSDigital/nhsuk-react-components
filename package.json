@@ -63,6 +63,7 @@
     "@babel/preset-env": "^7.28.3",
     "@babel/preset-react": "^7.27.1",
     "@babel/preset-typescript": "^7.27.1",
+    "@rollup/plugin-babel": "^6.0.4",
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.4",
@@ -88,6 +89,7 @@
     "babel-jest": "^29.7.0",
     "babel-plugin-module-resolver": "^5.0.2",
     "chromatic": "^6.17.3",
+    "classnames": "^2.5.1",
     "eslint": "^8.57.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^9.1.0",
@@ -110,17 +112,17 @@
     "rollup-plugin-preserve-directives": "^0.4.0",
     "sass": "^1.53.0",
     "storybook": "^8.0.5",
+    "tslib": "^2.8.1",
     "typescript": "5.3.3",
     "vite": "^4.5.3",
     "vite-tsconfig-paths": "^4.3.2"
   },
-  "dependencies": {
-    "classnames": "^2.2.6"
-  },
   "peerDependencies": {
+    "classnames": ">=2.5.0",
     "nhsuk-frontend": ">=10.0.0 <11.0.0",
     "react": ">=16.8.0",
-    "react-dom": ">=16.8.0"
+    "react-dom": ">=16.8.0",
+    "tslib": ">=2.8.0"
   },
   "packageManager": "yarn@4.1.1"
 }

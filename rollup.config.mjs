@@ -1,4 +1,5 @@
 import { join } from 'node:path';
+import { babel } from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
@@ -30,7 +31,9 @@ export default defineConfig(
       external,
       treeshake: false,
       plugins: [
-        nodeResolve(),
+        nodeResolve({
+          browser: true,
+        }),
         commonjs(),
         typescript({
           tsconfig: 'tsconfig.build.json',
@@ -39,6 +42,10 @@ export default defineConfig(
           },
         }),
         preserveDirectives(),
+        babel({
+          babelHelpers: 'bundled',
+          exclude: 'node_modules/**',
+        }),
       ],
 
       // Handle warnings as errors
