@@ -18,7 +18,6 @@ describe('HeadingLevel', () => {
   });
 
   it('console.warn when headingLevel is invalid', () => {
-    // eslint-disable-next-line @typescript-eslint/no-empty-function
     const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
     // @ts-expect-error - testing invalid prop
     render(<HeadingLevel headingLevel="h7" />);

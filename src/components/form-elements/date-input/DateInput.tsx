@@ -74,7 +74,6 @@ const DateInputComponent = forwardRef<HTMLDivElement, DateInputProps>(
         inputType="dateinput"
         {...rest}
       >
-        {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
         {({ className, name, id, error, ...restRenderProps }) => {
           const contextValue: IDateInputContext = {
             id,
