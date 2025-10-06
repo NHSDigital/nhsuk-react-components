@@ -130,8 +130,8 @@
   "peerDependencies": {
     "classnames": ">=2.5.0",
     "nhsuk-frontend": ">=10.0.0 <11.0.0",
-    "react": ">=16.8.0",
-    "react-dom": ">=16.8.0",
+    "react": ">=18.2.0",
+    "react-dom": ">=18.2.0",
     "tslib": ">=2.8.0"
   },
   "packageManager": "yarn@4.10.3"
