@@ -1,5 +1,5 @@
 import { create } from '@storybook/theming/create';
-const version = require('../package.json').version;
+import packageJson from '../package.json' with { type: 'json' };
 
 export default create({
   base: 'light',
@@ -31,6 +31,6 @@ export default create({
   inputTextColor: '#212b32',
   inputBorderRadius: 4,
 
-  brandTitle: `NHS.UK React Components (v${version})`,
+  brandTitle: `NHS.UK React Components (v${packageJson.version})`,
   brandUrl: 'https://github.com/NHSDigital/nhsuk-react-components',
 });
