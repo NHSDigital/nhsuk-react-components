@@ -1,3 +1,5 @@
+'use client';
+
 import { useContext, useEffect, type FC } from 'react';
 import { HeaderContext, type IHeaderContext } from '../HeaderContext.js';
 

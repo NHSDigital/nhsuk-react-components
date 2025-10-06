@@ -1,3 +1,5 @@
+'use client';
+
 import classNames from 'classnames';
 import { type Radios as RadiosModule } from 'nhsuk-frontend';
 import { createRef, forwardRef, useEffect, useState, type ComponentPropsWithoutRef } from 'react';

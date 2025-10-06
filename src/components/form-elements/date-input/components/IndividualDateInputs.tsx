@@ -1,3 +1,5 @@
+'use client';
+
 import classNames from 'classnames';
 import { forwardRef, useContext, type ChangeEvent, type ComponentPropsWithoutRef } from 'react';
 import { DateInputContext, type IDateInputContext } from '../DateInputContext.js';

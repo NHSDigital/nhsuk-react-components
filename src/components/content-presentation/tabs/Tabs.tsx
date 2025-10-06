@@ -1,3 +1,5 @@
+'use client';
+
 import classNames from 'classnames';
 import { type Tabs as TabsModule } from 'nhsuk-frontend';
 import {
