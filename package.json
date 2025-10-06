@@ -55,8 +55,10 @@
     "build": "yarn cleanup && rollup -c",
     "test": "jest",
     "test:watch": "jest --watch",
-    "lint": "eslint 'src/**/*.{js,ts,tsx}' 'stories/**/*.{js,ts,tsx}'",
-    "lint:fix": "yarn lint --fix",
+    "lint": "yarn lint:js",
+    "lint:fix": "yarn lint:js:fix",
+    "lint:js": "eslint 'src/**/*.{js,ts,tsx}' 'stories/**/*.{js,ts,tsx}'",
+    "lint:js:fix": "yarn lint:js --fix",
     "build-storybook": "storybook build",
     "prepublishOnly": "yarn lint && yarn test && yarn storybook --smoke-test"
   },
