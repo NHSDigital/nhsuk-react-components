@@ -55,12 +55,10 @@
     "build": "yarn cleanup && rollup -c",
     "test": "jest",
     "test:watch": "jest --watch",
-    "test:ci": "jest --coverage",
     "lint": "eslint 'src/**/*.{js,ts,tsx}' 'stories/**/*.{js,ts,tsx}'",
-    "lint:fix": "eslint 'src/**/*.{js,ts,tsx}' 'stories/**/*.{js,ts,tsx}' --fix",
-    "lint:ci": "eslint 'src/**/*.{js,ts,tsx}' 'stories/**/*.{js,ts,tsx}'",
+    "lint:fix": "yarn lint --fix",
     "build-storybook": "storybook build",
-    "prepublishOnly": "yarn lint:ci && yarn test:ci && yarn storybook --smoke-test"
+    "prepublishOnly": "yarn lint && yarn test && yarn storybook --smoke-test"
   },
   "license": "MIT",
   "devDependencies": {
