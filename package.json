@@ -9,6 +9,7 @@
     "dist"
   ],
   "sideEffects": false,
+  "type": "module",
   "imports": {
     "#components/*": {
       "import": "./dist/esm/components/*",
@@ -16,7 +17,7 @@
     },
     "#components": {
       "import": "./dist/esm/components/index.js",
-      "require": "./dist/cjs/components/index.js"
+      "require": "./dist/cjs/components/index.cjs"
     },
     "#patterns/*": {
       "import": "./dist/esm/patterns/*",
@@ -24,7 +25,7 @@
     },
     "#patterns": {
       "import": "./dist/esm/patterns/index.js",
-      "require": "./dist/cjs/patterns/index.js"
+      "require": "./dist/cjs/patterns/index.cjs"
     },
     "#util/*": {
       "import": "./dist/esm/util/*",
@@ -39,13 +40,13 @@
       },
       "require": {
         "types": "./dist/cjs/index.d.ts",
-        "default": "./dist/cjs/index.js"
+        "default": "./dist/cjs/index.cjs"
       }
     },
     "./*": "./*",
     "./package.json": "./package.json"
   },
-  "main": "dist/cjs/index.js",
+  "main": "dist/cjs/index.cjs",
   "module": "dist/esm/index.js",
   "types": "dist/esm/index.d.ts",
   "scripts": {

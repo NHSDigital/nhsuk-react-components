@@ -1,4 +1,4 @@
-module.exports = {
+export default {
   collectCoverageFrom: ['<rootDir>/src/**/*.{js,mjs,ts,tsx}'],
   extensionsToTreatAsEsm: ['.jsx', '.ts', '.tsx'],
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],

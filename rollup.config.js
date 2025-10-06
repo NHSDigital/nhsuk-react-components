@@ -12,16 +12,25 @@ const { outDir } = tsBuildConfig.compilerOptions;
 const external = Object.keys(packageJson.peerDependencies);
 
 export default defineConfig(
-  /** @type {const} */ (['cjs', 'esm']).map(
+  /** @type {const} */ ([
+    {
+      entryFileNames: '[name].cjs',
+      format: 'cjs',
+    },
+    {
+      entryFileNames: '[name].js',
+      format: 'esm',
+    },
+  ]).map(
     /**
      * Rollup options for each module format
      */
-    (format) => ({
+    (options) => ({
       input: 'src/index.ts',
       output: [
         {
-          dir: join(outDir, format),
-          format,
+          ...options,
+          dir: join(outDir, options.format),
           preserveModules: true,
           preserveModulesRoot: 'src',
           sourcemap: true,
@@ -39,7 +48,7 @@ export default defineConfig(
         typescript({
           tsconfig: 'tsconfig.build.json',
           compilerOptions: {
-            outDir: join(outDir, format),
+            outDir: join(outDir, options.format),
           },
         }),
         preserveDirectives(),

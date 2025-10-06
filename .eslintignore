@@ -1,4 +1,4 @@
 jest.config.js
-.eslintrc.js
-rollup.config.mjs
+.eslintrc.cjs
+rollup.config.js
 dist
