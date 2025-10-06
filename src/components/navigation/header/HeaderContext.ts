@@ -2,9 +2,9 @@ import { createContext, type Dispatch, type SetStateAction } from 'react';
 
 export interface IHeaderContext {
   logoProps?: {
-    href?: string;
-    src?: string;
-    alt?: string;
+    'href'?: string;
+    'src'?: string;
+    'alt'?: string;
     'aria-label'?: string;
   };
   serviceProps?: {

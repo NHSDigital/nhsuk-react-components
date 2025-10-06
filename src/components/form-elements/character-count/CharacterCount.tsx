@@ -34,12 +34,12 @@ export const CharacterCount = forwardRef<HTMLTextAreaElement, CharacterCountProp
         inputType="textarea"
         formGroupProps={{
           ...formGroupProps,
-          className: classNames('nhsuk-character-count', formGroupProps?.className),
+          'className': classNames('nhsuk-character-count', formGroupProps?.className),
           'data-module': 'nhsuk-character-count',
           'data-maxlength': maxLength,
           'data-maxwords': maxWords,
           'data-threshold': threshold,
-          ref: moduleRef,
+          'ref': moduleRef,
         }}
         {...rest}
       >
