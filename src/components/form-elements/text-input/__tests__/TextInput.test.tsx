@@ -67,7 +67,7 @@ describe('TextInput', () => {
     const [textInputEl] = modules;
     textInputEl.click();
 
-    expect(mock).toBeCalledTimes(1);
+    expect(mock).toHaveBeenCalledTimes(1);
   });
 
   it.each<InputWidth | undefined>([undefined, '5', '10'])(

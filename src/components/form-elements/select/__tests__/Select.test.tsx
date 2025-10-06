@@ -89,6 +89,6 @@ describe('Select', () => {
     const [selectEl] = modules;
     selectEl.click();
 
-    expect(mock).toBeCalledTimes(1);
+    expect(mock).toHaveBeenCalledTimes(1);
   });
 });
