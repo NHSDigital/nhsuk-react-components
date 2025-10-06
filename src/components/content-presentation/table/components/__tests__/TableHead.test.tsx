@@ -1,5 +1,4 @@
 import { render } from '@testing-library/react';
-import { useContext } from 'react';
 import { TableHead } from '..';
 import { Table, TableSection, TableSectionContext } from '../..';
 
@@ -15,26 +14,20 @@ describe('Table.Head', () => {
   });
 
   it('exposes TableSectionContext', () => {
-    let tableSection: TableSection = TableSection.NONE;
-
-    const TestComponent = () => {
-      const tableContext = useContext(TableSectionContext);
-
-      if (tableSection !== tableContext) {
-        tableSection = tableContext;
-      }
-
-      return null;
-    };
+    const mock = jest.fn();
 
     render(
       <Table>
         <TableHead>
-          <TestComponent />
+          <TableSectionContext.Consumer>
+            {(section) => {
+              return mock(section);
+            }}
+          </TableSectionContext.Consumer>
         </TableHead>
       </Table>,
     );
 
-    expect(tableSection).toBe(TableSection.HEAD);
+    expect(mock).toHaveBeenCalledWith(TableSection.HEAD);
   });
 });
