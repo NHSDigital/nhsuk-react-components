@@ -1,10 +1,11 @@
-import { Children, isValidElement, type ReactElement, type ReactNode } from 'react';
+import { Children, type ReactElement, type ReactNode } from 'react';
 import { TableCell, type TableCellProps } from './components/TableCell';
+import { childIsOfComponentType } from '#util/types/TypeGuards';
 
 export const isTableCell = (
   child: ReactNode,
 ): child is ReactElement<TableCellProps, typeof TableCell> => {
-  return isValidElement(child) && child.type === TableCell;
+  return childIsOfComponentType(child, TableCell);
 };
 
 export const getHeadingsFromChildren = (children?: ReactNode) => {
