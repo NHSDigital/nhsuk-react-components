@@ -12,7 +12,7 @@ const { outDir } = tsBuildConfig.compilerOptions;
 const external = Object.keys(packageJson.peerDependencies);
 
 export default defineConfig(
-  /** @type {const} */ ([
+  /** @satisfies {OutputOptions[]} */ ([
     {
       entryFileNames: '[name].cjs',
       format: 'cjs',
@@ -24,6 +24,8 @@ export default defineConfig(
   ]).map(
     /**
      * Rollup options for each module format
+     *
+     * @returns {RollupOptions}
      */
     (options) => ({
       input: 'src/index.ts',
@@ -73,3 +75,7 @@ export default defineConfig(
     }),
   ),
 );
+
+/**
+ * @import { OutputOptions, RollupOptions } from 'rollup'
+ */

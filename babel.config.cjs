@@ -1,5 +1,10 @@
 const { NODE_ENV } = process.env;
 
+/**
+ * Babel config
+ *
+ * @type {TransformOptions}
+ */
 module.exports = {
   browserslistEnv: 'javascripts',
   presets: [
@@ -58,3 +63,7 @@ module.exports = {
     },
   },
 };
+
+/**
+ * @import { TransformOptions } from '@babel/core'
+ */

@@ -1,3 +1,8 @@
+/**
+ * Jest config
+ *
+ * @type {Config}
+ */
 export default {
   collectCoverageFrom: ['<rootDir>/src/**/*.{js,mjs,ts,tsx}'],
   extensionsToTreatAsEsm: ['.jsx', '.ts', '.tsx'],
@@ -7,3 +12,7 @@ export default {
     '^.+\\.(js|mjs|ts|tsx)$': ['babel-jest', { rootMode: 'upward' }],
   },
 };
+
+/**
+ * @import { Config } from 'jest'
+ */
