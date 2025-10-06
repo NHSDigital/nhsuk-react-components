@@ -31,6 +31,19 @@ export default defineConfig([
         tsconfigRootDir: rootPath,
       },
     },
+    rules: {
+      // Turn off rules that are handled by TypeScript
+      // https://typescript-eslint.io/troubleshooting/typed-linting/performance/#eslint-plugin-import
+      'import/default': 'off',
+      'import/named': 'off',
+      'import/namespace': 'off',
+      'import/no-cycle': 'off',
+      'import/no-deprecated': 'off',
+      'import/no-named-as-default': 'off',
+      'import/no-named-as-default-member': 'off',
+      'import/no-unresolved': 'off',
+      'import/no-unused-modules': 'off',
+    },
     settings: {
       'import/resolver': {
         node: true,
@@ -55,9 +68,6 @@ export default defineConfig([
     },
     plugins: {
       'react-hooks': pluginReactHooks,
-    },
-    rules: {
-      'import/no-unresolved': 'off',
     },
     settings: {
       react: {

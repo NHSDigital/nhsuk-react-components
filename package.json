@@ -59,7 +59,7 @@
     "lint:fix": "yarn lint:js:fix && yarn lint:prettier:fix",
     "lint:prettier": "prettier --check .",
     "lint:prettier:fix": "prettier --write .",
-    "lint:js": "eslint .",
+    "lint:js": "eslint . --max-warnings 0",
     "lint:js:fix": "yarn lint:js --fix",
     "lint:types": "tsc --build tsconfig.json --pretty",
     "build-storybook": "storybook build",
