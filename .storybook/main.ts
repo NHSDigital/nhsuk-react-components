@@ -4,21 +4,29 @@ import tsConfigPaths from 'vite-tsconfig-paths';
 
 const config: StorybookConfig = {
   stories: ['../stories/**/*.stories.@(ts|tsx)', '../stories/**/*.mdx'],
-  addons: ['@storybook/addon-links', '@storybook/addon-essentials'],
+  addons: ['@storybook/addon-links', '@storybook/addon-docs'],
   framework: {
     name: '@storybook/react-vite',
     options: {},
   },
-  docs: {
-    autodocs: true,
-  },
+
   typescript: {
     reactDocgen: 'react-docgen-typescript',
   },
+
   viteFinal(config) {
     return mergeConfig(config, {
       plugins: [tsConfigPaths()],
+      css: {
+        preprocessorOptions: {
+          scss: {
+            quietDeps: true,
+            loadPaths: ['node_modules'],
+          },
+        },
+      },
     });
   },
 };
+
 export default config;
