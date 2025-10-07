@@ -7,9 +7,9 @@ import {
   type ComponentPropsWithoutRef,
   type FC,
 } from 'react';
-import { TableContext } from '../TableContext';
-import { TableSection, TableSectionContext } from '../TableSectionContext';
-import { getHeadingsFromChildren, isTableCell } from '../TableHelpers';
+import { TableContext } from '../TableContext.js';
+import { TableSection, TableSectionContext } from '../TableSectionContext.js';
+import { getHeadingsFromChildren, isTableCell } from '../TableHelpers.js';
 
 export const TableRow: FC<ComponentPropsWithoutRef<'tr'>> = ({ children, className, ...rest }) => {
   const section = useContext(TableSectionContext);

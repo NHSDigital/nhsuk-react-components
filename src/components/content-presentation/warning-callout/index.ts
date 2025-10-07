@@ -1,1 +1,1 @@
-export * from './WarningCallout';
+export * from './WarningCallout.js';

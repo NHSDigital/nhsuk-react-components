@@ -8,10 +8,10 @@ import {
   type ComponentPropsWithoutRef,
   type EventHandler,
 } from 'react';
-import { DayInput, MonthInput, YearInput } from './components';
-import { DateInputContext, type IDateInputContext } from './DateInputContext';
-import { FormGroup } from '#components/utils';
-import { type FormElementProps } from '#util/types/FormTypes';
+import { DayInput, MonthInput, YearInput } from './components/index.js';
+import { DateInputContext, type IDateInputContext } from './DateInputContext.js';
+import { FormGroup } from '#components/utils/index.js';
+import { type FormElementProps } from '#util/types/FormTypes.js';
 
 export type DateInputValue = {
   day: string;

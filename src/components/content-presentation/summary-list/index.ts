@@ -1,1 +1,1 @@
-export * from './SummaryList';
+export * from './SummaryList.js';

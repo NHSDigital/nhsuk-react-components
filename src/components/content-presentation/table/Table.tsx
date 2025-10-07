@@ -15,8 +15,8 @@ import {
   TablePanel,
   TableRow,
   type TableCaptionProps,
-} from './components';
-import { TableContext, type ITableContext } from './TableContext';
+} from './components/index.js';
+import { TableContext, type ITableContext } from './TableContext.js';
 
 export interface TableProps extends ComponentPropsWithoutRef<'table'> {
   firstCellIsHeader?: boolean;

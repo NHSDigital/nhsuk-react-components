@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import { forwardRef, useContext } from 'react';
-import { CardContext } from '../CardContext';
-import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel';
-import { cardTypeIsCareCard, type CareCardType } from '#util/types';
+import { CardContext } from '../CardContext.js';
+import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
+import { cardTypeIsCareCard, type CareCardType } from '#util/types/index.js';
 
 const genHiddenText = (cardType: CareCardType): string => {
   switch (cardType) {

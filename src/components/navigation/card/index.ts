@@ -1,2 +1,2 @@
-export * from './CardContext';
-export * from './Card';
+export * from './CardContext.js';
+export * from './Card.js';

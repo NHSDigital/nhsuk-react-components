@@ -1,2 +1,2 @@
-export * from './individual';
-export * from './Icon';
+export * from './individual/index.js';
+export * from './Icon.js';

@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithoutRef, type FC } from 'react';
-import { type NHSUKSize } from '#util/types/NHSUKTypes';
+import { type NHSUKSize } from '#util/types/NHSUKTypes.js';
 
 export interface TableCaptionProps extends ComponentPropsWithoutRef<'caption'> {
   size?: NHSUKSize;

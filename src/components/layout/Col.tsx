@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithoutRef, type FC } from 'react';
-import { type ColWidth } from '#util/types';
+import { type ColWidth } from '#util/types/index.js';
 
 export interface ColProps extends ComponentPropsWithoutRef<'div'> {
   width: ColWidth;

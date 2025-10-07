@@ -1,5 +1,5 @@
 import { type FC } from 'react';
-import { Icon, type IconProps } from '../Icon';
+import { Icon, type IconProps } from '../Icon.js';
 
 export const ChevronRightCircleIcon: FC<IconProps> = (props) => (
   <Icon modifier="chevron-right-circle" {...props}>

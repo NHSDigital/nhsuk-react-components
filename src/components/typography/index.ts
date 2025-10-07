@@ -1,2 +1,2 @@
-export * from './LedeText';
-export * from './BodyText';
+export * from './LedeText.js';
+export * from './BodyText.js';

@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { forwardRef, type ComponentPropsWithoutRef } from 'react';
-import { type AsElementLink } from '#util/types/LinkTypes';
+import { type AsElementLink } from '#util/types/LinkTypes.js';
 
 export interface ContentsListItemLinkProps extends AsElementLink<HTMLAnchorElement> {
   current?: false;

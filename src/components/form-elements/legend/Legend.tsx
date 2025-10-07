@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithoutRef, type FC } from 'react';
-import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel';
-import { type NHSUKSize } from '#util/types/NHSUKTypes';
+import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
+import { type NHSUKSize } from '#util/types/NHSUKTypes.js';
 
 export interface LegendProps
   extends ComponentPropsWithoutRef<'legend'>,

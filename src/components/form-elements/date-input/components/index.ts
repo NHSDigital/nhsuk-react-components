@@ -1,1 +1,1 @@
-export * from './IndividualDateInputs';
+export * from './IndividualDateInputs.js';

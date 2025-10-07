@@ -1,2 +1,2 @@
-export * from './IsDev';
-export * from './RandomID';
+export * from './IsDev.js';
+export * from './RandomID.js';

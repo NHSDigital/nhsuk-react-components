@@ -1,8 +1,8 @@
 import classNames from 'classnames';
 import { forwardRef, type ComponentPropsWithoutRef, type FC } from 'react';
-import { FormGroup } from '#components/utils';
-import { type FormElementProps } from '#util/types/FormTypes';
-import { type InputWidth } from '#util/types/NHSUKTypes';
+import { FormGroup } from '#components/utils/index.js';
+import { type FormElementProps } from '#util/types/FormTypes.js';
+import { type InputWidth } from '#util/types/NHSUKTypes.js';
 
 export interface TextInputProps
   extends ComponentPropsWithoutRef<'input'>,

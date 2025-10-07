@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { Children, forwardRef, type ComponentPropsWithoutRef, type FC } from 'react';
-import { Container } from '#components/layout';
-import { childIsOfComponentType, type AsElementLink } from '#util/types';
+import { Container } from '#components/layout/index.js';
+import { childIsOfComponentType, type AsElementLink } from '#util/types/index.js';
 
 export interface FooterMetaProps extends FooterListProps {
   visuallyHiddenText?: string;

@@ -1,1 +1,1 @@
-export * from './NavAZ';
+export * from './NavAZ.js';

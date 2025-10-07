@@ -7,15 +7,15 @@ import {
   type JSX,
   type ReactNode,
 } from 'react';
-import { FormGroupContext, type IFormGroupContext } from './FormGroupContext';
-import { ErrorMessage } from '#components/form-elements/error-message';
-import { Fieldset } from '#components/form-elements/fieldset';
-import { useFormContext } from '#components/form-elements/form';
-import { HintText } from '#components/form-elements/hint-text';
-import { Label } from '#components/form-elements/label';
-import { Legend } from '#components/form-elements/legend';
-import { generateRandomID } from '#util/tools';
-import { type FormElementProps } from '#util/types/FormTypes';
+import { FormGroupContext, type IFormGroupContext } from './FormGroupContext.js';
+import { ErrorMessage } from '#components/form-elements/error-message/index.js';
+import { Fieldset } from '#components/form-elements/fieldset/index.js';
+import { useFormContext } from '#components/form-elements/form/index.js';
+import { HintText } from '#components/form-elements/hint-text/index.js';
+import { Label } from '#components/form-elements/label/index.js';
+import { Legend } from '#components/form-elements/legend/index.js';
+import { generateRandomID } from '#util/tools/index.js';
+import { type FormElementProps } from '#util/types/FormTypes.js';
 
 type ExcludedProps =
   | Extract<

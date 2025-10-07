@@ -1,11 +1,11 @@
 import classNames from 'classnames';
 import { type Radios as RadiosModule } from 'nhsuk-frontend';
 import { createRef, forwardRef, useEffect, useState, type ComponentPropsWithoutRef } from 'react';
-import { RadiosDivider, RadiosItem } from './components';
-import { RadiosContext, type IRadiosContext } from './RadiosContext';
-import { FormGroup } from '#components/utils';
-import { generateRandomName } from '#util/tools';
-import { type FormElementProps } from '#util/types/FormTypes';
+import { RadiosDivider, RadiosItem } from './components/index.js';
+import { RadiosContext, type IRadiosContext } from './RadiosContext.js';
+import { FormGroup } from '#components/utils/index.js';
+import { generateRandomName } from '#util/tools/index.js';
+import { type FormElementProps } from '#util/types/FormTypes.js';
 
 export interface RadiosProps
   extends ComponentPropsWithoutRef<'div'>,

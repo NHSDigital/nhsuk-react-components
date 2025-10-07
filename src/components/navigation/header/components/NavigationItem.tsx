@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { type FC } from 'react';
-import { type AsElementLink } from '#util/types/LinkTypes';
+import { type AsElementLink } from '#util/types/LinkTypes.js';
 
 export interface NavigationItemProps extends AsElementLink<HTMLAnchorElement> {
   active?: boolean;

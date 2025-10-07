@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { type FC } from 'react';
-import { Col, type ColProps } from '#components/layout';
+import { Col, type ColProps } from '#components/layout/index.js';
 
 export const CardGroupItem: FC<ColProps> = ({ className, ...rest }) => (
   <Col className={classNames('nhsuk-card-group__item', className)} {...rest} />

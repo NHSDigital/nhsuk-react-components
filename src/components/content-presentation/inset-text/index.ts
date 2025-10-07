@@ -1,1 +1,1 @@
-export * from './InsetText';
+export * from './InsetText.js';

@@ -17,10 +17,10 @@ import {
   NavigationItem,
   Search,
   ServiceName,
-} from './components';
-import { HeaderContext, type IHeaderContext } from './HeaderContext';
-import { Container } from '#components/layout';
-import { childIsOfComponentType } from '#util/types';
+} from './components/index.js';
+import { HeaderContext, type IHeaderContext } from './HeaderContext.js';
+import { Container } from '#components/layout/index.js';
+import { childIsOfComponentType } from '#util/types/index.js';
 
 export interface HeaderProps extends ComponentPropsWithoutRef<'div'> {
   containerClasses?: string;

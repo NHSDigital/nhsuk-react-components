@@ -1,1 +1,1 @@
-export * from './ErrorMessage';
+export * from './ErrorMessage.js';

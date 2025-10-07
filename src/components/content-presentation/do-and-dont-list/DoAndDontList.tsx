@@ -7,8 +7,8 @@ import {
   type FC,
   type ReactNode,
 } from 'react';
-import { CrossIcon, TickIcon } from '../icons';
-import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel';
+import { CrossIcon, TickIcon } from '../icons/index.js';
+import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
 
 type ListType = 'do' | 'dont';
 

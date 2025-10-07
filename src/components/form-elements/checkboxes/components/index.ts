@@ -1,2 +1,2 @@
-export * from './Item';
-export * from './Divider';
+export * from './Item.js';
+export * from './Divider.js';

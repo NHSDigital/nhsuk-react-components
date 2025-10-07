@@ -1,1 +1,1 @@
-export * from './UseDevWarning';
+export * from './UseDevWarning.js';

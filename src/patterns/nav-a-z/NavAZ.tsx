@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { forwardRef, type ComponentPropsWithoutRef, type FC, type ReactNode } from 'react';
-import { type AsElementLink } from '#util/types/LinkTypes';
+import { type AsElementLink } from '#util/types/LinkTypes.js';
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 

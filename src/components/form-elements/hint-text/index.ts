@@ -1,1 +1,1 @@
-export * from './HintText';
+export * from './HintText.js';

@@ -1,1 +1,1 @@
-export * from './ContentsList';
+export * from './ContentsList.js';

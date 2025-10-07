@@ -5,7 +5,7 @@ import {
   type ReactElement,
   type ReactNode,
 } from 'react';
-import { type CardType, type CareCardType } from './NHSUKTypes';
+import { type CardType, type CareCardType } from './NHSUKTypes.js';
 
 /**
  * Assert that a child item is of the given component type.

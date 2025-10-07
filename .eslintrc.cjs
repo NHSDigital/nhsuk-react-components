@@ -27,6 +27,7 @@ module.exports = {
     'plugin:react-hooks/recommended',
   ],
   rules: {
+    'import/no-unresolved': 'off',
     'react/prop-types': 0,
     'jsx-a11y/anchor-has-content': 0,
     'jsx-a11y/alt-text': 0,

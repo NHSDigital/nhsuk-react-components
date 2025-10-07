@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { forwardRef, type ComponentPropsWithRef, type ForwardedRef, type ReactNode } from 'react';
-import { UserIcon } from '#components/content-presentation';
-import { type AsElementLink } from '#util/types/LinkTypes';
+import { UserIcon } from '#components/content-presentation/index.js';
+import { type AsElementLink } from '#util/types/LinkTypes.js';
 
 export interface AccountItemButtonProps extends AsElementLink<HTMLButtonElement> {
   as?: 'button';

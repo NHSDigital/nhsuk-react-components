@@ -1,3 +1,3 @@
-export * from './TableContext';
-export * from './TableSectionContext';
-export * from './Table';
+export * from './TableContext.js';
+export * from './TableSectionContext.js';
+export * from './Table.js';

@@ -8,9 +8,9 @@ import {
   CardHeading,
   CardImage,
   CardLink,
-} from './components';
-import { CardContext } from './CardContext';
-import { cardTypeIsCareCard, type CardType } from '#util/types';
+} from './components/index.js';
+import { CardContext } from './CardContext.js';
+import { cardTypeIsCareCard, type CardType } from '#util/types/index.js';
 
 export interface CardProps extends ComponentPropsWithoutRef<'div'> {
   clickable?: boolean;

@@ -1,2 +1,2 @@
-export * from './CheckboxesContext';
-export * from './Checkboxes';
+export * from './CheckboxesContext.js';
+export * from './Checkboxes.js';

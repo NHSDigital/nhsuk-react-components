@@ -1,6 +1,6 @@
 import { Children, type ReactElement, type ReactNode } from 'react';
-import { TableCell, type TableCellProps } from './components/TableCell';
-import { childIsOfComponentType } from '#util/types/TypeGuards';
+import { TableCell, type TableCellProps } from './components/TableCell.js';
+import { childIsOfComponentType } from '#util/types/TypeGuards.js';
 
 export const isTableCell = (
   child: ReactNode,

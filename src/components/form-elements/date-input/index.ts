@@ -1,2 +1,2 @@
-export * from './DateInputContext';
-export * from './DateInput';
+export * from './DateInputContext.js';
+export * from './DateInput.js';

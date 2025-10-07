@@ -8,10 +8,10 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from 'react';
-import { CheckboxesContext, type ICheckboxesContext } from '../CheckboxesContext';
-import { HintText } from '#components/form-elements/hint-text';
-import { Label } from '#components/form-elements/label';
-import { type FormElementProps, type HTMLAttributesWithData } from '#util/types';
+import { CheckboxesContext, type ICheckboxesContext } from '../CheckboxesContext.js';
+import { HintText } from '#components/form-elements/hint-text/index.js';
+import { Label } from '#components/form-elements/label/index.js';
+import { type FormElementProps, type HTMLAttributesWithData } from '#util/types/index.js';
 
 export interface CheckboxesItemProps
   extends ComponentPropsWithoutRef<'input'>,

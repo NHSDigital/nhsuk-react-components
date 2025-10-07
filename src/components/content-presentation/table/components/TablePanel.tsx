@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithoutRef, type FC } from 'react';
-import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel';
+import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
 
 export interface TablePanelProps extends ComponentPropsWithoutRef<'div'> {
   heading?: string;

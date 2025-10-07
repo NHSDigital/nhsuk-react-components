@@ -1,2 +1,2 @@
-export * from './nav-a-z';
-export * from './review-date';
+export * from './nav-a-z/index.js';
+export * from './review-date/index.js';

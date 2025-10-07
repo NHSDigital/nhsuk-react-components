@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { forwardRef, type ComponentPropsWithoutRef, type FC } from 'react';
-import { Col, Container, Row } from '#components/layout';
-import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel';
+import { Col, Container, Row } from '#components/layout/index.js';
+import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
 
 export interface HeroContentProps extends ComponentPropsWithoutRef<'div'> {
   hasImage: boolean;

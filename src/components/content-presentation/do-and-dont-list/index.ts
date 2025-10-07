@@ -1,1 +1,1 @@
-export * from './DoAndDontList';
+export * from './DoAndDontList.js';
