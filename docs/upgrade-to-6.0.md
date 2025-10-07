@@ -18,6 +18,19 @@ The updated [header](https://service-manual.nhs.uk/design-system/components/head
 - update NHS logo in the header to have higher contrast when focused
 - refactor CSS classes and BEM naming, use hidden attributes instead of modifier classes, use generic search element
 
+### Panel component
+
+The [panel](https://service-manual.nhs.uk/design-system/components/panel) component from NHS.UK frontend v9.3.0 has been added:
+
+```jsx
+<Panel>
+  <Panel.Title>Booking complete</Panel.Title>
+  We have sent you a confirmation email
+</Panel>
+```
+
+This replaces the [list panel component](#list-panel) which was removed in NHS.UK frontend v6.0.0.
+
 ## Breaking changes
 
 ### Update the JavaScript supported script snippet
