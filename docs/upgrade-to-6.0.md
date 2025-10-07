@@ -6,6 +6,18 @@ There are some breaking changes you'll need to be aware of when upgrading to v6.
 
 You must read and apply these updates carefully to make sure your service does not break.
 
+## New features
+
+### New header component with account section
+
+The updated [header](https://service-manual.nhs.uk/design-system/components/header) component from NHS.UK frontend v10.x has been added, including support for account information and links. As part of this work we’ve also made some other improvements to the header:
+
+- show currently active section or page in the navigation
+- align navigation items to the left by default
+- update navigation label from ’Primary navigation’ to ‘Menu’, and remove superfluous `role` and `id` attributes
+- update NHS logo in the header to have higher contrast when focused
+- refactor CSS classes and BEM naming, use hidden attributes instead of modifier classes, use generic search element
+
 ## Breaking changes
 
 ### Update the JavaScript supported script snippet
@@ -210,7 +222,7 @@ To align with NHS.UK frontend, the date input component automatically renders it
 
 The custom `autoSelectNext` prop is no longer supported.
 
-### New header component with account section
+### Header
 
 The updated header component from NHS.UK frontend v10.x has been added. You will need to make the following changes:
 
@@ -464,3 +476,22 @@ To align with NHS.UK frontend, the warning callout `WarningCallout.Label` compon
     </p>
   </WarningCallout>
 ```
+
+## Fixes
+
+- [#52: Expose header navigation open/close state (with setter)](https://github.com/NHSDigital/nhsuk-react-components/issues/52)
+- [#69: Unable to use ref attribute on some components](https://github.com/NHSDigital/nhsuk-react-components/issues/69)
+- [#71: Expose FormGroup component to consumers](https://github.com/NHSDigital/nhsuk-react-components/issues/71)
+- [#105: getHeadingsFromChildren forces use of string as table cell child](https://github.com/NHSDigital/nhsuk-react-components/issues/105)
+- [#166: SkipLink double jumps to first heading then #maincontent if disableDefaultBehaviour is not set](https://github.com/NHSDigital/nhsuk-react-components/issues/166)
+- [#174: Responsive tables and validation errors](https://github.com/NHSDigital/nhsuk-react-components/issues/174)
+- [#214: Hints and errors are not semantically associated with fieldsets](https://github.com/NHSDigital/nhsuk-react-components/issues/214)
+- [#215: Suggestion: remove all 'boolean' examples from storybook](https://github.com/NHSDigital/nhsuk-react-components/issues/215)
+- [#243: Use correct NHS.UK frontend JavaScript when rendered client-side](https://github.com/NHSDigital/nhsuk-react-components/issues/243)
+- [#244: Breaking change: remove default legend and label sizes or else change to l](https://github.com/NHSDigital/nhsuk-react-components/issues/244)
+- [#245: Fieldset incorrectly gets set in error when a child input is in error](https://github.com/NHSDigital/nhsuk-react-components/issues/245)
+- [#247: Date component uses label rather than fieldset with legend](https://github.com/NHSDigital/nhsuk-react-components/issues/247)
+- [#256: SkipLink does not work if intended target header is rerendered](https://github.com/NHSDigital/nhsuk-react-components/issues/256)
+- [#259: Remove pattern="[0-9]\*" from date inputs](https://github.com/NHSDigital/nhsuk-react-components/issues/259)
+- [#260: Allow custom component for button links](https://github.com/NHSDigital/nhsuk-react-components/issues/260)
+- [#265: Header logo is not labeled correctly when organisation info is provided](https://github.com/NHSDigital/nhsuk-react-components/issues/265)
