@@ -1,17 +1,12 @@
 {
   "extends": "./tsconfig.base.json",
-  "compilerOptions": {
-    "jsx": "react-jsxdev",
-    "lib": ["ESNext", "DOM"],
-    "target": "ES2015",
-    "types": ["jest", "node"]
-  },
-  "include": [
-    "./.storybook/*.ts",
-    "./src/**/*.ts",
-    "./src/**/*.tsx",
-    "./stories/**/*.tsx",
-    "./*.config.cjs",
-    "./*.config.js"
+  "files": [],
+  "references": [
+    {
+      "path": "./tsconfig.dev.json"
+    },
+    {
+      "path": "./tsconfig.build.json"
+    }
   ]
 }

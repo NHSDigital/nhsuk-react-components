@@ -3,7 +3,6 @@
   "compilerOptions": {
     "declaration": true,
     "declarationMap": true,
-    "emitDeclarationOnly": true,
     "jsx": "react-jsx",
     "lib": ["ESNext", "DOM"],
     "outDir": "./dist",
@@ -13,6 +12,6 @@
     "target": "ES2015",
     "types": ["node"]
   },
-  "include": ["./src"],
-  "exclude": ["**/__mocks__", "**/__tests__", "./src/setupTests.ts"]
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"],
+  "exclude": ["**/*.test.ts", "**/*.test.tsx", "./src/setupTests.ts"]
 }
