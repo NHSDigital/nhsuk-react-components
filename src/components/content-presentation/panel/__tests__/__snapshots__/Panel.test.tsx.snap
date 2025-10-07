@@ -1,0 +1,58 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Panel matches snapshot (via server): client 1`] = `
+<div>
+  <div
+    class="nhsuk-panel"
+  >
+    <h1
+      class="nhsuk-panel__title"
+    >
+      Booking complete
+    </h1>
+    <div
+      class="nhsuk-panel__body"
+    >
+      We have sent you a confirmation email
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Panel matches snapshot (via server): server 1`] = `
+<div>
+  <div
+    class="nhsuk-panel"
+  >
+    <h1
+      class="nhsuk-panel__title"
+    >
+      Booking complete
+    </h1>
+    <div
+      class="nhsuk-panel__body"
+    >
+      We have sent you a confirmation email
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Panel matches snapshot 1`] = `
+<div>
+  <div
+    class="nhsuk-panel"
+  >
+    <h1
+      class="nhsuk-panel__title"
+    >
+      Booking complete
+    </h1>
+    <div
+      class="nhsuk-panel__body"
+    >
+      We have sent you a confirmation email
+    </div>
+  </div>
+</div>
+`;
