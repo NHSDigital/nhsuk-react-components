@@ -1,3 +1,5 @@
+'use client';
+
 import classNames from 'classnames';
 import { forwardRef, useContext } from 'react';
 import { CardContext } from '../CardContext.js';

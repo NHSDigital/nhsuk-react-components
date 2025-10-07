@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext, type ReactNode } from 'react';
 
 export interface ITableContext {
@@ -8,7 +10,6 @@ export interface ITableContext {
 }
 
 export const TableContext = createContext<ITableContext>({
-  /* eslint-disable @typescript-eslint/no-empty-function */
   firstCellIsHeader: false,
   headings: [],
   responsive: false,

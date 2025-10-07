@@ -1,3 +1,5 @@
+'use client';
+
 import { useContext, useEffect, type FC } from 'react';
 import { HeaderContext, type IHeaderContext } from '../HeaderContext.js';
 
@@ -14,7 +16,7 @@ export const Logo: FC<LogoProps> = (logo) => {
 
     setLogoProps(logo);
     return () => setLogoProps(undefined);
-  }, [logo]);
+  }, [logo, setLogoProps]);
 
   const { alt = 'NHS' } = logo;
 

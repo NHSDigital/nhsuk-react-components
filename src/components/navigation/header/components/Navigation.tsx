@@ -1,3 +1,5 @@
+'use client';
+
 import classNames from 'classnames';
 import { useContext, useEffect, type ComponentPropsWithoutRef, type FC } from 'react';
 import { HeaderContext, type IHeaderContext } from '../HeaderContext.js';
@@ -26,7 +28,7 @@ export const Navigation: FC<NavigationProps> = ({
 
     setMenuOpen(open);
     return () => setMenuOpen(false);
-  }, [open]);
+  }, [open, setMenuOpen]);
 
   return (
     <nav

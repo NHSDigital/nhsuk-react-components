@@ -1,0 +1,12 @@
+# Node.js modules
+node_modules/
+
+# Test coverage
+coverage/
+
+# Build output
+dist/
+
+# Files to ignore
+.yarnrc.yml
+package-lock.json

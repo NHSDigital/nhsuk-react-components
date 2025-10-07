@@ -1,3 +1,5 @@
+'use client';
+
 import classNames from 'classnames';
 import { type Header as HeaderModule } from 'nhsuk-frontend';
 import {
@@ -106,7 +108,7 @@ const HeaderComponent = forwardRef<HTMLElement, HeaderProps>((props, forwardedRe
       setServiceProps,
       setOrganisationProps,
     };
-  }, [logoProps, serviceProps, organisationProps]);
+  }, [logoProps, serviceProps, organisationProps, menuOpen]);
 
   const items = Children.toArray(children);
   const childLogo = items.find((child) => childIsOfComponentType(child, Logo));

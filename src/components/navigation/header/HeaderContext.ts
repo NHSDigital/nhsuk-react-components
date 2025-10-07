@@ -1,10 +1,12 @@
+'use client';
+
 import { createContext, type Dispatch, type SetStateAction } from 'react';
 
 export interface IHeaderContext {
   logoProps?: {
-    href?: string;
-    src?: string;
-    alt?: string;
+    'href'?: string;
+    'src'?: string;
+    'alt'?: string;
     'aria-label'?: string;
   };
   serviceProps?: {
@@ -24,7 +26,6 @@ export interface IHeaderContext {
 }
 
 export const HeaderContext = createContext<IHeaderContext>({
-  /* eslint-disable @typescript-eslint/no-empty-function */
   logoProps: undefined,
   serviceProps: undefined,
   organisationProps: undefined,

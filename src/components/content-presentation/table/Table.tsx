@@ -1,3 +1,5 @@
+'use client';
+
 import classNames from 'classnames';
 import {
   forwardRef,
@@ -45,7 +47,7 @@ const TableComponent = forwardRef<HTMLTableElement, TableProps>((props, forwarde
       responsive,
       setHeadings,
     };
-  }, [responsive, headings, setHeadings]);
+  }, [firstCellIsHeader, headings, responsive, setHeadings]);
 
   return (
     <TableContext.Provider value={contextValue}>

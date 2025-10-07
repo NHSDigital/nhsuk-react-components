@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext } from 'react';
 
 export interface ICheckboxesContext {
@@ -8,7 +10,6 @@ export interface ICheckboxesContext {
 }
 
 export const CheckboxesContext = createContext<ICheckboxesContext>({
-  /* eslint-disable @typescript-eslint/no-empty-function */
   name: '',
   getBoxId: () => undefined,
   leaseReference: () => '',

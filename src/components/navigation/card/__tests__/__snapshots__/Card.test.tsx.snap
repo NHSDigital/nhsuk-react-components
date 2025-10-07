@@ -148,6 +148,11 @@ exports[`Card Care card variant urgent matches the snapshot 1`] = `
 
 exports[`Card matches snapshot (via server): client 1`] = `
 <div>
+  <link
+    as="image"
+    href="imageSrc"
+    rel="preload"
+  />
   <div
     class="nhsuk-card"
   >
@@ -187,6 +192,11 @@ exports[`Card matches snapshot (via server): client 1`] = `
 
 exports[`Card matches snapshot (via server): server 1`] = `
 <div>
+  <link
+    as="image"
+    href="imageSrc"
+    rel="preload"
+  />
   <div
     class="nhsuk-card"
   >

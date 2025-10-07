@@ -29,9 +29,7 @@ describe('Table.Cell', () => {
       </table>,
     );
 
-    // eslint-disable-next-line no-console
     expect(console.warn).toHaveBeenCalledTimes(1);
-    // eslint-disable-next-line no-console
     expect(console.warn).toHaveBeenLastCalledWith(
       'Table.Cell used outside of a Table.Head or Table.Body component. Unable to determine section type from context.',
     );

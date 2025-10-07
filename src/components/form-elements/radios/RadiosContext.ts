@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext } from 'react';
 
 export type IRadiosContext = {
@@ -10,7 +12,6 @@ export type IRadiosContext = {
 };
 
 export const RadiosContext = createContext<IRadiosContext>({
-  /* eslint-disable @typescript-eslint/no-empty-function */
   name: '',
   selectedRadio: '',
   getRadioId: () => '',

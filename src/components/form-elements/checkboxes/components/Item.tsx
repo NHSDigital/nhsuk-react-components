@@ -1,3 +1,5 @@
+'use client';
+
 import classNames from 'classnames';
 import {
   forwardRef,
@@ -42,15 +44,15 @@ export const CheckboxesItem = forwardRef<HTMLInputElement, CheckboxesItemProps>(
     const { getBoxId, name, leaseReference, unleaseReference } =
       useContext<ICheckboxesContext>(CheckboxesContext);
 
-    const [boxReference] = useState<string>(leaseReference());
-    const inputID = id || getBoxId(boxReference);
+    const [checkboxReference] = useState<string>(leaseReference());
+    const inputID = id || getBoxId(checkboxReference);
     const shouldShowConditional = !!(checked || defaultChecked);
 
     const { className: labelClassName, ...restLabelProps } = labelProps || {};
     const { className: hintClassName, ...restHintProps } = hintProps || {};
     const { className: conditionalClassName, ...restConditionalProps } = conditionalProps || {};
 
-    useEffect(() => () => unleaseReference(boxReference), []);
+    useEffect(() => () => unleaseReference(checkboxReference));
 
     const inputProps: HTMLAttributesWithData<HTMLInputElement> = rest;
 

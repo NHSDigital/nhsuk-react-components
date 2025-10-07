@@ -1,3 +1,5 @@
+'use client';
+
 import classNames from 'classnames';
 import { type SkipLink as SkipLinkModule } from 'nhsuk-frontend';
 import { createRef, forwardRef, useEffect, useState, type ComponentPropsWithoutRef } from 'react';

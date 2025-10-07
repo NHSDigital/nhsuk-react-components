@@ -1,3 +1,5 @@
+'use client';
+
 import classNames from 'classnames';
 import { type ErrorSummary as ErrorSummaryModule } from 'nhsuk-frontend';
 import {

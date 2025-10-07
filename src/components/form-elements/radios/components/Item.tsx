@@ -1,3 +1,5 @@
+'use client';
+
 import classNames from 'classnames';
 import {
   forwardRef,
@@ -48,11 +50,11 @@ export const RadiosItem = forwardRef<HTMLInputElement, RadiosItemProps>((props, 
 
   useEffect(() => {
     if (defaultChecked) setSelected(radioReference);
-  }, []);
+  }, [defaultChecked, setSelected, radioReference]);
 
   useEffect(() => {
     if (checked) setSelected(radioReference);
-  }, [checked]);
+  }, [checked, setSelected, radioReference]);
 
   return (
     <>

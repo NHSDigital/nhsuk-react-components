@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext, type ChangeEvent } from 'react';
 
 export type IDateInputContext = {
@@ -10,7 +12,6 @@ export type IDateInputContext = {
 };
 
 export const DateInputContext = createContext<IDateInputContext>({
-  /* eslint-disable @typescript-eslint/no-empty-function */
   id: '',
   name: '',
   handleChange: () => {},
