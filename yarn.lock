@@ -6130,6 +6130,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"babel-plugin-replace-import-extension@npm:^1.1.5":
+  version: 1.1.5
+  resolution: "babel-plugin-replace-import-extension@npm:1.1.5"
+  checksum: 10c0/b5fa66a6fc66570173d90e876066cc4beabb4912344f121dfc15bcdbe9dba550863a06fdb8c04a8605ba7b201895f17c9adfc08d7cd228604a0e80e0cb8a9ac3
+  languageName: node
+  linkType: hard
+
 "babel-preset-current-node-syntax@npm:^1.2.0":
   version: 1.2.0
   resolution: "babel-preset-current-node-syntax@npm:1.2.0"
@@ -10955,6 +10962,7 @@ __metadata:
     "@typescript-eslint/parser": "npm:^7.1.0"
     babel-jest: "npm:^30.2.0"
     babel-plugin-module-resolver: "npm:^5.0.2"
+    babel-plugin-replace-import-extension: "npm:^1.1.5"
     chromatic: "npm:^6.17.3"
     classnames: "npm:^2.5.1"
     eslint: "npm:^8.57.0"
@@ -12256,7 +12264,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@npm:^1.10.0, resolve@npm:^1.14.2, resolve@npm:^1.22.1, resolve@npm:^1.22.4, resolve@npm:^1.22.8":
+"resolve@npm:^1.10.0, resolve@npm:^1.14.2, resolve@npm:^1.22.1, resolve@npm:^1.22.8":
   version: 1.22.8
   resolution: "resolve@npm:1.22.8"
   dependencies:
@@ -12269,7 +12277,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@npm:^1.22.10":
+"resolve@npm:^1.22.10, resolve@npm:^1.22.4":
   version: 1.22.10
   resolution: "resolve@npm:1.22.10"
   dependencies:
@@ -12295,7 +12303,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@patch:resolve@npm%3A^1.10.0#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.14.2#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.1#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.4#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.8#optional!builtin<compat/resolve>":
+"resolve@patch:resolve@npm%3A^1.10.0#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.14.2#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.1#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.8#optional!builtin<compat/resolve>":
   version: 1.22.8
   resolution: "resolve@patch:resolve@npm%3A1.22.8#optional!builtin<compat/resolve>::version=1.22.8&hash=c3c19d"
   dependencies:
@@ -12308,7 +12316,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@patch:resolve@npm%3A^1.22.10#optional!builtin<compat/resolve>":
+"resolve@patch:resolve@npm%3A^1.22.10#optional!builtin<compat/resolve>, resolve@patch:resolve@npm%3A^1.22.4#optional!builtin<compat/resolve>":
   version: 1.22.10
   resolution: "resolve@patch:resolve@npm%3A1.22.10#optional!builtin<compat/resolve>::version=1.22.10&hash=c3c19d"
   dependencies:

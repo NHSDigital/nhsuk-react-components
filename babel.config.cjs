@@ -44,6 +44,16 @@ module.exports = {
             },
           },
         ],
+        // Remove mandatory ES module file extensions for Jest
+        // https://nodejs.org/api/esm.html#mandatory-file-extensions
+        [
+          'replace-import-extension',
+          {
+            extMapping: {
+              '.js': '',
+            },
+          },
+        ],
       ],
     },
   },
