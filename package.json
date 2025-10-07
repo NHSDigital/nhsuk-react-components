@@ -28,7 +28,7 @@
   "types": "dist/esm/index.d.ts",
   "scripts": {
     "cleanup": "rm -rf dist/ > /dev/null && rm -rf lib/ > /dev/null",
-    "storybook": "storybook dev -p 6006",
+    "storybook": "NODE_ENV=development storybook dev -p 6006",
     "build": "yarn cleanup && rollup -c",
     "test": "jest",
     "test:watch": "jest --watch",
@@ -41,8 +41,10 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@babel/core": "^7.24.1",
-    "@babel/plugin-transform-modules-commonjs": "^7.23.3",
+    "@babel/core": "^7.28.4",
+    "@babel/preset-env": "^7.28.3",
+    "@babel/preset-react": "^7.27.1",
+    "@babel/preset-typescript": "^7.27.1",
     "@rollup/plugin-commonjs": "^28.0.6",
     "@rollup/plugin-node-resolve": "^16.0.1",
     "@rollup/plugin-typescript": "^12.1.4",
@@ -89,7 +91,6 @@
     "rollup-plugin-preserve-directives": "^0.4.0",
     "sass": "^1.53.0",
     "storybook": "^8.0.5",
-    "ts-jest": "^29.1.2",
     "typescript": "5.3.3",
     "vite": "^4.5.3",
     "vite-tsconfig-paths": "^4.3.2"
