@@ -1,5 +1,5 @@
-import { act, render, type RenderOptions as ClientOptions } from '@testing-library/react';
-import { type JSX } from 'react';
+import { render, type RenderOptions as ClientOptions } from '@testing-library/react';
+import { act, type JSX } from 'react';
 import { renderToString, type ServerOptions } from 'react-dom/server';
 
 type RenderOptions =

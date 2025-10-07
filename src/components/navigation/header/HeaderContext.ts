@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext, type Dispatch, type SetStateAction } from 'react';
 
 export interface IHeaderContext {
