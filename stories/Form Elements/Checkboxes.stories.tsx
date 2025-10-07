@@ -1,4 +1,4 @@
-import { type Meta, type StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { useEffect, useRef, useState, type SyntheticEvent } from 'react';
 import { Checkboxes, TextInput } from '#components';
 

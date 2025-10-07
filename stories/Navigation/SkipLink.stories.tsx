@@ -1,4 +1,4 @@
-import { type Meta, type StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { type FC, type ReactNode } from 'react';
 import { HintText, SkipLink } from '#components';
 
