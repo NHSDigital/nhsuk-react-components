@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import { Images } from 'nhsuk-react-components';
+import { Images } from '#components';
 
 const meta: Meta<typeof Images> = {
   title: 'Content Presentation/Images',

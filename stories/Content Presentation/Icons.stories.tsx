@@ -8,7 +8,7 @@ import {
   SearchIcon,
   TickIcon,
   UserIcon,
-} from 'nhsuk-react-components';
+} from '#components';
 
 const meta: Meta = {
   title: 'Content Presentation/Icons',

@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
-import { DateInput, type DateInputValue } from 'nhsuk-react-components';
+import { useState } from 'react';
+import { DateInput, type DateInputValue } from '#components';
 
 const meta: Meta<typeof DateInput> = {
   title: 'Form Elements/DateInput',

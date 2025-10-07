@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import { Tag } from 'nhsuk-react-components';
+import { Tag } from '#components';
 
 const meta: Meta<typeof Tag> = {
   title: 'Content Presentation/Tag',

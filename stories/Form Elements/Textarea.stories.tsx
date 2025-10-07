@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import React, { useState } from 'react';
-import { TextInput, Textarea } from 'nhsuk-react-components';
+import { useState } from 'react';
+import { TextInput, Textarea } from '#components';
 
 const meta: Meta<typeof Textarea> = {
   title: 'Form Elements/Textarea',

@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import { Hero } from 'nhsuk-react-components';
+import { Hero } from '#components';
 
 const meta: Meta<typeof Hero> = {
   title: 'Content Presentation/Hero',

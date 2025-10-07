@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import { HintText } from 'nhsuk-react-components';
+import { HintText } from '#components';
 
 const meta: Meta<typeof HintText> = {
   title: 'Form Elements/HintText',

@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import { Tabs } from 'nhsuk-react-components';
+import { Tabs } from '#components';
 
 /**
  * The tabs component lets users navigate between related sections of content, displaying 1 section at a time.

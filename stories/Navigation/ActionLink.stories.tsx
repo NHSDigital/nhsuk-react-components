@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import { ActionLink } from 'nhsuk-react-components';
+import { ActionLink } from '#components';
 
 const meta: Meta<typeof ActionLink> = {
   title: 'Navigation/ActionLink',

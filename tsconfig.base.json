@@ -17,8 +17,9 @@
     "verbatimModuleSyntax": true,
     "paths": {
       "#components/*": ["./src/components/*"],
+      "#components": ["./src/components/index.ts"],
       "#patterns/*": ["./src/patterns/*"],
-      "#patterns": ["./src/patterns/index"],
+      "#patterns": ["./src/patterns/index.ts"],
       "#util/*": ["./src/util/*"],
       "nhsuk-react-components": ["./src/index.ts"]
     }

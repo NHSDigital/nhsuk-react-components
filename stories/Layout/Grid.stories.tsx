@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react';
-import { Card, Col, Container, Row } from 'nhsuk-react-components';
+import { Card, Col, Container, Row } from '#components';
 
 const meta: Meta = {
   title: 'Layout/Grid',
