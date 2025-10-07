@@ -1,6 +1,6 @@
 # NHS.UK React components
 
-## Unreleased
+## 6.0.0-beta.1 - 8 October 2025
 
 This version adds the panel component from NHS.UK frontend v9.3.0 and supports React v19.
 
