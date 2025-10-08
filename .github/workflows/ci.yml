@@ -56,6 +56,7 @@ jobs:
           ref: ${{ env.CHROMATIC_BRANCH }}
 
       - name: Storybook deploy
+        if: ${{ env.CHROMATIC_PROJECT_TOKEN }}
         uses: chromaui/action@v13
         with:
           autoAcceptChanges: main
