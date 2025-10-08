@@ -16,7 +16,6 @@ const config: StorybookConfig = {
 
   viteFinal(config) {
     return mergeConfig(config, {
-      plugins: [tsConfigPaths()],
       css: {
         preprocessorOptions: {
           scss: {
@@ -28,6 +27,11 @@ const config: StorybookConfig = {
       esbuild: {
         jsx: 'automatic',
       },
+      plugins: [
+        tsConfigPaths({
+          projects: ['./tsconfig.dev.json', './tsconfig.build.json'],
+        }),
+      ],
     });
   },
 };
