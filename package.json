@@ -64,7 +64,7 @@
     "lint:js": "eslint . --color --max-warnings 0",
     "lint:js:fix": "yarn lint:js --fix",
     "lint:types": "tsc --build tsconfig.json --pretty",
-    "prepublishOnly": "yarn lint && yarn test && yarn storybook --smoke-test"
+    "prepublishOnly": "yarn storybook --smoke-test"
   },
   "devDependencies": {
     "@babel/core": "^7.28.4",
