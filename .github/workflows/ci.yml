@@ -2,7 +2,8 @@ name: CI Build
 
 on:
   push:
-    branches: main
+    branches: [main]
+
   pull_request:
 
 jobs:
@@ -10,22 +11,31 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
           node-version-file: .nvmrc
+
       - name: Enable corepack
         run: corepack enable
+
       - name: Set Yarn version
         run: yarn set version stable
+
       - name: Yarn Install
         run: yarn
+
       - name: Lint
         run: yarn lint
+
       - name: Jest Tests
         run: yarn test --coverage
+
       - name: Typescript build
         run: yarn build
+
       - name: Storybook build
         run: yarn build-storybook
