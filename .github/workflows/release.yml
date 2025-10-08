@@ -40,7 +40,7 @@ jobs:
           yarn version ${{ github.event.release.tag_name }}
 
       - name: Publish to npm, publish pre-release as beta
-        uses: JS-DevTools/npm-publish@v1
+        uses: JS-DevTools/npm-publish@v4
         with:
           token: ${{ secrets.NPM_TOKEN }}
           tag: ${{ github.event.release.prerelease && 'beta' || 'latest' }}
