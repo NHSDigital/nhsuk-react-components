@@ -2,30 +2,62 @@ name: CI Build
 
 on:
   push:
-    branches: main
+    branches: [main]
+
   pull_request:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      CHROMATIC_BRANCH: ${{ github.event.pull_request.head.ref || github.ref_name }}
+      CHROMATIC_SHA: ${{ github.event.pull_request.head.sha || github.ref }}
+      CHROMATIC_SLUG: ${{ github.repository }}
+      CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     steps:
-      - uses: actions/checkout@v4
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version-file: .nvmrc
+      - name: Checkout
+        uses: actions/checkout@v5
+
       - name: Enable corepack
         run: corepack enable
-      - name: Set Yarn version
-        run: yarn set version stable
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          cache: yarn
+          node-version-file: .nvmrc
+
       - name: Yarn Install
         run: yarn
+
       - name: Lint
         run: yarn lint
+
       - name: Jest Tests
         run: yarn test --coverage
+
       - name: Typescript build
         run: yarn build
+
       - name: Storybook build
         run: yarn build-storybook
+
+      - name: Switch to PR branch
+        if: ${{ github.event_name == 'pull_request' && env.CHROMATIC_PROJECT_TOKEN }}
+        uses: actions/checkout@v5
+        with:
+          clean: false
+          fetch-depth: 0
+          ref: ${{ env.CHROMATIC_BRANCH }}
+
+      - name: Storybook deploy
+        uses: chromaui/action@v13
+        with:
+          autoAcceptChanges: main
+          branchName: ${{ env.CHROMATIC_BRANCH}}
+          onlyChanged: ${{ github.event_name == 'pull_request' }}
+          projectToken: ${{ env.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ env.GITHUB_TOKEN }}
