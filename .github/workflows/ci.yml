@@ -20,6 +20,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - name: Enable corepack
         run: corepack enable
@@ -54,6 +56,7 @@ jobs:
           ref: ${{ env.CHROMATIC_BRANCH }}
 
       - name: Storybook deploy
+        if: ${{ env.CHROMATIC_PROJECT_TOKEN }}
         uses: chromaui/action@v13
         with:
           autoAcceptChanges: main
