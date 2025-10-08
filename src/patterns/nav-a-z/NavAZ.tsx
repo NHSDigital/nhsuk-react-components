@@ -1,11 +1,11 @@
-import React, { ComponentPropsWithoutRef, FC, forwardRef } from 'react';
 import classNames from 'classnames';
-import { AsElementLink } from '@util/types/LinkTypes';
+import { forwardRef, type ComponentPropsWithoutRef, type FC, type ReactNode } from 'react';
+import { type AsElementLink } from '#util/types/LinkTypes.js';
 
 const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 
 const processLetters = (
-  children: React.ReactNode,
+  children: ReactNode,
   fullAlphabet: boolean | undefined,
   removedLetters: Array<string> | undefined,
   disabledLetters: Array<string> | undefined,
@@ -43,7 +43,7 @@ export interface NavAZProps extends ComponentPropsWithoutRef<'div'> {
   letters?: Array<string>;
 }
 
-const NavAZ = forwardRef<HTMLElement, NavAZProps>((props, forwardedRef) => {
+const NavAZComponent = forwardRef<HTMLElement, NavAZProps>((props, forwardedRef) => {
   const {
     className,
     children,
@@ -103,11 +103,11 @@ const DisabledItem: FC<ComponentPropsWithoutRef<'span'>> = ({ className, ...rest
   </li>
 );
 
-NavAZ.displayName = 'NavAZ';
+NavAZComponent.displayName = 'NavAZ';
 LinkItem.displayName = 'NavAZ.LinkItem';
 DisabledItem.displayName = 'NavAZ.DisabledItem';
 
-export default Object.assign(NavAZ, {
+export const NavAZ = Object.assign(NavAZComponent, {
   LinkItem,
   DisabledItem,
 });

@@ -1,8 +1,10 @@
-import React, { ComponentPropsWithoutRef, useContext, ChangeEvent, forwardRef } from 'react';
+'use client';
+
 import classNames from 'classnames';
-import { FormElementProps } from '@util/types/FormTypes';
-import Label from '../../label/Label';
-import DateInputContext, { IDateInputContext } from '../DateInputContext';
+import { forwardRef, useContext, type ChangeEvent, type ComponentPropsWithoutRef } from 'react';
+import { DateInputContext, type IDateInputContext } from '../DateInputContext.js';
+import { Label } from '#components/form-elements/label/index.js';
+import { type FormElementProps } from '#util/types/FormTypes.js';
 
 export interface IndividualDateInputProps
   extends ComponentPropsWithoutRef<'input'>,

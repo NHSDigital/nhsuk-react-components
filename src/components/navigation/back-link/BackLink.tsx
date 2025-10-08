@@ -1,10 +1,10 @@
-import React, { forwardRef } from 'react';
 import classNames from 'classnames';
-import { AsElementLink } from '@util/types/LinkTypes';
+import { forwardRef } from 'react';
+import { type AsElementLink } from '#util/types/LinkTypes.js';
 
 export type BackLinkProps = AsElementLink<HTMLAnchorElement>;
 
-const BackLinkComponent = forwardRef<HTMLAnchorElement, BackLinkProps>(
+export const BackLink = forwardRef<HTMLAnchorElement, BackLinkProps>(
   ({ children = 'Back', className, asElement: Element = 'a', ...rest }, forwardedRef) => (
     <Element className={classNames('nhsuk-back-link', className)} ref={forwardedRef} {...rest}>
       {children}
@@ -12,6 +12,4 @@ const BackLinkComponent = forwardRef<HTMLAnchorElement, BackLinkProps>(
   ),
 );
 
-BackLinkComponent.displayName = 'BackLink';
-
-export default BackLinkComponent;
+BackLink.displayName = 'BackLink';

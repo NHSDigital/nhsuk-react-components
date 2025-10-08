@@ -1,10 +1,12 @@
-import React, { ComponentPropsWithoutRef, forwardRef, useContext } from 'react';
+'use client';
+
 import classNames from 'classnames';
-import CardContext from '../CardContext';
+import { forwardRef, useContext, type ComponentPropsWithoutRef } from 'react';
+import { CardContext } from '../CardContext.js';
 
 export type CardContentProps = ComponentPropsWithoutRef<'div'>;
 
-const CardContent = forwardRef<HTMLDivElement, CardContentProps>((props, forwardedRef) => {
+export const CardContent = forwardRef<HTMLDivElement, CardContentProps>((props, forwardedRef) => {
   const { cardType } = useContext(CardContext);
   const { className, ...rest } = props;
 
@@ -24,5 +26,3 @@ const CardContent = forwardRef<HTMLDivElement, CardContentProps>((props, forward
 });
 
 CardContent.displayName = 'Card.Content';
-
-export default CardContent;

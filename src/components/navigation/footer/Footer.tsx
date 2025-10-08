@@ -1,8 +1,7 @@
-import React, { Children, ComponentPropsWithoutRef, FC, forwardRef } from 'react';
 import classNames from 'classnames';
-import { Container } from '@components/layout';
-import { AsElementLink } from '@util/types/LinkTypes';
-import { childIsOfComponentType } from '@util/types/TypeGuards';
+import { Children, forwardRef, type ComponentPropsWithoutRef, type FC } from 'react';
+import { Container } from '#components/layout/index.js';
+import { childIsOfComponentType, type AsElementLink } from '#util/types/index.js';
 
 export interface FooterMetaProps extends FooterListProps {
   visuallyHiddenText?: string;
@@ -106,7 +105,7 @@ FooterList.displayName = 'Footer.List';
 FooterListItem.displayName = 'Footer.ListItem';
 FooterCopyright.displayName = 'Footer.Copyright';
 
-export default Object.assign(FooterComponent, {
+export const Footer = Object.assign(FooterComponent, {
   Meta: FooterMeta,
   List: FooterList,
   ListItem: FooterListItem,

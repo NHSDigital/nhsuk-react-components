@@ -1,7 +1,7 @@
-import React, { ComponentPropsWithoutRef, FC, forwardRef } from 'react';
 import classNames from 'classnames';
-import { Container, Row, Col } from '../../layout';
-import HeadingLevel, { HeadingLevelProps } from '@components/utils/HeadingLevel';
+import { forwardRef, type ComponentPropsWithoutRef, type FC } from 'react';
+import { Col, Container, Row } from '#components/layout/index.js';
+import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
 
 export interface HeroContentProps extends ComponentPropsWithoutRef<'div'> {
   hasImage: boolean;
@@ -73,7 +73,7 @@ HeroComponent.displayName = 'Hero';
 HeroHeading.displayName = 'Hero.Heading';
 HeroText.displayName = 'Hero.Text';
 
-export default Object.assign(HeroComponent, {
+export const Hero = Object.assign(HeroComponent, {
   Heading: HeroHeading,
   Text: HeroText,
 });

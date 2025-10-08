@@ -1,6 +1,5 @@
-import React from 'react';
 import { render } from '@testing-library/react';
-import ErrorMessage from '../';
+import { ErrorMessage } from '..';
 
 describe('ErrorMessage', () => {
   it('matches snapshot', () => {

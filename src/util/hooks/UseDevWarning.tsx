@@ -1,15 +1,12 @@
 import { useEffect } from 'react';
-import isDev from '../IsDev';
+import { isDev } from '#util/tools/index.js';
 
 type ConditionFn = () => boolean;
 
-const useDevWarning = (warning: string, condition: ConditionFn = () => true): void => {
+export const useDevWarning = (warning: string, condition: ConditionFn = () => true): void => {
   useEffect(() => {
     if (isDev() && condition()) {
-      // eslint-disable-next-line no-console
       console.warn(warning);
     }
-  }, [warning]);
+  }, [warning, condition]);
 };
-
-export default useDevWarning;

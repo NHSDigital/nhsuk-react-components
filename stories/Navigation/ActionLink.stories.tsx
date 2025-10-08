@@ -1,5 +1,5 @@
-import { ActionLink } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react-vite';
+import { ActionLink } from '#components';
 
 const meta: Meta<typeof ActionLink> = {
   title: 'Navigation/ActionLink',

@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { DateInput } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react-vite';
+import { useState } from 'react';
+import { DateInput, type DateInputValue } from '#components';
 
 const meta: Meta<typeof DateInput> = {
   title: 'Form Elements/DateInput',
@@ -139,7 +139,11 @@ export const ControlledElementWrapper: Story = {
 
 export const ChangeableControlledElement: Story = {
   render: function ChangeableControlledElementRender() {
-    const [value, setValue] = useState({ day: '20', month: '09', year: '1996' });
+    const [value, setValue] = useState<Partial<DateInputValue> | undefined>({
+      day: '20',
+      month: '09',
+      year: '1996',
+    });
 
     return (
       <DateInput

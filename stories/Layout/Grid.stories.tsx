@@ -1,6 +1,5 @@
-import React from 'react';
-import { Row, Col, Card, Container } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react-vite';
+import { Card, Col, Container, Row } from '#components';
 
 const meta: Meta = {
   title: 'Layout/Grid',

@@ -1,15 +1,18 @@
-import { addons } from '@storybook/manager-api';
+import { addons } from 'storybook/manager-api';
 import nhsTheme from './theme';
 import { startCase, upperFirst } from 'lodash';
 
-const sentenceCase = (string) => {
-  if (typeof string !== 'string') return '';
-  return upperFirst(startCase(string).toLowerCase());
+const sentenceCase = (name = '') => {
+  if (!name || typeof name !== 'string') {
+    return '';
+  }
+
+  return upperFirst(startCase(name).toLowerCase());
 };
 
 addons.setConfig({
   sidebar: {
-    renderLabel: ({ name, type }) => sentenceCase(name),
+    renderLabel: ({ name }) => sentenceCase(name),
   },
   theme: nhsTheme,
 });

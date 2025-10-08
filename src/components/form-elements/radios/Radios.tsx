@@ -1,12 +1,13 @@
-import React, { ComponentPropsWithoutRef, createRef, forwardRef, useEffect, useState } from 'react';
+'use client';
+
 import classNames from 'classnames';
-import { FormElementProps } from '@util/types/FormTypes';
-import { RadiosContext, IRadiosContext } from './RadioContext';
-import FormGroup from '@components/utils/FormGroup';
-import RadiosDivider from './components/Divider';
-import RadiosItem from './components/Item';
-import { generateRandomName } from '@util/RandomID';
-import { type Radios } from 'nhsuk-frontend';
+import { type Radios as RadiosModule } from 'nhsuk-frontend';
+import { createRef, forwardRef, useEffect, useState, type ComponentPropsWithoutRef } from 'react';
+import { RadiosDivider, RadiosItem } from './components/index.js';
+import { RadiosContext, type IRadiosContext } from './RadiosContext.js';
+import { FormGroup } from '#components/utils/index.js';
+import { generateRandomName } from '#util/tools/index.js';
+import { type FormElementProps } from '#util/types/FormTypes.js';
 
 export interface RadiosProps
   extends ComponentPropsWithoutRef<'div'>,
@@ -19,7 +20,7 @@ const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwarde
   const { children, idPrefix, ...rest } = props;
 
   const [moduleRef] = useState(() => forwardedRef || createRef<HTMLDivElement>());
-  const [instance, setInstance] = useState<Radios>();
+  const [instance, setInstance] = useState<RadiosModule>();
   const [selectedRadio, setSelectedRadio] = useState<string>();
 
   const _radioReferences: Array<string> = [];
@@ -104,7 +105,7 @@ const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwarde
 
 RadiosComponent.displayName = 'Radios';
 
-export default Object.assign(RadiosComponent, {
+export const Radios = Object.assign(RadiosComponent, {
   Item: RadiosItem,
   Divider: RadiosDivider,
 });

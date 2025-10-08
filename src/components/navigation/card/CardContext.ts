@@ -1,10 +1,10 @@
-import { CardType } from '@util/types/NHSUKTypes';
+'use client';
+
 import { createContext } from 'react';
+import { type CardType } from '#util/types/index.js';
 
 export interface ICardContext {
   cardType?: CardType;
 }
 
-const CardContext = createContext<ICardContext>({});
-
-export default CardContext;
+export const CardContext = createContext<ICardContext>({});

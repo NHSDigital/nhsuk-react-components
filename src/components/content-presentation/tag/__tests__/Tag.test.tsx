@@ -1,6 +1,6 @@
-import React, { ComponentPropsWithoutRef } from 'react';
 import { render } from '@testing-library/react';
-import Tag from '../Tag';
+import { type ComponentPropsWithoutRef } from 'react';
+import { Tag } from '..';
 
 describe('Tag', () => {
   it('matches snapshot', () => {

@@ -1,3 +1,5 @@
+'use client';
+
 import { createContext } from 'react';
 
 export enum TableSection {
@@ -6,6 +8,4 @@ export enum TableSection {
   BODY,
 }
 
-const TableSectionContext = createContext<TableSection>(TableSection.NONE);
-
-export default TableSectionContext;
+export const TableSectionContext = createContext<TableSection>(TableSection.NONE);

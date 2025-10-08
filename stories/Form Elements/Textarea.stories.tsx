@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Textarea, TextInput } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react-vite';
+import { useState } from 'react';
+import { TextInput, Textarea } from '#components';
 
 const meta: Meta<typeof Textarea> = {
   title: 'Form Elements/Textarea',

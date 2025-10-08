@@ -1,0 +1,17 @@
+{
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "declaration": true,
+    "declarationMap": true,
+    "jsx": "react-jsx",
+    "lib": ["ESNext", "DOM"],
+    "outDir": "./dist",
+    "rootDir": "./src",
+    "strict": true,
+    "sourceMap": true,
+    "target": "ES2015",
+    "types": ["node"]
+  },
+  "include": ["./src/**/*.ts", "./src/**/*.tsx"],
+  "exclude": ["**/*.test.ts", "**/*.test.tsx", "./src/setupTests.ts"]
+}

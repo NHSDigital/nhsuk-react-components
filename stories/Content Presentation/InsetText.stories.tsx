@@ -1,6 +1,5 @@
-import React from 'react';
-import { InsetText } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react-vite';
+import { InsetText } from '#components';
 
 const meta: Meta<typeof InsetText> = {
   title: 'Content Presentation/InsetText',

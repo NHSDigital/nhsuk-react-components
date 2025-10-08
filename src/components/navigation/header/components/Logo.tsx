@@ -1,9 +1,11 @@
-import React, { FC, useContext, useEffect } from 'react';
-import HeaderContext, { IHeaderContext } from '../HeaderContext';
+'use client';
+
+import { useContext, useEffect, type FC } from 'react';
+import { HeaderContext, type IHeaderContext } from '../HeaderContext.js';
 
 export type LogoProps = NonNullable<IHeaderContext['logoProps']>;
 
-const Logo: FC<LogoProps> = (logo) => {
+export const Logo: FC<LogoProps> = (logo) => {
   const { organisationProps: organisation, setLogoProps } =
     useContext<IHeaderContext>(HeaderContext);
 
@@ -14,7 +16,7 @@ const Logo: FC<LogoProps> = (logo) => {
 
     setLogoProps(logo);
     return () => setLogoProps(undefined);
-  }, [logo]);
+  }, [logo, setLogoProps]);
 
   const { alt = 'NHS' } = logo;
 
@@ -60,5 +62,3 @@ const Logo: FC<LogoProps> = (logo) => {
 };
 
 Logo.displayName = 'Header.Logo';
-
-export default Logo;

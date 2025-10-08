@@ -1,6 +1,6 @@
-import React, { ComponentPropsWithoutRef, forwardRef } from 'react';
 import classNames from 'classnames';
-import { AsElementLink } from '@util/types/LinkTypes';
+import { forwardRef, type ComponentPropsWithoutRef } from 'react';
+import { type AsElementLink } from '#util/types/LinkTypes.js';
 
 export interface ContentsListItemLinkProps extends AsElementLink<HTMLAnchorElement> {
   current?: false;
@@ -60,6 +60,6 @@ const ContentsListComponent = forwardRef<HTMLElement, ContentsListProps>((props,
 ContentsListComponent.displayName = 'ContentsList';
 ContentsListItem.displayName = 'ContentsList.Item';
 
-export default Object.assign(ContentsListComponent, {
+export const ContentsList = Object.assign(ContentsListComponent, {
   Item: ContentsListItem,
 });

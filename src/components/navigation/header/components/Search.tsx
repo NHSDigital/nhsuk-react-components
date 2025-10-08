@@ -1,5 +1,5 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
-import { Search as SearchIcon } from '@components/content-presentation/icons';
+import { type ComponentPropsWithoutRef, type FC } from 'react';
+import { SearchIcon } from '#components/content-presentation/index.js';
 
 export interface SearchProps extends ComponentPropsWithoutRef<'form'> {
   name?: string;
@@ -8,7 +8,7 @@ export interface SearchProps extends ComponentPropsWithoutRef<'form'> {
   visuallyHiddenButton?: string;
 }
 
-const Search: FC<SearchProps> = ({
+export const Search: FC<SearchProps> = ({
   action = 'https://www.nhs.uk/search/',
   method = 'get',
   id = 'search',
@@ -41,5 +41,3 @@ const Search: FC<SearchProps> = ({
 };
 
 Search.displayName = 'Header.Search';
-
-export default Search;

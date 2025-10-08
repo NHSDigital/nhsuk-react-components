@@ -1,14 +1,15 @@
+'use client';
+
 import { createContext } from 'react';
 
-export interface ICheckboxContext {
+export interface ICheckboxesContext {
   name: string;
   getBoxId: (reference: string) => string | undefined;
   leaseReference: () => string;
   unleaseReference: (reference: string) => void;
 }
 
-export default createContext<ICheckboxContext>({
-  /* eslint-disable @typescript-eslint/no-empty-function */
+export const CheckboxesContext = createContext<ICheckboxesContext>({
   name: '',
   getBoxId: () => undefined,
   leaseReference: () => '',

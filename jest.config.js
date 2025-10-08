@@ -1,24 +1,18 @@
-const { pathsToModuleNameMapper } = require('ts-jest');
-const { compilerOptions } = require('./tsconfig.json');
-
-const jestConfig = {
-  testEnvironment: 'jsdom',
-  rootDir: './',
+/**
+ * Jest config
+ *
+ * @type {Config}
+ */
+export default {
+  collectCoverageFrom: ['<rootDir>/src/**/*.{js,mjs,ts,tsx}'],
+  extensionsToTreatAsEsm: ['.jsx', '.ts', '.tsx'],
   setupFilesAfterEnv: ['<rootDir>/src/setupTests.ts'],
-  collectCoverageFrom: ['<rootDir>/src/**/*.{ts,tsx}'],
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
-    prefix: '<rootDir>',
-  }),
+  testEnvironment: 'jsdom',
   transform: {
-    '^.+\\.(t|j)sx?$': [
-      'ts-jest',
-      {
-        babelConfig: {
-          plugins: ['@babel/plugin-transform-modules-commonjs'],
-        },
-      },
-    ],
+    '^.+\\.(js|mjs|ts|tsx)$': ['babel-jest', { rootMode: 'upward' }],
   },
 };
 
-module.exports = jestConfig;
+/**
+ * @import { Config } from 'jest'
+ */

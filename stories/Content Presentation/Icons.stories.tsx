@@ -1,15 +1,14 @@
-import React from 'react';
+import { type Meta, type StoryObj } from '@storybook/react-vite';
 import {
   ArrowLeftIcon,
-  ArrowRightIcon,
   ArrowRightCircleIcon,
+  ArrowRightIcon,
   ChevronRightCircleIcon,
   CrossIcon,
   SearchIcon,
   TickIcon,
   UserIcon,
-} from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+} from '#components';
 
 const meta: Meta = {
   title: 'Content Presentation/Icons',

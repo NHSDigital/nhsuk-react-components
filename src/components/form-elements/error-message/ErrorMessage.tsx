@@ -1,11 +1,11 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
+import { type ComponentPropsWithoutRef, type FC } from 'react';
 
 export interface ErrorMessageProps extends ComponentPropsWithoutRef<'span'> {
   visuallyHiddenText?: string;
 }
 
-const ErrorMessageComponent: FC<ErrorMessageProps> = ({
+export const ErrorMessage: FC<ErrorMessageProps> = ({
   className,
   visuallyHiddenText = 'Error',
   children,
@@ -28,6 +28,4 @@ const ErrorMessageComponent: FC<ErrorMessageProps> = ({
   );
 };
 
-ErrorMessageComponent.displayName = 'ErrorMessage';
-
-export default ErrorMessageComponent;
+ErrorMessage.displayName = 'ErrorMessage';

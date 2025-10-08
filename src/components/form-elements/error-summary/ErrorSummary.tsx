@@ -1,16 +1,18 @@
-import React, {
+'use client';
+
+import classNames from 'classnames';
+import { type ErrorSummary as ErrorSummaryModule } from 'nhsuk-frontend';
+import {
   Children,
-  ComponentPropsWithoutRef,
-  FC,
   createRef,
   forwardRef,
-  useState,
   useEffect,
+  useState,
+  type ComponentPropsWithoutRef,
+  type FC,
 } from 'react';
-import classNames from 'classnames';
-import { AsElementLink } from '@util/types/LinkTypes';
-import { childIsOfComponentType } from '@util/types/TypeGuards';
-import { type ErrorSummary } from 'nhsuk-frontend';
+import { childIsOfComponentType } from '#util/types/TypeGuards.js';
+import { type AsElementLink } from '#util/types/LinkTypes.js';
 
 export type TitleProps = ComponentPropsWithoutRef<'h2'>;
 
@@ -65,7 +67,7 @@ export interface ErrorSummaryProps extends ComponentPropsWithoutRef<'div'> {
 const ErrorSummaryComponent = forwardRef<HTMLDivElement, ErrorSummaryProps>(
   ({ children, className, disableAutoFocus, ...rest }, forwardedRef) => {
     const [moduleRef] = useState(() => forwardedRef || createRef<HTMLDivElement>());
-    const [instance, setInstance] = useState<ErrorSummary>();
+    const [instance, setInstance] = useState<ErrorSummaryModule>();
 
     useEffect(() => {
       if (!('current' in moduleRef) || !moduleRef.current || instance) {
@@ -107,7 +109,7 @@ Title.displayName = 'ErrorSummary.Title';
 List.displayName = 'ErrorSummary.List';
 ListItem.displayName = 'ErrorSummary.ListItem';
 
-export default Object.assign(ErrorSummaryComponent, {
+export const ErrorSummary = Object.assign(ErrorSummaryComponent, {
   Title,
   List,
   ListItem,

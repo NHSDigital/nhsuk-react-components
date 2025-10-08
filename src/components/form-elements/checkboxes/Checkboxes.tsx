@@ -1,12 +1,13 @@
-import React, { ComponentPropsWithoutRef, createRef, forwardRef, useEffect, useState } from 'react';
+'use client';
+
 import classNames from 'classnames';
-import { FormElementProps } from '@util/types/FormTypes';
-import FormGroup from '@components/utils/FormGroup';
-import CheckboxContext, { ICheckboxContext } from './CheckboxContext';
-import CheckboxesItem from './components/Item';
-import CheckboxesDivider from './components/Divider';
-import { generateRandomName } from '@util/RandomID';
-import { type Checkboxes } from 'nhsuk-frontend';
+import { type Checkboxes as CheckboxesModule } from 'nhsuk-frontend';
+import { createRef, forwardRef, useEffect, useState, type ComponentPropsWithoutRef } from 'react';
+import { CheckboxesDivider, CheckboxesItem } from './components/index.js';
+import { CheckboxesContext, type ICheckboxesContext } from './CheckboxesContext.js';
+import { FormGroup } from '#components/utils/index.js';
+import { generateRandomName } from '#util/tools/index.js';
+import { type FormElementProps } from '#util/types/FormTypes.js';
 
 export interface CheckboxesProps
   extends ComponentPropsWithoutRef<'div'>,
@@ -18,7 +19,7 @@ const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, 
   const { children, idPrefix, ...rest } = props;
 
   const [moduleRef] = useState(() => forwardedRef || createRef<HTMLDivElement>());
-  const [instance, setInstance] = useState<Checkboxes>();
+  const [instance, setInstance] = useState<CheckboxesModule>();
 
   const _boxReferences: string[] = [];
   let _boxCount: number = 0;
@@ -70,7 +71,7 @@ const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, 
       {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
       {({ className, name, id, idPrefix, error, ...restRenderProps }) => {
         resetCheckboxIds();
-        const contextValue: ICheckboxContext = {
+        const contextValue: ICheckboxesContext = {
           name,
           getBoxId: (reference) => getBoxId(id, reference),
           leaseReference,
@@ -84,7 +85,7 @@ const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, 
             ref={moduleRef}
             {...restRenderProps}
           >
-            <CheckboxContext.Provider value={contextValue}>{children}</CheckboxContext.Provider>
+            <CheckboxesContext.Provider value={contextValue}>{children}</CheckboxesContext.Provider>
           </div>
         );
       }}
@@ -94,7 +95,7 @@ const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, 
 
 CheckboxesComponent.displayName = 'Checkboxes';
 
-export default Object.assign(CheckboxesComponent, {
+export const Checkboxes = Object.assign(CheckboxesComponent, {
   Item: CheckboxesItem,
   Divider: CheckboxesDivider,
 });

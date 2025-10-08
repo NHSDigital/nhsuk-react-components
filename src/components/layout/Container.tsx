@@ -1,11 +1,11 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
+import { type ComponentPropsWithoutRef, type FC } from 'react';
 
 export interface ContainerProps extends ComponentPropsWithoutRef<'div'> {
   fluid?: boolean;
 }
 
-const Container: FC<ContainerProps> = ({ className, fluid, ...rest }) => (
+export const Container: FC<ContainerProps> = ({ className, fluid, ...rest }) => (
   <div
     className={classNames(
       { 'nhsuk-width-container': !fluid },
@@ -15,5 +15,3 @@ const Container: FC<ContainerProps> = ({ className, fluid, ...rest }) => (
     {...rest}
   />
 );
-
-export default Container;

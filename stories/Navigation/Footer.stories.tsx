@@ -1,6 +1,5 @@
-import React from 'react';
-import { Footer } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react-vite';
+import { Footer } from '#components';
 
 const meta: Meta<typeof Footer> = {
   title: 'Navigation/Footer',

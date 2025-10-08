@@ -1,4 +1,4 @@
-import { AnchorHTMLAttributes, ButtonHTMLAttributes, ElementType } from 'react';
+import { type AnchorHTMLAttributes, type ButtonHTMLAttributes, type ElementType } from 'react';
 
 export type AsElementLink<T extends HTMLElement> = (T extends HTMLButtonElement
   ? ButtonHTMLAttributes<T>

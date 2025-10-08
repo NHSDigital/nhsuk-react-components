@@ -1,6 +1,6 @@
-import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
-import TableContainer from '../TableContainer';
+import { createRef } from 'react';
+import { TableContainer } from '..';
 
 describe('TableContainer', () => {
   it('matches snapshot', () => {

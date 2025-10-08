@@ -1,9 +1,10 @@
-import React, { forwardRef, useContext } from 'react';
+'use client';
+
 import classNames from 'classnames';
-import HeadingLevel, { HeadingLevelProps } from '@components/utils/HeadingLevel';
-import CardContext from '../CardContext';
-import { CareCardType } from '../../../../util/types/NHSUKTypes';
-import { cardTypeIsCareCard } from '@util/types/TypeGuards';
+import { forwardRef, useContext } from 'react';
+import { CardContext } from '../CardContext.js';
+import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
+import { cardTypeIsCareCard, type CareCardType } from '#util/types/index.js';
 
 const genHiddenText = (cardType: CareCardType): string => {
   switch (cardType) {
@@ -36,30 +37,30 @@ const CareHeading = forwardRef<HTMLHeadingElement, HeadingLevelProps & { careTyp
   ),
 );
 
-const CardHeading = forwardRef<HTMLHeadingElement, HeadingLevelProps>((props, forwardedRef) => {
-  const { cardType } = useContext(CardContext);
+export const CardHeading = forwardRef<HTMLHeadingElement, HeadingLevelProps>(
+  (props, forwardedRef) => {
+    const { cardType } = useContext(CardContext);
 
-  if (cardTypeIsCareCard(cardType)) {
-    return <CareHeading {...props} careType={cardType} />;
-  }
+    if (cardTypeIsCareCard(cardType)) {
+      return <CareHeading {...props} careType={cardType} />;
+    }
 
-  const { className, headingLevel = 'h2', ...rest } = props;
+    const { className, headingLevel = 'h2', ...rest } = props;
 
-  return (
-    <HeadingLevel
-      className={classNames(
-        'nhsuk-card__heading',
-        { 'nhsuk-card__heading--feature': cardType === 'feature' },
-        className,
-      )}
-      headingLevel={headingLevel}
-      ref={forwardedRef}
-      {...rest}
-    />
-  );
-});
+    return (
+      <HeadingLevel
+        className={classNames(
+          'nhsuk-card__heading',
+          { 'nhsuk-card__heading--feature': cardType === 'feature' },
+          className,
+        )}
+        headingLevel={headingLevel}
+        ref={forwardedRef}
+        {...rest}
+      />
+    );
+  },
+);
 
 CareHeading.displayName = 'Card.CareHeading';
 CardHeading.displayName = 'Card.Heading';
-
-export default CardHeading;

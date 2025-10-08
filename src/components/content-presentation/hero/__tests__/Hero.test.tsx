@@ -1,6 +1,6 @@
-import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
-import Hero from '..';
+import { createRef } from 'react';
+import { Hero } from '..';
 
 describe('Hero', () => {
   it('matches snapshot', () => {

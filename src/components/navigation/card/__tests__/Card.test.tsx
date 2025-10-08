@@ -1,9 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from 'react';
 import { render } from '@testing-library/react';
-import { CardType } from '@util/types/NHSUKTypes';
-import Card from '../Card';
-import { renderClient, renderServer } from '@util/components';
+import { Card } from '..';
+import { renderClient, renderServer } from '#util/components';
+import { type CardType } from '#util/types';
 
 describe('Card', () => {
   it('matches snapshot', async () => {

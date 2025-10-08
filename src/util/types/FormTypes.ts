@@ -1,27 +1,28 @@
-import { ComponentPropsWithRef } from 'react';
-import { ErrorMessageProps } from '@components/form-elements/error-message/ErrorMessage';
-import { HintTextProps } from '@components/form-elements/hint-text/HintText';
-import { LabelProps } from '@components/form-elements/label/Label';
-import { FieldsetProps } from '@components/form-elements/fieldset/Fieldset';
-import { LegendProps } from '@components/form-elements/legend/Legend';
+import { type ComponentPropsWithRef } from 'react';
+
+import { type ErrorMessageProps } from '#components/form-elements/error-message/index.js';
+import { type FieldsetProps } from '#components/form-elements/fieldset/index.js';
+import { type HintTextProps } from '#components/form-elements/hint-text/index.js';
+import { type LabelProps } from '#components/form-elements/label/index.js';
+import { type LegendProps } from '#components/form-elements/legend/index.js';
 
 export interface FormElementProps {
-  fieldsetProps?: FieldsetProps;
-  legend?: string;
-  legendProps?: LegendProps;
-  label?: string;
-  labelProps?: LabelProps;
-  error?: string;
-  errorProps?: ErrorMessageProps;
-  hint?: string;
-  hintProps?: HintTextProps;
-  formGroupProps?: ComponentPropsWithRef<'div'> & {
+  'fieldsetProps'?: FieldsetProps;
+  'legend'?: string;
+  'legendProps'?: LegendProps;
+  'label'?: string;
+  'labelProps'?: LabelProps;
+  'error'?: string;
+  'errorProps'?: ErrorMessageProps;
+  'hint'?: string;
+  'hintProps'?: HintTextProps;
+  'formGroupProps'?: ComponentPropsWithRef<'div'> & {
     'data-module'?: string;
     'data-maxlength'?: number;
     'data-maxwords'?: number;
     'data-threshold'?: number;
   };
-  id?: string;
-  name?: string;
+  'id'?: string;
+  'name'?: string;
   'aria-describedby'?: string;
 }

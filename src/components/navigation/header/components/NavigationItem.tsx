@@ -1,6 +1,6 @@
-import React, { FC } from 'react';
 import classNames from 'classnames';
-import { AsElementLink } from '@util/types/LinkTypes';
+import { type FC } from 'react';
+import { type AsElementLink } from '#util/types/LinkTypes.js';
 
 export interface NavigationItemProps extends AsElementLink<HTMLAnchorElement> {
   active?: boolean;
@@ -10,14 +10,14 @@ export interface NavigationItemProps extends AsElementLink<HTMLAnchorElement> {
 const NavigationItemInner: FC<NavigationItemProps> = ({ active, children, current }) => {
   // Wrap active links in strong element so users who override colours
   // or styles still have some indicator of the current nav item
-  return active ?? current ? (
+  return (active ?? current) ? (
     <strong className="nhsuk-header__navigation-item-current-fallback">{children}</strong>
   ) : (
     children
   );
 };
 
-const NavigationItem: FC<NavigationItemProps> = ({
+export const NavigationItem: FC<NavigationItemProps> = ({
   className,
   children,
   active,
@@ -49,5 +49,3 @@ const NavigationItem: FC<NavigationItemProps> = ({
 };
 
 NavigationItem.displayName = 'Header.NavigationItem';
-
-export default NavigationItem;

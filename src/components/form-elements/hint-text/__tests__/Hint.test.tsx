@@ -1,6 +1,5 @@
-import React from 'react';
 import { render } from '@testing-library/react';
-import HintText from '../';
+import { HintText } from '..';
 
 describe('Hint', () => {
   it('matches snapshot', () => {

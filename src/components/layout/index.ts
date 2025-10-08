@@ -1,5 +1,3 @@
-import Container from './Container';
-import Col from './Col';
-import Row from './Row';
-
-export { Container, Col, Row };
+export * from './Container.js';
+export * from './Col.js';
+export * from './Row.js';

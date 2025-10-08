@@ -1,6 +1,5 @@
-import React from 'react';
-import { WarningCallout } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react-vite';
+import { WarningCallout } from '#components';
 
 const meta: Meta<typeof WarningCallout> = {
   title: 'Content Presentation/WarningCallout',

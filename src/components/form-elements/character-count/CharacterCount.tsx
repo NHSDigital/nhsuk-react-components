@@ -1,8 +1,10 @@
-import React, { ComponentPropsWithoutRef, createRef, forwardRef, useEffect, useState } from 'react';
-import { type CharacterCount } from 'nhsuk-frontend';
+'use client';
+
 import classNames from 'classnames';
-import FormGroup from '@components/utils/FormGroup';
-import { FormElementProps } from '@util/types/FormTypes';
+import { type CharacterCount as CharacterCountModule } from 'nhsuk-frontend';
+import { createRef, forwardRef, useEffect, useState, type ComponentPropsWithoutRef } from 'react';
+import { FormGroup } from '#components/utils/index.js';
+import { type FormElementProps } from '#util/types/FormTypes.js';
 
 export interface CharacterCountProps
   extends ComponentPropsWithoutRef<'textarea'>,
@@ -12,10 +14,10 @@ export interface CharacterCountProps
   threshold?: number;
 }
 
-const CharacterCountComponent = forwardRef<HTMLTextAreaElement, CharacterCountProps>(
+export const CharacterCount = forwardRef<HTMLTextAreaElement, CharacterCountProps>(
   ({ maxLength, maxWords, threshold, formGroupProps, ...rest }, forwardedRef) => {
     const [moduleRef] = useState(() => formGroupProps?.ref || createRef<HTMLDivElement>());
-    const [instance, setInstance] = useState<CharacterCount>();
+    const [instance, setInstance] = useState<CharacterCountModule>();
 
     useEffect(() => {
       if (!('current' in moduleRef) || !moduleRef.current || instance) {
@@ -34,12 +36,12 @@ const CharacterCountComponent = forwardRef<HTMLTextAreaElement, CharacterCountPr
         inputType="textarea"
         formGroupProps={{
           ...formGroupProps,
-          className: classNames('nhsuk-character-count', formGroupProps?.className),
+          'className': classNames('nhsuk-character-count', formGroupProps?.className),
           'data-module': 'nhsuk-character-count',
           'data-maxlength': maxLength,
           'data-maxwords': maxWords,
           'data-threshold': threshold,
-          ref: moduleRef,
+          'ref': moduleRef,
         }}
         {...rest}
       >
@@ -69,6 +71,4 @@ const CharacterCountComponent = forwardRef<HTMLTextAreaElement, CharacterCountPr
   },
 );
 
-CharacterCountComponent.displayName = 'CharacterCount';
-
-export default CharacterCountComponent;
+CharacterCount.displayName = 'CharacterCount';

@@ -1,11 +1,6 @@
-import React from 'react';
-import { Meta, StoryObj } from '@storybook/react';
-import NavAZ from '@patterns/nav-a-z';
-import HeadingLevel from '@components/utils/HeadingLevel';
-import Container from '@components/layout/Container';
-import Row from '@components/layout/Row';
-import Col from '@components/layout/Col';
-import { Card } from '../../src';
+import { type Meta, type StoryObj } from '@storybook/react-vite';
+import { Card, Col, Container, HeadingLevel, Row } from '#components';
+import { NavAZ } from '#patterns';
 
 /**
  * A to Z is a way of presenting a number of pages alphabetically.

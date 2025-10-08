@@ -1,6 +1,6 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
-import Legend from '../legend/Legend';
+import { type ComponentPropsWithoutRef, type FC } from 'react';
+import { Legend } from '#components/form-elements/legend/index.js';
 
 export type FieldsetProps = ComponentPropsWithoutRef<'fieldset'>;
 
@@ -18,6 +18,6 @@ const FieldsetComponent: FC<FieldsetProps> = ({ children, className, ...rest }) 
 
 FieldsetComponent.displayName = 'Fieldset';
 
-export default Object.assign(FieldsetComponent, {
+export const Fieldset = Object.assign(FieldsetComponent, {
   Legend,
 });

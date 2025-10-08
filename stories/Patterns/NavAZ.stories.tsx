@@ -1,6 +1,5 @@
-import React from 'react';
-import { NavAZ } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react-vite';
+import { NavAZ } from '#patterns';
 
 /**
  * This component is generally used as part of the 'A to Z page' pattern.

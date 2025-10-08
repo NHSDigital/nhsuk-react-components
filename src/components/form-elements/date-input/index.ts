@@ -1,1 +1,2 @@
-export { default } from './DateInput';
+export * from './DateInputContext.js';
+export * from './DateInput.js';

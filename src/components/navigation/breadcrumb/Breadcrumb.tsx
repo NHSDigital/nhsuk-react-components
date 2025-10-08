@@ -1,8 +1,7 @@
-import React, { Children, ComponentPropsWithoutRef, ReactNode, forwardRef } from 'react';
 import classNames from 'classnames';
-import { AsElementLink } from '@util/types/LinkTypes';
-import { childIsOfComponentType } from '@util/types/TypeGuards';
-import BackLink from '../back-link';
+import { Children, forwardRef, type ComponentPropsWithoutRef, type ReactNode } from 'react';
+import { BackLink } from '#components/navigation/back-link/index.js';
+import { childIsOfComponentType, type AsElementLink } from '#util/types/index.js';
 
 export type ItemProps = AsElementLink<HTMLAnchorElement>;
 
@@ -68,7 +67,7 @@ BreadcrumbComponent.displayName = 'Breadcrumb';
 Item.displayName = 'Breadcrumb.Item';
 Back.displayName = 'Breadcrumb.Back';
 
-export default Object.assign(BreadcrumbComponent, {
+export const Breadcrumb = Object.assign(BreadcrumbComponent, {
   Item,
   Back,
 });

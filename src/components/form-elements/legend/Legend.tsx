@@ -1,7 +1,7 @@
-import React, { ComponentPropsWithoutRef, FC } from 'react';
 import classNames from 'classnames';
-import { NHSUKSize } from '@util/types/NHSUKTypes';
-import HeadingLevel, { HeadingLevelProps } from '@components/utils/HeadingLevel';
+import { type ComponentPropsWithoutRef, type FC } from 'react';
+import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
+import { type NHSUKSize } from '#util/types/NHSUKTypes.js';
 
 export interface LegendProps
   extends ComponentPropsWithoutRef<'legend'>,
@@ -10,7 +10,7 @@ export interface LegendProps
   size?: NHSUKSize;
 }
 
-const LegendComponent: FC<LegendProps> = ({
+export const Legend: FC<LegendProps> = ({
   className,
   children,
   isPageHeading,
@@ -42,6 +42,4 @@ const LegendComponent: FC<LegendProps> = ({
   );
 };
 
-LegendComponent.displayName = 'Fieldset.Legend';
-
-export default LegendComponent;
+Legend.displayName = 'Fieldset.Legend';

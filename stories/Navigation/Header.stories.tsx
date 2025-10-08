@@ -1,6 +1,6 @@
-import React, { ComponentProps } from 'react';
-import { Header } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react-vite';
+import { type ComponentProps } from 'react';
+import { Header } from '#components';
 
 const meta: Meta<typeof Header> = {
   title: 'Navigation/Header',

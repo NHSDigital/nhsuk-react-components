@@ -1,1 +1,1 @@
-export { default } from './ErrorSummary';
+export * from './ErrorSummary.js';

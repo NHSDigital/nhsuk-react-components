@@ -1,19 +1,20 @@
-import React, {
-  ChangeEvent,
-  ComponentPropsWithoutRef,
-  EventHandler,
-  useEffect,
-  useState,
+'use client';
+
+import classNames from 'classnames';
+import {
   createRef,
   forwardRef,
+  useState,
+  type ChangeEvent,
+  type ComponentPropsWithoutRef,
+  type EventHandler,
 } from 'react';
-import classNames from 'classnames';
-import { DayInput, MonthInput, YearInput } from './components/IndividualDateInputs';
-import FormGroup from '@components/utils/FormGroup';
-import DateInputContext, { IDateInputContext } from './DateInputContext';
-import { FormElementProps } from '@util/types/FormTypes';
+import { DayInput, MonthInput, YearInput } from './components/index.js';
+import { DateInputContext, type IDateInputContext } from './DateInputContext.js';
+import { FormGroup } from '#components/utils/index.js';
+import { type FormElementProps } from '#util/types/FormTypes.js';
 
-type DateInputValue = {
+export type DateInputValue = {
   day: string;
   month: string;
   year: string;
@@ -50,16 +51,6 @@ const DateInputComponent = forwardRef<HTMLDivElement, DateInputProps>(
       year: value?.year ?? '',
     });
 
-    useEffect(() => {
-      const newState = { ...internalDate };
-      const { day, month, year } = value ?? {};
-      if (day && day !== internalDate.day) newState.day = day;
-      if (month && month !== internalDate.month) newState.month = month;
-      if (year && year !== internalDate.year) newState.year = year;
-
-      return setInternalDate(newState);
-    }, [value]);
-
     const handleChange = (inputType: InputType, event: ChangeEvent<HTMLInputElement>): void => {
       event.stopPropagation();
 
@@ -85,7 +76,6 @@ const DateInputComponent = forwardRef<HTMLDivElement, DateInputProps>(
         inputType="dateinput"
         {...rest}
       >
-        {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
         {({ className, name, id, error, ...restRenderProps }) => {
           const contextValue: IDateInputContext = {
             id,
@@ -121,7 +111,7 @@ const DateInputComponent = forwardRef<HTMLDivElement, DateInputProps>(
 
 DateInputComponent.displayName = 'DateInput';
 
-export default Object.assign(DateInputComponent, {
+export const DateInput = Object.assign(DateInputComponent, {
   Day: DayInput,
   Month: MonthInput,
   Year: YearInput,

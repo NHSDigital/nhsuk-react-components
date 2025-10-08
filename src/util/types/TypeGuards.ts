@@ -1,29 +1,21 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { FC, ReactElement, JSXElementConstructor, ReactNode, ReactPortal } from 'react';
-import { CardType, CareCardType } from './NHSUKTypes';
+import {
+  isValidElement,
+  type FC,
+  type HTMLAttributes,
+  type ReactElement,
+  type ReactNode,
+} from 'react';
+import { type CardType, type CareCardType } from './NHSUKTypes.js';
 
 /**
  * Assert that a child item is of the given component type.
  */
-export const childIsOfComponentType = (
-  child:
-    | string
-    | number
-    | boolean
-    | ReactElement<any, string | JSXElementConstructor<any>>
-    | Iterable<ReactNode>
-    | ReactPortal
-    | null
-    | undefined,
-  component: FC,
-): child is
-  | React.ReactElement<any, string | React.JSXElementConstructor<any>>
-  | React.ReactPortal =>
-  child !== undefined &&
-  child !== null &&
-  typeof child === 'object' &&
-  'type' in child &&
-  child.type === component;
+export const childIsOfComponentType = <T extends HTMLElement, P extends HTMLAttributes<T>>(
+  child: ReactNode,
+  component: FC<P>,
+): child is ReactElement<P, typeof component> => {
+  return isValidElement<typeof component>(child) && child.type === component;
+};
 
 /**
  * Check whether the given card type is that of a care card.

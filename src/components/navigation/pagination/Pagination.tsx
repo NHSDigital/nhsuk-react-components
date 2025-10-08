@@ -1,9 +1,9 @@
-import React, { ComponentPropsWithoutRef, forwardRef } from 'react';
 import classNames from 'classnames';
-import { ArrowLeft, ArrowRight } from '@components/content-presentation/icons';
-import { AsElementLink } from '@util/types/LinkTypes';
+import { forwardRef, type ComponentPropsWithoutRef } from 'react';
+import { ArrowLeftIcon, ArrowRightIcon } from '#components/content-presentation/index.js';
+import { type AsElementLink } from '#util/types/LinkTypes.js';
 
-interface PaginationLinkProps extends AsElementLink<HTMLAnchorElement> {
+export interface PaginationLinkProps extends AsElementLink<HTMLAnchorElement> {
   previous?: boolean;
   next?: boolean;
 }
@@ -32,8 +32,8 @@ const PaginationLink = forwardRef<HTMLAnchorElement, PaginationLinkProps>(
         </span>
         <span className="nhsuk-u-visually-hidden">:</span>
         <span className="nhsuk-pagination__page">{children}</span>
-        {previous ? <ArrowLeft /> : null}
-        {next ? <ArrowRight /> : null}
+        {previous ? <ArrowLeftIcon /> : null}
+        {next ? <ArrowRightIcon /> : null}
       </Element>
     </li>
   ),
@@ -58,6 +58,6 @@ const PaginationComponent = forwardRef<HTMLElement, PaginationProps>(
 PaginationComponent.displayName = 'Pagination';
 PaginationLink.displayName = 'Pagination.Link';
 
-export default Object.assign(PaginationComponent, {
+export const Pagination = Object.assign(PaginationComponent, {
   Link: PaginationLink,
 });

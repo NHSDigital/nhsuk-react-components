@@ -1,14 +1,23 @@
-import React, { ComponentPropsWithoutRef, ReactNode, useContext, useEffect, useState } from 'react';
+'use client';
+
 import classNames from 'classnames';
-import ErrorMessage from '../form-elements/error-message/ErrorMessage';
-import Fieldset from '../form-elements/fieldset/Fieldset';
-import HintText from '../form-elements/hint-text/HintText';
-import Label from '../form-elements/label/Label';
-import Legend from '../form-elements/legend/Legend';
-import { useFormContext } from '../form-elements/form';
-import { generateRandomID } from '../../util/RandomID';
-import { FormElementProps } from '../../util/types/FormTypes';
-import FormGroupContext, { IFormGroupContext } from './FormGroupContext';
+import {
+  useContext,
+  useEffect,
+  useState,
+  type ComponentPropsWithoutRef,
+  type JSX,
+  type ReactNode,
+} from 'react';
+import { FormGroupContext, type IFormGroupContext } from './FormGroupContext.js';
+import { ErrorMessage } from '#components/form-elements/error-message/index.js';
+import { Fieldset } from '#components/form-elements/fieldset/index.js';
+import { useFormContext } from '#components/form-elements/form/index.js';
+import { HintText } from '#components/form-elements/hint-text/index.js';
+import { Label } from '#components/form-elements/label/index.js';
+import { Legend } from '#components/form-elements/legend/index.js';
+import { generateRandomID } from '#util/tools/index.js';
+import { type FormElementProps } from '#util/types/FormTypes.js';
 
 type ExcludedProps =
   | Extract<
@@ -40,7 +49,9 @@ export type FormGroupProps<T> = FormElementProps & {
   inputType: 'input' | 'radios' | 'select' | 'checkboxes' | 'dateinput' | 'textarea';
 };
 
-const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T>): JSX.Element => {
+export const FormGroup = <T extends BaseFormElementRenderProps>(
+  props: FormGroupProps<T>,
+): JSX.Element => {
   const {
     children,
     hint,
@@ -94,12 +105,12 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
   useEffect(() => {
     passError(elementID, disableErrorFromComponents ? false : Boolean(error));
     return () => passError(elementID, false);
-  }, [elementID, error]);
+  }, [disableErrorFromComponents, elementID, error, passError]);
 
   useEffect(() => {
     registerComponent(elementID);
     return () => registerComponent(elementID, true);
-  }, []);
+  }, [elementID, registerComponent]);
 
   return (
     <div
@@ -141,5 +152,3 @@ const FormGroup = <T extends BaseFormElementRenderProps>(props: FormGroupProps<T
     </div>
   );
 };
-
-export default FormGroup;

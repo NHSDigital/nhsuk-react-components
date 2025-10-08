@@ -1,6 +1,6 @@
-import React, { createRef } from 'react';
 import { render } from '@testing-library/react';
-import WarningCallout from '../WarningCallout';
+import { createRef } from 'react';
+import { WarningCallout } from '..';
 
 describe('WarningCallout', () => {
   it('matches snapshot', () => {

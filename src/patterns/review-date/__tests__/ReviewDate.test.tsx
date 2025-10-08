@@ -1,6 +1,5 @@
-import React from 'react';
 import { render } from '@testing-library/react';
-import ReviewDate from '../';
+import { ReviewDate } from '..';
 
 describe('ReviewDate', () => {
   it('matches snapshot', () => {

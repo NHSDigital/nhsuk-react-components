@@ -1,5 +1,5 @@
-import { Label } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react-vite';
+import { Label } from '#components';
 
 const meta: Meta<typeof Label> = {
   title: 'Form Elements/Label',

@@ -1,7 +1,16 @@
-import React, { ForwardedRef, MouseEvent, useEffect, useState, forwardRef, createRef } from 'react';
-import { AsElementLink } from '@util/types/LinkTypes';
-import { type Button } from 'nhsuk-frontend';
+'use client';
+
 import classNames from 'classnames';
+import { type Button as ButtonModule } from 'nhsuk-frontend';
+import {
+  createRef,
+  forwardRef,
+  useEffect,
+  useState,
+  type ForwardedRef,
+  type MouseEvent,
+} from 'react';
+import { type AsElementLink } from '#util/types/LinkTypes.js';
 
 export interface ButtonProps extends AsElementLink<HTMLButtonElement> {
   href?: never;
@@ -37,7 +46,7 @@ const ButtonComponent = forwardRef<HTMLButtonElement, ButtonProps>((props, forwa
   } = props;
 
   const [moduleRef] = useState(() => forwardedRef || createRef<HTMLButtonElement>());
-  const [instance, setInstance] = useState<Button>();
+  const [instance, setInstance] = useState<ButtonModule>();
 
   useEffect(() => {
     if (!('current' in moduleRef) || !moduleRef.current || instance) {
@@ -93,7 +102,7 @@ const ButtonLinkComponent = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
     } = props;
 
     const [moduleRef] = useState(() => forwardedRef || createRef<HTMLAnchorElement>());
-    const [instance, setInstance] = useState<Button>();
+    const [instance, setInstance] = useState<ButtonModule>();
 
     useEffect(() => {
       if (!('current' in moduleRef) || !moduleRef.current || instance) {
@@ -135,7 +144,7 @@ const ButtonLinkComponent = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
   },
 );
 
-const ButtonWrapper = forwardRef<
+export const Button = forwardRef<
   HTMLAnchorElement | HTMLButtonElement,
   ButtonLinkProps | ButtonProps
 >((props, forwardedRef) => {
@@ -148,6 +157,4 @@ const ButtonWrapper = forwardRef<
 
 ButtonLinkComponent.displayName = 'Button.Link';
 ButtonComponent.displayName = 'Button';
-ButtonWrapper.displayName = 'Button';
-
-export default ButtonWrapper;
+Button.displayName = 'Button';

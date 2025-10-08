@@ -1,6 +1,6 @@
-import { type JSX } from 'react';
-import { ServerOptions, renderToString } from 'react-dom/server';
-import { RenderOptions as ClientOptions, act, render } from '@testing-library/react';
+import { render, type RenderOptions as ClientOptions } from '@testing-library/react';
+import { act, type JSX } from 'react';
+import { renderToString, type ServerOptions } from 'react-dom/server';
 
 type RenderOptions =
   | { moduleName?: never; className: string }
@@ -21,7 +21,7 @@ export async function renderServer(element: JSX.Element, options: RenderOptions 
   container.innerHTML = renderToString(element, serverOptions);
 
   // Find rendered modules
-  const modules = [...container.querySelectorAll<HTMLElement>(selector)];
+  const modules = Array.from(container.querySelectorAll<HTMLElement>(selector));
   if (!modules.length) {
     throw new Error(`renderServer: No modules found: ${selector}`);
   }
@@ -40,7 +40,7 @@ export async function renderClient(element: JSX.Element, options: RenderOptions 
   const { container } = await act(() => render(element, renderOptions));
 
   // Find rendered modules
-  const modules = [...container.querySelectorAll<HTMLElement>(selector)];
+  const modules = Array.from(container.querySelectorAll<HTMLElement>(selector));
   if (!modules.length) {
     throw new Error(`renderClient: No modules found: ${selector}`);
   }

@@ -1,10 +1,12 @@
-import React, { ComponentPropsWithoutRef, FC, useContext } from 'react';
-import HeaderContext, { IHeaderContext } from '../HeaderContext';
+'use client';
 
-export type ServiceNameProps = NonNullable<IHeaderContext['serviceProps']>;
-export type ServiceProps = Pick<ComponentPropsWithoutRef<'div'>, 'children'>;
+import { useContext, type ComponentPropsWithoutRef, type FC } from 'react';
+import { HeaderContext, type IHeaderContext } from '../HeaderContext.js';
 
-const ServiceName: FC<ServiceNameProps> = (service) =>
+export type ServiceNameInnerProps = NonNullable<IHeaderContext['serviceProps']>;
+export type ServiceNameProps = Pick<ComponentPropsWithoutRef<'div'>, 'children'>;
+
+const ServiceNameInner: FC<ServiceNameInnerProps> = (service) =>
   service.href ? (
     <a className="nhsuk-header__service-name" href={service.href}>
       {service.text}
@@ -13,7 +15,7 @@ const ServiceName: FC<ServiceNameProps> = (service) =>
     <span className="nhsuk-header__service-name">{service.text}</span>
   );
 
-const Service: FC<ServiceProps> = ({ children }) => {
+export const ServiceName: FC<ServiceNameProps> = ({ children }) => {
   const {
     logoProps: logo,
     organisationProps: organisation,
@@ -46,17 +48,15 @@ const Service: FC<ServiceProps> = ({ children }) => {
       {logoHref ? (
         <a className="nhsuk-header__service-logo" href={logoHref} aria-label={logoAriaLabel}>
           {children}
-          {combineLogoAndServiceNameLinks ? <ServiceName text={service.text} /> : null}
+          {combineLogoAndServiceNameLinks ? <ServiceNameInner text={service.text} /> : null}
         </a>
       ) : (
         <>
           {children}
-          {combineLogoAndServiceNameLinks ? <ServiceName text={service.text} /> : null}
+          {combineLogoAndServiceNameLinks ? <ServiceNameInner text={service.text} /> : null}
         </>
       )}
-      {service?.text && !combineLogoAndServiceNameLinks ? <ServiceName {...service} /> : null}
+      {service?.text && !combineLogoAndServiceNameLinks ? <ServiceNameInner {...service} /> : null}
     </div>
   );
 };
-
-export default Service;

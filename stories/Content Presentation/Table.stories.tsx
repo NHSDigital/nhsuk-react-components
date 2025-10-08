@@ -1,6 +1,5 @@
-import React from 'react';
-import { Col, HintText, Row, Table } from '../../src';
-import { Meta, StoryObj } from '@storybook/react';
+import { type Meta, type StoryObj } from '@storybook/react-vite';
+import { Col, HintText, Row, Table } from '#components';
 
 const meta: Meta<typeof Table> = {
   title: 'Content Presentation/Table',
