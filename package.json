@@ -52,8 +52,8 @@
   ],
   "scripts": {
     "cleanup": "rm -rf dist/ > /dev/null",
-    "build": "yarn cleanup && rollup -c",
-    "storybook": "NODE_ENV=development storybook dev -p 6006",
+    "build": "NODE_ENV=production yarn cleanup && rollup -c",
+    "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "jest",
     "test:watch": "jest --watch",
