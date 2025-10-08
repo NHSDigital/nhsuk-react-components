@@ -10,6 +10,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    env:
+      CHROMATIC_BRANCH: ${{ github.event.pull_request.head.ref || github.ref_name }}
+      CHROMATIC_SHA: ${{ github.event.pull_request.head.sha || github.ref }}
+      CHROMATIC_SLUG: ${{ github.repository }}
+      CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -37,3 +44,20 @@ jobs:
 
       - name: Storybook build
         run: yarn build-storybook
+
+      - name: Switch to PR branch
+        if: ${{ github.event_name == 'pull_request' && env.CHROMATIC_PROJECT_TOKEN }}
+        uses: actions/checkout@v5
+        with:
+          clean: false
+          fetch-depth: 0
+          ref: ${{ env.CHROMATIC_BRANCH }}
+
+      - name: Storybook deploy
+        uses: chromaui/action@v13
+        with:
+          autoAcceptChanges: main
+          branchName: ${{ env.CHROMATIC_BRANCH}}
+          onlyChanged: ${{ github.event_name == 'pull_request' }}
+          projectToken: ${{ env.CHROMATIC_PROJECT_TOKEN }}
+          token: ${{ env.GITHUB_TOKEN }}
