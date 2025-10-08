@@ -52,6 +52,7 @@ describe('Index', () => {
       'Legend',
       'NavAZ',
       'Pagination',
+      'Panel',
       'Radios',
       'RadiosContext',
       'ReadingWidth',
