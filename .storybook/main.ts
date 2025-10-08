@@ -1,6 +1,7 @@
-import type { StorybookConfig } from '@storybook/react-vite';
-import { mergeConfig } from 'vite';
+import { type StorybookConfig } from '@storybook/react-vite';
+import { mergeConfig, type InlineConfig } from 'vite';
 import tsConfigPaths from 'vite-tsconfig-paths';
+import { isLogIgnored } from '../rollup.config.js';
 
 const config: StorybookConfig = {
   stories: ['../stories/**/*.stories.@(ts|tsx)', '../stories/**/*.mdx'],
@@ -16,6 +17,17 @@ const config: StorybookConfig = {
 
   viteFinal(config) {
     return mergeConfig(config, {
+      build: {
+        rollupOptions: {
+          onwarn(warning, handler) {
+            if (isLogIgnored(warning)) {
+              return;
+            }
+
+            handler(warning);
+          },
+        },
+      },
       css: {
         preprocessorOptions: {
           scss: {
@@ -32,7 +44,7 @@ const config: StorybookConfig = {
           projects: ['./tsconfig.dev.json', './tsconfig.build.json'],
         }),
       ],
-    });
+    } satisfies InlineConfig);
   },
 };
 
