@@ -25,6 +25,9 @@ const config: StorybookConfig = {
           },
         },
       },
+      esbuild: {
+        jsx: 'automatic',
+      },
     });
   },
 };
