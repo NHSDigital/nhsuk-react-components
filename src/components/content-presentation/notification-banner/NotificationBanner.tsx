@@ -1,6 +1,6 @@
 import { type ComponentPropsWithoutRef, forwardRef } from 'react';
 import classNames from 'classnames';
-import { HeadingLevel } from '#components';
+import { HeadingLevel } from '#components/utils/HeadingLevel.js';
 import { NotificationBannerHeading, NotificationBannerLink } from './components/index.js';
 
 export interface NotificationBannerProps extends ComponentPropsWithoutRef<'div'> {
