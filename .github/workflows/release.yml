@@ -35,12 +35,14 @@ jobs:
       - name: Typescript build
         run: yarn build
 
-      - name: Set Version to Release Tag Name
-        run: |
-          yarn version ${{ github.event.release.tag_name }}
+      - name: Publish npm package
+        if: ${{ !github.event.release.prerelease }}
+        run: yarn npm publish --tag latest
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish to npm, publish pre-release as beta
-        uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
-          tag: ${{ github.event.release.prerelease && 'beta' || 'latest' }}
+      - name: Publish npm package (pre-release)
+        if: ${{ github.event.release.prerelease }}
+        run: yarn npm publish --tag beta
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
