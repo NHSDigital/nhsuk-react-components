@@ -1,6 +1,6 @@
 # NHS.UK React components
 
-## Unreleased
+## 6.0.0-beta.2 - 9 October 2025
 
 This version provides support for NHS.UK frontend v10.x and fixes a Rollup `'use client'` directive issue.
 
