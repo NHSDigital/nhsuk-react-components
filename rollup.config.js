@@ -65,10 +65,6 @@ export default defineConfig(
 
       // Handle warnings as errors
       onwarn(warning) {
-        if (isLogIgnored(warning)) {
-          return;
-        }
-
         throw new Error(warning.message, { cause: warning });
       },
     }),
@@ -76,21 +72,5 @@ export default defineConfig(
 );
 
 /**
- * Whether to ignore Rollup log messages
- *
- * @param {RollupLog} warning
- */
-export function isLogIgnored(warning) {
-  const { code, message } = warning;
-
-  // Skip warnings related to "use client" directives including
-  // source map issues when directives are bundled by Storybook
-  return (
-    code === 'SOURCEMAP_ERROR' ||
-    (code === 'MODULE_LEVEL_DIRECTIVE' && message.includes('"use client"'))
-  );
-}
-
-/**
- * @import { OutputOptions, RollupLog, RollupOptions } from 'rollup'
+ * @import { OutputOptions, RollupOptions } from 'rollup'
  */

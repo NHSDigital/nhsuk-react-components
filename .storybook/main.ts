@@ -2,7 +2,6 @@ import { type StorybookConfig } from '@storybook/react-vite';
 import preserveDirectives from 'rollup-preserve-directives';
 import { mergeConfig, type InlineConfig } from 'vite';
 import tsConfigPaths from 'vite-tsconfig-paths';
-import { isLogIgnored } from '../rollup.config.js';
 
 const config: StorybookConfig = {
   stories: ['../stories/**/*.stories.@(ts|tsx)', '../stories/**/*.mdx'],
@@ -20,13 +19,6 @@ const config: StorybookConfig = {
     return mergeConfig(config, {
       build: {
         rollupOptions: {
-          onwarn(warning, handler) {
-            if (isLogIgnored(warning)) {
-              return;
-            }
-
-            handler(warning);
-          },
           plugins: [preserveDirectives()],
         },
       },
