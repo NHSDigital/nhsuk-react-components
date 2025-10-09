@@ -1,9 +1,10 @@
 import { join } from 'node:path';
+import { DEFAULT_EXTENSIONS as extensions } from '@babel/core';
 import { babel } from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
-import preserveDirectives from 'rollup-plugin-preserve-directives';
+import preserveDirectives from 'rollup-preserve-directives';
 import { defineConfig } from 'rollup';
 import packageJson from './package.json' with { type: 'json' };
 import tsBuildConfig from './tsconfig.build.json' with { type: 'json' };
@@ -58,15 +59,12 @@ export default defineConfig(
         babel({
           babelHelpers: 'bundled',
           exclude: 'node_modules/**',
+          extensions: [...extensions, '.ts', '.tsx'],
         }),
       ],
 
       // Handle warnings as errors
       onwarn(warning) {
-        if (isLogIgnored(warning)) {
-          return;
-        }
-
         throw new Error(warning.message, { cause: warning });
       },
     }),
@@ -74,21 +72,5 @@ export default defineConfig(
 );
 
 /**
- * Whether to ignore Rollup log messages
- *
- * @param {RollupLog} warning
- */
-export function isLogIgnored(warning) {
-  const { code, message } = warning;
-
-  // Skip warnings related to "use client" directives including
-  // source map issues when directives are bundled by Storybook
-  return (
-    code === 'SOURCEMAP_ERROR' ||
-    (code === 'MODULE_LEVEL_DIRECTIVE' && message.includes('"use client"'))
-  );
-}
-
-/**
- * @import { OutputOptions, RollupLog, RollupOptions } from 'rollup'
+ * @import { OutputOptions, RollupOptions } from 'rollup'
  */
