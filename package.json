@@ -48,7 +48,8 @@
   "types": "dist/esm/index.d.ts",
   "files": [
     "src",
-    "dist"
+    "dist",
+    "!**/*.test.*"
   ],
   "scripts": {
     "cleanup": "rm -rf dist/ > /dev/null",
@@ -128,5 +129,9 @@
     "react-dom": ">=18.2.0",
     "tslib": ">=2.8.0"
   },
-  "packageManager": "yarn@4.10.3"
+  "packageManager": "yarn@4.10.3",
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  }
 }
