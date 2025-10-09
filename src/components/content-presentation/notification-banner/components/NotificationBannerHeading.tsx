@@ -1,4 +1,4 @@
-import { HeadingLevel, type HeadingLevelProps } from '#components';
+import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
 import type { FC } from 'react';
 
 export type NotificationBannerHeadingProps = HeadingLevelProps;
