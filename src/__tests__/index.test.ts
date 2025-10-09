@@ -91,6 +91,7 @@ describe('Index', () => {
       'NavAZ',
       'NavAZDisabledItem',
       'NavAZLinkItem',
+      'NotificationBanner',
       'Pagination',
       'PaginationLink',
       'Panel',

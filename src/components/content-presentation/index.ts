@@ -4,6 +4,7 @@ export * from './hero/index.js';
 export * from './icons/index.js';
 export * from './images/index.js';
 export * from './inset-text/index.js';
+export * from './notification-banner/index.js';
 export * from './panel/index.js';
 export * from './summary-list/index.js';
 export * from './table/index.js';
