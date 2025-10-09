@@ -1,5 +1,11 @@
 # NHS.UK React components
 
+## Unreleased
+
+This version provides support for NHS.UK frontend v10.x and fixes a Rollup `'use client'` directive issue.
+
+For a full list of changes in this release please refer to the [migration doc](https://github.com/NHSDigital/nhsuk-react-components/blob/main/docs/upgrade-to-6.0.md).
+
 ## 6.0.0-beta.1 - 8 October 2025
 
 This version provides support for NHS.UK frontend v10.x and adds the [panel component](https://service-manual.nhs.uk/design-system/components/panel) from the NHS.UK design system. Support for React v19 is also included.
