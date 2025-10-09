@@ -1,0 +1,341 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`NotificationBanner matches snapshot (via server) 1`] = `
+<div>
+  <section
+    aria-labelledby="nhsuk-notification-banner-title"
+    class="nhsuk-notification-banner"
+    data-module="nhsuk-notification-banner"
+  >
+    <div
+      class="nhsuk-notification-banner__header"
+    >
+      <h2
+        class="nhsuk-notification-banner__title"
+        id="nhsuk-notification-banner-title"
+      >
+        Important
+      </h2>
+    </div>
+    <div
+      class="nhsuk-notification-banner__content"
+    >
+      <h3
+        class="nhsuk-notification-banner__heading"
+      >
+        The service will be unavailable from 8pm to 9pm on Thursday 1 January 2025.
+      </h3>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`NotificationBanner matches snapshot 1`] = `
+<div>
+  <section
+    aria-labelledby="nhsuk-notification-banner-title"
+    class="nhsuk-notification-banner"
+    data-module="nhsuk-notification-banner"
+  >
+    <div
+      class="nhsuk-notification-banner__header"
+    >
+      <h2
+        class="nhsuk-notification-banner__title"
+        id="nhsuk-notification-banner-title"
+      >
+        Important
+      </h2>
+    </div>
+    <div
+      class="nhsuk-notification-banner__content"
+    >
+      <h3
+        class="nhsuk-notification-banner__heading"
+      >
+        The service will be unavailable from 8pm to 9pm on Thursday 1 January 2025.
+      </h3>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`NotificationBanner matches snapshot custom title (via server) 1`] = `
+<div>
+  <section
+    aria-labelledby="nhsuk-notification-banner-title"
+    class="nhsuk-notification-banner"
+    data-module="nhsuk-notification-banner"
+  >
+    <div
+      class="nhsuk-notification-banner__header"
+    >
+      <h2
+        class="nhsuk-notification-banner__title"
+        id="nhsuk-notification-banner-title"
+      >
+        Upcoming Maintenance
+      </h2>
+    </div>
+    <div
+      class="nhsuk-notification-banner__content"
+    >
+      <h3
+        class="nhsuk-notification-banner__heading"
+      >
+        The service will be unavailable from 8pm to 9pm on Thursday 1 January 2025.
+      </h3>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`NotificationBanner matches snapshot custom title 1`] = `
+<div>
+  <section
+    aria-labelledby="nhsuk-notification-banner-title"
+    class="nhsuk-notification-banner"
+    data-module="nhsuk-notification-banner"
+  >
+    <div
+      class="nhsuk-notification-banner__header"
+    >
+      <h2
+        class="nhsuk-notification-banner__title"
+        id="nhsuk-notification-banner-title"
+      >
+        Upcoming Maintenance
+      </h2>
+    </div>
+    <div
+      class="nhsuk-notification-banner__content"
+    >
+      <h3
+        class="nhsuk-notification-banner__heading"
+      >
+        The service will be unavailable from 8pm to 9pm on Thursday 1 January 2025.
+      </h3>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`NotificationBanner matches snapshot success (via server) 1`] = `
+<div>
+  <section
+    aria-labelledby="nhsuk-notification-banner-title"
+    class="nhsuk-notification-banner nhsuk-notification-banner--success"
+    data-module="nhsuk-notification-banner"
+  >
+    <div
+      class="nhsuk-notification-banner__header"
+    >
+      <h2
+        class="nhsuk-notification-banner__title"
+        id="nhsuk-notification-banner-title"
+      >
+        Success
+      </h2>
+    </div>
+    <div
+      class="nhsuk-notification-banner__content"
+    >
+      <h3
+        class="nhsuk-notification-banner__heading"
+      >
+        Patient record updated
+      </h3>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`NotificationBanner matches snapshot success 1`] = `
+<div>
+  <section
+    aria-labelledby="nhsuk-notification-banner-title"
+    class="nhsuk-notification-banner nhsuk-notification-banner--success"
+    data-module="nhsuk-notification-banner"
+  >
+    <div
+      class="nhsuk-notification-banner__header"
+    >
+      <h2
+        class="nhsuk-notification-banner__title"
+        id="nhsuk-notification-banner-title"
+      >
+        Success
+      </h2>
+    </div>
+    <div
+      class="nhsuk-notification-banner__content"
+    >
+      <h3
+        class="nhsuk-notification-banner__heading"
+      >
+        Patient record updated
+      </h3>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`NotificationBanner matches snapshot with link in body (via server) 1`] = `
+<div>
+  <section
+    aria-labelledby="nhsuk-notification-banner-title"
+    class="nhsuk-notification-banner"
+    data-module="nhsuk-notification-banner"
+  >
+    <div
+      class="nhsuk-notification-banner__header"
+    >
+      <h2
+        class="nhsuk-notification-banner__title"
+        id="nhsuk-notification-banner-title"
+      >
+        Important
+      </h2>
+    </div>
+    <div
+      class="nhsuk-notification-banner__content"
+    >
+      <h3
+        class="nhsuk-notification-banner__heading"
+      >
+        Patient record updated
+      </h3>
+      <p>
+        Contact
+        <!-- -->
+         
+        <a
+          class="nhsuk-notification-banner__link"
+          href="#"
+        >
+          example@department.nhs.uk
+        </a>
+         if you think there's a problem.
+      </p>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`NotificationBanner matches snapshot with link in body 1`] = `
+<div>
+  <section
+    aria-labelledby="nhsuk-notification-banner-title"
+    class="nhsuk-notification-banner"
+    data-module="nhsuk-notification-banner"
+  >
+    <div
+      class="nhsuk-notification-banner__header"
+    >
+      <h2
+        class="nhsuk-notification-banner__title"
+        id="nhsuk-notification-banner-title"
+      >
+        Important
+      </h2>
+    </div>
+    <div
+      class="nhsuk-notification-banner__content"
+    >
+      <h3
+        class="nhsuk-notification-banner__heading"
+      >
+        Patient record updated
+      </h3>
+      <p>
+        Contact
+         
+        <a
+          class="nhsuk-notification-banner__link"
+          href="#"
+        >
+          example@department.nhs.uk
+        </a>
+         if you think there's a problem.
+      </p>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`NotificationBanner matches snapshot with link in heading (via server) 1`] = `
+<div>
+  <section
+    aria-labelledby="nhsuk-notification-banner-title"
+    class="nhsuk-notification-banner"
+    data-module="nhsuk-notification-banner"
+  >
+    <div
+      class="nhsuk-notification-banner__header"
+    >
+      <h2
+        class="nhsuk-notification-banner__title"
+        id="nhsuk-notification-banner-title"
+      >
+        Important
+      </h2>
+    </div>
+    <div
+      class="nhsuk-notification-banner__content"
+    >
+      <h3
+        class="nhsuk-notification-banner__heading"
+      >
+        You have 7 days left to send your application.
+        <!-- -->
+         
+        <a
+          class="nhsuk-notification-banner__link"
+          href="#"
+        >
+          View application
+        </a>
+        .
+      </h3>
+    </div>
+  </section>
+</div>
+`;
+
+exports[`NotificationBanner matches snapshot with link in heading 1`] = `
+<div>
+  <section
+    aria-labelledby="nhsuk-notification-banner-title"
+    class="nhsuk-notification-banner"
+    data-module="nhsuk-notification-banner"
+  >
+    <div
+      class="nhsuk-notification-banner__header"
+    >
+      <h2
+        class="nhsuk-notification-banner__title"
+        id="nhsuk-notification-banner-title"
+      >
+        Important
+      </h2>
+    </div>
+    <div
+      class="nhsuk-notification-banner__content"
+    >
+      <h3
+        class="nhsuk-notification-banner__heading"
+      >
+        You have 7 days left to send your application.
+         
+        <a
+          class="nhsuk-notification-banner__link"
+          href="#"
+        >
+          View application
+        </a>
+        .
+      </h3>
+    </div>
+  </section>
+</div>
+`;

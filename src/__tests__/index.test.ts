@@ -51,6 +51,7 @@ describe('Index', () => {
       'LedeText',
       'Legend',
       'NavAZ',
+      'NotificationBanner',
       'Pagination',
       'Panel',
       'Radios',
