@@ -35,10 +35,6 @@ jobs:
       - name: Typescript build
         run: yarn build
 
-      - name: Set Version to Release Tag Name
-        run: |
-          yarn version ${{ github.event.release.tag_name }}
-
       - name: Publish to npm, publish pre-release as beta
         uses: JS-DevTools/npm-publish@v4
         with:
