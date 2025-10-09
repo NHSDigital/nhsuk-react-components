@@ -1,9 +1,10 @@
 import { join } from 'node:path';
+import { DEFAULT_EXTENSIONS as extensions } from '@babel/core';
 import { babel } from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
-import preserveDirectives from 'rollup-plugin-preserve-directives';
+import preserveDirectives from 'rollup-preserve-directives';
 import { defineConfig } from 'rollup';
 import packageJson from './package.json' with { type: 'json' };
 import tsBuildConfig from './tsconfig.build.json' with { type: 'json' };
@@ -58,6 +59,7 @@ export default defineConfig(
         babel({
           babelHelpers: 'bundled',
           exclude: 'node_modules/**',
+          extensions: [...extensions, '.ts', '.tsx'],
         }),
       ],
 
