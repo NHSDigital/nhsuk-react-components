@@ -2,19 +2,19 @@
 
 ## 6.0.0-beta.1 - 8 October 2025
 
-This version adds the panel component from NHS.UK frontend v9.3.0 and supports React v19.
+This version provides support for NHS.UK frontend v10.x and adds the [panel component](https://service-manual.nhs.uk/design-system/components/panel) from the NHS.UK design system. Support for React v19 is also included.
 
 For a full list of changes in this release please refer to the [migration doc](https://github.com/NHSDigital/nhsuk-react-components/blob/main/docs/upgrade-to-6.0.md).
 
 ## 6.0.0-beta.0 - 30 September 2025
 
-This version provides support for nhsuk-frontend version 10.
+This version provides support for NHS.UK frontend v10.x.
 
 For a full list of changes in this release please refer to the [migration doc](https://github.com/NHSDigital/nhsuk-react-components/blob/main/docs/upgrade-to-6.0.md).
 
 ## 5.0.0 - 4 November 2024
 
-This version provides support for nhsuk-frontend version 9.
+This version provides support for NHS.UK frontend v9.x.
 
 For a full list of changes in this release please refer to the [migration doc](https://github.com/NHSDigital/nhsuk-react-components/blob/main/docs/upgrade-to-5.0.md).
 
