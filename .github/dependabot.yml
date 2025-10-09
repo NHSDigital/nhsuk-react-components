@@ -1,0 +1,78 @@
+version: 2
+
+updates:
+  # Update npm packages
+  - package-ecosystem: npm
+    directory: /
+
+    # Group packages into shared PR
+    groups:
+      build:
+        patterns:
+          - '@babel/*'
+          - '@rollup/*'
+          - '@types/react'
+          - '@types/react-*'
+          - 'classnames'
+          - 'nhsuk-frontend'
+          - 'react'
+          - 'react-dom'
+          - 'rollup'
+          - 'tslib'
+
+      lint:
+        patterns:
+          - '@eslint/*'
+          - '@types/*'
+          - 'eslint'
+          - 'eslint-*'
+          - 'globals'
+          - 'prettier'
+          - 'typescript'
+          - 'typescript-*'
+
+        # Exclude packages in other groups
+        exclude-patterns:
+          - '@types/jest'
+          - '@types/jest-*'
+          - '@types/react'
+          - '@types/react-*'
+
+      test:
+        patterns:
+          - '@testing-library/*'
+          - '@types/jest'
+          - '@types/jest-*'
+          - 'babel-*'
+          - 'jest'
+          - 'jest-*'
+
+      tools:
+        patterns:
+          - '@storybook/*'
+          - 'lodash'
+          - 'outdent'
+          - 'sass-embedded'
+          - 'storybook'
+          - 'vite'
+          - 'vite-*'
+
+    schedule:
+      interval: monthly
+
+    versioning-strategy: increase
+
+    allow:
+      # Include direct package.json updates
+      - dependency-type: direct
+
+      # Include indirect browser data updates
+      # https://caniuse.com
+      - dependency-name: caniuse-lite
+
+  # Update GitHub Actions
+  - package-ecosystem: github-actions
+    directory: /
+
+    schedule:
+      interval: 'monthly'

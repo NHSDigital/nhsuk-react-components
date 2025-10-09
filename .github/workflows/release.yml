@@ -9,20 +9,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version-file: .nvmrc
 
       - name: Enable corepack
         run: corepack enable
 
-      - name: Set Yarn version
-        run: yarn set version stable
+      - name: Set up Node.js
+        uses: actions/setup-node@v5
+        with:
+          cache: yarn
+          node-version-file: .nvmrc
 
       - name: Yarn Install
         run: yarn

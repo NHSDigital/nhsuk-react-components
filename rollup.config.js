@@ -40,7 +40,7 @@ export default defineConfig(
         },
       ],
       external: ['react/jsx-runtime', ...external],
-      jsx: /** @type {const} */ ('react-jsx'),
+      jsx: 'react-jsx',
       treeshake: false,
       plugins: [
         nodeResolve({
@@ -63,10 +63,7 @@ export default defineConfig(
 
       // Handle warnings as errors
       onwarn(warning) {
-        const { code, message } = warning;
-
-        // Skip warnings about "use client" directives
-        if (code === 'MODULE_LEVEL_DIRECTIVE' && message.includes(`"use client"`)) {
+        if (isLogIgnored(warning)) {
           return;
         }
 
@@ -77,5 +74,21 @@ export default defineConfig(
 );
 
 /**
- * @import { OutputOptions, RollupOptions } from 'rollup'
+ * Whether to ignore Rollup log messages
+ *
+ * @param {RollupLog} warning
+ */
+export function isLogIgnored(warning) {
+  const { code, message } = warning;
+
+  // Skip warnings related to "use client" directives including
+  // source map issues when directives are bundled by Storybook
+  return (
+    code === 'SOURCEMAP_ERROR' ||
+    (code === 'MODULE_LEVEL_DIRECTIVE' && message.includes('"use client"'))
+  );
+}
+
+/**
+ * @import { OutputOptions, RollupLog, RollupOptions } from 'rollup'
  */
