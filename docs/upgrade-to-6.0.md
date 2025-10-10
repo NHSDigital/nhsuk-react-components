@@ -36,7 +36,7 @@ This replaces the [list panel component](#list-panel) which was removed in NHS.U
 The [notification banner](https://service-manual.nhs.uk/design-system/components/notification-banner) component from NHS.UK frontend v10 has been added:
 
 ```jsx
-<NotificationBanner title="Important Message">
+<NotificationBanner>
   <NotificationBanner.Heading>Upcoming Maintenance</NotificationBanner.Heading>
   <p>The service will be unavailable from 8pm to 9pm on Thursday 1 January 2025.</p>
 </NotificationBanner>
@@ -451,7 +451,7 @@ You must rename the `Select` prop `selectRef` to `ref` for consistency with othe
 To align with NHS.UK frontend, the skip link component focuses the main content rather than the first heading on the page:
 
 ```html
-<main class="nhsuk-main-wrapper id="maincontent">
+<main class="nhsuk-main-wrapper" id="maincontent">
   <!-- // ... -->
 ```
 

@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 export type NotificationBannerLinkProps = AsElementLink<HTMLAnchorElement>;
 
-const NotificationBannerLinkComponent = forwardRef<HTMLAnchorElement, NotificationBannerLinkProps>(
+export const NotificationBannerLink = forwardRef<HTMLAnchorElement, NotificationBannerLinkProps>(
   ({ children, className, asElement: Element = 'a', ...rest }, forwardedRef) => (
     <Element
       className={classNames('nhsuk-notification-banner__link', className)}
@@ -16,6 +16,4 @@ const NotificationBannerLinkComponent = forwardRef<HTMLAnchorElement, Notificati
   ),
 );
 
-NotificationBannerLinkComponent.displayName = 'NotificationBanner.Link';
-
-export const NotificationBannerLink = Object.assign(NotificationBannerLinkComponent);
+NotificationBannerLink.displayName = 'NotificationBanner.Link';

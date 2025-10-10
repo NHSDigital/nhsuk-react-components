@@ -3,7 +3,7 @@ import type { FC } from 'react';
 
 export type NotificationBannerHeadingProps = HeadingLevelProps;
 
-const NotificationBannerHeadingComponent: FC<NotificationBannerHeadingProps> = ({
+export const NotificationBannerHeading: FC<NotificationBannerHeadingProps> = ({
   children,
   headingLevel = 'h3',
   ...rest
@@ -17,6 +17,4 @@ const NotificationBannerHeadingComponent: FC<NotificationBannerHeadingProps> = (
   </HeadingLevel>
 );
 
-NotificationBannerHeadingComponent.displayName = 'NotificationBanner.Heading';
-
-export const NotificationBannerHeading = Object.assign(NotificationBannerHeadingComponent);
+NotificationBannerHeading.displayName = 'NotificationBanner.Heading';
