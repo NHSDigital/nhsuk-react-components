@@ -456,28 +456,28 @@ exports[`NotificationBanner matches snapshot with list (via server) 1`] = `
           <a
             class="nhsuk-notification-banner__link"
           >
-            government-strategy.pdf
+            file.pdf
           </a>
         </li>
         <li>
           <a
             class="nhsuk-notification-banner__link"
           >
-            government-strategy-v2.pdf
+            file-v2.pdf
           </a>
         </li>
         <li>
           <a
             class="nhsuk-notification-banner__link"
           >
-            government-strategy-v3-FINAL.pdf
+            file-v3-FINAL.pdf
           </a>
         </li>
         <li>
           <a
             class="nhsuk-notification-banner__link"
           >
-            government-strategy-v4-FINAL-v2.pdf
+            file-v4-FINAL-v2.pdf
           </a>
         </li>
       </ul>
@@ -638,7 +638,9 @@ exports[`NotificationBanner matches snapshot with lots of content (via server) 1
         Check if you need to apply the reverse charge to this application
       </h3>
       <p>
-        You will have to apply the 
+        You will have to apply the
+        <!-- -->
+         
         <a
           class="nhsuk-notification-banner__link"
         >
@@ -687,7 +689,8 @@ exports[`NotificationBanner matches snapshot with lots of content 1`] = `
         Check if you need to apply the reverse charge to this application
       </h3>
       <p>
-        You will have to apply the 
+        You will have to apply the
+         
         <a
           class="nhsuk-notification-banner__link"
         >

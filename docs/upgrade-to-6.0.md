@@ -453,6 +453,7 @@ To align with NHS.UK frontend, the skip link component focuses the main content 
 ```html
 <main class="nhsuk-main-wrapper" id="maincontent">
   <!-- // ... -->
+</main>
 ```
 
 For accessibility reasons, you must make the following changes:

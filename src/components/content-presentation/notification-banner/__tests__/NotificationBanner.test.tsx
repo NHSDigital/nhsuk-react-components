@@ -268,16 +268,16 @@ describe('NotificationBanner', () => {
         <NotificationBanner.Heading>4 files uploaded</NotificationBanner.Heading>
         <ul>
           <li>
-            <NotificationBannerLink>government-strategy.pdf</NotificationBannerLink>
+            <NotificationBannerLink>file.pdf</NotificationBannerLink>
           </li>
           <li>
-            <NotificationBannerLink>government-strategy-v2.pdf</NotificationBannerLink>
+            <NotificationBannerLink>file-v2.pdf</NotificationBannerLink>
           </li>
           <li>
-            <NotificationBannerLink>government-strategy-v3-FINAL.pdf</NotificationBannerLink>
+            <NotificationBannerLink>file-v3-FINAL.pdf</NotificationBannerLink>
           </li>
           <li>
-            <NotificationBannerLink>government-strategy-v4-FINAL-v2.pdf</NotificationBannerLink>
+            <NotificationBannerLink>file-v4-FINAL-v2.pdf</NotificationBannerLink>
           </li>
         </ul>
       </NotificationBanner>,
@@ -359,7 +359,7 @@ describe('NotificationBanner', () => {
     const [notificationBannerEl] = modules;
 
     expect(notificationBannerEl?.getAttribute('role')).toBe('region');
-    expect(notificationBannerEl?.getAttribute('data-disable-auto-focus')).toBe(null);
+    expect(notificationBannerEl?.dataset?.disableAutoFocus).toBe(undefined);
   });
 
   it('has alert role', async () => {
@@ -385,6 +385,6 @@ describe('NotificationBanner', () => {
 
     const [notificationBannerEl] = modules;
 
-    expect(notificationBannerEl?.getAttribute('data-disable-auto-focus')).toBe('true');
+    expect(notificationBannerEl?.dataset?.disableAutoFocus).toBe('true');
   });
 });
