@@ -1,10 +1,14 @@
-'use client';
+import { type FC, type PropsWithChildren } from 'react';
+import { type HeaderLogoProps } from './HeaderLogo.js';
 
-import { useContext, type ComponentPropsWithoutRef, type FC } from 'react';
-import { HeaderContext, type IHeaderContext } from '../HeaderContext.js';
+export type HeaderServiceNameInnerProps = NonNullable<HeaderServiceNameProps['service']>;
 
-export type HeaderServiceNameInnerProps = NonNullable<IHeaderContext['serviceProps']>;
-export type HeaderServiceNameProps = Pick<ComponentPropsWithoutRef<'div'>, 'children'>;
+export interface HeaderServiceNameProps extends PropsWithChildren, HeaderLogoProps {
+  service?: {
+    href?: string;
+    text?: string;
+  };
+}
 
 const HeaderServiceNameInner: FC<HeaderServiceNameInnerProps> = (service) =>
   service.href ? (
@@ -15,13 +19,12 @@ const HeaderServiceNameInner: FC<HeaderServiceNameInnerProps> = (service) =>
     <span className="nhsuk-header__service-name">{service.text}</span>
   );
 
-export const HeaderServiceName: FC<HeaderServiceNameProps> = ({ children }) => {
-  const {
-    logoProps: logo,
-    organisationProps: organisation,
-    serviceProps: service,
-  } = useContext<IHeaderContext>(HeaderContext);
-
+export const HeaderServiceName: FC<HeaderServiceNameProps> = ({
+  children,
+  logo,
+  organisation,
+  service,
+}) => {
   // The NHS logo and service name are combined into a single link if either
   // the logo doesn’t have an `href` set but the service name does, or if both
   // have an exact `href`. This avoids having 2 links to same destination.

@@ -239,22 +239,26 @@ The custom `autoSelectNext` prop is no longer supported.
 
 The updated header component from NHS.UK frontend v10.x has been added. You will need to make the following changes:
 
+- move `Header.Logo` props to `<Header logo={{ href: '/' }}>`
+- move `Header.ServiceName` props to `<Header service={{ text: "Manage patients" }}>`
 - remove the wrapping `Header.Container` component
 - remove the wrapping `Header.Content` component
+- remove the automatically created `Header.Logo` component
 - remove the automatically created `Header.ServiceName` component
 - remove the automatically created `Header.NavDropdownMenu` component
 - rename the `Header.Nav` component to `Header.Navigation`
 - rename the `Header.NavItem` component to `Header.NavigationItem`
 
 ```patch
-  <Header>
+- <Header>
++ <Header service={{ text: "Manage patients", href: '/' }}>
 -   <Header.Container>
 -     <Header.Logo href="/" />
+-     <Header.ServiceName href="/">Manage patients</Header.ServiceName>
 -     <Header.Content>
 -       <Header.Search />
 -     </Header.Content>
 -   </Header.Container>
-+   <Header.Logo href="/" />
 +   <Header.Search />
 -   <Header.Nav>
 -     <Header.NavItem href="#">Example 1</Header.NavItem>

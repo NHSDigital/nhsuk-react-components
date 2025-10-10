@@ -19,16 +19,14 @@ import {
   HeaderNavigationItem,
   HeaderSearch,
   HeaderServiceName,
+  type HeaderServiceNameProps,
 } from './components/index.js';
 import { HeaderContext, type IHeaderContext } from './HeaderContext.js';
 import { Container } from '#components/layout/index.js';
 import { childIsOfComponentType } from '#util/types/index.js';
 
-export interface HeaderProps extends ComponentPropsWithoutRef<'div'> {
+export interface HeaderProps extends ComponentPropsWithoutRef<'div'>, HeaderServiceNameProps {
   containerClasses?: string;
-  logo?: IHeaderContext['logoProps'];
-  service?: IHeaderContext['serviceProps'];
-  organisation?: IHeaderContext['organisationProps'];
   white?: boolean;
 }
 
@@ -37,40 +35,9 @@ const HeaderComponent = forwardRef<HTMLElement, HeaderProps>((props, forwardedRe
     props;
 
   const [moduleRef] = useState(() => forwardedRef || createRef<HTMLElement>());
-
-  const [logoProps, setLogoProps] = useState(logo);
-  const [serviceProps, setServiceProps] = useState(service);
-  const [organisationProps, setOrganisationProps] = useState(organisation);
   const [instanceError, setInstanceError] = useState<Error>();
   const [instance, setInstance] = useState<HeaderModule>();
   const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    if (!logo) {
-      return;
-    }
-
-    setLogoProps(logo);
-    return () => setLogoProps(undefined);
-  }, [logo]);
-
-  useEffect(() => {
-    if (!service) {
-      return;
-    }
-
-    setServiceProps(service);
-    return () => setServiceProps(undefined);
-  }, [service]);
-
-  useEffect(() => {
-    if (!organisation) {
-      return;
-    }
-
-    setOrganisationProps(organisation);
-    return () => setOrganisationProps(undefined);
-  }, [organisation]);
 
   useEffect(() => {
     if (!('current' in moduleRef) || !moduleRef.current || instance) {
@@ -97,20 +64,10 @@ const HeaderComponent = forwardRef<HTMLElement, HeaderProps>((props, forwardedRe
   }, [moduleRef, instance, menuOpen]);
 
   const contextValue: IHeaderContext = useMemo(() => {
-    return {
-      logoProps,
-      serviceProps,
-      organisationProps,
-      menuOpen,
-      setMenuOpen,
-      setLogoProps,
-      setServiceProps,
-      setOrganisationProps,
-    };
-  }, [logoProps, serviceProps, organisationProps, menuOpen]);
+    return { menuOpen, setMenuOpen };
+  }, [menuOpen]);
 
   const items = Children.toArray(children);
-  const childLogo = items.find((child) => childIsOfComponentType(child, HeaderLogo));
   const childSearch = items.find((child) => childIsOfComponentType(child, HeaderSearch));
   const childNavigation = items.find((child) => childIsOfComponentType(child, HeaderNavigation));
   const childAccount = items.find((child) => childIsOfComponentType(child, HeaderAccount));
@@ -123,7 +80,7 @@ const HeaderComponent = forwardRef<HTMLElement, HeaderProps>((props, forwardedRe
     <header
       className={classNames(
         'nhsuk-header',
-        { 'nhsuk-header--organisation': !!organisationProps },
+        { 'nhsuk-header--organisation': !!organisation },
         { 'nhsuk-header--white': !!white },
         className,
       )}
@@ -134,7 +91,9 @@ const HeaderComponent = forwardRef<HTMLElement, HeaderProps>((props, forwardedRe
     >
       <HeaderContext.Provider value={contextValue}>
         <Container className={classNames('nhsuk-header__container', containerClasses)}>
-          <HeaderServiceName {...serviceProps}>{childLogo}</HeaderServiceName>
+          <HeaderServiceName logo={logo} organisation={organisation} service={service}>
+            <HeaderLogo logo={logo} organisation={organisation} />
+          </HeaderServiceName>
           {childSearch}
           {childAccount}
         </Container>
@@ -149,7 +108,6 @@ HeaderComponent.displayName = 'Header';
 export const Header = Object.assign(HeaderComponent, {
   Account: HeaderAccount,
   AccountItem: HeaderAccountItem,
-  Logo: HeaderLogo,
   Search: HeaderSearch,
   Navigation: HeaderNavigation,
   NavigationItem: HeaderNavigationItem,
