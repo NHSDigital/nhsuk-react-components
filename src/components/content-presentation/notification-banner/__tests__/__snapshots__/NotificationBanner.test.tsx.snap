@@ -78,7 +78,7 @@ exports[`NotificationBanner matches snapshot custom title (via server) 1`] = `
         class="nhsuk-notification-banner__title"
         id="nhsuk-notification-banner-title"
       >
-        Upcoming Maintenance
+        Upcoming maintenance
       </h2>
     </div>
     <div
@@ -110,7 +110,7 @@ exports[`NotificationBanner matches snapshot custom title 1`] = `
         class="nhsuk-notification-banner__title"
         id="nhsuk-notification-banner-title"
       >
-        Upcoming Maintenance
+        Upcoming maintenance
       </h2>
     </div>
     <div
@@ -643,6 +643,7 @@ exports[`NotificationBanner matches snapshot with lots of content (via server) 1
          
         <a
           class="nhsuk-notification-banner__link"
+          href="#"
         >
           reverse charge
         </a>
@@ -693,6 +694,7 @@ exports[`NotificationBanner matches snapshot with lots of content 1`] = `
          
         <a
           class="nhsuk-notification-banner__link"
+          href="#"
         >
           reverse charge
         </a>

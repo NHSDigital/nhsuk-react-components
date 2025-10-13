@@ -20,10 +20,14 @@ import { childIsOfComponentType } from '#util/types/TypeGuards.js';
 export interface NotificationBannerProps extends ComponentPropsWithoutRef<'div'> {
   success?: boolean;
   disableAutoFocus?: boolean;
+  titleId?: string;
 }
 
 const NotificationBannerComponent = forwardRef<HTMLDivElement, NotificationBannerProps>(
-  ({ children, className, title, success, role, disableAutoFocus, ...rest }, forwardedRef) => {
+  (
+    { children, className, title, titleId, success, role, disableAutoFocus, ...rest },
+    forwardedRef,
+  ) => {
     const [moduleRef] = useState(() => forwardedRef || createRef<HTMLDivElement>());
     const [instanceError, setInstanceError] = useState<Error>();
     const [instance, setInstance] = useState<NotificationBannerModule>();
@@ -59,7 +63,7 @@ const NotificationBannerComponent = forwardRef<HTMLDivElement, NotificationBanne
           { 'nhsuk-notification-banner--success': success },
           className,
         )}
-        aria-labelledby={titleElement?.props.id || 'nhsuk-notification-banner-title'}
+        aria-labelledby={titleId || titleElement?.props.id || 'nhsuk-notification-banner-title'}
         data-module="nhsuk-notification-banner"
         data-disable-auto-focus={disableAutoFocus}
         ref={moduleRef}
@@ -69,7 +73,9 @@ const NotificationBannerComponent = forwardRef<HTMLDivElement, NotificationBanne
           {titleElement ? (
             <>{titleElement}</>
           ) : (
-            <NotificationBannerTitle success={success}>{title}</NotificationBannerTitle>
+            <NotificationBannerTitle success={success} id={titleId}>
+              {title}
+            </NotificationBannerTitle>
           )}
         </div>
         <div className={'nhsuk-notification-banner__content'} {...rest}>

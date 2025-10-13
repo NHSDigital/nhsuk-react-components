@@ -30,7 +30,7 @@ describe('NotificationBanner', () => {
 
   it('matches snapshot custom title', async () => {
     const { container } = await renderClient(
-      <NotificationBanner title={'Upcoming Maintenance'}>
+      <NotificationBanner title={'Upcoming maintenance'}>
         <NotificationBanner.Heading>
           The service will be unavailable from 8pm to 9pm on Thursday 1 January 2025.
         </NotificationBanner.Heading>
@@ -62,7 +62,7 @@ describe('NotificationBanner', () => {
       <NotificationBanner>
         <NotificationBanner.Heading>
           You have 7 days left to send your application.{' '}
-          <NotificationBanner.Link href={'#'}>View application</NotificationBanner.Link>.
+          <NotificationBanner.Link href="#">View application</NotificationBanner.Link>.
         </NotificationBanner.Heading>
       </NotificationBanner>,
       { className: 'nhsuk-notification-banner' },
@@ -77,7 +77,7 @@ describe('NotificationBanner', () => {
         <NotificationBanner.Heading>Patient record updated</NotificationBanner.Heading>
         <p>
           Contact{' '}
-          <NotificationBanner.Link href={'#'}>example@department.nhs.uk</NotificationBanner.Link> if
+          <NotificationBanner.Link href="#">example@department.nhs.uk</NotificationBanner.Link> if
           you think there&#39;s a problem.
         </p>
       </NotificationBanner>,
@@ -146,8 +146,8 @@ describe('NotificationBanner', () => {
         </NotificationBanner.Heading>
         <p>
           You will have to apply the{' '}
-          <NotificationBanner.Link>reverse charge</NotificationBanner.Link> if the applicant
-          supplies any of these services:
+          <NotificationBanner.Link href="#">reverse charge</NotificationBanner.Link> if the
+          applicant supplies any of these services:
         </p>
         <ul>
           <li>
@@ -194,7 +194,7 @@ describe('NotificationBanner', () => {
 
   it('matches snapshot custom title (via server)', async () => {
     const { container } = await renderServer(
-      <NotificationBanner title={'Upcoming Maintenance'}>
+      <NotificationBanner title={'Upcoming maintenance'}>
         <NotificationBanner.Heading>
           The service will be unavailable from 8pm to 9pm on Thursday 1 January 2025.
         </NotificationBanner.Heading>
@@ -226,7 +226,7 @@ describe('NotificationBanner', () => {
       <NotificationBanner>
         <NotificationBanner.Heading>
           You have 7 days left to send your application.{' '}
-          <NotificationBanner.Link href={'#'}>View application</NotificationBanner.Link>.
+          <NotificationBanner.Link href="#">View application</NotificationBanner.Link>.
         </NotificationBanner.Heading>
       </NotificationBanner>,
       { className: 'nhsuk-notification-banner' },
@@ -241,7 +241,7 @@ describe('NotificationBanner', () => {
         <NotificationBanner.Heading>Patient record updated</NotificationBanner.Heading>
         <p>
           Contact{' '}
-          <NotificationBanner.Link href={'#'}>example@department.nhs.uk</NotificationBanner.Link> if
+          <NotificationBanner.Link href="#">example@department.nhs.uk</NotificationBanner.Link> if
           you think there&#39;s a problem.
         </p>
       </NotificationBanner>,
@@ -310,8 +310,8 @@ describe('NotificationBanner', () => {
         </NotificationBanner.Heading>
         <p>
           You will have to apply the{' '}
-          <NotificationBanner.Link>reverse charge</NotificationBanner.Link> if the applicant
-          supplies any of these services:
+          <NotificationBanner.Link href="#">reverse charge</NotificationBanner.Link> if the
+          applicant supplies any of these services:
         </p>
         <ul>
           <li>

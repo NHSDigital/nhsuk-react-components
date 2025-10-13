@@ -37,7 +37,7 @@ The [notification banner](https://service-manual.nhs.uk/design-system/components
 
 ```jsx
 <NotificationBanner>
-  <NotificationBanner.Heading>Upcoming Maintenance</NotificationBanner.Heading>
+  <NotificationBanner.Heading>Upcoming maintenance</NotificationBanner.Heading>
   <p>The service will be unavailable from 8pm to 9pm on Thursday 1 January 2025.</p>
 </NotificationBanner>
 ```

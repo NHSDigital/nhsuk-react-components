@@ -1,3 +1,5 @@
+'use client';
+
 import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
 import type { FC } from 'react';
 

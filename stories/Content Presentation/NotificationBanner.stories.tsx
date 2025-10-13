@@ -25,7 +25,7 @@ import { NotificationBannerLink } from '#components/content-presentation/notific
  *         <NotificationBanner>
  *             <NotificationBanner.Heading>Patient record updated</Details.Summary>
  *             <p>
- *                 Contact <NotificationBanner.Link href={'#'}>example@department.nhs.uk</NotificationBanner.Link> if you think there&#39;s a problem.
+ *                 Contact <NotificationBanner.Link href="#">example@department.nhs.uk</NotificationBanner.Link> if you think there&#39;s a problem.
  *             </p>
  *         </NotificationBanner>
  *     );
@@ -41,8 +41,8 @@ type Story = StoryObj<typeof NotificationBanner>;
 
 export const StandardPanel: Story = {
   args: {},
-  render: (args) => (
-    <NotificationBanner {...args}>
+  render: () => (
+    <NotificationBanner>
       <NotificationBanner.Heading>
         The service will be unavailable from 8pm to 9pm on Thursday 1 January 2025.
       </NotificationBanner.Heading>
@@ -52,13 +52,13 @@ export const StandardPanel: Story = {
 
 export const SuccessPanel: Story = {
   args: {},
-  render: (args) => (
-    <NotificationBanner success {...args}>
+  render: () => (
+    <NotificationBanner success>
       <NotificationBanner.Heading>Patient record updated</NotificationBanner.Heading>
       <p>
         Contact{' '}
-        <NotificationBanner.Link href={'#'}>example@department.nhs.uk</NotificationBanner.Link> if
-        you think there&#39;s a problem.
+        <NotificationBanner.Link href="#">example@department.nhs.uk</NotificationBanner.Link> if you
+        think there&#39;s a problem.
       </p>
     </NotificationBanner>
   ),
@@ -66,11 +66,11 @@ export const SuccessPanel: Story = {
 
 export const StandardPanelWithLink: Story = {
   args: {},
-  render: (args) => (
-    <NotificationBanner {...args}>
+  render: () => (
+    <NotificationBanner>
       <NotificationBanner.Heading>
-        You have 7 days left to send your application.
-        <NotificationBanner.Link href={'#'}>View application</NotificationBanner.Link>.
+        You have 7 days left to send your application.{' '}
+        <NotificationBanner.Link href="#">View application</NotificationBanner.Link>.
       </NotificationBanner.Heading>
     </NotificationBanner>
   ),
@@ -80,9 +80,9 @@ export const StandardPanelWithCustomTitle: Story = {
   args: {
     title: 'Important Message',
   },
-  render: (args) => (
-    <NotificationBanner {...args}>
-      <NotificationBanner.Heading>Upcoming Maintenance</NotificationBanner.Heading>
+  render: () => (
+    <NotificationBanner>
+      <NotificationBanner.Heading>Upcoming maintenance</NotificationBanner.Heading>
       <p>The service will be unavailable from 8pm to 9pm on Thursday 1 January 2025.</p>
     </NotificationBanner>
   ),
@@ -90,12 +90,12 @@ export const StandardPanelWithCustomTitle: Story = {
 
 export const StandardPanelWithCustomTitleElement: Story = {
   args: {},
-  render: (args) => (
-    <NotificationBanner {...args}>
+  render: () => (
+    <NotificationBanner>
       <NotificationBanner.Title>
-        <span style={{ textDecoration: 'underline' }}>Very</span> Important Message
+        Maintenance <time dateTime={'2025-01-01'}>January 1</time>
       </NotificationBanner.Title>
-      <NotificationBanner.Heading>Upcoming Maintenance</NotificationBanner.Heading>
+      <NotificationBanner.Heading>Upcoming maintenance</NotificationBanner.Heading>
       <p>The service will be unavailable from 8pm to 9pm on Thursday 1 January 2025.</p>
     </NotificationBanner>
   ),
@@ -103,8 +103,8 @@ export const StandardPanelWithCustomTitleElement: Story = {
 
 export const StandardPanelWithList: Story = {
   args: {},
-  render: (args) => (
-    <NotificationBanner {...args}>
+  render: () => (
+    <NotificationBanner>
       <NotificationBanner.Heading>4 files uploaded</NotificationBanner.Heading>
       <ul>
         <li>
@@ -126,14 +126,15 @@ export const StandardPanelWithList: Story = {
 
 export const StandardPanelWithLotsOfContent: Story = {
   args: {},
-  render: (args) => (
-    <NotificationBanner {...args}>
+  render: () => (
+    <NotificationBanner>
       <NotificationBanner.Heading>
         Check if you need to apply the reverse charge to this application
       </NotificationBanner.Heading>
       <p>
-        You will have to apply the <NotificationBanner.Link>reverse charge</NotificationBanner.Link>{' '}
-        if the applicant supplies any of these services:
+        You will have to apply the{' '}
+        <NotificationBanner.Link href="#">reverse charge</NotificationBanner.Link> if the applicant
+        supplies any of these services:
       </p>
       <ul>
         <li>
