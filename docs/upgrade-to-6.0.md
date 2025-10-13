@@ -31,6 +31,17 @@ The [panel](https://service-manual.nhs.uk/design-system/components/panel) compon
 
 This replaces the [list panel component](#list-panel) which was removed in NHS.UK frontend v6.0.0.
 
+### Notification banner component
+
+The [notification banner](https://service-manual.nhs.uk/design-system/components/notification-banner) component from NHS.UK frontend v10 has been added:
+
+```jsx
+<NotificationBanner>
+  <NotificationBanner.Heading>Upcoming maintenance</NotificationBanner.Heading>
+  <p>The service will be unavailable from 8pm to 9pm on Thursday 1 January 2025.</p>
+</NotificationBanner>
+```
+
 ### Support for React Server Components (RSC)
 
 All components have been tested as React Server Components (RSC) but due to [multipart namespace component limitations](https://ivicabatinic.from.hr/posts/multipart-namespace-components-addressing-rsc-and-dot-notation-issues) an alternative syntax (without dot notation) can be used as a workaround:
@@ -440,8 +451,9 @@ You must rename the `Select` prop `selectRef` to `ref` for consistency with othe
 To align with NHS.UK frontend, the skip link component focuses the main content rather than the first heading on the page:
 
 ```html
-<main class="nhsuk-main-wrapper id="maincontent">
+<main class="nhsuk-main-wrapper" id="maincontent">
   <!-- // ... -->
+</main>
 ```
 
 For accessibility reasons, you must make the following changes:
