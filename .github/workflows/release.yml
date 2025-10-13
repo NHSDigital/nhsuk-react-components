@@ -22,6 +22,7 @@ jobs:
         with:
           cache: yarn
           node-version-file: .nvmrc
+          registry-url: https://registry.npmjs.org/
 
       - name: Yarn Install
         run: yarn
