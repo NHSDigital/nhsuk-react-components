@@ -39,18 +39,20 @@ const NotificationBannerComponent = forwardRef<HTMLDivElement, NotificationBanne
     }, [moduleRef, instance]);
 
     const items = Children.toArray(children);
+
     const titleElement = items.find((child) =>
-      childIsOfComponentType(child, NotificationBannerTitle),
+      childIsOfComponentType(child, NotificationBannerTitle, {
+        className: 'nhsuk-notification-banner__title',
+      }),
     );
-    const nonTitleItems = items.filter(
-      (child) => !childIsOfComponentType(child, NotificationBannerTitle),
+
+    const headerElement = items.find((child) =>
+      childIsOfComponentType(child, NotificationBannerHeading, {
+        className: 'nhsuk-notification-banner__heading',
+      }),
     );
-    const headerElement = nonTitleItems.find((child) =>
-      childIsOfComponentType(child, NotificationBannerHeading),
-    );
-    const bodyItems = nonTitleItems.filter(
-      (child) => !childIsOfComponentType(child, NotificationBannerHeading),
-    );
+
+    const bodyItems = items.filter((child) => child !== titleElement && child !== headerElement);
 
     if (instanceError) {
       throw instanceError;
