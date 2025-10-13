@@ -1,3 +1,5 @@
+'use client';
+
 import classNames from 'classnames';
 import { forwardRef, type ComponentPropsWithoutRef } from 'react';
 import {

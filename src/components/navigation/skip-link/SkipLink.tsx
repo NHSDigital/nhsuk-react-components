@@ -10,6 +10,7 @@ export const SkipLink = forwardRef<HTMLAnchorElement, SkipLinkProps>((props, for
   const { children = 'Skip to main content', className, href = '#maincontent', ...rest } = props;
 
   const [moduleRef] = useState(() => forwardedRef || createRef<HTMLAnchorElement>());
+  const [instanceError, setInstanceError] = useState<Error>();
   const [instance, setInstance] = useState<SkipLinkModule>();
 
   useEffect(() => {
@@ -17,12 +18,14 @@ export const SkipLink = forwardRef<HTMLAnchorElement, SkipLinkProps>((props, for
       return;
     }
 
-    const { current: $root } = moduleRef;
-
-    import('nhsuk-frontend').then(({ SkipLink }) => {
-      setInstance(new SkipLink($root));
-    });
+    import('nhsuk-frontend')
+      .then(({ SkipLink }) => setInstance(new SkipLink(moduleRef.current)))
+      .catch(setInstanceError);
   }, [moduleRef, instance]);
+
+  if (instanceError) {
+    throw instanceError;
+  }
 
   return (
     <a

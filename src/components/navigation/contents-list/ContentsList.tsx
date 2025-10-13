@@ -13,7 +13,7 @@ export interface ContentsListItemSpanProps extends ComponentPropsWithoutRef<'spa
 
 export type ContentsListItemProps = ContentsListItemLinkProps | ContentsListItemSpanProps;
 
-const ContentsListItem = forwardRef<HTMLAnchorElement, ContentsListItemProps>(
+export const ContentsListItem = forwardRef<HTMLAnchorElement, ContentsListItemProps>(
   ({ className, current, asElement: Element = 'a', ...rest }, forwardedRef) => {
     return (
       <li

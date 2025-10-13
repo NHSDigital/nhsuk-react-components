@@ -9,7 +9,7 @@ import {
   type ComponentPropsWithoutRef,
   type EventHandler,
 } from 'react';
-import { DayInput, MonthInput, YearInput } from './components/index.js';
+import { DateInputDay, DateInputMonth, DateInputYear } from './components/index.js';
 import { DateInputContext, type IDateInputContext } from './DateInputContext.js';
 import { FormGroup } from '#components/utils/index.js';
 import { type FormElementProps } from '#util/types/FormTypes.js';
@@ -26,12 +26,12 @@ export interface DateInputChangeEvent
   currentTarget: DateInputElement;
 }
 
-interface DateInputElement extends Omit<HTMLInputElement, 'value' | 'onChange'> {
+export interface DateInputElement extends Omit<HTMLInputElement, 'value' | 'onChange'> {
   value?: Partial<DateInputValue>;
   onChange?: EventHandler<DateInputChangeEvent>;
 }
 
-interface DateInputProps
+export interface DateInputProps
   extends Omit<ComponentPropsWithoutRef<'div'>, 'defaultValue' | 'onChange'>,
     Omit<FormElementProps, 'label' | 'labelProps'> {
   value?: Partial<DateInputValue>;
@@ -39,7 +39,7 @@ interface DateInputProps
   onChange?: EventHandler<DateInputChangeEvent>;
 }
 
-type InputType = 'day' | 'month' | 'year';
+export type DateInputType = 'day' | 'month' | 'year';
 
 const DateInputComponent = forwardRef<HTMLDivElement, DateInputProps>(
   ({ children, onChange, value, defaultValue, formGroupProps, ...rest }, forwardedRef) => {
@@ -51,7 +51,7 @@ const DateInputComponent = forwardRef<HTMLDivElement, DateInputProps>(
       year: value?.year ?? '',
     });
 
-    const handleChange = (inputType: InputType, event: ChangeEvent<HTMLInputElement>): void => {
+    const handleChange = (inputType: DateInputType, event: ChangeEvent<HTMLInputElement>): void => {
       event.stopPropagation();
 
       const newEventValue: DateInputValue = {
@@ -95,9 +95,9 @@ const DateInputComponent = forwardRef<HTMLDivElement, DateInputProps>(
               <DateInputContext.Provider value={contextValue}>
                 {children || (
                   <>
-                    <DayInput />
-                    <MonthInput />
-                    <YearInput />
+                    <DateInputDay />
+                    <DateInputMonth />
+                    <DateInputYear />
                   </>
                 )}
               </DateInputContext.Provider>
@@ -112,7 +112,7 @@ const DateInputComponent = forwardRef<HTMLDivElement, DateInputProps>(
 DateInputComponent.displayName = 'DateInput';
 
 export const DateInput = Object.assign(DateInputComponent, {
-  Day: DayInput,
-  Month: MonthInput,
-  Year: YearInput,
+  Day: DateInputDay,
+  Month: DateInputMonth,
+  Year: DateInputYear,
 });

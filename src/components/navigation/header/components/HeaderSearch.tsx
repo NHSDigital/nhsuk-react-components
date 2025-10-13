@@ -1,14 +1,14 @@
 import { type ComponentPropsWithoutRef, type FC } from 'react';
 import { SearchIcon } from '#components/content-presentation/index.js';
 
-export interface SearchProps extends ComponentPropsWithoutRef<'form'> {
+export interface HeaderSearchProps extends ComponentPropsWithoutRef<'form'> {
   name?: string;
   placeholder?: string;
   visuallyHiddenLabel?: string;
   visuallyHiddenButton?: string;
 }
 
-export const Search: FC<SearchProps> = ({
+export const HeaderSearch: FC<HeaderSearchProps> = ({
   action = 'https://www.nhs.uk/search/',
   method = 'get',
   id = 'search',
@@ -40,4 +40,4 @@ export const Search: FC<SearchProps> = ({
   );
 };
 
-Search.displayName = 'Header.Search';
+HeaderSearch.displayName = 'Header.Search';

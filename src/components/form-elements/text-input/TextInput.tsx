@@ -1,3 +1,5 @@
+'use client';
+
 import classNames from 'classnames';
 import { forwardRef, type ComponentPropsWithoutRef, type FC } from 'react';
 import { FormGroup } from '#components/utils/index.js';

@@ -3,19 +3,19 @@ import { forwardRef, type ComponentPropsWithRef, type ForwardedRef, type ReactNo
 import { UserIcon } from '#components/content-presentation/index.js';
 import { type AsElementLink } from '#util/types/LinkTypes.js';
 
-export interface AccountItemButtonProps extends AsElementLink<HTMLButtonElement> {
+export interface HeaderAccountItemButtonProps extends AsElementLink<HTMLButtonElement> {
   as?: 'button';
   formProps?: ComponentPropsWithRef<'form'>;
   icon?: boolean;
 }
 
-export interface AccountItemLinkProps extends AsElementLink<HTMLAnchorElement> {
+export interface HeaderAccountItemLinkProps extends AsElementLink<HTMLAnchorElement> {
   href: string;
   as?: 'a';
   icon?: boolean;
 }
 
-const AccountItemButton = forwardRef<HTMLButtonElement, AccountItemButtonProps>(
+const HeaderAccountItemButton = forwardRef<HTMLButtonElement, HeaderAccountItemButtonProps>(
   (props, forwardedRef) => {
     const { className, as, asElement: Element = as ?? 'button', ...rest } = props;
     const { formProps, ...buttonRest } = rest;
@@ -32,7 +32,7 @@ const AccountItemButton = forwardRef<HTMLButtonElement, AccountItemButtonProps>(
   },
 );
 
-const AccountItemLink = forwardRef<HTMLAnchorElement, AccountItemLinkProps>(
+const HeaderAccountItemLink = forwardRef<HTMLAnchorElement, HeaderAccountItemLinkProps>(
   ({ className, as, asElement: Element = as ?? 'a', ...rest }, forwardedRef) => (
     <Element
       className={classNames('nhsuk-header__account-link', className)}
@@ -42,25 +42,25 @@ const AccountItemLink = forwardRef<HTMLAnchorElement, AccountItemLinkProps>(
   ),
 );
 
-export const AccountItem = forwardRef<
+export const HeaderAccountItem = forwardRef<
   HTMLAnchorElement | HTMLButtonElement,
-  AccountItemButtonProps | AccountItemLinkProps
+  HeaderAccountItemButtonProps | HeaderAccountItemLinkProps
 >(({ children, className, icon, ...rest }, forwardedRef) => {
   let element: ReactNode;
 
   if (rest.as === 'a' || 'href' in rest) {
     element = (
-      <AccountItemLink ref={forwardedRef as ForwardedRef<HTMLAnchorElement>} {...rest}>
+      <HeaderAccountItemLink ref={forwardedRef as ForwardedRef<HTMLAnchorElement>} {...rest}>
         {icon ? <UserIcon /> : null}
         {children}
-      </AccountItemLink>
+      </HeaderAccountItemLink>
     );
   } else if (rest.as === 'button' || 'formProps' in rest) {
     element = (
-      <AccountItemButton ref={forwardedRef as ForwardedRef<HTMLButtonElement>} {...rest}>
+      <HeaderAccountItemButton ref={forwardedRef as ForwardedRef<HTMLButtonElement>} {...rest}>
         {icon ? <UserIcon /> : null}
         {children}
-      </AccountItemButton>
+      </HeaderAccountItemButton>
     );
   } else {
     element = (
@@ -74,6 +74,6 @@ export const AccountItem = forwardRef<
   return <li className={classNames('nhsuk-header__account-item', className)}>{element}</li>;
 });
 
-AccountItem.displayName = 'Header.AccountItem';
-AccountItemLink.displayName = 'Header.AccountItemLink';
-AccountItemButton.displayName = 'Header.AccountItemButton';
+HeaderAccountItem.displayName = 'Header.AccountItem';
+HeaderAccountItemLink.displayName = 'Header.AccountItemLink';
+HeaderAccountItemButton.displayName = 'Header.AccountItemButton';

@@ -5,8 +5,7 @@ import { renderClient, renderServer } from '#util/components';
 describe('Header', () => {
   it('matches snapshot', async () => {
     const { container } = await renderClient(
-      <Header>
-        <Header.Logo href="/" />
+      <Header logo={{ href: '/' }}>
         <Header.Search />
         <Header.Navigation>
           <Header.NavigationItem href="/conditions">Health A-Z</Header.NavigationItem>
@@ -27,8 +26,7 @@ describe('Header', () => {
 
   it('matches snapshot (via server)', async () => {
     const { container, element } = await renderServer(
-      <Header>
-        <Header.Logo href="/" />
+      <Header logo={{ href: '/' }}>
         <Header.Search />
         <Header.Navigation>
           <Header.NavigationItem href="/conditions">Health A-Z</Header.NavigationItem>
@@ -58,12 +56,9 @@ describe('Header', () => {
   it('forwards refs', async () => {
     const ref = createRef<HTMLElement>();
 
-    const { modules } = await renderClient(
-      <Header ref={ref}>
-        <Header.Logo href="/" />
-      </Header>,
-      { moduleName: 'nhsuk-header' },
-    );
+    const { modules } = await renderClient(<Header logo={{ href: '/' }} ref={ref} />, {
+      moduleName: 'nhsuk-header',
+    });
 
     const [headerEl] = modules;
 
@@ -106,12 +101,9 @@ describe('Header', () => {
 
   describe('Header.Logo', () => {
     it('renders logo only', async () => {
-      const { container } = await renderClient(
-        <Header>
-          <Header.Logo />
-        </Header>,
-        { moduleName: 'nhsuk-header' },
-      );
+      const { container } = await renderClient(<Header />, {
+        moduleName: 'nhsuk-header',
+      });
 
       const linkEl = container.querySelector('.nhsuk-header__service a');
       const logoEl = container.querySelector('.nhsuk-header__logo');
@@ -121,12 +113,9 @@ describe('Header', () => {
     });
 
     it('renders logo only (with link)', async () => {
-      const { container } = await renderClient(
-        <Header>
-          <Header.Logo href="/" />
-        </Header>,
-        { moduleName: 'nhsuk-header' },
-      );
+      const { container } = await renderClient(<Header logo={{ href: '/' }} />, {
+        moduleName: 'nhsuk-header',
+      });
 
       const linkEl = container.querySelector('.nhsuk-header__service a');
       const logoEl = container.querySelector('.nhsuk-header__logo');
@@ -138,9 +127,7 @@ describe('Header', () => {
 
     it('renders logo and organisation name', async () => {
       const { container } = await renderClient(
-        <Header organisation={{ name: 'Test organisation' }}>
-          <Header.Logo />
-        </Header>,
+        <Header organisation={{ name: 'Test organisation' }} />,
         { moduleName: 'nhsuk-header' },
       );
 
@@ -157,9 +144,7 @@ describe('Header', () => {
 
     it('renders logo (with link) and organisation name', async () => {
       const { container } = await renderClient(
-        <Header organisation={{ name: 'Test organisation' }}>
-          <Header.Logo href="/" />
-        </Header>,
+        <Header logo={{ href: '/' }} organisation={{ name: 'Test organisation' }} />,
         { moduleName: 'nhsuk-header' },
       );
 
@@ -177,9 +162,7 @@ describe('Header', () => {
 
     it('renders logo (custom src) and organisation name', async () => {
       const { container } = await renderClient(
-        <Header organisation={{ name: 'Test organisation' }}>
-          <Header.Logo src="custom.svg" />
-        </Header>,
+        <Header logo={{ src: 'custom.svg' }} organisation={{ name: 'Test organisation' }} />,
         { moduleName: 'nhsuk-header' },
       );
 
@@ -196,9 +179,10 @@ describe('Header', () => {
 
     it('renders logo (with link, custom src) and organisation name', async () => {
       const { container } = await renderClient(
-        <Header organisation={{ name: 'Test organisation' }}>
-          <Header.Logo href="/" src="custom.svg" />
-        </Header>,
+        <Header
+          logo={{ href: '/', src: 'custom.svg' }}
+          organisation={{ name: 'Test organisation' }}
+        />,
         { moduleName: 'nhsuk-header' },
       );
 
@@ -217,14 +201,13 @@ describe('Header', () => {
     it('renders logo (with link) and organisation name (split, with descriptor)', async () => {
       const { container } = await renderClient(
         <Header
+          logo={{ href: '/' }}
           organisation={{
             name: 'Anytown Anyplace',
             split: 'Anywhere',
             descriptor: 'NHS Foundation Trust',
           }}
-        >
-          <Header.Logo href="/" />
-        </Header>,
+        />,
         { moduleName: 'nhsuk-header' },
       );
 
@@ -245,7 +228,6 @@ describe('Header', () => {
     it('matches snapshot', async () => {
       const { container } = await renderClient(
         <Header>
-          <Header.Logo />
           <Header.Account>
             <Header.AccountItem href="#" icon={true}>
               florence.nightingale@nhs.net
@@ -267,7 +249,6 @@ describe('Header', () => {
 
       const { container } = await renderClient(
         <Header>
-          <Header.Logo />
           <Header.Account>
             <Header.AccountItem href="#" icon={true} ref={ref1}>
               florence.nightingale@nhs.net
@@ -305,7 +286,6 @@ describe('Header', () => {
 
       const { container } = await renderClient(
         <Header>
-          <Header.Logo />
           <Header.Account>
             <Header.AccountItem asElement={CustomLink} href="#" icon={true}>
               florence.nightingale@nhs.net

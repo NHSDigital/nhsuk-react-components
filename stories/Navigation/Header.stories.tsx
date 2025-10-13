@@ -17,7 +17,6 @@ export const HeaderDefault: Story = {
         href: '/',
       }}
     >
-      <Header.Logo />
       <Header.Search
         placeholder="Search"
         visuallyHiddenLabel="Search the NHS digital service manual"
@@ -34,11 +33,7 @@ export const HeaderDefault: Story = {
 };
 
 export const HeaderBasic: Story = {
-  render: (args) => (
-    <Header>
-      <Header.Logo href="/" />
-    </Header>
-  ),
+  render: (args) => <Header logo={{ href: '/' }} />,
 };
 
 export const HeaderWithServiceName: Story = {
@@ -48,16 +43,13 @@ export const HeaderWithServiceName: Story = {
         text: 'Manage patients',
         href: '/',
       }}
-    >
-      <Header.Logo />
-    </Header>
+    />
   ),
 };
 
 export const HeaderWithSearch: Story = {
   render: (args) => (
-    <Header>
-      <Header.Logo href="/" />
+    <Header logo={{ href: '/' }}>
       <Header.Search />
     </Header>
   ),
@@ -65,8 +57,7 @@ export const HeaderWithSearch: Story = {
 
 export const HeaderWithNavigation: Story = {
   render: (args) => (
-    <Header>
-      <Header.Logo href="/" />
+    <Header logo={{ href: '/' }}>
       <Header.Navigation>
         <Header.NavigationItem href="#">NHS service standard</Header.NavigationItem>
         <Header.NavigationItem href="#" active>
@@ -88,7 +79,6 @@ export const HeaderWithAccount: Story = {
         href: '/',
       }}
     >
-      <Header.Logo />
       <Header.Account>
         <Header.AccountItem href="#" icon>
           florence.nightingale@nhs.net
@@ -109,7 +99,6 @@ export const HeaderWithAccountComplex: Story = {
         href: '/',
       }}
     >
-      <Header.Logo />
       <Header.Account>
         <Header.AccountItem href="#" icon>
           Florence Nightingale (Regional Manager)
@@ -131,13 +120,13 @@ export const HeaderWithAccountComplex: Story = {
 export const HeaderOrganisationalBlueWithNavigation: Story = {
   render: (args) => (
     <Header
+      logo={{ href: '/' }}
       organisation={{
         name: 'Anytown Anyplace',
         split: 'Anywhere',
         descriptor: 'NHS Foundation Trust',
       }}
     >
-      <Header.Logo href="/" />
       <Header.Search visuallyHiddenLabel="Search the Anytown Anyplace Anywhere website" />
       <Header.Navigation>
         <Header.NavigationItem href="#">Your hospital visit</Header.NavigationItem>
@@ -156,13 +145,13 @@ export const HeaderOrganisationalWhiteWithNavigation: Story = {
   render: (args) => (
     <Header
       className="nhsuk-header--white"
+      logo={{ href: '/' }}
       organisation={{
         name: 'Anytown Anyplace',
         split: 'Anywhere',
         descriptor: 'NHS Foundation Trust',
       }}
     >
-      <Header.Logo href="/" />
       <Header.Search />
       <Header.Navigation>
         <Header.NavigationItem href="#">Your hospital visit</Header.NavigationItem>
@@ -181,13 +170,13 @@ export const HeaderOrganisationalWhiteWithNavigationWhite: Story = {
   render: (args) => (
     <Header
       className="nhsuk-header--white"
+      logo={{ href: '/' }}
       organisation={{
         name: 'Anytown Anyplace',
         split: 'Anywhere',
         descriptor: 'NHS Foundation Trust',
       }}
     >
-      <Header.Logo href="/" />
       <Header.Search />
       <Header.Navigation white>
         <Header.NavigationItem href="#">Your hospital visit</Header.NavigationItem>
@@ -214,13 +203,13 @@ export const HeaderWithCustomNavItemComponent: Story = {
 
     return (
       <Header
+        logo={{ href: '/' }}
         organisation={{
           name: 'Anytown Anyplace',
           split: 'Anywhere',
           descriptor: 'NHS Foundation Trust',
         }}
       >
-        <Header.Logo href="/" />
         <Header.Search />
         <Header.Navigation white>
           <Header.NavigationItem to="/" asElement={CustomLink}>

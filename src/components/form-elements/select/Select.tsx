@@ -1,3 +1,5 @@
+'use client';
+
 import classNames from 'classnames';
 import { forwardRef, type ComponentPropsWithoutRef } from 'react';
 import { FormGroup } from '#components/utils/index.js';
@@ -22,13 +24,13 @@ const SelectComponent = forwardRef<HTMLSelectElement, SelectProps>(
   ),
 );
 
-const Option = forwardRef<HTMLOptionElement, ComponentPropsWithoutRef<'option'>>(
+export const SelectOption = forwardRef<HTMLOptionElement, ComponentPropsWithoutRef<'option'>>(
   (props, forwardedRef) => <option ref={forwardedRef} {...props} />,
 );
 
 SelectComponent.displayName = 'Select';
-Option.displayName = 'Select.Option';
+SelectOption.displayName = 'Select.Option';
 
 export const Select = Object.assign(SelectComponent, {
-  Option,
+  Option: SelectOption,
 });

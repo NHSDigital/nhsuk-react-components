@@ -1,62 +1,8 @@
 import classNames from 'classnames';
-import { Children, forwardRef, type ComponentPropsWithoutRef, type FC } from 'react';
+import { Children, forwardRef, type ComponentPropsWithoutRef } from 'react';
 import { Container } from '#components/layout/index.js';
-import { childIsOfComponentType, type AsElementLink } from '#util/types/index.js';
-
-export interface FooterMetaProps extends FooterListProps {
-  visuallyHiddenText?: string;
-}
-
-const FooterMeta: FC<FooterMetaProps> = ({
-  children,
-  visuallyHiddenText = 'Support links',
-  ...rest
-}) => {
-  const items = Children.toArray(children);
-
-  const metaItems = items.filter((child) => childIsOfComponentType(child, FooterListItem));
-  const metaCopyright = items.filter((child) => childIsOfComponentType(child, FooterCopyright));
-
-  return (
-    <div className="nhsuk-footer__meta">
-      <h2 className="nhsuk-u-visually-hidden">{visuallyHiddenText}</h2>
-      <FooterList {...rest}>{metaItems}</FooterList>
-      {metaCopyright.length ? metaCopyright : <FooterCopyright />}
-    </div>
-  );
-};
-
-type FooterListProps = ComponentPropsWithoutRef<'ul'>;
-
-const FooterList: FC<FooterListProps> = ({ children, className, ...rest }) => (
-  <ul className={classNames('nhsuk-footer__list', className)} {...rest}>
-    {children}
-  </ul>
-);
-
-type FooterListItemProps = AsElementLink<HTMLAnchorElement>;
-
-const FooterListItem = forwardRef<HTMLAnchorElement, FooterListItemProps>(
-  ({ className, asElement: Element = 'a', ...rest }, forwardedRef) => (
-    <li className="nhsuk-footer__list-item">
-      <Element
-        className={classNames('nhsuk-footer__list-item-link', className)}
-        ref={forwardedRef}
-        {...rest}
-      />
-    </li>
-  ),
-);
-
-const FooterCopyright: FC<ComponentPropsWithoutRef<'p'>> = ({
-  children = '© NHS England',
-  className,
-  ...rest
-}) => (
-  <p className={classNames('nhsuk-body-s', className)} {...rest}>
-    {children}
-  </p>
-);
+import { childIsOfComponentType } from '#util/types/index.js';
+import { FooterCopyright, FooterList, FooterListItem, FooterMeta } from './components/index.js';
 
 export interface FooterProps extends ComponentPropsWithoutRef<'div'> {
   containerClassName?: string;
@@ -100,10 +46,6 @@ const FooterComponent = forwardRef<HTMLElement, FooterProps>(
 );
 
 FooterComponent.displayName = 'Footer';
-FooterMeta.displayName = 'Footer.Meta';
-FooterList.displayName = 'Footer.List';
-FooterListItem.displayName = 'Footer.ListItem';
-FooterCopyright.displayName = 'Footer.Copyright';
 
 export const Footer = Object.assign(FooterComponent, {
   Meta: FooterMeta,

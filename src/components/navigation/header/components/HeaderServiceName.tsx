@@ -1,12 +1,16 @@
-'use client';
+import { type FC, type PropsWithChildren } from 'react';
+import { type HeaderLogoProps } from './HeaderLogo.js';
 
-import { useContext, type ComponentPropsWithoutRef, type FC } from 'react';
-import { HeaderContext, type IHeaderContext } from '../HeaderContext.js';
+export type HeaderServiceNameInnerProps = NonNullable<HeaderServiceNameProps['service']>;
 
-export type ServiceNameInnerProps = NonNullable<IHeaderContext['serviceProps']>;
-export type ServiceNameProps = Pick<ComponentPropsWithoutRef<'div'>, 'children'>;
+export interface HeaderServiceNameProps extends PropsWithChildren, HeaderLogoProps {
+  service?: {
+    href?: string;
+    text?: string;
+  };
+}
 
-const ServiceNameInner: FC<ServiceNameInnerProps> = (service) =>
+const HeaderServiceNameInner: FC<HeaderServiceNameInnerProps> = (service) =>
   service.href ? (
     <a className="nhsuk-header__service-name" href={service.href}>
       {service.text}
@@ -15,13 +19,12 @@ const ServiceNameInner: FC<ServiceNameInnerProps> = (service) =>
     <span className="nhsuk-header__service-name">{service.text}</span>
   );
 
-export const ServiceName: FC<ServiceNameProps> = ({ children }) => {
-  const {
-    logoProps: logo,
-    organisationProps: organisation,
-    serviceProps: service,
-  } = useContext<IHeaderContext>(HeaderContext);
-
+export const HeaderServiceName: FC<HeaderServiceNameProps> = ({
+  children,
+  logo,
+  organisation,
+  service,
+}) => {
   // The NHS logo and service name are combined into a single link if either
   // the logo doesn’t have an `href` set but the service name does, or if both
   // have an exact `href`. This avoids having 2 links to same destination.
@@ -48,15 +51,17 @@ export const ServiceName: FC<ServiceNameProps> = ({ children }) => {
       {logoHref ? (
         <a className="nhsuk-header__service-logo" href={logoHref} aria-label={logoAriaLabel}>
           {children}
-          {combineLogoAndServiceNameLinks ? <ServiceNameInner text={service.text} /> : null}
+          {combineLogoAndServiceNameLinks ? <HeaderServiceNameInner text={service.text} /> : null}
         </a>
       ) : (
         <>
           {children}
-          {combineLogoAndServiceNameLinks ? <ServiceNameInner text={service.text} /> : null}
+          {combineLogoAndServiceNameLinks ? <HeaderServiceNameInner text={service.text} /> : null}
         </>
       )}
-      {service?.text && !combineLogoAndServiceNameLinks ? <ServiceNameInner {...service} /> : null}
+      {service?.text && !combineLogoAndServiceNameLinks ? (
+        <HeaderServiceNameInner {...service} />
+      ) : null}
     </div>
   );
 };

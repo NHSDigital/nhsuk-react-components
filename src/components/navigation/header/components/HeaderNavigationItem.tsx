@@ -2,12 +2,16 @@ import classNames from 'classnames';
 import { type FC } from 'react';
 import { type AsElementLink } from '#util/types/LinkTypes.js';
 
-export interface NavigationItemProps extends AsElementLink<HTMLAnchorElement> {
+export interface HeaderNavigationItemProps extends AsElementLink<HTMLAnchorElement> {
   active?: boolean;
   current?: boolean;
 }
 
-const NavigationItemInner: FC<NavigationItemProps> = ({ active, children, current }) => {
+const HeaderNavigationItemInner: FC<HeaderNavigationItemProps> = ({
+  active,
+  children,
+  current,
+}) => {
   // Wrap active links in strong element so users who override colours
   // or styles still have some indicator of the current nav item
   return (active ?? current) ? (
@@ -17,7 +21,7 @@ const NavigationItemInner: FC<NavigationItemProps> = ({ active, children, curren
   );
 };
 
-export const NavigationItem: FC<NavigationItemProps> = ({
+export const HeaderNavigationItem: FC<HeaderNavigationItemProps> = ({
   className,
   children,
   active,
@@ -42,10 +46,10 @@ export const NavigationItem: FC<NavigationItemProps> = ({
       )}
     >
       <Element className="nhsuk-header__navigation-link" aria-current={ariaCurrent} {...rest}>
-        <NavigationItemInner {...rest}>{children}</NavigationItemInner>
+        <HeaderNavigationItemInner {...rest}>{children}</HeaderNavigationItemInner>
       </Element>
     </li>
   );
 };
 
-NavigationItem.displayName = 'Header.NavigationItem';
+HeaderNavigationItem.displayName = 'Header.NavigationItem';

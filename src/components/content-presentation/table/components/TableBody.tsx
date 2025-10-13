@@ -1,3 +1,5 @@
+'use client';
+
 import classNames from 'classnames';
 import { type ComponentPropsWithoutRef, type FC } from 'react';
 import { TableSection, TableSectionContext } from '../TableSectionContext.js';

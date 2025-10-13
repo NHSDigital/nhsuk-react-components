@@ -17,6 +17,7 @@ export interface CharacterCountProps
 export const CharacterCount = forwardRef<HTMLTextAreaElement, CharacterCountProps>(
   ({ maxLength, maxWords, threshold, formGroupProps, ...rest }, forwardedRef) => {
     const [moduleRef] = useState(() => formGroupProps?.ref || createRef<HTMLDivElement>());
+    const [instanceError, setInstanceError] = useState<Error>();
     const [instance, setInstance] = useState<CharacterCountModule>();
 
     useEffect(() => {
@@ -24,12 +25,14 @@ export const CharacterCount = forwardRef<HTMLTextAreaElement, CharacterCountProp
         return;
       }
 
-      const { current: $root } = moduleRef;
-
-      import('nhsuk-frontend').then(({ CharacterCount }) => {
-        setInstance(new CharacterCount($root));
-      });
+      import('nhsuk-frontend')
+        .then(({ CharacterCount }) => setInstance(new CharacterCount(moduleRef.current)))
+        .catch(setInstanceError);
     }, [moduleRef, instance]);
+
+    if (instanceError) {
+      throw instanceError;
+    }
 
     return (
       <FormGroup<CharacterCountProps>

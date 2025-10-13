@@ -46,6 +46,7 @@ const ButtonComponent = forwardRef<HTMLButtonElement, ButtonProps>((props, forwa
   } = props;
 
   const [moduleRef] = useState(() => forwardedRef || createRef<HTMLButtonElement>());
+  const [instanceError, setInstanceError] = useState<Error>();
   const [instance, setInstance] = useState<ButtonModule>();
 
   useEffect(() => {
@@ -53,12 +54,14 @@ const ButtonComponent = forwardRef<HTMLButtonElement, ButtonProps>((props, forwa
       return;
     }
 
-    const { current: $root } = moduleRef;
-
-    import('nhsuk-frontend').then(({ Button }) => {
-      setInstance(new Button($root));
-    });
+    import('nhsuk-frontend')
+      .then(({ Button }) => setInstance(new Button(moduleRef.current)))
+      .catch(setInstanceError);
   }, [moduleRef, instance]);
+
+  if (instanceError) {
+    throw instanceError;
+  }
 
   return (
     <Element
@@ -102,6 +105,7 @@ const ButtonLinkComponent = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
     } = props;
 
     const [moduleRef] = useState(() => forwardedRef || createRef<HTMLAnchorElement>());
+    const [instanceError, setInstanceError] = useState<Error>();
     const [instance, setInstance] = useState<ButtonModule>();
 
     useEffect(() => {
@@ -109,12 +113,14 @@ const ButtonLinkComponent = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
         return;
       }
 
-      const { current: $root } = moduleRef;
-
-      import('nhsuk-frontend').then(({ Button }) => {
-        setInstance(new Button($root));
-      });
+      import('nhsuk-frontend')
+        .then(({ Button }) => setInstance(new Button(moduleRef.current)))
+        .catch(setInstanceError);
     }, [moduleRef, instance]);
+
+    if (instanceError) {
+      throw instanceError;
+    }
 
     return (
       <Element

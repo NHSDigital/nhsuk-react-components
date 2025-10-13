@@ -1,10 +1,10 @@
 import { type FC } from 'react';
 
-type DividerProps = {
+export type CheckboxesDividerProps = {
   dividerText?: string;
 };
 
-export const CheckboxesDivider: FC<DividerProps> = ({ dividerText = 'or' }) => (
+export const CheckboxesDivider: FC<CheckboxesDividerProps> = ({ dividerText = 'or' }) => (
   <div className="nhsuk-checkboxes__divider">{dividerText}</div>
 );
 

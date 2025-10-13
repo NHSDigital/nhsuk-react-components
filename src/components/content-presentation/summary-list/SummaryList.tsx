@@ -1,19 +1,19 @@
 import classNames from 'classnames';
 import { forwardRef, type ComponentPropsWithoutRef, type FC } from 'react';
 
-const SummaryListRow: FC<ComponentPropsWithoutRef<'div'>> = ({ className, ...rest }) => (
+export const SummaryListRow: FC<ComponentPropsWithoutRef<'div'>> = ({ className, ...rest }) => (
   <div className={classNames('nhsuk-summary-list__row', className)} {...rest} />
 );
 
-const SummaryListKey: FC<ComponentPropsWithoutRef<'dt'>> = ({ className, ...rest }) => (
+export const SummaryListKey: FC<ComponentPropsWithoutRef<'dt'>> = ({ className, ...rest }) => (
   <dt className={classNames('nhsuk-summary-list__key', className)} {...rest} />
 );
 
-const SummaryListValue: FC<ComponentPropsWithoutRef<'dd'>> = ({ className, ...rest }) => (
+export const SummaryListValue: FC<ComponentPropsWithoutRef<'dd'>> = ({ className, ...rest }) => (
   <dd className={classNames('nhsuk-summary-list__value', className)} {...rest} />
 );
 
-const SummaryListActions: FC<ComponentPropsWithoutRef<'dd'>> = ({ className, ...rest }) => (
+export const SummaryListActions: FC<ComponentPropsWithoutRef<'dd'>> = ({ className, ...rest }) => (
   <dd className={classNames('nhsuk-summary-list__actions', className)} {...rest} />
 );
 

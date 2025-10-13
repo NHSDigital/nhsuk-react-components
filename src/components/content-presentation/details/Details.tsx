@@ -15,7 +15,7 @@ const DetailsComponent = forwardRef<HTMLDetailsElement, DetailsProps>(
   ),
 );
 
-const DetailsSummary = forwardRef<HTMLElement, ComponentPropsWithoutRef<'div'>>(
+export const DetailsSummary = forwardRef<HTMLElement, ComponentPropsWithoutRef<'div'>>(
   ({ children, className, ...rest }, forwardedRef) => (
     <summary
       className={classNames('nhsuk-details__summary', className)}
@@ -27,21 +27,22 @@ const DetailsSummary = forwardRef<HTMLElement, ComponentPropsWithoutRef<'div'>>(
   ),
 );
 
-const DetailsText: FC<ComponentPropsWithoutRef<'div'>> = ({ className, ...rest }) => (
+export const DetailsText: FC<ComponentPropsWithoutRef<'div'>> = ({ className, ...rest }) => (
   <div className={classNames('nhsuk-details__text', className)} {...rest} />
 );
 
-const ExpanderGroup: FC<ComponentPropsWithoutRef<'div'>> = ({ className, ...rest }) => (
-  <div className={classNames('nhsuk-expander-group', className)} {...rest} />
-);
+export const DetailsExpanderGroup: FC<ComponentPropsWithoutRef<'div'>> = ({
+  className,
+  ...rest
+}) => <div className={classNames('nhsuk-expander-group', className)} {...rest} />;
 
 DetailsComponent.displayName = 'Details';
 DetailsSummary.displayName = 'Details.Summary';
 DetailsText.displayName = 'Details.Text';
-ExpanderGroup.displayName = 'Details.ExpanderGroup';
+DetailsExpanderGroup.displayName = 'Details.ExpanderGroup';
 
 export const Details = Object.assign(DetailsComponent, {
   Summary: DetailsSummary,
   Text: DetailsText,
-  ExpanderGroup,
+  ExpanderGroup: DetailsExpanderGroup,
 });

@@ -20,6 +20,7 @@ const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwarde
   const { children, idPrefix, ...rest } = props;
 
   const [moduleRef] = useState(() => forwardedRef || createRef<HTMLDivElement>());
+  const [instanceError, setInstanceError] = useState<Error>();
   const [instance, setInstance] = useState<RadiosModule>();
   const [selectedRadio, setSelectedRadio] = useState<string>();
 
@@ -32,11 +33,9 @@ const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwarde
       return;
     }
 
-    const { current: $root } = moduleRef;
-
-    import('nhsuk-frontend').then(({ Radios }) => {
-      setInstance(new Radios($root));
-    });
+    import('nhsuk-frontend')
+      .then(({ Radios }) => setInstance(new Radios(moduleRef.current)))
+      .catch(setInstanceError);
   }, [moduleRef, instance]);
 
   const getRadioId = (id: string, reference: string): string => {
@@ -72,6 +71,10 @@ const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwarde
     _radioCount = 0;
     _radioIds = {};
   };
+
+  if (instanceError) {
+    throw instanceError;
+  }
 
   return (
     <FormGroup<RadiosProps> inputType="radios" {...rest}>

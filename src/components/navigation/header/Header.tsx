@@ -12,23 +12,21 @@ import {
   type ComponentPropsWithoutRef,
 } from 'react';
 import {
-  Account,
-  AccountItem,
-  Logo,
-  Navigation,
-  NavigationItem,
-  Search,
-  ServiceName,
+  HeaderAccount,
+  HeaderAccountItem,
+  HeaderLogo,
+  HeaderNavigation,
+  HeaderNavigationItem,
+  HeaderSearch,
+  HeaderServiceName,
+  type HeaderServiceNameProps,
 } from './components/index.js';
 import { HeaderContext, type IHeaderContext } from './HeaderContext.js';
 import { Container } from '#components/layout/index.js';
 import { childIsOfComponentType } from '#util/types/index.js';
 
-export interface HeaderProps extends ComponentPropsWithoutRef<'div'> {
+export interface HeaderProps extends ComponentPropsWithoutRef<'div'>, HeaderServiceNameProps {
   containerClasses?: string;
-  logo?: IHeaderContext['logoProps'];
-  service?: IHeaderContext['serviceProps'];
-  organisation?: IHeaderContext['organisationProps'];
   white?: boolean;
 }
 
@@ -37,39 +35,9 @@ const HeaderComponent = forwardRef<HTMLElement, HeaderProps>((props, forwardedRe
     props;
 
   const [moduleRef] = useState(() => forwardedRef || createRef<HTMLElement>());
-
-  const [logoProps, setLogoProps] = useState(logo);
-  const [serviceProps, setServiceProps] = useState(service);
-  const [organisationProps, setOrganisationProps] = useState(organisation);
+  const [instanceError, setInstanceError] = useState<Error>();
   const [instance, setInstance] = useState<HeaderModule>();
   const [menuOpen, setMenuOpen] = useState(false);
-
-  useEffect(() => {
-    if (!logo) {
-      return;
-    }
-
-    setLogoProps(logo);
-    return () => setLogoProps(undefined);
-  }, [logo]);
-
-  useEffect(() => {
-    if (!service) {
-      return;
-    }
-
-    setServiceProps(service);
-    return () => setServiceProps(undefined);
-  }, [service]);
-
-  useEffect(() => {
-    if (!organisation) {
-      return;
-    }
-
-    setOrganisationProps(organisation);
-    return () => setOrganisationProps(undefined);
-  }, [organisation]);
 
   useEffect(() => {
     if (!('current' in moduleRef) || !moduleRef.current || instance) {
@@ -90,37 +58,36 @@ const HeaderComponent = forwardRef<HTMLElement, HeaderProps>((props, forwardedRe
       return;
     }
 
-    const { current: $root } = moduleRef;
-
-    import('nhsuk-frontend').then(({ Header }) => {
-      setInstance(new Header($root));
-    });
+    import('nhsuk-frontend')
+      .then(({ Header }) => setInstance(new Header(moduleRef.current)))
+      .catch(setInstanceError);
   }, [moduleRef, instance, menuOpen]);
 
   const contextValue: IHeaderContext = useMemo(() => {
-    return {
-      logoProps,
-      serviceProps,
-      organisationProps,
-      menuOpen,
-      setMenuOpen,
-      setLogoProps,
-      setServiceProps,
-      setOrganisationProps,
-    };
-  }, [logoProps, serviceProps, organisationProps, menuOpen]);
+    return { menuOpen, setMenuOpen };
+  }, [menuOpen]);
 
   const items = Children.toArray(children);
-  const childLogo = items.find((child) => childIsOfComponentType(child, Logo));
-  const childSearch = items.find((child) => childIsOfComponentType(child, Search));
-  const childNavigation = items.find((child) => childIsOfComponentType(child, Navigation));
-  const childAccount = items.find((child) => childIsOfComponentType(child, Account));
+
+  const childSearch = items.find((child) =>
+    childIsOfComponentType(child, HeaderSearch, { className: 'nhsuk-header__search' }),
+  );
+
+  const childAccount = items.find((child) =>
+    childIsOfComponentType(child, HeaderAccount, { className: 'nhsuk-header__account' }),
+  );
+
+  const childNavigation = items.find((child) => child !== childSearch && child !== childAccount);
+
+  if (instanceError) {
+    throw instanceError;
+  }
 
   return (
     <header
       className={classNames(
         'nhsuk-header',
-        { 'nhsuk-header--organisation': !!organisationProps },
+        { 'nhsuk-header--organisation': !!organisation },
         { 'nhsuk-header--white': !!white },
         className,
       )}
@@ -131,7 +98,9 @@ const HeaderComponent = forwardRef<HTMLElement, HeaderProps>((props, forwardedRe
     >
       <HeaderContext.Provider value={contextValue}>
         <Container className={classNames('nhsuk-header__container', containerClasses)}>
-          <ServiceName {...serviceProps}>{childLogo}</ServiceName>
+          <HeaderServiceName logo={logo} organisation={organisation} service={service}>
+            <HeaderLogo logo={logo} organisation={organisation} />
+          </HeaderServiceName>
           {childSearch}
           {childAccount}
         </Container>
@@ -144,10 +113,9 @@ const HeaderComponent = forwardRef<HTMLElement, HeaderProps>((props, forwardedRe
 HeaderComponent.displayName = 'Header';
 
 export const Header = Object.assign(HeaderComponent, {
-  Account,
-  AccountItem,
-  Logo,
-  Search,
-  Navigation,
-  NavigationItem,
+  Account: HeaderAccount,
+  AccountItem: HeaderAccountItem,
+  Search: HeaderSearch,
+  Navigation: HeaderNavigation,
+  NavigationItem: HeaderNavigationItem,
 });

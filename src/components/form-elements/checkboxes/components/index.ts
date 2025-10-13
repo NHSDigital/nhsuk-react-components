@@ -1,2 +1,2 @@
-export * from './Item.js';
-export * from './Divider.js';
+export * from './CheckboxesDivider.js';
+export * from './CheckboxesItem.js';

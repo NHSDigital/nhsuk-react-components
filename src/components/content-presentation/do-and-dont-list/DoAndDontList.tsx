@@ -1,27 +1,17 @@
 'use client';
 
 import classNames from 'classnames';
-import {
-  createContext,
-  forwardRef,
-  useContext,
-  type ComponentPropsWithoutRef,
-  type FC,
-  type ReactNode,
-} from 'react';
-import { CrossIcon, TickIcon } from '../icons/index.js';
+import { forwardRef, type ComponentPropsWithoutRef } from 'react';
 import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
-
-type ListType = 'do' | 'dont';
+import { DoAndDontListContext, type DoAndDontListType } from './DoAndDontListContext.js';
+import { DoAndDontListItem } from './components/index.js';
 
 export interface DoAndDontListProps
   extends ComponentPropsWithoutRef<'div'>,
     Pick<HeadingLevelProps, 'headingLevel'> {
-  listType: ListType;
+  listType: DoAndDontListType;
   heading?: string;
 }
-
-const DoAndDontListContext = createContext<ListType>('do');
 
 const DoAndDontListComponent = forwardRef<HTMLDivElement, DoAndDontListProps>(
   ({ className, listType, children, heading, headingLevel, ...rest }, forwardedRef) => (
@@ -42,36 +32,8 @@ const DoAndDontListComponent = forwardRef<HTMLDivElement, DoAndDontListProps>(
   ),
 );
 
-export interface DoAndDontItemProps extends ComponentPropsWithoutRef<'li'> {
-  listItemType?: ListType;
-  prefixText?: ReactNode;
-}
-
-const DoAndDontItem: FC<DoAndDontItemProps> = ({ prefixText, listItemType, children, ...rest }) => {
-  const listItem = useContext(DoAndDontListContext);
-  const defaultPrefix = (listItemType || listItem) === 'do' ? null : 'do not ';
-  const actualPrefix = prefixText === undefined ? defaultPrefix : prefixText;
-  return (
-    <li {...rest}>
-      {(listItemType || listItem) === 'do' ? (
-        <>
-          <TickIcon />
-          {actualPrefix}
-        </>
-      ) : (
-        <>
-          <CrossIcon />
-          {actualPrefix}
-        </>
-      )}
-      {children}
-    </li>
-  );
-};
-
 DoAndDontListComponent.displayName = 'DoAndDontList';
-DoAndDontItem.displayName = 'DoAndDontList.Item';
 
 export const DoAndDontList = Object.assign(DoAndDontListComponent, {
-  Item: DoAndDontItem,
+  Item: DoAndDontListItem,
 });

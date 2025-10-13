@@ -1,23 +1,20 @@
-'use client';
+import { type FC } from 'react';
 
-import { useContext, useEffect, type FC } from 'react';
-import { HeaderContext, type IHeaderContext } from '../HeaderContext.js';
+export interface HeaderLogoProps {
+  logo?: {
+    'href'?: string;
+    'src'?: string;
+    'alt'?: string;
+    'aria-label'?: string;
+  };
+  organisation?: {
+    name?: string;
+    split?: string;
+    descriptor?: string;
+  };
+}
 
-export type LogoProps = NonNullable<IHeaderContext['logoProps']>;
-
-export const Logo: FC<LogoProps> = (logo) => {
-  const { organisationProps: organisation, setLogoProps } =
-    useContext<IHeaderContext>(HeaderContext);
-
-  useEffect(() => {
-    if (!logo) {
-      return;
-    }
-
-    setLogoProps(logo);
-    return () => setLogoProps(undefined);
-  }, [logo, setLogoProps]);
-
+export const HeaderLogo: FC<HeaderLogoProps> = ({ logo = {}, organisation }) => {
   const { alt = 'NHS' } = logo;
 
   return (
@@ -61,4 +58,4 @@ export const Logo: FC<LogoProps> = (logo) => {
   );
 };
 
-Logo.displayName = 'Header.Logo';
+HeaderLogo.displayName = 'Header.Logo';
