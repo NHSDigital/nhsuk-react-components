@@ -57,7 +57,7 @@ export default defineConfig([
       pluginJsxA11y.flatConfigs.recommended,
       pluginReact.configs.flat.recommended,
       pluginReact.configs.flat['jsx-runtime'],
-      'react-hooks/recommended-latest',
+      pluginReactHooks.configs.flat.recommended,
     ],
     languageOptions: {
       globals: globals.browser,
@@ -65,9 +65,6 @@ export default defineConfig([
         ecmaFeatures: { jsx: true },
         sourceType: 'module',
       },
-    },
-    plugins: {
-      'react-hooks': pluginReactHooks,
     },
     settings: {
       react: {
