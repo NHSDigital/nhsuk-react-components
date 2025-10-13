@@ -46,13 +46,7 @@ const NotificationBannerComponent = forwardRef<HTMLDivElement, NotificationBanne
       }),
     );
 
-    const headerElement = items.find((child) =>
-      childIsOfComponentType(child, NotificationBannerHeading, {
-        className: 'nhsuk-notification-banner__heading',
-      }),
-    );
-
-    const bodyItems = items.filter((child) => child !== titleElement && child !== headerElement);
+    const contentItems = items.filter((child) => child !== titleElement);
 
     if (instanceError) {
       throw instanceError;
@@ -79,8 +73,7 @@ const NotificationBannerComponent = forwardRef<HTMLDivElement, NotificationBanne
           )}
         </div>
         <div className={'nhsuk-notification-banner__content'} {...rest}>
-          {headerElement}
-          {bodyItems}
+          {contentItems}
         </div>
       </div>
     );
