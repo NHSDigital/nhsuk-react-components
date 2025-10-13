@@ -47,6 +47,7 @@ const NotificationBannerComponent = forwardRef<HTMLDivElement, NotificationBanne
         className: 'nhsuk-notification-banner__title',
       }),
     );
+    const titleElementId = titleElement?.props.id || titleId || 'nhsuk-notification-banner-title';
 
     const contentItems = items.filter((child) => child !== titleElement);
 
@@ -61,7 +62,7 @@ const NotificationBannerComponent = forwardRef<HTMLDivElement, NotificationBanne
           { 'nhsuk-notification-banner--success': success },
           className,
         )}
-        aria-labelledby={titleId || titleElement?.props.id || 'nhsuk-notification-banner-title'}
+        aria-labelledby={titleElementId}
         data-module="nhsuk-notification-banner"
         data-disable-auto-focus={disableAutoFocus}
         ref={moduleRef}
@@ -72,7 +73,7 @@ const NotificationBannerComponent = forwardRef<HTMLDivElement, NotificationBanne
           {titleElement ? (
             <>{titleElement}</>
           ) : (
-            <NotificationBannerTitle success={success} id={titleId}>
+            <NotificationBannerTitle success={success} id={titleElementId}>
               {title}
             </NotificationBannerTitle>
           )}

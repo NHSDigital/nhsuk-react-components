@@ -387,4 +387,20 @@ describe('NotificationBanner', () => {
 
     expect(notificationBannerEl?.dataset?.disableAutoFocus).toBe('true');
   });
+
+  it('prioritises id of title element over provided title id', async () => {
+    const { modules } = await renderClient(
+      <NotificationBanner titleId={'wrong-id'}>
+        <NotificationBanner.Title id={'correct-id'}>Important information</NotificationBanner.Title>
+        <NotificationBanner.Heading>
+          The service will be unavailable from 8pm to 9pm on Thursday 1 January 2025.
+        </NotificationBanner.Heading>
+      </NotificationBanner>,
+      { className: 'nhsuk-notification-banner' },
+    );
+
+    const [notificationBannerEl] = modules;
+
+    expect(notificationBannerEl?.getAttribute('aria-labelledby')).toEqual('correct-id');
+  });
 });
