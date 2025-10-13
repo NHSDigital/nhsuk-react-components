@@ -30,7 +30,7 @@ describe('NotificationBanner', () => {
 
   it('matches snapshot custom title', async () => {
     const { container } = await renderClient(
-      <NotificationBanner title={'Upcoming maintenance'}>
+      <NotificationBanner title="Upcoming maintenance">
         <NotificationBanner.Heading>
           The service will be unavailable from 8pm to 9pm on Thursday 1 January 2025.
         </NotificationBanner.Heading>
@@ -194,7 +194,7 @@ describe('NotificationBanner', () => {
 
   it('matches snapshot custom title (via server)', async () => {
     const { container } = await renderServer(
-      <NotificationBanner title={'Upcoming maintenance'}>
+      <NotificationBanner title="Upcoming maintenance">
         <NotificationBanner.Heading>
           The service will be unavailable from 8pm to 9pm on Thursday 1 January 2025.
         </NotificationBanner.Heading>
@@ -208,7 +208,7 @@ describe('NotificationBanner', () => {
   it('matches snapshot custom title html (via server)', async () => {
     const { container } = await renderServer(
       <NotificationBanner>
-        <NotificationBanner.Title id={'custom-title'}>
+        <NotificationBanner.Title id="custom-title">
           <strong>Very</strong> important information
         </NotificationBanner.Title>
         <NotificationBanner.Heading>
@@ -390,8 +390,8 @@ describe('NotificationBanner', () => {
 
   it('prioritises id of title element over provided title id', async () => {
     const { modules } = await renderClient(
-      <NotificationBanner titleId={'wrong-id'}>
-        <NotificationBanner.Title id={'correct-id'}>Important information</NotificationBanner.Title>
+      <NotificationBanner titleId="wrong-id">
+        <NotificationBanner.Title id="correct-id">Important information</NotificationBanner.Title>
         <NotificationBanner.Heading>
           The service will be unavailable from 8pm to 9pm on Thursday 1 January 2025.
         </NotificationBanner.Heading>

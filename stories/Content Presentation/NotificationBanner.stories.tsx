@@ -93,7 +93,7 @@ export const StandardPanelWithCustomTitleElement: Story = {
   render: () => (
     <NotificationBanner>
       <NotificationBanner.Title>
-        Maintenance <time dateTime={'2025-01-01'}>January 1</time>
+        Maintenance <time dateTime="2025-01-01">January 1</time>
       </NotificationBanner.Title>
       <NotificationBanner.Heading>Upcoming maintenance</NotificationBanner.Heading>
       <p>The service will be unavailable from 8pm to 9pm on Thursday 1 January 2025.</p>
