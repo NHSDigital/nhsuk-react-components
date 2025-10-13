@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-This version provides support for NHS.UK frontend v10.x and fixes a Rollup `'use client'` directive issue.
+This version provides support for NHS.UK frontend v10.x, React Server Components (RSC) and fixes a Rollup `'use client'` directive issue.
 
 For a full list of changes in this release please refer to the [migration doc](https://github.com/NHSDigital/nhsuk-react-components/blob/main/docs/upgrade-to-6.0.md).
 

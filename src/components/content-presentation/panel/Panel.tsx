@@ -9,7 +9,7 @@ const PanelComponent = forwardRef<HTMLDivElement, PanelProps>(
   ({ children, className, ...rest }, forwardedRef) => {
     const items = Children.toArray(children);
     const title = items.find((child) => childIsOfComponentType(child, PanelTitle));
-    const bodyItems = items.filter((child) => !childIsOfComponentType(child, PanelTitle));
+    const bodyItems = items.filter((child) => child !== title);
 
     return (
       <div className={classNames('nhsuk-panel', className)} ref={forwardedRef} {...rest}>

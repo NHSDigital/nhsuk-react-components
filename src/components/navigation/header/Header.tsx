@@ -68,9 +68,16 @@ const HeaderComponent = forwardRef<HTMLElement, HeaderProps>((props, forwardedRe
   }, [menuOpen]);
 
   const items = Children.toArray(children);
-  const childSearch = items.find((child) => childIsOfComponentType(child, HeaderSearch));
-  const childNavigation = items.find((child) => childIsOfComponentType(child, HeaderNavigation));
-  const childAccount = items.find((child) => childIsOfComponentType(child, HeaderAccount));
+
+  const childSearch = items.find((child) =>
+    childIsOfComponentType(child, HeaderSearch, { className: 'nhsuk-header__search' }),
+  );
+
+  const childAccount = items.find((child) =>
+    childIsOfComponentType(child, HeaderAccount, { className: 'nhsuk-header__account' }),
+  );
+
+  const childNavigation = items.find((child) => child !== childSearch && child !== childAccount);
 
   if (instanceError) {
     throw instanceError;

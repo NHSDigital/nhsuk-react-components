@@ -34,8 +34,12 @@ const ErrorSummaryComponent = forwardRef<HTMLDivElement, ErrorSummaryProps>(
     }, [moduleRef, instance]);
 
     const items = Children.toArray(children);
-    const title = items.find((child) => childIsOfComponentType(child, ErrorSummaryTitle));
-    const bodyItems = items.filter((child) => !childIsOfComponentType(child, ErrorSummaryTitle));
+
+    const title = items.find((child) =>
+      childIsOfComponentType(child, ErrorSummaryTitle, { className: 'nhsuk-error-summary__title' }),
+    );
+
+    const bodyItems = items.filter((child) => child !== title);
 
     if (instanceError) {
       throw instanceError;
