@@ -25,6 +25,7 @@ export interface NotificationBannerProps extends ComponentPropsWithoutRef<'div'>
 const NotificationBannerComponent = forwardRef<HTMLDivElement, NotificationBannerProps>(
   ({ children, className, title, success, role, disableAutoFocus, ...rest }, forwardedRef) => {
     const [moduleRef] = useState(() => forwardedRef || createRef<HTMLDivElement>());
+    const [instanceError, setInstanceError] = useState<Error>();
     const [instance, setInstance] = useState<NotificationBannerModule>();
 
     useEffect(() => {
@@ -32,11 +33,9 @@ const NotificationBannerComponent = forwardRef<HTMLDivElement, NotificationBanne
         return;
       }
 
-      const { current: $root } = moduleRef;
-
-      import('nhsuk-frontend').then(({ NotificationBanner }) => {
-        setInstance(new NotificationBanner($root));
-      });
+      import('nhsuk-frontend')
+        .then(({ NotificationBanner }) => setInstance(new NotificationBanner(moduleRef.current)))
+        .catch(setInstanceError);
     }, [moduleRef, instance]);
 
     const items = Children.toArray(children);
@@ -52,6 +51,11 @@ const NotificationBannerComponent = forwardRef<HTMLDivElement, NotificationBanne
     const bodyItems = nonTitleItems.filter(
       (child) => !childIsOfComponentType(child, NotificationBannerHeading),
     );
+
+    if (instanceError) {
+      throw instanceError;
+    }
+
     return (
       <div
         className={classNames(
