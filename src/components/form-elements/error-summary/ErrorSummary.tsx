@@ -20,6 +20,7 @@ export interface ErrorSummaryProps extends ComponentPropsWithoutRef<'div'> {
 const ErrorSummaryComponent = forwardRef<HTMLDivElement, ErrorSummaryProps>(
   ({ children, className, disableAutoFocus, ...rest }, forwardedRef) => {
     const [moduleRef] = useState(() => forwardedRef || createRef<HTMLDivElement>());
+    const [instanceError, setInstanceError] = useState<Error>();
     const [instance, setInstance] = useState<ErrorSummaryModule>();
 
     useEffect(() => {
@@ -27,16 +28,18 @@ const ErrorSummaryComponent = forwardRef<HTMLDivElement, ErrorSummaryProps>(
         return;
       }
 
-      const { current: $root } = moduleRef;
-
-      import('nhsuk-frontend').then(({ ErrorSummary }) => {
-        setInstance(new ErrorSummary($root));
-      });
+      import('nhsuk-frontend')
+        .then(({ ErrorSummary }) => setInstance(new ErrorSummary(moduleRef.current)))
+        .catch(setInstanceError);
     }, [moduleRef, instance]);
 
     const items = Children.toArray(children);
     const title = items.find((child) => childIsOfComponentType(child, ErrorSummaryTitle));
     const bodyItems = items.filter((child) => !childIsOfComponentType(child, ErrorSummaryTitle));
+
+    if (instanceError) {
+      throw instanceError;
+    }
 
     return (
       <div

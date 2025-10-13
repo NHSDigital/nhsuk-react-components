@@ -56,6 +56,7 @@ const TabsComponent = forwardRef<HTMLDivElement, TabsProps>((props, forwardedRef
   const { children, className, ...rest } = props;
 
   const [moduleRef] = useState(() => forwardedRef || createRef<HTMLDivElement>());
+  const [instanceError, setInstanceError] = useState<Error>();
   const [instance, setInstance] = useState<TabsModule>();
 
   useEffect(() => {
@@ -63,12 +64,14 @@ const TabsComponent = forwardRef<HTMLDivElement, TabsProps>((props, forwardedRef
       return;
     }
 
-    const { current: $root } = moduleRef;
-
-    import('nhsuk-frontend').then(({ Tabs }) => {
-      setInstance(new Tabs($root));
-    });
+    import('nhsuk-frontend')
+      .then(({ Tabs }) => setInstance(new Tabs(moduleRef.current)))
+      .catch(setInstanceError);
   }, [moduleRef, instance]);
+
+  if (instanceError) {
+    throw instanceError;
+  }
 
   return (
     <div

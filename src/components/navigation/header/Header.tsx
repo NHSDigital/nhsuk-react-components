@@ -41,6 +41,7 @@ const HeaderComponent = forwardRef<HTMLElement, HeaderProps>((props, forwardedRe
   const [logoProps, setLogoProps] = useState(logo);
   const [serviceProps, setServiceProps] = useState(service);
   const [organisationProps, setOrganisationProps] = useState(organisation);
+  const [instanceError, setInstanceError] = useState<Error>();
   const [instance, setInstance] = useState<HeaderModule>();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -90,11 +91,9 @@ const HeaderComponent = forwardRef<HTMLElement, HeaderProps>((props, forwardedRe
       return;
     }
 
-    const { current: $root } = moduleRef;
-
-    import('nhsuk-frontend').then(({ Header }) => {
-      setInstance(new Header($root));
-    });
+    import('nhsuk-frontend')
+      .then(({ Header }) => setInstance(new Header(moduleRef.current)))
+      .catch(setInstanceError);
   }, [moduleRef, instance, menuOpen]);
 
   const contextValue: IHeaderContext = useMemo(() => {
@@ -115,6 +114,10 @@ const HeaderComponent = forwardRef<HTMLElement, HeaderProps>((props, forwardedRe
   const childSearch = items.find((child) => childIsOfComponentType(child, HeaderSearch));
   const childNavigation = items.find((child) => childIsOfComponentType(child, HeaderNavigation));
   const childAccount = items.find((child) => childIsOfComponentType(child, HeaderAccount));
+
+  if (instanceError) {
+    throw instanceError;
+  }
 
   return (
     <header

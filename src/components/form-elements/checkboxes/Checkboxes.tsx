@@ -19,6 +19,7 @@ const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, 
   const { children, idPrefix, ...rest } = props;
 
   const [moduleRef] = useState(() => forwardedRef || createRef<HTMLDivElement>());
+  const [instanceError, setInstanceError] = useState<Error>();
   const [instance, setInstance] = useState<CheckboxesModule>();
 
   const _boxReferences: string[] = [];
@@ -30,11 +31,9 @@ const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, 
       return;
     }
 
-    const { current: $root } = moduleRef;
-
-    import('nhsuk-frontend').then(({ Checkboxes }) => {
-      setInstance(new Checkboxes($root));
-    });
+    import('nhsuk-frontend')
+      .then(({ Checkboxes }) => setInstance(new Checkboxes(moduleRef.current)))
+      .catch(setInstanceError);
   }, [moduleRef, instance]);
 
   const getBoxId = (id: string, reference: string): string => {
@@ -65,6 +64,10 @@ const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, 
     _boxCount = 0;
     _boxIds = {};
   };
+
+  if (instanceError) {
+    throw instanceError;
+  }
 
   return (
     <FormGroup<CheckboxesProps> inputType="checkboxes" {...rest}>
