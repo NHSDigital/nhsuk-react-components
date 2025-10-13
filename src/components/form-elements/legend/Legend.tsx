@@ -42,4 +42,4 @@ export const Legend: FC<LegendProps> = ({
   );
 };
 
-Legend.displayName = 'Fieldset.Legend';
+Legend.displayName = 'Legend';

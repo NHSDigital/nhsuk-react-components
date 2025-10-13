@@ -3,9 +3,9 @@
 import { useContext, useEffect, type FC } from 'react';
 import { HeaderContext, type IHeaderContext } from '../HeaderContext.js';
 
-export type LogoProps = NonNullable<IHeaderContext['logoProps']>;
+export type HeaderLogoProps = NonNullable<IHeaderContext['logoProps']>;
 
-export const Logo: FC<LogoProps> = (logo) => {
+export const HeaderLogo: FC<HeaderLogoProps> = (logo) => {
   const { organisationProps: organisation, setLogoProps } =
     useContext<IHeaderContext>(HeaderContext);
 
@@ -61,4 +61,4 @@ export const Logo: FC<LogoProps> = (logo) => {
   );
 };
 
-Logo.displayName = 'Header.Logo';
+HeaderLogo.displayName = 'Header.Logo';

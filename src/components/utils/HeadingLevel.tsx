@@ -22,4 +22,4 @@ export const HeadingLevel = forwardRef<HTMLHeadingElement, HeadingLevelProps>(
   },
 );
 
-HeadingLevel.displayName = 'HeadingLevel';
+HeadingLevel.displayName = 'Heading.Level';

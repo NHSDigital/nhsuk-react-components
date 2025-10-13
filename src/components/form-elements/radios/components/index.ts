@@ -1,2 +1,2 @@
-export * from './Divider.js';
-export * from './Item.js';
+export * from './RadiosDivider.js';
+export * from './RadiosItem.js';

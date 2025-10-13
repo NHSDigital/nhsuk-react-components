@@ -16,12 +16,12 @@ const processLetters = (
       return null;
     }
     if (disabledLetters && disabledLetters.includes(letter)) {
-      return <DisabledItem key={letter}>{letter}</DisabledItem>;
+      return <NavAZDisabledItem key={letter}>{letter}</NavAZDisabledItem>;
     }
     return (
-      <LinkItem key={letter} href={`#${letter}`}>
+      <NavAZLinkItem key={letter} href={`#${letter}`}>
         {letter}
-      </LinkItem>
+      </NavAZLinkItem>
     );
   };
   if (children) {
@@ -70,7 +70,7 @@ const NavAZComponent = forwardRef<HTMLElement, NavAZProps>((props, forwardedRef)
   );
 });
 
-const LinkItem: FC<AsElementLink<HTMLAnchorElement>> = ({
+export const NavAZLinkItem: FC<AsElementLink<HTMLAnchorElement>> = ({
   className,
   asElement: Element = 'a',
   ...rest
@@ -88,7 +88,7 @@ const LinkItem: FC<AsElementLink<HTMLAnchorElement>> = ({
   </li>
 );
 
-const DisabledItem: FC<ComponentPropsWithoutRef<'span'>> = ({ className, ...rest }) => (
+export const NavAZDisabledItem: FC<ComponentPropsWithoutRef<'span'>> = ({ className, ...rest }) => (
   <li className="nhsuk-u-margin-bottom-0 nhsuk-u-float-left nhsuk-u-margin-right-1">
     <span
       className={classNames(
@@ -104,10 +104,10 @@ const DisabledItem: FC<ComponentPropsWithoutRef<'span'>> = ({ className, ...rest
 );
 
 NavAZComponent.displayName = 'NavAZ';
-LinkItem.displayName = 'NavAZ.LinkItem';
-DisabledItem.displayName = 'NavAZ.DisabledItem';
+NavAZLinkItem.displayName = 'NavAZ.LinkItem';
+NavAZDisabledItem.displayName = 'NavAZ.DisabledItem';
 
 export const NavAZ = Object.assign(NavAZComponent, {
-  LinkItem,
-  DisabledItem,
+  LinkItem: NavAZLinkItem,
+  DisabledItem: NavAZDisabledItem,
 });

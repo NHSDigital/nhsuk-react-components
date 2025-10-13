@@ -3,15 +3,15 @@
 import classNames from 'classnames';
 import { useContext, useEffect, type ComponentPropsWithoutRef, type FC } from 'react';
 import { HeaderContext, type IHeaderContext } from '../HeaderContext.js';
-import { MenuToggle } from './MenuToggle.js';
+import { HeaderMenuToggle } from './HeaderMenuToggle.js';
 import { Container } from '#components/layout/index.js';
 
-export interface NavigationProps extends ComponentPropsWithoutRef<'nav'> {
+export interface HeaderNavigationProps extends ComponentPropsWithoutRef<'nav'> {
   white?: boolean;
   open?: boolean;
 }
 
-export const Navigation: FC<NavigationProps> = ({
+export const HeaderNavigation: FC<HeaderNavigationProps> = ({
   className,
   children,
   white,
@@ -43,11 +43,11 @@ export const Navigation: FC<NavigationProps> = ({
       <Container className="nhsuk-header__navigation-container">
         <ul className="nhsuk-header__navigation-list">
           {children}
-          <MenuToggle />
+          <HeaderMenuToggle />
         </ul>
       </Container>
     </nav>
   );
 };
 
-Navigation.displayName = 'Header.Navigation';
+HeaderNavigation.displayName = 'Header.Navigation';

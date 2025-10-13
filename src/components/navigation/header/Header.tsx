@@ -12,13 +12,13 @@ import {
   type ComponentPropsWithoutRef,
 } from 'react';
 import {
-  Account,
-  AccountItem,
-  Logo,
-  Navigation,
-  NavigationItem,
-  Search,
-  ServiceName,
+  HeaderAccount,
+  HeaderAccountItem,
+  HeaderLogo,
+  HeaderNavigation,
+  HeaderNavigationItem,
+  HeaderSearch,
+  HeaderServiceName,
 } from './components/index.js';
 import { HeaderContext, type IHeaderContext } from './HeaderContext.js';
 import { Container } from '#components/layout/index.js';
@@ -111,10 +111,10 @@ const HeaderComponent = forwardRef<HTMLElement, HeaderProps>((props, forwardedRe
   }, [logoProps, serviceProps, organisationProps, menuOpen]);
 
   const items = Children.toArray(children);
-  const childLogo = items.find((child) => childIsOfComponentType(child, Logo));
-  const childSearch = items.find((child) => childIsOfComponentType(child, Search));
-  const childNavigation = items.find((child) => childIsOfComponentType(child, Navigation));
-  const childAccount = items.find((child) => childIsOfComponentType(child, Account));
+  const childLogo = items.find((child) => childIsOfComponentType(child, HeaderLogo));
+  const childSearch = items.find((child) => childIsOfComponentType(child, HeaderSearch));
+  const childNavigation = items.find((child) => childIsOfComponentType(child, HeaderNavigation));
+  const childAccount = items.find((child) => childIsOfComponentType(child, HeaderAccount));
 
   return (
     <header
@@ -131,7 +131,7 @@ const HeaderComponent = forwardRef<HTMLElement, HeaderProps>((props, forwardedRe
     >
       <HeaderContext.Provider value={contextValue}>
         <Container className={classNames('nhsuk-header__container', containerClasses)}>
-          <ServiceName {...serviceProps}>{childLogo}</ServiceName>
+          <HeaderServiceName {...serviceProps}>{childLogo}</HeaderServiceName>
           {childSearch}
           {childAccount}
         </Container>
@@ -144,10 +144,10 @@ const HeaderComponent = forwardRef<HTMLElement, HeaderProps>((props, forwardedRe
 HeaderComponent.displayName = 'Header';
 
 export const Header = Object.assign(HeaderComponent, {
-  Account,
-  AccountItem,
-  Logo,
-  Search,
-  Navigation,
-  NavigationItem,
+  Account: HeaderAccount,
+  AccountItem: HeaderAccountItem,
+  Logo: HeaderLogo,
+  Search: HeaderSearch,
+  Navigation: HeaderNavigation,
+  NavigationItem: HeaderNavigationItem,
 });

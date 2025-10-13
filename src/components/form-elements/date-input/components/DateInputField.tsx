@@ -95,19 +95,22 @@ const IndividualDateInput = forwardRef<HTMLInputElement, IndividualDateInputProp
   },
 );
 
-export const DayInput = forwardRef<HTMLInputElement, Omit<IndividualDateInputProps, 'inputType'>>(
-  (props, forwardedRef) => <IndividualDateInput inputType="day" ref={forwardedRef} {...props} />,
-);
+export const DateInputDay = forwardRef<
+  HTMLInputElement,
+  Omit<IndividualDateInputProps, 'inputType'>
+>((props, forwardedRef) => <IndividualDateInput inputType="day" ref={forwardedRef} {...props} />);
 
-export const MonthInput = forwardRef<HTMLInputElement, Omit<IndividualDateInputProps, 'inputType'>>(
-  (props, forwardedRef) => <IndividualDateInput inputType="month" ref={forwardedRef} {...props} />,
-);
+export const DateInputMonth = forwardRef<
+  HTMLInputElement,
+  Omit<IndividualDateInputProps, 'inputType'>
+>((props, forwardedRef) => <IndividualDateInput inputType="month" ref={forwardedRef} {...props} />);
 
-export const YearInput = forwardRef<HTMLInputElement, Omit<IndividualDateInputProps, 'inputType'>>(
-  (props, forwardedRef) => <IndividualDateInput inputType="year" ref={forwardedRef} {...props} />,
-);
+export const DateInputYear = forwardRef<
+  HTMLInputElement,
+  Omit<IndividualDateInputProps, 'inputType'>
+>((props, forwardedRef) => <IndividualDateInput inputType="year" ref={forwardedRef} {...props} />);
 
 IndividualDateInput.displayName = 'DateInput.Field';
-DayInput.displayName = 'DateInput.Day';
-MonthInput.displayName = 'DateInput.Month';
-YearInput.displayName = 'DateInput.Year';
+DateInputDay.displayName = 'DateInput.Day';
+DateInputMonth.displayName = 'DateInput.Month';
+DateInputYear.displayName = 'DateInput.Year';

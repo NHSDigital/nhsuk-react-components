@@ -8,7 +8,7 @@ export interface PaginationLinkProps extends AsElementLink<HTMLAnchorElement> {
   next?: boolean;
 }
 
-const PaginationLink = forwardRef<HTMLAnchorElement, PaginationLinkProps>(
+export const PaginationLink = forwardRef<HTMLAnchorElement, PaginationLinkProps>(
   ({ className, children, asElement: Element = 'a', previous, next, ...rest }, forwardedRef) => (
     <li
       className={classNames(
@@ -39,7 +39,7 @@ const PaginationLink = forwardRef<HTMLAnchorElement, PaginationLinkProps>(
   ),
 );
 
-type PaginationProps = ComponentPropsWithoutRef<'nav'>;
+export type PaginationProps = ComponentPropsWithoutRef<'nav'>;
 
 const PaginationComponent = forwardRef<HTMLElement, PaginationProps>(
   ({ className, children, 'aria-label': ariaLabel = 'Pagination', ...rest }, forwardedRef) => (

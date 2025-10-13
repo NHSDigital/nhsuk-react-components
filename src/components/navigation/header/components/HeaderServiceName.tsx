@@ -3,10 +3,10 @@
 import { useContext, type ComponentPropsWithoutRef, type FC } from 'react';
 import { HeaderContext, type IHeaderContext } from '../HeaderContext.js';
 
-export type ServiceNameInnerProps = NonNullable<IHeaderContext['serviceProps']>;
-export type ServiceNameProps = Pick<ComponentPropsWithoutRef<'div'>, 'children'>;
+export type HeaderServiceNameInnerProps = NonNullable<IHeaderContext['serviceProps']>;
+export type HeaderServiceNameProps = Pick<ComponentPropsWithoutRef<'div'>, 'children'>;
 
-const ServiceNameInner: FC<ServiceNameInnerProps> = (service) =>
+const HeaderServiceNameInner: FC<HeaderServiceNameInnerProps> = (service) =>
   service.href ? (
     <a className="nhsuk-header__service-name" href={service.href}>
       {service.text}
@@ -15,7 +15,7 @@ const ServiceNameInner: FC<ServiceNameInnerProps> = (service) =>
     <span className="nhsuk-header__service-name">{service.text}</span>
   );
 
-export const ServiceName: FC<ServiceNameProps> = ({ children }) => {
+export const HeaderServiceName: FC<HeaderServiceNameProps> = ({ children }) => {
   const {
     logoProps: logo,
     organisationProps: organisation,
@@ -48,15 +48,17 @@ export const ServiceName: FC<ServiceNameProps> = ({ children }) => {
       {logoHref ? (
         <a className="nhsuk-header__service-logo" href={logoHref} aria-label={logoAriaLabel}>
           {children}
-          {combineLogoAndServiceNameLinks ? <ServiceNameInner text={service.text} /> : null}
+          {combineLogoAndServiceNameLinks ? <HeaderServiceNameInner text={service.text} /> : null}
         </a>
       ) : (
         <>
           {children}
-          {combineLogoAndServiceNameLinks ? <ServiceNameInner text={service.text} /> : null}
+          {combineLogoAndServiceNameLinks ? <HeaderServiceNameInner text={service.text} /> : null}
         </>
       )}
-      {service?.text && !combineLogoAndServiceNameLinks ? <ServiceNameInner {...service} /> : null}
+      {service?.text && !combineLogoAndServiceNameLinks ? (
+        <HeaderServiceNameInner {...service} />
+      ) : null}
     </div>
   );
 };

@@ -14,31 +14,31 @@ import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingL
 
 export type TabsProps = ComponentPropsWithoutRef<'div'>;
 
-export type TabTitleProps = HeadingLevelProps;
+export type TabsTitleProps = HeadingLevelProps;
 
-export type TabListProps = ComponentPropsWithoutRef<'ul'>;
+export type TabsListProps = ComponentPropsWithoutRef<'ul'>;
 
-export interface TabListItemProps extends ComponentPropsWithoutRef<'a'> {
+export interface TabsListItemProps extends ComponentPropsWithoutRef<'a'> {
   id: string;
 }
 
-export interface TabContentsProps extends ComponentPropsWithoutRef<'div'> {
+export interface TabsContentsProps extends ComponentPropsWithoutRef<'div'> {
   id: string;
 }
 
-const TabTitle: FC<TabTitleProps> = ({ children, headingLevel = 'h2', ...rest }) => (
+export const TabsTitle: FC<TabsTitleProps> = ({ children, headingLevel = 'h2', ...rest }) => (
   <HeadingLevel className="nhsuk-tabs__title" headingLevel={headingLevel} {...rest}>
     {children}
   </HeadingLevel>
 );
 
-const TabList: FC<TabListProps> = ({ children, ...rest }) => (
+export const TabsList: FC<TabsListProps> = ({ children, ...rest }) => (
   <ul className="nhsuk-tabs__list" {...rest}>
     {children}
   </ul>
 );
 
-const TabListItem: FC<TabListItemProps> = ({ children, id, ...rest }) => (
+export const TabsListItem: FC<TabsListItemProps> = ({ children, id, ...rest }) => (
   <li className="nhsuk-tabs__list-item">
     <a className="nhsuk-tabs__tab" href={`#${id}`} {...rest}>
       {children}
@@ -46,7 +46,7 @@ const TabListItem: FC<TabListItemProps> = ({ children, id, ...rest }) => (
   </li>
 );
 
-const TabContents: FC<TabContentsProps> = ({ children, id, ...rest }) => (
+export const TabsContents: FC<TabsContentsProps> = ({ children, id, ...rest }) => (
   <div className="nhsuk-tabs__panel" id={id} {...rest}>
     {children}
   </div>
@@ -83,14 +83,14 @@ const TabsComponent = forwardRef<HTMLDivElement, TabsProps>((props, forwardedRef
 });
 
 TabsComponent.displayName = 'Tabs';
-TabTitle.displayName = 'Tabs.Title';
-TabList.displayName = 'Tabs.List';
-TabListItem.displayName = 'Tabs.ListItem';
-TabContents.displayName = 'Tabs.Contents';
+TabsTitle.displayName = 'Tabs.Title';
+TabsList.displayName = 'Tabs.List';
+TabsListItem.displayName = 'Tabs.ListItem';
+TabsContents.displayName = 'Tabs.Contents';
 
 export const Tabs = Object.assign(TabsComponent, {
-  Title: TabTitle,
-  List: TabList,
-  ListItem: TabListItem,
-  Contents: TabContents,
+  Title: TabsTitle,
+  List: TabsList,
+  ListItem: TabsListItem,
+  Contents: TabsContents,
 });

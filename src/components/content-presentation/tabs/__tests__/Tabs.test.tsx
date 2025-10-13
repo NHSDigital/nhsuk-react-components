@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { createRef } from 'react';
-import { Tabs, type TabTitleProps } from '..';
+import { Tabs, type TabsTitleProps } from '..';
 import { renderClient, renderServer } from '#util/components';
 
 describe('Tabs', () => {
@@ -120,7 +120,7 @@ describe('Tabs', () => {
   });
 
   describe('Tabs.Title', () => {
-    it.each<TabTitleProps | undefined>([
+    it.each<TabsTitleProps | undefined>([
       undefined,
       { headingLevel: 'h1' },
       { headingLevel: 'h2' },

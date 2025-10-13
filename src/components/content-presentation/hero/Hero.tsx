@@ -7,7 +7,7 @@ export interface HeroContentProps extends ComponentPropsWithoutRef<'div'> {
   hasImage: boolean;
 }
 
-const HeroContent: FC<HeroContentProps> = ({ children, hasImage }) => {
+export const HeroContent: FC<HeroContentProps> = ({ children, hasImage }) => {
   if (!children) {
     return null;
   }
@@ -29,7 +29,7 @@ const HeroContent: FC<HeroContentProps> = ({ children, hasImage }) => {
   );
 };
 
-const HeroHeading: FC<HeadingLevelProps> = ({ className, headingLevel = 'h1', ...rest }) => (
+export const HeroHeading: FC<HeadingLevelProps> = ({ className, headingLevel = 'h1', ...rest }) => (
   <HeadingLevel
     className={classNames('nhsuk-u-margin-bottom-3', className)}
     headingLevel={headingLevel}
@@ -37,7 +37,7 @@ const HeroHeading: FC<HeadingLevelProps> = ({ className, headingLevel = 'h1', ..
   />
 );
 
-const HeroText: FC<ComponentPropsWithoutRef<'p'>> = ({ className, ...rest }) => (
+export const HeroText: FC<ComponentPropsWithoutRef<'p'>> = ({ className, ...rest }) => (
   <p className={classNames('nhsuk-body-l nhsuk-u-margin-bottom-0', className)} {...rest} />
 );
 

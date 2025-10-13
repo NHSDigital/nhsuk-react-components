@@ -6,7 +6,7 @@ export type AccountProps = Pick<
   'aria-label' | 'children' | 'className'
 >;
 
-export const Account: FC<AccountProps> = ({
+export const HeaderAccount: FC<AccountProps> = ({
   className,
   children,
   'aria-label': ariaLabel = 'Account',
@@ -16,4 +16,4 @@ export const Account: FC<AccountProps> = ({
   </nav>
 );
 
-Account.displayName = 'Header.Account';
+HeaderAccount.displayName = 'Header.Account';
