@@ -1,10 +1,12 @@
+'use client';
+
 import {
   Children,
-  type ComponentPropsWithoutRef,
   createRef,
   forwardRef,
   useEffect,
   useState,
+  type ComponentPropsWithoutRef,
 } from 'react';
 import classNames from 'classnames';
 import {
