@@ -12,16 +12,14 @@ export const NotificationBannerTitle: FC<NotificationBannerTitleProps> = ({
   success,
   ...rest
 }) => (
-  <div className="nhsuk-notification-banner__header">
-    <HeadingLevel
-      className="nhsuk-notification-banner__title"
-      headingLevel={headingLevel}
-      id={id}
-      {...rest}
-    >
-      {children || (success ? 'Success' : 'Important')}
-    </HeadingLevel>
-  </div>
+  <HeadingLevel
+    className="nhsuk-notification-banner__title"
+    headingLevel={headingLevel}
+    id={id}
+    {...rest}
+  >
+    {children || (success ? 'Success' : 'Important')}
+  </HeadingLevel>
 );
 
 NotificationBannerTitle.displayName = 'NotificationBanner.Title';

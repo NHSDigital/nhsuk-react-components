@@ -40,7 +40,7 @@ const NotificationBannerComponent = forwardRef<HTMLDivElement, NotificationBanne
     const items = Children.toArray(children);
     const titleElement = items.find((child) =>
       childIsOfComponentType(child, NotificationBannerTitle),
-    ) || <NotificationBannerTitle success={success}>{title}</NotificationBannerTitle>;
+    );
     const nonTitleItems = items.filter(
       (child) => !childIsOfComponentType(child, NotificationBannerTitle),
     );
@@ -57,13 +57,19 @@ const NotificationBannerComponent = forwardRef<HTMLDivElement, NotificationBanne
           { 'nhsuk-notification-banner--success': success },
           className,
         )}
-        aria-labelledby={titleElement.props.id || 'nhsuk-notification-banner-title'}
+        aria-labelledby={titleElement?.props.id || 'nhsuk-notification-banner-title'}
         data-module="nhsuk-notification-banner"
         data-disable-auto-focus={disableAutoFocus}
         ref={moduleRef}
         role={role || (success ? 'alert' : 'region')}
       >
-        {titleElement}
+        <div className="nhsuk-notification-banner__header">
+          {titleElement ? (
+            <>{titleElement}</>
+          ) : (
+            <NotificationBannerTitle success={success}>{title}</NotificationBannerTitle>
+          )}
+        </div>
         <div className={'nhsuk-notification-banner__content'} {...rest}>
           {headerElement}
           {bodyItems}
