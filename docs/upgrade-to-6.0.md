@@ -31,15 +31,34 @@ The [panel](https://service-manual.nhs.uk/design-system/components/panel) compon
 
 This replaces the [list panel component](#list-panel) which was removed in NHS.UK frontend v6.0.0.
 
+### Support for React Server Components (RSC)
+
+All components have been tested as React Server Components (RSC) but due to [multipart namespace component limitations](https://ivicabatinic.from.hr/posts/multipart-namespace-components-addressing-rsc-and-dot-notation-issues) an alternative syntax (without dot notation) can be used as a workaround:
+
+```patch
+  <Pagination>
+-   <Pagination.Link href="/section/treatments" previous>
++   <PaginationLink href="/section/treatments" previous>
+      Treatments
+-   </Pagination.Link>
++   </PaginationLink>
+-   <Pagination.Link href="/section/symptoms" next>
++   <PaginationLink href="/section/symptoms" next>
+      Symptoms
+-   </Pagination.Link>
++   </PaginationLink>
+  </Pagination>
+```
+
 ## Breaking changes
 
 ### Update the JavaScript supported script snippet
 
-You must now use the NHS.UK frontend v10.x feature detection snippet to check for `<script type="module">`. This change enables styling for JavaScript only features in [supported browsers]() only:
+You must now use the NHS.UK frontend v10.x feature detection snippet to check for `<script type="module">`. This change enables styling for JavaScript features in [supported browsers]() only:
 
 ```patch
 - <body class="js-enabled">
-+ <body>
++ <body suppressHydrationWarning>
 +   <script>document.body.className += ' js-enabled' + ('noModule' in HTMLScriptElement.prototype ? ' nhsuk-frontend-supported' : '');</script>
 ```
 
