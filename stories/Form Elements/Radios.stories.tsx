@@ -19,7 +19,7 @@ export const StandardRadios: Story = {
       id="standard-example"
     >
       <Radios.Item value="yes">Yes</Radios.Item>
-      <Radios.Item value="no" checked>
+      <Radios.Item value="no" defaultChecked>
         No
       </Radios.Item>
     </Radios>
@@ -37,7 +37,7 @@ export const InlineRadios: Story = {
       inline
     >
       <Radios.Item value="yes">Yes</Radios.Item>
-      <Radios.Item value="no" checked>
+      <Radios.Item value="no" defaultChecked>
         No
       </Radios.Item>
     </Radios>
@@ -168,7 +168,7 @@ export const RadiosWithError: Story = {
           <Radios.Item id="example-1" value="yes">
             Yes
           </Radios.Item>
-          <Radios.Item id="example-2" value="no" checked>
+          <Radios.Item id="example-2" value="no" defaultChecked>
             No
           </Radios.Item>
         </Radios>

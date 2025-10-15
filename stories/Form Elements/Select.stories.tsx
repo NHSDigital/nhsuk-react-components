@@ -11,11 +11,9 @@ type Story = StoryObj<typeof Select>;
 
 export const Standard: Story = {
   render: (args) => (
-    <Select label="Label text goes here" labelProps={{ size: 'l' }}>
+    <Select label="Label text goes here" labelProps={{ size: 'l' }} defaultValue="2">
       <Select.Option value="1">NHS.UK frontend option 1</Select.Option>
-      <Select.Option value="2" selected>
-        NHS.UK frontend option 2
-      </Select.Option>
+      <Select.Option value="2">NHS.UK frontend option 2</Select.Option>
       <Select.Option value="3" disabled>
         NHS.UK frontend option 3
       </Select.Option>
