@@ -21,7 +21,7 @@ export const Standard: Story = {
       <h5>Component</h5>
       <DateInput
         legend="What is your date of birth?"
-        legendProps={{ size: 'l' }}
+        legendProps={{ isPageHeading: true, size: 'l' }}
         hint="For example, 15 3 1984"
         onChange={(e) => console.log(e.target.value)}
       />
@@ -41,7 +41,7 @@ export const StandardWithError: Story = {
       <h5>Component</h5>
       <DateInput
         legend="What is your date of birth?"
-        legendProps={{ size: 'l' }}
+        legendProps={{ isPageHeading: true, size: 'l' }}
         hint="For example, 15 3 1984"
         error="Enter your date of birth"
         onChange={(e) => console.log(e.target.value)}
@@ -51,7 +51,7 @@ export const StandardWithError: Story = {
       <DateInput
         hint="For example, 15 3 1984"
         legend="What is your date of birth?"
-        legendProps={{ size: 'l' }}
+        legendProps={{ isPageHeading: true, size: 'l' }}
         error="Date of birth must include a day"
         onChange={(e) => console.log(e.target.value)}
       >
@@ -71,7 +71,7 @@ export const PrePopulatedIndividualComponents: Story = {
         <h5>Component</h5>
         <DateInput
           legend="What is your date of birth?"
-          legendProps={{ size: 'l' }}
+          legendProps={{ isPageHeading: true, size: 'l' }}
           hint="For example, 15 3 1984"
         >
           <DateInput.Day defaultValue={defaultValue.day} />
@@ -91,7 +91,7 @@ export const PrePopulatedWrapper: Story = {
         <h5>Component</h5>
         <DateInput
           legend="What is your date of birth?"
-          legendProps={{ size: 'l' }}
+          legendProps={{ isPageHeading: true, size: 'l' }}
           hint="For example, 15 3 1984"
           defaultValue={defaultValue}
         />
@@ -108,7 +108,7 @@ export const ControlledElementIndividualComponents: Story = {
         <h5>Component</h5>
         <DateInput
           legend="What is your date of birth?"
-          legendProps={{ size: 'l' }}
+          legendProps={{ isPageHeading: true, size: 'l' }}
           hint="For example, 15 3 1984"
         >
           <DateInput.Day value={value.day} />
@@ -128,7 +128,7 @@ export const ControlledElementWrapper: Story = {
         <h5>Component</h5>
         <DateInput
           legend="What is your date of birth?"
-          legendProps={{ size: 'l' }}
+          legendProps={{ isPageHeading: true, size: 'l' }}
           hint="For example, 15 3 1984"
           value={value}
         />
@@ -148,7 +148,7 @@ export const ChangeableControlledElement: Story = {
     return (
       <DateInput
         legend="What is your date of birth?"
-        legendProps={{ size: 'l' }}
+        legendProps={{ isPageHeading: true, size: 'l' }}
         hint="For example, 15 3 1984"
         value={value}
         onChange={(e) => setValue(e.currentTarget.value)}

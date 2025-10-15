@@ -48,7 +48,7 @@ export const Standard: Story = {
     <form>
       <Checkboxes
         legend="What is your nationality?"
-        legendProps={{ size: 'l' }}
+        legendProps={{ isPageHeading: true, size: 'l' }}
         hint="If you have more than 1 nationality, select all options that are relevant to you"
         idPrefix={args.idPrefix}
         name="nationality"
@@ -65,7 +65,10 @@ export const Standard: Story = {
 export const WithHintText: Story = {
   render: (args) => (
     <form>
-      <Checkboxes legend="How do you want to sign in?" legendProps={{ size: 'l' }}>
+      <Checkboxes
+        legend="How do you want to sign in?"
+        legendProps={{ isPageHeading: true, size: 'l' }}
+      >
         <Checkboxes.Item
           id="government-gateway"
           name="gateway"
@@ -107,7 +110,7 @@ export const WithConditionalContent: Story = {
     <form>
       <Checkboxes
         legend="What types of waste do you transport regularly?"
-        legendProps={{ size: 'l' }}
+        legendProps={{ isPageHeading: true, size: 'l' }}
         hint="Select all that apply"
         id="waste"
         name="waste"
@@ -120,30 +123,12 @@ export const WithConditionalContent: Story = {
   ),
 };
 
-export const WithLegendAsPageHeading: Story = {
-  render: (args) => (
-    <form>
-      <Checkboxes
-        legend="Which types of waste do you transport regularly?"
-        legendProps={{ isPageHeading: true, size: 'l' }}
-        hint="Select all that apply"
-        id="waste"
-        name="waste"
-      >
-        <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
-        <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
-        <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
-      </Checkboxes>
-    </form>
-  ),
-};
-
 export const WithExclusiveNoneOption: Story = {
   render: (args) => (
     <form>
       <Checkboxes
         legend="Do you have any of these symptoms?"
-        legendProps={{ size: 'l' }}
+        legendProps={{ isPageHeading: true, size: 'l' }}
         hint="Select all the symptoms you have"
         id="symptoms"
         name="symptoms"
@@ -168,7 +153,7 @@ export const WithError: Story = {
       <form>
         <Checkboxes
           legend="Which types of waste do you transport regularly?"
-          legendProps={{ size: 'l' }}
+          legendProps={{ isPageHeading: true, size: 'l' }}
           hint="Select all that apply"
           error={error}
           id="waste"

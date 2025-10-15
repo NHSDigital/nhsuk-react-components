@@ -13,7 +13,7 @@ export const StandardRadios: Story = {
   render: (args) => (
     <Radios
       legend="Have you changed your name?"
-      legendProps={{ size: 'l' }}
+      legendProps={{ isPageHeading: true, size: 'l' }}
       hint="This includes changing your last name or spelling your name differently"
       name="example"
       id="standard-example"
@@ -30,7 +30,7 @@ export const InlineRadios: Story = {
   render: (args) => (
     <Radios
       legend="Have you changed your name?"
-      legendProps={{ size: 'l' }}
+      legendProps={{ isPageHeading: true, size: 'l' }}
       hint="This includes changing your last name or spelling your name differently"
       name="example"
       id="inline-example"
@@ -48,7 +48,7 @@ export const DisabledRadios: Story = {
   render: (args) => (
     <Radios
       legend="Have you changed your name?"
-      legendProps={{ size: 'l' }}
+      legendProps={{ isPageHeading: true, size: 'l' }}
       hint="This includes changing your last name or spelling your name differently"
       name="example"
       id="disabled-example"
@@ -86,7 +86,7 @@ export const RadiosWithConditionalContent: Story = {
       <form style={{ padding: 20 }}>
         <Radios
           legend="Impairment requirement"
-          legendProps={{ size: 'l' }}
+          legendProps={{ isPageHeading: true, size: 'l' }}
           hint="Select relevant options"
           name="example"
           id="example-conditional"
@@ -107,7 +107,7 @@ export const RadiosWithADivider: Story = {
   render: (args) => (
     <Radios
       legend="How do you want to sign in?"
-      legendProps={{ size: 'l' }}
+      legendProps={{ isPageHeading: true, size: 'l' }}
       name="example"
       id="example-divider"
     >
@@ -123,7 +123,7 @@ export const RadiosWithHintsOnItems: Story = {
   render: (args) => (
     <Radios
       legend="How do you want to sign in?"
-      legendProps={{ size: 'l' }}
+      legendProps={{ isPageHeading: true, size: 'l' }}
       name="example"
       id="example-with-hints"
     >
@@ -160,7 +160,7 @@ export const RadiosWithError: Story = {
       <>
         <Radios
           legend="Have you changed your name?"
-          legendProps={{ size: 'l' }}
+          legendProps={{ isPageHeading: true, size: 'l' }}
           hint="This includes changing your last name or spelling your name differently"
           name="example-with-err-string"
           error={error}

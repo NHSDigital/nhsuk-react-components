@@ -17,24 +17,15 @@ type Story = StoryObj<typeof Textarea>;
 export const Standard: Story = {
   args: {
     label: 'Can you provide more detail?',
-    labelProps: { size: 'l' },
-    hint: 'Do not include personal information, like your name, date of birth or NHS number',
-  },
-};
-
-export const WithLabelAsPageHeading: Story = {
-  args: {
-    label: 'Can you provide more detail?',
     labelProps: { isPageHeading: true, size: 'l' },
     hint: 'Do not include personal information, like your name, date of birth or NHS number',
-    autoComplete: 'street-address',
   },
 };
 
 export const TextareaWithAutoCompleteAttribute: Story = {
   args: {
     label: 'Can you provide more detail?',
-    labelProps: { size: 'l' },
+    labelProps: { isPageHeading: true, size: 'l' },
     hint: 'Do not include personal information, like your name, date of birth or NHS number',
     autoComplete: 'street-address',
   },
@@ -47,7 +38,7 @@ export const TextareaWithError: Story = {
       <>
         <Textarea
           label="Can you provide more detail?"
-          labelProps={{ size: 'l' }}
+          labelProps={{ isPageHeading: true, size: 'l' }}
           hint="Do not include personal information, like your name, date of birth or NHS number"
           error={error}
           id="with-error-message"
