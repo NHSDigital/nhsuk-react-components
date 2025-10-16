@@ -3,24 +3,6 @@ import { ErrorMessage } from '#components';
 
 /**
  * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/error-message" target="_blank" rel="noopener noreferrer">here</a>.
- *
- * ## Implementation Notes
- *
- * The `ErrorMessage` component has a default `visuallyHiddenText` of "Error: ". This can be overriden using `visuallyHiddenText`.
- *
- * ## Usage
- *
- * ### Standard
- *
- * ```jsx
- * import { ErrorMessage } from "nhsuk-react-components";
- *
- * const Element = () => {
- *     return (
- *         <ErrorMessage>Enter your full name</ErrorMessage>
- *     );
- * }
- * ```
  */
 const meta: Meta<typeof ErrorMessage> = {
   title: 'Form Elements/ErrorMessage',

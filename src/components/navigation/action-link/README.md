@@ -2,7 +2,7 @@
 
 This component can be found in the `nhsuk-frontend` repository [here](https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/action-link).
 
-## Implementation Notes
+## Implementation notes
 
 The ActionLink component does not use the `nhsuk-frontend` "openInNewWindow" property, instead it allows the user to add the `target="_blank"` property (if desired).
 

@@ -5,32 +5,13 @@ import { NotificationBannerLink } from '#components/content-presentation/notific
 /**
  * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/notification-banner" target="_blank">here</a>.
  *
- * ## Implementation Notes
+ * ## Implementation notes
  *
  * The `NotificationBanner` component has three subcomponents:
  *
  * - `NotificationBanner.Title`
  * - `NotificationBanner.Heading`
  * - `NotificationBanner.Link`
- *
- * ## Usage
- *
- * ### Standard
- *
- * ```jsx
- * import { NotificationBanner } from "nhsuk-react-components";
- *
- * const Element = () => {
- *     return (
- *         <NotificationBanner>
- *             <NotificationBanner.Heading>Patient record updated</Details.Summary>
- *             <p>
- *                 Contact <NotificationBanner.Link href="#">example@department.nhs.uk</NotificationBanner.Link> if you think there&#39;s a problem.
- *             </p>
- *         </NotificationBanner>
- *     );
- * }
- * ```
  */
 const meta: Meta<typeof NotificationBanner> = {
   title: 'Content Presentation/Notification Banner',

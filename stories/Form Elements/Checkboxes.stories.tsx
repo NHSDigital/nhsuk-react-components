@@ -5,29 +5,11 @@ import { Checkboxes, TextInput } from '#components';
 /**
  * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/checkboxes" target="_blank" rel="noopener noreferrer">here</a>.
  *
- * ## Implementation Notes
+ * ## Implementation notes
  *
  * For details on the new form design pattern, check the documentation for the `Form` component.
  *
  * The `Checkbox` component provides a `CheckboxesContext` context, which the `Checkboxes.Item` components use. When each box initially renders, it will attempt to assign itself an `id` by calling the `getBoxId` method in the context. This will assign each box a sequential ID using either the `idPrefix` or `name` supplied to the Checkbox. If neither are provided, the element will generate it's own unique identifier.
- *
- * ## Usage
- *
- * ### Standard
- *
- * ```jsx
- * import { Checkboxes } from "nhsuk-react-components";
- *
- * const Element = () => {
- *     return (
- *         <Checkboxes name="nationality" id="nationality">
- *             <Checkboxes.Item value="british">British</Checkboxes.Item>
- *             <Checkboxes.Item value="irish">Irish</Checkboxes.Item>
- *             <Checkboxes.Item value="other">Citizen of another country</Checkboxes.Item>
- *         </Checkboxes>
- *     );
- * }
- * ```
  */
 
 const meta: Meta<typeof Checkboxes> = {

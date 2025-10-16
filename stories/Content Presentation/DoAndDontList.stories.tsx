@@ -4,38 +4,15 @@ import { DoAndDontList } from '#components';
 /**
  * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/do-dont-list" target="_blank" rel="noopener noreferrer">here</a>.
  *
- * ## Implementation Notes
+ * ## Implementation notes
  *
  * The `DoAndDontList` component has one subcomponent: `DoAndDontList.Item`.
  *
  * As long as a `listType` is supplied to the `DoAndDontList` component, all subcomponents will render as desired. If you require a `DoAndDontList.Item` to be different, a `listItemType` prop can be supplied to force the type.
  *
- *
  * The `DoAndDontList.Item` component can also accept a `prefixText` prop, which can be used to override the default prefix text.
  *
  * See the <b><a href="#custom-prefix-text" >custom prefix text</a></b> story for an example.
- *
- * ## Usage
- *
- * ### Standard
- *
- * ```jsx
- * import { DoAndDontList } from "nhsuk-react-components";
- *
- * const Element = () => {
- *     return (
- *         <DoAndDontList listType="do">
- *             <DoAndDontList.Item>
- *                 cover blisters that are likely to burst with a soft plaster or dressing
- *             </DoAndDontList.Item>
- *             <DoAndDontList.Item>wash your hands before touching a burst blister</DoAndDontList.Item>
- *             <DoAndDontList.Item>
- *                 allow the fluid in a burst blister to drain before covering it with a plaster or dressing
- *             </DoAndDontList.Item>
- *         </DoAndDontList>
- *     );
- * }
- * ```
  */
 const meta: Meta<typeof DoAndDontList> = {
   title: 'Content Presentation/DoAndDontList',
