@@ -68,14 +68,12 @@ export const RadiosWithConditionalContent: Story = {
     );
 
     return (
-      <form style={{ padding: 20 }}>
-        <Radios {...args}>
-          <Radios.Item value="yes" conditional={impairmentsForm}>
-            Patient requires an impairment to be added
-          </Radios.Item>
-          <Radios.Item value="no">Patient would prefer not to say</Radios.Item>
-        </Radios>
-      </form>
+      <Radios {...args}>
+        <Radios.Item value="yes" conditional={impairmentsForm}>
+          Patient requires an impairment to be added
+        </Radios.Item>
+        <Radios.Item value="no">Patient would prefer not to say</Radios.Item>
+      </Radios>
     );
   },
 };

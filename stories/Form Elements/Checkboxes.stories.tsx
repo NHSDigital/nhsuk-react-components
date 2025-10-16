@@ -51,13 +51,11 @@ type CheckboxState = {
 
 export const Standard: Story = {
   render: (args) => (
-    <form>
-      <Checkboxes {...args}>
-        <Checkboxes.Item value="british">British</Checkboxes.Item>
-        <Checkboxes.Item value="irish">Irish</Checkboxes.Item>
-        <Checkboxes.Item value="other">Citizen of another country</Checkboxes.Item>
-      </Checkboxes>
-    </form>
+    <Checkboxes {...args}>
+      <Checkboxes.Item value="british">British</Checkboxes.Item>
+      <Checkboxes.Item value="irish">Irish</Checkboxes.Item>
+      <Checkboxes.Item value="other">Citizen of another country</Checkboxes.Item>
+    </Checkboxes>
   ),
 };
 
@@ -67,39 +65,35 @@ export const WithHintText: Story = {
     hint: undefined,
   },
   render: (args) => (
-    <form>
-      <Checkboxes {...args}>
-        <Checkboxes.Item
-          name="gateway"
-          type="checkbox"
-          value="gov-gateway"
-          hint="You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before."
-        >
-          Sign in with Government Gateway
-        </Checkboxes.Item>
-        <Checkboxes.Item
-          name="verify"
-          value="nhsuk-verify"
-          hint="You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
-        >
-          Sign in with NHS.UK login
-        </Checkboxes.Item>
-      </Checkboxes>
-    </form>
+    <Checkboxes {...args}>
+      <Checkboxes.Item
+        name="gateway"
+        type="checkbox"
+        value="gov-gateway"
+        hint="You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before."
+      >
+        Sign in with Government Gateway
+      </Checkboxes.Item>
+      <Checkboxes.Item
+        name="verify"
+        value="nhsuk-verify"
+        hint="You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
+      >
+        Sign in with NHS.UK login
+      </Checkboxes.Item>
+    </Checkboxes>
   ),
 };
 
 export const WithDisabledItem: Story = {
   render: (args) => (
-    <form>
-      <Checkboxes {...args}>
-        <Checkboxes.Item value="british">British</Checkboxes.Item>
-        <Checkboxes.Item value="irish">Irish</Checkboxes.Item>
-        <Checkboxes.Item value="other" disabled>
-          Citizen of another country
-        </Checkboxes.Item>
-      </Checkboxes>
-    </form>
+    <Checkboxes {...args}>
+      <Checkboxes.Item value="british">British</Checkboxes.Item>
+      <Checkboxes.Item value="irish">Irish</Checkboxes.Item>
+      <Checkboxes.Item value="other" disabled>
+        Citizen of another country
+      </Checkboxes.Item>
+    </Checkboxes>
   ),
 };
 
@@ -109,13 +103,11 @@ export const WithConditionalContent: Story = {
     hint: 'Select all that apply',
   },
   render: (args) => (
-    <form>
-      <Checkboxes {...args}>
-        <Checkboxes.Item conditional={<p>This includes rocks and earth.</p>} value="mines">
-          Waste from mines or quarries
-        </Checkboxes.Item>
-      </Checkboxes>
-    </form>
+    <Checkboxes {...args}>
+      <Checkboxes.Item conditional={<p>This includes rocks and earth.</p>} value="mines">
+        Waste from mines or quarries
+      </Checkboxes.Item>
+    </Checkboxes>
   ),
 };
 
@@ -125,17 +117,15 @@ export const WithExclusiveNoneOption: Story = {
     hint: 'Select all the symptoms you have',
   },
   render: (args) => (
-    <form>
-      <Checkboxes {...args}>
-        <Checkboxes.Item value="sore-throat">Sore throat</Checkboxes.Item>
-        <Checkboxes.Item value="runny-nose">Runny nose</Checkboxes.Item>
-        <Checkboxes.Item value="muscle-pain">Muscle or joint pain</Checkboxes.Item>
-        <Checkboxes.Divider />
-        <Checkboxes.Item value="none" exclusive>
-          None
-        </Checkboxes.Item>
-      </Checkboxes>
-    </form>
+    <Checkboxes {...args}>
+      <Checkboxes.Item value="sore-throat">Sore throat</Checkboxes.Item>
+      <Checkboxes.Item value="runny-nose">Runny nose</Checkboxes.Item>
+      <Checkboxes.Item value="muscle-pain">Muscle or joint pain</Checkboxes.Item>
+      <Checkboxes.Divider />
+      <Checkboxes.Item value="none" exclusive>
+        None
+      </Checkboxes.Item>
+    </Checkboxes>
   ),
 };
 
@@ -148,7 +138,7 @@ export const WithError: Story = {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [error, setError] = useState('Please select an option');
     return (
-      <form>
+      <>
         <Checkboxes error={error} {...args}>
           <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
           <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
@@ -159,7 +149,7 @@ export const WithError: Story = {
           value={error}
           onChange={(e) => setError(e.currentTarget.value)}
         />
-      </form>
+      </>
     );
   },
   name: 'With Error (String)',
@@ -204,7 +194,7 @@ export const NoIDSupplied: Story = {
     }, []);
 
     return (
-      <form style={{ padding: 20 }}>
+      <>
         <h2>Scenario: No ID Supplied</h2>
         <h5>Expected Behaviour</h5>
         <ul className="nhsuk-hint">
@@ -244,7 +234,7 @@ export const NoIDSupplied: Story = {
           <Checkboxes.Item ref={checkbox2Ref}>Box 2</Checkboxes.Item>
           <Checkboxes.Item ref={checkbox3Ref}>Box 3</Checkboxes.Item>
         </Checkboxes>
-      </form>
+      </>
     );
   },
 };
@@ -288,7 +278,7 @@ export const NameSupplied: Story = {
     }, []);
 
     return (
-      <form style={{ padding: 20 }}>
+      <>
         <h2>Scenario: Name Supplied</h2>
         <h5>Expected Behaviour</h5>
         <ul className="nhsuk-hint">
@@ -328,7 +318,7 @@ export const NameSupplied: Story = {
           <Checkboxes.Item ref={checkbox2Ref}>Box 2</Checkboxes.Item>
           <Checkboxes.Item ref={checkbox3Ref}>Box 3</Checkboxes.Item>
         </Checkboxes>
-      </form>
+      </>
     );
   },
 };
@@ -372,7 +362,7 @@ export const IDPrefixSupplied: Story = {
     }, []);
 
     return (
-      <form style={{ padding: 20 }}>
+      <>
         <h2>Scenario: ID Prefix Supplied</h2>
         <h5>Expected Behaviour</h5>
         <ul className="nhsuk-hint">
@@ -413,7 +403,7 @@ export const IDPrefixSupplied: Story = {
           <Checkboxes.Item ref={checkbox2Ref}>Box 2</Checkboxes.Item>
           <Checkboxes.Item ref={checkbox3Ref}>Box 3</Checkboxes.Item>
         </Checkboxes>
-      </form>
+      </>
     );
   },
 };
@@ -457,7 +447,7 @@ export const IDPrefixAndNameSupplied: Story = {
     }, []);
 
     return (
-      <form style={{ padding: 20 }}>
+      <>
         <h2>Scenario: ID Prefix and Name Supplied</h2>
         <h5>Expected Behaviour</h5>
         <ul className="nhsuk-hint">
@@ -498,7 +488,7 @@ export const IDPrefixAndNameSupplied: Story = {
           <Checkboxes.Item ref={checkbox2Ref}>Box 2</Checkboxes.Item>
           <Checkboxes.Item ref={checkbox3Ref}>Box 3</Checkboxes.Item>
         </Checkboxes>
-      </form>
+      </>
     );
   },
 };
@@ -531,7 +521,7 @@ export const OnChangeAndOnInputHandlers: Story = {
     };
 
     return (
-      <form style={{ padding: 20 }}>
+      <>
         <h2>Scenario: onChange and onInput handlers are bound without any other props</h2>
         <h5>Expected Behaviour</h5>
         <ul className="nhsuk-hint">
@@ -559,7 +549,7 @@ export const OnChangeAndOnInputHandlers: Story = {
             <li key={index}>{event}</li>
           ))}
         </ul>
-      </form>
+      </>
     );
   },
 };

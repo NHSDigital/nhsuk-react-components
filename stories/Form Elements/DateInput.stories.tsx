@@ -16,7 +16,7 @@ type Story = StoryObj<typeof DateInput>;
 
 export const Standard: Story = {
   render: (args) => (
-    <div style={{ padding: 20 }}>
+    <>
       <h2>Scenario: onChange and onInput handlers are bound without any other props</h2>
       <h5>Expected Behaviour</h5>
       <ul className="nhsuk-hint">
@@ -25,13 +25,13 @@ export const Standard: Story = {
       </ul>
       <h5>Component</h5>
       <DateInput onChange={(e) => console.log(e.target.value)} {...args} />
-    </div>
+    </>
   ),
 };
 
 export const StandardWithError: Story = {
   render: (args) => (
-    <div style={{ padding: 20 }}>
+    <>
       <h2>Scenario: onChange and onInput handlers are bound without any other props</h2>
       <h5>Expected Behaviour</h5>
       <ul className="nhsuk-hint">
@@ -55,7 +55,7 @@ export const StandardWithError: Story = {
         <DateInput.Month error={false} />
         <DateInput.Year error={false} />
       </DateInput>
-    </div>
+    </>
   ),
 };
 
@@ -63,14 +63,11 @@ export const PrePopulatedIndividualComponents: Story = {
   render: (args) => {
     const defaultValue = { day: '20', month: '09', year: '1996' };
     return (
-      <div style={{ padding: 20 }}>
-        <h5>Component</h5>
-        <DateInput {...args}>
-          <DateInput.Day defaultValue={defaultValue.day} />
-          <DateInput.Month defaultValue={defaultValue.month} />
-          <DateInput.Year defaultValue={defaultValue.year} />
-        </DateInput>
-      </div>
+      <DateInput {...args}>
+        <DateInput.Day defaultValue={defaultValue.day} />
+        <DateInput.Month defaultValue={defaultValue.month} />
+        <DateInput.Year defaultValue={defaultValue.year} />
+      </DateInput>
     );
   },
 };
@@ -84,12 +81,7 @@ export const PrePopulatedWrapper: Story = {
     },
   },
   render: (args) => {
-    return (
-      <div style={{ padding: 20 }}>
-        <h5>Component</h5>
-        <DateInput {...args} />
-      </div>
-    );
+    return <DateInput {...args} />;
   },
 };
 
@@ -103,14 +95,11 @@ export const ControlledElementIndividualComponents: Story = {
   },
   render: ({ value, ...args }) => {
     return (
-      <div style={{ padding: 20 }}>
-        <h5>Component</h5>
-        <DateInput {...args}>
-          <DateInput.Day value={value?.day} />
-          <DateInput.Month value={value?.month} />
-          <DateInput.Year value={value?.year} />
-        </DateInput>
-      </div>
+      <DateInput {...args}>
+        <DateInput.Day value={value?.day} />
+        <DateInput.Month value={value?.month} />
+        <DateInput.Year value={value?.year} />
+      </DateInput>
     );
   },
 };
@@ -124,12 +113,7 @@ export const ControlledElementWrapper: Story = {
     },
   },
   render: (args) => {
-    return (
-      <div style={{ padding: 20 }}>
-        <h5>Component</h5>
-        <DateInput {...args} />
-      </div>
-    );
+    return <DateInput {...args} />;
   },
 };
 
