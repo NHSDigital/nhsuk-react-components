@@ -220,7 +220,6 @@ describe('FormGroup', () => {
     it('string component', async () => {
       const { container } = await renderClient(
         <FormGroup<TextInputProps> inputType="input" error="Oh no there's an error!">
-          {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
           {({ error, ...rest }) => <input {...rest} />}
         </FormGroup>,
         { className: 'nhsuk-form-group' },
@@ -245,7 +244,6 @@ describe('FormGroup', () => {
           hint="This is a hint"
           label="Form Label"
         >
-          {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
           {({ error, ...rest }) => <input {...rest} />}
         </FormGroup>
       </main>,
@@ -264,7 +262,6 @@ describe('FormGroup', () => {
         error="This is an error"
         hint="This is a hint"
       >
-        {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
         {({ error, ...rest }) => <input {...rest} />}
       </FormGroup>,
       { className: 'nhsuk-form-group' },
@@ -279,7 +276,6 @@ describe('FormGroup', () => {
   it('should have no aria-describedby when there is no hint or label', async () => {
     const { container } = await renderClient(
       <FormGroup<TextInputProps> inputType="input">
-        {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
         {({ error, ...rest }) => <input {...rest} />}
       </FormGroup>,
       { className: 'nhsuk-form-group' },

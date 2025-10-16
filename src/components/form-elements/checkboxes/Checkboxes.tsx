@@ -71,7 +71,6 @@ const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, 
 
   return (
     <FormGroup<CheckboxesProps> inputType="checkboxes" {...rest}>
-      {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
       {({ className, name, id, idPrefix, error, ...restRenderProps }) => {
         resetCheckboxIds();
         const contextValue: ICheckboxesContext = {
