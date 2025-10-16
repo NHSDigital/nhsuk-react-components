@@ -1,4 +1,4 @@
-import { type HTMLAttributes } from 'react';
+import { type ComponentProps, type ElementType } from 'react';
 
 export type NHSUKSize = 's' | 'm' | 'l' | 'xl';
 
@@ -16,6 +16,6 @@ export type ColWidth =
   | 'one-third'
   | 'one-quarter';
 
-export type HTMLAttributesWithData<T> = HTMLAttributes<T> & {
-  [key: `data-${string}`]: unknown;
+export type ComponentPropsWithDataAttributes<T extends ElementType> = ComponentProps<T> & {
+  [key: `data-${string}`]: string | undefined;
 };

@@ -13,7 +13,7 @@ import {
 import { CheckboxesContext, type ICheckboxesContext } from '../CheckboxesContext.js';
 import { HintText } from '#components/form-elements/hint-text/index.js';
 import { Label } from '#components/form-elements/label/index.js';
-import { type FormElementProps, type HTMLAttributesWithData } from '#util/types/index.js';
+import { type ComponentPropsWithDataAttributes, type FormElementProps } from '#util/types/index.js';
 
 export interface CheckboxesItemProps
   extends ComponentPropsWithoutRef<'input'>,
@@ -54,10 +54,10 @@ export const CheckboxesItem = forwardRef<HTMLInputElement, CheckboxesItemProps>(
 
     useEffect(() => () => unleaseReference(checkboxReference));
 
-    const inputProps: HTMLAttributesWithData<HTMLInputElement> = rest;
+    const inputProps: ComponentPropsWithDataAttributes<'input'> = rest;
 
     if (exclusive) {
-      inputProps['data-checkbox-exclusive'] = true;
+      inputProps['data-checkbox-exclusive'] = 'true';
     }
 
     return (

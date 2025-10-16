@@ -12,8 +12,9 @@ import { type FormElementProps } from '#util/types/FormTypes.js';
 export interface RadiosProps
   extends ComponentPropsWithoutRef<'div'>,
     Omit<FormElementProps, 'label' | 'labelProps'> {
-  inline?: boolean;
   idPrefix?: string;
+  inline?: boolean;
+  small?: boolean;
 }
 
 const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwardedRef) => {
@@ -78,8 +79,7 @@ const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwarde
 
   return (
     <FormGroup<RadiosProps> inputType="radios" {...rest}>
-      {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
-      {({ className, inline, name, id, error, ...restRenderProps }) => {
+      {({ className, inline, small, name, id, error, ...restRenderProps }) => {
         resetRadioIds();
         const contextValue: IRadiosContext = {
           getRadioId: (reference) => getRadioId(id, reference),
@@ -92,7 +92,14 @@ const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwarde
 
         return (
           <div
-            className={classNames('nhsuk-radios', { 'nhsuk-radios--inline': inline }, className)}
+            className={classNames(
+              'nhsuk-radios',
+              {
+                'nhsuk-radios--inline': inline,
+                'nhsuk-radios--small': small,
+              },
+              className,
+            )}
             data-module="nhsuk-radios"
             id={id}
             ref={moduleRef}

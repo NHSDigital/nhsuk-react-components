@@ -118,6 +118,55 @@ export const RadiosWithHintsOnItems: Story = {
   ),
 };
 
+export const SmallRadios: Story = {
+  args: {
+    ...StandardRadios.args,
+    legendProps: { isPageHeading: true, size: 'm' },
+    idPrefix: 'small',
+    small: true,
+  },
+  render: StandardRadios.render,
+};
+
+export const SmallInlineRadios: Story = {
+  args: {
+    ...InlineRadios.args,
+    legendProps: { isPageHeading: true, size: 'm' },
+    small: true,
+  },
+  render: InlineRadios.render,
+};
+
+export const SmallRadiosWithConditionalContent: Story = {
+  args: {
+    ...RadiosWithConditionalContent.args,
+    legendProps: { isPageHeading: true, size: 'm' },
+    idPrefix: 'small-conditional',
+    small: true,
+  },
+  render: RadiosWithConditionalContent.render,
+};
+
+export const SmallRadiosWithADivider: Story = {
+  args: {
+    ...RadiosWithADivider.args,
+    legendProps: { isPageHeading: true, size: 'm' },
+    idPrefix: 'small-divider',
+    small: true,
+  },
+  render: RadiosWithADivider.render,
+};
+
+export const SmallRadiosWithHintsOnItems: Story = {
+  args: {
+    ...RadiosWithHintsOnItems.args,
+    legendProps: { isPageHeading: true, size: 'm' },
+    idPrefix: 'small-hints',
+    small: true,
+  },
+  render: RadiosWithHintsOnItems.render,
+};
+
 export const DisabledRadios: Story = {
   args: {
     idPrefix: 'disabled',

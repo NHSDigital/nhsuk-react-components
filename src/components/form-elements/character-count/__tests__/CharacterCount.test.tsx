@@ -50,7 +50,7 @@ describe('Character Count', () => {
     const fieldRef = createRef<HTMLTextAreaElement>();
 
     const { container } = await renderClient(
-      <CharacterCount formGroupProps={{ ref: groupRef }} ref={fieldRef} />,
+      <CharacterCount formGroupProps={{ ref: groupRef }} ref={fieldRef} maxLength={200} />,
       { moduleName: 'nhsuk-character-count' },
     );
 
