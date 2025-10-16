@@ -32,8 +32,6 @@ export const Standard: Story = {
 
 /**
  * Sometimes, rather than counting the number of characters, it is useful to count the number of words instead.
- *
- * Use the `countType` prop to vary this behaviour.
  */
 export const WordCountLimit: Story = {
   args: {
