@@ -43,7 +43,7 @@ type Story = StoryObj<typeof ErrorSummary>;
 
 export const Standard: Story = {
   render: (args) => (
-    <ErrorSummary>
+    <ErrorSummary {...args}>
       <ErrorSummary.Title>There is a problem</ErrorSummary.Title>
       <ErrorSummary.List>
         <ErrorSummary.ListItem href="#example-error-1">Enter your full name</ErrorSummary.ListItem>
@@ -54,7 +54,7 @@ export const Standard: Story = {
 
 export const WithDescription: Story = {
   render: (args) => (
-    <ErrorSummary>
+    <ErrorSummary {...args}>
       <ErrorSummary.Title>There is a problem</ErrorSummary.Title>
       <p>Describe the errors and how to correct them</p>
       <ErrorSummary.List>
@@ -67,8 +67,11 @@ export const WithDescription: Story = {
 };
 
 export const WithAutoFocusDisabled: Story = {
+  args: {
+    disableAutoFocus: true,
+  },
   render: (args) => (
-    <ErrorSummary disableAutoFocus={true}>
+    <ErrorSummary {...args}>
       <ErrorSummary.Title>There is a problem</ErrorSummary.Title>
       <ErrorSummary.List>
         <ErrorSummary.ListItem href="#example-error-1">

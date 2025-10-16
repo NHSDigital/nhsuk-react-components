@@ -6,6 +6,9 @@ const meta: Meta<typeof Textarea> = {
   title: 'Form Elements/Textarea',
   component: Textarea,
   args: {
+    label: 'Can you provide more detail?',
+    labelProps: { isPageHeading: true, size: 'l' },
+    hint: 'Do not include personal information, like your name, date of birth or NHS number',
     id: 'example',
     name: 'example',
     rows: 5,
@@ -14,37 +17,20 @@ const meta: Meta<typeof Textarea> = {
 export default meta;
 type Story = StoryObj<typeof Textarea>;
 
-export const Standard: Story = {
-  args: {
-    label: 'Can you provide more detail?',
-    labelProps: { isPageHeading: true, size: 'l' },
-    hint: 'Do not include personal information, like your name, date of birth or NHS number',
-  },
-};
+export const Standard: Story = {};
 
 export const TextareaWithAutoCompleteAttribute: Story = {
   args: {
-    label: 'Can you provide more detail?',
-    labelProps: { isPageHeading: true, size: 'l' },
-    hint: 'Do not include personal information, like your name, date of birth or NHS number',
     autoComplete: 'street-address',
   },
 };
 
 export const TextareaWithError: Story = {
-  render: function TextareaWithErrorRender() {
+  render: function TextareaWithErrorRender(args) {
     const [error, setError] = useState<string>('You must provide an explanation');
     return (
       <>
-        <Textarea
-          label="Can you provide more detail?"
-          labelProps={{ isPageHeading: true, size: 'l' }}
-          hint="Do not include personal information, like your name, date of birth or NHS number"
-          error={error}
-          id="with-error-message"
-          name="with-error-message"
-          rows={5}
-        />
+        <Textarea error={error} {...args} />
         <TextInput onChange={(e) => setError(e.currentTarget.value)} value={error} />
       </>
     );

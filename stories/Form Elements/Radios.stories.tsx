@@ -5,19 +5,21 @@ import { Checkboxes, Radios, TextInput } from '#components';
 const meta: Meta<typeof Radios> = {
   title: 'Form Elements/Radios',
   component: Radios,
+  args: {
+    legend: 'Have you changed your name?',
+    legendProps: { isPageHeading: true, size: 'l' },
+    hint: 'This includes changing your last name or spelling your name differently',
+  },
 };
 export default meta;
 type Story = StoryObj<typeof Radios>;
 
 export const StandardRadios: Story = {
+  args: {
+    idPrefix: 'standard',
+  },
   render: (args) => (
-    <Radios
-      legend="Have you changed your name?"
-      legendProps={{ isPageHeading: true, size: 'l' }}
-      hint="This includes changing your last name or spelling your name differently"
-      name="example"
-      id="standard-example"
-    >
+    <Radios {...args}>
       <Radios.Item value="yes">Yes</Radios.Item>
       <Radios.Item value="no" defaultChecked>
         No
@@ -27,15 +29,12 @@ export const StandardRadios: Story = {
 };
 
 export const InlineRadios: Story = {
+  args: {
+    idPrefix: 'inline',
+    inline: true,
+  },
   render: (args) => (
-    <Radios
-      legend="Have you changed your name?"
-      legendProps={{ isPageHeading: true, size: 'l' }}
-      hint="This includes changing your last name or spelling your name differently"
-      name="example"
-      id="inline-example"
-      inline
-    >
+    <Radios {...args}>
       <Radios.Item value="yes">Yes</Radios.Item>
       <Radios.Item value="no" defaultChecked>
         No
@@ -44,26 +43,12 @@ export const InlineRadios: Story = {
   ),
 };
 
-export const DisabledRadios: Story = {
-  render: (args) => (
-    <Radios
-      legend="Have you changed your name?"
-      legendProps={{ isPageHeading: true, size: 'l' }}
-      hint="This includes changing your last name or spelling your name differently"
-      name="example"
-      id="disabled-example"
-    >
-      <Radios.Item disabled value="yes">
-        Yes
-      </Radios.Item>
-      <Radios.Item disabled value="no">
-        No
-      </Radios.Item>
-    </Radios>
-  ),
-};
-
 export const RadiosWithConditionalContent: Story = {
+  args: {
+    legend: 'Impairment requirement',
+    hint: 'Select relevant options',
+    idPrefix: 'conditional',
+  },
   render: (args) => {
     const impairmentsForm = (
       <Checkboxes name="impairments" id="impairments">
@@ -84,19 +69,11 @@ export const RadiosWithConditionalContent: Story = {
 
     return (
       <form style={{ padding: 20 }}>
-        <Radios
-          legend="Impairment requirement"
-          legendProps={{ isPageHeading: true, size: 'l' }}
-          hint="Select relevant options"
-          name="example"
-          id="example-conditional"
-        >
-          <Radios.Item id="hello1" value="yes" conditional={impairmentsForm}>
+        <Radios {...args}>
+          <Radios.Item value="yes" conditional={impairmentsForm}>
             Patient requires an impairment to be added
           </Radios.Item>
-          <Radios.Item id="hello2" value="no">
-            Patient would prefer not to say
-          </Radios.Item>
+          <Radios.Item value="no">Patient would prefer not to say</Radios.Item>
         </Radios>
       </form>
     );
@@ -104,13 +81,13 @@ export const RadiosWithConditionalContent: Story = {
 };
 
 export const RadiosWithADivider: Story = {
+  args: {
+    legend: 'How do you want to sign in?',
+    hint: undefined,
+    idPrefix: 'divider',
+  },
   render: (args) => (
-    <Radios
-      legend="How do you want to sign in?"
-      legendProps={{ isPageHeading: true, size: 'l' }}
-      name="example"
-      id="example-divider"
-    >
+    <Radios {...args}>
       <Radios.Item value="government-gateway">Use Government Gateway</Radios.Item>
       <Radios.Item value="nhsuk-login">Use NHS.UK login</Radios.Item>
       <Radios.Divider>or</Radios.Divider>
@@ -120,22 +97,22 @@ export const RadiosWithADivider: Story = {
 };
 
 export const RadiosWithHintsOnItems: Story = {
+  args: {
+    legend: 'How do you want to sign in?',
+    hint: undefined,
+    idPrefix: 'hints',
+  },
   render: (args) => (
-    <Radios
-      legend="How do you want to sign in?"
-      legendProps={{ isPageHeading: true, size: 'l' }}
-      name="example"
-      id="example-with-hints"
-    >
+    <Radios {...args}>
       <Radios.Item
         value="government-gateway"
-        hint="You&#39;ll have a user ID if you've registered for self-assessment or filed a tax return online before."
+        hint="You'll have a user ID if you've registered for self-assessment or filed a tax return online before."
       >
         Use Government Gateway
       </Radios.Item>
       <Radios.Item
         value="nhsuk-login"
-        hint="You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
+        hint="You'll have an account if you've already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
       >
         Use NHS.UK login
       </Radios.Item>
@@ -143,32 +120,33 @@ export const RadiosWithHintsOnItems: Story = {
   ),
 };
 
-export const RadiosWithoutFieldset: Story = {
+export const DisabledRadios: Story = {
+  args: {
+    idPrefix: 'disabled',
+  },
   render: (args) => (
-    <Radios name="colours" id="colours">
-      <Radios.Item value="red">Red</Radios.Item>
-      <Radios.Item value="green">Green</Radios.Item>
-      <Radios.Item value="blue">Blue</Radios.Item>
+    <Radios {...args}>
+      <Radios.Item disabled value="yes">
+        Yes
+      </Radios.Item>
+      <Radios.Item disabled value="no">
+        No
+      </Radios.Item>
     </Radios>
   ),
 };
 
 export const RadiosWithError: Story = {
-  render: function RadiosWithErrorRender() {
+  args: {
+    idPrefix: 'error',
+  },
+  render: function RadiosWithErrorRender(args) {
     const [error, setError] = useState('Select yes if you have changed your name');
     return (
       <>
-        <Radios
-          legend="Have you changed your name?"
-          legendProps={{ isPageHeading: true, size: 'l' }}
-          hint="This includes changing your last name or spelling your name differently"
-          name="example-with-err-string"
-          error={error}
-        >
-          <Radios.Item id="example-1" value="yes">
-            Yes
-          </Radios.Item>
-          <Radios.Item id="example-2" value="no" defaultChecked>
+        <Radios error={error} {...args}>
+          <Radios.Item value="yes">Yes</Radios.Item>
+          <Radios.Item value="no" defaultChecked>
             No
           </Radios.Item>
         </Radios>

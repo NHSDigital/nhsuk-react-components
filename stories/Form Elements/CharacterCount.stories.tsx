@@ -12,22 +12,22 @@ import { CharacterCount } from '#components';
 const meta: Meta<typeof CharacterCount> = {
   title: 'Form Elements/CharacterCount',
   component: CharacterCount,
+  args: {
+    label: 'Can you provide more detail?',
+    labelProps: { isPageHeading: true, size: 'l' },
+    hint: 'Do not include personal information like your name, date of birth or NHS number',
+    name: 'example',
+    rows: 5,
+  },
 };
 
 export default meta;
 type Story = StoryObj<typeof CharacterCount>;
 
 export const Standard: Story = {
-  render: () => (
-    <CharacterCount
-      label="Can you provide more detail?"
-      labelProps={{ isPageHeading: true, size: 'l' }}
-      hint="Do not include personal information like your name, date of birth or NHS number"
-      name="example"
-      maxLength={200}
-      rows={5}
-    />
-  ),
+  args: {
+    maxLength: 200,
+  },
 };
 
 /**
@@ -36,16 +36,9 @@ export const Standard: Story = {
  * Use the `countType` prop to vary this behaviour.
  */
 export const WordCountLimit: Story = {
-  render: () => (
-    <CharacterCount
-      label="Can you provide more detail?"
-      labelProps={{ isPageHeading: true, size: 'l' }}
-      hint="Do not include personal information like your name, date of birth or NHS number"
-      name="example"
-      maxWords={150}
-      rows={5}
-    />
-  ),
+  args: {
+    maxWords: 150,
+  },
 };
 
 /**
@@ -54,15 +47,8 @@ export const WordCountLimit: Story = {
  * Use the `threshold` prop to only show the count message when users have reached that percentage of the limit.
  */
 export const MessageThreshold: Story = {
-  render: () => (
-    <CharacterCount
-      label="Can you provide more detail?"
-      labelProps={{ isPageHeading: true, size: 'l' }}
-      hint="Do not include personal information like your name, date of birth or NHS number"
-      name="example"
-      maxLength={112}
-      threshold={75}
-      rows={5}
-    />
-  ),
+  args: {
+    maxLength: 112,
+    threshold: 75,
+  },
 };

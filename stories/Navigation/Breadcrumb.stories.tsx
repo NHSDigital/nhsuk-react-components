@@ -34,9 +34,17 @@ import { Breadcrumb, Container } from '#components';
 const meta: Meta<typeof Breadcrumb> = {
   title: 'Navigation/Breadcrumb',
   component: Breadcrumb,
+  argTypes: {
+    'aria-label': {
+      control: 'text',
+      table: {
+        defaultValue: { summary: 'Breadcrumb' },
+      },
+    },
+  },
   render: (args) => (
     <Container>
-      <Breadcrumb aria-label={args['aria-label']}>
+      <Breadcrumb {...args}>
         <Breadcrumb.Item href="/level/one">Level One</Breadcrumb.Item>
         <Breadcrumb.Item href="/level/two">Level Two</Breadcrumb.Item>
         <Breadcrumb.Item href="/level/three">Level Three</Breadcrumb.Item>

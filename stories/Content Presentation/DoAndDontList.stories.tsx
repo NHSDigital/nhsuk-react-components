@@ -45,8 +45,11 @@ export default meta;
 type Story = StoryObj<typeof DoAndDontList>;
 
 export const Do: Story = {
+  args: {
+    listType: 'do',
+  },
   render: (args) => (
-    <DoAndDontList listType="do">
+    <DoAndDontList {...args}>
       <DoAndDontList.Item>
         cover blisters that are likely to burst with a soft plaster or dressing
       </DoAndDontList.Item>
@@ -59,8 +62,11 @@ export const Do: Story = {
 };
 
 export const Dont: Story = {
+  args: {
+    listType: 'dont',
+  },
   render: (args) => (
-    <DoAndDontList listType="dont">
+    <DoAndDontList {...args}>
       <DoAndDontList.Item>burst a blister yourself</DoAndDontList.Item>
       <DoAndDontList.Item>peel the skin off a burst blister</DoAndDontList.Item>
       <DoAndDontList.Item>pick at the edges of the remaining skin</DoAndDontList.Item>
@@ -90,8 +96,11 @@ export const Dont: Story = {
  * | JSX       | The JSX will be rendered, such as `<span>`  |
  */
 export const CustomPrefixText: Story = {
-  render: () => (
-    <DoAndDontList listType="dont">
+  args: {
+    listType: 'dont',
+  },
+  render: (args) => (
+    <DoAndDontList {...args}>
       <DoAndDontList.Item prefixText="You must not">burst a blister yourself</DoAndDontList.Item>
       <DoAndDontList.Item prefixText={undefined}>
         peel the skin off a burst blister

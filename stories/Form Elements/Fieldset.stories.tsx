@@ -35,7 +35,7 @@ type Story = StoryObj<typeof Fieldset>;
 
 export const Standard: Story = {
   render: (args) => (
-    <Fieldset>
+    <Fieldset {...args}>
       <Fieldset.Legend isPageHeading size="l">
         What is your address?
       </Fieldset.Legend>
@@ -72,7 +72,7 @@ export const Standard: Story = {
 export const WithCustomLegendSizeS: Story = {
   name: 'With Bold Text (S)',
   render: (args) => (
-    <Fieldset>
+    <Fieldset {...args}>
       <Fieldset.Legend isPageHeading size="s">
         What is your address?
       </Fieldset.Legend>
@@ -83,7 +83,7 @@ export const WithCustomLegendSizeS: Story = {
 export const WithCustomLegendSizeM: Story = {
   name: 'With Custom Size (M)',
   render: (args) => (
-    <Fieldset>
+    <Fieldset {...args}>
       <Fieldset.Legend isPageHeading size="m">
         What is your address?
       </Fieldset.Legend>
@@ -94,7 +94,7 @@ export const WithCustomLegendSizeM: Story = {
 export const WithCustomLegendSizeL: Story = {
   name: 'With Custom Size (L)',
   render: (args) => (
-    <Fieldset>
+    <Fieldset {...args}>
       <Fieldset.Legend isPageHeading size="l">
         What is your address?
       </Fieldset.Legend>
@@ -105,7 +105,7 @@ export const WithCustomLegendSizeL: Story = {
 export const WithCustomLegendSizeXL: Story = {
   name: 'With Custom Size (XL)',
   render: (args) => (
-    <Fieldset>
+    <Fieldset {...args}>
       <Fieldset.Legend isPageHeading size="xl">
         What is your address?
       </Fieldset.Legend>

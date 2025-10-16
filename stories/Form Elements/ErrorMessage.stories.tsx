@@ -28,13 +28,19 @@ const meta: Meta<typeof ErrorMessage> = {
   args: {
     children: 'Enter your full name',
   },
+  argTypes: {
+    visuallyHiddenText: {
+      control: 'text',
+      table: {
+        defaultValue: { summary: 'Error' },
+      },
+    },
+  },
 };
 export default meta;
 type Story = StoryObj<typeof ErrorMessage>;
 
-export const Standard: Story = {
-  argTypes: { visuallyHiddenText: { control: false } },
-};
+export const Standard: Story = {};
 
 export const CustomVisuallyHiddenText: Story = {
   args: { visuallyHiddenText: 'Custom' },

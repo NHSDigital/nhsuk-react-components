@@ -48,8 +48,22 @@ export default meta;
 type Story = StoryObj<typeof ContentsList>;
 
 export const Standard: Story = {
+  argTypes: {
+    'aria-label': {
+      control: 'text',
+      table: {
+        defaultValue: { summary: 'Pages in this guide' },
+      },
+    },
+    'visuallyHiddenText': {
+      control: 'text',
+      table: {
+        defaultValue: { summary: 'Contents' },
+      },
+    },
+  },
   render: (args) => (
-    <ContentsList aria-label="Pages in this guide">
+    <ContentsList {...args}>
       <ContentsList.Item current>What is AMD?</ContentsList.Item>
       <ContentsList.Item href="https://www.nhs.uk/conditions/age-related-macular-degeneration-amd/symptoms/">
         Symptoms

@@ -41,8 +41,8 @@ type Story = StoryObj<typeof NotificationBanner>;
 
 export const StandardPanel: Story = {
   args: {},
-  render: () => (
-    <NotificationBanner>
+  render: (args) => (
+    <NotificationBanner {...args}>
       <NotificationBanner.Heading>
         The service will be unavailable from 8pm to 9pm on Thursday 1 January 2025.
       </NotificationBanner.Heading>
@@ -51,9 +51,11 @@ export const StandardPanel: Story = {
 };
 
 export const SuccessPanel: Story = {
-  args: {},
-  render: () => (
-    <NotificationBanner success>
+  args: {
+    success: true,
+  },
+  render: (args) => (
+    <NotificationBanner {...args}>
       <NotificationBanner.Heading>Patient record updated</NotificationBanner.Heading>
       <p>
         Contact{' '}
@@ -66,8 +68,8 @@ export const SuccessPanel: Story = {
 
 export const StandardPanelWithLink: Story = {
   args: {},
-  render: () => (
-    <NotificationBanner>
+  render: (args) => (
+    <NotificationBanner {...args}>
       <NotificationBanner.Heading>
         You have 7 days left to send your application.{' '}
         <NotificationBanner.Link href="#">View application</NotificationBanner.Link>.
@@ -80,8 +82,8 @@ export const StandardPanelWithCustomTitle: Story = {
   args: {
     title: 'Important Message',
   },
-  render: () => (
-    <NotificationBanner>
+  render: (args) => (
+    <NotificationBanner {...args}>
       <NotificationBanner.Heading>Upcoming maintenance</NotificationBanner.Heading>
       <p>The service will be unavailable from 8pm to 9pm on Thursday 1 January 2025.</p>
     </NotificationBanner>
@@ -90,8 +92,8 @@ export const StandardPanelWithCustomTitle: Story = {
 
 export const StandardPanelWithCustomTitleElement: Story = {
   args: {},
-  render: () => (
-    <NotificationBanner>
+  render: (args) => (
+    <NotificationBanner {...args}>
       <NotificationBanner.Title>
         Maintenance <time dateTime="2025-01-01">January 1</time>
       </NotificationBanner.Title>
@@ -103,8 +105,8 @@ export const StandardPanelWithCustomTitleElement: Story = {
 
 export const StandardPanelWithList: Story = {
   args: {},
-  render: () => (
-    <NotificationBanner>
+  render: (args) => (
+    <NotificationBanner {...args}>
       <NotificationBanner.Heading>4 files uploaded</NotificationBanner.Heading>
       <ul>
         <li>
@@ -126,8 +128,8 @@ export const StandardPanelWithList: Story = {
 
 export const StandardPanelWithLotsOfContent: Story = {
   args: {},
-  render: () => (
-    <NotificationBanner>
+  render: (args) => (
+    <NotificationBanner {...args}>
       <NotificationBanner.Heading>
         Check if you need to apply the reverse charge to this application
       </NotificationBanner.Heading>
