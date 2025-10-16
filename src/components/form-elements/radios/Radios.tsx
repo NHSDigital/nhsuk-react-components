@@ -78,7 +78,6 @@ const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwarde
 
   return (
     <FormGroup<RadiosProps> inputType="radios" {...rest}>
-      {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
       {({ className, inline, name, id, error, ...restRenderProps }) => {
         resetRadioIds();
         const contextValue: IRadiosContext = {
