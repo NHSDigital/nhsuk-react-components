@@ -22,6 +22,31 @@ The updated [header](https://service-manual.nhs.uk/design-system/components/head
 
 You can now use smaller versions of the [radios](https://service-manual.nhs.uk/design-system/components/radios) and [checkboxes](https://service-manual.nhs.uk/design-system/components/checkboxes) components by adding the `small` prop.
 
+### Numbered pagination component
+
+The [pagination](https://service-manual.nhs.uk/design-system/components/notification-banner) component from NHS.UK frontend v10.1 has been updated to support numbered pagination:
+
+```jsx
+<Pagination>
+  <Pagination.Link href="/results?page=1" previous />
+  <Pagination.Item href="/results?page=1" number={1} />
+  <Pagination.Item href="/results?page=2" number={2} current />
+  <Pagination.Item href="/results?page=3" number={3} />
+  <Pagination.Link href="/results?page=3" next />
+</Pagination>
+```
+
+### Notification banner component
+
+The [notification banner](https://service-manual.nhs.uk/design-system/components/notification-banner) component from NHS.UK frontend v10 has been added:
+
+```jsx
+<NotificationBanner>
+  <NotificationBanner.Heading>Upcoming maintenance</NotificationBanner.Heading>
+  <p>The service will be unavailable from 8pm to 9pm on Thursday 1 January 2025.</p>
+</NotificationBanner>
+```
+
 ### Panel component
 
 The [panel](https://service-manual.nhs.uk/design-system/components/panel) component from NHS.UK frontend v9.3.0 has been added:
@@ -34,17 +59,6 @@ The [panel](https://service-manual.nhs.uk/design-system/components/panel) compon
 ```
 
 This replaces the [list panel component](#list-panel) which was removed in NHS.UK frontend v6.0.0.
-
-### Notification banner component
-
-The [notification banner](https://service-manual.nhs.uk/design-system/components/notification-banner) component from NHS.UK frontend v10 has been added:
-
-```jsx
-<NotificationBanner>
-  <NotificationBanner.Heading>Upcoming maintenance</NotificationBanner.Heading>
-  <p>The service will be unavailable from 8pm to 9pm on Thursday 1 January 2025.</p>
-</NotificationBanner>
-```
 
 ### Support for React Server Components (RSC)
 
