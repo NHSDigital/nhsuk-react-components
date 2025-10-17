@@ -1,63 +1,54 @@
 import classNames from 'classnames';
-import { forwardRef, type ComponentPropsWithoutRef } from 'react';
-import { ArrowLeftIcon, ArrowRightIcon } from '#components/content-presentation/index.js';
-import { type AsElementLink } from '#util/types/LinkTypes.js';
-
-export interface PaginationLinkProps extends AsElementLink<HTMLAnchorElement> {
-  previous?: boolean;
-  next?: boolean;
-}
-
-export const PaginationLink = forwardRef<HTMLAnchorElement, PaginationLinkProps>(
-  ({ className, children, asElement: Element = 'a', previous, next, ...rest }, forwardedRef) => (
-    <li
-      className={classNames(
-        { 'nhsuk-pagination-item--previous': previous },
-        { 'nhsuk-pagination-item--next': next },
-      )}
-    >
-      <Element
-        className={classNames(
-          'nhsuk-pagination__link',
-          { 'nhsuk-pagination__link--prev': previous },
-          { 'nhsuk-pagination__link--next': next },
-          className,
-        )}
-        ref={forwardedRef}
-        {...rest}
-      >
-        <span className="nhsuk-pagination__title">
-          {previous ? 'Previous' : null}
-          {next ? 'Next' : null}
-        </span>
-        <span className="nhsuk-u-visually-hidden">:</span>
-        <span className="nhsuk-pagination__page">{children}</span>
-        {previous ? <ArrowLeftIcon /> : null}
-        {next ? <ArrowRightIcon /> : null}
-      </Element>
-    </li>
-  ),
-);
+import { Children, forwardRef, type ComponentPropsWithoutRef } from 'react';
+import { PaginationItem, PaginationLink } from './components/index.js';
+import { childIsOfComponentType } from '#util/types/TypeGuards.js';
 
 export type PaginationProps = ComponentPropsWithoutRef<'nav'>;
 
 const PaginationComponent = forwardRef<HTMLElement, PaginationProps>(
-  ({ className, children, 'aria-label': ariaLabel = 'Pagination', ...rest }, forwardedRef) => (
-    <nav
-      className={classNames('nhsuk-pagination', className)}
-      role="navigation"
-      aria-label={ariaLabel}
-      ref={forwardedRef}
-      {...rest}
-    >
-      <ul className="nhsuk-list nhsuk-pagination__list">{children}</ul>
-    </nav>
-  ),
+  ({ className, children, 'aria-label': ariaLabel = 'Pagination', ...rest }, forwardedRef) => {
+    const items = Children.toArray(children);
+
+    // Filter previous and next links
+    const links = items.filter((child) => childIsOfComponentType(child, PaginationLink));
+    const linkPrevious = links.find(({ props }) => props.previous);
+    const linkNext = links.find(({ props }) => props.next);
+
+    // Filter numbered list items
+    const listItems = items.filter((child) => childIsOfComponentType(child, PaginationItem));
+    const listItemsNumbered = listItems.filter(({ props }) => props.number || props.ellipsis);
+
+    return (
+      <nav
+        className={classNames(
+          'nhsuk-pagination',
+          { 'nhsuk-pagination--numbered': listItemsNumbered.length },
+          className,
+        )}
+        role="navigation"
+        aria-label={ariaLabel}
+        ref={forwardedRef}
+        {...rest}
+      >
+        {linkPrevious}
+        <ul
+          className={
+            listItemsNumbered.length
+              ? 'nhsuk-pagination__list' // Standard pagination list class
+              : 'nhsuk-list nhsuk-pagination__list' // Legacy pagination list class
+          }
+        >
+          {listItems}
+        </ul>
+        {linkNext}
+      </nav>
+    );
+  },
 );
 
 PaginationComponent.displayName = 'Pagination';
-PaginationLink.displayName = 'Pagination.Link';
 
 export const Pagination = Object.assign(PaginationComponent, {
+  Item: PaginationItem,
   Link: PaginationLink,
 });
