@@ -1,5 +1,15 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
+exports[`Pagination Pagination.Item matches snapshot with ellipsis 1`] = `
+<div>
+  <li
+    class="nhsuk-pagination__item nhsuk-pagination__item--ellipsis"
+  >
+    ⋯
+  </li>
+</div>
+`;
+
 exports[`Pagination Pagination.Item matches snapshot with next item (no label text) 1`] = `
 <div>
   <li
@@ -81,6 +91,22 @@ exports[`Pagination Pagination.Item matches snapshot with next item 1`] = `
           d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z"
         />
       </svg>
+    </a>
+  </li>
+</div>
+`;
+
+exports[`Pagination Pagination.Item matches snapshot with number 1`] = `
+<div>
+  <li
+    class="nhsuk-pagination__item"
+  >
+    <a
+      aria-label="Page 10"
+      class="nhsuk-pagination__link"
+      href="#"
+    >
+      10
     </a>
   </li>
 </div>
@@ -169,6 +195,584 @@ exports[`Pagination Pagination.Item matches snapshot with previous item 1`] = `
       </svg>
     </a>
   </li>
+</div>
+`;
+
+exports[`Pagination Pagination.Link matches snapshot with next link 1`] = `
+<div>
+  <a
+    class="nhsuk-pagination__next"
+    href="#"
+    rel="next"
+  >
+    <span
+      class="nhsuk-pagination__title"
+    >
+      Next
+      <span
+        class="nhsuk-u-visually-hidden"
+      >
+         page
+      </span>
+    </span>
+    <svg
+      aria-hidden="true"
+      class="nhsuk-icon nhsuk-icon--arrow-right"
+      focusable="false"
+      height="16"
+      viewBox="0 0 24 24"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z"
+      />
+    </svg>
+  </a>
+</div>
+`;
+
+exports[`Pagination Pagination.Link matches snapshot with previous link 1`] = `
+<div>
+  <a
+    class="nhsuk-pagination__previous"
+    href="#"
+    rel="prev"
+  >
+    <svg
+      aria-hidden="true"
+      class="nhsuk-icon nhsuk-icon--arrow-left"
+      focusable="false"
+      height="16"
+      viewBox="0 0 24 24"
+      width="16"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M10.7 6.3c.4.4.4 1 0 1.4L7.4 11H19a1 1 0 0 1 0 2H7.4l3.3 3.3c.4.4.4 1 0 1.4a1 1 0 0 1-1.4 0l-5-5A1 1 0 0 1 4 12c0-.3.1-.5.3-.7l5-5a1 1 0 0 1 1.4 0Z"
+      />
+    </svg>
+    <span
+      class="nhsuk-pagination__title"
+    >
+      Previous
+      <span
+        class="nhsuk-u-visually-hidden"
+      >
+         page
+      </span>
+    </span>
+  </a>
+</div>
+`;
+
+exports[`Pagination matches snapshot with next item 1`] = `
+<div>
+  <nav
+    aria-label="Pagination"
+    class="nhsuk-pagination"
+    role="navigation"
+  >
+    <ul
+      class="nhsuk-list nhsuk-pagination__list"
+    >
+      <li
+        class="nhsuk-pagination-item--next"
+      >
+        <a
+          class="nhsuk-pagination__link nhsuk-pagination__link--next"
+          href="#"
+          rel="next"
+        >
+          <span
+            class="nhsuk-pagination__title"
+          >
+            Next
+            <span
+              class="nhsuk-u-visually-hidden"
+            >
+               page
+            </span>
+          </span>
+          <span
+            class="nhsuk-u-visually-hidden"
+          >
+            :
+          </span>
+          <span
+            class="nhsuk-pagination__page"
+          >
+            Page name
+          </span>
+          <svg
+            aria-hidden="true"
+            class="nhsuk-icon nhsuk-icon--arrow-right"
+            focusable="false"
+            height="16"
+            viewBox="0 0 24 24"
+            width="16"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z"
+            />
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;
+
+exports[`Pagination matches snapshot with numbered items (translated) 1`] = `
+<div>
+  <nav
+    aria-label="Pagination"
+    class="nhsuk-pagination nhsuk-pagination--numbered"
+    role="navigation"
+  >
+    <a
+      class="nhsuk-pagination__previous"
+      href="/results?page=1"
+      rel="prev"
+    >
+      <svg
+        aria-hidden="true"
+        class="nhsuk-icon nhsuk-icon--arrow-left"
+        focusable="false"
+        height="16"
+        viewBox="0 0 24 24"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M10.7 6.3c.4.4.4 1 0 1.4L7.4 11H19a1 1 0 0 1 0 2H7.4l3.3 3.3c.4.4.4 1 0 1.4a1 1 0 0 1-1.4 0l-5-5A1 1 0 0 1 4 12c0-.3.1-.5.3-.7l5-5a1 1 0 0 1 1.4 0Z"
+        />
+      </svg>
+      <span
+        class="nhsuk-pagination__title"
+      >
+        Blaenorol
+      </span>
+    </a>
+    <ul
+      class="nhsuk-pagination__list"
+    >
+      <li
+        class="nhsuk-pagination__item"
+      >
+        <a
+          aria-label="Page 1"
+          class="nhsuk-pagination__link"
+          href="/results?page=1"
+        >
+          1
+        </a>
+      </li>
+      <li
+        class="nhsuk-pagination__item nhsuk-pagination__item--current"
+      >
+        <a
+          aria-label="Page 2"
+          class="nhsuk-pagination__link"
+          href="/results?page=2"
+        >
+          2
+        </a>
+      </li>
+      <li
+        class="nhsuk-pagination__item"
+      >
+        <a
+          aria-label="Page 3"
+          class="nhsuk-pagination__link"
+          href="/results?page=3"
+        >
+          3
+        </a>
+      </li>
+    </ul>
+    <a
+      class="nhsuk-pagination__next"
+      href="/results?page=3"
+      rel="next"
+    >
+      <span
+        class="nhsuk-pagination__title"
+      >
+        Nesaf
+      </span>
+      <svg
+        aria-hidden="true"
+        class="nhsuk-icon nhsuk-icon--arrow-right"
+        focusable="false"
+        height="16"
+        viewBox="0 0 24 24"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z"
+        />
+      </svg>
+    </a>
+  </nav>
+</div>
+`;
+
+exports[`Pagination matches snapshot with numbered items 1`] = `
+<div>
+  <nav
+    aria-label="Pagination"
+    class="nhsuk-pagination nhsuk-pagination--numbered"
+    role="navigation"
+  >
+    <a
+      class="nhsuk-pagination__previous"
+      href="/results?page=1"
+      rel="prev"
+    >
+      <svg
+        aria-hidden="true"
+        class="nhsuk-icon nhsuk-icon--arrow-left"
+        focusable="false"
+        height="16"
+        viewBox="0 0 24 24"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M10.7 6.3c.4.4.4 1 0 1.4L7.4 11H19a1 1 0 0 1 0 2H7.4l3.3 3.3c.4.4.4 1 0 1.4a1 1 0 0 1-1.4 0l-5-5A1 1 0 0 1 4 12c0-.3.1-.5.3-.7l5-5a1 1 0 0 1 1.4 0Z"
+        />
+      </svg>
+      <span
+        class="nhsuk-pagination__title"
+      >
+        Previous
+        <span
+          class="nhsuk-u-visually-hidden"
+        >
+           page
+        </span>
+      </span>
+    </a>
+    <ul
+      class="nhsuk-pagination__list"
+    >
+      <li
+        class="nhsuk-pagination__item"
+      >
+        <a
+          aria-label="Page 1"
+          class="nhsuk-pagination__link"
+          href="/results?page=1"
+        >
+          1
+        </a>
+      </li>
+      <li
+        class="nhsuk-pagination__item nhsuk-pagination__item--current"
+      >
+        <a
+          aria-label="Page 2"
+          class="nhsuk-pagination__link"
+          href="/results?page=2"
+        >
+          2
+        </a>
+      </li>
+      <li
+        class="nhsuk-pagination__item"
+      >
+        <a
+          aria-label="Page 3"
+          class="nhsuk-pagination__link"
+          href="/results?page=3"
+        >
+          3
+        </a>
+      </li>
+    </ul>
+    <a
+      class="nhsuk-pagination__next"
+      href="/results?page=3"
+      rel="next"
+    >
+      <span
+        class="nhsuk-pagination__title"
+      >
+        Next
+        <span
+          class="nhsuk-u-visually-hidden"
+        >
+           page
+        </span>
+      </span>
+      <svg
+        aria-hidden="true"
+        class="nhsuk-icon nhsuk-icon--arrow-right"
+        focusable="false"
+        height="16"
+        viewBox="0 0 24 24"
+        width="16"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z"
+        />
+      </svg>
+    </a>
+  </nav>
+</div>
+`;
+
+exports[`Pagination matches snapshot with previous and next items (translated) 1`] = `
+<div>
+  <nav
+    aria-label="Pagination"
+    class="nhsuk-pagination"
+    role="navigation"
+  >
+    <ul
+      class="nhsuk-list nhsuk-pagination__list"
+    >
+      <li
+        class="nhsuk-pagination-item--previous"
+      >
+        <a
+          class="nhsuk-pagination__link nhsuk-pagination__link--prev"
+          href="#"
+          rel="prev"
+        >
+          <span
+            class="nhsuk-pagination__title"
+          >
+            Blaenorol
+          </span>
+          <span
+            class="nhsuk-u-visually-hidden"
+          >
+            :
+          </span>
+          <span
+            class="nhsuk-pagination__page"
+          >
+            Driniaethau
+          </span>
+          <svg
+            aria-hidden="true"
+            class="nhsuk-icon nhsuk-icon--arrow-left"
+            focusable="false"
+            height="16"
+            viewBox="0 0 24 24"
+            width="16"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10.7 6.3c.4.4.4 1 0 1.4L7.4 11H19a1 1 0 0 1 0 2H7.4l3.3 3.3c.4.4.4 1 0 1.4a1 1 0 0 1-1.4 0l-5-5A1 1 0 0 1 4 12c0-.3.1-.5.3-.7l5-5a1 1 0 0 1 1.4 0Z"
+            />
+          </svg>
+        </a>
+      </li>
+      <li
+        class="nhsuk-pagination-item--next"
+      >
+        <a
+          class="nhsuk-pagination__link nhsuk-pagination__link--next"
+          href="#"
+          rel="next"
+        >
+          <span
+            class="nhsuk-pagination__title"
+          >
+            Nesaf
+          </span>
+          <span
+            class="nhsuk-u-visually-hidden"
+          >
+            :
+          </span>
+          <span
+            class="nhsuk-pagination__page"
+          >
+            Symptomau
+          </span>
+          <svg
+            aria-hidden="true"
+            class="nhsuk-icon nhsuk-icon--arrow-right"
+            focusable="false"
+            height="16"
+            viewBox="0 0 24 24"
+            width="16"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z"
+            />
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;
+
+exports[`Pagination matches snapshot with previous and next items 1`] = `
+<div>
+  <nav
+    aria-label="Pagination"
+    class="nhsuk-pagination"
+    role="navigation"
+  >
+    <ul
+      class="nhsuk-list nhsuk-pagination__list"
+    >
+      <li
+        class="nhsuk-pagination-item--previous"
+      >
+        <a
+          class="nhsuk-pagination__link nhsuk-pagination__link--prev"
+          href="#"
+          rel="prev"
+        >
+          <span
+            class="nhsuk-pagination__title"
+          >
+            Previous
+            <span
+              class="nhsuk-u-visually-hidden"
+            >
+               page
+            </span>
+          </span>
+          <span
+            class="nhsuk-u-visually-hidden"
+          >
+            :
+          </span>
+          <span
+            class="nhsuk-pagination__page"
+          >
+            Treatments
+          </span>
+          <svg
+            aria-hidden="true"
+            class="nhsuk-icon nhsuk-icon--arrow-left"
+            focusable="false"
+            height="16"
+            viewBox="0 0 24 24"
+            width="16"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10.7 6.3c.4.4.4 1 0 1.4L7.4 11H19a1 1 0 0 1 0 2H7.4l3.3 3.3c.4.4.4 1 0 1.4a1 1 0 0 1-1.4 0l-5-5A1 1 0 0 1 4 12c0-.3.1-.5.3-.7l5-5a1 1 0 0 1 1.4 0Z"
+            />
+          </svg>
+        </a>
+      </li>
+      <li
+        class="nhsuk-pagination-item--next"
+      >
+        <a
+          class="nhsuk-pagination__link nhsuk-pagination__link--next"
+          href="#"
+          rel="next"
+        >
+          <span
+            class="nhsuk-pagination__title"
+          >
+            Next
+            <span
+              class="nhsuk-u-visually-hidden"
+            >
+               page
+            </span>
+          </span>
+          <span
+            class="nhsuk-u-visually-hidden"
+          >
+            :
+          </span>
+          <span
+            class="nhsuk-pagination__page"
+          >
+            Symptoms
+          </span>
+          <svg
+            aria-hidden="true"
+            class="nhsuk-icon nhsuk-icon--arrow-right"
+            focusable="false"
+            height="16"
+            viewBox="0 0 24 24"
+            width="16"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="m14.7 6.3 5 5c.2.2.3.4.3.7 0 .3-.1.5-.3.7l-5 5a1 1 0 0 1-1.4-1.4l3.3-3.3H5a1 1 0 0 1 0-2h11.6l-3.3-3.3a1 1 0 1 1 1.4-1.4Z"
+            />
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </nav>
+</div>
+`;
+
+exports[`Pagination matches snapshot with previous item 1`] = `
+<div>
+  <nav
+    aria-label="Pagination"
+    class="nhsuk-pagination"
+    role="navigation"
+  >
+    <ul
+      class="nhsuk-list nhsuk-pagination__list"
+    >
+      <li
+        class="nhsuk-pagination-item--previous"
+      >
+        <a
+          class="nhsuk-pagination__link nhsuk-pagination__link--prev"
+          href="#"
+          rel="prev"
+        >
+          <span
+            class="nhsuk-pagination__title"
+          >
+            Previous
+            <span
+              class="nhsuk-u-visually-hidden"
+            >
+               page
+            </span>
+          </span>
+          <span
+            class="nhsuk-u-visually-hidden"
+          >
+            :
+          </span>
+          <span
+            class="nhsuk-pagination__page"
+          >
+            Page name
+          </span>
+          <svg
+            aria-hidden="true"
+            class="nhsuk-icon nhsuk-icon--arrow-left"
+            focusable="false"
+            height="16"
+            viewBox="0 0 24 24"
+            width="16"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M10.7 6.3c.4.4.4 1 0 1.4L7.4 11H19a1 1 0 0 1 0 2H7.4l3.3 3.3c.4.4.4 1 0 1.4a1 1 0 0 1-1.4 0l-5-5A1 1 0 0 1 4 12c0-.3.1-.5.3-.7l5-5a1 1 0 0 1 1.4 0Z"
+            />
+          </svg>
+        </a>
+      </li>
+    </ul>
+  </nav>
 </div>
 `;
 
