@@ -51,18 +51,14 @@ The [notification banner](https://service-manual.nhs.uk/design-system/components
 All components have been tested as React Server Components (RSC) but due to [multipart namespace component limitations](https://ivicabatinic.from.hr/posts/multipart-namespace-components-addressing-rsc-and-dot-notation-issues) an alternative syntax (without dot notation) can be used as a workaround:
 
 ```patch
-  <Pagination>
--   <Pagination.Link href="/section/treatments" previous>
-+   <PaginationLink href="/section/treatments" previous>
-      Treatments
--   </Pagination.Link>
-+   </PaginationLink>
--   <Pagination.Link href="/section/symptoms" next>
-+   <PaginationLink href="/section/symptoms" next>
-      Symptoms
--   </Pagination.Link>
-+   </PaginationLink>
-  </Pagination>
+  <Breadcrumb>
+-   <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
+-   <Breadcrumb.Item href="#">NHS services</Breadcrumb.Item>
+-   <Breadcrumb.Item href="#">Hospitals</Breadcrumb.Item>
++   <BreadcrumbItem href="#">Home</BreadcrumbItem>
++   <BreadcrumbItem href="#">NHS services</BreadcrumbItem>
++   <BreadcrumbItem href="#">Hospitals</BreadcrumbItem>
+  </Breadcrumb>
 ```
 
 ## Breaking changes
@@ -439,6 +435,26 @@ To align with NHS.UK frontend, the error summary component is automatically aler
       </ErrorSummary.List>
 -   </ErrorSummary.Body>
   </ErrorSummary>
+```
+
+### Pagination
+
+To align with NHS.UK frontend, the pagination link component automatically renders its own "Previous page" or "Next page" text, with "page" being visually hidden. You will need to make the following changes:
+
+- rename the `Pagination.Link` component to `Pagination.Item`
+- move text content (or the `children` prop) to the `labelText` prop
+
+```patch
+  <Pagination>
+-   <Pagination.Link href="/section/treatments" previous>
+-     Treatments
+-   </Pagination.Link>
+-   <Pagination.Link href="/section/symptoms" next>
+-     Symptoms
+-   </Pagination.Link>
++   <Pagination.Item labelText="Treatments" href="/section/treatments" previous />
++   <Pagination.Item labelText="Symptoms" href="/section/symptoms" next />
+  </Pagination>
 ```
 
 ### Select
