@@ -10,10 +10,29 @@ export type PaginationLinkTextProps = PropsWithChildren &
         previous?: never;
         next: true;
       }>
+    | WithoutLabelText<{
+        current?: never;
+        number?: never;
+        visuallyHiddenText?: never;
+      }>
+    | WithoutLabelText<{
+        current?: boolean;
+        number: number;
+        visuallyHiddenText?: string;
+      }>
   );
 
 type WithLabelText<T> = T & {
   labelText?: string;
+  current?: never;
+  number?: never;
+  visuallyHiddenText?: never;
+};
+
+type WithoutLabelText<T> = T & {
+  labelText?: never;
+  previous?: never;
+  next?: never;
 };
 
 export const PaginationLinkText: FC<PaginationLinkTextProps> = ({
@@ -21,7 +40,12 @@ export const PaginationLinkText: FC<PaginationLinkTextProps> = ({
   previous,
   next,
   labelText,
+  number,
 }) => {
+  if (typeof number === 'number') {
+    return Number.isFinite(number) ? number : null;
+  }
+
   return (
     <>
       {children || previous || next ? (
