@@ -27,7 +27,11 @@ describe('ErrorMessage', () => {
   });
 
   it('contains HTML', () => {
-    const { container } = render(<ErrorMessage>Error<span>this errored</span></ErrorMessage>);
+    const { container } = render(
+      <ErrorMessage>
+        Error<span>this errored</span>
+      </ErrorMessage>,
+    );
     expect(container.innerHTML).toMatch(`Error<span>this errored</span>`);
-  })
+  });
 });

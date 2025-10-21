@@ -79,7 +79,9 @@ export const WithLegendHTML: Story = {
   name: 'With Legend HTML',
   render: () => (
     <Fieldset>
-      <Fieldset.Legend>What is your address? <strong>small note: this is your home address</strong></Fieldset.Legend>
+      <Fieldset.Legend>
+        What is your address? <strong>small note: this is your home address</strong>
+      </Fieldset.Legend>
     </Fieldset>
   ),
 };

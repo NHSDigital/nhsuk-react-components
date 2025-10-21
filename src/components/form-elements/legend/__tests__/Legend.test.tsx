@@ -43,5 +43,4 @@ describe('Legend', () => {
 
     expect(container.querySelector('legend')).toBeNull();
   });
-
 });

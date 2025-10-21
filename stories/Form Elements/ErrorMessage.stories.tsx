@@ -47,6 +47,12 @@ export const EmptyVisuallyHiddenText: Story = {
 };
 
 export const WithHTML: Story = {
-  args: { children: <>Enter your full name (or call <span className="nhsuk-u-nowrap">999 123 4567</span>)</>},
+  args: {
+    children: (
+      <>
+        Enter your full name (or call <span className="nhsuk-u-nowrap">999 123 4567</span>)
+      </>
+    ),
+  },
   argTypes: { visuallyHiddenText: { control: false } },
-}
+};

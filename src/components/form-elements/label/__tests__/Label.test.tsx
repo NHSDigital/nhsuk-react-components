@@ -55,9 +55,14 @@ describe('Label', () => {
   });
 
   it('renders with HTML', () => {
-    const { container } = render(<Label>Text<span>and text within HTML</span></Label>);
+    const { container } = render(
+      <Label>
+        Text<span>and text within HTML</span>
+      </Label>,
+    );
 
-    expect(container.querySelector('label')?.innerHTML).toMatch('Text<span>and text within HTML</span>')
-    
+    expect(container.querySelector('label')?.innerHTML).toMatch(
+      'Text<span>and text within HTML</span>',
+    );
   });
 });
