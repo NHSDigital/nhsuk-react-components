@@ -3,9 +3,10 @@
 import classNames from 'classnames';
 import { type Tabs as TabsModule } from 'nhsuk-frontend';
 import {
-  createRef,
   forwardRef,
   useEffect,
+  useImperativeHandle,
+  useRef,
   useState,
   type ComponentPropsWithoutRef,
   type FC,
@@ -55,19 +56,22 @@ export const TabsContents: FC<TabsContentsProps> = ({ children, id, ...rest }) =
 const TabsComponent = forwardRef<HTMLDivElement, TabsProps>((props, forwardedRef) => {
   const { children, className, ...rest } = props;
 
-  const [moduleRef] = useState(() => forwardedRef || createRef<HTMLDivElement>());
+  const moduleRef = useRef<HTMLDivElement>(null);
+  const importRef = useRef<Promise<TabsModule | void>>(null);
   const [instanceError, setInstanceError] = useState<Error>();
   const [instance, setInstance] = useState<TabsModule>();
 
+  useImperativeHandle(forwardedRef, () => moduleRef.current!, [moduleRef]);
+
   useEffect(() => {
-    if (!('current' in moduleRef) || !moduleRef.current || instance) {
+    if (!moduleRef.current || importRef.current || instance) {
       return;
     }
 
-    import('nhsuk-frontend')
+    importRef.current = import('nhsuk-frontend')
       .then(({ Tabs }) => setInstance(new Tabs(moduleRef.current)))
       .catch(setInstanceError);
-  }, [moduleRef, instance]);
+  }, [moduleRef, importRef, instance]);
 
   if (instanceError) {
     throw instanceError;

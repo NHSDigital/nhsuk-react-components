@@ -4,9 +4,10 @@ import classNames from 'classnames';
 import { type ErrorSummary as ErrorSummaryModule } from 'nhsuk-frontend';
 import {
   Children,
-  createRef,
   forwardRef,
   useEffect,
+  useImperativeHandle,
+  useRef,
   useState,
   type ComponentPropsWithoutRef,
 } from 'react';
@@ -19,19 +20,22 @@ export interface ErrorSummaryProps extends ComponentPropsWithoutRef<'div'> {
 
 const ErrorSummaryComponent = forwardRef<HTMLDivElement, ErrorSummaryProps>(
   ({ children, className, disableAutoFocus, ...rest }, forwardedRef) => {
-    const [moduleRef] = useState(() => forwardedRef || createRef<HTMLDivElement>());
+    const moduleRef = useRef<HTMLDivElement>(null);
+    const importRef = useRef<Promise<ErrorSummaryModule | void>>(null);
     const [instanceError, setInstanceError] = useState<Error>();
     const [instance, setInstance] = useState<ErrorSummaryModule>();
 
+    useImperativeHandle(forwardedRef, () => moduleRef.current!, [moduleRef]);
+
     useEffect(() => {
-      if (!('current' in moduleRef) || !moduleRef.current || instance) {
+      if (!moduleRef.current || importRef.current || instance) {
         return;
       }
 
-      import('nhsuk-frontend')
+      importRef.current = import('nhsuk-frontend')
         .then(({ ErrorSummary }) => setInstance(new ErrorSummary(moduleRef.current)))
         .catch(setInstanceError);
-    }, [moduleRef, instance]);
+    }, [moduleRef, importRef, instance]);
 
     const items = Children.toArray(children);
 

@@ -2,8 +2,9 @@
 
 import classNames from 'classnames';
 import {
-  createRef,
   forwardRef,
+  useImperativeHandle,
+  useRef,
   useState,
   type ChangeEvent,
   type ComponentPropsWithoutRef,
@@ -43,7 +44,9 @@ export type DateInputType = 'day' | 'month' | 'year';
 
 const DateInputComponent = forwardRef<HTMLDivElement, DateInputProps>(
   ({ children, onChange, value, defaultValue, formGroupProps, ...rest }, forwardedRef) => {
-    const [moduleRef] = useState(() => formGroupProps?.ref || createRef<HTMLDivElement>());
+    const moduleRef = useRef<HTMLDivElement>(null);
+
+    useImperativeHandle(formGroupProps?.ref, () => moduleRef.current!, [moduleRef]);
 
     const [internalDate, setInternalDate] = useState<DateInputValue>({
       day: value?.day ?? '',
