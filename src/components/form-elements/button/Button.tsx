@@ -3,9 +3,10 @@
 import classNames from 'classnames';
 import { type Button as ButtonModule } from 'nhsuk-frontend';
 import {
-  createRef,
   forwardRef,
   useEffect,
+  useImperativeHandle,
+  useRef,
   useState,
   type ForwardedRef,
   type MouseEvent,
@@ -45,19 +46,22 @@ const ButtonComponent = forwardRef<HTMLButtonElement, ButtonProps>((props, forwa
     ...rest
   } = props;
 
-  const [moduleRef] = useState(() => forwardedRef || createRef<HTMLButtonElement>());
+  const moduleRef = useRef<HTMLButtonElement>(null);
+  const importRef = useRef<Promise<ButtonModule | void>>(null);
   const [instanceError, setInstanceError] = useState<Error>();
   const [instance, setInstance] = useState<ButtonModule>();
 
+  useImperativeHandle(forwardedRef, () => moduleRef.current!, [moduleRef]);
+
   useEffect(() => {
-    if (!('current' in moduleRef) || !moduleRef.current || instance) {
+    if (!moduleRef.current || importRef.current || instance) {
       return;
     }
 
-    import('nhsuk-frontend')
+    importRef.current = import('nhsuk-frontend')
       .then(({ Button }) => setInstance(new Button(moduleRef.current)))
       .catch(setInstanceError);
-  }, [moduleRef, instance]);
+  }, [moduleRef, importRef, instance]);
 
   if (instanceError) {
     throw instanceError;
@@ -104,19 +108,22 @@ const ButtonLinkComponent = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
       ...rest
     } = props;
 
-    const [moduleRef] = useState(() => forwardedRef || createRef<HTMLAnchorElement>());
+    const moduleRef = useRef<HTMLAnchorElement>(null);
+    const importRef = useRef<Promise<ButtonModule | void>>(null);
     const [instanceError, setInstanceError] = useState<Error>();
     const [instance, setInstance] = useState<ButtonModule>();
 
+    useImperativeHandle(forwardedRef, () => moduleRef.current!, [moduleRef]);
+
     useEffect(() => {
-      if (!('current' in moduleRef) || !moduleRef.current || instance) {
+      if (!moduleRef.current || importRef.current || instance) {
         return;
       }
 
-      import('nhsuk-frontend')
+      importRef.current = import('nhsuk-frontend')
         .then(({ Button }) => setInstance(new Button(moduleRef.current)))
         .catch(setInstanceError);
-    }, [moduleRef, instance]);
+    }, [moduleRef, importRef, instance]);
 
     if (instanceError) {
       throw instanceError;
