@@ -76,7 +76,7 @@ export const WithLegendAsAPageHeading: Story = {
 };
 
 export const WithLegendHTML: Story = {
-  name: 'With HTML',
+  name: 'With Legend HTML',
   render: () => (
     <Fieldset>
       <Fieldset.Legend>What is your address? <strong>small note: this is your home address</strong></Fieldset.Legend>
