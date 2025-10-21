@@ -11,7 +11,7 @@ export const ErrorMessage: FC<ErrorMessageProps> = ({
   children,
   ...rest
 }) => {
-  if (!children || typeof children !== 'string') {
+  if (!children) {
     return null;
   }
 
@@ -27,5 +27,4 @@ export const ErrorMessage: FC<ErrorMessageProps> = ({
     </span>
   );
 };
-
 ErrorMessage.displayName = 'ErrorMessage';

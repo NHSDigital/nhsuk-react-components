@@ -34,7 +34,7 @@ export default meta;
 type Story = StoryObj<typeof Fieldset>;
 
 export const Standard: Story = {
-  render: (args) => (
+  render: () => (
     <Fieldset>
       <Fieldset.Legend size="l">What is your address?</Fieldset.Legend>
       <TextInput
@@ -68,16 +68,27 @@ export const Standard: Story = {
 };
 
 export const WithLegendAsAPageHeading: Story = {
-  render: (args) => (
+  render: () => (
     <Fieldset>
       <Fieldset.Legend isPageHeading>What is your address?</Fieldset.Legend>
     </Fieldset>
   ),
 };
 
+export const WithLegendHTML: Story = {
+  name: 'With Legend HTML',
+  render: () => (
+    <Fieldset>
+      <Fieldset.Legend>
+        What is your address? <strong>small note: this is your home address</strong>
+      </Fieldset.Legend>
+    </Fieldset>
+  ),
+};
+
 export const WithCustomLegendSizeS: Story = {
   name: 'With Bold Text (S)',
-  render: (args) => (
+  render: () => (
     <Fieldset>
       <Fieldset.Legend size="s">What is your address?</Fieldset.Legend>
     </Fieldset>
@@ -86,7 +97,7 @@ export const WithCustomLegendSizeS: Story = {
 
 export const WithCustomLegendSizeM: Story = {
   name: 'With Custom Size (M)',
-  render: (args) => (
+  render: () => (
     <Fieldset>
       <Fieldset.Legend size="m">What is your address?</Fieldset.Legend>
     </Fieldset>
@@ -95,7 +106,7 @@ export const WithCustomLegendSizeM: Story = {
 
 export const WithCustomLegendSizeL: Story = {
   name: 'With Custom Size (L)',
-  render: (args) => (
+  render: () => (
     <Fieldset>
       <Fieldset.Legend size="l">What is your address?</Fieldset.Legend>
     </Fieldset>
@@ -104,7 +115,7 @@ export const WithCustomLegendSizeL: Story = {
 
 export const WithCustomLegendSizeXL: Story = {
   name: 'With Custom Size (XL)',
-  render: (args) => (
+  render: () => (
     <Fieldset>
       <Fieldset.Legend size="xl">What is your address?</Fieldset.Legend>
     </Fieldset>
