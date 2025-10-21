@@ -2,7 +2,14 @@
 
 import classNames from 'classnames';
 import { type CharacterCount as CharacterCountModule } from 'nhsuk-frontend';
-import { createRef, forwardRef, useEffect, useState, type ComponentPropsWithoutRef } from 'react';
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+  type ComponentPropsWithoutRef,
+} from 'react';
 import { FormGroup } from '#components/utils/index.js';
 import { type FormElementProps } from '#util/types/FormTypes.js';
 
@@ -16,19 +23,22 @@ export interface CharacterCountProps
 
 export const CharacterCount = forwardRef<HTMLTextAreaElement, CharacterCountProps>(
   ({ maxLength, maxWords, threshold, formGroupProps, ...rest }, forwardedRef) => {
-    const [moduleRef] = useState(() => formGroupProps?.ref || createRef<HTMLDivElement>());
+    const moduleRef = useRef<HTMLDivElement>(null);
+    const importRef = useRef<Promise<CharacterCountModule | void>>(null);
     const [instanceError, setInstanceError] = useState<Error>();
     const [instance, setInstance] = useState<CharacterCountModule>();
 
+    useImperativeHandle(formGroupProps?.ref, () => moduleRef.current!, [moduleRef]);
+
     useEffect(() => {
-      if (!('current' in moduleRef) || !moduleRef.current || instance) {
+      if (!moduleRef.current || importRef.current || instance) {
         return;
       }
 
-      import('nhsuk-frontend')
+      importRef.current = import('nhsuk-frontend')
         .then(({ CharacterCount }) => setInstance(new CharacterCount(moduleRef.current)))
         .catch(setInstanceError);
-    }, [moduleRef, instance]);
+    }, [moduleRef, importRef, instance]);
 
     if (instanceError) {
       throw instanceError;

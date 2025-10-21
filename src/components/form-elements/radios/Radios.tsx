@@ -2,7 +2,14 @@
 
 import classNames from 'classnames';
 import { type Radios as RadiosModule } from 'nhsuk-frontend';
-import { createRef, forwardRef, useEffect, useState, type ComponentPropsWithoutRef } from 'react';
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+  type ComponentPropsWithoutRef,
+} from 'react';
 import { RadiosDivider, RadiosItem } from './components/index.js';
 import { RadiosContext, type IRadiosContext } from './RadiosContext.js';
 import { FormGroup } from '#components/utils/index.js';
@@ -20,7 +27,8 @@ export interface RadiosProps
 const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwardedRef) => {
   const { children, idPrefix, ...rest } = props;
 
-  const [moduleRef] = useState(() => forwardedRef || createRef<HTMLDivElement>());
+  const moduleRef = useRef<HTMLDivElement>(null);
+  const importRef = useRef<Promise<RadiosModule | void>>(null);
   const [instanceError, setInstanceError] = useState<Error>();
   const [instance, setInstance] = useState<RadiosModule>();
   const [selectedRadio, setSelectedRadio] = useState<string>();
@@ -29,15 +37,17 @@ const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwarde
   let _radioCount = 0;
   let _radioIds: Record<string, string> = {};
 
+  useImperativeHandle(forwardedRef, () => moduleRef.current!, [moduleRef]);
+
   useEffect(() => {
-    if (!('current' in moduleRef) || !moduleRef.current || instance) {
+    if (!moduleRef.current || importRef.current || instance) {
       return;
     }
 
-    import('nhsuk-frontend')
+    importRef.current = import('nhsuk-frontend')
       .then(({ Radios }) => setInstance(new Radios(moduleRef.current)))
       .catch(setInstanceError);
-  }, [moduleRef, instance]);
+  }, [moduleRef, importRef, instance]);
 
   const getRadioId = (id: string, reference: string): string => {
     if (reference in _radioIds) {
