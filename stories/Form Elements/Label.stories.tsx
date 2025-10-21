@@ -51,3 +51,10 @@ export const WithCustomSizeXL: Story = {
     size: 'xl',
   },
 };
+
+export const WithHTML: Story = {
+  name: 'With HTML',
+  args: {
+    children: <>This has <span>a span HTML element</span></>,
+  },
+};

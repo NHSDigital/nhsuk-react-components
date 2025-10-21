@@ -1,3 +1,4 @@
+import React from 'react';
 import classNames from 'classnames';
 import { type ComponentPropsWithoutRef, type FC } from 'react';
 
@@ -11,7 +12,7 @@ export const ErrorMessage: FC<ErrorMessageProps> = ({
   children,
   ...rest
 }) => {
-  if (!children || typeof children !== 'string') {
+  if (!children || (typeof children !== 'string' && !React.isValidElement(children) && !Array.isArray(children))) {
     return null;
   }
 

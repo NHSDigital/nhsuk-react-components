@@ -45,3 +45,8 @@ export const EmptyVisuallyHiddenText: Story = {
   args: { visuallyHiddenText: '' },
   argTypes: { visuallyHiddenText: { control: false } },
 };
+
+export const HTML: Story = {
+  args: { children: <>Enter your full name (or call <span className="nhsuk-u-nowrap">999 123 4567</span>)</>},
+  argTypes: { visuallyHiddenText: { control: false } },
+}

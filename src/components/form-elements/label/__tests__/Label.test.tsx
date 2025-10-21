@@ -53,4 +53,11 @@ describe('Label', () => {
 
     expect(container.querySelector('label')).toBeNull();
   });
+
+  it('renders with HTML', () => {
+    const { container } = render(<Label>Text<span>and text within HTML</span></Label>);
+
+    expect(container.querySelector('label')?.innerHTML).toMatch('Text<span>and text within HTML</span>')
+    
+  });
 });

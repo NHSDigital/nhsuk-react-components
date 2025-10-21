@@ -43,4 +43,11 @@ describe('Legend', () => {
 
     expect(container.querySelector('legend')).toBeNull();
   });
+
+ it('renders with HTML', () => {
+   const { container } = render(<Legend>Text<span>and text within HTML</span></Legend>);
+  
+      expect(container.querySelector('legend')?.innerHTML).toMatch('Text<span>and text within HTML</span>')
+      
+    });
 });

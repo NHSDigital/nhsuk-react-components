@@ -25,4 +25,9 @@ describe('ErrorMessage', () => {
 
     expect(container.querySelector('.nhsuk-u-visually-hidden')).toBeFalsy();
   });
+
+  it('contains HTML', () => {
+    const { container } = render(<ErrorMessage>Error<span>this errored</span></ErrorMessage>);
+    expect(container.innerHTML).toMatch(`Error<span>this errored</span>`);
+  })
 });
