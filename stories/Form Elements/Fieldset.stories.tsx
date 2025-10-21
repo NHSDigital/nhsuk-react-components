@@ -75,6 +75,15 @@ export const WithLegendAsAPageHeading: Story = {
   ),
 };
 
+export const WithLegendHTML: Story = {
+  name: 'With HTML',
+  render: () => (
+    <Fieldset>
+      <Fieldset.Legend>What is your address? <strong>small note: this is your home address</strong></Fieldset.Legend>
+    </Fieldset>
+  ),
+};
+
 export const WithCustomLegendSizeS: Story = {
   name: 'With Bold Text (S)',
   render: () => (
@@ -107,15 +116,6 @@ export const WithCustomLegendSizeXL: Story = {
   render: () => (
     <Fieldset>
       <Fieldset.Legend size="xl">What is your address?</Fieldset.Legend>
-    </Fieldset>
-  ),
-};
-
-export const WithLegendHTML: Story = {
-  name: 'With HTML',
-  render: () => (
-    <Fieldset>
-      <Fieldset.Legend>What is your address? <strong>small note: this is your home address</strong></Fieldset.Legend>
     </Fieldset>
   ),
 };
