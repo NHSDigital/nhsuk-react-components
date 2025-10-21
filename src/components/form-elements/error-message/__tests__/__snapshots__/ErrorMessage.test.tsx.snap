@@ -1,7 +1,5 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`ErrorMessage contains HTML: ErrorMessage 1`] = `<div />`;
-
 exports[`ErrorMessage matches snapshot: ErrorMessage 1`] = `
 <div>
   <span
