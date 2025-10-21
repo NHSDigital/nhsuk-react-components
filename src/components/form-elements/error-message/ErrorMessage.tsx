@@ -12,7 +12,7 @@ export const ErrorMessage: FC<ErrorMessageProps> = ({
   children,
   ...rest
 }) => {
-  if (!children || (typeof children !== 'string' && !React.isValidElement(children) && !Array.isArray(children))) {
+  if (!children) {
     return null;
   }
 
