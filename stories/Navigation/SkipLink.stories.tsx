@@ -29,7 +29,7 @@ const meta: Meta<typeof SkipLink> = {
         <CodeText>tab</CodeText>
         to show the SkipLink
       </HintText>
-      <SkipLink />
+      <SkipLink {...args} />
       <h1>Page heading</h1>
       <div id="maincontent">This is the main content</div>
     </>

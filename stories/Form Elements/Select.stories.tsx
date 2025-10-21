@@ -5,17 +5,22 @@ import { Select, TextInput } from '#components';
 const meta: Meta<typeof Select> = {
   title: 'Form Elements/Select',
   component: Select,
+  args: {
+    label: 'Label text goes here',
+    labelProps: { isPageHeading: true, size: 'l' },
+  },
 };
 export default meta;
 type Story = StoryObj<typeof Select>;
 
 export const Standard: Story = {
+  args: {
+    defaultValue: '2',
+  },
   render: (args) => (
-    <Select label="Label text goes here" labelProps={{ size: 'l' }}>
+    <Select {...args}>
       <Select.Option value="1">NHS.UK frontend option 1</Select.Option>
-      <Select.Option value="2" selected>
-        NHS.UK frontend option 2
-      </Select.Option>
+      <Select.Option value="2">NHS.UK frontend option 2</Select.Option>
       <Select.Option value="3" disabled>
         NHS.UK frontend option 3
       </Select.Option>
@@ -24,8 +29,11 @@ export const Standard: Story = {
 };
 
 export const SelectWithHintText: Story = {
+  args: {
+    hint: 'Hint text goes here',
+  },
   render: (args) => (
-    <Select label="Label text goes here" labelProps={{ size: 'l' }} hint="Hint text goes here">
+    <Select {...args}>
       <Select.Option value="1">NHS.UK frontend option 1</Select.Option>
       <Select.Option value="2">NHS.UK frontend option 2</Select.Option>
       <Select.Option value="3">NHS.UK frontend option 3</Select.Option>
@@ -34,11 +42,11 @@ export const SelectWithHintText: Story = {
 };
 
 export const SelectWithError: Story = {
-  render: function SelectWithErrorRender() {
+  render: function SelectWithErrorRender(args) {
     const [error, setError] = useState<string>('Error message goes here');
     return (
       <>
-        <Select label="Label text goes here" labelProps={{ size: 'l' }} error={error}>
+        <Select error={error} {...args}>
           <Select.Option value="1">NHS.UK frontend option 1</Select.Option>
           <Select.Option value="2">NHS.UK frontend option 2</Select.Option>
           <Select.Option value="3">NHS.UK frontend option 3</Select.Option>
@@ -51,17 +59,15 @@ export const SelectWithError: Story = {
   name: 'Select With Error (String)',
 };
 
-export const SelectWithErrorAndHintString: Story = {
-  render: function SelectWithErrorAndHintStringRender() {
+export const SelectWithErrorAndHintText: Story = {
+  args: {
+    hint: 'Hint text goes here',
+  },
+  render: function SelectWithErrorAndHintTextRender(args) {
     const [error, setError] = useState<string>('Error message goes here');
     return (
       <>
-        <Select
-          label="Label text goes here"
-          labelProps={{ size: 'l' }}
-          hint="Hint text goes here"
-          error={error}
-        >
+        <Select error={error} {...args}>
           <Select.Option value="1">NHS.UK frontend option 1</Select.Option>
           <Select.Option value="2">NHS.UK frontend option 2</Select.Option>
           <Select.Option value="3">NHS.UK frontend option 3</Select.Option>

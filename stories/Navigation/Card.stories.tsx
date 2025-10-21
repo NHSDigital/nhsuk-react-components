@@ -12,7 +12,7 @@ type StoryGroup = StoryObj<typeof Card.GroupItem>;
 
 export const Standard: Story = {
   render: (args) => (
-    <Card>
+    <Card {...args}>
       <Card.Content>
         <Card.Heading>If you need help now but it&apos;s not an emergency</Card.Heading>
         <Card.Description>
@@ -24,9 +24,11 @@ export const Standard: Story = {
 };
 
 export const ClickableCard: Story = {
-  args: { clickable: true },
+  args: {
+    clickable: true,
+  },
   render: (args) => (
-    <Card clickable={args.clickable}>
+    <Card {...args}>
       <Card.Content>
         <Card.Heading className="nhsuk-heading-m">
           <Card.Link href="#">Introduction to care and support</Card.Link>
@@ -40,9 +42,11 @@ export const ClickableCard: Story = {
 };
 
 export const CardWithImage: Story = {
-  args: { clickable: true },
+  args: {
+    clickable: true,
+  },
   render: (args) => (
-    <Card clickable={args.clickable}>
+    <Card {...args}>
       <Card.Image
         src="https://assets.nhs.uk/prod/images/A_0218_exercise-main_FKW1X7.width-690.jpg"
         alt=""
@@ -60,8 +64,11 @@ export const CardWithImage: Story = {
 };
 
 export const FeatureCard: Story = {
-  render: () => (
-    <Card cardType="feature">
+  args: {
+    cardType: 'feature',
+  },
+  render: (args) => (
+    <Card {...args}>
       <Card.Content>
         <Card.Heading>Feature card heading</Card.Heading>
         <Card.Description>Feature card description</Card.Description>
@@ -71,8 +78,11 @@ export const FeatureCard: Story = {
 };
 
 export const FeatureCardWithList: Story = {
-  render: () => (
-    <Card cardType="feature">
+  args: {
+    cardType: 'feature',
+  },
+  render: (args) => (
+    <Card {...args}>
       <Card.Content>
         <Card.Heading>Feature card heading</Card.Heading>
         <ul className="nhsuk-list nhsuk-list--border">
@@ -92,8 +102,12 @@ export const FeatureCardWithList: Story = {
 };
 
 export const PrimaryCardWithChevron: Story = {
-  render: () => (
-    <Card clickable cardType="primary">
+  args: {
+    cardType: 'primary',
+    clickable: true,
+  },
+  render: (args) => (
+    <Card {...args}>
       <Card.Content>
         <Card.Heading>
           <Card.Link href="#">Primary card heading</Card.Link>
@@ -106,8 +120,12 @@ export const PrimaryCardWithChevron: Story = {
 };
 
 export const SecondaryCard: Story = {
-  render: () => (
-    <Card clickable cardType="secondary">
+  args: {
+    cardType: 'secondary',
+    clickable: true,
+  },
+  render: (args) => (
+    <Card {...args}>
       <Card.Content>
         <Card.Heading>
           <Card.Link href="#">Secondary card heading</Card.Link>
@@ -128,7 +146,7 @@ export const CardGroup: StoryGroup = {
   },
   render: (args) => (
     <Card.Group>
-      <Card.GroupItem width={args.width}>
+      <Card.GroupItem {...args}>
         <Card clickable>
           <Card.Content>
             <Card.Heading className="nhsuk-heading-m">
@@ -140,7 +158,7 @@ export const CardGroup: StoryGroup = {
           </Card.Content>
         </Card>
       </Card.GroupItem>
-      <Card.GroupItem width={args.width}>
+      <Card.GroupItem {...args}>
         <Card clickable>
           <Card.Content>
             <Card.Heading className="nhsuk-heading-m">
@@ -152,7 +170,7 @@ export const CardGroup: StoryGroup = {
           </Card.Content>
         </Card>
       </Card.GroupItem>
-      <Card.GroupItem width={args.width}>
+      <Card.GroupItem {...args}>
         <Card clickable>
           <Card.Content>
             <Card.Heading className="nhsuk-heading-m">
@@ -164,7 +182,7 @@ export const CardGroup: StoryGroup = {
           </Card.Content>
         </Card>
       </Card.GroupItem>
-      <Card.GroupItem width={args.width}>
+      <Card.GroupItem {...args}>
         <Card clickable>
           <Card.Content>
             <Card.Heading className="nhsuk-heading-m">
@@ -181,9 +199,11 @@ export const CardGroup: StoryGroup = {
 };
 
 export const NonUrgentCareCard: Story = {
-  args: { cardType: 'non-urgent' },
+  args: {
+    cardType: 'non-urgent',
+  },
   render: (args) => (
-    <Card cardType={args.cardType}>
+    <Card {...args}>
       <Card.Heading>Speak to a GP if:</Card.Heading>
       <Card.Content>
         <ul>
@@ -204,9 +224,11 @@ export const NonUrgentCareCard: Story = {
 };
 
 export const UrgentCareCard: Story = {
-  args: { cardType: 'urgent' },
+  args: {
+    cardType: 'urgent',
+  },
   render: (args) => (
-    <Card cardType={args.cardType}>
+    <Card {...args}>
       <Card.Heading>Ask for an urgent GP appointment if:</Card.Heading>
       <Card.Content>
         <ul>
@@ -230,9 +252,11 @@ export const UrgentCareCard: Story = {
 };
 
 export const EmergencyCareCard: Story = {
-  args: { cardType: 'emergency' },
+  args: {
+    cardType: 'emergency',
+  },
   render: (args) => (
-    <Card cardType={args.cardType}>
+    <Card {...args}>
       <Card.Heading>Call 999 or go to A&E now if:</Card.Heading>
       <Card.Content>
         <ul>

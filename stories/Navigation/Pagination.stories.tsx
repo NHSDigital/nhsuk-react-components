@@ -10,7 +10,7 @@ type Story = StoryObj<typeof Pagination>;
 
 export const Standard: Story = {
   render: (args) => (
-    <Pagination>
+    <Pagination {...args}>
       <Pagination.Link previous href="/section/treatments">
         Treatments
       </Pagination.Link>

@@ -9,10 +9,8 @@ export default meta;
 type Story = StoryObj<typeof HintText>;
 
 export const Standard: Story = {
-  render: (args) => (
-    <HintText>
-      It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34
-      56 C’.
-    </HintText>
-  ),
+  args: {
+    children: 'Do not include personal information like your name, date of birth or NHS number',
+  },
+  render: (args) => <HintText {...args} />,
 };

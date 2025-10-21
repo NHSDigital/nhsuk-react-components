@@ -4,7 +4,7 @@ import { Button } from '#components';
 /**
  * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/components/button" target="_blank" rel="noopener noreferrer">here</a>.
  *
- * ## Implementation Notes
+ * ## Implementation notes
  *
  * The `Button` component from `nhsuk-react-components` will either render a standard `<button>` or `<a>` element depending on whether an `href` prop is supplied.
  *
@@ -12,29 +12,29 @@ import { Button } from '#components';
  *
  * ## Usage
  *
- * ### Standard
+ * ### As a button
  *
  * ```jsx
  * import { Button } from "nhsuk-react-components";
  *
  * const Element = () => {
- *     return (
- *         <Button>Button</Button>
- *     );
+ *   return (
+ *     <Button>Button</Button>
+ *   );
  * }
  * ```
  *
- * ### As a Link
+ * ### As a link
  *
  * ```jsx
  * import { Button } from "nhsuk-react-components";
  *
  * const ButtonEl = () => (
- *     <Button as="a">Anchor</Button>
+ *   <Button as="a">Anchor</Button>
  * );
  *
  * const ButtonEl2 = () => (
- *     <Button href="/link">Anchor</Button>
+ *   <Button href="/link">Anchor</Button>
  * );
  * ```
  */

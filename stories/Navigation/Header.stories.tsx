@@ -10,13 +10,14 @@ export default meta;
 type Story = StoryObj<typeof Header>;
 
 export const HeaderDefault: Story = {
+  args: {
+    service: {
+      text: 'Digital service manual',
+      href: '/',
+    },
+  },
   render: (args) => (
-    <Header
-      service={{
-        text: 'Digital service manual',
-        href: '/',
-      }}
-    >
+    <Header {...args}>
       <Header.Search
         placeholder="Search"
         visuallyHiddenLabel="Search the NHS digital service manual"
@@ -33,31 +34,45 @@ export const HeaderDefault: Story = {
 };
 
 export const HeaderBasic: Story = {
-  render: (args) => <Header logo={{ href: '/' }} />,
+  args: {
+    logo: {
+      href: '/',
+    },
+  },
+  render: (args) => <Header {...args} />,
 };
 
 export const HeaderWithServiceName: Story = {
-  render: (args) => (
-    <Header
-      service={{
-        text: 'Manage patients',
-        href: '/',
-      }}
-    />
-  ),
+  args: {
+    service: {
+      text: 'Manage patients',
+      href: '/',
+    },
+  },
+  render: (args) => <Header {...args} />,
 };
 
 export const HeaderWithSearch: Story = {
+  args: {
+    logo: {
+      href: '/',
+    },
+  },
   render: (args) => (
-    <Header logo={{ href: '/' }}>
+    <Header {...args}>
       <Header.Search />
     </Header>
   ),
 };
 
 export const HeaderWithNavigation: Story = {
+  args: {
+    logo: {
+      href: '/',
+    },
+  },
   render: (args) => (
-    <Header logo={{ href: '/' }}>
+    <Header {...args}>
       <Header.Navigation>
         <Header.NavigationItem href="#">NHS service standard</Header.NavigationItem>
         <Header.NavigationItem href="#" active>
@@ -72,13 +87,14 @@ export const HeaderWithNavigation: Story = {
 };
 
 export const HeaderWithAccount: Story = {
+  args: {
+    service: {
+      text: 'Manage patients',
+      href: '/',
+    },
+  },
   render: (args) => (
-    <Header
-      service={{
-        text: 'Manage patients',
-        href: '/',
-      }}
-    >
+    <Header {...args}>
       <Header.Account>
         <Header.AccountItem href="#" icon>
           florence.nightingale@nhs.net
@@ -92,13 +108,14 @@ export const HeaderWithAccount: Story = {
 };
 
 export const HeaderWithAccountComplex: Story = {
+  args: {
+    service: {
+      text: 'Manage patients',
+      href: '/',
+    },
+  },
   render: (args) => (
-    <Header
-      service={{
-        text: 'Manage patients',
-        href: '/',
-      }}
-    >
+    <Header {...args}>
       <Header.Account>
         <Header.AccountItem href="#" icon>
           Florence Nightingale (Regional Manager)
@@ -118,15 +135,16 @@ export const HeaderWithAccountComplex: Story = {
 };
 
 export const HeaderOrganisationalBlueWithNavigation: Story = {
+  args: {
+    logo: { href: '/' },
+    organisation: {
+      name: 'Anytown Anyplace',
+      split: 'Anywhere',
+      descriptor: 'NHS Foundation Trust',
+    },
+  },
   render: (args) => (
-    <Header
-      logo={{ href: '/' }}
-      organisation={{
-        name: 'Anytown Anyplace',
-        split: 'Anywhere',
-        descriptor: 'NHS Foundation Trust',
-      }}
-    >
+    <Header {...args}>
       <Header.Search visuallyHiddenLabel="Search the Anytown Anyplace Anywhere website" />
       <Header.Navigation>
         <Header.NavigationItem href="#">Your hospital visit</Header.NavigationItem>
@@ -142,16 +160,17 @@ export const HeaderOrganisationalBlueWithNavigation: Story = {
 };
 
 export const HeaderOrganisationalWhiteWithNavigation: Story = {
+  args: {
+    logo: { href: '/' },
+    organisation: {
+      name: 'Anytown Anyplace',
+      split: 'Anywhere',
+      descriptor: 'NHS Foundation Trust',
+    },
+    white: true,
+  },
   render: (args) => (
-    <Header
-      className="nhsuk-header--white"
-      logo={{ href: '/' }}
-      organisation={{
-        name: 'Anytown Anyplace',
-        split: 'Anywhere',
-        descriptor: 'NHS Foundation Trust',
-      }}
-    >
+    <Header {...args}>
       <Header.Search />
       <Header.Navigation>
         <Header.NavigationItem href="#">Your hospital visit</Header.NavigationItem>
@@ -167,16 +186,17 @@ export const HeaderOrganisationalWhiteWithNavigation: Story = {
 };
 
 export const HeaderOrganisationalWhiteWithNavigationWhite: Story = {
+  args: {
+    logo: { href: '/' },
+    organisation: {
+      name: 'Anytown Anyplace',
+      split: 'Anywhere',
+      descriptor: 'NHS Foundation Trust',
+    },
+    white: true,
+  },
   render: (args) => (
-    <Header
-      className="nhsuk-header--white"
-      logo={{ href: '/' }}
-      organisation={{
-        name: 'Anytown Anyplace',
-        split: 'Anywhere',
-        descriptor: 'NHS Foundation Trust',
-      }}
-    >
+    <Header {...args}>
       <Header.Search />
       <Header.Navigation white>
         <Header.NavigationItem href="#">Your hospital visit</Header.NavigationItem>
@@ -192,6 +212,14 @@ export const HeaderOrganisationalWhiteWithNavigationWhite: Story = {
 };
 
 export const HeaderWithCustomNavItemComponent: Story = {
+  args: {
+    logo: { href: '/' },
+    organisation: {
+      name: 'Anytown Anyplace',
+      split: 'Anywhere',
+      descriptor: 'NHS Foundation Trust',
+    },
+  },
   render: (args) => {
     function CustomLink({ children, href, ...rest }: ComponentProps<'a'>) {
       return (
@@ -202,14 +230,7 @@ export const HeaderWithCustomNavItemComponent: Story = {
     }
 
     return (
-      <Header
-        logo={{ href: '/' }}
-        organisation={{
-          name: 'Anytown Anyplace',
-          split: 'Anywhere',
-          descriptor: 'NHS Foundation Trust',
-        }}
-      >
+      <Header {...args}>
         <Header.Search />
         <Header.Navigation white>
           <Header.NavigationItem to="/" asElement={CustomLink}>

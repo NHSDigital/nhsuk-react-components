@@ -10,7 +10,7 @@ type Story = StoryObj<typeof WarningCallout>;
 
 export const StandardWarningCallout: Story = {
   render: (args) => (
-    <WarningCallout>
+    <WarningCallout {...args}>
       <WarningCallout.Heading>Important</WarningCallout.Heading>
       <p>
         For safety, tell your doctor or pharmacist if you&apos;re taking any other medicines,
@@ -24,7 +24,7 @@ export const StandardWarningCallout: Story = {
 
 export const WarningCalloutWithCustomHeading: Story = {
   render: (args) => (
-    <WarningCallout>
+    <WarningCallout {...args}>
       <WarningCallout.Heading>School, nursery or work</WarningCallout.Heading>
       <p>
         Stay away from school, nursery or work until all the spots have crusted over. This is
@@ -36,7 +36,7 @@ export const WarningCalloutWithCustomHeading: Story = {
 
 export const WarningCalloutWithCustomHeadingLevel: Story = {
   render: (args) => (
-    <WarningCallout>
+    <WarningCallout {...args}>
       <WarningCallout.Heading headingLevel="h4">School, nursery or work</WarningCallout.Heading>
       <p>
         Stay away from school, nursery or work until all the spots have crusted over. This is
