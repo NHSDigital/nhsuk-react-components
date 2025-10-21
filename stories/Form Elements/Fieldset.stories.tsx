@@ -111,7 +111,7 @@ export const WithCustomLegendSizeXL: Story = {
   ),
 };
 
-export const WithHTML: Story = {
+export const WithLegendHTML: Story = {
   name: 'With HTML',
   render: () => (
     <Fieldset>
