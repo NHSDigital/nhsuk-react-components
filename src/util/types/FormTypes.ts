@@ -14,7 +14,7 @@ export interface FormElementProps {
   'labelProps'?: LabelProps;
   'error'?: string;
   'errorProps'?: ErrorMessageProps;
-  'hint'?: string;
+  'hint'?: React.ReactNode;
   'hintProps'?: HintTextProps;
   'formGroupProps'?: ComponentPropsWithRef<'div'> & {
     'data-module'?: string;
