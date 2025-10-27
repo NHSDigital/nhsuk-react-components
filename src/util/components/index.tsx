@@ -1,5 +1,5 @@
 import { render, type RenderOptions as ClientOptions } from '@testing-library/react';
-import { act, type JSX } from 'react';
+import { act, StrictMode, type JSX } from 'react';
 import { renderToString, type ServerOptions } from 'react-dom/server';
 
 type RenderOptions =
@@ -18,7 +18,7 @@ export async function renderServer(element: JSX.Element, options: RenderOptions 
   document.body.appendChild(container);
 
   // Render using React DOM
-  container.innerHTML = renderToString(element, serverOptions);
+  container.innerHTML = renderToString(<StrictMode>{element}</StrictMode>, serverOptions);
 
   // Find rendered modules
   const modules = Array.from(container.querySelectorAll<HTMLElement>(selector));

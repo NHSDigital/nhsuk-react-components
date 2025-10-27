@@ -29,7 +29,7 @@ describe('Table.Cell', () => {
       </table>,
     );
 
-    expect(console.warn).toHaveBeenCalledTimes(1);
+    expect(console.warn).toHaveBeenCalled();
     expect(console.warn).toHaveBeenLastCalledWith(
       'Table.Cell used outside of a Table.Head or Table.Body component. Unable to determine section type from context.',
     );

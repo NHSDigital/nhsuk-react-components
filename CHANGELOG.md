@@ -1,5 +1,15 @@
 # NHS.UK React components
 
+## 6.0.0-beta.3 - 27 October 2025
+
+This version provides support for NHS.UK frontend v10.1 and includes:
+
+- [Smaller radios](https://service-manual.nhs.uk/design-system/components/radios#smaller-radios) and [smaller checkboxes](https://service-manual.nhs.uk/design-system/components/checkboxes#smaller-checkboxes)
+- [Numbered pagination](https://service-manual.nhs.uk/design-system/components/pagination#for-navigating-between-pages-of-items)
+- React strict mode support
+
+For a full list of changes in this release please refer to the [migration doc](https://github.com/NHSDigital/nhsuk-react-components/blob/main/docs/upgrade-to-6.0.md).
+
 ## 6.0.0-beta.2 - 13 October 2025
 
 This version provides support for NHS.UK frontend v10.x, React Server Components (RSC) and fixes a Rollup `'use client'` directive issue.
