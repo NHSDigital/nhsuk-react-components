@@ -67,6 +67,24 @@ export const WithHintText: Story = {
   ),
 };
 
+export const Small: Story = {
+  args: {
+    ...Standard.args,
+    legendProps: { isPageHeading: true, size: 'm' },
+    small: true,
+  },
+  render: Standard.render,
+};
+
+export const SmallWithHintText: Story = {
+  args: {
+    ...WithHintText.args,
+    legendProps: { isPageHeading: true, size: 'm' },
+    small: true,
+  },
+  render: WithHintText.render,
+};
+
 export const WithDisabledItem: Story = {
   render: (args) => (
     <Checkboxes {...args}>

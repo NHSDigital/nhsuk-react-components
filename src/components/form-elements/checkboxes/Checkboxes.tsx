@@ -13,6 +13,7 @@ export interface CheckboxesProps
   extends ComponentPropsWithoutRef<'div'>,
     Omit<FormElementProps, 'label' | 'labelProps'> {
   idPrefix?: string;
+  small?: boolean;
 }
 
 const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, forwardedRef) => {
@@ -71,8 +72,7 @@ const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, 
 
   return (
     <FormGroup<CheckboxesProps> inputType="checkboxes" {...rest}>
-      {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
-      {({ className, name, id, idPrefix, error, ...restRenderProps }) => {
+      {({ className, small, name, id, idPrefix, error, ...restRenderProps }) => {
         resetCheckboxIds();
         const contextValue: ICheckboxesContext = {
           name,
@@ -82,7 +82,11 @@ const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, 
         };
         return (
           <div
-            className={classNames('nhsuk-checkboxes', className)}
+            className={classNames(
+              'nhsuk-checkboxes',
+              { 'nhsuk-checkboxes--small': small },
+              className,
+            )}
             data-module="nhsuk-checkboxes"
             id={id}
             ref={moduleRef}
