@@ -65,4 +65,25 @@ describe('Label', () => {
       'Text<span>and text within HTML</span>',
     );
   });
+
+  it.each<NHSUKSize>(['s', 'm', 'l', 'xl'])(
+    'renders with HTML and contains page heading with custom size %s',
+    (size) => {
+      const { container } = render(
+        <Label isPageHeading size={size}>
+          Text <span className={`nhsuk-caption-${size}`}>and text within HTML</span>
+        </Label>,
+      );
+
+      const headingEl = container.querySelector('.nhsuk-label-wrapper');
+      const labelEl = headingEl?.querySelector('.nhsuk-label');
+
+      expect(headingEl?.tagName).toBe('H1');
+      expect(labelEl).toHaveTextContent('Text and text within HTML');
+      expect(labelEl?.innerHTML).toMatch(
+        `Text <span class="nhsuk-caption-${size}">and text within HTML</span>`,
+      );
+      expect(labelEl).toHaveClass(`nhsuk-label--${size}`);
+    },
+  );
 });

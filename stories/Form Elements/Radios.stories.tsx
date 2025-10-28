@@ -143,6 +143,46 @@ export const RadiosWithHintsOnItems: Story = {
   ),
 };
 
+export const RadiosWithHTMLHintsOnItems: Story = {
+  render: () => (
+    <Radios
+      legend="How do you want to sign in?"
+      legendProps={{ size: 'l' }}
+      name="example"
+      id="example-with-hints"
+    >
+      <Radios.Item
+        value="government-gateway"
+        hint={
+          <>
+            You&#39;ll{' '}
+            <span className="nhsuk-u-nowrap">
+              have a user ID if you've registered for self-assessment or filed a tax return online
+              before.
+            </span>
+          </>
+        }
+      >
+        Use Government Gateway
+      </Radios.Item>
+      <Radios.Item
+        value="nhsuk-login"
+        hint={
+          <>
+            You’ll have an{' '}
+            <span className="nhsuk-u-nowrap">
+              account if you’ve already proved your identity with either Barclays, CitizenSafe,
+              Digidentity, Experian, Post Office, Royal Mail or SecureIdentity.
+            </span>
+          </>
+        }
+      >
+        Use NHS.UK login
+      </Radios.Item>
+    </Radios>
+  ),
+};
+
 export const RadiosWithoutFieldset: Story = {
   render: (args) => (
     <Radios name="colours" id="colours">
@@ -178,4 +218,34 @@ export const RadiosWithError: Story = {
   },
 
   name: 'Radios With Error (String)',
+};
+
+export const RadiosWithErrorHtml: Story = {
+  render: function RadiosWithErrorHtmlRender() {
+    const error = (
+      <>
+        Select <span className="nhsuk-u-nowrap">yes if you have changed your name</span>
+      </>
+    );
+    return (
+      <>
+        <Radios
+          legend="Have you changed your name?"
+          legendProps={{ size: 'l' }}
+          hint="This includes changing your last name or spelling your name differently"
+          name="example-with-err-string"
+          error={error}
+        >
+          <Radios.Item id="example-1" value="yes">
+            Yes
+          </Radios.Item>
+          <Radios.Item id="example-2" value="no" checked>
+            No
+          </Radios.Item>
+        </Radios>
+      </>
+    );
+  },
+
+  name: 'Radios With Error (HTML)',
 };

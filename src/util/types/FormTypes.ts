@@ -12,7 +12,7 @@ export interface FormElementProps {
   'legendProps'?: LegendProps;
   'label'?: string;
   'labelProps'?: LabelProps;
-  'error'?: string;
+  'error'?: React.ReactNode;
   'errorProps'?: ErrorMessageProps;
   'hint'?: React.ReactNode;
   'hintProps'?: HintTextProps;
