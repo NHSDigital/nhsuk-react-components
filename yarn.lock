@@ -8464,10 +8464,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nhsuk-frontend@npm:^10.0.0":
-  version: 10.0.0
-  resolution: "nhsuk-frontend@npm:10.0.0"
-  checksum: 10c0/5a24cc7b56188d18bbd86c040e39b420546451f1b955eed176f4acd5f3b75d6ec5eef86b8ab970cff1b4741f2f599debae03bf4be75c3f6a903cfce205e88501
+"nhsuk-frontend@npm:^10.1.0":
+  version: 10.1.0
+  resolution: "nhsuk-frontend@npm:10.1.0"
+  checksum: 10c0/adf8ccc240c3514b865ae361b4e29f7ad11051f5c4585970cbd2580f61dbe5f1818d53f3b8eef3825aaf72f9ea3df647f4b0cc57d60092a3edc7583665374f91
   languageName: node
   linkType: hard
 
@@ -8514,7 +8514,7 @@ __metadata:
     jest-axe: "npm:^10.0.0"
     jest-environment-jsdom: "npm:^30.2.0"
     lodash: "npm:^4.17.21"
-    nhsuk-frontend: "npm:^10.0.0"
+    nhsuk-frontend: "npm:^10.1.0"
     outdent: "npm:^0.8.0"
     prettier: "npm:^3.6.2"
     react: "npm:^19.2.0"
@@ -8530,7 +8530,7 @@ __metadata:
     vite-tsconfig-paths: "npm:^5.1.4"
   peerDependencies:
     classnames: ">=2.5.0"
-    nhsuk-frontend: ">=10.0.0 <11.0.0"
+    nhsuk-frontend: ">=10.1.0 <11.0.0"
     react: ">=18.2.0"
     react-dom: ">=18.2.0"
     tslib: ">=2.8.0"

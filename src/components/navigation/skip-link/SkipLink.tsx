@@ -2,26 +2,36 @@
 
 import classNames from 'classnames';
 import { type SkipLink as SkipLinkModule } from 'nhsuk-frontend';
-import { createRef, forwardRef, useEffect, useState, type ComponentPropsWithoutRef } from 'react';
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+  type ComponentPropsWithoutRef,
+} from 'react';
 
 export type SkipLinkProps = ComponentPropsWithoutRef<'a'>;
 
 export const SkipLink = forwardRef<HTMLAnchorElement, SkipLinkProps>((props, forwardedRef) => {
   const { children = 'Skip to main content', className, href = '#maincontent', ...rest } = props;
 
-  const [moduleRef] = useState(() => forwardedRef || createRef<HTMLAnchorElement>());
+  const moduleRef = useRef<HTMLAnchorElement>(null);
+  const importRef = useRef<Promise<SkipLinkModule | void>>(null);
   const [instanceError, setInstanceError] = useState<Error>();
   const [instance, setInstance] = useState<SkipLinkModule>();
 
+  useImperativeHandle(forwardedRef, () => moduleRef.current!, [moduleRef]);
+
   useEffect(() => {
-    if (!('current' in moduleRef) || !moduleRef.current || instance) {
+    if (!moduleRef.current || importRef.current || instance) {
       return;
     }
 
-    import('nhsuk-frontend')
+    importRef.current = import('nhsuk-frontend')
       .then(({ SkipLink }) => setInstance(new SkipLink(moduleRef.current)))
       .catch(setInstanceError);
-  }, [moduleRef, instance]);
+  }, [moduleRef, importRef, instance]);
 
   if (instanceError) {
     throw instanceError;

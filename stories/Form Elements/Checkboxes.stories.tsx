@@ -5,34 +5,22 @@ import { Checkboxes, TextInput } from '#components';
 /**
  * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/checkboxes" target="_blank" rel="noopener noreferrer">here</a>.
  *
- * ## Implementation Notes
+ * ## Implementation notes
  *
  * For details on the new form design pattern, check the documentation for the `Form` component.
  *
  * The `Checkbox` component provides a `CheckboxesContext` context, which the `Checkboxes.Item` components use. When each box initially renders, it will attempt to assign itself an `id` by calling the `getBoxId` method in the context. This will assign each box a sequential ID using either the `idPrefix` or `name` supplied to the Checkbox. If neither are provided, the element will generate it's own unique identifier.
- *
- * ## Usage
- *
- * ### Standard
- *
- * ```jsx
- * import { Checkboxes } from "nhsuk-react-components";
- *
- * const Element = () => {
- *     return (
- *         <Checkboxes name="nationality" id="nationality">
- *             <Checkboxes.Item value="british">British</Checkboxes.Item>
- *             <Checkboxes.Item value="irish">Irish</Checkboxes.Item>
- *             <Checkboxes.Item value="other">Citizen of another country</Checkboxes.Item>
- *         </Checkboxes>
- *     );
- * }
- * ```
  */
 
 const meta: Meta<typeof Checkboxes> = {
   title: 'Form Elements/Checkboxes',
   component: Checkboxes,
+  args: {
+    legend: 'What is your nationality?',
+    legendProps: { isPageHeading: true, size: 'l' },
+    hint: 'If you have more than 1 nationality, select all options that are relevant to you',
+    name: 'example',
+  },
 };
 export default meta;
 type Story = StoryObj<typeof Checkboxes>;
@@ -45,46 +33,37 @@ type CheckboxState = {
 
 export const Standard: Story = {
   render: (args) => (
-    <form>
-      <Checkboxes
-        legend="What is your nationality?"
-        legendProps={{ size: 'l' }}
-        hint="If you have more than 1 nationality, select all options that are relevant to you"
-        idPrefix={args.idPrefix}
-        name="nationality"
-        id="nationality"
-      >
-        <Checkboxes.Item value="british">British</Checkboxes.Item>
-        <Checkboxes.Item value="irish">Irish</Checkboxes.Item>
-        <Checkboxes.Item value="other">Citizen of another country</Checkboxes.Item>
-      </Checkboxes>
-    </form>
+    <Checkboxes {...args}>
+      <Checkboxes.Item value="british">British</Checkboxes.Item>
+      <Checkboxes.Item value="irish">Irish</Checkboxes.Item>
+      <Checkboxes.Item value="other">Citizen of another country</Checkboxes.Item>
+    </Checkboxes>
   ),
 };
 
 export const WithHintText: Story = {
+  args: {
+    legend: 'How do you want to sign in?',
+    hint: undefined,
+  },
   render: (args) => (
-    <form>
-      <Checkboxes legend="How do you want to sign in?" legendProps={{ size: 'l' }}>
-        <Checkboxes.Item
-          id="government-gateway"
-          name="gateway"
-          type="checkbox"
-          value="gov-gateway"
-          hint="You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before."
-        >
-          Sign in with Government Gateway
-        </Checkboxes.Item>
-        <Checkboxes.Item
-          id="nhsuk-login"
-          name="verify"
-          value="nhsuk-verify"
-          hint="You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
-        >
-          Sign in with NHS.UK login
-        </Checkboxes.Item>
-      </Checkboxes>
-    </form>
+    <Checkboxes {...args}>
+      <Checkboxes.Item
+        name="gateway"
+        type="checkbox"
+        value="gov-gateway"
+        hint="You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before."
+      >
+        Sign in with Government Gateway
+      </Checkboxes.Item>
+      <Checkboxes.Item
+        name="verify"
+        value="nhsuk-verify"
+        hint="You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
+      >
+        Sign in with NHS.UK login
+      </Checkboxes.Item>
+    </Checkboxes>
   ),
 };
 
@@ -134,80 +113,79 @@ export const WithDisabledItem: Story = {
       </Checkboxes>
     </form>
   ),
+export const Small: Story = {
+  args: {
+    ...Standard.args,
+    legendProps: { isPageHeading: true, size: 'm' },
+    small: true,
+  },
+  render: Standard.render,
 };
 
-export const WithConditionalContent: Story = {
+export const SmallWithHintText: Story = {
+  args: {
+    ...WithHintText.args,
+    legendProps: { isPageHeading: true, size: 'm' },
+    small: true,
+  },
+  render: WithHintText.render,
+};
+
+export const WithDisabledItem: Story = {
   render: (args) => (
-    <form>
-      <Checkboxes
-        legend="What types of waste do you transport regularly?"
-        legendProps={{ size: 'l' }}
-        hint="Select all that apply"
-        id="waste"
-        name="waste"
-      >
-        <Checkboxes.Item conditional={<p>This includes rocks and earth.</p>} value="mines">
-          Waste from mines or quarries
-        </Checkboxes.Item>
-      </Checkboxes>
-    </form>
+    <Checkboxes {...args}>
+      <Checkboxes.Item value="british">British</Checkboxes.Item>
+      <Checkboxes.Item value="irish">Irish</Checkboxes.Item>
+      <Checkboxes.Item value="other" disabled>
+        Citizen of another country
+      </Checkboxes.Item>
+    </Checkboxes>
   ),
 };
 
-export const WithLegendAsPageHeading: Story = {
+export const WithConditionalContent: Story = {
+  args: {
+    legend: 'What types of waste do you transport regularly?',
+    hint: 'Select all that apply',
+  },
   render: (args) => (
-    <form>
-      <Checkboxes
-        legend="Which types of waste do you transport regularly?"
-        legendProps={{ isPageHeading: true, size: 'l' }}
-        hint="Select all that apply"
-        id="waste"
-        name="waste"
-      >
-        <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
-        <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
-        <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
-      </Checkboxes>
-    </form>
+    <Checkboxes {...args}>
+      <Checkboxes.Item conditional={<p>This includes rocks and earth.</p>} value="mines">
+        Waste from mines or quarries
+      </Checkboxes.Item>
+    </Checkboxes>
   ),
 };
 
 export const WithExclusiveNoneOption: Story = {
+  args: {
+    legend: 'Do you have any of these symptoms?',
+    hint: 'Select all the symptoms you have',
+  },
   render: (args) => (
-    <form>
-      <Checkboxes
-        legend="Do you have any of these symptoms?"
-        legendProps={{ size: 'l' }}
-        hint="Select all the symptoms you have"
-        id="symptoms"
-        name="symptoms"
-      >
-        <Checkboxes.Item value="sore-throat">Sore throat</Checkboxes.Item>
-        <Checkboxes.Item value="runny-nose">Runny nose</Checkboxes.Item>
-        <Checkboxes.Item value="muscle-pain">Muscle or joint pain</Checkboxes.Item>
-        <Checkboxes.Divider />
-        <Checkboxes.Item value="none" exclusive>
-          None
-        </Checkboxes.Item>
-      </Checkboxes>
-    </form>
+    <Checkboxes {...args}>
+      <Checkboxes.Item value="sore-throat">Sore throat</Checkboxes.Item>
+      <Checkboxes.Item value="runny-nose">Runny nose</Checkboxes.Item>
+      <Checkboxes.Item value="muscle-pain">Muscle or joint pain</Checkboxes.Item>
+      <Checkboxes.Divider />
+      <Checkboxes.Item value="none" exclusive>
+        None
+      </Checkboxes.Item>
+    </Checkboxes>
   ),
 };
 
 export const WithError: Story = {
+  args: {
+    legend: 'What types of waste do you transport regularly?',
+    hint: 'Select all that apply',
+  },
   render: (args) => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [error, setError] = useState('Please select an option');
     return (
-      <form>
-        <Checkboxes
-          legend="Which types of waste do you transport regularly?"
-          legendProps={{ size: 'l' }}
-          hint="Select all that apply"
-          error={error}
-          id="waste"
-          name="waste"
-        >
+      <>
+        <Checkboxes error={error} {...args}>
           <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
           <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
           <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
@@ -217,7 +195,7 @@ export const WithError: Story = {
           value={error}
           onChange={(e) => setError(e.currentTarget.value)}
         />
-      </form>
+      </>
     );
   },
   name: 'With Error (String)',
@@ -289,7 +267,7 @@ export const NoIDSupplied: Story = {
     }, []);
 
     return (
-      <form style={{ padding: 20 }}>
+      <>
         <h2>Scenario: No ID Supplied</h2>
         <h5>Expected Behaviour</h5>
         <ul className="nhsuk-hint">
@@ -329,7 +307,7 @@ export const NoIDSupplied: Story = {
           <Checkboxes.Item ref={checkbox2Ref}>Box 2</Checkboxes.Item>
           <Checkboxes.Item ref={checkbox3Ref}>Box 3</Checkboxes.Item>
         </Checkboxes>
-      </form>
+      </>
     );
   },
 };
@@ -373,7 +351,7 @@ export const NameSupplied: Story = {
     }, []);
 
     return (
-      <form style={{ padding: 20 }}>
+      <>
         <h2>Scenario: Name Supplied</h2>
         <h5>Expected Behaviour</h5>
         <ul className="nhsuk-hint">
@@ -413,7 +391,7 @@ export const NameSupplied: Story = {
           <Checkboxes.Item ref={checkbox2Ref}>Box 2</Checkboxes.Item>
           <Checkboxes.Item ref={checkbox3Ref}>Box 3</Checkboxes.Item>
         </Checkboxes>
-      </form>
+      </>
     );
   },
 };
@@ -457,7 +435,7 @@ export const IDPrefixSupplied: Story = {
     }, []);
 
     return (
-      <form style={{ padding: 20 }}>
+      <>
         <h2>Scenario: ID Prefix Supplied</h2>
         <h5>Expected Behaviour</h5>
         <ul className="nhsuk-hint">
@@ -498,7 +476,7 @@ export const IDPrefixSupplied: Story = {
           <Checkboxes.Item ref={checkbox2Ref}>Box 2</Checkboxes.Item>
           <Checkboxes.Item ref={checkbox3Ref}>Box 3</Checkboxes.Item>
         </Checkboxes>
-      </form>
+      </>
     );
   },
 };
@@ -542,7 +520,7 @@ export const IDPrefixAndNameSupplied: Story = {
     }, []);
 
     return (
-      <form style={{ padding: 20 }}>
+      <>
         <h2>Scenario: ID Prefix and Name Supplied</h2>
         <h5>Expected Behaviour</h5>
         <ul className="nhsuk-hint">
@@ -578,12 +556,12 @@ export const IDPrefixAndNameSupplied: Story = {
           </li>
         </ul>
         <h5>Component</h5>
-        <Checkboxes idPrefix="idprefix" name="testname">
+        <Checkboxes idPrefix="idprefix-name" name="testname">
           <Checkboxes.Item ref={checkbox1Ref}>Box 1</Checkboxes.Item>
           <Checkboxes.Item ref={checkbox2Ref}>Box 2</Checkboxes.Item>
           <Checkboxes.Item ref={checkbox3Ref}>Box 3</Checkboxes.Item>
         </Checkboxes>
-      </form>
+      </>
     );
   },
 };
@@ -616,7 +594,7 @@ export const OnChangeAndOnInputHandlers: Story = {
     };
 
     return (
-      <form style={{ padding: 20 }}>
+      <>
         <h2>Scenario: onChange and onInput handlers are bound without any other props</h2>
         <h5>Expected Behaviour</h5>
         <ul className="nhsuk-hint">
@@ -644,7 +622,7 @@ export const OnChangeAndOnInputHandlers: Story = {
             <li key={index}>{event}</li>
           ))}
         </ul>
-      </form>
+      </>
     );
   },
 };

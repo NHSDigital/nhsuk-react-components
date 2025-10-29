@@ -2,7 +2,14 @@
 
 import classNames from 'classnames';
 import { type Checkboxes as CheckboxesModule } from 'nhsuk-frontend';
-import { createRef, forwardRef, useEffect, useState, type ComponentPropsWithoutRef } from 'react';
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+  type ComponentPropsWithoutRef,
+} from 'react';
 import { CheckboxesDivider, CheckboxesItem } from './components/index.js';
 import { CheckboxesContext, type ICheckboxesContext } from './CheckboxesContext.js';
 import { FormGroup } from '#components/utils/index.js';
@@ -13,12 +20,14 @@ export interface CheckboxesProps
   extends ComponentPropsWithoutRef<'div'>,
     Omit<FormElementProps, 'label' | 'labelProps'> {
   idPrefix?: string;
+  small?: boolean;
 }
 
 const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, forwardedRef) => {
   const { children, idPrefix, ...rest } = props;
 
-  const [moduleRef] = useState(() => forwardedRef || createRef<HTMLDivElement>());
+  const moduleRef = useRef<HTMLDivElement>(null);
+  const importRef = useRef<Promise<CheckboxesModule | void>>(null);
   const [instanceError, setInstanceError] = useState<Error>();
   const [instance, setInstance] = useState<CheckboxesModule>();
 
@@ -26,15 +35,17 @@ const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, 
   let _boxCount: number = 0;
   let _boxIds: Record<string, string> = {};
 
+  useImperativeHandle(forwardedRef, () => moduleRef.current!, [moduleRef]);
+
   useEffect(() => {
-    if (!('current' in moduleRef) || !moduleRef.current || instance) {
+    if (!moduleRef.current || importRef.current || instance) {
       return;
     }
 
-    import('nhsuk-frontend')
+    importRef.current = import('nhsuk-frontend')
       .then(({ Checkboxes }) => setInstance(new Checkboxes(moduleRef.current)))
       .catch(setInstanceError);
-  }, [moduleRef, instance]);
+  }, [moduleRef, importRef, instance]);
 
   const getBoxId = (id: string, reference: string): string => {
     if (reference in _boxIds) {
@@ -71,8 +82,7 @@ const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, 
 
   return (
     <FormGroup<CheckboxesProps> inputType="checkboxes" {...rest}>
-      {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
-      {({ className, name, id, idPrefix, error, ...restRenderProps }) => {
+      {({ className, small, name, id, idPrefix, error, ...restRenderProps }) => {
         resetCheckboxIds();
         const contextValue: ICheckboxesContext = {
           name,
@@ -82,7 +92,11 @@ const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, 
         };
         return (
           <div
-            className={classNames('nhsuk-checkboxes', className)}
+            className={classNames(
+              'nhsuk-checkboxes',
+              { 'nhsuk-checkboxes--small': small },
+              className,
+            )}
             data-module="nhsuk-checkboxes"
             id={id}
             ref={moduleRef}

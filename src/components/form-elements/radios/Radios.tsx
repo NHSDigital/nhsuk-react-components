@@ -2,7 +2,14 @@
 
 import classNames from 'classnames';
 import { type Radios as RadiosModule } from 'nhsuk-frontend';
-import { createRef, forwardRef, useEffect, useState, type ComponentPropsWithoutRef } from 'react';
+import {
+  forwardRef,
+  useEffect,
+  useImperativeHandle,
+  useRef,
+  useState,
+  type ComponentPropsWithoutRef,
+} from 'react';
 import { RadiosDivider, RadiosItem } from './components/index.js';
 import { RadiosContext, type IRadiosContext } from './RadiosContext.js';
 import { FormGroup } from '#components/utils/index.js';
@@ -12,14 +19,16 @@ import { type FormElementProps } from '#util/types/FormTypes.js';
 export interface RadiosProps
   extends ComponentPropsWithoutRef<'div'>,
     Omit<FormElementProps, 'label' | 'labelProps'> {
-  inline?: boolean;
   idPrefix?: string;
+  inline?: boolean;
+  small?: boolean;
 }
 
 const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwardedRef) => {
   const { children, idPrefix, ...rest } = props;
 
-  const [moduleRef] = useState(() => forwardedRef || createRef<HTMLDivElement>());
+  const moduleRef = useRef<HTMLDivElement>(null);
+  const importRef = useRef<Promise<RadiosModule | void>>(null);
   const [instanceError, setInstanceError] = useState<Error>();
   const [instance, setInstance] = useState<RadiosModule>();
   const [selectedRadio, setSelectedRadio] = useState<string>();
@@ -28,15 +37,17 @@ const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwarde
   let _radioCount = 0;
   let _radioIds: Record<string, string> = {};
 
+  useImperativeHandle(forwardedRef, () => moduleRef.current!, [moduleRef]);
+
   useEffect(() => {
-    if (!('current' in moduleRef) || !moduleRef.current || instance) {
+    if (!moduleRef.current || importRef.current || instance) {
       return;
     }
 
-    import('nhsuk-frontend')
+    importRef.current = import('nhsuk-frontend')
       .then(({ Radios }) => setInstance(new Radios(moduleRef.current)))
       .catch(setInstanceError);
-  }, [moduleRef, instance]);
+  }, [moduleRef, importRef, instance]);
 
   const getRadioId = (id: string, reference: string): string => {
     if (reference in _radioIds) {
@@ -78,8 +89,7 @@ const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwarde
 
   return (
     <FormGroup<RadiosProps> inputType="radios" {...rest}>
-      {/* eslint-disable-next-line @typescript-eslint/no-unused-vars */}
-      {({ className, inline, name, id, error, ...restRenderProps }) => {
+      {({ className, inline, small, name, id, error, ...restRenderProps }) => {
         resetRadioIds();
         const contextValue: IRadiosContext = {
           getRadioId: (reference) => getRadioId(id, reference),
@@ -92,7 +102,14 @@ const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwarde
 
         return (
           <div
-            className={classNames('nhsuk-radios', { 'nhsuk-radios--inline': inline }, className)}
+            className={classNames(
+              'nhsuk-radios',
+              {
+                'nhsuk-radios--inline': inline,
+                'nhsuk-radios--small': small,
+              },
+              className,
+            )}
             data-module="nhsuk-radios"
             id={id}
             ref={moduleRef}

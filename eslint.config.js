@@ -43,6 +43,17 @@ export default defineConfig([
       'import/no-named-as-default-member': 'off',
       'import/no-unresolved': 'off',
       'import/no-unused-modules': 'off',
+
+      // Prefer rules that are type aware
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        {
+          argsIgnorePattern: '^_',
+          varsIgnorePattern: '^_',
+          ignoreRestSiblings: true,
+        },
+      ],
     },
     settings: {
       'import/resolver': {

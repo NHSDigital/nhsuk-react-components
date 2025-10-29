@@ -9,8 +9,8 @@ export default meta;
 type Story = StoryObj<typeof Panel>;
 
 export const StandardPanel: Story = {
-  render: () => (
-    <Panel>
+  render: (args) => (
+    <Panel {...args}>
       <Panel.Title>Booking complete</Panel.Title>
       We have sent you a confirmation email
     </Panel>
@@ -18,8 +18,8 @@ export const StandardPanel: Story = {
 };
 
 export const PanelWithCustomHeadingLevel: Story = {
-  render: () => (
-    <Panel>
+  render: (args) => (
+    <Panel {...args}>
       <Panel.Title headingLevel="h2">Booking complete</Panel.Title>
       We have sent you a confirmation email
     </Panel>

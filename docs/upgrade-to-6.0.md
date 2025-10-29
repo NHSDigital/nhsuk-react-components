@@ -18,6 +18,35 @@ The updated [header](https://service-manual.nhs.uk/design-system/components/head
 - update NHS logo in the header to have higher contrast when focused
 - refactor CSS classes and BEM naming, use hidden attributes instead of modifier classes, use generic search element
 
+#### Smaller versions of radio buttons and checkboxes
+
+You can now use smaller versions of the [radios](https://service-manual.nhs.uk/design-system/components/radios) and [checkboxes](https://service-manual.nhs.uk/design-system/components/checkboxes) components by adding the `small` prop.
+
+### Numbered pagination component
+
+The [pagination](https://service-manual.nhs.uk/design-system/components/notification-banner) component from NHS.UK frontend v10.1 has been updated to support numbered pagination:
+
+```jsx
+<Pagination>
+  <Pagination.Link href="/results?page=1" previous />
+  <Pagination.Item href="/results?page=1" number={1} />
+  <Pagination.Item href="/results?page=2" number={2} current />
+  <Pagination.Item href="/results?page=3" number={3} />
+  <Pagination.Link href="/results?page=3" next />
+</Pagination>
+```
+
+### Notification banner component
+
+The [notification banner](https://service-manual.nhs.uk/design-system/components/notification-banner) component from NHS.UK frontend v10 has been added:
+
+```jsx
+<NotificationBanner>
+  <NotificationBanner.Heading>Upcoming maintenance</NotificationBanner.Heading>
+  <p>The service will be unavailable from 8pm to 9pm on Thursday 1 January 2025.</p>
+</NotificationBanner>
+```
+
 ### Panel component
 
 The [panel](https://service-manual.nhs.uk/design-system/components/panel) component from NHS.UK frontend v9.3.0 has been added:
@@ -31,34 +60,19 @@ The [panel](https://service-manual.nhs.uk/design-system/components/panel) compon
 
 This replaces the [list panel component](#list-panel) which was removed in NHS.UK frontend v6.0.0.
 
-### Notification banner component
-
-The [notification banner](https://service-manual.nhs.uk/design-system/components/notification-banner) component from NHS.UK frontend v10 has been added:
-
-```jsx
-<NotificationBanner>
-  <NotificationBanner.Heading>Upcoming maintenance</NotificationBanner.Heading>
-  <p>The service will be unavailable from 8pm to 9pm on Thursday 1 January 2025.</p>
-</NotificationBanner>
-```
-
 ### Support for React Server Components (RSC)
 
 All components have been tested as React Server Components (RSC) but due to [multipart namespace component limitations](https://ivicabatinic.from.hr/posts/multipart-namespace-components-addressing-rsc-and-dot-notation-issues) an alternative syntax (without dot notation) can be used as a workaround:
 
 ```patch
-  <Pagination>
--   <Pagination.Link href="/section/treatments" previous>
-+   <PaginationLink href="/section/treatments" previous>
-      Treatments
--   </Pagination.Link>
-+   </PaginationLink>
--   <Pagination.Link href="/section/symptoms" next>
-+   <PaginationLink href="/section/symptoms" next>
-      Symptoms
--   </Pagination.Link>
-+   </PaginationLink>
-  </Pagination>
+  <Breadcrumb>
+-   <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
+-   <Breadcrumb.Item href="#">NHS services</Breadcrumb.Item>
+-   <Breadcrumb.Item href="#">Hospitals</Breadcrumb.Item>
++   <BreadcrumbItem href="#">Home</BreadcrumbItem>
++   <BreadcrumbItem href="#">NHS services</BreadcrumbItem>
++   <BreadcrumbItem href="#">Hospitals</BreadcrumbItem>
+  </Breadcrumb>
 ```
 
 ## Breaking changes
@@ -435,6 +449,26 @@ To align with NHS.UK frontend, the error summary component is automatically aler
       </ErrorSummary.List>
 -   </ErrorSummary.Body>
   </ErrorSummary>
+```
+
+### Pagination
+
+To align with NHS.UK frontend, the pagination link component automatically renders its own "Previous page" or "Next page" text, with "page" being visually hidden. You will need to make the following changes:
+
+- rename the `Pagination.Link` component to `Pagination.Item`
+- move text content (or the `children` prop) to the `labelText` prop
+
+```patch
+  <Pagination>
+-   <Pagination.Link href="/section/treatments" previous>
+-     Treatments
+-   </Pagination.Link>
+-   <Pagination.Link href="/section/symptoms" next>
+-     Symptoms
+-   </Pagination.Link>
++   <Pagination.Item labelText="Treatments" href="/section/treatments" previous />
++   <Pagination.Item labelText="Symptoms" href="/section/symptoms" next />
+  </Pagination>
 ```
 
 ### Select

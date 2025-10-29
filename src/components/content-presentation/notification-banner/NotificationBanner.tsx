@@ -2,9 +2,10 @@
 
 import {
   Children,
-  createRef,
   forwardRef,
   useEffect,
+  useImperativeHandle,
+  useRef,
   useState,
   type ComponentPropsWithoutRef,
 } from 'react';
@@ -27,19 +28,22 @@ const NotificationBannerComponent = forwardRef<HTMLDivElement, NotificationBanne
   (props, forwardedRef) => {
     const { children, className, title, titleId, success, role, disableAutoFocus, ...rest } = props;
 
-    const [moduleRef] = useState(() => forwardedRef || createRef<HTMLDivElement>());
+    const moduleRef = useRef<HTMLDivElement>(null);
+    const importRef = useRef<Promise<NotificationBannerModule | void>>(null);
     const [instanceError, setInstanceError] = useState<Error>();
     const [instance, setInstance] = useState<NotificationBannerModule>();
 
+    useImperativeHandle(forwardedRef, () => moduleRef.current!, [moduleRef]);
+
     useEffect(() => {
-      if (!('current' in moduleRef) || !moduleRef.current || instance) {
+      if (!moduleRef.current || importRef.current || instance) {
         return;
       }
 
-      import('nhsuk-frontend')
+      importRef.current = import('nhsuk-frontend')
         .then(({ NotificationBanner }) => setInstance(new NotificationBanner(moduleRef.current)))
         .catch(setInstanceError);
-    }, [moduleRef, instance]);
+    }, [moduleRef, importRef, instance]);
 
     const items = Children.toArray(children);
 

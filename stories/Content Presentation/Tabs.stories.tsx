@@ -18,8 +18,8 @@ export default meta;
 type Story = StoryObj<typeof Tabs>;
 
 export const Standard: Story = {
-  render: () => (
-    <Tabs>
+  render: (args) => (
+    <Tabs {...args}>
       <Tabs.Title>Contents</Tabs.Title>
       <Tabs.List>
         <Tabs.ListItem id="past-day">Past day</Tabs.ListItem>
@@ -48,8 +48,8 @@ export const Standard: Story = {
  * It also displays if the user has JavaScript disabled.
  */
 export const DifferentAccessibleHeading: Story = {
-  render: () => (
-    <Tabs>
+  render: (args) => (
+    <Tabs {...args}>
       <Tabs.Title headingLevel="h1">Tabs title</Tabs.Title>
       <Tabs.List>
         <Tabs.ListItem id="past-day-2">Past day</Tabs.ListItem>

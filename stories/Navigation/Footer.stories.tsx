@@ -10,7 +10,7 @@ type Story = StoryObj<typeof Footer>;
 
 export const Standard: Story = {
   render: (args) => (
-    <Footer>
+    <Footer {...args}>
       <Footer.Meta>
         <Footer.ListItem href="#">About us</Footer.ListItem>
         <Footer.ListItem href="#">Accessibility statement</Footer.ListItem>
@@ -25,7 +25,7 @@ export const Standard: Story = {
 
 export const WithLinksArrangedInColumns: Story = {
   render: (args) => (
-    <Footer>
+    <Footer {...args}>
       <Footer.List>
         <Footer.ListItem href="#">Home</Footer.ListItem>
         <Footer.ListItem href="#">Health A to Z</Footer.ListItem>

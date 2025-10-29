@@ -7,7 +7,7 @@ const meta: Meta<typeof Label> = {
   args: {
     children: 'National Insurance Number',
     size: undefined,
-    isPageHeading: false,
+    isPageHeading: true,
   },
   argTypes: {
     size: { control: 'select', options: [undefined, 's', 'm', 'l', 'xl'] },
@@ -16,11 +16,9 @@ const meta: Meta<typeof Label> = {
 export default meta;
 type Story = StoryObj<typeof Label>;
 
-export const Standard: Story = {};
-
-export const AsPageHeading: Story = {
+export const Standard: Story = {
   args: {
-    isPageHeading: true,
+    size: 'l',
   },
 };
 

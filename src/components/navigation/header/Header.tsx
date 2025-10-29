@@ -4,10 +4,11 @@ import classNames from 'classnames';
 import { type Header as HeaderModule } from 'nhsuk-frontend';
 import {
   Children,
-  createRef,
   forwardRef,
   useEffect,
+  useImperativeHandle,
   useMemo,
+  useRef,
   useState,
   type ComponentPropsWithoutRef,
 } from 'react';
@@ -34,13 +35,16 @@ const HeaderComponent = forwardRef<HTMLElement, HeaderProps>((props, forwardedRe
   const { className, containerClasses, children, logo, service, organisation, white, ...rest } =
     props;
 
-  const [moduleRef] = useState(() => forwardedRef || createRef<HTMLElement>());
+  const moduleRef = useRef<HTMLElement>(null);
+  const importRef = useRef<Promise<HeaderModule | void>>(null);
   const [instanceError, setInstanceError] = useState<Error>();
   const [instance, setInstance] = useState<HeaderModule>();
   const [menuOpen, setMenuOpen] = useState(false);
 
+  useImperativeHandle(forwardedRef, () => moduleRef.current!, [moduleRef]);
+
   useEffect(() => {
-    if (!('current' in moduleRef) || !moduleRef.current || instance) {
+    if (!moduleRef.current || importRef.current || instance) {
       if (!instance) {
         return;
       }
@@ -58,10 +62,10 @@ const HeaderComponent = forwardRef<HTMLElement, HeaderProps>((props, forwardedRe
       return;
     }
 
-    import('nhsuk-frontend')
+    importRef.current = import('nhsuk-frontend')
       .then(({ Header }) => setInstance(new Header(moduleRef.current)))
       .catch(setInstanceError);
-  }, [moduleRef, instance, menuOpen]);
+  }, [moduleRef, importRef, instance, menuOpen]);
 
   const contextValue: IHeaderContext = useMemo(() => {
     return { menuOpen, setMenuOpen };
