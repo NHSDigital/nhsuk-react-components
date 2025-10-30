@@ -94,7 +94,7 @@ export const SelectWithErrorAndHintText: Story = {
   args: {
     hint: 'Hint text goes here',
   },
-  render: function SelectWithErrorAndHintTextRender() {
+  render: function SelectWithErrorAndHintTextRender(args) {
     const [error, setError] = useState<string>('Error message goes here');
     return (
       <>

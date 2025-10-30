@@ -132,8 +132,8 @@ export const RadiosWithHTMLHintsOnItems: Story = {
           <>
             You&#39;ll{' '}
             <span className="nhsuk-u-nowrap">
-              have a user ID if you've registered for self-assessment or filed a tax return online
-              before.
+              have a user ID if you&apos;ve registered for self-assessment or filed a tax return
+              online before.
             </span>
           </>
         }
@@ -157,7 +157,6 @@ export const RadiosWithHTMLHintsOnItems: Story = {
     </Radios>
   ),
 };
-
 
 export const SmallRadios: Story = {
   args: {

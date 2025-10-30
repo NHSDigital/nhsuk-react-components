@@ -101,18 +101,6 @@ export const WithHintHTML: Story = {
   ),
 };
 
-export const WithDisabledItem: Story = {
-  render: (args) => (
-    <form>
-      <Checkboxes id="colours" name="colours">
-        <Checkboxes.Item value="red">Red</Checkboxes.Item>
-        <Checkboxes.Item value="green">Green</Checkboxes.Item>
-        <Checkboxes.Item value="red" disabled>
-          Blue
-        </Checkboxes.Item>
-      </Checkboxes>
-    </form>
-  ),
 export const Small: Story = {
   args: {
     ...Standard.args,
