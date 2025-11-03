@@ -44,8 +44,23 @@ export default defineConfig([
       'import/no-unresolved': 'off',
       'import/no-unused-modules': 'off',
 
+      // Always import Node.js packages from `node:*`
+      'import/enforce-node-protocol-usage': ['error', 'always'],
+
+      // Check import or require statements are A-Z ordered
+      'import/order': [
+        'error',
+        {
+          'alphabetize': { order: 'asc' },
+          'newlines-between': 'always',
+        },
+      ],
+
       // Prefer rules that are type aware
+      'no-redeclare': 'off',
+      'no-undef': 'off',
       'no-unused-vars': 'off',
+      '@typescript-eslint/no-redeclare': 'error',
       '@typescript-eslint/no-unused-vars': [
         'error',
         {
