@@ -12,17 +12,9 @@
       "import": "./dist/esm/components/*",
       "require": "./dist/cjs/components/*"
     },
-    "#components": {
-      "import": "./dist/esm/components/index.js",
-      "require": "./dist/cjs/components/index.cjs"
-    },
     "#patterns/*": {
       "import": "./dist/esm/patterns/*",
       "require": "./dist/cjs/patterns/*"
-    },
-    "#patterns": {
-      "import": "./dist/esm/patterns/index.js",
-      "require": "./dist/cjs/patterns/index.cjs"
     },
     "#util/*": {
       "import": "./dist/esm/util/*",

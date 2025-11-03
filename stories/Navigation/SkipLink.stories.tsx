@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { type FC, type ReactNode } from 'react';
-import { HintText, SkipLink } from '#components';
+import { HintText } from '#components/form-elements/hint-text/index.js';
+import { SkipLink } from '#components/navigation/skip-link/index.js';
 
 const CodeText: FC<{ children: ReactNode }> = ({ children }) => (
   <span

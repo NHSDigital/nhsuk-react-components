@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
-import { NotificationBanner } from '#components';
-import { NotificationBannerLink } from '#components/content-presentation/notification-banner/components';
+import { NotificationBanner } from '#components/content-presentation/notification-banner/index.js';
+import { NotificationBannerLink } from '#components/content-presentation/notification-banner/components/index.js';
 
 /**
  * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/notification-banner" target="_blank">here</a>.

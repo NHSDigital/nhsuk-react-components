@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
-import { DoAndDontList } from '#components';
+import { DoAndDontList } from '#components/content-presentation/do-and-dont-list/index.js';
 
 /**
  * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/do-dont-list" target="_blank" rel="noopener noreferrer">here</a>.

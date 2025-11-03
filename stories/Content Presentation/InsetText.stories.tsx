@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
-import { InsetText } from '#components';
+import { InsetText } from '#components/content-presentation/inset-text/index.js';
 
 const meta: Meta<typeof InsetText> = {
   title: 'Content Presentation/InsetText',

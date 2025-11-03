@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
-import { WarningCallout } from '#components';
+import { WarningCallout } from '#components/content-presentation/warning-callout/index.js';
 
 const meta: Meta<typeof WarningCallout> = {
   title: 'Content Presentation/WarningCallout',

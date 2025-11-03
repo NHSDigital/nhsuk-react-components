@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
-import { CharacterCount } from '#components';
+import { CharacterCount } from '#components/form-elements/character-count/index.js';
 
 /**
  * Help users know how much text they can enter when there is a limit on the number of characters.

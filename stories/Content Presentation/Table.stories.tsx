@@ -1,5 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
-import { Col, HintText, Row, Table } from '#components';
+import { Table } from '#components/content-presentation/table/index.js';
+import { HintText } from '#components/form-elements/hint-text/index.js';
+import { Col, Row } from '#components/layout/index.js';
 
 const meta: Meta<typeof Table> = {
   title: 'Content Presentation/Table',

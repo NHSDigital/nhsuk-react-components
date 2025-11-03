@@ -1,6 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
-import { DateInput, type DateInputValue } from '#components';
+import { DateInput, type DateInputValue } from '#components/form-elements/date-input/index.js';
 
 const meta: Meta<typeof DateInput> = {
   title: 'Form Elements/DateInput',
