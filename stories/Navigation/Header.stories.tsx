@@ -1,5 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { type ComponentProps } from 'react';
+
 import { Header } from '#components/navigation/header/index.js';
 
 const meta: Meta<typeof Header> = {

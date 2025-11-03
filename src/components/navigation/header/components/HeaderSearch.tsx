@@ -1,4 +1,5 @@
 import { type ComponentPropsWithoutRef, type FC } from 'react';
+
 import { SearchIcon } from '#components/content-presentation/index.js';
 
 export interface HeaderSearchProps extends ComponentPropsWithoutRef<'form'> {

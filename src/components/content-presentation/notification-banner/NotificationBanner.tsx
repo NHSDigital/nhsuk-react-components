@@ -1,5 +1,7 @@
 'use client';
 
+import classNames from 'classnames';
+import { type NotificationBanner as NotificationBannerModule } from 'nhsuk-frontend';
 import {
   Children,
   forwardRef,
@@ -9,13 +11,13 @@ import {
   useState,
   type ComponentPropsWithoutRef,
 } from 'react';
-import classNames from 'classnames';
+
 import {
   NotificationBannerHeading,
   NotificationBannerLink,
   NotificationBannerTitle,
 } from './components/index.js';
-import { type NotificationBanner as NotificationBannerModule } from 'nhsuk-frontend';
+
 import { childIsOfComponentType } from '#util/types/TypeGuards.js';
 
 export interface NotificationBannerProps extends ComponentPropsWithoutRef<'div'> {

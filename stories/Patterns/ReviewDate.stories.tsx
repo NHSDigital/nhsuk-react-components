@@ -1,4 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
+
 import { ReviewDate } from '#patterns/review-date/index.js';
 
 const meta: Meta<typeof ReviewDate> = {

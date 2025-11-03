@@ -1,4 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
+
 import { Panel } from '#components/content-presentation/panel/index.js';
 
 const meta: Meta<typeof Panel> = {

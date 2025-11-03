@@ -12,6 +12,8 @@ import {
   useState,
   type ComponentPropsWithoutRef,
 } from 'react';
+
+import { HeaderContext, type IHeaderContext } from './HeaderContext.js';
 import {
   HeaderAccount,
   HeaderAccountItem,
@@ -22,7 +24,7 @@ import {
   HeaderServiceName,
   type HeaderServiceNameProps,
 } from './components/index.js';
-import { HeaderContext, type IHeaderContext } from './HeaderContext.js';
+
 import { Container } from '#components/layout/index.js';
 import { childIsOfComponentType } from '#util/types/index.js';
 

@@ -1,4 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
+
 import { ActionLink } from '#components/navigation/action-link/index.js';
 
 const meta: Meta<typeof ActionLink> = {

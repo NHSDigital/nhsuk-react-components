@@ -1,4 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
+
 import { Tag } from '#components/content-presentation/tag/index.js';
 
 const meta: Meta<typeof Tag> = {

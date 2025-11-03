@@ -1,4 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
+
 import { CharacterCount } from '#components/form-elements/character-count/index.js';
 
 /**

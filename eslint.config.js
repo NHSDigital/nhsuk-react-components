@@ -1,13 +1,14 @@
 import { join } from 'node:path';
+
+import { includeIgnoreFile } from '@eslint/compat';
+import eslint from '@eslint/js';
+import { defineConfig, globalIgnores } from 'eslint/config';
 import configPrettier from 'eslint-config-prettier/flat';
+import pluginImport from 'eslint-plugin-import';
+import pluginJsxA11y from 'eslint-plugin-jsx-a11y';
 import pluginReact from 'eslint-plugin-react';
 import pluginReactHooks from 'eslint-plugin-react-hooks';
-import eslint from '@eslint/js';
-import pluginJsxA11y from 'eslint-plugin-jsx-a11y';
-import { includeIgnoreFile } from '@eslint/compat';
-import { defineConfig, globalIgnores } from 'eslint/config';
 import globals from 'globals';
-import pluginImport from 'eslint-plugin-import';
 import pluginTypeScript from 'typescript-eslint';
 
 const rootPath = import.meta.dirname;

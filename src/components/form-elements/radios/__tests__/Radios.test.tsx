@@ -1,5 +1,7 @@
 import { createRef } from 'react';
+
 import { Radios } from '..';
+
 import { renderClient, renderServer } from '#util/components';
 
 describe('Radios', () => {

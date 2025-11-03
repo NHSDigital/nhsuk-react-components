@@ -1,4 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
+
 import { DoAndDontList } from '#components/content-presentation/do-and-dont-list/index.js';
 
 /**

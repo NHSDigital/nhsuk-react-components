@@ -1,4 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
+
 import { Tabs } from '#components/content-presentation/tabs/index.js';
 
 /**

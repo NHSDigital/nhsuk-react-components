@@ -2,8 +2,10 @@
 
 import classNames from 'classnames';
 import { useContext, type ComponentPropsWithoutRef, type FC } from 'react';
+
 import { TableContext, type ITableContext } from '../TableContext.js';
 import { TableSection, TableSectionContext } from '../TableSectionContext.js';
+
 import { useDevWarning } from '#util/hooks/index.js';
 
 const CellOutsideOfSectionWarning =

@@ -2,8 +2,11 @@
 
 import classNames from 'classnames';
 import { useContext, useEffect, type ComponentPropsWithoutRef, type FC } from 'react';
+
 import { HeaderContext, type IHeaderContext } from '../HeaderContext.js';
+
 import { HeaderMenuToggle } from './HeaderMenuToggle.js';
+
 import { Container } from '#components/layout/index.js';
 
 export interface HeaderNavigationProps extends ComponentPropsWithoutRef<'nav'> {

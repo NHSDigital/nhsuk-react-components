@@ -8,6 +8,8 @@ import {
   type ComponentPropsWithoutRef,
   type ReactNode,
 } from 'react';
+
+import { TableContext, type ITableContext } from './TableContext.js';
 import {
   TableBody,
   TableCaption,
@@ -18,7 +20,6 @@ import {
   TableRow,
   type TableCaptionProps,
 } from './components/index.js';
-import { TableContext, type ITableContext } from './TableContext.js';
 
 export interface TableProps extends ComponentPropsWithoutRef<'table'> {
   firstCellIsHeader?: boolean;

@@ -1,4 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
+
 import { Label } from '#components/form-elements/label/index.js';
 
 const meta: Meta<typeof Label> = {

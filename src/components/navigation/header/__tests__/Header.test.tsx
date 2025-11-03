@@ -1,5 +1,7 @@
 import { createRef, type ComponentProps } from 'react';
+
 import { Header } from '..';
+
 import { renderClient, renderServer } from '#util/components';
 
 describe('Header', () => {

@@ -2,9 +2,11 @@
 
 import classNames from 'classnames';
 import { forwardRef, type ComponentPropsWithoutRef } from 'react';
-import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
+
 import { DoAndDontListContext, type DoAndDontListType } from './DoAndDontListContext.js';
 import { DoAndDontListItem } from './components/index.js';
+
+import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
 
 export interface DoAndDontListProps
   extends ComponentPropsWithoutRef<'div'>,

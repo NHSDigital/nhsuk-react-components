@@ -1,4 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
+
 import { Table } from '#components/content-presentation/table/index.js';
 import { HintText } from '#components/form-elements/hint-text/index.js';
 import { Col, Row } from '#components/layout/index.js';

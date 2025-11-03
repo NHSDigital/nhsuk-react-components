@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { type Meta, type StoryObj } from '@storybook/react-vite';
-import { BodyText } from '#components/typography/BodyText.js';
+
 import { SummaryList } from '#components/content-presentation/summary-list/index.js';
+import { BodyText } from '#components/typography/BodyText.js';
 
 /**
  * ## Implementation notes

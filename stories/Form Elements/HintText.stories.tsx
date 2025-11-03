@@ -1,4 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
+
 import { HintText } from '#components/form-elements/hint-text/index.js';
 
 const meta: Meta<typeof HintText> = {

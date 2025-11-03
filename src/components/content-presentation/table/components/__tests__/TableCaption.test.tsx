@@ -1,6 +1,8 @@
 import { render } from '@testing-library/react';
+
 import { TableCaption } from '..';
 import { Table } from '../..';
+
 import { type NHSUKSize } from '#util/types/NHSUKTypes';
 
 describe('TableCaption', () => {

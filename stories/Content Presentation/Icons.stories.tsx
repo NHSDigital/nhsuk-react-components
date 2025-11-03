@@ -1,4 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
+
 import {
   ArrowLeftIcon,
   ArrowRightCircleIcon,

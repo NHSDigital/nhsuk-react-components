@@ -1,5 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { useEffect, useRef, useState, type SyntheticEvent } from 'react';
+
 import { Checkboxes } from '#components/form-elements/checkboxes/index.js';
 import { TextInput } from '#components/form-elements/text-input/index.js';
 

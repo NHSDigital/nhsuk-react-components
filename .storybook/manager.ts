@@ -1,6 +1,7 @@
-import { addons } from 'storybook/manager-api';
-import nhsTheme from './theme.js';
 import { startCase, upperFirst } from 'lodash';
+import { addons } from 'storybook/manager-api';
+
+import nhsTheme from './theme.js';
 
 const sentenceCase = (name = '') => {
   if (!name || typeof name !== 'string') {
