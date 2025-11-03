@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { forwardRef } from 'react';
+
 import { type AsElementLink } from '#util/types/index.js';
 
 export type BreadcrumbItemProps = AsElementLink<HTMLAnchorElement>;

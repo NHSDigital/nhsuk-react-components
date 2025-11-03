@@ -1,4 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
+
 import {
   ArrowLeftIcon,
   ArrowRightCircleIcon,
@@ -8,7 +9,7 @@ import {
   SearchIcon,
   TickIcon,
   UserIcon,
-} from '#components';
+} from '#components/content-presentation/icons/individual/index.js';
 
 const meta: Meta = {
   title: 'Content Presentation/Icons',

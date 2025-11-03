@@ -1,11 +1,13 @@
-import { join } from 'node:path';
+import { dirname, join, relative, resolve } from 'node:path';
+
 import { DEFAULT_EXTENSIONS as extensions } from '@babel/core';
 import { babel } from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
-import preserveDirectives from 'rollup-preserve-directives';
 import { defineConfig } from 'rollup';
+import preserveDirectives from 'rollup-preserve-directives';
+
 import packageJson from './package.json' with { type: 'json' };
 import tsBuildConfig from './tsconfig.build.json' with { type: 'json' };
 
@@ -38,6 +40,12 @@ export default defineConfig(
           preserveModulesRoot: 'src',
           sourcemap: true,
           sourcemapExcludeSources: true,
+
+          // Fix source map relative paths to sources
+          sourcemapPathTransform: (relativeSourcePath, sourcemapPath) => {
+            const sourcePath = resolve(sourcemapPath, relativeSourcePath);
+            return relative(dirname(sourcemapPath), sourcePath);
+          },
         },
       ],
       external: ['react/jsx-runtime', ...external],

@@ -7,11 +7,9 @@
     "types": ["jest", "node"]
   },
   "include": [
-    "./.storybook/*.ts",
     "./src/**/*.test.ts",
     "./src/**/*.test.tsx",
     "./src/setupTests.ts",
-    "./stories/**/*.tsx",
     "./*.config.cjs",
     "./*.config.js"
   ]

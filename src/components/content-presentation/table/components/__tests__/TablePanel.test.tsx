@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+
 import { TablePanel } from '..';
 
 describe('Table.Panel', () => {

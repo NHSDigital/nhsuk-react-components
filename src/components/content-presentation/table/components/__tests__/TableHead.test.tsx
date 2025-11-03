@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+
 import { TableHead } from '..';
 import { Table, TableSection, TableSectionContext } from '../..';
 

@@ -1,5 +1,7 @@
 import { createRef } from 'react';
+
 import { Select } from '..';
+
 import { renderClient, renderServer } from '#util/components';
 
 describe('Select', () => {

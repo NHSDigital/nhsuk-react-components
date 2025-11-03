@@ -1,4 +1,5 @@
 import { type FC, type PropsWithChildren } from 'react';
+
 import { type HeaderLogoProps } from './HeaderLogo.js';
 
 export type HeaderServiceNameInnerProps = NonNullable<HeaderServiceNameProps['service']>;

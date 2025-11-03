@@ -1,4 +1,5 @@
 import { render } from '@testing-library/react';
+
 import { HeadingLevel, type HeadingLevelProps } from '..';
 
 describe('HeadingLevel', () => {

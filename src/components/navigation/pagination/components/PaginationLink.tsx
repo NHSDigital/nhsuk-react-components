@@ -1,7 +1,9 @@
 import { forwardRef } from 'react';
+
+import { PaginationLinkText, type PaginationLinkTextProps } from './PaginationLinkText.js';
+
 import { ArrowLeftIcon, ArrowRightIcon } from '#components/content-presentation/index.js';
 import { type AsElementLink } from '#util/types/LinkTypes.js';
-import { PaginationLinkText, type PaginationLinkTextProps } from './PaginationLinkText.js';
 
 export type PaginationLinkProps = PaginationLinkTextProps & AsElementLink<HTMLAnchorElement>;
 

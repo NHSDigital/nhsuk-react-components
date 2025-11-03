@@ -1,5 +1,6 @@
 import { render } from '@testing-library/react';
 import { createRef, type ComponentProps } from 'react';
+
 import { Breadcrumb } from '..';
 
 describe('Breadcrumb', () => {

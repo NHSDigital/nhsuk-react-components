@@ -1,8 +1,10 @@
 import classNames from 'classnames';
 import { Children, forwardRef, type ComponentPropsWithoutRef } from 'react';
+
+import { FooterCopyright, FooterList, FooterListItem, FooterMeta } from './components/index.js';
+
 import { Container } from '#components/layout/index.js';
 import { childIsOfComponentType } from '#util/types/index.js';
-import { FooterCopyright, FooterList, FooterListItem, FooterMeta } from './components/index.js';
 
 export interface FooterProps extends ComponentPropsWithoutRef<'div'> {
   containerClassName?: string;

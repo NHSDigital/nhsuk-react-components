@@ -1,6 +1,8 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { type Meta, type StoryObj } from '@storybook/react-vite';
-import { Card, ChevronRightCircleIcon } from '#components';
+
+import { ChevronRightCircleIcon } from '#components/content-presentation/icons/individual/index.js';
+import { Card } from '#components/navigation/card/index.js';
 
 const meta: Meta<typeof Card> = {
   title: 'Navigation/Card',

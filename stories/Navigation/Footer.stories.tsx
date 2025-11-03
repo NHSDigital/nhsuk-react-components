@@ -1,5 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
-import { Footer } from '#components';
+
+import { Footer } from '#components/navigation/footer/index.js';
 
 const meta: Meta<typeof Footer> = {
   title: 'Navigation/Footer',

@@ -1,5 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
-import { BackLink } from '#components';
+
+import { BackLink } from '#components/navigation/back-link/index.js';
 
 const meta: Meta<typeof BackLink> = {
   title: 'Navigation/BackLink',

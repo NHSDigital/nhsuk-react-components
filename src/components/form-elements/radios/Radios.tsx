@@ -10,8 +10,10 @@ import {
   useState,
   type ComponentPropsWithoutRef,
 } from 'react';
-import { RadiosDivider, RadiosItem } from './components/index.js';
+
 import { RadiosContext, type IRadiosContext } from './RadiosContext.js';
+import { RadiosDivider, RadiosItem } from './components/index.js';
+
 import { FormGroup } from '#components/utils/index.js';
 import { generateRandomName } from '#util/tools/index.js';
 import { type FormElementProps } from '#util/types/FormTypes.js';
