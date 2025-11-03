@@ -1,5 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
-import { Card, Col, Container, Row } from '#components';
+
+import { Col, Container, Row } from '#components/layout/index.js';
+import { Card } from '#components/navigation/card/index.js';
 
 const meta: Meta = {
   title: 'Layout/Grid',

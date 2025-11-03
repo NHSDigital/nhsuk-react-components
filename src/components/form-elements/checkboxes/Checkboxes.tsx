@@ -10,8 +10,10 @@ import {
   useState,
   type ComponentPropsWithoutRef,
 } from 'react';
-import { CheckboxesDivider, CheckboxesItem } from './components/index.js';
+
 import { CheckboxesContext, type ICheckboxesContext } from './CheckboxesContext.js';
+import { CheckboxesDivider, CheckboxesItem } from './components/index.js';
+
 import { FormGroup } from '#components/utils/index.js';
 import { generateRandomName } from '#util/tools/index.js';
 import { type FormElementProps } from '#util/types/FormTypes.js';

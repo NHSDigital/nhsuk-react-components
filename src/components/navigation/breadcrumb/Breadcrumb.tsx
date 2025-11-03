@@ -1,7 +1,9 @@
 import classNames from 'classnames';
 import { Children, forwardRef, type ComponentPropsWithoutRef, type ReactNode } from 'react';
-import { childIsOfComponentType } from '#util/types/index.js';
+
 import { BreadcrumbBack, BreadcrumbItem } from './components/index.js';
+
+import { childIsOfComponentType } from '#util/types/index.js';
 
 export type BreadcrumbProps = ComponentPropsWithoutRef<'nav'>;
 

@@ -1,7 +1,9 @@
 import classNames from 'classnames';
 import { Children, forwardRef, type ComponentPropsWithoutRef } from 'react';
-import { childIsOfComponentType } from '#util/types/TypeGuards.js';
+
 import { PanelTitle } from './components/index.js';
+
+import { childIsOfComponentType } from '#util/types/TypeGuards.js';
 
 export type PanelProps = ComponentPropsWithoutRef<'div'>;
 

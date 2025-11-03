@@ -1,8 +1,10 @@
 import classNames from 'classnames';
 import { forwardRef } from 'react';
-import { ArrowLeftIcon, ArrowRightIcon } from '#components/content-presentation/index.js';
+
 import { PaginationLink, type PaginationLinkProps } from './PaginationLink.js';
 import { PaginationLinkText } from './PaginationLinkText.js';
+
+import { ArrowLeftIcon, ArrowRightIcon } from '#components/content-presentation/index.js';
 
 export type PaginationItemProps = PaginationLinkProps & {
   ellipsis?: boolean;

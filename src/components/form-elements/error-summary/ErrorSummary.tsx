@@ -11,8 +11,10 @@ import {
   useState,
   type ComponentPropsWithoutRef,
 } from 'react';
-import { childIsOfComponentType } from '#util/types/TypeGuards.js';
+
 import { ErrorSummaryList, ErrorSummaryListItem, ErrorSummaryTitle } from './components/index.js';
+
+import { childIsOfComponentType } from '#util/types/TypeGuards.js';
 
 export interface ErrorSummaryProps extends ComponentPropsWithoutRef<'div'> {
   disableAutoFocus?: boolean;

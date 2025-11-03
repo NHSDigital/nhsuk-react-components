@@ -1,5 +1,7 @@
 import { render } from '@testing-library/react';
+
 import { Label } from '..';
+
 import { type NHSUKSize } from '#util/types';
 
 describe('Label', () => {

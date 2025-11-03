@@ -1,7 +1,7 @@
 import { forwardRef } from 'react';
-import { type AsElementLink } from '#util/types/index.js';
 
 import { BackLink } from '#components/navigation/back-link/index.js';
+import { type AsElementLink } from '#util/types/index.js';
 
 export type BreadcrumbBackProps = AsElementLink<HTMLAnchorElement>;
 

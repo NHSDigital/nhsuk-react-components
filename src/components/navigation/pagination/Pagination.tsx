@@ -1,6 +1,8 @@
 import classNames from 'classnames';
 import { Children, forwardRef, type ComponentPropsWithoutRef } from 'react';
+
 import { PaginationItem, PaginationLink } from './components/index.js';
+
 import { childIsOfComponentType } from '#util/types/TypeGuards.js';
 
 export type PaginationProps = ComponentPropsWithoutRef<'nav'>;

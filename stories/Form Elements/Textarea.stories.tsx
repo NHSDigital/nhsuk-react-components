@@ -1,6 +1,8 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
-import { TextInput, Textarea } from '#components';
+
+import { TextInput } from '#components/form-elements/text-input/index.js';
+import { Textarea } from '#components/form-elements/textarea/index.js';
 
 const meta: Meta<typeof Textarea> = {
   title: 'Form Elements/Textarea',

@@ -1,7 +1,8 @@
-import { renderClient, renderServer } from '#util/components';
-import { NotificationBanner } from '#components/content-presentation/notification-banner';
 import { createRef } from 'react';
+
+import { NotificationBanner } from '#components/content-presentation/notification-banner';
 import { NotificationBannerLink } from '#components/content-presentation/notification-banner/components';
+import { renderClient, renderServer } from '#util/components';
 
 describe('NotificationBanner', () => {
   it('matches snapshot', async () => {

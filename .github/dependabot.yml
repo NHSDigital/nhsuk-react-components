@@ -13,6 +13,7 @@ updates:
           - '@rollup/*'
           - '@types/react'
           - '@types/react-*'
+          - 'caniuse-lite'
           - 'classnames'
           - 'nhsuk-frontend'
           - 'react'
