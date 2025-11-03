@@ -1,4 +1,4 @@
-import { join } from 'node:path';
+import { dirname, join, relative, resolve } from 'node:path';
 import { DEFAULT_EXTENSIONS as extensions } from '@babel/core';
 import { babel } from '@rollup/plugin-babel';
 import commonjs from '@rollup/plugin-commonjs';
@@ -38,6 +38,12 @@ export default defineConfig(
           preserveModulesRoot: 'src',
           sourcemap: true,
           sourcemapExcludeSources: true,
+
+          // Fix source map relative paths to sources
+          sourcemapPathTransform: (relativeSourcePath, sourcemapPath) => {
+            const sourcePath = resolve(sourcemapPath, relativeSourcePath);
+            return relative(dirname(sourcemapPath), sourcePath);
+          },
         },
       ],
       external: ['react/jsx-runtime', ...external],
