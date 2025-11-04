@@ -1,4 +1,3 @@
-import { render } from '@testing-library/react';
 import { createRef } from 'react';
 
 import { Checkboxes } from '..';
@@ -8,7 +7,13 @@ import { renderClient, renderServer } from '#util/components';
 describe('Checkboxes', () => {
   it('matches snapshot', async () => {
     const { container } = await renderClient(
-      <Checkboxes id="example" name="example">
+      <Checkboxes
+        legend="What types of waste do you transport regularly?"
+        legendProps={{ size: 'l' }}
+        hint="Select all that apply"
+        id="example"
+        name="example"
+      >
         <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
         <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
         <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
@@ -21,7 +26,59 @@ describe('Checkboxes', () => {
 
   it('matches snapshot with error message', async () => {
     const { container } = await renderClient(
-      <Checkboxes id="example" name="example" error="Example error">
+      <Checkboxes
+        legend="What types of waste do you transport regularly?"
+        legendProps={{ size: 'l' }}
+        hint="Select all that apply"
+        error="Example error"
+        id="example"
+        name="example"
+      >
+        <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
+        <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
+        <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
+      </Checkboxes>,
+      { moduleName: 'nhsuk-checkboxes' },
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('matches snapshot with HTML in props', async () => {
+    const { container } = await renderClient(
+      <Checkboxes
+        legend={
+          <>
+            <span className="nhsuk-caption-l">Example</span> Legend text
+          </>
+        }
+        legendProps={{
+          isPageHeading: true,
+          size: 'l',
+        }}
+        hint={
+          <>
+            Hint text <em>with HTML</em>
+          </>
+        }
+        error={
+          <>
+            Error text <em>with HTML</em>
+          </>
+        }
+        id="example"
+        name="example"
+      >
+        <Checkboxes.Item
+          value="animal"
+          hint={
+            <>
+              Item hint text <em>with HTML</em>
+            </>
+          }
+        >
+          Waste from animal carcasses
+        </Checkboxes.Item>
         <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
         <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
         <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
@@ -34,7 +91,13 @@ describe('Checkboxes', () => {
 
   it('matches snapshot with an exclusive checkbox', async () => {
     const { container } = await renderClient(
-      <Checkboxes id="example" name="example">
+      <Checkboxes
+        legend="What types of waste do you transport regularly?"
+        legendProps={{ size: 'l' }}
+        hint="Select all that apply"
+        id="example"
+        name="example"
+      >
         <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
         <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
         <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
@@ -51,7 +114,13 @@ describe('Checkboxes', () => {
 
   it('matches snapshot (via server)', async () => {
     const { container, element } = await renderServer(
-      <Checkboxes id="example" name="example">
+      <Checkboxes
+        legend="What types of waste do you transport regularly?"
+        legendProps={{ size: 'l' }}
+        hint="Select all that apply"
+        id="example"
+        name="example"
+      >
         <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
         <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
         <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
@@ -112,62 +181,5 @@ describe('Checkboxes', () => {
     const inputEl = container.querySelector<HTMLInputElement>('#none');
 
     expect(inputEl?.dataset).toHaveProperty('checkboxExclusive', 'true');
-  });
-
-  it('allows HTML on the Checkboxes props', async () => {
-    const { container } = await render(
-      <Checkboxes
-        id="example"
-        name="example"
-        hint={
-          <>
-            This is the main hint <span className="nhsuk-caption-xl"> and contains HTML</span>
-          </>
-        }
-        error={
-          <>
-            This is an error <span className="nhsuk-caption-m"> and this error contains HTML</span>
-          </>
-        }
-      >
-        <Checkboxes.Item
-          value="animal"
-          hint={
-            <>
-              This is informative <span className="nhsuk-caption-l"> and contains HTML</span>
-            </>
-          }
-        >
-          Waste from animal carcasses
-        </Checkboxes.Item>
-        <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
-        <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
-        <Checkboxes.Item value="none" id="none" exclusive>
-          None
-        </Checkboxes.Item>
-      </Checkboxes>,
-    );
-
-    const hintEl = container.querySelector('#example-1--hint');
-    expect(hintEl).toBeDefined();
-    expect(hintEl?.innerHTML).toMatch(
-      `This is informative <span class="nhsuk-caption-l"> and contains HTML</span>`,
-    );
-
-    const mainHintEl = container.querySelector('#example--hint');
-    expect(mainHintEl).toBeDefined();
-    expect(mainHintEl?.innerHTML).toMatch(
-      `This is the main hint <span class="nhsuk-caption-xl"> and contains HTML</span>`,
-    );
-
-    const hintElSpan = container.querySelector('.nhsuk-caption-xl');
-    expect(hintElSpan).toHaveTextContent('and contains HTML');
-    expect(hintEl).toBeDefined();
-    expect(hintEl?.innerHTML).toMatch(
-      `This is informative <span class="nhsuk-caption-l"> and contains HTML</span>`,
-    );
-    const errorEl = container.querySelector('#example--error-message');
-    expect(errorEl).toBeDefined();
-    expect(errorEl).toHaveTextContent('and this error contains HTML');
   });
 });

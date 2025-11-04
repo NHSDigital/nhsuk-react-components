@@ -9,9 +9,9 @@ describe('DateInput', () => {
   it('matches snapshot', async () => {
     const { container } = await renderClient(
       <DateInput
-        hint="For example, 15 3 1984"
         legend="What is your date of birth?"
         legendProps={{ size: 'l' }}
+        hint="For example, 15 3 1984"
         id="date-input"
       />,
       { className: 'nhsuk-date-input' },
@@ -23,11 +23,41 @@ describe('DateInput', () => {
   it('matches snapshot with error message', async () => {
     const { container } = await renderClient(
       <DateInput
-        hint="For example, 15 3 1984"
         legend="What is your date of birth?"
         legendProps={{ size: 'l' }}
-        id="date-input"
+        hint="For example, 15 3 1984"
         error="Date of birth must include a day"
+        id="date-input"
+      />,
+      { className: 'nhsuk-date-input' },
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('matches snapshot with HTML in props', async () => {
+    const { container } = await renderClient(
+      <DateInput
+        legend={
+          <>
+            <span className="nhsuk-caption-l">Example</span> Legend text
+          </>
+        }
+        legendProps={{
+          isPageHeading: true,
+          size: 'l',
+        }}
+        hint={
+          <>
+            Hint text <em>with HTML</em>
+          </>
+        }
+        error={
+          <>
+            Error text <em>with HTML</em>
+          </>
+        }
+        id="date-input"
       />,
       { className: 'nhsuk-date-input' },
     );
@@ -38,9 +68,9 @@ describe('DateInput', () => {
   it('matches snapshot with custom date fields', async () => {
     const { container } = await renderClient(
       <DateInput
-        hint="For example, 15 3 1984"
         legend="What is your date of birth?"
         legendProps={{ size: 'l' }}
+        hint="For example, 15 3 1984"
         id="date-input"
       >
         <DateInput.Day defaultValue="31" />
@@ -56,11 +86,11 @@ describe('DateInput', () => {
   it('matches snapshot with custom date fields and error message', async () => {
     const { container } = await renderClient(
       <DateInput
-        hint="For example, 15 3 1984"
         legend="What is your date of birth?"
         legendProps={{ size: 'l' }}
-        id="date-input"
+        hint="For example, 15 3 1984"
         error="Date of birth must include a day"
+        id="date-input"
       >
         <DateInput.Day />
         <DateInput.Month defaultValue="3" error={false} />
@@ -75,9 +105,9 @@ describe('DateInput', () => {
   it('matches snapshot (via server)', async () => {
     const { container, element } = await renderServer(
       <DateInput
-        hint="For example, 15 3 1984"
         legend="What is your date of birth?"
         legendProps={{ size: 'l' }}
+        hint="For example, 15 3 1984"
         id="date-input"
       />,
       { className: 'nhsuk-date-input' },
@@ -105,9 +135,9 @@ describe('DateInput', () => {
 
     const { container, modules } = await renderClient(
       <DateInput
-        hint="For example, 15 3 1984"
         legend="What is your date of birth?"
         legendProps={{ size: 'l' }}
+        hint="For example, 15 3 1984"
         formGroupProps={{ ref: groupRef }}
         ref={moduleRef}
       >
