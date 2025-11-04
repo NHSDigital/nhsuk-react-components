@@ -46,6 +46,24 @@ export const InlineRadios: Story = {
   ),
 };
 
+export const RadiosWithCaption: Story = {
+  args: {
+    legend: (
+      <>
+        <span className="nhsuk-caption-l">About you</span> Have you changed your name?
+      </>
+    ),
+  },
+  render: (args) => (
+    <Radios {...args}>
+      <Radios.Item value="yes">Yes</Radios.Item>
+      <Radios.Item value="no" defaultChecked>
+        No
+      </Radios.Item>
+    </Radios>
+  ),
+};
+
 export const RadiosWithConditionalContent: Story = {
   args: {
     legend: 'Impairment requirement',
