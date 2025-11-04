@@ -69,40 +69,6 @@ export const WithHintText: Story = {
   ),
 };
 
-export const WithHintHTML: Story = {
-  render: () => (
-    <form>
-      <Checkboxes legend="How do you want to sign in?" legendProps={{ size: 'l' }}>
-        <Checkboxes.Item
-          id="government-gateway"
-          name="gateway"
-          type="checkbox"
-          value="gov-gateway"
-          hint={
-            <>
-              You’ll have a user ID if you’ve registered for{' '}
-              <span className="nhsuk-caption-l">
-                {' '}
-                Self Assessment or filed a tax return online before.
-              </span>
-            </>
-          }
-        >
-          Sign in with Government Gateway
-        </Checkboxes.Item>
-        <Checkboxes.Item
-          id="nhsuk-login"
-          name="verify"
-          value="nhsuk-verify"
-          hint="You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
-        >
-          Sign in with NHS.UK login
-        </Checkboxes.Item>
-      </Checkboxes>
-    </form>
-  ),
-};
-
 export const Small: Story = {
   args: {
     ...Standard.args,
@@ -189,33 +155,6 @@ export const WithError: Story = {
     );
   },
   name: 'With Error (String)',
-};
-
-export const WithHTMLError: Story = {
-  render: () => {
-    const error = (
-      <>
-        Please<span className="nhsuk-u-nowrap"> select an option below</span>
-      </>
-    );
-    return (
-      <form>
-        <Checkboxes
-          legend="Which types of waste do you transport regularly?"
-          legendProps={{ size: 'l' }}
-          hint="Select all that apply"
-          error={error}
-          id="waste"
-          name="waste"
-        >
-          <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
-          <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
-          <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
-        </Checkboxes>
-      </form>
-    );
-  },
-  name: 'With Error (HTML)',
 };
 
 export const NoIDSupplied: Story = {

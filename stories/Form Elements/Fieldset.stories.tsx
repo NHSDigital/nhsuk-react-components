@@ -49,25 +49,6 @@ export const Standard: Story = {
   ),
 };
 
-export const WithLegendAsAPageHeading: Story = {
-  render: () => (
-    <Fieldset>
-      <Fieldset.Legend isPageHeading>What is your address?</Fieldset.Legend>
-    </Fieldset>
-  ),
-};
-
-export const WithLegendHTML: Story = {
-  name: 'With Legend HTML',
-  render: () => (
-    <Fieldset>
-      <Fieldset.Legend>
-        What is your address? <strong>small note: this is your home address</strong>
-      </Fieldset.Legend>
-    </Fieldset>
-  ),
-};
-
 export const WithCustomLegendSizeS: Story = {
   name: 'With Bold Text (S)',
   render: (args) => (
