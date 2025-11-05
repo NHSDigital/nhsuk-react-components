@@ -1,9 +1,12 @@
 import classNames from 'classnames';
 import { type ComponentPropsWithoutRef, type FC } from 'react';
 
+import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
 import { type NHSUKSize } from '#util/types/NHSUKTypes.js';
 
-export interface LabelProps extends ComponentPropsWithoutRef<'label'> {
+export interface LabelProps
+  extends ComponentPropsWithoutRef<'label'>,
+    Pick<HeadingLevelProps, 'headingLevel'> {
   isPageHeading?: boolean;
   size?: NHSUKSize;
 }
@@ -16,16 +19,18 @@ const LabelComponent: FC<Omit<LabelProps, 'isPageHeading'>> = ({ className, size
   />
 );
 
-export const Label: FC<LabelProps> = ({ isPageHeading, children, ...rest }) => {
+export const Label: FC<LabelProps> = (props) => {
+  const { children, isPageHeading, headingLevel = 'h1', ...rest } = props;
+
   if (!children) {
     return null;
   }
 
-  if (isPageHeading) {
+  if (isPageHeading || props.headingLevel) {
     return (
-      <h1 className="nhsuk-label-wrapper">
+      <HeadingLevel className="nhsuk-label-wrapper" headingLevel={headingLevel}>
         <LabelComponent {...rest}>{children}</LabelComponent>
-      </h1>
+      </HeadingLevel>
     );
   }
 

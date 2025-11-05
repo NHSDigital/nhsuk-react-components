@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import { Label } from '..';
+import { Label, type LabelProps } from '..';
 
 import { type NHSUKSize } from '#util/types';
 
@@ -49,6 +49,21 @@ describe('Label', () => {
       expect(labelEl).toHaveClass(`nhsuk-label--${size}`);
     },
   );
+
+  it.each<LabelProps>([
+    { headingLevel: 'h1' },
+    { headingLevel: 'h2' },
+    { headingLevel: 'h3' },
+    { headingLevel: 'h4' },
+  ])('renders as page heading with custom heading level $headingLevel', (props) => {
+    const { container } = render(<Label {...props}>Text</Label>);
+
+    const headingEl = container.querySelector('.nhsuk-label-wrapper');
+    const labelEl = headingEl?.querySelector('.nhsuk-label');
+
+    expect(headingEl?.tagName).toBe(props?.headingLevel?.toUpperCase());
+    expect(labelEl).toHaveTextContent('Text');
+  });
 
   it('renders null with no children', () => {
     const { container } = render(<Label />);

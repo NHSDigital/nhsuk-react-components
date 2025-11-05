@@ -11,14 +11,9 @@ export interface LegendProps
   size?: NHSUKSize;
 }
 
-export const Legend: FC<LegendProps> = ({
-  className,
-  children,
-  isPageHeading,
-  headingLevel = 'h1',
-  size,
-  ...rest
-}) => {
+export const Legend: FC<LegendProps> = (params) => {
+  const { className, children, isPageHeading, headingLevel = 'h1', size, ...rest } = params;
+
   if (!children) {
     return null;
   }
@@ -32,7 +27,7 @@ export const Legend: FC<LegendProps> = ({
       )}
       {...rest}
     >
-      {isPageHeading ? (
+      {isPageHeading || params.headingLevel ? (
         <HeadingLevel className="nhsuk-fieldset__heading" headingLevel={headingLevel}>
           {children}
         </HeadingLevel>
