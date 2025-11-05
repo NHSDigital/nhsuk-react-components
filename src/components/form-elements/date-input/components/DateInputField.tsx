@@ -1,7 +1,13 @@
 'use client';
 
 import classNames from 'classnames';
-import { forwardRef, useContext, type ChangeEvent, type ComponentPropsWithoutRef } from 'react';
+import {
+  forwardRef,
+  useContext,
+  type ChangeEvent,
+  type ComponentPropsWithoutRef,
+  type ReactElement,
+} from 'react';
 
 import { DateInputContext, type IDateInputContext } from '../DateInputContext.js';
 
@@ -11,7 +17,7 @@ import { type FormElementProps } from '#util/types/FormTypes.js';
 export interface IndividualDateInputProps
   extends ComponentPropsWithoutRef<'input'>,
     Pick<FormElementProps, 'label' | 'labelProps'> {
-  error?: string | false;
+  error?: string | ReactElement | false;
   inputType: 'day' | 'month' | 'year';
 }
 

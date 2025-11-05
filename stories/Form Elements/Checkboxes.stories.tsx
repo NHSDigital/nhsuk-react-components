@@ -43,6 +43,23 @@ export const Standard: Story = {
   ),
 };
 
+export const WithCaption: Story = {
+  args: {
+    legend: (
+      <>
+        <span className="nhsuk-caption-l">About you</span> What is your nationality?
+      </>
+    ),
+  },
+  render: (args) => (
+    <Checkboxes {...args}>
+      <Checkboxes.Item value="british">British</Checkboxes.Item>
+      <Checkboxes.Item value="irish">Irish</Checkboxes.Item>
+      <Checkboxes.Item value="other">Citizen of another country</Checkboxes.Item>
+    </Checkboxes>
+  ),
+};
+
 export const WithHintText: Story = {
   args: {
     legend: 'How do you want to sign in?',

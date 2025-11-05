@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import { Legend } from '..';
+import { Legend, type LegendProps } from '..';
 
 import { type NHSUKSize } from '#util/types/NHSUKTypes';
 
@@ -39,6 +39,21 @@ describe('Legend', () => {
       expect(headingEl?.tagName).toBe('H1');
     },
   );
+
+  it.each<LegendProps>([
+    { headingLevel: 'h1' },
+    { headingLevel: 'h2' },
+    { headingLevel: 'h3' },
+    { headingLevel: 'h4' },
+  ])('renders as page heading with with custom heading level $headingLevel', (props) => {
+    const { container } = render(<Legend {...props}>Text</Legend>);
+
+    const legendEl = container.querySelector('.nhsuk-fieldset__legend');
+    const headingEl = legendEl?.querySelector('.nhsuk-fieldset__heading');
+
+    expect(legendEl).toHaveTextContent('Text');
+    expect(headingEl?.tagName).toBe(props?.headingLevel?.toUpperCase());
+  });
 
   it('renders null with no children', () => {
     const { container } = render(<Legend />);

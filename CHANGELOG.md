@@ -1,5 +1,14 @@
 # NHS.UK React components
 
+## 6.0.0-beta.4 - 5 November 2025
+
+This version provides support for NHS.UK frontend v10.1 and includes:
+
+- Support for HTML in legend, label and error props
+- Default legend and label to `isPageHeading: true` when `headingLevel` is set
+
+For a full list of changes in this release please refer to the [migration doc](https://github.com/NHSDigital/nhsuk-react-components/blob/main/docs/upgrade-to-6.0.md).
+
 ## 6.0.0-beta.3 - 27 October 2025
 
 This version provides support for NHS.UK frontend v10.1 and includes:

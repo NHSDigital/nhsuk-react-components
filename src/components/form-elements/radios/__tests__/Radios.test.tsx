@@ -7,7 +7,51 @@ import { renderClient, renderServer } from '#util/components';
 describe('Radios', () => {
   it('matches snapshot', async () => {
     const { container } = await renderClient(
-      <Radios id="example" name="example">
+      <Radios
+        legend="Have you changed your name?"
+        legendProps={{ size: 'l' }}
+        hint="This includes changing your last name or spelling your name differently"
+        id="example"
+        name="example"
+      >
+        <Radios.Item id="example-1" value="yes">
+          Yes
+        </Radios.Item>
+        <Radios.Item id="example-2" value="no">
+          No
+        </Radios.Item>
+      </Radios>,
+      { moduleName: 'nhsuk-radios' },
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('matches snapshot with HTML in props', async () => {
+    const { container } = await renderClient(
+      <Radios
+        legend={
+          <>
+            <span className="nhsuk-caption-l">Example</span> Legend text
+          </>
+        }
+        legendProps={{
+          isPageHeading: true,
+          size: 'l',
+        }}
+        hint={
+          <>
+            Hint text <em>with HTML</em>
+          </>
+        }
+        error={
+          <>
+            Error text <em>with HTML</em>
+          </>
+        }
+        id="example"
+        name="example"
+      >
         <Radios.Item id="example-1" value="yes">
           Yes
         </Radios.Item>
@@ -23,7 +67,13 @@ describe('Radios', () => {
 
   it('matches snapshot (via server)', async () => {
     const { container, element } = await renderServer(
-      <Radios id="example" name="example">
+      <Radios
+        legend="Have you changed your name?"
+        legendProps={{ size: 'l' }}
+        hint="This includes changing your last name or spelling your name differently"
+        id="example"
+        name="example"
+      >
         <Radios.Item id="example-1" value="yes">
           Yes
         </Radios.Item>

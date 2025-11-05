@@ -7,7 +7,13 @@ import { renderClient, renderServer } from '#util/components';
 describe('Checkboxes', () => {
   it('matches snapshot', async () => {
     const { container } = await renderClient(
-      <Checkboxes id="example" name="example">
+      <Checkboxes
+        legend="What types of waste do you transport regularly?"
+        legendProps={{ size: 'l' }}
+        hint="Select all that apply"
+        id="example"
+        name="example"
+      >
         <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
         <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
         <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
@@ -20,7 +26,59 @@ describe('Checkboxes', () => {
 
   it('matches snapshot with error message', async () => {
     const { container } = await renderClient(
-      <Checkboxes id="example" name="example" error="Example error">
+      <Checkboxes
+        legend="What types of waste do you transport regularly?"
+        legendProps={{ size: 'l' }}
+        hint="Select all that apply"
+        error="Example error"
+        id="example"
+        name="example"
+      >
+        <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
+        <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
+        <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
+      </Checkboxes>,
+      { moduleName: 'nhsuk-checkboxes' },
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('matches snapshot with HTML in props', async () => {
+    const { container } = await renderClient(
+      <Checkboxes
+        legend={
+          <>
+            <span className="nhsuk-caption-l">Example</span> Legend text
+          </>
+        }
+        legendProps={{
+          isPageHeading: true,
+          size: 'l',
+        }}
+        hint={
+          <>
+            Hint text <em>with HTML</em>
+          </>
+        }
+        error={
+          <>
+            Error text <em>with HTML</em>
+          </>
+        }
+        id="example"
+        name="example"
+      >
+        <Checkboxes.Item
+          value="animal"
+          hint={
+            <>
+              Item hint text <em>with HTML</em>
+            </>
+          }
+        >
+          Waste from animal carcasses
+        </Checkboxes.Item>
         <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
         <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
         <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
@@ -33,7 +91,13 @@ describe('Checkboxes', () => {
 
   it('matches snapshot with an exclusive checkbox', async () => {
     const { container } = await renderClient(
-      <Checkboxes id="example" name="example">
+      <Checkboxes
+        legend="What types of waste do you transport regularly?"
+        legendProps={{ size: 'l' }}
+        hint="Select all that apply"
+        id="example"
+        name="example"
+      >
         <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
         <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
         <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
@@ -50,7 +114,13 @@ describe('Checkboxes', () => {
 
   it('matches snapshot (via server)', async () => {
     const { container, element } = await renderServer(
-      <Checkboxes id="example" name="example">
+      <Checkboxes
+        legend="What types of waste do you transport regularly?"
+        legendProps={{ size: 'l' }}
+        hint="Select all that apply"
+        id="example"
+        name="example"
+      >
         <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
         <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
         <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>

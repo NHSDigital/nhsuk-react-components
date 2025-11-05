@@ -20,6 +20,36 @@ describe('TextInput', () => {
     expect(container).toMatchSnapshot('TextInput');
   });
 
+  it('matches snapshot with HTML in props', async () => {
+    const { container } = await renderClient(
+      <TextInput
+        label={
+          <>
+            <span className="nhsuk-caption-l">Example</span> Label text
+          </>
+        }
+        labelProps={{
+          isPageHeading: true,
+          size: 'l',
+        }}
+        hint={
+          <>
+            Hint text <em>with HTML</em>
+          </>
+        }
+        error={
+          <>
+            Error text <em>with HTML</em>
+          </>
+        }
+        id="nhs-number"
+      />,
+      { className: 'nhsuk-input' },
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('matches snapshot (via server)', async () => {
     const { container, element } = await renderServer(
       <TextInput label="What is your NHS number?" labelProps={{ size: 'l' }} id="nhs-number" />,

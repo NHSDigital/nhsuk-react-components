@@ -44,6 +44,62 @@ exports[`TextInput matches snapshot (via server): server 1`] = `
 </div>
 `;
 
+exports[`TextInput matches snapshot with HTML in props 1`] = `
+<div>
+  <div
+    class="nhsuk-form-group nhsuk-form-group--error"
+  >
+    <h1
+      class="nhsuk-label-wrapper"
+    >
+      <label
+        class="nhsuk-label nhsuk-label--l"
+        for="nhs-number"
+        id="nhs-number--label"
+      >
+        <span
+          class="nhsuk-caption-l"
+        >
+          Example
+        </span>
+         Label text
+      </label>
+    </h1>
+    <div
+      class="nhsuk-hint"
+      id="nhs-number--hint"
+    >
+      Hint text 
+      <em>
+        with HTML
+      </em>
+    </div>
+    <span
+      class="nhsuk-error-message"
+      id="nhs-number--error-message"
+    >
+      <span
+        class="nhsuk-u-visually-hidden"
+      >
+        Error:
+      </span>
+       
+      Error text 
+      <em>
+        with HTML
+      </em>
+    </span>
+    <input
+      aria-describedby="nhs-number--hint nhs-number--error-message"
+      class="nhsuk-input nhsuk-input--error"
+      id="nhs-number"
+      name="nhs-number"
+      type="text"
+    />
+  </div>
+</div>
+`;
+
 exports[`TextInput matches snapshot: TextInput 1`] = `
 <div>
   <div
