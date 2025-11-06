@@ -24,7 +24,7 @@ You can now use smaller versions of the [radios](https://service-manual.nhs.uk/d
 
 ### Numbered pagination component
 
-The [pagination](https://service-manual.nhs.uk/design-system/components/notification-banner) component from NHS.UK frontend v10.1 has been updated to support numbered pagination:
+The [pagination](https://service-manual.nhs.uk/design-system/components/pagination) component from NHS.UK frontend v10.1 has been updated to support numbered pagination:
 
 ```jsx
 <Pagination>
@@ -38,7 +38,7 @@ The [pagination](https://service-manual.nhs.uk/design-system/components/notifica
 
 ### Notification banner component
 
-The [notification banner](https://service-manual.nhs.uk/design-system/components/notification-banner) component from NHS.UK frontend v10 has been added:
+The [notification banner](https://service-manual.nhs.uk/design-system/components/notification-banners) component from NHS.UK frontend v10 has been added:
 
 ```jsx
 <NotificationBanner>
