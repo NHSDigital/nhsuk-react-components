@@ -60,6 +60,36 @@ The [panel](https://service-manual.nhs.uk/design-system/components/panel) compon
 
 This replaces the [list panel component](#list-panel) which was removed in NHS.UK frontend v6.0.0.
 
+### Summary list rows and actions
+
+The [summary list](https://service-manual.nhs.uk/design-system/components/summary-list) component now includes improvements from NHS.UK frontend v9.6.2:
+
+- new props `noBorder` and `noActions` supported at `<SummaryList.Row>` level
+- new child component `<SummaryList.Action>` for row actions
+
+```patch
+  <SummaryList>
+-   <SummaryList.Row>
++   <SummaryList.Row noBorder>
+      <SummaryList.Key>Name</SummaryList.Key>
+      <SummaryList.Value>Karen Francis</SummaryList.Value>
+      <SummaryList.Actions>
+-       <a href="#">
+-         Change<span className="nhsuk-u-visually-hidden"> name</span>
+-       </a>
++       <SummaryList.Action href="#" visuallyHiddenText="name">
++         Change
++       </SummaryList.Action>
+      </SummaryList.Actions>
+    </SummaryList.Row>
+-   <SummaryList.Row>
++   <SummaryList.Row noActions>
+      <SummaryList.Key>Date of birth</SummaryList.Key>
+      <SummaryList.Value>15 March 1984</SummaryList.Value>
+    </SummaryList.Row>
+  </SummaryList>
+```
+
 ### Support for React Server Components (RSC)
 
 All components have been tested as React Server Components (RSC) but due to [multipart namespace component limitations](https://ivicabatinic.from.hr/posts/multipart-namespace-components-addressing-rsc-and-dot-notation-issues) an alternative syntax (without dot notation) can be used as a workaround:
