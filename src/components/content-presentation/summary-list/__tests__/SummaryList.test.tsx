@@ -95,5 +95,20 @@ describe('SummaryList', () => {
       expect(container).toHaveTextContent('Edit example key');
       expect(container).toMatchSnapshot();
     });
+
+    it('forwards refs', () => {
+      const ref = createRef<HTMLAnchorElement>();
+
+      const { container } = render(
+        <SummaryList.Action href="#" visuallyHiddenText="example key" ref={ref}>
+          Edit
+        </SummaryList.Action>,
+      );
+
+      const rowActionEl = container.querySelector('a');
+
+      expect(ref.current).toBe(rowActionEl);
+      expect(ref.current).toHaveAttribute('href', '#');
+    });
   });
 });
