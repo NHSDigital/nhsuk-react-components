@@ -30,6 +30,16 @@ exports[`SummaryList SummaryList.Row matches snapshot 1`] = `
 </div>
 `;
 
+exports[`SummaryList SummaryList.Row matches snapshot without border 1`] = `
+<div>
+  <div
+    class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border"
+  >
+    Row
+  </div>
+</div>
+`;
+
 exports[`SummaryList SummaryList.Value matches snapshot 1`] = `
 <div>
   <dd
@@ -37,6 +47,14 @@ exports[`SummaryList SummaryList.Value matches snapshot 1`] = `
   >
     Value
   </dd>
+</div>
+`;
+
+exports[`SummaryList matches snapshot without border 1`] = `
+<div>
+  <dl
+    class="nhsuk-summary-list nhsuk-summary-list--no-border"
+  />
 </div>
 `;
 
