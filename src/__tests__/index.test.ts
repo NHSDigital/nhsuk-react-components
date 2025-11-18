@@ -113,6 +113,7 @@ describe('Index', () => {
       'SelectOption',
       'SkipLink',
       'SummaryList',
+      'SummaryListAction',
       'SummaryListActions',
       'SummaryListKey',
       'SummaryListRow',
