@@ -4,23 +4,6 @@ import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { SummaryList } from '#components/content-presentation/summary-list/index.js';
 import { BodyText } from '#components/typography/BodyText.js';
 
-/**
- * ## Implementation notes
- *
- * When providing action links, you must include visually hidden text. This means a screen reader user will hear a meaningful action, like "Change name" or "Change date of birth".'
- *
- * Example of an action link:
- *
- * ```jsx
- *  <a href="#">
- *   Change
- *   <span className="nhsuk-u-visually-hidden">
- *     {' '}name
- *   </span>
- * </a>
- * ```
- */
-
 const meta: Meta<typeof SummaryList> = {
   title: 'Content Presentation/SummaryList',
   component: SummaryList,
