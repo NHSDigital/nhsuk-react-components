@@ -10,6 +10,12 @@ describe('SummaryList', () => {
     expect(container).toMatchSnapshot('SummaryList');
   });
 
+  it('matches snapshot without border', () => {
+    const { container } = render(<SummaryList noBorder />);
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('forwards refs', () => {
     const ref = createRef<HTMLDListElement>();
 
@@ -32,6 +38,13 @@ describe('SummaryList', () => {
       const { container } = render(<SummaryList.Row>Row</SummaryList.Row>);
 
       expect(container.textContent).toBe('Row');
+      expect(container).toMatchSnapshot();
+    });
+
+    it('matches snapshot without border', () => {
+      const { container } = render(<SummaryList.Row noBorder>Row</SummaryList.Row>);
+
+      expect(container).toHaveTextContent('Row');
       expect(container).toMatchSnapshot();
     });
   });
