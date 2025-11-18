@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { forwardRef, type ComponentPropsWithoutRef } from 'react';
 
 import {
+  SummaryListAction,
   SummaryListActions,
   SummaryListKey,
   SummaryListRow,
@@ -32,5 +33,6 @@ export const SummaryList = Object.assign(SummaryListComponent, {
   Row: SummaryListRow,
   Key: SummaryListKey,
   Value: SummaryListValue,
+  Action: SummaryListAction,
   Actions: SummaryListActions,
 });
