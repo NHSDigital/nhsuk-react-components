@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { createRef } from 'react';
+import { createRef, type ComponentProps } from 'react';
 
 import { SummaryList } from '..';
 
@@ -94,6 +94,26 @@ describe('SummaryList', () => {
 
       expect(container).toHaveTextContent('Edit example key');
       expect(container).toMatchSnapshot();
+    });
+
+    it('renders as custom element', () => {
+      function CustomLink({ children, href, ...rest }: ComponentProps<'a'>) {
+        return (
+          <a href={href} {...rest} data-custom-link="true">
+            {children}
+          </a>
+        );
+      }
+
+      const { container } = render(
+        <SummaryList.Action href="#" visuallyHiddenText="example key" asElement={CustomLink}>
+          Edit
+        </SummaryList.Action>,
+      );
+
+      const rowActionEl = container.querySelector('a');
+
+      expect(rowActionEl?.dataset).toHaveProperty('customLink', 'true');
     });
 
     it('forwards refs', () => {
