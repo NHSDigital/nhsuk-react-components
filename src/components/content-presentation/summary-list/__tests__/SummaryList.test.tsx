@@ -37,7 +37,7 @@ describe('SummaryList', () => {
     it('matches snapshot', () => {
       const { container } = render(<SummaryList.Row>Row</SummaryList.Row>);
 
-      expect(container.textContent).toBe('Row');
+      expect(container).toHaveTextContent('Row');
       expect(container).toMatchSnapshot();
     });
 
@@ -53,7 +53,7 @@ describe('SummaryList', () => {
     it('matches snapshot', () => {
       const { container } = render(<SummaryList.Key>Key</SummaryList.Key>);
 
-      expect(container.textContent).toBe('Key');
+      expect(container).toHaveTextContent('Key');
       expect(container).toMatchSnapshot();
     });
   });
@@ -62,7 +62,7 @@ describe('SummaryList', () => {
     it('matches snapshot', () => {
       const { container } = render(<SummaryList.Value>Value</SummaryList.Value>);
 
-      expect(container.textContent).toBe('Value');
+      expect(container).toHaveTextContent('Value');
       expect(container).toMatchSnapshot();
     });
   });
@@ -71,7 +71,7 @@ describe('SummaryList', () => {
     it('matches snapshot', () => {
       const { container } = render(<SummaryList.Actions>Actions</SummaryList.Actions>);
 
-      expect(container.textContent).toBe('Actions');
+      expect(container).toHaveTextContent('Actions');
       expect(container).toMatchSnapshot();
     });
   });
