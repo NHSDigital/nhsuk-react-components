@@ -15,8 +15,7 @@ import { Label } from '#components/form-elements/label/index.js';
 import { type FormElementProps } from '#util/types/FormTypes.js';
 
 export interface IndividualDateInputProps
-  extends ComponentPropsWithoutRef<'input'>,
-    Pick<FormElementProps, 'label' | 'labelProps'> {
+  extends ComponentPropsWithoutRef<'input'>, Pick<FormElementProps, 'label' | 'labelProps'> {
   error?: string | ReactElement | false;
   inputType: 'day' | 'month' | 'year';
 }

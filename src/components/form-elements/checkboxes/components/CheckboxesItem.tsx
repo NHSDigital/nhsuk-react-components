@@ -18,7 +18,8 @@ import { Label } from '#components/form-elements/label/index.js';
 import { type ComponentPropsWithDataAttributes, type FormElementProps } from '#util/types/index.js';
 
 export interface CheckboxesItemProps
-  extends ComponentPropsWithoutRef<'input'>,
+  extends
+    ComponentPropsWithoutRef<'input'>,
     Pick<FormElementProps, 'hint' | 'hintProps' | 'labelProps'> {
   conditional?: ReactNode;
   forceShowConditional?: boolean;

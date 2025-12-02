@@ -5,8 +5,7 @@ import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingL
 import { type NHSUKSize } from '#util/types/NHSUKTypes.js';
 
 export interface LegendProps
-  extends ComponentPropsWithoutRef<'legend'>,
-    Pick<HeadingLevelProps, 'headingLevel'> {
+  extends ComponentPropsWithoutRef<'legend'>, Pick<HeadingLevelProps, 'headingLevel'> {
   isPageHeading?: boolean;
   size?: NHSUKSize;
 }

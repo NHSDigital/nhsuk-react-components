@@ -15,7 +15,8 @@ import { FormGroup } from '#components/utils/index.js';
 import { type FormElementProps } from '#util/types/FormTypes.js';
 
 export interface CharacterCountProps
-  extends ComponentPropsWithoutRef<'textarea'>,
+  extends
+    ComponentPropsWithoutRef<'textarea'>,
     Omit<FormElementProps, 'fieldsetProps' | 'legend' | 'legendProps'> {
   maxLength?: number;
   maxWords?: number;
