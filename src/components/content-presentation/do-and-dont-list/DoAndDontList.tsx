@@ -9,8 +9,7 @@ import { DoAndDontListItem } from './components/index.js';
 import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
 
 export interface DoAndDontListProps
-  extends ComponentPropsWithoutRef<'div'>,
-    Pick<HeadingLevelProps, 'headingLevel'> {
+  extends ComponentPropsWithoutRef<'div'>, Pick<HeadingLevelProps, 'headingLevel'> {
   listType: DoAndDontListType;
   heading?: string;
 }

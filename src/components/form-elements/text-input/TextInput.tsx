@@ -8,7 +8,8 @@ import { type FormElementProps } from '#util/types/FormTypes.js';
 import { type InputWidth } from '#util/types/NHSUKTypes.js';
 
 export interface TextInputProps
-  extends ComponentPropsWithoutRef<'input'>,
+  extends
+    ComponentPropsWithoutRef<'input'>,
     Omit<FormElementProps, 'fieldsetProps' | 'legend' | 'legendProps'> {
   width?: InputWidth;
   prefix?: string;

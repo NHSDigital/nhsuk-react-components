@@ -18,7 +18,8 @@ import { Label } from '#components/form-elements/label/index.js';
 import { type FormElementProps } from '#util/types/FormTypes.js';
 
 export interface RadiosItemProps
-  extends ComponentPropsWithoutRef<'input'>,
+  extends
+    ComponentPropsWithoutRef<'input'>,
     Pick<FormElementProps, 'hint' | 'hintProps' | 'labelProps'> {
   conditional?: ReactNode;
   forceShowConditional?: boolean;

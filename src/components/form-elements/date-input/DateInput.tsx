@@ -23,8 +23,10 @@ export type DateInputValue = {
   year: string;
 };
 
-export interface DateInputChangeEvent
-  extends Omit<ChangeEvent<DateInputElement>, 'target' | 'currentTarget'> {
+export interface DateInputChangeEvent extends Omit<
+  ChangeEvent<DateInputElement>,
+  'target' | 'currentTarget'
+> {
   target: DateInputElement;
   currentTarget: DateInputElement;
 }
@@ -35,7 +37,8 @@ export interface DateInputElement extends Omit<HTMLInputElement, 'value' | 'onCh
 }
 
 export interface DateInputProps
-  extends Omit<ComponentPropsWithoutRef<'div'>, 'defaultValue' | 'onChange'>,
+  extends
+    Omit<ComponentPropsWithoutRef<'div'>, 'defaultValue' | 'onChange'>,
     Omit<FormElementProps, 'label' | 'labelProps'> {
   value?: Partial<DateInputValue>;
   defaultValue?: Partial<DateInputValue>;

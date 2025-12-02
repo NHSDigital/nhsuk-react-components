@@ -12,8 +12,7 @@ const CellOutsideOfSectionWarning =
   'Table.Cell used outside of a Table.Head or Table.Body component. Unable to determine section type from context.';
 
 export interface TableCellProps
-  extends ComponentPropsWithoutRef<'th'>,
-    ComponentPropsWithoutRef<'td'> {
+  extends ComponentPropsWithoutRef<'th'>, ComponentPropsWithoutRef<'td'> {
   index?: number;
   format?: 'numeric';
 }

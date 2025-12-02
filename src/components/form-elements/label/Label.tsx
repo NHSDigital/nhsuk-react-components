@@ -5,8 +5,7 @@ import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingL
 import { type NHSUKSize } from '#util/types/NHSUKTypes.js';
 
 export interface LabelProps
-  extends ComponentPropsWithoutRef<'label'>,
-    Pick<HeadingLevelProps, 'headingLevel'> {
+  extends ComponentPropsWithoutRef<'label'>, Pick<HeadingLevelProps, 'headingLevel'> {
   isPageHeading?: boolean;
   size?: NHSUKSize;
 }

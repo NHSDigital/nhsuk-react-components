@@ -19,8 +19,7 @@ import { generateRandomName } from '#util/tools/index.js';
 import { type FormElementProps } from '#util/types/FormTypes.js';
 
 export interface RadiosProps
-  extends ComponentPropsWithoutRef<'div'>,
-    Omit<FormElementProps, 'label' | 'labelProps'> {
+  extends ComponentPropsWithoutRef<'div'>, Omit<FormElementProps, 'label' | 'labelProps'> {
   idPrefix?: string;
   inline?: boolean;
   small?: boolean;
