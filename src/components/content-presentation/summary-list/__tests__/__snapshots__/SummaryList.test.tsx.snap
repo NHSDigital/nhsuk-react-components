@@ -1,11 +1,48 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
+exports[`SummaryList SummaryList.Action matches snapshot 1`] = `
+<div>
+  <a
+    href="#"
+  >
+    Edit
+    <span
+      class="nhsuk-u-visually-hidden"
+    >
+       
+      example key
+    </span>
+  </a>
+</div>
+`;
+
 exports[`SummaryList SummaryList.Actions matches snapshot 1`] = `
 <div>
   <dd
     class="nhsuk-summary-list__actions"
   >
-    Actions
+    <a
+      href="#"
+    >
+      Edit
+      <span
+        class="nhsuk-u-visually-hidden"
+      >
+         
+        example key
+      </span>
+    </a>
+    <a
+      href="#"
+    >
+      Delete
+      <span
+        class="nhsuk-u-visually-hidden"
+      >
+         
+        example key
+      </span>
+    </a>
   </dd>
 </div>
 `;
@@ -15,7 +52,7 @@ exports[`SummaryList SummaryList.Key matches snapshot 1`] = `
   <dt
     class="nhsuk-summary-list__key"
   >
-    Key
+    Example key
   </dt>
 </div>
 `;
@@ -30,13 +67,31 @@ exports[`SummaryList SummaryList.Row matches snapshot 1`] = `
 </div>
 `;
 
+exports[`SummaryList SummaryList.Row matches snapshot without border 1`] = `
+<div>
+  <div
+    class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border"
+  >
+    Row
+  </div>
+</div>
+`;
+
 exports[`SummaryList SummaryList.Value matches snapshot 1`] = `
 <div>
   <dd
     class="nhsuk-summary-list__value"
   >
-    Value
+    Example value
   </dd>
+</div>
+`;
+
+exports[`SummaryList matches snapshot without border 1`] = `
+<div>
+  <dl
+    class="nhsuk-summary-list nhsuk-summary-list--no-border"
+  />
 </div>
 `;
 

@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { createRef } from 'react';
+import { createRef, type ComponentProps } from 'react';
 
 import { SummaryList } from '..';
 
@@ -8,6 +8,12 @@ describe('SummaryList', () => {
     const { container } = render(<SummaryList />);
 
     expect(container).toMatchSnapshot('SummaryList');
+  });
+
+  it('matches snapshot without border', () => {
+    const { container } = render(<SummaryList noBorder />);
+
+    expect(container).toMatchSnapshot();
   });
 
   it('forwards refs', () => {
@@ -31,35 +37,98 @@ describe('SummaryList', () => {
     it('matches snapshot', () => {
       const { container } = render(<SummaryList.Row>Row</SummaryList.Row>);
 
-      expect(container.textContent).toBe('Row');
+      expect(container).toHaveTextContent('Row');
+      expect(container).toMatchSnapshot();
+    });
+
+    it('matches snapshot without border', () => {
+      const { container } = render(<SummaryList.Row noBorder>Row</SummaryList.Row>);
+
+      expect(container).toHaveTextContent('Row');
       expect(container).toMatchSnapshot();
     });
   });
 
   describe('SummaryList.Key', () => {
     it('matches snapshot', () => {
-      const { container } = render(<SummaryList.Key>Key</SummaryList.Key>);
+      const { container } = render(<SummaryList.Key>Example key</SummaryList.Key>);
 
-      expect(container.textContent).toBe('Key');
+      expect(container).toHaveTextContent('Example key');
       expect(container).toMatchSnapshot();
     });
   });
 
   describe('SummaryList.Value', () => {
     it('matches snapshot', () => {
-      const { container } = render(<SummaryList.Value>Value</SummaryList.Value>);
+      const { container } = render(<SummaryList.Value>Example value</SummaryList.Value>);
 
-      expect(container.textContent).toBe('Value');
+      expect(container).toHaveTextContent('Example value');
       expect(container).toMatchSnapshot();
     });
   });
 
   describe('SummaryList.Actions', () => {
     it('matches snapshot', () => {
-      const { container } = render(<SummaryList.Actions>Actions</SummaryList.Actions>);
+      const { container } = render(
+        <SummaryList.Actions>
+          <SummaryList.Action href="#" visuallyHiddenText="example key">
+            Edit
+          </SummaryList.Action>
+          <SummaryList.Action href="#" visuallyHiddenText="example key">
+            Delete
+          </SummaryList.Action>
+        </SummaryList.Actions>,
+      );
 
-      expect(container.textContent).toBe('Actions');
       expect(container).toMatchSnapshot();
+    });
+  });
+
+  describe('SummaryList.Action', () => {
+    it('matches snapshot', () => {
+      const { container } = render(
+        <SummaryList.Action href="#" visuallyHiddenText="example key">
+          Edit
+        </SummaryList.Action>,
+      );
+
+      expect(container).toHaveTextContent('Edit example key');
+      expect(container).toMatchSnapshot();
+    });
+
+    it('renders as custom element', () => {
+      function CustomLink({ children, href, ...rest }: ComponentProps<'a'>) {
+        return (
+          <a href={href} {...rest} data-custom-link="true">
+            {children}
+          </a>
+        );
+      }
+
+      const { container } = render(
+        <SummaryList.Action href="#" visuallyHiddenText="example key" asElement={CustomLink}>
+          Edit
+        </SummaryList.Action>,
+      );
+
+      const rowActionEl = container.querySelector('a');
+
+      expect(rowActionEl?.dataset).toHaveProperty('customLink', 'true');
+    });
+
+    it('forwards refs', () => {
+      const ref = createRef<HTMLAnchorElement>();
+
+      const { container } = render(
+        <SummaryList.Action href="#" visuallyHiddenText="example key" ref={ref}>
+          Edit
+        </SummaryList.Action>,
+      );
+
+      const rowActionEl = container.querySelector('a');
+
+      expect(ref.current).toBe(rowActionEl);
+      expect(ref.current).toHaveAttribute('href', '#');
     });
   });
 });
