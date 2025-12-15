@@ -13,6 +13,7 @@ updates:
           - '@rollup/*'
           - '@types/react'
           - '@types/react-*'
+          - 'baseline-browser-mapping'
           - 'caniuse-lite'
           - 'classnames'
           - 'nhsuk-frontend'
@@ -69,6 +70,7 @@ updates:
 
       # Include indirect browser data updates
       # https://caniuse.com
+      - dependency-name: baseline-browser-mapping
       - dependency-name: caniuse-lite
 
   # Update GitHub Actions
