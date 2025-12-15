@@ -33,11 +33,7 @@ const config: StorybookConfig = {
       esbuild: {
         jsx: 'automatic',
       },
-      plugins: [
-        tsConfigPaths({
-          projects: ['./tsconfig.dev.json', './tsconfig.build.json'],
-        }),
-      ],
+      plugins: [tsConfigPaths()],
     } satisfies InlineConfig);
   },
 };
