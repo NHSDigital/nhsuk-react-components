@@ -61,6 +61,8 @@ updates:
 
     schedule:
       interval: monthly
+    cooldown:
+      default-days: 7
 
     versioning-strategy: increase
 
@@ -79,3 +81,5 @@ updates:
 
     schedule:
       interval: 'monthly'
+    cooldown:
+      default-days: 7
