@@ -14,11 +14,16 @@ import { DateInputContext, type IDateInputContext } from '../DateInputContext.js
 import { Label } from '#components/form-elements/label/index.js';
 import { type FormElementProps } from '#util/types/FormTypes.js';
 
-export interface IndividualDateInputProps
-  extends ComponentPropsWithoutRef<'input'>, Pick<FormElementProps, 'label' | 'labelProps'> {
+export interface IndividualDateInputElementProps extends ComponentPropsWithoutRef<'input'> {
   error?: string | ReactElement | false;
   inputType: 'day' | 'month' | 'year';
 }
+
+export type IndividualDateInputProps = IndividualDateInputElementProps &
+  Omit<
+    FormElementProps<IndividualDateInputElementProps, 'input'>,
+    'error' | 'fieldsetProps' | 'legend' | 'legendProps'
+  >;
 
 const labels: Record<'day' | 'month' | 'year', string> = {
   day: 'Day',

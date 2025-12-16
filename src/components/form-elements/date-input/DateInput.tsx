@@ -36,14 +36,20 @@ export interface DateInputElement extends Omit<HTMLInputElement, 'value' | 'onCh
   onChange?: EventHandler<DateInputChangeEvent>;
 }
 
-export interface DateInputProps
-  extends
-    Omit<ComponentPropsWithoutRef<'div'>, 'defaultValue' | 'onChange'>,
-    Omit<FormElementProps, 'label' | 'labelProps'> {
+export interface DateInputElementProps extends Omit<
+  ComponentPropsWithoutRef<'div'>,
+  'defaultValue' | 'onChange'
+> {
   value?: Partial<DateInputValue>;
   defaultValue?: Partial<DateInputValue>;
   onChange?: EventHandler<DateInputChangeEvent>;
 }
+
+export type DateInputProps = DateInputElementProps &
+  Omit<
+    FormElementProps<Omit<ComponentPropsWithoutRef<'div'>, 'defaultValue' | 'onChange'>, 'div'>,
+    'label' | 'labelProps'
+  >;
 
 export type DateInputType = 'day' | 'month' | 'year';
 
@@ -78,7 +84,7 @@ const DateInputComponent = forwardRef<HTMLDivElement, DateInputProps>(
     };
 
     return (
-      <FormGroup<Omit<DateInputProps, 'value' | 'defaultValue'>>
+      <FormGroup<Omit<DateInputProps, 'value' | 'defaultValue'>, 'div'>
         formGroupProps={{ ...formGroupProps, ref: moduleRef }}
         fieldsetProps={{ role: 'group' }}
         inputType="dateinput"

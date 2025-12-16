@@ -6,6 +6,7 @@ import {
   useEffect,
   useState,
   type ComponentPropsWithoutRef,
+  type ElementType,
   type JSX,
   type ReactNode,
 } from 'react';
@@ -19,58 +20,34 @@ import { HintText } from '#components/form-elements/hint-text/index.js';
 import { Label } from '#components/form-elements/label/index.js';
 import { Legend } from '#components/form-elements/legend/index.js';
 import { generateRandomID } from '#util/tools/index.js';
-import { type FormElementProps } from '#util/types/FormTypes.js';
+import { type FormElementProps, type FormElementRenderProps } from '#util/types/FormTypes.js';
 
-type ExcludedProps =
-  | Extract<
-      keyof FormElementProps,
-      | 'legend'
-      | 'legendProps'
-      | 'fieldsetProps'
-      | 'hint'
-      | 'hintProps'
-      | 'label'
-      | 'labelProps'
-      | 'errorProps'
-      | 'disableErrorLine'
-    >
-  | 'inputType';
-
-type BaseFormElementRenderProps = ComponentPropsWithoutRef<
-  'div' | 'input' | 'select' | 'textarea'
-> &
-  Pick<FormElementProps, 'error'>;
-
-export type FormElementRenderProps<T> = Omit<T, ExcludedProps> & {
-  id: string;
-  name: string;
+export type FormGroupProps<
+  P extends ComponentPropsWithoutRef<T>,
+  T extends ElementType,
+> = FormElementProps<P, T> & {
+  children: (props: FormElementRenderProps<P, T>) => ReactNode;
+  inputType?: 'input' | 'radios' | 'select' | 'checkboxes' | 'dateinput' | 'textarea';
 };
 
-export type FormGroupProps<T> = FormElementProps & {
-  children: (props: FormElementRenderProps<T>) => ReactNode;
-  inputType: 'input' | 'radios' | 'select' | 'checkboxes' | 'dateinput' | 'textarea';
-};
-
-export const FormGroup = <T extends BaseFormElementRenderProps>(
-  props: FormGroupProps<T>,
-): JSX.Element => {
-  const {
-    children,
-    hint,
-    label,
-    legend,
-    legendProps,
-    fieldsetProps,
-    labelProps,
-    error,
-    hintProps,
-    errorProps,
-    formGroupProps,
-    id,
-    name,
-    ...rest
-  } = props;
-
+export const FormGroup = <P extends ComponentPropsWithoutRef<T>, T extends ElementType>({
+  children,
+  inputType = 'input',
+  hint,
+  label,
+  legend,
+  legendProps,
+  fieldsetProps,
+  labelProps,
+  error,
+  hintProps,
+  errorProps,
+  formGroupProps,
+  inputWrapperProps,
+  id,
+  name,
+  ...rest
+}: FormGroupProps<P, T>): JSX.Element => {
   const [generatedID] = useState<string>(generateRandomID(inputType));
   const { registerComponent, passError } = useContext<IFormGroupContext>(FormGroupContext);
   const { disableErrorFromComponents } = useFormContext();
@@ -100,12 +77,15 @@ export const FormGroup = <T extends BaseFormElementRenderProps>(
   // Update aria-describedby with new IDs
   ariaDescribedBy = ariaDescribedByIds.join(' ') || undefined;
 
+  const { beforeInput, afterInput, ...formGroupRest } = formGroupProps ?? {};
+
   const childProps = {
     ...rest,
+    error,
     'id': elementID,
     'name': name ?? elementID,
     'aria-describedby': !hasFieldset ? ariaDescribedBy : undefined,
-  } as FormElementRenderProps<T>;
+  } as FormElementRenderProps<P, T>;
 
   useEffect(() => {
     passError(elementID, disableErrorFromComponents ? false : Boolean(error));
@@ -117,13 +97,21 @@ export const FormGroup = <T extends BaseFormElementRenderProps>(
     return () => registerComponent(elementID, true);
   }, [elementID, registerComponent]);
 
+  const input = (
+    <>
+      {beforeInput?.(childProps)}
+      {children(childProps)}
+      {afterInput?.(childProps)}
+    </>
+  );
+
   return (
     <div
-      {...formGroupProps}
+      {...formGroupRest}
       className={classNames(
         'nhsuk-form-group',
         { 'nhsuk-form-group--error': hasError },
-        formGroupProps?.className,
+        formGroupRest?.className,
       )}
     >
       {hasFieldset ? (
@@ -135,7 +123,7 @@ export const FormGroup = <T extends BaseFormElementRenderProps>(
           <ErrorMessage id={errorID} {...errorProps}>
             {error}
           </ErrorMessage>
-          {children(childProps)}
+          {input}
         </Fieldset>
       ) : (
         <>
@@ -148,7 +136,14 @@ export const FormGroup = <T extends BaseFormElementRenderProps>(
           <ErrorMessage id={errorID} {...errorProps}>
             {error}
           </ErrorMessage>
-          {children(childProps)}
+          {(inputType === 'input' || inputType === 'select') &&
+          !!(beforeInput || afterInput || inputWrapperProps) ? (
+            <div className="nhsuk-input-wrapper" {...inputWrapperProps}>
+              {input}
+            </div>
+          ) : (
+            input
+          )}
         </>
       )}
     </div>

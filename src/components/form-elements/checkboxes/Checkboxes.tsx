@@ -18,11 +18,13 @@ import { FormGroup } from '#components/utils/index.js';
 import { generateRandomName } from '#util/tools/index.js';
 import { type FormElementProps } from '#util/types/FormTypes.js';
 
-export interface CheckboxesProps
-  extends ComponentPropsWithoutRef<'div'>, Omit<FormElementProps, 'label' | 'labelProps'> {
+export interface CheckboxesElementProps extends ComponentPropsWithoutRef<'div'> {
   idPrefix?: string;
   small?: boolean;
 }
+
+export type CheckboxesProps = CheckboxesElementProps &
+  Omit<FormElementProps<CheckboxesElementProps, 'div'>, 'label' | 'labelProps'>;
 
 const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, forwardedRef) => {
   const { children, idPrefix, ...rest } = props;
@@ -82,7 +84,7 @@ const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, 
   }
 
   return (
-    <FormGroup<CheckboxesProps> inputType="checkboxes" {...rest}>
+    <FormGroup<CheckboxesProps, 'div'> inputType="checkboxes" {...rest}>
       {({ className, small, name, id, idPrefix, error, ...restRenderProps }) => {
         resetCheckboxIds();
         const contextValue: ICheckboxesContext = {

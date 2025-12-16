@@ -1,14 +1,15 @@
 import { axe, toHaveNoViolations } from 'jest-axe';
 
-import { FormGroup, type FormElementRenderProps } from '..';
+import { FormGroup } from '..';
 
 import { type TextInputProps } from '#components/form-elements';
 import { renderClient, renderServer } from '#util/components';
+import type { FormElementRenderProps } from '#util/types/FormTypes';
 
 expect.extend(toHaveNoViolations);
 
 describe('FormGroup', () => {
-  let renderProps: FormElementRenderProps<TextInputProps> | undefined;
+  let renderProps: FormElementRenderProps<TextInputProps, 'input'> | undefined;
 
   beforeEach(() => {
     renderProps = undefined;
@@ -16,9 +17,7 @@ describe('FormGroup', () => {
 
   it('matches snapshot', async () => {
     const { container } = await renderClient(
-      <FormGroup<TextInputProps> inputType="input" id="testId">
-        {(props) => <input {...props} />}
-      </FormGroup>,
+      <FormGroup<TextInputProps, 'input'> id="testId">{(props) => <input {...props} />}</FormGroup>,
       { className: 'nhsuk-form-group' },
     );
 
@@ -27,9 +26,7 @@ describe('FormGroup', () => {
 
   it('matches snapshot (via server)', async () => {
     const { container, element } = await renderServer(
-      <FormGroup<TextInputProps> inputType="input" id="testId">
-        {(props) => <input {...props} />}
-      </FormGroup>,
+      <FormGroup<TextInputProps, 'input'> id="testId">{(props) => <input {...props} />}</FormGroup>,
       { className: 'nhsuk-form-group' },
     );
 
@@ -46,7 +43,7 @@ describe('FormGroup', () => {
 
   it('generates a random ID for the input', async () => {
     await renderClient(
-      <FormGroup<TextInputProps> inputType="input">
+      <FormGroup<TextInputProps, 'input'>>
         {(props) => {
           renderProps = props;
           return <input {...props} />;
@@ -61,7 +58,7 @@ describe('FormGroup', () => {
 
   it('allows passing of custom IDs', async () => {
     await renderClient(
-      <FormGroup<TextInputProps> inputType="input" id="TestID2ElectricBoogaloo">
+      <FormGroup<TextInputProps, 'input'> id="TestID2ElectricBoogaloo">
         {(props) => {
           renderProps = props;
           return <input {...props} />;
@@ -75,7 +72,7 @@ describe('FormGroup', () => {
 
   it('passes correct props for hint (generated id)', async () => {
     const { container } = await renderClient(
-      <FormGroup<TextInputProps> inputType="input" hint="This is a test hint">
+      <FormGroup<TextInputProps, 'input'> hint="This is a test hint">
         {(props) => {
           renderProps = props;
           return <input {...props} />;
@@ -96,7 +93,7 @@ describe('FormGroup', () => {
 
   it('passes correct props for hint (custom id)', async () => {
     const { container } = await renderClient(
-      <FormGroup<TextInputProps> inputType="input" hint="This is a test hint" id="testID">
+      <FormGroup<TextInputProps, 'input'> hint="This is a test hint" id="testID">
         {(props) => {
           renderProps = props;
           return <input {...props} />;
@@ -116,7 +113,7 @@ describe('FormGroup', () => {
 
   it('passes correct props for label (generated id)', async () => {
     const { container } = await renderClient(
-      <FormGroup<TextInputProps> inputType="input" label="This is a test label">
+      <FormGroup<TextInputProps, 'input'> label="This is a test label">
         {(props) => {
           renderProps = props;
           return <input {...props} />;
@@ -136,8 +133,7 @@ describe('FormGroup', () => {
 
   it('passes correct props for label (custom id)', async () => {
     const { container } = await renderClient(
-      <FormGroup<TextInputProps>
-        inputType="input"
+      <FormGroup<TextInputProps, 'input'>
         label="This is a test label"
         labelProps={{ title: 'TestTitle' }}
         id="testID"
@@ -160,8 +156,7 @@ describe('FormGroup', () => {
 
   it('passes correct props for error (generated id)', async () => {
     const { container } = await renderClient(
-      <FormGroup<TextInputProps>
-        inputType="input"
+      <FormGroup<TextInputProps, 'input'>
         error="This is a test error"
         errorProps={{ title: 'TestTitle' }}
       >
@@ -190,8 +185,7 @@ describe('FormGroup', () => {
 
   it('passes correct props for error (custom id)', async () => {
     const { container } = await renderClient(
-      <FormGroup<TextInputProps>
-        inputType="input"
+      <FormGroup<TextInputProps, 'input'>
         error="This is a test error"
         errorProps={{ title: 'TestTitle' }}
         id="testID"
@@ -221,7 +215,7 @@ describe('FormGroup', () => {
   describe('applies the correct classes when errored', () => {
     it('string component', async () => {
       const { container } = await renderClient(
-        <FormGroup<TextInputProps> inputType="input" error="Oh no there's an error!">
+        <FormGroup<TextInputProps, 'input'> error="Oh no there's an error!">
           {({ error, ...rest }) => <input {...rest} />}
         </FormGroup>,
         { className: 'nhsuk-form-group' },
@@ -240,8 +234,7 @@ describe('FormGroup', () => {
   it('should produce an accessible component', async () => {
     const { container } = await renderClient(
       <main>
-        <FormGroup<TextInputProps>
-          inputType="input"
+        <FormGroup<TextInputProps, 'input'>
           error="This is an error"
           hint="This is a hint"
           label="Form Label"
@@ -258,8 +251,7 @@ describe('FormGroup', () => {
 
   it('should add hint ID and error ID to the aria-describedby of the input', async () => {
     const { container } = await renderClient(
-      <FormGroup<TextInputProps>
-        inputType="input"
+      <FormGroup<TextInputProps, 'input'>
         id="error-and-hint"
         error="This is an error"
         hint="This is a hint"
@@ -277,9 +269,7 @@ describe('FormGroup', () => {
 
   it('should have no aria-describedby when there is no hint or label', async () => {
     const { container } = await renderClient(
-      <FormGroup<TextInputProps> inputType="input">
-        {({ error, ...rest }) => <input {...rest} />}
-      </FormGroup>,
+      <FormGroup<TextInputProps, 'input'>>{({ error, ...rest }) => <input {...rest} />}</FormGroup>,
       { className: 'nhsuk-form-group' },
     );
 

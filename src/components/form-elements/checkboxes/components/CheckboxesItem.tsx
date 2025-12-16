@@ -17,15 +17,18 @@ import { HintText } from '#components/form-elements/hint-text/index.js';
 import { Label } from '#components/form-elements/label/index.js';
 import { type ComponentPropsWithDataAttributes, type FormElementProps } from '#util/types/index.js';
 
-export interface CheckboxesItemProps
-  extends
-    ComponentPropsWithoutRef<'input'>,
-    Pick<FormElementProps, 'hint' | 'hintProps' | 'labelProps'> {
+export interface CheckboxesItemElementProps extends ComponentPropsWithoutRef<'input'> {
   conditional?: ReactNode;
   forceShowConditional?: boolean;
   conditionalProps?: ComponentPropsWithRef<'div'>;
   exclusive?: boolean;
 }
+
+export type CheckboxesItemProps = CheckboxesItemElementProps &
+  Omit<
+    FormElementProps<CheckboxesItemElementProps, 'input'>,
+    'fieldsetProps' | 'label' | 'legend' | 'legendProps'
+  >;
 
 export const CheckboxesItem = forwardRef<HTMLInputElement, CheckboxesItemProps>(
   (props, forwardedRef) => {
