@@ -101,6 +101,7 @@ describe('Index', () => {
       'PaginationLinkText',
       'Panel',
       'PanelTitle',
+      'PasswordInput',
       'Radios',
       'RadiosContext',
       'RadiosDivider',
