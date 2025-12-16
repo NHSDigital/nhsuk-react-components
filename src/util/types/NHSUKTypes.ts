@@ -6,7 +6,7 @@ export type InputWidth = '2' | '3' | '4' | '5' | '10' | '20' | '30' | 2 | 3 | 4 
 
 export type CareCardType = 'non-urgent' | 'urgent' | 'emergency';
 
-export type CardType = 'feature' | 'primary' | 'secondary' | CareCardType;
+export type CardType = 'clickable' | 'feature' | 'primary' | 'secondary' | CareCardType;
 
 export type ColWidth =
   | 'full'
