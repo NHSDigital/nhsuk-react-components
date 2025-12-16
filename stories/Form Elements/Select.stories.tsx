@@ -58,6 +58,18 @@ export const SelectWithErrorAndHintText: Story = {
   },
 };
 
+export const SelectWithDivider: Story = {
+  render: (args) => (
+    <Select {...args}>
+      <Select.Option value="first-name-ascending">First name (A to Z)</Select.Option>
+      <Select.Option value="first-name-descending">First name (Z to A)</Select.Option>
+      <Select.Divider />
+      <Select.Option value="last-name-ascending">Last name (A to Z)</Select.Option>
+      <Select.Option value="last-name-descending">Last name (Z to A)</Select.Option>
+    </Select>
+  ),
+};
+
 export const SelectWithButton: Story = {
   args: {
     formGroupProps: {
