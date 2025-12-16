@@ -9,6 +9,7 @@ export * from './form/index.js';
 export * from './hint-text/index.js';
 export * from './label/index.js';
 export * from './legend/index.js';
+export * from './password-input/index.js';
 export * from './radios/index.js';
 export * from './select/index.js';
 export * from './text-input/index.js';
