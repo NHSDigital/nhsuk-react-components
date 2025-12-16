@@ -1,5 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
+import { Button } from '#components/form-elements/button/Button.js';
 import { Select } from '#components/form-elements/select/index.js';
 
 const meta: Meta<typeof Select> = {
@@ -54,5 +55,30 @@ export const SelectWithErrorAndHintText: Story = {
   args: {
     hint: 'This can be different to where you went before',
     error: 'Select a location',
+  },
+};
+
+export const SelectWithButton: Story = {
+  args: {
+    formGroupProps: {
+      afterInput: () => (
+        <Button secondary small>
+          Search
+        </Button>
+      ),
+    },
+  },
+};
+
+export const SelectWithButtonAndError: Story = {
+  args: {
+    error: 'Select a location',
+    formGroupProps: {
+      afterInput: () => (
+        <Button secondary small>
+          Search
+        </Button>
+      ),
+    },
   },
 };
