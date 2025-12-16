@@ -23,6 +23,7 @@ export const Standard: Story = {};
 export const WithHintText: Story = {
   args: {
     label: 'What is your NHS number?',
+    code: true,
     inputMode: 'numeric',
     spellCheck: false,
     hint: (
@@ -38,6 +39,7 @@ export const WithError: Story = {
   args: {
     label: 'What is your NHS number?',
     error: 'Enter NHS number',
+    code: true,
     inputMode: 'numeric',
     spellCheck: false,
   },
@@ -47,6 +49,7 @@ export const WithErrorAndHintText: Story = {
   args: {
     label: 'What is your NHS number?',
     error: 'Enter NHS number',
+    code: true,
     inputMode: 'numeric',
     spellCheck: false,
     hint: (
@@ -62,6 +65,7 @@ export const WithWidthModifier: Story = {
   args: {
     label: 'What is your NHS number?',
     width: 10,
+    code: true,
     inputMode: 'numeric',
     spellCheck: false,
     hint: (
