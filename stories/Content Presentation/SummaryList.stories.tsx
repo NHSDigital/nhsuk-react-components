@@ -1,74 +1,55 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
 import { SummaryList } from '#components/content-presentation/summary-list/index.js';
 import { BodyText } from '#components/typography/BodyText.js';
 
-/**
- * ## Implementation notes
- *
- * When providing action links, you must include visually hidden text. This means a screen reader user will hear a meaningful action, like "Change name" or "Change date of birth".'
- *
- * Example of an action link:
- *
- * ```jsx
- *  <a href="#">
- *   Change
- *   <span className="nhsuk-u-visually-hidden">
- *     {' '}name
- *   </span>
- * </a>
- * ```
- */
-
 const meta: Meta<typeof SummaryList> = {
   title: 'Content Presentation/SummaryList',
   component: SummaryList,
-};
-export default meta;
-type Story = StoryObj<typeof SummaryList>;
-
-export const Standard: Story = {
   argTypes: {
     noBorder: {
       type: 'boolean',
       defaultValue: false,
     },
   },
-  args: { noBorder: false },
-  render: ({ noBorder }) => (
-    <SummaryList noBorder={noBorder}>
+};
+export default meta;
+type Story = StoryObj<typeof SummaryList>;
+
+export const Standard: Story = {
+  render: (args) => (
+    <SummaryList {...args}>
       <SummaryList.Row>
         <SummaryList.Key>Name</SummaryList.Key>
-        <SummaryList.Value>Sarah Philips</SummaryList.Value>
+        <SummaryList.Value>Karen Francis</SummaryList.Value>
         <SummaryList.Actions>
-          <a href="#">
-            Change<span className="nhsuk-u-visually-hidden"> name</span>
-          </a>
+          <SummaryList.Action href="#" visuallyHiddenText="name">
+            Change
+          </SummaryList.Action>
         </SummaryList.Actions>
       </SummaryList.Row>
       <SummaryList.Row>
         <SummaryList.Key>Date of birth</SummaryList.Key>
-        <SummaryList.Value>5 January 1978</SummaryList.Value>
+        <SummaryList.Value>15 March 1984</SummaryList.Value>
         <SummaryList.Actions>
-          <a href="#">
-            Change<span className="nhsuk-u-visually-hidden"> date of birth</span>
-          </a>
+          <SummaryList.Action href="#" visuallyHiddenText="date of birth">
+            Change
+          </SummaryList.Action>
         </SummaryList.Actions>
       </SummaryList.Row>
       <SummaryList.Row>
         <SummaryList.Key>Contact information</SummaryList.Key>
         <SummaryList.Value>
-          72 Guild Street
+          73 Roman Rd
           <br />
-          London
+          Leeds
           <br />
-          SE23 6FH
+          LS2 5ZN
         </SummaryList.Value>
         <SummaryList.Actions>
-          <a href="#">
-            Change<span className="nhsuk-u-visually-hidden"> contact information</span>
-          </a>
+          <SummaryList.Action href="#" visuallyHiddenText="contact information">
+            Change
+          </SummaryList.Action>
         </SummaryList.Actions>
       </SummaryList.Row>
       <SummaryList.Row>
@@ -78,46 +59,116 @@ export const Standard: Story = {
           <BodyText>sarah.phillips@example.com</BodyText>
         </SummaryList.Value>
         <SummaryList.Actions>
-          <a href="#">
-            Change<span className="nhsuk-u-visually-hidden"> contact details</span>
-          </a>
+          <SummaryList.Action href="#" visuallyHiddenText="contact details">
+            Change
+          </SummaryList.Action>
         </SummaryList.Actions>
       </SummaryList.Row>
     </SummaryList>
   ),
-  parameters: {
-    docs: {
-      description: {
-        story:
-          'Change links must include visually hidden text. This means a screen reader user will hear a meaningful action, like "Change name" or "Change date of birth".',
-      },
-    },
-  },
 };
 
-export const SummaryListWithoutActions: Story = {
-  args: { noBorder: false },
-  render: ({ noBorder }) => (
-    <SummaryList noBorder={noBorder}>
+export const SummaryListWithoutActionsOnLastRow: Story = {
+  render: (args) => (
+    <SummaryList {...args}>
       <SummaryList.Row>
         <SummaryList.Key>Name</SummaryList.Key>
-        <SummaryList.Value>Sarah Philips</SummaryList.Value>
+        <SummaryList.Value>Karen Francis</SummaryList.Value>
+        <SummaryList.Actions>
+          <SummaryList.Action href="#" visuallyHiddenText="name">
+            Change
+          </SummaryList.Action>
+        </SummaryList.Actions>
       </SummaryList.Row>
       <SummaryList.Row>
         <SummaryList.Key>Date of birth</SummaryList.Key>
-        <SummaryList.Value>5 January 1978</SummaryList.Value>
+        <SummaryList.Value>15 March 1984</SummaryList.Value>
+        <SummaryList.Actions>
+          <SummaryList.Action href="#" visuallyHiddenText="date of birth">
+            Change
+          </SummaryList.Action>
+        </SummaryList.Actions>
       </SummaryList.Row>
       <SummaryList.Row>
         <SummaryList.Key>Contact information</SummaryList.Key>
         <SummaryList.Value>
-          72 Guild Street
+          73 Roman Rd
           <br />
-          London
+          Leeds
           <br />
-          SE23 6FH
+          LS2 5ZN
+        </SummaryList.Value>
+        <SummaryList.Actions>
+          <SummaryList.Action href="#" visuallyHiddenText="contact information">
+            Change
+          </SummaryList.Action>
+        </SummaryList.Actions>
+      </SummaryList.Row>
+      <SummaryList.Row noActions>
+        <SummaryList.Key>Contact details</SummaryList.Key>
+        <SummaryList.Value>
+          <BodyText>07700 900457</BodyText>
+          <BodyText>sarah.phillips@example.com</BodyText>
+        </SummaryList.Value>
+      </SummaryList.Row>
+    </SummaryList>
+  ),
+};
+
+export const SummaryListWithoutActions: Story = {
+  render: (args) => (
+    <SummaryList {...args}>
+      <SummaryList.Row>
+        <SummaryList.Key>Name</SummaryList.Key>
+        <SummaryList.Value>Karen Francis</SummaryList.Value>
+      </SummaryList.Row>
+      <SummaryList.Row>
+        <SummaryList.Key>Date of birth</SummaryList.Key>
+        <SummaryList.Value>15 March 1984</SummaryList.Value>
+      </SummaryList.Row>
+      <SummaryList.Row>
+        <SummaryList.Key>Contact information</SummaryList.Key>
+        <SummaryList.Value>
+          73 Roman Rd
+          <br />
+          Leeds
+          <br />
+          LS2 5ZN
         </SummaryList.Value>
       </SummaryList.Row>
       <SummaryList.Row>
+        <SummaryList.Key>Contact details</SummaryList.Key>
+        <SummaryList.Value>
+          <BodyText>07700 900457</BodyText>
+          <BodyText>sarah.phillips@example.com</BodyText>
+        </SummaryList.Value>
+      </SummaryList.Row>
+    </SummaryList>
+  ),
+};
+
+export const SummaryListWithoutBorderOnLastRow: Story = {
+  render: (args) => (
+    <SummaryList {...args}>
+      <SummaryList.Row>
+        <SummaryList.Key>Name</SummaryList.Key>
+        <SummaryList.Value>Karen Francis</SummaryList.Value>
+      </SummaryList.Row>
+      <SummaryList.Row>
+        <SummaryList.Key>Date of birth</SummaryList.Key>
+        <SummaryList.Value>15 March 1984</SummaryList.Value>
+      </SummaryList.Row>
+      <SummaryList.Row>
+        <SummaryList.Key>Contact information</SummaryList.Key>
+        <SummaryList.Value>
+          73 Roman Rd
+          <br />
+          Leeds
+          <br />
+          LS2 5ZN
+        </SummaryList.Value>
+      </SummaryList.Row>
+      <SummaryList.Row noBorder>
         <SummaryList.Key>Contact details</SummaryList.Key>
         <SummaryList.Value>
           <BodyText>07700 900457</BodyText>
@@ -132,24 +183,24 @@ export const SummaryListWithoutBorder: Story = {
   args: {
     noBorder: true,
   },
-  render: ({ noBorder }) => (
-    <SummaryList noBorder={noBorder}>
+  render: (args) => (
+    <SummaryList {...args}>
       <SummaryList.Row>
         <SummaryList.Key>Name</SummaryList.Key>
-        <SummaryList.Value>Sarah Philips</SummaryList.Value>
+        <SummaryList.Value>Karen Francis</SummaryList.Value>
       </SummaryList.Row>
       <SummaryList.Row>
         <SummaryList.Key>Date of birth</SummaryList.Key>
-        <SummaryList.Value>5 January 1978</SummaryList.Value>
+        <SummaryList.Value>15 March 1984</SummaryList.Value>
       </SummaryList.Row>
       <SummaryList.Row>
         <SummaryList.Key>Contact information</SummaryList.Key>
         <SummaryList.Value>
-          72 Guild Street
+          73 Roman Rd
           <br />
-          London
+          Leeds
           <br />
-          SE23 6FH
+          LS2 5ZN
         </SummaryList.Value>
       </SummaryList.Row>
       <SummaryList.Row>
