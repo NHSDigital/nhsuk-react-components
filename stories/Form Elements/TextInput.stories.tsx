@@ -7,8 +7,8 @@ const meta: Meta<typeof TextInput> = {
   component: TextInput,
   args: {
     id: 'input-example',
-    name: 'test-name',
-    label: 'National Insurance number',
+    name: 'example',
+    label: 'What is your full name?',
     labelProps: { isPageHeading: true, size: 'l' },
   },
   argTypes: {
@@ -22,30 +22,88 @@ type Story = StoryObj<typeof TextInput>;
 export const Standard: Story = {};
 export const WithHintText: Story = {
   args: {
-    hint: 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.',
+    label: 'What is your NHS number?',
+    inputMode: 'numeric',
+    spellCheck: false,
+    hint: (
+      <>
+        This is a 10 digit number (like <span className="nhsuk-u-nowrap">999 123 4567</span>) that
+        you can find on an NHS letter, prescription or in the NHS App
+      </>
+    ),
   },
 };
 
 export const WithError: Story = {
   args: {
-    error: 'Error message goes here',
-    hint: 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.',
+    label: 'What is your NHS number?',
+    error: 'Enter NHS number',
+    inputMode: 'numeric',
+    spellCheck: false,
   },
-  name: 'With Error (String)',
+};
+
+export const WithErrorAndHintText: Story = {
+  args: {
+    label: 'What is your NHS number?',
+    error: 'Enter NHS number',
+    inputMode: 'numeric',
+    spellCheck: false,
+    hint: (
+      <>
+        This is a 10 digit number (like <span className="nhsuk-u-nowrap">999 123 4567</span>) that
+        you can find on an NHS letter, prescription or in the NHS App
+      </>
+    ),
+  },
 };
 
 export const WithWidthModifier: Story = {
   args: {
+    label: 'What is your NHS number?',
     width: 10,
-    hint: 'It’s on your National Insurance card, benefit letter, payslip or P60. For example, ‘QQ 12 34 56 C’.',
+    inputMode: 'numeric',
+    spellCheck: false,
+    hint: (
+      <>
+        This is a 10 digit number (like <span className="nhsuk-u-nowrap">999 123 4567</span>) that
+        you can find on an NHS letter, prescription or in the NHS App
+      </>
+    ),
+  },
+};
+
+export const WithPrefix: Story = {
+  args: {
+    label: 'Cost in pounds',
+    prefix: '£',
+    width: 5,
+  },
+};
+
+export const WithSuffix: Story = {
+  args: {
+    label: 'Weight in kilograms',
+    suffix: 'kg',
+    width: 5,
   },
 };
 
 export const WithPrefixAndSuffix: Story = {
   args: {
-    width: 5,
     label: 'Cost per item, in pounds',
     prefix: '£',
     suffix: 'per item',
+    width: 5,
+  },
+};
+
+export const WithPrefixAndSuffixAndError: Story = {
+  args: {
+    label: 'Cost per item, in pounds',
+    error: 'Enter a cost per item, in pounds',
+    prefix: '£',
+    suffix: 'per item',
+    width: 5,
   },
 };
