@@ -12,6 +12,7 @@ export interface TextInputProps
     ComponentPropsWithoutRef<'input'>,
     Omit<FormElementProps, 'fieldsetProps' | 'legend' | 'legendProps'> {
   width?: InputWidth;
+  code?: boolean;
   prefix?: string;
   suffix?: string;
 }
@@ -30,12 +31,13 @@ const TextInputSuffix: FC<Pick<TextInputProps, 'suffix'>> = ({ suffix }) => (
 
 export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, forwardedRef) => (
   <FormGroup<TextInputProps> {...props} inputType="input">
-    {({ width, className, error, type = 'text', prefix, suffix, ...rest }) => {
+    {({ width, className, code, error, type = 'text', prefix, suffix, ...rest }) => {
       const Input = (
         <input
           className={classNames(
             'nhsuk-input',
             { [`nhsuk-input--width-${width}`]: width },
+            { 'nhsuk-input--code': code },
             { 'nhsuk-input--error': error },
             className,
           )}
