@@ -26,8 +26,9 @@ const CardComponent = forwardRef<HTMLDivElement, CardProps>((props, forwardedRef
 
   let cardClassNames = classNames(
     'nhsuk-card',
-    { 'nhsuk-card--clickable': clickable },
+    { 'nhsuk-card--clickable': cardType === 'clickable' || clickable },
     { 'nhsuk-card--feature': cardType === 'feature' },
+    { 'nhsuk-card--primary': cardType === 'primary' },
     { 'nhsuk-card--secondary': cardType === 'secondary' },
     className,
   );
