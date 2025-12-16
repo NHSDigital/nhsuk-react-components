@@ -68,6 +68,13 @@ export const Warning: Story = {
   },
 };
 
+export const Login: Story = {
+  args: {
+    login: true,
+    children: 'Continue to NHS login',
+  },
+};
+
 export const Reverse: Story = {
   args: {
     reverse: true,

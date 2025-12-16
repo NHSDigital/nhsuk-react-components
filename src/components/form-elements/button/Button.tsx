@@ -19,6 +19,7 @@ export interface ButtonProps extends AsElementLink<HTMLButtonElement> {
   secondary?: boolean;
   reverse?: boolean;
   warning?: boolean;
+  login?: boolean;
   as?: 'button';
   preventDoubleClick?: boolean;
 }
@@ -29,6 +30,7 @@ export interface ButtonLinkProps extends AsElementLink<HTMLAnchorElement> {
   secondary?: boolean;
   reverse?: boolean;
   warning?: boolean;
+  login?: boolean;
   as?: 'a';
   preventDoubleClick?: boolean;
 }
@@ -41,6 +43,7 @@ const ButtonComponent = forwardRef<HTMLButtonElement, ButtonProps>((props, forwa
     secondary,
     reverse,
     warning,
+    login,
     type = 'submit',
     preventDoubleClick,
     onClick,
@@ -75,6 +78,7 @@ const ButtonComponent = forwardRef<HTMLButtonElement, ButtonProps>((props, forwa
         { 'nhsuk-button--secondary': secondary },
         { 'nhsuk-button--reverse': reverse },
         { 'nhsuk-button--warning': warning },
+        { 'nhsuk-button--login': login },
         className,
       )}
       data-module="nhsuk-button"
@@ -104,6 +108,7 @@ const ButtonLinkComponent = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
       secondary,
       reverse,
       warning,
+      login,
       preventDoubleClick,
       onClick,
       ...rest
@@ -137,6 +142,7 @@ const ButtonLinkComponent = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
           { 'nhsuk-button--secondary': secondary },
           { 'nhsuk-button--reverse': reverse },
           { 'nhsuk-button--warning': warning },
+          { 'nhsuk-button--login': login },
           className,
         )}
         data-module="nhsuk-button"
