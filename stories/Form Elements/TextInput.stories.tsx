@@ -1,5 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
+import { Button } from '#components/form-elements/button/Button.js';
 import { TextInput } from '#components/form-elements/text-input/index.js';
 
 const meta: Meta<typeof TextInput> = {
@@ -109,5 +110,40 @@ export const WithPrefixAndSuffixAndError: Story = {
     prefix: '£',
     suffix: 'per item',
     width: 5,
+  },
+};
+
+export const WithButton: Story = {
+  args: {
+    label: 'What is your NHS number?',
+    width: 10,
+    code: true,
+    inputMode: 'numeric',
+    spellCheck: false,
+    formGroupProps: {
+      afterInput: () => (
+        <Button secondary small>
+          Search
+        </Button>
+      ),
+    },
+  },
+};
+
+export const WithButtonAndError: Story = {
+  args: {
+    label: 'What is your NHS number?',
+    error: 'Enter NHS number',
+    width: 10,
+    code: true,
+    inputMode: 'numeric',
+    spellCheck: false,
+    formGroupProps: {
+      afterInput: () => (
+        <Button secondary small>
+          Search
+        </Button>
+      ),
+    },
   },
 };
