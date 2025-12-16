@@ -58,7 +58,6 @@ export const FormGroup = <T extends BaseFormElementRenderProps>(
     children,
     hint,
     label,
-    id,
     legend,
     legendProps,
     fieldsetProps,
@@ -67,11 +66,11 @@ export const FormGroup = <T extends BaseFormElementRenderProps>(
     hintProps,
     errorProps,
     formGroupProps,
-    inputType,
+    id,
     name,
-    'aria-describedby': ariaDescribedBy,
     ...rest
   } = props;
+
   const [generatedID] = useState<string>(generateRandomID(inputType));
   const { registerComponent, passError } = useContext<IFormGroupContext>(FormGroupContext);
   const { disableErrorFromComponents } = useFormContext();
@@ -85,6 +84,7 @@ export const FormGroup = <T extends BaseFormElementRenderProps>(
   const hasError = !disableErrorFromComponents && !!error;
 
   // Build list of IDs for aria-describedby
+  let { 'aria-describedby': ariaDescribedBy } = rest;
   const ariaDescribedByIds = ariaDescribedBy ? [ariaDescribedBy] : [];
 
   // Add optional hint ID
@@ -97,11 +97,14 @@ export const FormGroup = <T extends BaseFormElementRenderProps>(
     ariaDescribedByIds.push(errorID);
   }
 
+  // Update aria-describedby with new IDs
+  ariaDescribedBy = ariaDescribedByIds.join(' ') || undefined;
+
   const childProps = {
-    error,
-    name: name ?? elementID,
-    id: elementID,
     ...rest,
+    'id': elementID,
+    'name': name ?? elementID,
+    'aria-describedby': !hasFieldset ? ariaDescribedBy : undefined,
   } as FormElementRenderProps<T>;
 
   useEffect(() => {
@@ -124,7 +127,7 @@ export const FormGroup = <T extends BaseFormElementRenderProps>(
       )}
     >
       {hasFieldset ? (
-        <Fieldset {...fieldsetProps} aria-describedby={ariaDescribedByIds.join(' ') || undefined}>
+        <Fieldset {...fieldsetProps} aria-describedby={ariaDescribedBy}>
           <Legend {...legendProps}>{legend}</Legend>
           <HintText id={hintID} {...hintProps}>
             {hint}
@@ -145,10 +148,7 @@ export const FormGroup = <T extends BaseFormElementRenderProps>(
           <ErrorMessage id={errorID} {...errorProps}>
             {error}
           </ErrorMessage>
-          {children({
-            ...childProps,
-            'aria-describedby': ariaDescribedByIds.join(' ') || undefined,
-          })}
+          {children(childProps)}
         </>
       )}
     </div>
