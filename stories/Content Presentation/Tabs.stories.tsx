@@ -29,15 +29,15 @@ export const Standard: Story = {
       </Tabs.List>
 
       <Tabs.Contents id="past-day">
-        <div>Past day contents go here</div>
+        <p>Past day contents go here</p>
       </Tabs.Contents>
 
       <Tabs.Contents id="past-week">
-        <div>Past week contents go here</div>
+        <p>Past week contents go here</p>
       </Tabs.Contents>
 
       <Tabs.Contents id="past-month">
-        <div>Past month contents go here</div>
+        <p>Past month contents go here</p>
       </Tabs.Contents>
     </Tabs>
   ),
@@ -59,15 +59,15 @@ export const DifferentAccessibleHeading: Story = {
       </Tabs.List>
 
       <Tabs.Contents id="past-day-2">
-        <div>Past day contents go here</div>
+        <p>Past day contents go here</p>
       </Tabs.Contents>
 
       <Tabs.Contents id="past-week-2">
-        <div>Past week contents go here</div>
+        <p>Past week contents go here</p>
       </Tabs.Contents>
 
       <Tabs.Contents id="past-month-2">
-        <div>Past month contents go here</div>
+        <p>Past month contents go here</p>
       </Tabs.Contents>
     </Tabs>
   ),
