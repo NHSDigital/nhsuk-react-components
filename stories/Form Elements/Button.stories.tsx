@@ -54,9 +54,24 @@ export const Primary: Story = {
   },
 };
 
+export const SmallPrimary: Story = {
+  args: {
+    small: true,
+    children: 'Save and continue',
+  },
+};
+
 export const Secondary: Story = {
   args: {
     secondary: true,
+    children: 'Find my location',
+  },
+};
+
+export const SmallSecondary: Story = {
+  args: {
+    secondary: true,
+    small: true,
     children: 'Find my location',
   },
 };
@@ -68,6 +83,14 @@ export const Warning: Story = {
   },
 };
 
+export const SmallWarning: Story = {
+  args: {
+    warning: true,
+    small: true,
+    children: 'Yes, delete this vaccine',
+  },
+};
+
 export const Login: Story = {
   args: {
     login: true,
@@ -75,9 +98,25 @@ export const Login: Story = {
   },
 };
 
+export const SmallLogin: Story = {
+  args: {
+    login: true,
+    small: true,
+    children: 'Continue to NHS login',
+  },
+};
+
 export const Reverse: Story = {
   args: {
     reverse: true,
+    children: 'Log out',
+  },
+};
+
+export const SmallReverse: Story = {
+  args: {
+    reverse: true,
+    small: true,
     children: 'Log out',
   },
 };
