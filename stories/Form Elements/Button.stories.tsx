@@ -49,12 +49,31 @@ export default meta;
 type Story = StoryObj<typeof Button>;
 
 export const Primary: Story = {
-  args: { children: 'Primary' },
-  render: (args) => <Button {...args} />,
+  args: {
+    children: 'Save and continue',
+  },
 };
-export const Secondary: Story = { args: { secondary: true, children: 'Secondary' } };
-export const Reverse: Story = { args: { reverse: true, children: 'Reverse' } };
-export const Warning: Story = { args: { warning: true, children: 'Warning' } };
+
+export const Secondary: Story = {
+  args: {
+    secondary: true,
+    children: 'Find my location',
+  },
+};
+
+export const Warning: Story = {
+  args: {
+    warning: true,
+    children: 'Yes, delete this vaccine',
+  },
+};
+
+export const Reverse: Story = {
+  args: {
+    reverse: true,
+    children: 'Log out',
+  },
+};
 
 /**
  *
@@ -76,8 +95,8 @@ export const PreventDoubleClickButton: Story = {
     onClick: () => console.log(new Date()),
     children: 'Debounced Button',
   },
-  render: (args) => <Button {...args} />,
 };
+
 export const PreventDoubleClickLinkButton: Story = {
   args: {
     preventDoubleClick: true,
@@ -85,5 +104,4 @@ export const PreventDoubleClickLinkButton: Story = {
     onClick: () => console.log(new Date()),
     children: 'Debounced Button as Link',
   },
-  render: (args) => <Button {...args} />,
 };
