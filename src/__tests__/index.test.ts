@@ -111,6 +111,7 @@ describe('Index', () => {
       'Row',
       'SearchIcon',
       'Select',
+      'SelectDivider',
       'SelectOption',
       'SkipLink',
       'SummaryList',
