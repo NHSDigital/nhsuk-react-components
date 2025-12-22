@@ -14,14 +14,17 @@ import {
 import { FormGroup } from '#components/utils/index.js';
 import { type FormElementProps } from '#util/types/FormTypes.js';
 
-export interface CharacterCountProps
-  extends
-    ComponentPropsWithoutRef<'textarea'>,
-    Omit<FormElementProps, 'fieldsetProps' | 'legend' | 'legendProps'> {
+export interface CharacterCountElementProps extends ComponentPropsWithoutRef<'textarea'> {
   maxLength?: number;
   maxWords?: number;
   threshold?: number;
 }
+
+export type CharacterCountProps = CharacterCountElementProps &
+  Omit<
+    FormElementProps<CharacterCountElementProps, 'textarea'>,
+    'fieldsetProps' | 'legend' | 'legendProps'
+  >;
 
 export const CharacterCount = forwardRef<HTMLTextAreaElement, CharacterCountProps>(
   ({ maxLength, maxWords, threshold, formGroupProps, ...rest }, forwardedRef) => {
@@ -47,7 +50,7 @@ export const CharacterCount = forwardRef<HTMLTextAreaElement, CharacterCountProp
     }
 
     return (
-      <FormGroup<CharacterCountProps>
+      <FormGroup<CharacterCountProps, 'textarea'>
         inputType="textarea"
         formGroupProps={{
           ...formGroupProps,

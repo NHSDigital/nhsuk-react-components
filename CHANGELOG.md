@@ -1,5 +1,16 @@
 # NHS.UK React components
 
+## Unreleased
+
+This version provides support for NHS.UK frontend v10.2 and includes:
+
+- [Password input component](https://service-manual.nhs.uk/design-system/components/password-input)
+- [Smaller and inline buttons](https://service-manual.nhs.uk/design-system/components/buttons#smaller-buttons)
+- [Text input styles for codes and sequences](https://service-manual.nhs.uk/design-system/components/text-input#codes-and-sequences)
+- [Select](https://service-manual.nhs.uk/design-system/components/select) dividers using `<Select.Divider />`
+
+For a full list of changes in this release please refer to the [migration doc](https://github.com/NHSDigital/nhsuk-react-components/blob/main/docs/upgrade-to-6.0.md).
+
 ## 6.0.0-beta.4 - 5 November 2025
 
 This version provides support for NHS.UK frontend v10.1 and includes:
