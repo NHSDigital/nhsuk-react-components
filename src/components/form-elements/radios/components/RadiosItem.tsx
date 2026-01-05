@@ -17,14 +17,17 @@ import { HintText } from '#components/form-elements/hint-text/index.js';
 import { Label } from '#components/form-elements/label/index.js';
 import { type FormElementProps } from '#util/types/FormTypes.js';
 
-export interface RadiosItemProps
-  extends
-    ComponentPropsWithoutRef<'input'>,
-    Pick<FormElementProps, 'hint' | 'hintProps' | 'labelProps'> {
+export interface RadiosItemElementProps extends ComponentPropsWithoutRef<'input'> {
   conditional?: ReactNode;
   forceShowConditional?: boolean;
   conditionalProps?: ComponentPropsWithRef<'div'>;
 }
+
+export type RadiosItemProps = RadiosItemElementProps &
+  Omit<
+    FormElementProps<RadiosItemElementProps, 'input'>,
+    'fieldsetProps' | 'label' | 'legend' | 'legendProps'
+  >;
 
 export const RadiosItem = forwardRef<HTMLInputElement, RadiosItemProps>((props, forwardedRef) => {
   const {

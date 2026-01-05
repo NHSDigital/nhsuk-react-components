@@ -1,83 +1,96 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
-import { useState } from 'react';
 
+import { Button } from '#components/form-elements/button/Button.js';
 import { Select } from '#components/form-elements/select/index.js';
-import { TextInput } from '#components/form-elements/text-input/index.js';
 
 const meta: Meta<typeof Select> = {
   title: 'Form Elements/Select',
   component: Select,
   args: {
-    label: 'Label text goes here',
-    labelProps: { isPageHeading: true, size: 'l' },
+    label: 'Sort by',
+    labelProps: { isPageHeading: true },
   },
+  render: (args) => (
+    <Select {...args}>
+      <Select.Option>Choose location</Select.Option>
+      <Select.Option value="eastmidlands">East Midlands</Select.Option>
+      <Select.Option value="eastofengland">East of England</Select.Option>
+      <Select.Option value="london">London</Select.Option>
+      <Select.Option value="northeast">North East</Select.Option>
+      <Select.Option value="northwest">North West</Select.Option>
+      <Select.Option value="southeast">South East</Select.Option>
+      <Select.Option value="southwest">South West</Select.Option>
+      <Select.Option value="westmidlands">West Midlands</Select.Option>
+      <Select.Option value="yorkshire">Yorkshire and the Humber</Select.Option>
+    </Select>
+  ),
 };
 export default meta;
 type Story = StoryObj<typeof Select>;
 
 export const Standard: Story = {
-  args: {
-    defaultValue: '2',
-  },
   render: (args) => (
     <Select {...args}>
-      <Select.Option value="1">NHS.UK frontend option 1</Select.Option>
-      <Select.Option value="2">NHS.UK frontend option 2</Select.Option>
-      <Select.Option value="3" disabled>
-        NHS.UK frontend option 3
-      </Select.Option>
+      <Select.Option value="published">Recently published</Select.Option>
+      <Select.Option value="updated">Recently updated</Select.Option>
+      <Select.Option value="views">Most view</Select.Option>
+      <Select.Option value="comments">Most comments</Select.Option>
     </Select>
   ),
 };
 
 export const SelectWithHintText: Story = {
   args: {
-    hint: 'Hint text goes here',
+    hint: 'This can be different to where you went before',
   },
-  render: (args) => (
-    <Select {...args}>
-      <Select.Option value="1">NHS.UK frontend option 1</Select.Option>
-      <Select.Option value="2">NHS.UK frontend option 2</Select.Option>
-      <Select.Option value="3">NHS.UK frontend option 3</Select.Option>
-    </Select>
-  ),
 };
 
 export const SelectWithError: Story = {
-  render: function SelectWithErrorRender(args) {
-    const [error, setError] = useState<string>('Error message goes here');
-    return (
-      <>
-        <Select error={error} {...args}>
-          <Select.Option value="1">NHS.UK frontend option 1</Select.Option>
-          <Select.Option value="2">NHS.UK frontend option 2</Select.Option>
-          <Select.Option value="3">NHS.UK frontend option 3</Select.Option>
-        </Select>
-        <TextInput onChange={(e) => setError(e.currentTarget.value)} value={error} />
-      </>
-    );
+  args: {
+    error: 'Select a location',
   },
-
-  name: 'Select With Error (String)',
 };
 
 export const SelectWithErrorAndHintText: Story = {
   args: {
-    hint: 'Hint text goes here',
+    hint: 'This can be different to where you went before',
+    error: 'Select a location',
   },
-  render: function SelectWithErrorAndHintTextRender(args) {
-    const [error, setError] = useState<string>('Error message goes here');
-    return (
-      <>
-        <Select error={error} {...args}>
-          <Select.Option value="1">NHS.UK frontend option 1</Select.Option>
-          <Select.Option value="2">NHS.UK frontend option 2</Select.Option>
-          <Select.Option value="3">NHS.UK frontend option 3</Select.Option>
-        </Select>
-        <TextInput onChange={(e) => setError(e.currentTarget.value)} value={error} />
-      </>
-    );
-  },
+};
 
-  name: 'Select With Error and Hint (String)',
+export const SelectWithDivider: Story = {
+  render: (args) => (
+    <Select {...args}>
+      <Select.Option value="first-name-ascending">First name (A to Z)</Select.Option>
+      <Select.Option value="first-name-descending">First name (Z to A)</Select.Option>
+      <Select.Divider />
+      <Select.Option value="last-name-ascending">Last name (A to Z)</Select.Option>
+      <Select.Option value="last-name-descending">Last name (Z to A)</Select.Option>
+    </Select>
+  ),
+};
+
+export const SelectWithButton: Story = {
+  args: {
+    formGroupProps: {
+      afterInput: () => (
+        <Button secondary small>
+          Search
+        </Button>
+      ),
+    },
+  },
+};
+
+export const SelectWithButtonAndError: Story = {
+  args: {
+    error: 'Select a location',
+    formGroupProps: {
+      afterInput: () => (
+        <Button secondary small>
+          Search
+        </Button>
+      ),
+    },
+  },
 };

@@ -18,12 +18,14 @@ import { FormGroup } from '#components/utils/index.js';
 import { generateRandomName } from '#util/tools/index.js';
 import { type FormElementProps } from '#util/types/FormTypes.js';
 
-export interface RadiosProps
-  extends ComponentPropsWithoutRef<'div'>, Omit<FormElementProps, 'label' | 'labelProps'> {
+export interface RadiosElementProps extends ComponentPropsWithoutRef<'div'> {
   idPrefix?: string;
   inline?: boolean;
   small?: boolean;
 }
+
+export type RadiosProps = RadiosElementProps &
+  Omit<FormElementProps<RadiosElementProps, 'div'>, 'label' | 'labelProps'>;
 
 const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwardedRef) => {
   const { children, idPrefix, ...rest } = props;
@@ -89,7 +91,7 @@ const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwarde
   }
 
   return (
-    <FormGroup<RadiosProps> inputType="radios" {...rest}>
+    <FormGroup<RadiosProps, 'div'> inputType="radios" {...rest}>
       {({ className, inline, small, name, id, error, ...restRenderProps }) => {
         resetRadioIds();
         const contextValue: IRadiosContext = {

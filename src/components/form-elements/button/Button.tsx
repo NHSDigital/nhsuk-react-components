@@ -14,23 +14,36 @@ import {
 
 import { type AsElementLink } from '#util/types/LinkTypes.js';
 
-export interface ButtonProps extends AsElementLink<HTMLButtonElement> {
+export interface ButtonProps extends ButtonBaseProps, AsElementLink<HTMLButtonElement> {
   href?: never;
+  as?: 'button';
+}
+
+export interface ButtonLinkProps extends ButtonBaseProps, AsElementLink<HTMLAnchorElement> {
+  href: string;
+  type?: never;
+  as?: 'a';
+}
+
+interface ButtonBaseProps {
   secondary?: boolean;
   reverse?: boolean;
   warning?: boolean;
-  as?: 'button';
+  login?: boolean;
+  small?: boolean;
   preventDoubleClick?: boolean;
 }
 
-export interface ButtonLinkProps extends AsElementLink<HTMLAnchorElement> {
-  href: string;
-  type?: never;
-  secondary?: boolean;
-  reverse?: boolean;
-  warning?: boolean;
-  as?: 'a';
-  preventDoubleClick?: boolean;
+function getButtonClassNames(props: ButtonProps | ButtonLinkProps) {
+  return classNames(
+    'nhsuk-button',
+    { 'nhsuk-button--secondary': props.secondary },
+    { 'nhsuk-button--reverse': props.reverse },
+    { 'nhsuk-button--warning': props.warning },
+    { 'nhsuk-button--login': props.login },
+    { 'nhsuk-button--small': props.small },
+    props.className,
+  );
 }
 
 const ButtonComponent = forwardRef<HTMLButtonElement, ButtonProps>((props, forwardedRef) => {
@@ -41,6 +54,8 @@ const ButtonComponent = forwardRef<HTMLButtonElement, ButtonProps>((props, forwa
     secondary,
     reverse,
     warning,
+    login,
+    small,
     type = 'submit',
     preventDoubleClick,
     onClick,
@@ -70,13 +85,7 @@ const ButtonComponent = forwardRef<HTMLButtonElement, ButtonProps>((props, forwa
 
   return (
     <Element
-      className={classNames(
-        'nhsuk-button',
-        { 'nhsuk-button--secondary': secondary },
-        { 'nhsuk-button--reverse': reverse },
-        { 'nhsuk-button--warning': warning },
-        className,
-      )}
+      className={getButtonClassNames(props)}
       data-module="nhsuk-button"
       data-prevent-double-click={preventDoubleClick === true ? 'true' : undefined}
       disabled={disabled}
@@ -104,6 +113,8 @@ const ButtonLinkComponent = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
       secondary,
       reverse,
       warning,
+      login,
+      small,
       preventDoubleClick,
       onClick,
       ...rest
@@ -132,13 +143,7 @@ const ButtonLinkComponent = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
 
     return (
       <Element
-        className={classNames(
-          'nhsuk-button',
-          { 'nhsuk-button--secondary': secondary },
-          { 'nhsuk-button--reverse': reverse },
-          { 'nhsuk-button--warning': warning },
-          className,
-        )}
+        className={getButtonClassNames(props)}
         data-module="nhsuk-button"
         data-prevent-double-click={preventDoubleClick === true ? 'true' : undefined}
         role="button"
