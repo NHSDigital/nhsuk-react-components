@@ -35,6 +35,12 @@ You can now use smaller versions of the [radios](https://service-manual.nhs.uk/d
 
 You can now use smaller versions of [buttons](https://service-manual.nhs.uk/design-system/components/buttons) by adding the `small` prop.
 
+#### Secondary buttons with solid white background
+
+By default, the secondary button is transparent and has no colour.
+
+You can now make the [button](https://service-manual.nhs.uk/design-system/components/button) component white when you use it on darker backgrounds by adding the `secondarySolid` prop.
+
 #### Add inline buttons to text inputs and select menus
 
 You can now add inline buttons to text inputs and select menus using the `formGroupProps.afterInput` prop.

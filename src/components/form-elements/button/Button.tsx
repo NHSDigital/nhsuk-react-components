@@ -27,6 +27,7 @@ export interface ButtonLinkProps extends ButtonBaseProps, AsElementLink<HTMLAnch
 
 interface ButtonBaseProps {
   secondary?: boolean;
+  secondarySolid?: boolean;
   reverse?: boolean;
   warning?: boolean;
   login?: boolean;
@@ -38,6 +39,7 @@ function getButtonClassNames(props: ButtonProps | ButtonLinkProps) {
   return classNames(
     'nhsuk-button',
     { 'nhsuk-button--secondary': props.secondary },
+    { 'nhsuk-button--secondary-solid': props.secondarySolid },
     { 'nhsuk-button--reverse': props.reverse },
     { 'nhsuk-button--warning': props.warning },
     { 'nhsuk-button--login': props.login },
@@ -52,6 +54,7 @@ const ButtonComponent = forwardRef<HTMLButtonElement, ButtonProps>((props, forwa
     asElement: Element = 'button',
     disabled,
     secondary,
+    secondarySolid,
     reverse,
     warning,
     login,
@@ -111,6 +114,7 @@ const ButtonLinkComponent = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
       className,
       asElement: Element = 'a',
       secondary,
+      secondarySolid,
       reverse,
       warning,
       login,
