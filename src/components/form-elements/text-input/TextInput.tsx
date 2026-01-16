@@ -7,14 +7,18 @@ import { FormGroup } from '#components/utils/index.js';
 import { type FormElementProps } from '#util/types/FormTypes.js';
 import { type InputWidth } from '#util/types/NHSUKTypes.js';
 
-export interface TextInputProps
-  extends
-    ComponentPropsWithoutRef<'input'>,
-    Omit<FormElementProps, 'fieldsetProps' | 'legend' | 'legendProps'> {
+export interface TextInputElementProps extends ComponentPropsWithoutRef<'input'> {
   width?: InputWidth;
+  code?: boolean;
   prefix?: string;
   suffix?: string;
 }
+
+export type TextInputProps = TextInputElementProps &
+  Omit<
+    FormElementProps<TextInputElementProps, 'input'>,
+    'fieldsetProps' | 'legend' | 'legendProps'
+  >;
 
 const TextInputPrefix: FC<Pick<TextInputProps, 'prefix'>> = ({ prefix }) => (
   <div className="nhsuk-input__prefix" aria-hidden="true">
@@ -28,14 +32,22 @@ const TextInputSuffix: FC<Pick<TextInputProps, 'suffix'>> = ({ suffix }) => (
   </div>
 );
 
-export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, forwardedRef) => (
-  <FormGroup<TextInputProps> {...props} inputType="input">
-    {({ width, className, error, type = 'text', prefix, suffix, ...rest }) => {
-      const Input = (
+export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
+  ({ prefix, suffix, formGroupProps, ...props }, forwardedRef) => (
+    <FormGroup<TextInputProps, 'input'>
+      {...props}
+      formGroupProps={{
+        ...formGroupProps,
+        beforeInput: prefix ? () => <TextInputPrefix prefix={prefix} /> : undefined,
+        afterInput: suffix ? () => <TextInputSuffix suffix={suffix} /> : undefined,
+      }}
+    >
+      {({ width, className, code, error, type = 'text', prefix, suffix, ...rest }) => (
         <input
           className={classNames(
             'nhsuk-input',
             { [`nhsuk-input--width-${width}`]: width },
+            { 'nhsuk-input--code': code },
             { 'nhsuk-input--error': error },
             className,
           )}
@@ -43,19 +55,9 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>((props, fo
           type={type}
           {...rest}
         />
-      );
-
-      return prefix || suffix ? (
-        <div className="nhsuk-input__wrapper">
-          {prefix ? <TextInputPrefix prefix={prefix} /> : null}
-          {Input}
-          {suffix ? <TextInputSuffix suffix={suffix} /> : null}
-        </div>
-      ) : (
-        Input
-      );
-    }}
-  </FormGroup>
-));
+      )}
+    </FormGroup>
+  ),
+);
 
 TextInput.displayName = 'TextInput';

@@ -149,8 +149,8 @@ describe('TextInput', () => {
     ({ prefix, suffix }) => {
       const { container } = render(<TextInput prefix={prefix} suffix={suffix} />);
 
-      const prefixElement = container.querySelector('.nhsuk-input__wrapper > .nhsuk-input__prefix');
-      const suffixElement = container.querySelector('.nhsuk-input__wrapper > .nhsuk-input__suffix');
+      const prefixElement = container.querySelector('.nhsuk-input-wrapper > .nhsuk-input__prefix');
+      const suffixElement = container.querySelector('.nhsuk-input-wrapper > .nhsuk-input__suffix');
 
       if (prefix) {
         expect(prefixElement).not.toBeNull();
@@ -167,10 +167,10 @@ describe('TextInput', () => {
       }
 
       if (!prefix && !suffix) {
-        expect(container.querySelector('.nhsuk-input__wrapper')).toBeNull();
+        expect(container.querySelector('.nhsuk-input-wrapper')).toBeNull();
         expect(container.querySelector('.nhsuk-input')).not.toBeNull();
       } else {
-        expect(container.querySelector('.nhsuk-input__wrapper > .nhsuk-input')).not.toBeNull();
+        expect(container.querySelector('.nhsuk-input-wrapper > .nhsuk-input')).not.toBeNull();
       }
     },
   );

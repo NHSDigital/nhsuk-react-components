@@ -18,9 +18,75 @@ The updated [header](https://service-manual.nhs.uk/design-system/components/head
 - update NHS logo in the header to have higher contrast when focused
 - refactor CSS classes and BEM naming, use hidden attributes instead of modifier classes, use generic search element
 
+#### Use the password input component to help users accessibly enter passwords
+
+The [password input](https://service-manual.nhs.uk/design-system/components/password-input) component from NHS.UK frontend v10.2 allows users to choose:
+
+- whether their passwords are visible or not
+- to enter their passwords in plain text
+
+This helps users use longer and more complex passwords without needing to remember what they've already typed.
+
 #### Smaller versions of radio buttons and checkboxes
 
 You can now use smaller versions of the [radios](https://service-manual.nhs.uk/design-system/components/radios) and [checkboxes](https://service-manual.nhs.uk/design-system/components/checkboxes) components by adding the `small` prop.
+
+#### Smaller versions of buttons
+
+You can now use smaller versions of [buttons](https://service-manual.nhs.uk/design-system/components/buttons) by adding the `small` prop.
+
+#### Secondary buttons with solid white background
+
+By default, the secondary button is transparent and has no colour.
+
+You can now make the [button](https://service-manual.nhs.uk/design-system/components/button) component white when you use it on darker backgrounds by adding the `secondarySolid` prop.
+
+#### Add inline buttons to text inputs and select menus
+
+You can now add inline buttons to text inputs and select menus using the `formGroupProps.afterInput` prop.
+
+```jsx
+<TextInput
+  formGroupProps={{
+    afterInput: () => (
+      <Button secondary small>
+        Search
+      </Button>
+    ),
+  }},
+/>
+```
+
+#### Add a 'code' prop for text inputs that accept codes and sequences
+
+We've added a new `code` prop for the [text input](https://service-manual.nhs.uk/design-system/components/text-input) component. This improves readability of text inputs that receive codes and sequences (like NHS numbers, security codes or booking references).
+
+```patch
+  <TextInput
+    label="What is your NHS number?"
+    labelProps={{ isPageHeading: true, size: 'l' }}
+    inputMode="numeric"
+    spellCheck="false"
+    width="10"
++   code
+  />
+```
+
+#### Add a 'divider' between select options
+
+Newer browsers support [using `<hr>` (horizontal rule) elements inside a `<select>` element](https://developer.chrome.com/blog/hr-in-select/) to help visually break up options for better readability.
+
+We've added a new `<Select.Divider />` child component for select menus to support this feature. For example:
+
+```patch
+  <Select>
+    <Select.Option value="first-name-ascending">First name (A to Z)</Select.Option>
+    <Select.Option value="first-name-descending">First name (Z to A)</Select.Option>
++   <Select.Divider />
+    <Select.Option value="last-name-ascending">Last name (A to Z)</Select.Option>
+    <Select.Option value="last-name-descending">Last name (Z to A)</Select.Option>
+  </Select>
+```
 
 ### Numbered pagination component
 

@@ -59,10 +59,10 @@ exports[`Card Care card variant emergency matches the snapshot 1`] = `
     class="nhsuk-card nhsuk-card--care nhsuk-card--care--emergency"
   >
     <div
-      class="nhsuk-card--care__heading-container"
+      class="nhsuk-card__heading-container"
     >
       <h2
-        class="nhsuk-card--care__heading"
+        class="nhsuk-card__heading"
       >
         <span
           role="text"
@@ -90,10 +90,10 @@ exports[`Card Care card variant non-urgent matches the snapshot 1`] = `
     class="nhsuk-card nhsuk-card--care nhsuk-card--care--non-urgent"
   >
     <div
-      class="nhsuk-card--care__heading-container"
+      class="nhsuk-card__heading-container"
     >
       <h2
-        class="nhsuk-card--care__heading"
+        class="nhsuk-card__heading"
       >
         <span
           role="text"
@@ -121,10 +121,10 @@ exports[`Card Care card variant urgent matches the snapshot 1`] = `
     class="nhsuk-card nhsuk-card--care nhsuk-card--care--urgent"
   >
     <div
-      class="nhsuk-card--care__heading-container"
+      class="nhsuk-card__heading-container"
     >
       <h2
-        class="nhsuk-card--care__heading"
+        class="nhsuk-card__heading"
       >
         <span
           role="text"

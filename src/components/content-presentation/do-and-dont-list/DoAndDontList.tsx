@@ -20,12 +20,14 @@ const DoAndDontListComponent = forwardRef<HTMLDivElement, DoAndDontListProps>(
       <HeadingLevel className="nhsuk-do-dont-list__label" headingLevel={headingLevel}>
         {heading || (listType === 'do' ? 'Do' : "Don't")}
       </HeadingLevel>
+      {/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
       <ul
         className={classNames(
           'nhsuk-list',
           { 'nhsuk-list--tick': listType === 'do' },
           { 'nhsuk-list--cross': listType === 'dont' },
         )}
+        role="list"
       >
         <DoAndDontListContext.Provider value={listType}>{children}</DoAndDontListContext.Provider>
       </ul>

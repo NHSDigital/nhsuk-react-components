@@ -21,9 +21,9 @@ const genHiddenText = (cardType: CareCardType): string => {
 
 const CareHeading = forwardRef<HTMLHeadingElement, HeadingLevelProps & { careType: CareCardType }>(
   ({ children, className, careType, headingLevel = 'h2', ...rest }, forwardedRef) => (
-    <div className="nhsuk-card--care__heading-container">
+    <div className="nhsuk-card__heading-container">
       <HeadingLevel
-        className={classNames('nhsuk-card--care__heading', className)}
+        className={classNames('nhsuk-card__heading', className)}
         headingLevel={headingLevel}
         ref={forwardedRef}
         {...rest}
@@ -51,11 +51,7 @@ export const CardHeading = forwardRef<HTMLHeadingElement, HeadingLevelProps>(
 
     return (
       <HeadingLevel
-        className={classNames(
-          'nhsuk-card__heading',
-          { 'nhsuk-card__heading--feature': cardType === 'feature' },
-          className,
-        )}
+        className={classNames('nhsuk-card__heading', className)}
         headingLevel={headingLevel}
         ref={forwardedRef}
         {...rest}
