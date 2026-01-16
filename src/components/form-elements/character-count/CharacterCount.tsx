@@ -73,7 +73,7 @@ export const CharacterCount = forwardRef<HTMLTextAreaElement, CharacterCountProp
                 className,
               )}
               id={id}
-              aria-describedby={`${id}-info ${ariaDescribedBy}`}
+              aria-describedby={ariaDescribedBy ? `${id}-info ${ariaDescribedBy}` : `${id}-info`}
               ref={forwardedRef}
               {...rest}
             />
