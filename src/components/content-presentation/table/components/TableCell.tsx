@@ -62,7 +62,7 @@ export const TableCell: FC<TableCellProps> = ({
               {headings[index]}{' '}
             </span>
           )}
-          {children}
+          {responsive && typeof children !== 'string' ? <span>{children}</span> : <>{children}</>}
         </td>
       )}
     </>

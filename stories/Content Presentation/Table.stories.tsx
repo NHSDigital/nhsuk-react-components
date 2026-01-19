@@ -12,8 +12,11 @@ export default meta;
 type Story = StoryObj<typeof Table>;
 
 export const StandardTable: Story = {
+  args: {
+    caption: 'Skin symptoms and possible causes',
+  },
   render: (args) => (
-    <Table caption="Skin symptoms and possible causes">
+    <Table {...args}>
       <Table.Head>
         <Table.Row>
           <Table.Cell>Skin Symptoms</Table.Cell>
@@ -39,9 +42,12 @@ export const StandardTable: Story = {
 };
 
 export const TablePanel: Story = {
+  args: {
+    caption: 'Other possible causes of your symptoms',
+  },
   render: (args) => (
     <Table.Panel heading="Conditions similar to impetigo">
-      <Table caption="Other possible causes of your symptoms">
+      <Table {...args}>
         <Table.Head>
           <Table.Row>
             <Table.Cell>Skin Symptoms</Table.Cell>
@@ -68,9 +74,12 @@ export const TablePanel: Story = {
 };
 
 export const ResponsiveTable: Story = {
-  args: { responsive: true },
-  render: ({ responsive }) => (
-    <Table responsive={responsive} caption="Ibuprofen syrup dosages for children">
+  args: {
+    caption: 'Ibuprofen syrup dosages for children',
+    responsive: true,
+  },
+  render: (args) => (
+    <Table {...args}>
       <Table.Head>
         <Table.Row>
           <Table.Cell>Age</Table.Cell>
@@ -99,9 +108,86 @@ export const ResponsiveTable: Story = {
   ),
 };
 
-export const FirstCellAsHeader: Story = {
+export const ResponsiveTableWithCustomHTML: Story = {
+  args: {
+    caption: 'Skin symptoms and possible causes',
+  },
   render: (args) => (
-    <Table firstCellIsHeader>
+    <Table {...args}>
+      <Table.Head>
+        <Table.Row>
+          <Table.Cell>Name</Table.Cell>
+          <Table.Cell>Type</Table.Cell>
+          <Table.Cell>Description</Table.Cell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        <Table.Row>
+          <Table.Cell>id</Table.Cell>
+          <Table.Cell>string</Table.Cell>
+          <Table.Cell>The ID of the table.</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>rows</Table.Cell>
+          <Table.Cell>array</Table.Cell>
+          <Table.Cell>
+            <strong>Required.</strong> The rows within the table component.{' '}
+            <a href="#/macro-options">See macro options for rows</a>.
+          </Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>head</Table.Cell>
+          <Table.Cell>array</Table.Cell>
+          <Table.Cell>
+            Can be used to add a row of table header cells (
+            <code className="app-code">&lt;th&gt;</code>) at the top of the table component.{' '}
+            <a href="#/macro-options">See macro options for head</a>.
+          </Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>caption</Table.Cell>
+          <Table.Cell>string</Table.Cell>
+          <Table.Cell>Caption text.</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>captionClasses</Table.Cell>
+          <Table.Cell>string</Table.Cell>
+          <Table.Cell>
+            Classes for caption text size. Classes should correspond to the available typography
+            heading classes.
+          </Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>firstCellIsHeader</Table.Cell>
+          <Table.Cell>string</Table.Cell>
+          <Table.Cell>
+            If set to <code className="app-code">true</code>, the first cell in each row will be a
+            table header (<code className="app-code">&lt;th&gt;</code>).
+          </Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>classes</Table.Cell>
+          <Table.Cell>string</Table.Cell>
+          <Table.Cell>Classes to add to the table container.</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>attributes</Table.Cell>
+          <Table.Cell>object</Table.Cell>
+          <Table.Cell>
+            HTML attributes (for example data attributes) to add to the table container.
+          </Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
+  ),
+};
+
+export const FirstCellAsHeader: Story = {
+  args: {
+    firstCellIsHeader: true,
+  },
+  render: (args) => (
+    <Table {...args}>
       <Table.Head>
         <Table.Row>
           <Table.Cell>Day of the week</Table.Cell>
@@ -143,11 +229,14 @@ export const FirstCellAsHeader: Story = {
 };
 
 export const NumericCells: Story = {
+  args: {
+    caption: 'Number of cases',
+  },
   render: (args) => (
     <Row>
       <Col width="one-half">
         <HintText>Right-aligned cells are used for numeric values</HintText>
-        <Table caption="Number of cases">
+        <Table {...args}>
           <Table.Head>
             <Table.Row>
               <Table.Cell>Location</Table.Cell>
