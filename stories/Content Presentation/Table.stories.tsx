@@ -3,6 +3,7 @@ import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { Table } from '#components/content-presentation/table/index.js';
 import { HintText } from '#components/form-elements/hint-text/index.js';
 import { Col, Row } from '#components/layout/index.js';
+import { Card } from '#components/navigation/card/index.js';
 
 const meta: Meta<typeof Table> = {
   title: 'Content Presentation/Table',
@@ -41,35 +42,38 @@ export const StandardTable: Story = {
   ),
 };
 
-export const TablePanel: Story = {
+export const TableCard: Story = {
   args: {
-    caption: 'Other possible causes of your symptoms',
+    caption: 'Impetigo can look similar to other skin conditions',
   },
   render: (args) => (
-    <Table.Panel heading="Conditions similar to impetigo">
-      <Table {...args}>
-        <Table.Head>
-          <Table.Row>
-            <Table.Cell>Skin Symptoms</Table.Cell>
-            <Table.Cell>Possible cause</Table.Cell>
-          </Table.Row>
-        </Table.Head>
-        <Table.Body>
-          <Table.Row>
-            <Table.Cell>Blisters on lips or around the mouth</Table.Cell>
-            <Table.Cell>cold sores</Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell>Itchy, dry, cracked, sore</Table.Cell>
-            <Table.Cell>eczema</Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell>Itchy blisters</Table.Cell>
-            <Table.Cell>shingles, chickenpox</Table.Cell>
-          </Table.Row>
-        </Table.Body>
-      </Table>
-    </Table.Panel>
+    <Card cardType="feature">
+      <Card.Content>
+        <Card.Heading>Other conditions like impetigo</Card.Heading>
+        <Table {...args}>
+          <Table.Head>
+            <Table.Row>
+              <Table.Cell>Skin Symptoms</Table.Cell>
+              <Table.Cell>Possible cause</Table.Cell>
+            </Table.Row>
+          </Table.Head>
+          <Table.Body>
+            <Table.Row>
+              <Table.Cell>Blisters on lips or around the mouth</Table.Cell>
+              <Table.Cell>cold sores</Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell>Itchy, dry, cracked, sore</Table.Cell>
+              <Table.Cell>eczema</Table.Cell>
+            </Table.Row>
+            <Table.Row>
+              <Table.Cell>Itchy blisters</Table.Cell>
+              <Table.Cell>shingles, chickenpox</Table.Cell>
+            </Table.Row>
+          </Table.Body>
+        </Table>
+      </Card.Content>
+    </Card>
   ),
 };
 
