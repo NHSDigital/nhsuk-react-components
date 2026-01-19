@@ -65,7 +65,7 @@ describe('Card', () => {
     expect(container.querySelector('button.nhsuk-card__link')?.textContent).toBe('Click me!');
   });
 
-  it('adds clickable classes', () => {
+  it('adds clickable modifier', () => {
     const { container } = render(
       <Card clickable>
         <Card.Content>
@@ -84,9 +84,14 @@ describe('Card', () => {
     expect(cardEl).toHaveClass('nhsuk-card--clickable');
   });
 
-  it('adds feature classes to all elements', () => {
+  it.each<{ cardType: CardType }>([
+    { cardType: 'clickable' },
+    { cardType: 'feature' },
+    { cardType: 'primary' },
+    { cardType: 'secondary' },
+  ])('adds $cardType card type modifier', ({ cardType }) => {
     const { container } = render(
-      <Card cardType="feature">
+      <Card cardType={cardType}>
         <Card.Content>
           <Card.Heading>Feature card heading</Card.Heading>
           <Card.Description>Feature card description</Card.Description>
@@ -97,43 +102,9 @@ describe('Card', () => {
     const cardEl = container.querySelector('.nhsuk-card');
     const cardHeadingEl = cardEl?.querySelector('.nhsuk-card__heading');
 
+    expect(cardEl).toHaveClass(`nhsuk-card--${cardType}`);
     expect(cardHeadingEl).toHaveClass('nhsuk-card__heading');
-    expect(cardHeadingEl).toHaveClass('nhsuk-card__heading--feature');
     expect(cardHeadingEl?.tagName).toBe('H2');
-  });
-
-  it('adds primary class to card contents', () => {
-    const { container } = render(
-      <Card cardType="primary">
-        <Card.Content>
-          <Card.Heading>Feature card heading</Card.Heading>
-          <Card.Description>Feature card description</Card.Description>
-        </Card.Content>
-      </Card>,
-    );
-
-    const cardEl = container.querySelector('.nhsuk-card');
-    const cardContentsEl = cardEl?.querySelector('.nhsuk-card__content');
-
-    expect(cardContentsEl).toHaveClass('nhsuk-card__content--primary');
-  });
-
-  it('adds secondary classes to card and contents', () => {
-    const { container } = render(
-      <Card cardType="secondary">
-        <Card.Content>
-          <Card.Heading>Feature card heading</Card.Heading>
-          <Card.Description>Feature card description</Card.Description>
-        </Card.Content>
-      </Card>,
-    );
-
-    const cardEl = container.querySelector('.nhsuk-card');
-    const cardContentsEl = cardEl?.querySelector('.nhsuk-card__content');
-
-    expect(cardEl).toHaveClass('nhsuk-card');
-    expect(cardEl).toHaveClass('nhsuk-card--secondary');
-    expect(cardContentsEl).toHaveClass('nhsuk-card__content--secondary');
   });
 
   describe('Care card variant', () => {

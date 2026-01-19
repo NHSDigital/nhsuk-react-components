@@ -4,6 +4,39 @@ import { Button } from '..';
 
 import { renderClient, renderServer } from '#util/components';
 
+const buttonTypes = [
+  {
+    type: 'secondary',
+    text: 'Find my location',
+    className: 'nhsuk-button--secondary',
+  },
+  {
+    type: 'secondarySolid',
+    text: 'Find my location',
+    className: 'nhsuk-button--secondary-solid',
+  },
+  {
+    type: 'reverse',
+    text: 'Log out',
+    className: 'nhsuk-button--reverse',
+  },
+  {
+    type: 'warning',
+    text: 'Yes, delete this vaccine',
+    className: 'nhsuk-button--warning',
+  },
+  {
+    type: 'login',
+    text: 'Continue to NHS login',
+    className: 'nhsuk-button--login',
+  },
+  {
+    type: 'small',
+    text: 'Search',
+    className: 'nhsuk-button--small',
+  },
+];
+
 describe('Button', () => {
   it('matches snapshot', async () => {
     const { container } = await renderClient(<Button type="submit">Save and continue</Button>, {
@@ -108,64 +141,40 @@ describe('Button', () => {
       expect(container).toMatchSnapshot('DisabledButton');
     });
 
-    it('adds correct attributes for button type', async () => {
+    it('adds aria props and disabled to disabled button', async () => {
       const { modules } = await renderClient(<Button disabled>Save and continue</Button>, {
         moduleName: 'nhsuk-button',
       });
 
       const [buttonEl] = modules;
+
       expect(buttonEl).toBeDisabled();
+      expect(buttonEl).toHaveAttribute('type', 'submit');
+      expect(buttonEl).toHaveAttribute('aria-disabled', 'true');
     });
   });
 
-  describe('secondary', () => {
-    it('matches snapshot', async () => {
-      const { container } = await renderClient(<Button secondary>Save and continue</Button>, {
-        moduleName: 'nhsuk-button',
+  describe('button types', () => {
+    describe.each(buttonTypes)('$type', ({ type, className }) => {
+      it('matches snapshot', async () => {
+        const { container } = await renderClient(
+          <Button {...{ [type]: true }}>Find my location</Button>,
+          { moduleName: 'nhsuk-button' },
+        );
+
+        expect(container).toMatchSnapshot();
       });
 
-      expect(container).toMatchSnapshot('SecondaryButton');
-    });
+      it(`adds correct classes for type - ${type}`, async () => {
+        const { modules } = await renderClient(
+          <Button {...{ [type]: true }}>Find my location</Button>,
+          { moduleName: 'nhsuk-button' },
+        );
 
-    it('adds correct classes for button type', async () => {
-      const { modules } = await renderClient(<Button secondary>Save and continue</Button>, {
-        moduleName: 'nhsuk-button',
+        const [buttonEl] = modules;
+        expect(buttonEl).toHaveClass(className);
       });
-
-      const [buttonEl] = modules;
-      expect(buttonEl).toHaveClass('nhsuk-button--secondary');
     });
-  });
-
-  describe('reverse', () => {
-    it('matches snapshot', async () => {
-      const { container } = await renderClient(<Button reverse>Save and continue</Button>, {
-        moduleName: 'nhsuk-button',
-      });
-
-      expect(container).toMatchSnapshot('ReverseButton');
-    });
-
-    it('adds correct classes for button type', async () => {
-      const { modules } = await renderClient(<Button reverse>Save and continue</Button>, {
-        moduleName: 'nhsuk-button',
-      });
-
-      const [buttonEl] = modules;
-      expect(buttonEl).toHaveClass('nhsuk-button--reverse');
-    });
-  });
-
-  it('adds aria props and disabled to disabled button', async () => {
-    const { modules } = await renderClient(<Button disabled>Save and continue</Button>, {
-      moduleName: 'nhsuk-button',
-    });
-
-    const [buttonEl] = modules;
-
-    expect(buttonEl).toBeDisabled();
-    expect(buttonEl).toHaveAttribute('type', 'submit');
-    expect(buttonEl).toHaveAttribute('aria-disabled', 'true');
   });
 
   it('preventDoubleClick calls debounced function', async () => {
@@ -235,53 +244,28 @@ describe('Button as a link', () => {
   });
 
   describe('button types', () => {
-    describe('secondary', () => {
+    describe.each(buttonTypes)('$type', ({ type, className }) => {
       it('matches snapshot', async () => {
         const { container } = await renderClient(
-          <Button href="/" secondary>
+          <Button href="/" {...{ [type]: true }}>
             Find my location
           </Button>,
           { moduleName: 'nhsuk-button' },
         );
 
-        expect(container).toMatchSnapshot('SecondaryButton');
+        expect(container).toMatchSnapshot();
       });
 
-      it('adds correct classes for type - secondary', async () => {
+      it(`adds correct classes for type - ${type}`, async () => {
         const { modules } = await renderClient(
-          <Button href="/" secondary>
+          <Button href="/" {...{ [type]: true }}>
             Find my location
           </Button>,
           { moduleName: 'nhsuk-button' },
         );
 
         const [buttonEl] = modules;
-        expect(buttonEl).toHaveClass('nhsuk-button--secondary');
-      });
-    });
-
-    describe('reverse', () => {
-      it('matches snapshot', async () => {
-        const { container } = await renderClient(
-          <Button href="/" reverse>
-            Log out
-          </Button>,
-          { moduleName: 'nhsuk-button' },
-        );
-
-        expect(container).toMatchSnapshot('ReverseButton');
-      });
-
-      it('adds correct classes for type - reverse', async () => {
-        const { modules } = await renderClient(
-          <Button href="/" reverse>
-            Log out
-          </Button>,
-          { moduleName: 'nhsuk-button' },
-        );
-
-        const [buttonEl] = modules;
-        expect(buttonEl).toHaveClass('nhsuk-button--reverse');
+        expect(buttonEl).toHaveClass(className);
       });
     });
   });

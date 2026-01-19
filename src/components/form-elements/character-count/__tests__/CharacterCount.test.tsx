@@ -129,4 +129,41 @@ describe('Character Count', () => {
     expect(characterCountEl).not.toHaveAttribute('data-maxwords');
     expect(characterCountEl).toHaveAttribute('data-threshold', '50');
   });
+
+  it('sets textarea aria-describedby attribute without hint text', async () => {
+    const { container } = await renderClient(
+      <CharacterCount
+        label="Can you provide more detail?"
+        labelProps={{ isPageHeading: true, size: 'l' }}
+        id="more-detail"
+        name="more-detail"
+        maxLength={200}
+        rows={5}
+      />,
+      { moduleName: 'nhsuk-character-count' },
+    );
+
+    const textareaEl = container.querySelector('textarea');
+
+    expect(textareaEl).toHaveAttribute('aria-describedby', 'more-detail-info');
+  });
+
+  it('sets textarea aria-describedby attribute with hint text', async () => {
+    const { container } = await renderClient(
+      <CharacterCount
+        label="Can you provide more detail?"
+        labelProps={{ isPageHeading: true, size: 'l' }}
+        hint="Do not include personal information like your name, date of birth or NHS number"
+        id="more-detail"
+        name="more-detail"
+        maxLength={200}
+        rows={5}
+      />,
+      { moduleName: 'nhsuk-character-count' },
+    );
+
+    const textareaEl = container.querySelector('textarea');
+
+    expect(textareaEl).toHaveAttribute('aria-describedby', 'more-detail-info more-detail--hint');
+  });
 });
