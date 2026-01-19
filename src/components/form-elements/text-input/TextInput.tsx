@@ -38,8 +38,14 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       {...props}
       formGroupProps={{
         ...formGroupProps,
-        beforeInput: prefix ? () => <TextInputPrefix prefix={prefix} /> : undefined,
-        afterInput: suffix ? () => <TextInputSuffix suffix={suffix} /> : undefined,
+        beforeInput: prefix
+          ? // Allow form group 'beforeInput' to override prefix
+            () => <TextInputPrefix prefix={prefix} />
+          : formGroupProps?.beforeInput,
+        afterInput: suffix
+          ? // Allow form group 'afterInput' to override suffix
+            () => <TextInputSuffix suffix={suffix} />
+          : formGroupProps?.afterInput,
       }}
     >
       {({ width, className, code, error, type = 'text', prefix, suffix, ...rest }) => (
