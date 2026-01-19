@@ -74,10 +74,10 @@ export const RadiosItem = forwardRef<HTMLInputElement, RadiosItemProps>((props, 
           id={inputID}
           name={name}
           type="radio"
-          aria-controls={conditional ? `${inputID}--conditional` : undefined}
-          aria-describedby={hint ? `${inputID}--hint` : undefined}
           checked={checked}
           defaultChecked={defaultChecked}
+          data-aria-controls={conditional ? `${inputID}--conditional` : undefined}
+          aria-describedby={hint ? `${inputID}--hint` : undefined}
           ref={forwardedRef}
           {...rest}
         />

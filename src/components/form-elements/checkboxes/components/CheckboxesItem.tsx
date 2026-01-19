@@ -74,11 +74,11 @@ export const CheckboxesItem = forwardRef<HTMLInputElement, CheckboxesItemProps>(
             id={inputID}
             name={name}
             type="checkbox"
-            aria-controls={conditional ? `${inputID}--conditional` : undefined}
-            aria-describedby={hint ? `${inputID}--hint` : undefined}
-            data-checkbox-exclusive-group={name}
             checked={checked}
             defaultChecked={defaultChecked}
+            data-checkbox-exclusive-group={name}
+            data-aria-controls={conditional ? `${inputID}--conditional` : undefined}
+            aria-describedby={hint ? `${inputID}--hint` : undefined}
             ref={forwardedRef}
             {...inputProps}
           />
