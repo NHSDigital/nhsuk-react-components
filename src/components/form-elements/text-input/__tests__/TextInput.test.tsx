@@ -149,8 +149,8 @@ describe('TextInput', () => {
     ({ prefix, suffix }) => {
       const { container } = render(<TextInput prefix={prefix} suffix={suffix} />);
 
-      const prefixElement = container.querySelector('.nhsuk-input-wrapper > .nhsuk-input__prefix');
-      const suffixElement = container.querySelector('.nhsuk-input-wrapper > .nhsuk-input__suffix');
+      const prefixElement = container.querySelector('.nhsuk-input-wrapper__prefix');
+      const suffixElement = container.querySelector('.nhsuk-input-wrapper__suffix');
 
       if (prefix) {
         expect(prefixElement).not.toBeNull();

@@ -21,13 +21,13 @@ export type TextInputProps = TextInputElementProps &
   >;
 
 const TextInputPrefix: FC<Pick<TextInputProps, 'prefix'>> = ({ prefix }) => (
-  <div className="nhsuk-input__prefix" aria-hidden="true">
+  <div className="nhsuk-input-wrapper__prefix" aria-hidden="true">
     {prefix}
   </div>
 );
 
 const TextInputSuffix: FC<Pick<TextInputProps, 'suffix'>> = ({ suffix }) => (
-  <div className="nhsuk-input__suffix" aria-hidden="true">
+  <div className="nhsuk-input-wrapper__suffix" aria-hidden="true">
     {suffix}
   </div>
 );
