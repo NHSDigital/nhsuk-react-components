@@ -1,0 +1,241 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`FileUpload matches snapshot (via server): client 1`] = `
+<div>
+  <div
+    class="nhsuk-form-group nhsuk-file-upload"
+    data-module="nhsuk-file-upload"
+    data-nhsuk-file-upload-init=""
+  >
+    <label
+      class="nhsuk-label nhsuk-label--l"
+      for="file-upload"
+      id="file-upload--label"
+    >
+      Upload a file 1
+    </label>
+    <div
+      class="nhsuk-file-upload__drop-zone"
+    >
+      <button
+        aria-labelledby="file-upload--label file-upload-comma file-upload"
+        class="nhsuk-file-upload__drop-button nhsuk-file-upload__drop-button--empty"
+        id="file-upload"
+        type="button"
+      >
+        <span
+          aria-live="polite"
+          class="nhsuk-body nhsuk-file-upload__status"
+        />
+        <span
+          class="nhsuk-u-visually-hidden"
+          id="file-upload-comma"
+        />
+        <span
+          class="nhsuk-file-upload__drop-button-group"
+        >
+          <span
+            class="nhsuk-button nhsuk-file-upload__choose-files-button nhsuk-button--secondary"
+          />
+           
+          <span
+            class="nhsuk-body nhsuk-file-upload__drop-instruction"
+          />
+        </span>
+      </button>
+      <input
+        aria-hidden="true"
+        class="nhsuk-file-upload__input"
+        hidden=""
+        id="file-upload-input"
+        name="file-upload"
+        tabindex="-1"
+        type="file"
+      />
+    </div>
+    <span
+      aria-live="assertive"
+      class="nhsuk-file-upload__announcements nhsuk-u-visually-hidden"
+    />
+  </div>
+</div>
+`;
+
+exports[`FileUpload matches snapshot (via server): server 1`] = `
+<div>
+  <div
+    class="nhsuk-form-group nhsuk-file-upload"
+    data-module="nhsuk-file-upload"
+  >
+    <label
+      class="nhsuk-label nhsuk-label--l"
+      for="file-upload"
+      id="file-upload--label"
+    >
+      Upload a file 1
+    </label>
+    <input
+      class="nhsuk-file-upload__input"
+      id="file-upload"
+      name="file-upload"
+      type="file"
+    />
+  </div>
+</div>
+`;
+
+exports[`FileUpload matches snapshot with HTML in props 1`] = `
+<div>
+  <div
+    class="nhsuk-form-group nhsuk-form-group--error nhsuk-file-upload"
+    data-module="nhsuk-file-upload"
+    data-nhsuk-file-upload-init=""
+  >
+    <h1
+      class="nhsuk-label-wrapper"
+    >
+      <label
+        class="nhsuk-label nhsuk-label--l"
+        for="file-upload"
+        id="file-upload--label"
+      >
+        <span
+          class="nhsuk-caption-l"
+        >
+          Example
+        </span>
+         Label text
+      </label>
+    </h1>
+    <div
+      class="nhsuk-hint"
+      id="file-upload--hint"
+    >
+      Hint text 
+      <em>
+        with HTML
+      </em>
+    </div>
+    <span
+      class="nhsuk-error-message"
+      id="file-upload--error-message"
+    >
+      <span
+        class="nhsuk-u-visually-hidden"
+      >
+        Error: 
+      </span>
+      Error text 
+      <em>
+        with HTML
+      </em>
+    </span>
+    <div
+      class="nhsuk-file-upload__drop-zone"
+    >
+      <button
+        aria-describedby="file-upload--hint file-upload--error-message"
+        aria-labelledby="file-upload--label file-upload-comma file-upload"
+        class="nhsuk-file-upload__drop-button nhsuk-file-upload__drop-button--empty"
+        id="file-upload"
+        type="button"
+      >
+        <span
+          aria-live="polite"
+          class="nhsuk-body nhsuk-file-upload__status"
+        />
+        <span
+          class="nhsuk-u-visually-hidden"
+          id="file-upload-comma"
+        />
+        <span
+          class="nhsuk-file-upload__drop-button-group"
+        >
+          <span
+            class="nhsuk-button nhsuk-file-upload__choose-files-button nhsuk-button--secondary"
+          />
+           
+          <span
+            class="nhsuk-body nhsuk-file-upload__drop-instruction"
+          />
+        </span>
+      </button>
+      <input
+        aria-describedby="file-upload--hint file-upload--error-message"
+        aria-hidden="true"
+        class="nhsuk-file-upload__input"
+        hidden=""
+        id="file-upload-input"
+        name="file-upload"
+        tabindex="-1"
+        type="file"
+      />
+    </div>
+    <span
+      aria-live="assertive"
+      class="nhsuk-file-upload__announcements nhsuk-u-visually-hidden"
+    />
+  </div>
+</div>
+`;
+
+exports[`FileUpload matches snapshot: FileUpload 1`] = `
+<div>
+  <div
+    class="nhsuk-form-group nhsuk-file-upload"
+    data-module="nhsuk-file-upload"
+    data-nhsuk-file-upload-init=""
+  >
+    <label
+      class="nhsuk-label nhsuk-label--l"
+      for="file-upload"
+      id="file-upload--label"
+    >
+      Upload a file
+    </label>
+    <div
+      class="nhsuk-file-upload__drop-zone"
+    >
+      <button
+        aria-labelledby="file-upload--label file-upload-comma file-upload"
+        class="nhsuk-file-upload__drop-button nhsuk-file-upload__drop-button--empty"
+        id="file-upload"
+        type="button"
+      >
+        <span
+          aria-live="polite"
+          class="nhsuk-body nhsuk-file-upload__status"
+        />
+        <span
+          class="nhsuk-u-visually-hidden"
+          id="file-upload-comma"
+        />
+        <span
+          class="nhsuk-file-upload__drop-button-group"
+        >
+          <span
+            class="nhsuk-button nhsuk-file-upload__choose-files-button nhsuk-button--secondary"
+          />
+           
+          <span
+            class="nhsuk-body nhsuk-file-upload__drop-instruction"
+          />
+        </span>
+      </button>
+      <input
+        aria-hidden="true"
+        class="nhsuk-file-upload__input"
+        hidden=""
+        id="file-upload-input"
+        name="file-upload"
+        tabindex="-1"
+        type="file"
+      />
+    </div>
+    <span
+      aria-live="assertive"
+      class="nhsuk-file-upload__announcements nhsuk-u-visually-hidden"
+    />
+  </div>
+</div>
+`;

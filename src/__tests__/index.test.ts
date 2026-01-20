@@ -56,6 +56,7 @@ describe('Index', () => {
       'ErrorSummaryListItem',
       'ErrorSummaryTitle',
       'Fieldset',
+      'FileUpload',
       'Footer',
       'FooterCopyright',
       'FooterList',
