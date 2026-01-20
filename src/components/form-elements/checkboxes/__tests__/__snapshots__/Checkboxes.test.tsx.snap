@@ -305,9 +305,8 @@ exports[`Checkboxes matches snapshot with HTML in props 1`] = `
         <span
           class="nhsuk-u-visually-hidden"
         >
-          Error:
+          Error: 
         </span>
-         
         Error text 
         <em>
           with HTML
@@ -552,9 +551,8 @@ exports[`Checkboxes matches snapshot with error message 1`] = `
         <span
           class="nhsuk-u-visually-hidden"
         >
-          Error:
+          Error: 
         </span>
-         
         Example error
       </span>
       <div

@@ -33,15 +33,34 @@ describe('Footer', () => {
     it('has default visually hidden text', () => {
       const { container } = render(<Footer.Meta />);
 
-      expect(container.querySelector('.nhsuk-u-visually-hidden')?.textContent).toBe(
-        'Support links',
-      );
+      const visuallyHiddenEl = container.querySelector('.nhsuk-u-visually-hidden');
+
+      expect(visuallyHiddenEl).toHaveTextContent('Support links');
     });
 
     it('has custom visually hidden text', () => {
       const { container } = render(<Footer.Meta visuallyHiddenText="Custom" />);
 
-      expect(container.querySelector('.nhsuk-u-visually-hidden')?.textContent).toBe('Custom');
+      const visuallyHiddenEl = container.querySelector('.nhsuk-u-visually-hidden');
+
+      expect(visuallyHiddenEl).toHaveTextContent('Custom');
+    });
+
+    it('has custom visually hidden HTML', () => {
+      const { container } = render(
+        <Footer.Meta
+          visuallyHiddenText={
+            <>
+              Custom <em>with HTML</em>
+            </>
+          }
+        />,
+      );
+
+      const visuallyHiddenEl = container.querySelector('.nhsuk-u-visually-hidden');
+
+      expect(visuallyHiddenEl).toHaveTextContent('Custom with HTML');
+      expect(visuallyHiddenEl).toContainHTML('Custom <em>with HTML</em>');
     });
 
     it('has default copyright text', () => {

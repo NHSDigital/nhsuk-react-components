@@ -1,4 +1,4 @@
-import { Children, type FC } from 'react';
+import { Children, type FC, type ReactElement } from 'react';
 
 import { FooterCopyright } from './FooterCopyright.js';
 import { FooterList, type FooterListProps } from './FooterList.js';
@@ -7,7 +7,7 @@ import { FooterListItem } from './FooterListItem.js';
 import { childIsOfComponentType } from '#util/types/index.js';
 
 export interface FooterMetaProps extends FooterListProps {
-  visuallyHiddenText?: string;
+  visuallyHiddenText?: string | ReactElement;
 }
 
 export const FooterMeta: FC<FooterMetaProps> = ({

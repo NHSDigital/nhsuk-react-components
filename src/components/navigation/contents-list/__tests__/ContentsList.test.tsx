@@ -21,16 +21,37 @@ describe('ContentsList', () => {
     expect(ref.current).toHaveClass('nhsuk-contents-list');
   });
 
-  it('renders default hidden text', () => {
+  it('renders default visually hidden text', () => {
     const { container } = render(<ContentsList />);
 
-    expect(container.querySelector('.nhsuk-u-visually-hidden')?.textContent).toEqual('Contents');
+    const visuallyHiddenEl = container.querySelector('.nhsuk-u-visually-hidden');
+
+    expect(visuallyHiddenEl).toHaveTextContent('Contents');
   });
 
-  it('renders custom hidden text', () => {
+  it('renders custom visually hidden text', () => {
     const { container } = render(<ContentsList visuallyHiddenText="Custom" />);
 
-    expect(container.querySelector('.nhsuk-u-visually-hidden')?.textContent).toEqual('Custom');
+    const visuallyHiddenEl = container.querySelector('.nhsuk-u-visually-hidden');
+
+    expect(visuallyHiddenEl).toHaveTextContent('Custom');
+  });
+
+  it('renders custom visually hidden HTML', () => {
+    const { container } = render(
+      <ContentsList
+        visuallyHiddenText={
+          <>
+            Custom <em>with HTML</em>
+          </>
+        }
+      />,
+    );
+
+    const visuallyHiddenEl = container.querySelector('.nhsuk-u-visually-hidden');
+
+    expect(visuallyHiddenEl).toHaveTextContent('Custom with HTML');
+    expect(visuallyHiddenEl).toContainHTML('Custom <em>with HTML</em>');
   });
 
   describe('ContentsList.Item', () => {

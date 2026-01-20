@@ -242,9 +242,8 @@ exports[`Radios matches snapshot with HTML in props 1`] = `
         <span
           class="nhsuk-u-visually-hidden"
         >
-          Error:
+          Error: 
         </span>
-         
         Error text 
         <em>
           with HTML
