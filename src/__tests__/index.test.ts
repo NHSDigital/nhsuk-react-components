@@ -17,6 +17,7 @@ describe('Index', () => {
       'BreadcrumbItem',
       'Button',
       'Card',
+      'CardAction',
       'CardContext',
       'CardDescription',
       'CardGroup',

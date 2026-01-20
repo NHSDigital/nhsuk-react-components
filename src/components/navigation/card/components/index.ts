@@ -1,3 +1,4 @@
+export * from './CardAction.js';
 export * from './CardDescription.js';
 export * from './CardGroup.js';
 export * from './CardGroupItem.js';

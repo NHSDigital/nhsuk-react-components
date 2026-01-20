@@ -5,6 +5,7 @@ import { Children, forwardRef, type ComponentPropsWithoutRef } from 'react';
 
 import { CardContext } from './CardContext.js';
 import {
+  CardAction,
   CardDescription,
   CardGroup,
   CardGroupItem,
@@ -46,9 +47,38 @@ const CardComponent = forwardRef<HTMLDivElement, CardProps>((props, forwardedRef
 
   // Allow single heading
   const headingItem = items.find((child) => childIsOfComponentType(child, CardHeading));
+  const headingText = headingItem?.props.children?.toString();
+
+  // Allow multiple actions
+  const actionItems = items.filter((child) => childIsOfComponentType(child, CardAction));
 
   // Only content items remain
-  const contentItems = items.filter((child) => child !== imageItem && child !== headingItem);
+  const contentItems = items.filter(
+    (child) =>
+      child !== imageItem &&
+      child !== headingItem &&
+      !actionItems.some((action) => action === child),
+  );
+
+  // Determine actions item
+  const actionsItem = (
+    <>
+      {actionItems?.length === 1 ? (
+        <div className="nhsuk-card__actions">
+          <CardAction heading={headingText} {...actionItems[0].props} />
+        </div>
+      ) : null}
+      {actionItems?.length > 1 ? (
+        <ul className="nhsuk-card__actions">
+          {actionItems.map(({ key, props }) => (
+            <li className="nhsuk-card__action" key={key}>
+              <CardAction heading={headingText} {...props} />
+            </li>
+          ))}
+        </ul>
+      ) : null}
+    </>
+  );
 
   return (
     <div
@@ -67,10 +97,15 @@ const CardComponent = forwardRef<HTMLDivElement, CardProps>((props, forwardedRef
       {...rest}
     >
       <CardContext.Provider value={{ cardType }}>
-        {cardType ? (
+        {cardType || actionItems.length ? (
           <>
             {imageItem}
-            {headingItem ? <CardHeadingContainer>{headingItem}</CardHeadingContainer> : null}
+            {headingItem || actionItems.length ? (
+              <CardHeadingContainer>
+                {headingItem}
+                {actionsItem}
+              </CardHeadingContainer>
+            ) : null}
             {contentItems.length ? <div className="nhsuk-card__content">{contentItems}</div> : null}
           </>
         ) : (
@@ -99,4 +134,5 @@ export const Card = Object.assign(CardComponent, {
   Link: CardLink,
   Group: CardGroup,
   GroupItem: CardGroupItem,
+  Action: CardAction,
 });

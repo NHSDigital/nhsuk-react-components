@@ -7,14 +7,12 @@ import { renderClient, renderServer } from '#util/components';
 import { type CareCardType } from '#util/types';
 
 describe('Card', () => {
-  it('matches snapshot', async () => {
+  it('matches snapshot with single action', async () => {
     const { container } = await renderClient(
       <Card>
-        <Card.Image src="imageSrc" alt="imageAlt" />
-        <Card.Heading>If you need help now but it&apos;s not an emergency</Card.Heading>
-        <Card.Description>
-          Go to <a href="#/111">111.nhs.uk</a> or <a href="#/111">call 111</a>
-        </Card.Description>
+        <Card.Heading>Regional Manager</Card.Heading>
+        <Card.Action href="#/delete">Delete</Card.Action>
+        <Card.Description>Karen Francis</Card.Description>
       </Card>,
       { className: 'nhsuk-card' },
     );
@@ -22,14 +20,27 @@ describe('Card', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('matches snapshot (via server)', async () => {
+  it('matches snapshot with multiple actions', async () => {
+    const { container } = await renderClient(
+      <Card>
+        <Card.Heading>Regional Manager</Card.Heading>
+        <Card.Action href="#/delete">Delete</Card.Action>
+        <Card.Action href="#/withdraw">Withdraw</Card.Action>
+        <Card.Description>Karen Francis</Card.Description>
+      </Card>,
+      { className: 'nhsuk-card' },
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('matches snapshot with multiple actions (via server)', async () => {
     const { container, element } = await renderServer(
       <Card>
-        <Card.Image src="imageSrc" alt="imageAlt" />
-        <Card.Heading>If you need help now but it&apos;s not an emergency</Card.Heading>
-        <Card.Description>
-          Go to <a href="#/111">111.nhs.uk</a> or <a href="#/111">call 111</a>
-        </Card.Description>
+        <Card.Heading>Regional Manager</Card.Heading>
+        <Card.Action href="#/delete">Delete</Card.Action>
+        <Card.Action href="#/withdraw">Withdraw</Card.Action>
+        <Card.Description>Karen Francis</Card.Description>
       </Card>,
       { className: 'nhsuk-card' },
     );
