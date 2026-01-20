@@ -1,7 +1,10 @@
 'use client';
 
 import classNames from 'classnames';
-import { type CharacterCount as CharacterCountModule } from 'nhsuk-frontend';
+import {
+  type CharacterCount as CharacterCountModule,
+  type CharacterCountTranslations,
+} from 'nhsuk-frontend';
 import {
   forwardRef,
   useEffect,
@@ -18,6 +21,7 @@ export interface CharacterCountElementProps extends ComponentPropsWithoutRef<'te
   maxLength?: number;
   maxWords?: number;
   threshold?: number;
+  i18n?: CharacterCountTranslations;
 }
 
 export type CharacterCountProps = CharacterCountElementProps &
@@ -27,7 +31,7 @@ export type CharacterCountProps = CharacterCountElementProps &
   >;
 
 export const CharacterCount = forwardRef<HTMLTextAreaElement, CharacterCountProps>(
-  ({ maxLength, maxWords, threshold, formGroupProps, ...rest }, forwardedRef) => {
+  ({ maxLength, maxWords, threshold, formGroupProps, i18n = {}, ...rest }, forwardedRef) => {
     const moduleRef = useRef<HTMLDivElement>(null);
     const importRef = useRef<Promise<CharacterCountModule | void>>(null);
     const [instanceError, setInstanceError] = useState<Error>();
@@ -41,9 +45,9 @@ export const CharacterCount = forwardRef<HTMLTextAreaElement, CharacterCountProp
       }
 
       importRef.current = import('nhsuk-frontend')
-        .then(({ CharacterCount }) => setInstance(new CharacterCount(moduleRef.current)))
+        .then(({ CharacterCount }) => setInstance(new CharacterCount(moduleRef.current, { i18n })))
         .catch(setInstanceError);
-    }, [moduleRef, importRef, instance]);
+    }, [moduleRef, importRef, instance, i18n]);
 
     if (instanceError) {
       throw instanceError;

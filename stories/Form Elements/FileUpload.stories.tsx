@@ -61,6 +61,29 @@ export const WithMultiple: Story = {
   args: {
     label: 'Upload multiple files',
     multiple: true,
+    i18n: {
+      chooseFilesButton: 'Choose files',
+      dropInstruction: 'or drop files',
+      noFileChosen: 'No files chosen',
+    },
+  },
+};
+
+export const WithTranslations: Story = {
+  args: {
+    label: 'Upload multiple files',
+    multiple: true,
+    i18n: {
+      chooseFilesButton: 'Dewiswch ffeil',
+      dropInstruction: 'neu ollwng ffeil',
+      noFileChosen: "Dim ffeil wedi'i dewis",
+      multipleFilesChosen: {
+        other: "%{count} ffeil wedi'u dewis",
+        one: "%{count} ffeil wedi'i dewis",
+      },
+      enteredDropZone: "Wedi mynd i mewn i'r parth gollwng",
+      leftDropZone: "Parth gollwng i'r chwith",
+    },
   },
 };
 

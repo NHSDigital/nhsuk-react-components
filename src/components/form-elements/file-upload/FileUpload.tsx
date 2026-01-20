@@ -1,7 +1,7 @@
 'use client';
 
 import classNames from 'classnames';
-import { type FileUpload as FileUploadModule } from 'nhsuk-frontend';
+import { type FileUpload as FileUploadModule, type FileUploadTranslations } from 'nhsuk-frontend';
 import {
   forwardRef,
   useEffect,
@@ -16,6 +16,7 @@ import { type FormElementProps } from '#util/types/FormTypes.js';
 
 export interface FileUploadElementProps extends ComponentPropsWithoutRef<'input'> {
   chooseFilesButtonClassList?: string[];
+  i18n?: FileUploadTranslations;
 }
 
 export type FileUploadProps = FileUploadElementProps &
@@ -26,7 +27,7 @@ export type FileUploadProps = FileUploadElementProps &
 
 export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
   ({ formGroupProps, ...props }, forwardedRef) => {
-    const { chooseFilesButtonClassList, ...rest } = props;
+    const { chooseFilesButtonClassList, i18n = {}, ...rest } = props;
 
     const moduleRef = useRef<HTMLDivElement>(null);
     const importRef = useRef<Promise<FileUploadModule | void>>(null);
@@ -41,9 +42,9 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
       }
 
       importRef.current = import('nhsuk-frontend')
-        .then(({ FileUpload }) => setInstance(new FileUpload(moduleRef.current)))
+        .then(({ FileUpload }) => setInstance(new FileUpload(moduleRef.current, { i18n })))
         .catch(setInstanceError);
-    }, [moduleRef, importRef, instance]);
+    }, [moduleRef, importRef, instance, i18n]);
 
     if (instanceError) {
       throw instanceError;

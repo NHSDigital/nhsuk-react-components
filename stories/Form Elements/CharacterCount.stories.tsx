@@ -51,3 +51,28 @@ export const MessageThreshold: Story = {
     threshold: 75,
   },
 };
+
+export const WithTranslations: Story = {
+  args: {
+    label: 'Allwch chi roi mwy o fanylion?',
+    hint: 'Peidiwch â chynnwys gwybodaeth bersonol, fel eich enw, dyddiad geni na rhif y GIG',
+    maxLength: 200,
+    i18n: {
+      charactersUnderLimit: {
+        one: 'Mae gennych %{count} nod ar ôl',
+        two: 'Mae gennych %{count} nod ar ôl',
+        few: 'Mae gennych %{count} nod ar ôl',
+        many: 'Mae gennych %{count} nod ar ôl',
+        other: 'Mae gennych %{count} nod ar ôl',
+      },
+      charactersAtLimit: 'Mae gennych 0 nod ar ôl',
+      charactersOverLimit: {
+        one: 'Mae gennych %{count} nod yn ormod',
+        two: 'Mae gennych %{count} nod yn ormod',
+        few: 'Mae gennych %{count} nod yn ormod',
+        many: 'Mae gennych %{count} nod yn ormod',
+        other: 'Mae gennych chi %{count} nod yn ormod',
+      },
+    },
+  },
+};

@@ -1,7 +1,10 @@
 'use client';
 
 import classNames from 'classnames';
-import { type PasswordInput as PasswordInputModule } from 'nhsuk-frontend';
+import {
+  type PasswordInput as PasswordInputModule,
+  type PasswordInputTranslations,
+} from 'nhsuk-frontend';
 import {
   forwardRef,
   useEffect,
@@ -23,6 +26,7 @@ export interface PasswordInputElementProps extends ComponentPropsWithoutRef<'inp
   showPasswordText?: string;
   showPasswordAriaLabelText?: string;
   buttonProps?: ComponentPropsWithRef<'button'>;
+  i18n?: PasswordInputTranslations;
 }
 
 export type PasswordInputProps = PasswordInputElementProps &
@@ -49,7 +53,7 @@ const PasswordInputButton: FC<ComponentPropsWithRef<'button'>> = ({
 );
 
 export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
-  ({ buttonProps, formGroupProps, ...props }, forwardedRef) => {
+  ({ buttonProps, formGroupProps, i18n = {}, ...props }, forwardedRef) => {
     const { showPasswordText, showPasswordAriaLabelText, ...rest } = props;
 
     const moduleRef = useRef<HTMLDivElement>(null);
@@ -65,9 +69,9 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
       }
 
       importRef.current = import('nhsuk-frontend')
-        .then(({ PasswordInput }) => setInstance(new PasswordInput(moduleRef.current)))
+        .then(({ PasswordInput }) => setInstance(new PasswordInput(moduleRef.current, { i18n })))
         .catch(setInstanceError);
-    }, [moduleRef, importRef, instance]);
+    }, [moduleRef, importRef, instance, i18n]);
 
     if (instanceError) {
       throw instanceError;
