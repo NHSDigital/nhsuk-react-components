@@ -5,16 +5,26 @@ import { ActionLink } from '#components/navigation/action-link/index.js';
 const meta: Meta<typeof ActionLink> = {
   title: 'Navigation/ActionLink',
   component: ActionLink,
-  args: { children: 'Link', asElement: 'a', href: '#' },
+  render: (args) => <ActionLink {...args}>Find your nearest A&E</ActionLink>,
 };
+
 export default meta;
 type Story = StoryObj<typeof ActionLink>;
 
-export const StandardLink: Story = {};
-
-export const OpenLinkInNewTab: Story = {
+export const Standard: Story = {
+  name: 'Action link default',
   args: {
-    target: '_blank',
-    rel: 'noopener noreferrer',
+    href: '#',
+  },
+};
+
+export const Reverse: Story = {
+  name: 'Action link reverse',
+  args: {
+    href: '#',
+    reverse: true,
+  },
+  globals: {
+    backgrounds: { value: 'dark' },
   },
 };

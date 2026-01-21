@@ -5,10 +5,12 @@ import { BreadcrumbBack, BreadcrumbItem } from './components/index.js';
 
 import { childIsOfComponentType } from '#util/types/index.js';
 
-export type BreadcrumbProps = ComponentPropsWithoutRef<'nav'>;
+export interface BreadcrumbProps extends ComponentPropsWithoutRef<'nav'> {
+  reverse?: boolean;
+}
 
 const BreadcrumbComponent = forwardRef<HTMLElement, BreadcrumbProps>((props, forwardedRef) => {
-  const { children, className, 'aria-label': ariaLabel = 'Breadcrumb', ...rest } = props;
+  const { children, className, 'aria-label': ariaLabel = 'Breadcrumb', reverse, ...rest } = props;
 
   // Split off any "Item" components
   const { ItemChildren, OtherChildren } = Children.toArray(children).reduce<{
@@ -31,7 +33,11 @@ const BreadcrumbComponent = forwardRef<HTMLElement, BreadcrumbProps>((props, for
 
   return (
     <nav
-      className={classNames('nhsuk-breadcrumb', className)}
+      className={classNames(
+        'nhsuk-breadcrumb',
+        { 'nhsuk-breadcrumb--reverse': reverse },
+        className,
+      )}
       aria-label={ariaLabel}
       ref={forwardedRef}
       {...rest}
