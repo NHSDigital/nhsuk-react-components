@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 
 import { Card } from '..';
 
+import { type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
 import { renderClient, renderServer } from '#util/components';
 import { type CardType } from '#util/types';
 
@@ -69,7 +70,7 @@ describe('Card', () => {
     const { container } = render(
       <Card clickable>
         <Card.Content>
-          <Card.Heading className="nhsuk-heading-m">
+          <Card.Heading size="m">
             <Card.Link href="#">Introduction to care and support</Card.Link>
           </Card.Heading>
           <Card.Description>
@@ -104,7 +105,27 @@ describe('Card', () => {
 
     expect(cardEl).toHaveClass(`nhsuk-card--${cardType}`);
     expect(cardHeadingEl).toHaveClass('nhsuk-card__heading');
-    expect(cardHeadingEl?.tagName).toBe('H2');
+    expect(cardHeadingEl).toHaveProperty('tagName', 'H2');
+  });
+
+  it.each<Required<Pick<HeadingLevelProps, 'size'>>>([
+    { size: 's' },
+    { size: 'm' },
+    { size: 'l' },
+    { size: 'xl' },
+  ])('renders the heading with custom size $size', (props) => {
+    const { container } = render(
+      <Card>
+        <Card.Content>
+          <Card.Heading {...props}>Feature card heading</Card.Heading>
+        </Card.Content>
+      </Card>,
+    );
+
+    const cardEl = container.querySelector('.nhsuk-card');
+    const cardHeadingEl = cardEl?.querySelector('.nhsuk-card__heading');
+
+    expect(cardHeadingEl).toHaveClass(`nhsuk-heading-${props.size}`);
   });
 
   describe('Care card variant', () => {
@@ -170,6 +191,24 @@ describe('Card', () => {
         );
 
         expect(container.querySelector('h3')).toHaveAccessibleName(`${visuallyHidden}: ${heading}`);
+      });
+
+      it.each<Required<Pick<HeadingLevelProps, 'size'>>>([
+        { size: 's' },
+        { size: 'm' },
+        { size: 'l' },
+        { size: 'xl' },
+      ])('renders the heading with custom size $size', (props) => {
+        const { container } = render(
+          <Card cardType={cardType}>
+            <Card.Heading {...props}>{heading}</Card.Heading>
+          </Card>,
+        );
+
+        const cardEl = container.querySelector('.nhsuk-card');
+        const cardHeadingEl = cardEl?.querySelector('.nhsuk-card__heading');
+
+        expect(cardHeadingEl).toHaveClass(`nhsuk-heading-${props.size}`);
       });
     });
   });

@@ -10,12 +10,25 @@ describe('HeadingLevel', () => {
     { headingLevel: 'h4' },
     { headingLevel: 'h5' },
     { headingLevel: 'h6' },
-  ])('renders the correct elements - %s', (props) => {
+  ])('renders with custom heading level $headingLevel', (props) => {
     const { container } = render(<HeadingLevel {...props} />);
 
     const headingEl = container.querySelector(props.headingLevel);
 
     expect(headingEl).toHaveProperty('tagName', props?.headingLevel?.toUpperCase());
+  });
+
+  it.each<Required<Pick<HeadingLevelProps, 'size'>>>([
+    { size: 's' },
+    { size: 'm' },
+    { size: 'l' },
+    { size: 'xl' },
+  ])('renders with custom size $size', (props) => {
+    const { container } = render(<HeadingLevel {...props} />);
+
+    const headingEl = container.querySelector('h3');
+
+    expect(headingEl).toHaveClass(`nhsuk-heading-${props.size}`);
   });
 
   it('console.warn when headingLevel is invalid', () => {

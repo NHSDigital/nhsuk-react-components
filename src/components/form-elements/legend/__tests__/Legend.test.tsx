@@ -2,8 +2,6 @@ import { render } from '@testing-library/react';
 
 import { Legend, type LegendProps } from '..';
 
-import { type NHSUKSize } from '#util/types/NHSUKTypes';
-
 describe('Legend', () => {
   it('matches snapshot', () => {
     const { container } = render(<Legend>Text</Legend>);
@@ -19,10 +17,10 @@ describe('Legend', () => {
 
     expect(legendEl).toHaveTextContent('Text');
     expect(legendEl).not.toHaveClass('nhsuk-fieldset__legend--xl');
-    expect(headingEl?.tagName).toBe('H1');
+    expect(headingEl).toHaveProperty('tagName', 'H1');
   });
 
-  it.each<NHSUKSize>(['s', 'm', 'l', 'xl'])(
+  it.each<LegendProps['size']>(['s', 'm', 'l', 'xl'])(
     'renders as page heading with custom size %s',
     (size) => {
       const { container } = render(
@@ -36,7 +34,7 @@ describe('Legend', () => {
 
       expect(legendEl).toHaveTextContent('Text');
       expect(legendEl).toHaveClass(`nhsuk-fieldset__legend--${size}`);
-      expect(headingEl?.tagName).toBe('H1');
+      expect(headingEl).toHaveProperty('tagName', 'H1');
     },
   );
 
@@ -52,7 +50,7 @@ describe('Legend', () => {
     const headingEl = legendEl?.querySelector('.nhsuk-fieldset__heading');
 
     expect(legendEl).toHaveTextContent('Text');
-    expect(headingEl?.tagName).toBe(props?.headingLevel?.toUpperCase());
+    expect(headingEl).toHaveProperty('tagName', props?.headingLevel?.toUpperCase());
   });
 
   it('renders null with no children', () => {

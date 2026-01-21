@@ -18,9 +18,7 @@ export const Standard: Story = {
   render: (args) => (
     <Card {...args}>
       <Card.Content>
-        <Card.Heading className="nhsuk-heading-m">
-          If you need help now but it&apos;s not an emergency
-        </Card.Heading>
+        <Card.Heading size="m">If you need help now but it&apos;s not an emergency</Card.Heading>
         <Card.Description>
           Go to <a href="stories#">111.nhs.uk</a> or <a href="stories#">call 111</a>
         </Card.Description>
@@ -33,7 +31,7 @@ export const BasicWithHeadingLink: Story = {
   render: (args) => (
     <Card {...args}>
       <Card.Content>
-        <Card.Heading className="nhsuk-heading-m">
+        <Card.Heading size="m">
           <Card.Link href="#">Introduction to care and support</Card.Link>
         </Card.Heading>
         <Card.Description>
@@ -48,7 +46,7 @@ export const BasicWithCustomHTML: Story = {
   render: (args) => (
     <Card {...args}>
       <Card.Content>
-        <Card.Heading className="nhsuk-heading-m">Help from NHS 111</Card.Heading>
+        <Card.Heading size="m">Help from NHS 111</Card.Heading>
         <BodyText>
           If you&apos;re worried about a symptom and not sure what help you need, NHS 111 can tell
           you what to do next.
@@ -66,7 +64,7 @@ export const BasicWithSummaryList: Story = {
   render: (args) => (
     <Card {...args}>
       <Card.Content>
-        <Card.Heading className="nhsuk-heading-m">Help from NHS 111</Card.Heading>
+        <Card.Heading size="m">Help from NHS 111</Card.Heading>
         <SummaryList>
           <SummaryList.Row>
             <SummaryList.Key>Name</SummaryList.Key>
@@ -86,7 +84,7 @@ export const BasicWithSummaryListAndHeadingLink: Story = {
   render: (args) => (
     <Card {...args}>
       <Card.Content>
-        <Card.Heading className="nhsuk-heading-m">
+        <Card.Heading size="m">
           <Card.Link href="#">Help from NHS 111</Card.Link>
         </Card.Heading>
         <SummaryList>
@@ -115,7 +113,7 @@ export const CardWithImage: Story = {
         alt=""
       />
       <Card.Content>
-        <Card.Heading className="nhsuk-heading-m">
+        <Card.Heading size="m">
           <Card.Link href="#">Exercise</Card.Link>
         </Card.Heading>
         <Card.Description>
@@ -133,7 +131,7 @@ export const FeatureCard: Story = {
   render: (args) => (
     <Card {...args}>
       <Card.Content>
-        <Card.Heading className="nhsuk-heading-m">Feature card heading</Card.Heading>
+        <Card.Heading size="m">Feature card heading</Card.Heading>
         <Card.Description>Feature card description</Card.Description>
       </Card.Content>
     </Card>
@@ -147,7 +145,7 @@ export const FeatureCardWithList: Story = {
   render: (args) => (
     <Card {...args}>
       <Card.Content>
-        <Card.Heading className="nhsuk-heading-m">Feature card heading</Card.Heading>
+        <Card.Heading size="m">Feature card heading</Card.Heading>
         <ul className="nhsuk-list nhsuk-list--border">
           <li>
             <a href="/conditions/abdominal-aortic-aneurysm/">AAA</a>
@@ -172,7 +170,7 @@ export const PrimaryCardWithChevron: Story = {
   render: (args) => (
     <Card {...args}>
       <Card.Content>
-        <Card.Heading className="nhsuk-heading-m">
+        <Card.Heading size="m">
           <Card.Link href="#">Breast screening</Card.Link>
         </Card.Heading>
         <ChevronRightCircleIcon />
@@ -189,7 +187,7 @@ export const PrimaryCardWithChevronAndDescription: Story = {
   render: (args) => (
     <Card {...args}>
       <Card.Content>
-        <Card.Heading className="nhsuk-heading-m">
+        <Card.Heading size="m">
           <Card.Link href="#">Introduction to care and support</Card.Link>
         </Card.Heading>
         <Card.Description>
@@ -208,7 +206,7 @@ export const ClickableCard: Story = {
   render: (args) => (
     <Card {...args}>
       <Card.Content>
-        <Card.Heading className="nhsuk-heading-m">
+        <Card.Heading size="m">
           <Card.Link href="#">Introduction to care and support</Card.Link>
         </Card.Heading>
         <Card.Description>
@@ -227,7 +225,7 @@ export const SecondaryCard: Story = {
   render: (args) => (
     <Card {...args}>
       <Card.Content>
-        <Card.Heading className="nhsuk-heading-m">
+        <Card.Heading size="m">
           <Card.Link href="#">Urgent and emergency care services</Card.Link>
         </Card.Heading>
         <Card.Description>
@@ -273,7 +271,7 @@ export const CardGroup: StoryGroup = {
       <Card.GroupItem {...args}>
         <Card clickable>
           <Card.Content>
-            <Card.Heading className="nhsuk-heading-m">
+            <Card.Heading size="m">
               <Card.Link href="#">Introduction to care and support</Card.Link>
             </Card.Heading>
             <Card.Description>
@@ -285,7 +283,7 @@ export const CardGroup: StoryGroup = {
       <Card.GroupItem {...args}>
         <Card clickable>
           <Card.Content>
-            <Card.Heading className="nhsuk-heading-m">
+            <Card.Heading size="m">
               <Card.Link href="#">Help from social services and charities</Card.Link>
             </Card.Heading>
             <Card.Description>
@@ -297,7 +295,7 @@ export const CardGroup: StoryGroup = {
       <Card.GroupItem {...args}>
         <Card clickable>
           <Card.Content>
-            <Card.Heading className="nhsuk-heading-m">
+            <Card.Heading size="m">
               <Card.Link href="#">Money, work and benefits</Card.Link>
             </Card.Heading>
             <Card.Description>
@@ -309,7 +307,7 @@ export const CardGroup: StoryGroup = {
       <Card.GroupItem {...args}>
         <Card clickable>
           <Card.Content>
-            <Card.Heading className="nhsuk-heading-m">
+            <Card.Heading size="m">
               <Card.Link href="#">Care after a hospital stay</Card.Link>
             </Card.Heading>
             <Card.Description>
@@ -328,7 +326,7 @@ export const NonUrgentCareCard: Story = {
   },
   render: (args) => (
     <Card {...args}>
-      <Card.Heading className="nhsuk-heading-m">Speak to a GP if:</Card.Heading>
+      <Card.Heading size="m">Speak to a GP if:</Card.Heading>
       <Card.Content>
         <ul>
           <li>you&apos;re not sure it&apos;s chickenpox</li>
@@ -353,7 +351,7 @@ export const UrgentCareCard: Story = {
   },
   render: (args) => (
     <Card {...args}>
-      <Card.Heading className="nhsuk-heading-m">Ask for an urgent GP appointment if:</Card.Heading>
+      <Card.Heading size="m">Ask for an urgent GP appointment if:</Card.Heading>
       <Card.Content>
         <ul>
           <li>you&apos;re an adult and have chickenpox</li>
@@ -381,7 +379,7 @@ export const EmergencyCareCard: Story = {
   },
   render: (args) => (
     <Card {...args}>
-      <Card.Heading className="nhsuk-heading-m">Call 999 or go to A&E now if:</Card.Heading>
+      <Card.Heading size="m">Call 999 or go to A&E now if:</Card.Heading>
       <Card.Content>
         <ul>
           <li>you or someone you know needs immediate help</li>

@@ -7,11 +7,11 @@ import { type NHSUKSize } from '#util/types/NHSUKTypes.js';
 export interface LegendProps
   extends ComponentPropsWithoutRef<'legend'>, Pick<HeadingLevelProps, 'headingLevel'> {
   isPageHeading?: boolean;
-  size?: NHSUKSize;
+  size?: Exclude<NHSUKSize, 'xxs' | 'xs'>;
 }
 
-export const Legend: FC<LegendProps> = (params) => {
-  const { className, children, isPageHeading, headingLevel = 'h1', size, ...rest } = params;
+export const Legend: FC<LegendProps> = (props) => {
+  const { className, children, isPageHeading, headingLevel = 'h1', size, ...rest } = props;
 
   if (!children) {
     return null;
@@ -26,7 +26,7 @@ export const Legend: FC<LegendProps> = (params) => {
       )}
       {...rest}
     >
-      {isPageHeading || params.headingLevel ? (
+      {isPageHeading || props.headingLevel ? (
         <HeadingLevel className="nhsuk-fieldset__heading" headingLevel={headingLevel}>
           {children}
         </HeadingLevel>

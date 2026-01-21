@@ -6,26 +6,25 @@ import { Panel, type PanelTitleProps } from '..';
 import { renderClient, renderServer } from '#util/components';
 
 describe('Panel', () => {
+  const Example = (props: Parameters<typeof Panel>[0]) => (
+    <Panel {...props}>
+      <Panel.Title>Booking complete</Panel.Title>
+      We have sent you a confirmation email
+    </Panel>
+  );
+
   it('matches snapshot', async () => {
-    const { container } = await renderClient(
-      <Panel>
-        <Panel.Title>Booking complete</Panel.Title>
-        We have sent you a confirmation email
-      </Panel>,
-      { className: 'nhsuk-panel' },
-    );
+    const { container } = await renderClient(<Example />, {
+      className: 'nhsuk-panel',
+    });
 
     expect(container).toMatchSnapshot();
   });
 
   it('matches snapshot (via server)', async () => {
-    const { container, element } = await renderServer(
-      <Panel>
-        <Panel.Title>Booking complete</Panel.Title>
-        We have sent you a confirmation email
-      </Panel>,
-      { className: 'nhsuk-panel' },
-    );
+    const { container, element } = await renderServer(<Example />, {
+      className: 'nhsuk-panel',
+    });
 
     expect(container).toMatchSnapshot('server');
 
@@ -41,13 +40,9 @@ describe('Panel', () => {
   it('forwards refs', async () => {
     const ref = createRef<HTMLDivElement>();
 
-    const { modules } = await renderClient(
-      <Panel ref={ref}>
-        <Panel.Title>Booking complete</Panel.Title>
-        We have sent you a confirmation email
-      </Panel>,
-      { className: 'nhsuk-panel' },
-    );
+    const { modules } = await renderClient(<Example ref={ref} />, {
+      className: 'nhsuk-panel',
+    });
 
     const [panelEl] = modules;
 
@@ -55,22 +50,30 @@ describe('Panel', () => {
     expect(ref.current).toHaveClass('nhsuk-panel');
   });
 
-  it.each<PanelTitleProps | undefined>([
-    undefined,
-    { headingLevel: 'h1' },
-    { headingLevel: 'h2' },
-    { headingLevel: 'h3' },
-    { headingLevel: 'h4' },
-  ])('renders heading level $headingLevel if specified', (props) => {
-    const { container } = render(
-      <Panel>
-        <Panel.Title {...props}>Booking complete</Panel.Title>
-        We have sent you a confirmation email
-      </Panel>,
-    );
+  describe('Panel.Title', () => {
+    it.each<PanelTitleProps>([
+      { headingLevel: 'h1' },
+      { headingLevel: 'h2' },
+      { headingLevel: 'h3' },
+      { headingLevel: 'h4' },
+    ])('renders with custom heading level $headingLevel', (props) => {
+      const { container } = render(<Panel.Title {...props}>Booking complete</Panel.Title>);
 
-    const title = container.querySelector('.nhsuk-panel__title');
+      const title = container.querySelector('.nhsuk-panel__title');
 
-    expect(title).toHaveProperty('tagName', props?.headingLevel?.toUpperCase() ?? 'H1');
+      expect(title).toHaveProperty('tagName', props?.headingLevel?.toUpperCase() ?? 'H1');
+    });
+
+    it.each<PanelTitleProps['size']>(['m', 'l', 'xl'])('renders with custom size %s', (size) => {
+      const { container } = render(
+        <Panel.Title size={size}>
+          Jodie Brown had a COVID-19 vaccine less than 3 months ago
+        </Panel.Title>,
+      );
+
+      const title = container.querySelector('.nhsuk-panel__title');
+
+      expect(title).toHaveClass(`nhsuk-panel__title--${size}`);
+    });
   });
 });
