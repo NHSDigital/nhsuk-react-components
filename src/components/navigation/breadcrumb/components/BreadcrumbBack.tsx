@@ -1,14 +1,10 @@
 import { forwardRef } from 'react';
 
-import { BackLink } from '#components/navigation/back-link/index.js';
-import { type AsElementLink } from '#util/types/index.js';
+import { BackLink, type BackLinkProps } from '#components/navigation/back-link/index.js';
 
-export type BreadcrumbBackProps = AsElementLink<HTMLAnchorElement>;
-
-export const BreadcrumbBack = forwardRef<HTMLAnchorElement, BreadcrumbBackProps>(
+export const BreadcrumbBack = forwardRef<HTMLAnchorElement, BackLinkProps>(
   ({ children, ...rest }, forwardedRef) => (
-    <BackLink ref={forwardedRef} {...rest}>
-      <span className="nhsuk-u-visually-hidden">Back to&nbsp;</span>
+    <BackLink visuallyHiddenText="Back to" ref={forwardedRef} {...rest}>
       {children}
     </BackLink>
   ),

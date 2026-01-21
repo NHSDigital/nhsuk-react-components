@@ -50,8 +50,8 @@ describe('Breadcrumb', () => {
       expect(child.classList).toContain('nhsuk-breadcrumb__list-item');
     });
 
-    expect(container.querySelector('#otherElement')?.textContent).toEqual('Test Element');
-    expect(container.querySelector('.nhsuk-back-link')?.textContent).toBe('Back to Breadcrumb 2');
+    expect(container.querySelector('#otherElement')).toHaveTextContent('Test Element');
+    expect(container.querySelector('.nhsuk-back-link')).toHaveTextContent('Back to Breadcrumb 2');
   });
 
   it('passes through other children fine', () => {
@@ -63,7 +63,7 @@ describe('Breadcrumb', () => {
       </Breadcrumb>,
     );
 
-    expect(container.querySelector('#otherElement')?.textContent).toEqual('Test Element');
+    expect(container.querySelector('#otherElement')).toHaveTextContent('Test Element');
   });
 
   it.each<string | undefined>([undefined, 'Test label'])(
@@ -85,9 +85,11 @@ describe('Breadcrumb', () => {
         </Breadcrumb>,
       );
 
-      const hiddenSpan = container.querySelector('.nhsuk-back-link > .nhsuk-u-visually-hidden');
+      const visuallyHiddenEl = container.querySelector(
+        '.nhsuk-back-link > .nhsuk-u-visually-hidden',
+      );
 
-      expect(hiddenSpan?.textContent).toBe('Back to ');
+      expect(visuallyHiddenEl).toHaveTextContent('Back to');
     });
 
     it('renders as custom element', () => {
