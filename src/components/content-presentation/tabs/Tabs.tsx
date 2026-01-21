@@ -12,11 +12,11 @@ import {
   type FC,
 } from 'react';
 
-import { HeadingLevel, type HeadingLevelProps } from '#components/typography/Heading.js';
+import { Heading, type HeadingProps } from '#components/typography/Heading.js';
 
 export type TabsProps = ComponentPropsWithoutRef<'div'>;
 
-export type TabsTitleProps = HeadingLevelProps;
+export type TabsTitleProps = HeadingProps;
 
 export type TabsListProps = ComponentPropsWithoutRef<'ul'>;
 
@@ -29,9 +29,9 @@ export interface TabsContentsProps extends ComponentPropsWithoutRef<'div'> {
 }
 
 export const TabsTitle: FC<TabsTitleProps> = ({ children, headingLevel = 'h2', ...rest }) => (
-  <HeadingLevel className="nhsuk-tabs__title" headingLevel={headingLevel} {...rest}>
+  <Heading className="nhsuk-tabs__title" headingLevel={headingLevel} {...rest}>
     {children}
-  </HeadingLevel>
+  </Heading>
 );
 
 export const TabsList: FC<TabsListProps> = ({ children, ...rest }) => (

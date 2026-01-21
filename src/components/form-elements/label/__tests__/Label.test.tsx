@@ -59,7 +59,7 @@ describe('Label', () => {
     const headingEl = container.querySelector('.nhsuk-label-wrapper');
     const labelEl = headingEl?.querySelector('.nhsuk-label');
 
-    expect(headingEl).toHaveProperty('tagName', props?.headingLevel?.toUpperCase());
+    expect(headingEl).toHaveProperty('tagName', props.headingLevel?.toUpperCase());
     expect(labelEl).toHaveTextContent('Text');
   });
 

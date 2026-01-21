@@ -5,7 +5,7 @@ import { forwardRef, useContext } from 'react';
 
 import { CardContext } from '../CardContext.js';
 
-import { HeadingLevel, type HeadingLevelProps } from '#components/typography/Heading.js';
+import { Heading, type HeadingProps } from '#components/typography/Heading.js';
 import { type CareCardType } from '#util/types/index.js';
 
 const genHiddenText = (cardType?: CareCardType) => {
@@ -23,7 +23,7 @@ const genHiddenText = (cardType?: CareCardType) => {
   }
 };
 
-export const CardHeadingContainer = forwardRef<HTMLDivElement, HeadingLevelProps>(
+export const CardHeadingContainer = forwardRef<HTMLDivElement, HeadingProps>(
   (props, forwardedRef) => {
     const { children, ...rest } = props;
     const { cardType } = useContext(CardContext);
@@ -37,24 +37,22 @@ export const CardHeadingContainer = forwardRef<HTMLDivElement, HeadingLevelProps
   },
 );
 
-export const CardHeading = forwardRef<HTMLHeadingElement, HeadingLevelProps>(
-  (props, forwardedRef) => {
-    const { children, className, headingLevel, visuallyHiddenText, ...rest } = props;
-    const { cardType } = useContext(CardContext);
+export const CardHeading = forwardRef<HTMLHeadingElement, HeadingProps>((props, forwardedRef) => {
+  const { children, className, headingLevel, visuallyHiddenText, ...rest } = props;
+  const { cardType } = useContext(CardContext);
 
-    return (
-      <HeadingLevel
-        className={classNames('nhsuk-card__heading', className)}
-        headingLevel={headingLevel ?? 'h2'}
-        visuallyHiddenText={visuallyHiddenText ?? genHiddenText(cardType)}
-        ref={forwardedRef}
-        {...rest}
-      >
-        {children}
-      </HeadingLevel>
-    );
-  },
-);
+  return (
+    <Heading
+      className={classNames('nhsuk-card__heading', className)}
+      headingLevel={headingLevel ?? 'h2'}
+      visuallyHiddenText={visuallyHiddenText ?? genHiddenText(cardType)}
+      ref={forwardedRef}
+      {...rest}
+    >
+      {children}
+    </Heading>
+  );
+});
 
 CardHeading.displayName = 'Card.Heading';
 CardHeadingContainer.displayName = 'Card.HeadingContainer';

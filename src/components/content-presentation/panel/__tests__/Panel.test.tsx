@@ -95,7 +95,7 @@ describe('Panel', () => {
 
       const title = container.querySelector('.nhsuk-panel__title');
 
-      expect(title).toHaveProperty('tagName', props?.headingLevel?.toUpperCase() ?? 'H1');
+      expect(title).toHaveProperty('tagName', props.headingLevel?.toUpperCase());
     });
 
     it.each<PanelTitleProps['size']>(['m', 'l', 'xl'])('renders with custom size %s', (size) => {

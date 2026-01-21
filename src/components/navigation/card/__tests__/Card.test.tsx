@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 
 import { Card, type CardProps } from '..';
 
-import { type HeadingLevelProps } from '#components/typography/Heading.js';
+import { type HeadingProps } from '#components/typography/Heading.js';
 import { renderClient, renderServer } from '#util/components';
 import { type CareCardType } from '#util/types';
 
@@ -109,7 +109,7 @@ describe('Card', () => {
     expect(cardHeadingEl).toHaveProperty('tagName', 'H2');
   });
 
-  it.each<Required<Pick<HeadingLevelProps, 'size'>>>([
+  it.each<Required<Pick<HeadingProps, 'size'>>>([
     { size: 's' },
     { size: 'm' },
     { size: 'l' },
@@ -229,7 +229,7 @@ describe('Card', () => {
         expect(headingEl).toHaveTextContent(`${visuallyHidden}: ${heading}`);
       });
 
-      it.each<Required<Pick<HeadingLevelProps, 'size'>>>([
+      it.each<Required<Pick<HeadingProps, 'size'>>>([
         { size: 's' },
         { size: 'm' },
         { size: 'l' },

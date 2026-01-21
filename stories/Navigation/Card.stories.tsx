@@ -5,7 +5,7 @@ import { Tag } from '#components/content-presentation/tag/index.js';
 import { Button } from '#components/form-elements/button/index.js';
 import { ActionLink } from '#components/navigation/action-link/index.js';
 import { Card } from '#components/navigation/card/index.js';
-import { BodyText, HeadingLevel } from '#components/typography/index.js';
+import { BodyText, Heading } from '#components/typography/index.js';
 
 const meta: Meta<typeof Card> = {
   title: 'Navigation/Card',
@@ -406,9 +406,9 @@ export const FeatureCardWithNestedCardAndSummaryList: Story = {
       <Button href="#" secondary>
         Record a new consent response
       </Button>
-      <HeadingLevel headingLevel="h3" size="s">
+      <Heading headingLevel="h3" size="s">
         Consent responses
-      </HeadingLevel>
+      </Heading>
       <Card clickable>
         <Card.Heading headingLevel="h4">
           <Card.Link href="#">Sarah Philips (Mum)</Card.Link>

@@ -50,7 +50,7 @@ describe('Legend', () => {
     const headingEl = legendEl?.querySelector('.nhsuk-fieldset__heading');
 
     expect(legendEl).toHaveTextContent('Text');
-    expect(headingEl).toHaveProperty('tagName', props?.headingLevel?.toUpperCase());
+    expect(headingEl).toHaveProperty('tagName', props.headingLevel?.toUpperCase());
   });
 
   it('renders null with no children', () => {

@@ -77,7 +77,7 @@ describe('Index', () => {
       'HeaderNavigationItem',
       'HeaderSearch',
       'HeaderServiceName',
-      'HeadingLevel',
+      'Heading',
       'Hero',
       'HeroContent',
       'HeroHeading',

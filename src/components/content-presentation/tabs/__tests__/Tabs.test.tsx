@@ -132,7 +132,7 @@ describe('Tabs', () => {
 
       const title = container.querySelector('.nhsuk-tabs__title');
 
-      expect(title).toHaveProperty('tagName', props?.headingLevel?.toUpperCase() ?? 'H2');
+      expect(title).toHaveProperty('tagName', props.headingLevel?.toUpperCase());
     });
   });
 

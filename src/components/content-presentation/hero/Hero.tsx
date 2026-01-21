@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import { forwardRef, type ComponentPropsWithoutRef, type FC } from 'react';
 
 import { Col, Container, Row } from '#components/layout/index.js';
-import { HeadingLevel, type HeadingLevelProps } from '#components/typography/Heading.js';
+import { Heading, type HeadingProps } from '#components/typography/Heading.js';
 
 export interface HeroContentProps extends ComponentPropsWithoutRef<'div'> {
   hasImage: boolean;
@@ -30,8 +30,8 @@ export const HeroContent: FC<HeroContentProps> = ({ children, hasImage }) => {
   );
 };
 
-export const HeroHeading: FC<HeadingLevelProps> = ({ className, headingLevel = 'h1', ...rest }) => (
-  <HeadingLevel
+export const HeroHeading: FC<HeadingProps> = ({ className, headingLevel = 'h1', ...rest }) => (
+  <Heading
     className={classNames('nhsuk-u-margin-bottom-3', className)}
     headingLevel={headingLevel}
     {...rest}

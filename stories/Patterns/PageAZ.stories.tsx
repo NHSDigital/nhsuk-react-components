@@ -2,7 +2,7 @@ import { type Meta, type StoryObj } from '@storybook/react-vite';
 
 import { Col, Container, Row } from '#components/layout/index.js';
 import { Card } from '#components/navigation/card/index.js';
-import { HeadingLevel } from '#components/typography/index.js';
+import { Heading } from '#components/typography/index.js';
 import { NavAZ } from '#patterns/nav-a-z/index.js';
 
 /**
@@ -33,7 +33,7 @@ export const Standard: Story = {
       <main className="nhsuk-main-wrapper" id="maincontent">
         <Row>
           <Col width="full">
-            <HeadingLevel headingLevel="h1">Health A to Z</HeadingLevel>
+            <Heading>Health A to Z</Heading>
 
             <NavAZ id="nhsuk-nav-a-z">
               <NavAZ.LinkItem href="#A">A</NavAZ.LinkItem>
