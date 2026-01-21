@@ -127,7 +127,6 @@ describe('Index', () => {
       'TableContainer',
       'TableContext',
       'TableHead',
-      'TablePanel',
       'TableRow',
       'TableSection',
       'TableSectionContext',

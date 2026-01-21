@@ -16,7 +16,6 @@ import {
   TableCell,
   TableContainer,
   TableHead,
-  TablePanel,
   TableRow,
   type TableCaptionProps,
 } from './components/index.js';
@@ -75,10 +74,6 @@ TableComponent.displayName = 'Table';
 
 export const Table = Object.assign(TableComponent, {
   Container: TableContainer,
-  /**
-   * @deprecated Use {@link _Card | `<Card feature>`} instead.
-   */
-  Panel: TablePanel,
   Head: TableHead,
   Body: TableBody,
   Row: TableRow,
