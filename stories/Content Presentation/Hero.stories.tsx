@@ -5,6 +5,10 @@ import { Hero } from '#components/content-presentation/hero/index.js';
 const meta: Meta<typeof Hero> = {
   title: 'Content Presentation/Hero',
   component: Hero,
+  parameters: {
+    layout: 'fullscreen',
+    width: false,
+  },
 };
 export default meta;
 type Story = StoryObj<typeof Hero>;

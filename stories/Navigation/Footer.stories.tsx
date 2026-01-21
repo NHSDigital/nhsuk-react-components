@@ -5,6 +5,10 @@ import { Footer } from '#components/navigation/footer/index.js';
 const meta: Meta<typeof Footer> = {
   title: 'Navigation/Footer',
   component: Footer,
+  parameters: {
+    layout: 'fullscreen',
+    width: false,
+  },
 };
 export default meta;
 type Story = StoryObj<typeof Footer>;

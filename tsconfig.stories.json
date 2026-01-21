@@ -4,5 +4,10 @@
     "jsx": "react-jsxdev",
     "types": ["node"]
   },
-  "include": ["./.storybook/*.ts", "./stories/**/*.tsx"]
+  "include": [
+    "./.storybook/*.ts",
+    "./.storybook/*.tsx",
+    "./stories/**/*.tsx",
+    ".storybook/preview.tsx"
+  ]
 }

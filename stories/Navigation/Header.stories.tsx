@@ -6,6 +6,10 @@ import { Header } from '#components/navigation/header/index.js';
 const meta: Meta<typeof Header> = {
   title: 'Navigation/Header',
   component: Header,
+  parameters: {
+    layout: 'fullscreen',
+    width: false,
+  },
 };
 export default meta;
 type Story = StoryObj<typeof Header>;

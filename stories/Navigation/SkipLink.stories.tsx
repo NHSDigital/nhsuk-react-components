@@ -2,6 +2,7 @@ import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { type FC, type ReactNode } from 'react';
 
 import { HintText } from '#components/form-elements/hint-text/index.js';
+import { Row, Col, Container } from '#components/layout/index.js';
 import { SkipLink } from '#components/navigation/skip-link/index.js';
 
 const CodeText: FC<{ children: ReactNode }> = ({ children }) => (
@@ -23,7 +24,6 @@ const CodeText: FC<{ children: ReactNode }> = ({ children }) => (
 const meta: Meta<typeof SkipLink> = {
   title: 'Navigation/SkipLink',
   component: SkipLink,
-
   render: (args) => (
     <>
       <HintText>
@@ -31,9 +31,19 @@ const meta: Meta<typeof SkipLink> = {
         <CodeText>tab</CodeText>
         to show the SkipLink
       </HintText>
+
       <SkipLink {...args} />
-      <h1>Page heading</h1>
-      <div id="maincontent">This is the main content</div>
+
+      <Container>
+        <main className="nhsuk-main-wrapper" id="maincontent">
+          <Row>
+            <Col width="two-thirds">
+              <h1>Page heading</h1>
+              <p>This is the main content</p>
+            </Col>
+          </Row>
+        </main>
+      </Container>
     </>
   ),
 };

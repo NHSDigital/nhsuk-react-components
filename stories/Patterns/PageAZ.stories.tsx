@@ -19,6 +19,10 @@ const meta: Meta = {
     disabledLetters: [],
     letters: [],
   },
+  parameters: {
+    layout: 'fullscreen',
+    width: false,
+  },
 };
 export default meta;
 type Story = StoryObj;

@@ -13,6 +13,9 @@ import { Tabs } from '#components/content-presentation/tabs/index.js';
 const meta: Meta<typeof Tabs> = {
   title: 'Content Presentation/Tabs',
   component: Tabs,
+  parameters: {
+    width: 'full',
+  },
 };
 
 export default meta;

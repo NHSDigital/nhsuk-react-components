@@ -5,6 +5,9 @@ import { Pagination } from '#components/navigation/pagination/index.js';
 const meta: Meta<typeof Pagination> = {
   title: 'Navigation/Pagination',
   component: Pagination,
+  parameters: {
+    width: 'full',
+  },
 };
 export default meta;
 type Story = StoryObj<typeof Pagination>;

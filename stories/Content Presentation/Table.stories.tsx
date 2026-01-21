@@ -1,8 +1,6 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
 import { Table } from '#components/content-presentation/table/index.js';
-import { HintText } from '#components/form-elements/hint-text/index.js';
-import { Col, Row } from '#components/layout/index.js';
 import { Card } from '#components/navigation/card/index.js';
 
 const meta: Meta<typeof Table> = {
@@ -235,32 +233,27 @@ export const NumericCells: Story = {
     caption: 'Number of cases',
   },
   render: (args) => (
-    <Row>
-      <Col width="one-half">
-        <HintText>Right-aligned cells are used for numeric values</HintText>
-        <Table {...args}>
-          <Table.Head>
-            <Table.Row>
-              <Table.Cell>Location</Table.Cell>
-              <Table.Cell format="numeric">Number of cases</Table.Cell>
-            </Table.Row>
-          </Table.Head>
-          <Table.Body>
-            <Table.Row>
-              <Table.Cell>England</Table.Cell>
-              <Table.Cell format="numeric">4,000</Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell>Wales</Table.Cell>
-              <Table.Cell format="numeric">2,500</Table.Cell>
-            </Table.Row>
-            <Table.Row>
-              <Table.Cell>Scotland</Table.Cell>
-              <Table.Cell format="numeric">600</Table.Cell>
-            </Table.Row>
-          </Table.Body>
-        </Table>
-      </Col>
-    </Row>
+    <Table {...args}>
+      <Table.Head>
+        <Table.Row>
+          <Table.Cell>Location</Table.Cell>
+          <Table.Cell format="numeric">Number of cases</Table.Cell>
+        </Table.Row>
+      </Table.Head>
+      <Table.Body>
+        <Table.Row>
+          <Table.Cell>England</Table.Cell>
+          <Table.Cell format="numeric">4,000</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>Wales</Table.Cell>
+          <Table.Cell format="numeric">2,500</Table.Cell>
+        </Table.Row>
+        <Table.Row>
+          <Table.Cell>Scotland</Table.Cell>
+          <Table.Cell format="numeric">600</Table.Cell>
+        </Table.Row>
+      </Table.Body>
+    </Table>
   ),
 };
