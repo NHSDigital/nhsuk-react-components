@@ -2,7 +2,7 @@ import { type Meta, type StoryObj } from '@storybook/react-vite';
 
 import { Col, Container, Row } from '#components/layout/index.js';
 import { Card } from '#components/navigation/card/index.js';
-import { HeadingLevel } from '#components/utils/index.js';
+import { HeadingLevel } from '#components/typography/index.js';
 import { NavAZ } from '#patterns/nav-a-z/index.js';
 
 /**

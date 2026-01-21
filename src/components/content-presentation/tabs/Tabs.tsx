@@ -12,7 +12,7 @@ import {
   type FC,
 } from 'react';
 
-import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
+import { HeadingLevel, type HeadingLevelProps } from '#components/typography/Heading.js';
 
 export type TabsProps = ComponentPropsWithoutRef<'div'>;
 

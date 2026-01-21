@@ -1,7 +1,7 @@
 import { forwardRef, type ComponentPropsWithoutRef } from 'react';
 
 import { Card, CardHeading } from '#components/navigation/card/index.js';
-import { type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
+import { type HeadingLevelProps } from '#components/typography/Heading.js';
 
 export const WarningCalloutHeading = forwardRef<HTMLDivElement, HeadingLevelProps>(
   ({ children, headingLevel, visuallyHiddenText, ...rest }, forwardedRef) => (

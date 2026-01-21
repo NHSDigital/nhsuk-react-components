@@ -2,7 +2,7 @@ import { render } from '@testing-library/react';
 
 import { Card, type CardProps } from '..';
 
-import { type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
+import { type HeadingLevelProps } from '#components/typography/Heading.js';
 import { renderClient, renderServer } from '#util/components';
 import { type CareCardType } from '#util/types';
 

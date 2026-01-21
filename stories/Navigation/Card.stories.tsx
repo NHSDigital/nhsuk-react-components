@@ -5,8 +5,7 @@ import { Tag } from '#components/content-presentation/tag/index.js';
 import { Button } from '#components/form-elements/button/index.js';
 import { ActionLink } from '#components/navigation/action-link/index.js';
 import { Card } from '#components/navigation/card/index.js';
-import { BodyText } from '#components/typography/BodyText.js';
-import { HeadingLevel } from '#components/utils/index.js';
+import { BodyText, HeadingLevel } from '#components/typography/index.js';
 
 const meta: Meta<typeof Card> = {
   title: 'Navigation/Card',

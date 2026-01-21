@@ -5,7 +5,7 @@ import { forwardRef, useContext } from 'react';
 
 import { CardContext } from '../CardContext.js';
 
-import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
+import { HeadingLevel, type HeadingLevelProps } from '#components/typography/Heading.js';
 import { type CareCardType } from '#util/types/index.js';
 
 const genHiddenText = (cardType?: CareCardType) => {
