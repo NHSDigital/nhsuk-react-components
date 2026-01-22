@@ -287,13 +287,43 @@ For accessibility reasons, it's no longer possible to pass `visuallyHiddenText: 
 
 Read about other [changes to meet WCAG 2.2](https://service-manual.nhs.uk/design-system/changes-to-design-system-wcag-2-2) on the design system in the NHS digital service manual.
 
-### Check components that conditionally reveal content still work
+### Check radios and checkboxes that conditionally reveal content still work
 
 Previously, conditionally revealing content ([radios](https://service-manual.nhs.uk/design-system/components/radios#conditionally-revealing-content), [checkboxes](https://service-manual.nhs.uk/design-system/components/checkboxes#conditionally-revealing-content)) would not be rendered until their related input was checked.
 
 To align with NHS.UK frontend, conditionally revealing content is now always rendered but remains hidden until revealed. Accessibility issues with missing `aria-controls`, `aria-describedby` or `aria-expanded` are now fixed.
 
 You must check all form components, form validation and error handling that may not expect hidden conditionally revealing content in the HTML.
+
+### Check checkboxes with exclusive behaviour still work
+
+Previously, the [checkboxes component](https://service-manual.nhs.uk/design-system/components/checkboxes) incorrectly set the the `data-checkbox-exclusive-group` attribute on all items, even when no [option for "none"](https://service-manual.nhs.uk/design-system/components/checkboxes#none-option) was included.
+
+To align with NHS.UK frontend, one or more exclusive groups are now supported using the `Checkboxes.Item` prop `exclusiveGroup`.
+
+You must manually add the `exclusiveGroup` prop to all checkboxes in the same exclusive group. You do not need to do anything if your checkboxes share the same `name` attribute in the rendered HTML, as the exclusive group is determined automatically.
+
+```patch
+  <Checkboxes legend="How do you want to be contacted about this?" name="colour">
+-   <Checkboxes.Item name="colour-red">
++   <Checkboxes.Item name="colour-red" exclusiveGroup="colour">
+      Red
+    </Checkboxes.Item>
+-   <Checkboxes.Item name="colour-blue">
++   <Checkboxes.Item name="colour-blue" exclusiveGroup="colour">
+      Blue
+    </Checkboxes.Item>
+-   <Checkboxes.Item name="colour-blue">
++   <Checkboxes.Item name="colour-blue" exclusiveGroup="colour">
+      Green
+    </Checkboxes.Item>
+    <Checkboxes.Divider />
+-   <Checkboxes.Item value="colour-none" exclusive>
++   <Checkboxes.Item value="colour-none" exclusiveGroup="colour" exclusive>
+      None of the above
+    </Checkboxes.Item>
+  </Checkboxes>
+```
 
 ### Remove unsupported icons
 
