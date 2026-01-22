@@ -110,6 +110,23 @@ export const CardWithImage: Story = {
   ),
 };
 
+export const TopTask: Story = {
+  name: 'Top task',
+  args: {
+    clickable: true,
+  },
+  parameters: {
+    width: 'one-third',
+  },
+  render: (args) => (
+    <Card {...args}>
+      <Card.Heading headingLevel="h5" size="xs">
+        <Card.Link href="#">Order a repeat prescription</Card.Link>
+      </Card.Heading>
+    </Card>
+  ),
+};
+
 export const FeatureCard: Story = {
   args: {
     feature: true,
