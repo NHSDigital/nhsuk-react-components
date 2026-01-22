@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import { BodyText } from '..';
+import { BodyText, type BodyTextProps } from '..';
 
 describe('BodyText', () => {
   it('matches snapshot', () => {
@@ -9,10 +9,28 @@ describe('BodyText', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('renders children', () => {
-    const { container } = render(<BodyText>Text</BodyText>);
+  it('renders with text content', () => {
+    const { container } = render(<BodyText>Example paragraph</BodyText>);
 
-    expect(container.textContent).toBe('Text');
-    expect(container.querySelector('.nhsuk-body')).toBeTruthy();
+    const paragraphEl = container.querySelector('p');
+
+    expect(paragraphEl).toHaveTextContent('Example paragraph');
+    expect(paragraphEl).toHaveClass('nhsuk-body');
+
+    // No size specific class applied
+    expect(paragraphEl).not.toHaveClass('nhsuk-body-s');
+    expect(paragraphEl).not.toHaveClass('nhsuk-body-m ');
+  });
+
+  it.each<BodyTextProps['size']>(['s', 'm'])('renders with custom size %s', (size) => {
+    const { container } = render(<BodyText size={size}>Example paragraph</BodyText>);
+
+    const paragraphEl = container.querySelector('p');
+
+    expect(paragraphEl).toHaveTextContent('Example paragraph');
+    expect(paragraphEl).toHaveClass(`nhsuk-body-${size}`);
+
+    // No default class applied
+    expect(paragraphEl).not.toHaveClass('nhsuk-body');
   });
 });

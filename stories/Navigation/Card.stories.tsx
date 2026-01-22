@@ -246,7 +246,7 @@ export const SecondaryNonClickableWithCustomHTML: Story = {
         <Card.Heading className="nhsuk-u-font-size-22 nhsuk-u-margin-bottom-2">
           <Card.Link href="#">Why we are reinvesting in the NHS Prototype kit</Card.Link>
         </Card.Heading>
-        <BodyText className="nhsuk-body-s nhsuk-u-margin-bottom-2">
+        <BodyText size="s" className="nhsuk-u-margin-bottom-2">
           Services the NHS provides if you need urgent or emergency medical help
         </BodyText>
         <Card.Description>
