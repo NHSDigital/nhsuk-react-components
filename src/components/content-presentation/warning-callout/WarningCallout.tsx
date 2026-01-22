@@ -1,32 +1,28 @@
-import classNames from 'classnames';
-import { forwardRef, type ComponentPropsWithoutRef, type FC } from 'react';
+import { forwardRef, type ComponentPropsWithoutRef } from 'react';
 
-import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
+import { Card, CardHeading } from '#components/navigation/card/index.js';
+import { type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
 
-export const WarningCalloutHeading: FC<HeadingLevelProps> = ({ children, className, ...rest }) => (
-  <HeadingLevel className={classNames('nhsuk-warning-callout__label', className)} {...rest}>
-    {children?.toString().toLowerCase().includes('important') ? (
-      <>
-        {children}
-        <span className="nhsuk-u-visually-hidden">:</span>
-      </>
-    ) : (
-      <>
-        {/* eslint-disable-next-line jsx-a11y/aria-role */}
-        <span role="text">
-          <span className="nhsuk-u-visually-hidden">Important: </span>
-          {children}
-        </span>
-      </>
-    )}
-  </HeadingLevel>
+export const WarningCalloutHeading = forwardRef<HTMLDivElement, HeadingLevelProps>(
+  ({ children, ...rest }, forwardedRef) => (
+    <CardHeading
+      headingLevel="h3"
+      visuallyHiddenText={
+        children?.toString().toLowerCase().includes('important') ? undefined : 'Important'
+      }
+      ref={forwardedRef}
+      {...rest}
+    >
+      {children}
+    </CardHeading>
+  ),
 );
 
-export type WarningCalloutProps = ComponentPropsWithoutRef<'div'>;
-
-const WarningCalloutComponent = forwardRef<HTMLDivElement, WarningCalloutProps>(
-  ({ className, ...rest }, forwardedRef) => (
-    <div className={classNames('nhsuk-warning-callout', className)} ref={forwardedRef} {...rest} />
+const WarningCalloutComponent = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(
+  ({ children, ...rest }, forwardedRef) => (
+    <Card warning ref={forwardedRef} {...rest}>
+      <Card.Content>{children}</Card.Content>
+    </Card>
   ),
 );
 

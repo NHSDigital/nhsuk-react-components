@@ -90,6 +90,7 @@ describe('Card', () => {
     { modifier: 'feature' },
     { modifier: 'primary' },
     { modifier: 'secondary' },
+    { modifier: 'warning' },
   ])('adds $modifier card type modifier', ({ modifier }) => {
     const { container } = render(
       <Card {...{ [modifier]: true }}>

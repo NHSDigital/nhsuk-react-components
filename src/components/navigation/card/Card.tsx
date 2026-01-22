@@ -21,11 +21,22 @@ export interface CardProps extends ComponentPropsWithoutRef<'div'> {
   feature?: boolean;
   primary?: boolean;
   secondary?: boolean;
+  warning?: boolean;
   cardType?: CareCardType;
 }
 
 const CardComponent = forwardRef<HTMLDivElement, CardProps>((props, forwardedRef) => {
-  const { className, children, clickable, feature, primary, secondary, cardType, ...rest } = props;
+  const {
+    className,
+    children,
+    clickable,
+    feature,
+    primary,
+    secondary,
+    warning,
+    cardType,
+    ...rest
+  } = props;
 
   let cardClassNames = classNames(
     'nhsuk-card',
@@ -33,6 +44,7 @@ const CardComponent = forwardRef<HTMLDivElement, CardProps>((props, forwardedRef
     { 'nhsuk-card--feature': feature },
     { 'nhsuk-card--primary': primary },
     { 'nhsuk-card--secondary': secondary },
+    { 'nhsuk-card--warning': warning },
     className,
   );
 
