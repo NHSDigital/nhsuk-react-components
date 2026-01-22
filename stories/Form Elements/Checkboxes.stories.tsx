@@ -2,7 +2,10 @@ import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { useEffect, useRef, useState, type SyntheticEvent } from 'react';
 
 import { Checkboxes } from '#components/form-elements/checkboxes/index.js';
+import { Fieldset } from '#components/form-elements/fieldset/Fieldset.js';
 import { TextInput } from '#components/form-elements/text-input/index.js';
+import { BodyText } from '#components/typography/BodyText.js';
+import { Heading } from '#components/typography/Heading.js';
 
 /**
  * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/checkboxes" target="_blank" rel="noopener noreferrer">here</a>.
@@ -18,9 +21,8 @@ const meta: Meta<typeof Checkboxes> = {
   title: 'Form Elements/Checkboxes',
   component: Checkboxes,
   args: {
-    legend: 'What is your nationality?',
+    legend: 'How do you want to be contacted about this?',
     legendProps: { isPageHeading: true, size: 'l' },
-    hint: 'If you have more than 1 nationality, select all options that are relevant to you',
     name: 'example',
   },
 };
@@ -34,22 +36,37 @@ type CheckboxState = {
 };
 
 export const Standard: Story = {
+  name: 'Checkboxes default',
+  args: {
+    hint: 'Select all options that are relevant to you',
+  },
   render: (args) => (
     <Checkboxes {...args}>
-      <Checkboxes.Item value="british">British</Checkboxes.Item>
-      <Checkboxes.Item value="irish">Irish</Checkboxes.Item>
-      <Checkboxes.Item value="other">Citizen of another country</Checkboxes.Item>
+      <Checkboxes.Item value="email">Email</Checkboxes.Item>
+      <Checkboxes.Item value="phone">Phone</Checkboxes.Item>
+      <Checkboxes.Item value="text">Text message</Checkboxes.Item>
     </Checkboxes>
   ),
 };
 
 export const WithCaption: Story = {
+  name: 'Checkboxes with caption',
   args: {
     legend: (
       <>
-        <span className="nhsuk-caption-l">About you</span> What is your nationality?
+        <span className="nhsuk-caption-l">About you</span>
+        How do you want to be contacted about this?
       </>
     ),
+  },
+  render: Standard.render,
+};
+
+export const WithHintText: Story = {
+  name: 'Checkboxes with hint',
+  args: {
+    legend: 'What is your nationality?',
+    hint: 'If you have dual nationality, select all options that are relevant to you',
   },
   render: (args) => (
     <Checkboxes {...args}>
@@ -60,33 +77,78 @@ export const WithCaption: Story = {
   ),
 };
 
-export const WithHintText: Story = {
+export const WithHintTextOnItems: Story = {
+  name: 'Checkboxes with hints on items',
   args: {
-    legend: 'How do you want to sign in?',
-    hint: undefined,
+    legend: 'What is your nationality?',
+    hint: 'If you have dual nationality, select all options that are relevant to you',
+  },
+  render: (args) => (
+    <Checkboxes {...args}>
+      <Checkboxes.Item hint="including English, Scottish, Welsh and Northern Irish" value="british">
+        British
+      </Checkboxes.Item>
+      <Checkboxes.Item value="irish">Irish</Checkboxes.Item>
+      <Checkboxes.Item value="other">Citizen of another country</Checkboxes.Item>
+    </Checkboxes>
+  ),
+};
+
+export const WithValues: Story = {
+  name: 'Checkboxes with pre-checked values',
+  args: {
+    name: 'exampleConditional1',
+    error: 'Select how you want to be contacted',
   },
   render: (args) => (
     <Checkboxes {...args}>
       <Checkboxes.Item
-        name="gateway"
-        type="checkbox"
-        value="gov-gateway"
-        hint="You’ll have a user ID if you’ve registered for Self Assessment or filed a tax return online before."
+        value="email"
+        checked
+        conditional={
+          <TextInput
+            label="Email address"
+            name="email"
+            spellCheck="false"
+            className="nhsuk-u-width-two-thirds"
+          />
+        }
       >
-        Sign in with Government Gateway
+        Email
       </Checkboxes.Item>
       <Checkboxes.Item
-        name="verify"
-        value="nhsuk-verify"
-        hint="You’ll have an account if you’ve already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
+        value="phone"
+        conditional={
+          <TextInput
+            label="Phone number"
+            name="phone"
+            type="tel"
+            className="nhsuk-u-width-two-thirds"
+          />
+        }
       >
-        Sign in with NHS.UK login
+        Phone
+      </Checkboxes.Item>
+      <Checkboxes.Item
+        value="text"
+        checked
+        conditional={
+          <TextInput
+            label="Mobile phone number"
+            name="mobile"
+            type="tel"
+            className="nhsuk-u-width-two-thirds"
+          />
+        }
+      >
+        Text message
       </Checkboxes.Item>
     </Checkboxes>
   ),
 };
 
 export const Small: Story = {
+  name: 'Checkboxes small',
   args: {
     ...Standard.args,
     legendProps: { isPageHeading: true, size: 'm' },
@@ -96,6 +158,7 @@ export const Small: Story = {
 };
 
 export const SmallWithHintText: Story = {
+  name: 'Checkboxes small with hint',
   args: {
     ...WithHintText.args,
     legendProps: { isPageHeading: true, size: 'm' },
@@ -104,77 +167,309 @@ export const SmallWithHintText: Story = {
   render: WithHintText.render,
 };
 
+export const SmallWithHintTextOnItems: Story = {
+  name: 'Checkboxes small with hints on items',
+  args: {
+    ...WithHintTextOnItems.args,
+    legendProps: { isPageHeading: true, size: 'm' },
+    small: true,
+  },
+  render: WithHintTextOnItems.render,
+};
+
 export const WithDisabledItem: Story = {
+  name: 'Checkboxes with disabled item',
   render: (args) => (
     <Checkboxes {...args}>
-      <Checkboxes.Item value="british">British</Checkboxes.Item>
-      <Checkboxes.Item value="irish">Irish</Checkboxes.Item>
-      <Checkboxes.Item value="other" disabled>
-        Citizen of another country
-      </Checkboxes.Item>
-    </Checkboxes>
-  ),
-};
-
-export const WithConditionalContent: Story = {
-  args: {
-    legend: 'What types of waste do you transport regularly?',
-    hint: 'Select all that apply',
-  },
-  render: (args) => (
-    <Checkboxes {...args}>
-      <Checkboxes.Item conditional={<p>This includes rocks and earth.</p>} value="mines">
-        Waste from mines or quarries
-      </Checkboxes.Item>
-    </Checkboxes>
-  ),
-};
-
-export const WithExclusiveNoneOption: Story = {
-  args: {
-    legend: 'Do you have any of these symptoms?',
-    hint: 'Select all the symptoms you have',
-  },
-  render: (args) => (
-    <Checkboxes {...args}>
-      <Checkboxes.Item value="sore-throat">Sore throat</Checkboxes.Item>
-      <Checkboxes.Item value="runny-nose">Runny nose</Checkboxes.Item>
-      <Checkboxes.Item value="muscle-pain">Muscle or joint pain</Checkboxes.Item>
-      <Checkboxes.Divider />
-      <Checkboxes.Item value="none" exclusive>
-        None
+      <Checkboxes.Item value="red">Red</Checkboxes.Item>
+      <Checkboxes.Item value="green">Green</Checkboxes.Item>
+      <Checkboxes.Item value="blue" disabled>
+        Blue
       </Checkboxes.Item>
     </Checkboxes>
   ),
 };
 
 export const WithError: Story = {
+  name: 'Checkboxes with error message',
   args: {
-    legend: 'What types of waste do you transport regularly?',
-    hint: 'Select all that apply',
+    error: 'Select how you want to be contacted',
   },
-  render: (args) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [error, setError] = useState('Please select an option');
-    return (
-      <>
-        <Checkboxes error={error} {...args}>
-          <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
-          <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
-          <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
-        </Checkboxes>
-        <TextInput
-          label="Error Value"
-          value={error}
-          onChange={(e) => setError(e.currentTarget.value)}
-        />
-      </>
-    );
+  render: Standard.render,
+};
+
+export const WithHintAndError: Story = {
+  name: 'Checkboxes with hint and error',
+  args: {
+    hint: 'Select all options that are relevant to you',
+    error: 'Select how you want to be contacted',
   },
-  name: 'With Error (String)',
+  render: Standard.render,
+};
+
+export const WithConditionalContent: Story = {
+  name: 'Checkboxes with conditional content',
+  args: {
+    name: 'exampleConditional2',
+    hint: 'Select all options that are relevant to you',
+  },
+  render: (args) => (
+    <Checkboxes {...args}>
+      <Checkboxes.Item
+        value="email"
+        conditional={
+          <TextInput
+            label="Email address"
+            name="email"
+            spellCheck="false"
+            className="nhsuk-u-width-two-thirds"
+          />
+        }
+      >
+        Email
+      </Checkboxes.Item>
+      <Checkboxes.Item
+        value="phone"
+        conditional={
+          <TextInput
+            label="Phone number"
+            name="phone"
+            type="tel"
+            className="nhsuk-u-width-two-thirds"
+          />
+        }
+      >
+        Phone
+      </Checkboxes.Item>
+      <Checkboxes.Item
+        value="text"
+        conditional={
+          <TextInput
+            label="Mobile phone number"
+            name="mobile"
+            type="tel"
+            className="nhsuk-u-width-two-thirds"
+          />
+        }
+      >
+        Text message
+      </Checkboxes.Item>
+    </Checkboxes>
+  ),
+};
+
+export const WithConditionalContentError: Story = {
+  name: 'Checkboxes with conditional content, error message',
+  args: {
+    hint: 'Select all options that are relevant to you',
+    error: 'Select how you like to be contacted',
+  },
+  render: WithConditionalContent.render,
+};
+
+export const WithConditionalContentErrorNested: Story = {
+  name: 'Checkboxes with conditional content, error message (nested)',
+  args: {
+    name: 'exampleConditional3',
+    hint: 'Select all options that are relevant to you',
+  },
+  render: (args) => (
+    <Checkboxes {...args}>
+      <Checkboxes.Item
+        value="email"
+        conditional={
+          <TextInput
+            label="Email address"
+            name="email"
+            spellCheck="false"
+            className="nhsuk-u-width-two-thirds"
+          />
+        }
+      >
+        Email
+      </Checkboxes.Item>
+      <Checkboxes.Item
+        value="phone"
+        checked
+        conditional={
+          <TextInput
+            label="Phone number"
+            error="Enter your phone number"
+            name="phone"
+            type="tel"
+            className="nhsuk-u-width-two-thirds"
+          />
+        }
+      >
+        Phone
+      </Checkboxes.Item>
+      <Checkboxes.Item
+        value="text"
+        conditional={
+          <TextInput
+            label="Mobile phone number"
+            name="mobile"
+            type="tel"
+            className="nhsuk-u-width-two-thirds"
+          />
+        }
+      >
+        Text message
+      </Checkboxes.Item>
+    </Checkboxes>
+  ),
+};
+
+export const WithExclusiveNoneOption: Story = {
+  name: 'Checkboxes with "none of the above" option',
+  args: {
+    legend: 'How do you want to be contacted about this?',
+    hint: 'Select all options that are relevant to you',
+  },
+  render: (args) => (
+    <Checkboxes {...args}>
+      <Checkboxes.Item value="email">Email</Checkboxes.Item>
+      <Checkboxes.Item value="phone">Phone</Checkboxes.Item>
+      <Checkboxes.Item value="text">Text message</Checkboxes.Item>
+      <Checkboxes.Divider />
+      <Checkboxes.Item value="none" exclusive>
+        None of the above
+      </Checkboxes.Item>
+    </Checkboxes>
+  ),
+};
+
+export const WithExclusiveNoneOptionConditional: Story = {
+  name: 'Checkboxes with "none of the above" option, conditional content',
+  args: {
+    name: 'exampleConditional4',
+    legend: 'How do you want to be contacted about this?',
+    hint: 'Select all options that are relevant to you',
+  },
+  render: (args) => (
+    <Checkboxes {...args}>
+      <Checkboxes.Item
+        value="email"
+        conditional={
+          <TextInput
+            label="Email address"
+            name="email"
+            spellCheck="false"
+            className="nhsuk-u-width-two-thirds"
+          />
+        }
+      >
+        Email
+      </Checkboxes.Item>
+      <Checkboxes.Item
+        value="phone"
+        conditional={
+          <TextInput
+            label="Phone number"
+            name="phone"
+            type="tel"
+            className="nhsuk-u-width-two-thirds"
+          />
+        }
+      >
+        Phone
+      </Checkboxes.Item>
+      <Checkboxes.Item
+        value="text"
+        conditional={
+          <TextInput
+            label="Mobile phone number"
+            name="mobile"
+            type="tel"
+            className="nhsuk-u-width-two-thirds"
+          />
+        }
+      >
+        Text message
+      </Checkboxes.Item>
+      <Checkboxes.Divider />
+      <Checkboxes.Item value="none" exclusive>
+        None of the above
+      </Checkboxes.Item>
+    </Checkboxes>
+  ),
+};
+
+export const WithExclusiveNoneOptionNamed: Story = {
+  name: 'Checkboxes with "none of the above" option (named groups)',
+  render: (args) => (
+    <Fieldset>
+      <Fieldset.Legend headingLevel="h1" size="l">
+        What is your address?
+      </Fieldset.Legend>
+
+      <Heading headingLevel="h2" size="m">
+        Primary colours
+      </Heading>
+
+      <Checkboxes idPrefix="colour-primary" name="colour">
+        <Checkboxes.Item value="red" exclusiveGroup="colour-primary">
+          Red
+        </Checkboxes.Item>
+        <Checkboxes.Item
+          value="yellow"
+          exclusiveGroup="colour-primary"
+          conditional={<BodyText>Orange is much nicer than yellow!</BodyText>}
+        >
+          Yellow
+        </Checkboxes.Item>
+        <Checkboxes.Item value="blue" exclusiveGroup="colour-primary">
+          Blue
+        </Checkboxes.Item>
+        <Checkboxes.Divider />
+        <Checkboxes.Item value="none-primary" exclusiveGroup="colour-primary" exclusive>
+          None of the primary colours
+        </Checkboxes.Item>
+      </Checkboxes>
+
+      <Heading headingLevel="h2" size="m">
+        Secondary colours
+      </Heading>
+
+      <Checkboxes idPrefix="colour-secondary" name="colour">
+        <Checkboxes.Item value="green" exclusiveGroup="colour-secondary">
+          Green
+        </Checkboxes.Item>
+        <Checkboxes.Item value="purple" exclusiveGroup="colour-secondary">
+          Purple
+        </Checkboxes.Item>
+        <Checkboxes.Item
+          value="orange"
+          exclusiveGroup="colour-secondary"
+          conditional={<BodyText>I like orange too!</BodyText>}
+        >
+          Orange
+        </Checkboxes.Item>
+        <Checkboxes.Divider />
+        <Checkboxes.Item value="none-secondary" exclusiveGroup="colour-secondary" exclusive>
+          None of the secondary colours
+        </Checkboxes.Item>
+      </Checkboxes>
+
+      <Heading headingLevel="h2" size="m">
+        Other colours
+      </Heading>
+
+      <Checkboxes idPrefix="colour-other" name="colour">
+        <Checkboxes.Item value="imaginary" exclusiveGroup="colour-other">
+          An imaginary colour
+        </Checkboxes.Item>
+        <Checkboxes.Divider />
+        <Checkboxes.Item value="none" exclusive>
+          None of the above
+        </Checkboxes.Item>
+      </Checkboxes>
+    </Fieldset>
+  ),
 };
 
 export const NoIDSupplied: Story = {
+  name: 'Checkboxes with no ID supplied',
   render: function NoIDSuppliedRender() {
     const checkbox1Ref = useRef<HTMLInputElement>(null);
     const checkbox2Ref = useRef<HTMLInputElement>(null);
@@ -259,6 +554,7 @@ export const NoIDSupplied: Story = {
 };
 
 export const NameSupplied: Story = {
+  name: 'Checkboxes with name supplied',
   render: function NameSuppliedRender() {
     const checkbox1Ref = useRef<HTMLInputElement>(null);
     const checkbox2Ref = useRef<HTMLInputElement>(null);
@@ -343,6 +639,7 @@ export const NameSupplied: Story = {
 };
 
 export const IDPrefixSupplied: Story = {
+  name: 'Checkboxes with ID prefix supplied',
   render: function IDPrefixSuppliedRender() {
     const checkbox1Ref = useRef<HTMLInputElement>(null);
     const checkbox2Ref = useRef<HTMLInputElement>(null);
@@ -428,6 +725,7 @@ export const IDPrefixSupplied: Story = {
 };
 
 export const IDPrefixAndNameSupplied: Story = {
+  name: 'Checkboxes with ID prefix and name supplied',
   render: function IDPrefixAndNameSuppliedRender() {
     const checkbox1Ref = useRef<HTMLInputElement>(null);
     const checkbox2Ref = useRef<HTMLInputElement>(null);
@@ -513,6 +811,7 @@ export const IDPrefixAndNameSupplied: Story = {
 };
 
 export const OnChangeAndOnInputHandlers: Story = {
+  name: 'Checkboxes change and input handlers',
   render: function OnChangeAndOnInputHandlersRender() {
     const [changeEventLog, setChangeEventLog] = useState<Array<string>>([]);
     const [inputEventLog, setInputEventLog] = useState<Array<string>>([]);
