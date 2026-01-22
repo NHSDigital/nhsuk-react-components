@@ -174,13 +174,13 @@ exports[`Card matches snapshot (via server): client 1`] = `
       >
         Go to 
         <a
-          href="#"
+          href="#/111"
         >
           111.nhs.uk
         </a>
          or 
         <a
-          href="#"
+          href="#/111"
         >
           call 111
         </a>
@@ -218,13 +218,13 @@ exports[`Card matches snapshot (via server): server 1`] = `
       >
         Go to 
         <a
-          href="#"
+          href="#/111"
         >
           111.nhs.uk
         </a>
          or 
         <a
-          href="#"
+          href="#/111"
         >
           call 111
         </a>
@@ -257,13 +257,13 @@ exports[`Card matches snapshot 1`] = `
       >
         Go to 
         <a
-          href="#"
+          href="#/111"
         >
           111.nhs.uk
         </a>
          or 
         <a
-          href="#"
+          href="#/111"
         >
           call 111
         </a>

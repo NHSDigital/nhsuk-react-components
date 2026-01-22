@@ -1,20 +1,21 @@
 'use client';
 
 import classNames from 'classnames';
-import { forwardRef, type ComponentPropsWithoutRef } from 'react';
+import { Children, forwardRef, type ComponentPropsWithoutRef } from 'react';
 
 import { CardContext } from './CardContext.js';
 import {
-  CardContent,
   CardDescription,
   CardGroup,
   CardGroupItem,
+  CardHeadingContainer,
   CardHeading,
   CardImage,
   CardLink,
 } from './components/index.js';
 
-import { type CareCardType } from '#util/types/index.js';
+import { ChevronRightCircleIcon } from '#components/content-presentation/icons/individual/index.js';
+import { childIsOfComponentType, type CareCardType } from '#util/types/index.js';
 
 export interface CardProps extends ComponentPropsWithoutRef<'div'> {
   clickable?: boolean;
@@ -38,27 +39,53 @@ const CardComponent = forwardRef<HTMLDivElement, CardProps>((props, forwardedRef
     ...rest
   } = props;
 
-  let cardClassNames = classNames(
-    'nhsuk-card',
-    { 'nhsuk-card--clickable': clickable },
-    { 'nhsuk-card--feature': feature },
-    { 'nhsuk-card--primary': primary },
-    { 'nhsuk-card--secondary': secondary },
-    { 'nhsuk-card--warning': warning },
-    className,
-  );
+  const items = Children.toArray(children);
 
-  if (cardType) {
-    cardClassNames = classNames(
-      cardClassNames,
-      'nhsuk-card--care',
-      `nhsuk-card--care--${cardType}`,
-    );
-  }
+  // Allow single image
+  const imageItem = items.find((child) => childIsOfComponentType(child, CardImage));
+
+  // Allow single heading
+  const headingItem = items.find((child) => childIsOfComponentType(child, CardHeading));
+
+  // Only content items remain
+  const contentItems = items.filter((child) => child !== imageItem && child !== headingItem);
 
   return (
-    <div className={cardClassNames} ref={forwardedRef} {...rest}>
-      <CardContext.Provider value={{ cardType }}>{children}</CardContext.Provider>
+    <div
+      className={classNames(
+        'nhsuk-card',
+        { 'nhsuk-card--clickable': clickable },
+        { 'nhsuk-card--feature': feature },
+        { 'nhsuk-card--primary': primary },
+        { 'nhsuk-card--secondary': secondary },
+        { 'nhsuk-card--warning': warning },
+        { 'nhsuk-card--care': cardType },
+        { [`nhsuk-card--care--${cardType}`]: cardType },
+        className,
+      )}
+      ref={forwardedRef}
+      {...rest}
+    >
+      <CardContext.Provider value={{ cardType }}>
+        {cardType ? (
+          <>
+            {imageItem}
+            {headingItem ? <CardHeadingContainer>{headingItem}</CardHeadingContainer> : null}
+            {contentItems.length ? <div className="nhsuk-card__content">{contentItems}</div> : null}
+          </>
+        ) : (
+          <>
+            {imageItem}
+            {headingItem || contentItems.length ? (
+              <div className="nhsuk-card__content">
+                {headingItem}
+                {contentItems}
+                {primary ? <ChevronRightCircleIcon /> : null}
+              </div>
+            ) : null}
+          </>
+        )}
+      </CardContext.Provider>
     </div>
   );
 });
@@ -70,7 +97,6 @@ export const Card = Object.assign(CardComponent, {
   Description: CardDescription,
   Image: CardImage,
   Link: CardLink,
-  Content: CardContent,
   Group: CardGroup,
   GroupItem: CardGroupItem,
 });

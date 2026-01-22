@@ -61,20 +61,18 @@ export const Standard: Story = {
             </NavAZ>
 
             <Card feature>
-              <Card.Content>
-                <Card.Heading id="A">A</Card.Heading>
-                <ul className="nhsuk-list nhsuk-list--border">
-                  <li>
-                    <a href="/conditions/abdominal-aortic-aneurysm/">AAA</a>
-                  </li>
-                  <li>
-                    <a href="/conditions/abdominal-aortic-aneurysm/">Abdominal aortic aneurysm</a>
-                  </li>
-                  <li>
-                    <a href="/conditions/abscess/">Abscess</a>
-                  </li>
-                </ul>
-              </Card.Content>
+              <Card.Heading id="A">A</Card.Heading>
+              <ul className="nhsuk-list nhsuk-list--border">
+                <li>
+                  <a href="/conditions/abdominal-aortic-aneurysm/">AAA</a>
+                </li>
+                <li>
+                  <a href="/conditions/abdominal-aortic-aneurysm/">Abdominal aortic aneurysm</a>
+                </li>
+                <li>
+                  <a href="/conditions/abscess/">Abscess</a>
+                </li>
+              </ul>
             </Card>
 
             <div className="nhsuk-back-to-top">
@@ -84,12 +82,10 @@ export const Standard: Story = {
             </div>
 
             <Card feature>
-              <Card.Content>
-                <Card.Heading id="B">B</Card.Heading>
-                <ul className="nhsuk-list nhsuk-list--border">
-                  <li>There are currently no conditions listed</li>
-                </ul>
-              </Card.Content>
+              <Card.Heading id="B">B</Card.Heading>
+              <ul className="nhsuk-list nhsuk-list--border">
+                <li>There are currently no conditions listed</li>
+              </ul>
             </Card>
 
             <div className="nhsuk-back-to-top">
@@ -99,17 +95,15 @@ export const Standard: Story = {
             </div>
 
             <Card feature>
-              <Card.Content>
-                <Card.Heading id="C">C</Card.Heading>
-                <ul className="nhsuk-list nhsuk-list--border">
-                  <li>
-                    <a href="/conditions/chest-pain/">Chest pain</a>
-                  </li>
-                  <li>
-                    <a href="/conditions/cold-sores/">Cold sore</a>
-                  </li>
-                </ul>
-              </Card.Content>
+              <Card.Heading id="C">C</Card.Heading>
+              <ul className="nhsuk-list nhsuk-list--border">
+                <li>
+                  <a href="/conditions/chest-pain/">Chest pain</a>
+                </li>
+                <li>
+                  <a href="/conditions/cold-sores/">Cold sore</a>
+                </li>
+              </ul>
             </Card>
 
             <div className="nhsuk-back-to-top">
@@ -119,20 +113,18 @@ export const Standard: Story = {
             </div>
 
             <Card feature>
-              <Card.Content>
-                <Card.Heading id="D">D</Card.Heading>
-                <ul className="nhsuk-list nhsuk-list--border">
-                  <li>
-                    <a href="/conditions/dandruff/">Dandruff</a>
-                  </li>
-                  <li>
-                    <a href="/conditions/dementia/">Dementia</a>
-                  </li>
-                  <li>
-                    <a href="/conditions/toothache/">Dental pain</a>
-                  </li>
-                </ul>
-              </Card.Content>
+              <Card.Heading id="D">D</Card.Heading>
+              <ul className="nhsuk-list nhsuk-list--border">
+                <li>
+                  <a href="/conditions/dandruff/">Dandruff</a>
+                </li>
+                <li>
+                  <a href="/conditions/dementia/">Dementia</a>
+                </li>
+                <li>
+                  <a href="/conditions/toothache/">Dental pain</a>
+                </li>
+              </ul>
             </Card>
 
             <div className="nhsuk-back-to-top">

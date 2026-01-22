@@ -4,11 +4,12 @@ import { Card, CardHeading } from '#components/navigation/card/index.js';
 import { type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
 
 export const WarningCalloutHeading = forwardRef<HTMLDivElement, HeadingLevelProps>(
-  ({ children, ...rest }, forwardedRef) => (
+  ({ children, headingLevel, visuallyHiddenText, ...rest }, forwardedRef) => (
     <CardHeading
-      headingLevel="h3"
+      headingLevel={headingLevel ?? 'h3'}
       visuallyHiddenText={
-        children?.toString().toLowerCase().includes('important') ? undefined : 'Important'
+        visuallyHiddenText ??
+        (children?.toString().toLowerCase().includes('important') ? undefined : 'Important')
       }
       ref={forwardedRef}
       {...rest}
@@ -19,11 +20,7 @@ export const WarningCalloutHeading = forwardRef<HTMLDivElement, HeadingLevelProp
 );
 
 const WarningCalloutComponent = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(
-  ({ children, ...rest }, forwardedRef) => (
-    <Card warning ref={forwardedRef} {...rest}>
-      <Card.Content>{children}</Card.Content>
-    </Card>
-  ),
+  (props, forwardedRef) => <Card warning ref={forwardedRef} {...props} />,
 );
 
 WarningCalloutComponent.displayName = 'WarningCallout';

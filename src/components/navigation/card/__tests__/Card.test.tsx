@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { render } from '@testing-library/react';
 
 import { Card, type CardProps } from '..';
@@ -12,12 +11,10 @@ describe('Card', () => {
     const { container } = await renderClient(
       <Card>
         <Card.Image src="imageSrc" alt="imageAlt" />
-        <Card.Content>
-          <Card.Heading>If you need help now but it&apos;s not an emergency</Card.Heading>
-          <Card.Description>
-            Go to <a href="#">111.nhs.uk</a> or <a href="#">call 111</a>
-          </Card.Description>
-        </Card.Content>
+        <Card.Heading>If you need help now but it&apos;s not an emergency</Card.Heading>
+        <Card.Description>
+          Go to <a href="#/111">111.nhs.uk</a> or <a href="#/111">call 111</a>
+        </Card.Description>
       </Card>,
       { className: 'nhsuk-card' },
     );
@@ -29,12 +26,10 @@ describe('Card', () => {
     const { container, element } = await renderServer(
       <Card>
         <Card.Image src="imageSrc" alt="imageAlt" />
-        <Card.Content>
-          <Card.Heading>If you need help now but it&apos;s not an emergency</Card.Heading>
-          <Card.Description>
-            Go to <a href="#">111.nhs.uk</a> or <a href="#">call 111</a>
-          </Card.Description>
-        </Card.Content>
+        <Card.Heading>If you need help now but it&apos;s not an emergency</Card.Heading>
+        <Card.Description>
+          Go to <a href="#/111">111.nhs.uk</a> or <a href="#/111">call 111</a>
+        </Card.Description>
       </Card>,
       { className: 'nhsuk-card' },
     );
@@ -53,13 +48,11 @@ describe('Card', () => {
   it('can render Card.Link as different elements', () => {
     const { container } = render(
       <Card clickable>
-        <Card.Content>
-          <Card.Heading>
-            <Card.Link asElement="button" type="button">
-              Click me!
-            </Card.Link>
-          </Card.Heading>
-        </Card.Content>
+        <Card.Heading>
+          <Card.Link asElement="button" type="button">
+            Click me!
+          </Card.Link>
+        </Card.Heading>
       </Card>,
     );
 
@@ -69,14 +62,12 @@ describe('Card', () => {
   it('adds clickable modifier', () => {
     const { container } = render(
       <Card clickable>
-        <Card.Content>
-          <Card.Heading size="m">
-            <Card.Link href="#">Introduction to care and support</Card.Link>
-          </Card.Heading>
-          <Card.Description>
-            A quick guide for people who have care and support needs and their carers
-          </Card.Description>
-        </Card.Content>
+        <Card.Heading size="m">
+          <Card.Link href="#">Introduction to care and support</Card.Link>
+        </Card.Heading>
+        <Card.Description>
+          A quick guide for people who have care and support needs and their carers
+        </Card.Description>
       </Card>,
     );
 
@@ -94,10 +85,8 @@ describe('Card', () => {
   ])('adds $modifier card type modifier', ({ modifier }) => {
     const { container } = render(
       <Card {...{ [modifier]: true }}>
-        <Card.Content>
-          <Card.Heading>Feature card heading</Card.Heading>
-          <Card.Description>Feature card description</Card.Description>
-        </Card.Content>
+        <Card.Heading>Example card heading</Card.Heading>
+        <Card.Description>Example card description</Card.Description>
       </Card>,
     );
 
@@ -117,9 +106,7 @@ describe('Card', () => {
   ])('renders the heading with custom size $size', (props) => {
     const { container } = render(
       <Card>
-        <Card.Content>
-          <Card.Heading {...props}>Feature card heading</Card.Heading>
-        </Card.Content>
+        <Card.Heading {...props}>Example card heading</Card.Heading>
       </Card>,
     );
 
@@ -239,7 +226,7 @@ describe('Card', () => {
       ])('renders the heading with custom size $size', (props) => {
         const { container } = render(
           <Card cardType={cardType}>
-            <Card.Heading {...props}>{heading}</Card.Heading>
+            <Card.Heading {...props}>Example card heading</Card.Heading>
           </Card>,
         );
 
@@ -257,18 +244,14 @@ describe('Card', () => {
         <Card.Group>
           <Card.GroupItem width="one-half">
             <Card>
-              <Card.Content>
-                <Card.Heading>Test Card 1</Card.Heading>
-                <Card.Description>Test Card 1 Description</Card.Description>
-              </Card.Content>
+              <Card.Heading>Test Card 1</Card.Heading>
+              <Card.Description>Test Card 1 Description</Card.Description>
             </Card>
           </Card.GroupItem>
           <Card.GroupItem width="one-half">
             <Card>
-              <Card.Content>
-                <Card.Heading>Test Card 2</Card.Heading>
-                <Card.Description>Test Card 2 Description</Card.Description>
-              </Card.Content>
+              <Card.Heading>Test Card 2</Card.Heading>
+              <Card.Description>Test Card 2 Description</Card.Description>
             </Card>
           </Card.GroupItem>
         </Card.Group>,
