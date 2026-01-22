@@ -2,10 +2,10 @@
 
 import { createContext } from 'react';
 
-import { type CardType } from '#util/types/index.js';
+import { type CareCardType } from '#util/types/index.js';
 
 export interface ICardContext {
-  cardType?: CardType;
+  cardType?: CareCardType;
 }
 
 export const CardContext = createContext<ICardContext>({});

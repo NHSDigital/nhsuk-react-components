@@ -14,26 +14,29 @@ import {
   CardLink,
 } from './components/index.js';
 
-import { cardTypeIsCareCard, type CardType } from '#util/types/index.js';
+import { type CareCardType } from '#util/types/index.js';
 
 export interface CardProps extends ComponentPropsWithoutRef<'div'> {
   clickable?: boolean;
-  cardType?: CardType;
+  feature?: boolean;
+  primary?: boolean;
+  secondary?: boolean;
+  cardType?: CareCardType;
 }
 
 const CardComponent = forwardRef<HTMLDivElement, CardProps>((props, forwardedRef) => {
-  const { className, clickable, children, cardType, ...rest } = props;
+  const { className, children, clickable, feature, primary, secondary, cardType, ...rest } = props;
 
   let cardClassNames = classNames(
     'nhsuk-card',
-    { 'nhsuk-card--clickable': cardType === 'clickable' || clickable },
-    { 'nhsuk-card--feature': cardType === 'feature' },
-    { 'nhsuk-card--primary': cardType === 'primary' },
-    { 'nhsuk-card--secondary': cardType === 'secondary' },
+    { 'nhsuk-card--clickable': clickable },
+    { 'nhsuk-card--feature': feature },
+    { 'nhsuk-card--primary': primary },
+    { 'nhsuk-card--secondary': secondary },
     className,
   );
 
-  if (cardTypeIsCareCard(cardType)) {
+  if (cardType) {
     cardClassNames = classNames(
       cardClassNames,
       'nhsuk-card--care',
@@ -43,13 +46,7 @@ const CardComponent = forwardRef<HTMLDivElement, CardProps>((props, forwardedRef
 
   return (
     <div className={cardClassNames} ref={forwardedRef} {...rest}>
-      <CardContext.Provider
-        value={{
-          cardType,
-        }}
-      >
-        {children}
-      </CardContext.Provider>
+      <CardContext.Provider value={{ cardType }}>{children}</CardContext.Provider>
     </div>
   );
 });

@@ -47,7 +47,7 @@ export const TableCard: Story = {
     caption: 'Impetigo can look similar to other skin conditions',
   },
   render: (args) => (
-    <Card cardType="feature">
+    <Card feature>
       <Card.Content>
         <Card.Heading>Other conditions like impetigo</Card.Heading>
         <Table {...args}>

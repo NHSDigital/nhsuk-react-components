@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import { render } from '@testing-library/react';
 
-import { Card } from '..';
+import { Card, type CardProps } from '..';
 
 import { type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
 import { renderClient, renderServer } from '#util/components';
-import { type CardType } from '#util/types';
+import { type CareCardType } from '#util/types';
 
 describe('Card', () => {
   it('matches snapshot', async () => {
@@ -85,14 +85,14 @@ describe('Card', () => {
     expect(cardEl).toHaveClass('nhsuk-card--clickable');
   });
 
-  it.each<{ cardType: CardType }>([
-    { cardType: 'clickable' },
-    { cardType: 'feature' },
-    { cardType: 'primary' },
-    { cardType: 'secondary' },
-  ])('adds $cardType card type modifier', ({ cardType }) => {
+  it.each<{ modifier: keyof CardProps }>([
+    { modifier: 'clickable' },
+    { modifier: 'feature' },
+    { modifier: 'primary' },
+    { modifier: 'secondary' },
+  ])('adds $modifier card type modifier', ({ modifier }) => {
     const { container } = render(
-      <Card cardType={cardType}>
+      <Card {...{ [modifier]: true }}>
         <Card.Content>
           <Card.Heading>Feature card heading</Card.Heading>
           <Card.Description>Feature card description</Card.Description>
@@ -103,7 +103,7 @@ describe('Card', () => {
     const cardEl = container.querySelector('.nhsuk-card');
     const cardHeadingEl = cardEl?.querySelector('.nhsuk-card__heading');
 
-    expect(cardEl).toHaveClass(`nhsuk-card--${cardType}`);
+    expect(cardEl).toHaveClass(`nhsuk-card--${modifier}`);
     expect(cardHeadingEl).toHaveClass('nhsuk-card__heading');
     expect(cardHeadingEl).toHaveProperty('tagName', 'H2');
   });
@@ -131,7 +131,7 @@ describe('Card', () => {
   describe('Care card variant', () => {
     describe.each<{
       heading: string;
-      cardType: CardType;
+      cardType: CareCardType;
       visuallyHidden: string;
     }>([
       {

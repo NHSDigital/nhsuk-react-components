@@ -10,7 +10,7 @@ export interface TablePanelProps extends ComponentPropsWithoutRef<'div'> {
 }
 
 /**
- * @deprecated Use {@link _Card | `<Card cardType="feature">`} instead.
+ * @deprecated Use {@link _Card | `<Card feature>`} instead.
  */
 export const TablePanel: FC<TablePanelProps> = ({
   className,

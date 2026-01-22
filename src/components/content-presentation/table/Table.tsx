@@ -76,7 +76,7 @@ TableComponent.displayName = 'Table';
 export const Table = Object.assign(TableComponent, {
   Container: TableContainer,
   /**
-   * @deprecated Use {@link _Card | `<Card cardType="feature">`} instead.
+   * @deprecated Use {@link _Card | `<Card feature>`} instead.
    */
   Panel: TablePanel,
   Head: TableHead,

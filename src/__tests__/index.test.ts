@@ -25,7 +25,6 @@ describe('Index', () => {
       'CardHeading',
       'CardImage',
       'CardLink',
-      'cardTypeIsCareCard',
       'CharacterCount',
       'Checkboxes',
       'CheckboxesContext',

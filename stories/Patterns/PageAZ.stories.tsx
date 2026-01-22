@@ -60,7 +60,7 @@ export const Standard: Story = {
               <NavAZ.LinkItem href="#Z">Z</NavAZ.LinkItem>
             </NavAZ>
 
-            <Card cardType="feature">
+            <Card feature>
               <Card.Content>
                 <Card.Heading id="A">A</Card.Heading>
                 <ul className="nhsuk-list nhsuk-list--border">
@@ -83,7 +83,7 @@ export const Standard: Story = {
               </a>
             </div>
 
-            <Card cardType="feature">
+            <Card feature>
               <Card.Content>
                 <Card.Heading id="B">B</Card.Heading>
                 <ul className="nhsuk-list nhsuk-list--border">
@@ -98,7 +98,7 @@ export const Standard: Story = {
               </a>
             </div>
 
-            <Card cardType="feature">
+            <Card feature>
               <Card.Content>
                 <Card.Heading id="C">C</Card.Heading>
                 <ul className="nhsuk-list nhsuk-list--border">
@@ -118,7 +118,7 @@ export const Standard: Story = {
               </a>
             </div>
 
-            <Card cardType="feature">
+            <Card feature>
               <Card.Content>
                 <Card.Heading id="D">D</Card.Heading>
                 <ul className="nhsuk-list nhsuk-list--border">

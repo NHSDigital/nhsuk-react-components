@@ -7,7 +7,7 @@ import { CardContext } from '../CardContext.js';
 
 import { HeadingLevel } from '#components/utils/HeadingLevel.js';
 import { type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
-import { cardTypeIsCareCard, type CareCardType } from '#util/types/index.js';
+import { type CareCardType } from '#util/types/index.js';
 
 const genHiddenText = (cardType?: CareCardType) => {
   switch (cardType) {
@@ -41,7 +41,7 @@ export const CardHeading = forwardRef<HTMLHeadingElement, HeadingLevelProps>(
   (props, forwardedRef) => {
     const { cardType } = useContext(CardContext);
 
-    if (cardTypeIsCareCard(cardType)) {
+    if (cardType) {
       return <CareHeading {...props} careType={cardType} />;
     }
 

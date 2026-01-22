@@ -126,7 +126,7 @@ export const CardWithImage: Story = {
 
 export const FeatureCard: Story = {
   args: {
-    cardType: 'feature',
+    feature: true,
   },
   render: (args) => (
     <Card {...args}>
@@ -140,7 +140,7 @@ export const FeatureCard: Story = {
 
 export const FeatureCardWithList: Story = {
   args: {
-    cardType: 'feature',
+    feature: true,
   },
   render: (args) => (
     <Card {...args}>
@@ -164,7 +164,7 @@ export const FeatureCardWithList: Story = {
 
 export const PrimaryCardWithChevron: Story = {
   args: {
-    cardType: 'primary',
+    primary: true,
     clickable: true,
   },
   render: (args) => (
@@ -181,7 +181,7 @@ export const PrimaryCardWithChevron: Story = {
 
 export const PrimaryCardWithChevronAndDescription: Story = {
   args: {
-    cardType: 'primary',
+    primary: true,
     clickable: true,
   },
   render: (args) => (
@@ -219,7 +219,7 @@ export const ClickableCard: Story = {
 
 export const SecondaryCard: Story = {
   args: {
-    cardType: 'secondary',
+    secondary: true,
     clickable: true,
   },
   render: (args) => (
@@ -238,7 +238,7 @@ export const SecondaryCard: Story = {
 
 export const SecondaryNonClickableWithCustomHTML: Story = {
   args: {
-    cardType: 'secondary',
+    secondary: true,
   },
   render: (args) => (
     <Card {...args}>
