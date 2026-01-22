@@ -13,6 +13,16 @@ describe('Panel', () => {
     </Panel>
   );
 
+  const ExampleInterruption = (props: Parameters<typeof Panel>[0]) => (
+    <Panel interruption {...props}>
+      <Panel.Title size="l">Jodie Brown had a COVID-19 vaccine less than 3 months ago</Panel.Title>
+      <p>They had a COVID-19 vaccine on 25 September 2025.</p>
+      <p>
+        For most people, the minimum recommended gap between COVID-19 vaccine doses is 3 months.
+      </p>
+    </Panel>
+  );
+
   it('matches snapshot', async () => {
     const { container } = await renderClient(<Example />, {
       className: 'nhsuk-panel',
@@ -23,6 +33,30 @@ describe('Panel', () => {
 
   it('matches snapshot (via server)', async () => {
     const { container, element } = await renderServer(<Example />, {
+      className: 'nhsuk-panel',
+    });
+
+    expect(container).toMatchSnapshot('server');
+
+    await renderClient(element, {
+      className: 'nhsuk-panel',
+      hydrate: true,
+      container,
+    });
+
+    expect(container).toMatchSnapshot('client');
+  });
+
+  it('matches snapshot as interruption panel', async () => {
+    const { container } = await renderClient(<ExampleInterruption />, {
+      className: 'nhsuk-panel',
+    });
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('matches snapshot as interruption panel (via server)', async () => {
+    const { container, element } = await renderServer(<ExampleInterruption />, {
       className: 'nhsuk-panel',
     });
 
