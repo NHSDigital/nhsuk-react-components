@@ -18,7 +18,15 @@ The updated [header](https://service-manual.nhs.uk/design-system/components/head
 - update NHS logo in the header to have higher contrast when focused
 - refactor CSS classes and BEM naming, use hidden attributes instead of modifier classes, use generic search element
 
-#### Use the password input component to help users accessibly enter passwords
+#### New file upload component
+
+We've added a new [file upload](https://service-manual.nhs.uk/design-system/components/file-upload) component from NHS.UK frontend v10.3 which:
+
+- makes the file inputs easier to use for drag and drop
+- allows the text of the component to be translated
+- fixes accessibility issues for users of Dragon, a speech recognition software
+
+#### New password input component to help users accessibly enter passwords
 
 The [password input](https://service-manual.nhs.uk/design-system/components/password-input) component from NHS.UK frontend v10.2 allows users to choose:
 
@@ -88,6 +96,18 @@ We've added a new `<Select.Divider />` child component for select menus to suppo
   </Select>
 ```
 
+#### Use cards to visually separate multiple summary lists on a single page
+
+You can now wrap a [card](https://service-manual.nhs.uk/design-system/components/cards) around [summary lists](https://service-manual.nhs.uk/design-system/components/summary-list) to help you:
+
+- design and build pages with multiple summary lists
+- show visual dividers between summary lists
+- allow users to apply actions to entire lists
+
+### Reverse links
+
+To align with NHS.UK frontend, we've updated the [action link](https://service-manual.nhs.uk/design-system/components/action-link), [back link](https://service-manual.nhs.uk/design-system/components/back-link) and [breadcrumbs](https://service-manual.nhs.uk/design-system/components/breadcrumbs) components to support the `reverse` prop for dark backgrounds.
+
 ### Numbered pagination component
 
 The [pagination](https://service-manual.nhs.uk/design-system/components/pagination) component from NHS.UK frontend v10.1 has been updated to support numbered pagination:
@@ -115,7 +135,7 @@ The [notification banner](https://service-manual.nhs.uk/design-system/components
 
 ### Panel component
 
-The [panel](https://service-manual.nhs.uk/design-system/components/panel) component from NHS.UK frontend v9.3.0 has been added:
+The [panel](https://service-manual.nhs.uk/design-system/components/panel) component from NHS.UK frontend v9.3.0, and the [interruption panel variant](https://service-manual.nhs.uk/design-system/components/panel#interruption-panel) from NHS.UK frontend v10.3.0, have been added:
 
 ```jsx
 <Panel>
@@ -130,8 +150,9 @@ This replaces the [list panel component](#list-panel) which was removed in NHS.U
 
 The [summary list](https://service-manual.nhs.uk/design-system/components/summary-list) component now includes improvements from NHS.UK frontend v9.6.2:
 
-- new props `noBorder` and `noActions` supported at `<SummaryList.Row>` level
+- new prop `noBorder` supported at `<SummaryList.Row>` level
 - new child component `<SummaryList.Action>` for row actions
+- removed unnecessary child component `<SummaryList.Actions>`
 
 ```patch
   <SummaryList>
@@ -139,22 +160,21 @@ The [summary list](https://service-manual.nhs.uk/design-system/components/summar
 +   <SummaryList.Row noBorder>
       <SummaryList.Key>Name</SummaryList.Key>
       <SummaryList.Value>Karen Francis</SummaryList.Value>
-      <SummaryList.Actions>
+-     <SummaryList.Actions>
 -       <a href="#">
 -         Change<span className="nhsuk-u-visually-hidden"> name</span>
 -       </a>
-+       <SummaryList.Action href="#" visuallyHiddenText="name">
-+         Change
-+       </SummaryList.Action>
-      </SummaryList.Actions>
-    </SummaryList.Row>
--   <SummaryList.Row>
-+   <SummaryList.Row noActions>
-      <SummaryList.Key>Date of birth</SummaryList.Key>
-      <SummaryList.Value>15 March 1984</SummaryList.Value>
++     <SummaryList.Action href="#" visuallyHiddenText="name">
++       Change
++     </SummaryList.Action>
+-     </SummaryList.Actions>
     </SummaryList.Row>
   </SummaryList>
 ```
+
+### Support for component language localisation
+
+The [character count](https://service-manual.nhs.uk/design-system/components/character-count), [file upload](https://service-manual.nhs.uk/design-system/components/file-upload) and [password input](https://service-manual.nhs.uk/design-system/components/password-input) components now support the `i18n` prop for [NHS.UK frontend localisation](https://github.com/nhsuk/nhsuk-frontend/blob/main/docs/configuration/localisation.md).
 
 ### Support for React Server Components (RSC)
 
@@ -243,6 +263,18 @@ If you are using the `headingLevel` prop you will need to update any uppercase v
 + <Card.Heading headingLevel="h3">Example heading</Card.Heading>
 ```
 
+### Rename the heading level component
+
+If you are using the `HeadingLevel` component you must rename it to `Heading` where the `size` and `visuallyHiddenText` props now supported:
+
+```patch
+- <HeadingLevel className="nhsuk-heading-m">
++ <Heading size="m">
+    Example heading
+- </HeadingLevel>
++ </Heading>
+```
+
 ### Restore visually hidden text for accessibility
 
 For accessibility reasons, it's no longer possible to pass `visuallyHiddenText: false` or override other hidden text for the following:
@@ -290,6 +322,30 @@ You must also make the following changes:
 - replace `<DefaultButton>` with `<Button>` to render HTML `<button>` elements
 - replace `<LinkButton>` with `<Button href="/example">` to render HTML `<a>` elements
 - remove the `debounceTimeout` prop when preventing double clicks
+
+### Cards
+
+To align with NHS.UK frontend, we've updated the [card component](https://service-manual.nhs.uk/design-system/components/card) to use boolean props for all supported card types. The existing `cardType` prop can now only be used to set care card variants.
+
+```patch
+- <Card cardType="clickable">
++ <Card clickable>
+```
+
+```patch
+- <Card cardType="feature">
++ <Card feature>
+```
+
+```patch
+- <Card cardType="primary">
++ <Card primary>
+```
+
+```patch
+- <Card cardType="secondary">
++ <Card secondary>
+```
 
 ### Character count
 
@@ -460,14 +516,12 @@ Before:
 After:
 
 ```jsx
-<Card cardType="feature">
-  <Card.Content>
-    <Card.Heading id="C">C</Card.Heading>
-    <ul className="nhsuk-list nhsuk-list--border">
-      <li><a href="/conditions/chest-pain/">Chest pain</a></li>
-      <li><a href="/conditions/cold-sores/">Cold sore</a></li>
-    </ul>
-  </Card.Content>
+<Card feature>
+  <Card.Heading id="C">C</Card.Heading>
+  <ul className="nhsuk-list nhsuk-list--border">
+    <li><a href="/conditions/chest-pain/">Chest pain</a></li>
+    <li><a href="/conditions/cold-sores/">Cold sore</a></li>
+  </ul>
 </Card>
 
 <div className="nhsuk-back-to-top">
@@ -620,6 +674,14 @@ To align with NHS.UK frontend, you must make the following changes:
       </Table.Row>
     </Table.Body>
   </Table>
+```
+
+If you are using the `Table.Panel` child component, you must migrate to the feature card:
+
+```patch
+- <Table.Panel heading="Other conditions like impetigo">
++ <Card feature>
++   <Card.Heading>Other conditions like impetigo</Card.Heading>
 ```
 
 ### Textarea
