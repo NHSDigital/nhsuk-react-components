@@ -116,7 +116,6 @@ describe('Index', () => {
       'SkipLink',
       'SummaryList',
       'SummaryListAction',
-      'SummaryListActions',
       'SummaryListKey',
       'SummaryListRow',
       'SummaryListValue',

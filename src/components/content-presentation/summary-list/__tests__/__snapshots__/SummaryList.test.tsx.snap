@@ -16,37 +16,6 @@ exports[`SummaryList SummaryList.Action matches snapshot 1`] = `
 </div>
 `;
 
-exports[`SummaryList SummaryList.Actions matches snapshot 1`] = `
-<div>
-  <dd
-    class="nhsuk-summary-list__actions"
-  >
-    <a
-      href="#"
-    >
-      Edit
-      <span
-        class="nhsuk-u-visually-hidden"
-      >
-         
-        example key
-      </span>
-    </a>
-    <a
-      href="#"
-    >
-      Delete
-      <span
-        class="nhsuk-u-visually-hidden"
-      >
-         
-        example key
-      </span>
-    </a>
-  </dd>
-</div>
-`;
-
 exports[`SummaryList SummaryList.Key matches snapshot 1`] = `
 <div>
   <dt
@@ -60,9 +29,119 @@ exports[`SummaryList SummaryList.Key matches snapshot 1`] = `
 exports[`SummaryList SummaryList.Row matches snapshot 1`] = `
 <div>
   <div
-    class="nhsuk-summary-list__row"
+    class="nhsuk-summary-list__row nhsuk-summary-list__row--no-actions"
   >
     Row
+  </div>
+</div>
+`;
+
+exports[`SummaryList SummaryList.Row matches snapshot with key and value 1`] = `
+<div>
+  <div
+    class="nhsuk-summary-list__row nhsuk-summary-list__row--no-actions"
+  >
+    <dt
+      class="nhsuk-summary-list__key"
+    >
+      Name
+    </dt>
+    <dd
+      class="nhsuk-summary-list__value"
+    >
+      Karen Francis
+    </dd>
+  </div>
+</div>
+`;
+
+exports[`SummaryList SummaryList.Row matches snapshot with key, value and action 1`] = `
+<div>
+  <div
+    class="nhsuk-summary-list__row"
+  >
+    <dt
+      class="nhsuk-summary-list__key"
+    >
+      Name
+    </dt>
+    <dd
+      class="nhsuk-summary-list__value"
+    >
+      Karen Francis
+    </dd>
+    <dd
+      class="nhsuk-summary-list__actions"
+    >
+      <a
+        href="#"
+      >
+        Change
+        <span
+          class="nhsuk-u-visually-hidden"
+        >
+           
+          name
+        </span>
+      </a>
+    </dd>
+  </div>
+</div>
+`;
+
+exports[`SummaryList SummaryList.Row matches snapshot with key, value and multiple actions 1`] = `
+<div>
+  <div
+    class="nhsuk-summary-list__row"
+  >
+    <dt
+      class="nhsuk-summary-list__key"
+    >
+      Name
+    </dt>
+    <dd
+      class="nhsuk-summary-list__value"
+    >
+      Karen Francis
+    </dd>
+    <dd
+      class="nhsuk-summary-list__actions"
+    >
+      <ul
+        class="nhsuk-summary-list__actions-list"
+      >
+        <li
+          class="nhsuk-summary-list__actions-list-item"
+        >
+          <a
+            href="#"
+          >
+            Change
+            <span
+              class="nhsuk-u-visually-hidden"
+            >
+               
+              name
+            </span>
+          </a>
+        </li>
+        <li
+          class="nhsuk-summary-list__actions-list-item"
+        >
+          <a
+            href="#"
+          >
+            Delete
+            <span
+              class="nhsuk-u-visually-hidden"
+            >
+               
+              name
+            </span>
+          </a>
+        </li>
+      </ul>
+    </dd>
   </div>
 </div>
 `;
@@ -70,7 +149,7 @@ exports[`SummaryList SummaryList.Row matches snapshot 1`] = `
 exports[`SummaryList SummaryList.Row matches snapshot without border 1`] = `
 <div>
   <div
-    class="nhsuk-summary-list__row nhsuk-summary-list__row--no-border"
+    class="nhsuk-summary-list__row nhsuk-summary-list__row--no-actions nhsuk-summary-list__row--no-border"
   >
     Row
   </div>

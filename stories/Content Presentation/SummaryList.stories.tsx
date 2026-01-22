@@ -22,20 +22,16 @@ export const Standard: Story = {
       <SummaryList.Row>
         <SummaryList.Key>Name</SummaryList.Key>
         <SummaryList.Value>Karen Francis</SummaryList.Value>
-        <SummaryList.Actions>
-          <SummaryList.Action href="#" visuallyHiddenText="name">
-            Change
-          </SummaryList.Action>
-        </SummaryList.Actions>
+        <SummaryList.Action href="#" visuallyHiddenText="name">
+          Change
+        </SummaryList.Action>
       </SummaryList.Row>
       <SummaryList.Row>
         <SummaryList.Key>Date of birth</SummaryList.Key>
         <SummaryList.Value>15 March 1984</SummaryList.Value>
-        <SummaryList.Actions>
-          <SummaryList.Action href="#" visuallyHiddenText="date of birth">
-            Change
-          </SummaryList.Action>
-        </SummaryList.Actions>
+        <SummaryList.Action href="#" visuallyHiddenText="date of birth">
+          Change
+        </SummaryList.Action>
       </SummaryList.Row>
       <SummaryList.Row>
         <SummaryList.Key>Contact information</SummaryList.Key>
@@ -46,11 +42,9 @@ export const Standard: Story = {
           <br />
           LS2 5ZN
         </SummaryList.Value>
-        <SummaryList.Actions>
-          <SummaryList.Action href="#" visuallyHiddenText="contact information">
-            Change
-          </SummaryList.Action>
-        </SummaryList.Actions>
+        <SummaryList.Action href="#" visuallyHiddenText="contact information">
+          Change
+        </SummaryList.Action>
       </SummaryList.Row>
       <SummaryList.Row>
         <SummaryList.Key>Contact details</SummaryList.Key>
@@ -58,11 +52,9 @@ export const Standard: Story = {
           <BodyText>07700 900457</BodyText>
           <BodyText>sarah.phillips@example.com</BodyText>
         </SummaryList.Value>
-        <SummaryList.Actions>
-          <SummaryList.Action href="#" visuallyHiddenText="contact details">
-            Change
-          </SummaryList.Action>
-        </SummaryList.Actions>
+        <SummaryList.Action href="#" visuallyHiddenText="contact details">
+          Change
+        </SummaryList.Action>
       </SummaryList.Row>
     </SummaryList>
   ),
@@ -74,20 +66,16 @@ export const SummaryListWithoutActionsOnLastRow: Story = {
       <SummaryList.Row>
         <SummaryList.Key>Name</SummaryList.Key>
         <SummaryList.Value>Karen Francis</SummaryList.Value>
-        <SummaryList.Actions>
-          <SummaryList.Action href="#" visuallyHiddenText="name">
-            Change
-          </SummaryList.Action>
-        </SummaryList.Actions>
+        <SummaryList.Action href="#" visuallyHiddenText="name">
+          Change
+        </SummaryList.Action>
       </SummaryList.Row>
       <SummaryList.Row>
         <SummaryList.Key>Date of birth</SummaryList.Key>
         <SummaryList.Value>15 March 1984</SummaryList.Value>
-        <SummaryList.Actions>
-          <SummaryList.Action href="#" visuallyHiddenText="date of birth">
-            Change
-          </SummaryList.Action>
-        </SummaryList.Actions>
+        <SummaryList.Action href="#" visuallyHiddenText="date of birth">
+          Change
+        </SummaryList.Action>
       </SummaryList.Row>
       <SummaryList.Row>
         <SummaryList.Key>Contact information</SummaryList.Key>
@@ -98,13 +86,11 @@ export const SummaryListWithoutActionsOnLastRow: Story = {
           <br />
           LS2 5ZN
         </SummaryList.Value>
-        <SummaryList.Actions>
-          <SummaryList.Action href="#" visuallyHiddenText="contact information">
-            Change
-          </SummaryList.Action>
-        </SummaryList.Actions>
+        <SummaryList.Action href="#" visuallyHiddenText="contact information">
+          Change
+        </SummaryList.Action>
       </SummaryList.Row>
-      <SummaryList.Row noActions>
+      <SummaryList.Row>
         <SummaryList.Key>Contact details</SummaryList.Key>
         <SummaryList.Value>
           <BodyText>07700 900457</BodyText>
