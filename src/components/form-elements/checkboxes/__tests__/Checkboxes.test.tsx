@@ -8,15 +8,15 @@ describe('Checkboxes', () => {
   it('matches snapshot', async () => {
     const { container } = await renderClient(
       <Checkboxes
-        legend="What types of waste do you transport regularly?"
+        legend="How do you want to be contacted about this?"
         legendProps={{ size: 'l' }}
-        hint="Select all that apply"
+        hint="Select all options that are relevant to you"
         id="example"
         name="example"
       >
-        <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
-        <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
-        <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
+        <Checkboxes.Item value="email">Email</Checkboxes.Item>
+        <Checkboxes.Item value="phone">Phone</Checkboxes.Item>
+        <Checkboxes.Item value="text">Text message</Checkboxes.Item>
       </Checkboxes>,
       { moduleName: 'nhsuk-checkboxes' },
     );
@@ -27,16 +27,16 @@ describe('Checkboxes', () => {
   it('matches snapshot with error message', async () => {
     const { container } = await renderClient(
       <Checkboxes
-        legend="What types of waste do you transport regularly?"
+        legend="How do you want to be contacted about this?"
         legendProps={{ size: 'l' }}
-        hint="Select all that apply"
+        hint="Select all options that are relevant to you"
         error="Example error"
         id="example"
         name="example"
       >
-        <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
-        <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
-        <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
+        <Checkboxes.Item value="email">Email</Checkboxes.Item>
+        <Checkboxes.Item value="phone">Phone</Checkboxes.Item>
+        <Checkboxes.Item value="text">Text message</Checkboxes.Item>
       </Checkboxes>,
       { moduleName: 'nhsuk-checkboxes' },
     );
@@ -79,9 +79,9 @@ describe('Checkboxes', () => {
         >
           Waste from animal carcasses
         </Checkboxes.Item>
-        <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
-        <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
-        <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
+        <Checkboxes.Item value="email">Email</Checkboxes.Item>
+        <Checkboxes.Item value="phone">Phone</Checkboxes.Item>
+        <Checkboxes.Item value="text">Text message</Checkboxes.Item>
       </Checkboxes>,
       { moduleName: 'nhsuk-checkboxes' },
     );
@@ -92,18 +92,47 @@ describe('Checkboxes', () => {
   it('matches snapshot with an exclusive checkbox', async () => {
     const { container } = await renderClient(
       <Checkboxes
-        legend="What types of waste do you transport regularly?"
+        legend="How do you want to be contacted about this?"
         legendProps={{ size: 'l' }}
-        hint="Select all that apply"
+        hint="Select all options that are relevant to you"
         id="example"
         name="example"
       >
-        <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
-        <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
-        <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
+        <Checkboxes.Item value="email">Email</Checkboxes.Item>
+        <Checkboxes.Item value="phone">Phone</Checkboxes.Item>
+        <Checkboxes.Item value="text">Text message</Checkboxes.Item>
         <Checkboxes.Divider />
-        <Checkboxes.Item value="none" id="none" exclusive>
+        <Checkboxes.Item value="none" exclusive>
           None
+        </Checkboxes.Item>
+      </Checkboxes>,
+      { moduleName: 'nhsuk-checkboxes' },
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('matches snapshot with an exclusive checkbox and named groups', async () => {
+    const { container } = await renderClient(
+      <Checkboxes
+        legend="How do you want to be contacted about this?"
+        legendProps={{ size: 'l' }}
+        hint="Select all options that are relevant to you"
+        id="example"
+        name="example"
+      >
+        <Checkboxes.Item value="email" exclusiveGroup="communication-preferences">
+          Email
+        </Checkboxes.Item>
+        <Checkboxes.Item value="phone" exclusiveGroup="communication-preferences">
+          Phone
+        </Checkboxes.Item>
+        <Checkboxes.Item value="text" exclusiveGroup="communication-preferences">
+          Text message
+        </Checkboxes.Item>
+        <Checkboxes.Divider />
+        <Checkboxes.Item value="none" exclusiveGroup="communication-preferences" exclusive>
+          None of the above
         </Checkboxes.Item>
       </Checkboxes>,
       { moduleName: 'nhsuk-checkboxes' },
@@ -115,15 +144,15 @@ describe('Checkboxes', () => {
   it('matches snapshot (via server)', async () => {
     const { container, element } = await renderServer(
       <Checkboxes
-        legend="What types of waste do you transport regularly?"
+        legend="How do you want to be contacted about this?"
         legendProps={{ size: 'l' }}
-        hint="Select all that apply"
+        hint="Select all options that are relevant to you"
         id="example"
         name="example"
       >
-        <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
-        <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
-        <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
+        <Checkboxes.Item value="email">Email</Checkboxes.Item>
+        <Checkboxes.Item value="phone">Phone</Checkboxes.Item>
+        <Checkboxes.Item value="text">Text message</Checkboxes.Item>
       </Checkboxes>,
       { moduleName: 'nhsuk-checkboxes' },
     );
@@ -165,21 +194,45 @@ describe('Checkboxes', () => {
     expect(fieldRef.current).toHaveClass('nhsuk-checkboxes__input');
   });
 
-  it('sets data-exclusive attribute when exclusive is true for a checkbox', async () => {
+  it('sets attribute `data-checkbox-exclusive` when items are exclusive', async () => {
     const { container } = await renderClient(
       <Checkboxes id="example" name="example">
-        <Checkboxes.Item value="animal">Waste from animal carcasses</Checkboxes.Item>
-        <Checkboxes.Item value="mines">Waste from mines or quarries</Checkboxes.Item>
-        <Checkboxes.Item value="farm">Farm or agricultural waste</Checkboxes.Item>
-        <Checkboxes.Item value="none" id="none" exclusive>
-          None
+        <Checkboxes.Item value="text">Text message</Checkboxes.Item>
+        <Checkboxes.Divider />
+        <Checkboxes.Item value="none" exclusive>
+          None of the above
         </Checkboxes.Item>
       </Checkboxes>,
       { moduleName: 'nhsuk-checkboxes' },
     );
 
-    const inputEl = container.querySelector<HTMLInputElement>('#none');
+    const inputEl1 = container.querySelector<HTMLInputElement>('#example-1');
+    const inputEl2 = container.querySelector<HTMLInputElement>('#example-2');
 
-    expect(inputEl?.dataset).toHaveProperty('checkboxExclusive', 'true');
+    expect(inputEl1?.dataset).not.toHaveProperty('checkboxExclusive');
+    expect(inputEl2?.dataset).toHaveProperty('checkboxExclusive', 'true');
+  });
+
+  it('sets attribute `data-checkbox-exclusive-group` when items have exclusive groups', async () => {
+    const { container } = await renderClient(
+      <Checkboxes id="example" name="example">
+        <Checkboxes.Item value="text" exclusiveGroup="communication-preferences">
+          Text message
+        </Checkboxes.Item>
+        <Checkboxes.Divider />
+        <Checkboxes.Item value="none" exclusiveGroup="communication-preferences" exclusive>
+          None of the above
+        </Checkboxes.Item>
+      </Checkboxes>,
+      { moduleName: 'nhsuk-checkboxes' },
+    );
+
+    const inputEl1 = container.querySelector<HTMLInputElement>('#example-1');
+    const inputEl2 = container.querySelector<HTMLInputElement>('#example-2');
+
+    expect(inputEl1?.dataset).not.toHaveProperty('checkboxExclusive');
+    expect(inputEl1?.dataset).toHaveProperty('checkboxExclusiveGroup', 'communication-preferences');
+    expect(inputEl2?.dataset).toHaveProperty('checkboxExclusive', 'true');
+    expect(inputEl2?.dataset).toHaveProperty('checkboxExclusiveGroup', 'communication-preferences');
   });
 });

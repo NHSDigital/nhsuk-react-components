@@ -12,13 +12,13 @@ exports[`Checkboxes matches snapshot (via server): client 1`] = `
       <legend
         class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l"
       >
-        What types of waste do you transport regularly?
+        How do you want to be contacted about this?
       </legend>
       <div
         class="nhsuk-hint"
         id="example--hint"
       >
-        Select all that apply
+        Select all options that are relevant to you
       </div>
       <div
         class="nhsuk-checkboxes"
@@ -31,18 +31,17 @@ exports[`Checkboxes matches snapshot (via server): client 1`] = `
         >
           <input
             class="nhsuk-checkboxes__input"
-            data-checkbox-exclusive-group="example"
             id="example-1"
             name="example"
             type="checkbox"
-            value="animal"
+            value="email"
           />
           <label
             class="nhsuk-label nhsuk-checkboxes__label"
             for="example-1"
             id="example-1--label"
           >
-            Waste from animal carcasses
+            Email
           </label>
         </div>
         <div
@@ -50,18 +49,17 @@ exports[`Checkboxes matches snapshot (via server): client 1`] = `
         >
           <input
             class="nhsuk-checkboxes__input"
-            data-checkbox-exclusive-group="example"
             id="example-2"
             name="example"
             type="checkbox"
-            value="mines"
+            value="phone"
           />
           <label
             class="nhsuk-label nhsuk-checkboxes__label"
             for="example-2"
             id="example-2--label"
           >
-            Waste from mines or quarries
+            Phone
           </label>
         </div>
         <div
@@ -69,18 +67,17 @@ exports[`Checkboxes matches snapshot (via server): client 1`] = `
         >
           <input
             class="nhsuk-checkboxes__input"
-            data-checkbox-exclusive-group="example"
             id="example-3"
             name="example"
             type="checkbox"
-            value="farm"
+            value="text"
           />
           <label
             class="nhsuk-label nhsuk-checkboxes__label"
             for="example-3"
             id="example-3--label"
           >
-            Farm or agricultural waste
+            Text message
           </label>
         </div>
       </div>
@@ -101,13 +98,13 @@ exports[`Checkboxes matches snapshot (via server): server 1`] = `
       <legend
         class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l"
       >
-        What types of waste do you transport regularly?
+        How do you want to be contacted about this?
       </legend>
       <div
         class="nhsuk-hint"
         id="example--hint"
       >
-        Select all that apply
+        Select all options that are relevant to you
       </div>
       <div
         class="nhsuk-checkboxes"
@@ -119,18 +116,17 @@ exports[`Checkboxes matches snapshot (via server): server 1`] = `
         >
           <input
             class="nhsuk-checkboxes__input"
-            data-checkbox-exclusive-group="example"
             id="example-1"
             name="example"
             type="checkbox"
-            value="animal"
+            value="email"
           />
           <label
             class="nhsuk-label nhsuk-checkboxes__label"
             for="example-1"
             id="example-1--label"
           >
-            Waste from animal carcasses
+            Email
           </label>
         </div>
         <div
@@ -138,18 +134,17 @@ exports[`Checkboxes matches snapshot (via server): server 1`] = `
         >
           <input
             class="nhsuk-checkboxes__input"
-            data-checkbox-exclusive-group="example"
             id="example-2"
             name="example"
             type="checkbox"
-            value="mines"
+            value="phone"
           />
           <label
             class="nhsuk-label nhsuk-checkboxes__label"
             for="example-2"
             id="example-2--label"
           >
-            Waste from mines or quarries
+            Phone
           </label>
         </div>
         <div
@@ -157,18 +152,17 @@ exports[`Checkboxes matches snapshot (via server): server 1`] = `
         >
           <input
             class="nhsuk-checkboxes__input"
-            data-checkbox-exclusive-group="example"
             id="example-3"
             name="example"
             type="checkbox"
-            value="farm"
+            value="text"
           />
           <label
             class="nhsuk-label nhsuk-checkboxes__label"
             for="example-3"
             id="example-3--label"
           >
-            Farm or agricultural waste
+            Text message
           </label>
         </div>
       </div>
@@ -189,13 +183,13 @@ exports[`Checkboxes matches snapshot 1`] = `
       <legend
         class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l"
       >
-        What types of waste do you transport regularly?
+        How do you want to be contacted about this?
       </legend>
       <div
         class="nhsuk-hint"
         id="example--hint"
       >
-        Select all that apply
+        Select all options that are relevant to you
       </div>
       <div
         class="nhsuk-checkboxes"
@@ -208,18 +202,17 @@ exports[`Checkboxes matches snapshot 1`] = `
         >
           <input
             class="nhsuk-checkboxes__input"
-            data-checkbox-exclusive-group="example"
             id="example-1"
             name="example"
             type="checkbox"
-            value="animal"
+            value="email"
           />
           <label
             class="nhsuk-label nhsuk-checkboxes__label"
             for="example-1"
             id="example-1--label"
           >
-            Waste from animal carcasses
+            Email
           </label>
         </div>
         <div
@@ -227,18 +220,17 @@ exports[`Checkboxes matches snapshot 1`] = `
         >
           <input
             class="nhsuk-checkboxes__input"
-            data-checkbox-exclusive-group="example"
             id="example-2"
             name="example"
             type="checkbox"
-            value="mines"
+            value="phone"
           />
           <label
             class="nhsuk-label nhsuk-checkboxes__label"
             for="example-2"
             id="example-2--label"
           >
-            Waste from mines or quarries
+            Phone
           </label>
         </div>
         <div
@@ -246,18 +238,17 @@ exports[`Checkboxes matches snapshot 1`] = `
         >
           <input
             class="nhsuk-checkboxes__input"
-            data-checkbox-exclusive-group="example"
             id="example-3"
             name="example"
             type="checkbox"
-            value="farm"
+            value="text"
           />
           <label
             class="nhsuk-label nhsuk-checkboxes__label"
             for="example-3"
             id="example-3--label"
           >
-            Farm or agricultural waste
+            Text message
           </label>
         </div>
       </div>
@@ -324,7 +315,6 @@ exports[`Checkboxes matches snapshot with HTML in props 1`] = `
           <input
             aria-describedby="example-1--hint"
             class="nhsuk-checkboxes__input"
-            data-checkbox-exclusive-group="example"
             id="example-1"
             name="example"
             type="checkbox"
@@ -352,18 +342,17 @@ exports[`Checkboxes matches snapshot with HTML in props 1`] = `
         >
           <input
             class="nhsuk-checkboxes__input"
-            data-checkbox-exclusive-group="example"
             id="example-2"
             name="example"
             type="checkbox"
-            value="animal"
+            value="email"
           />
           <label
             class="nhsuk-label nhsuk-checkboxes__label"
             for="example-2"
             id="example-2--label"
           >
-            Waste from animal carcasses
+            Email
           </label>
         </div>
         <div
@@ -371,18 +360,17 @@ exports[`Checkboxes matches snapshot with HTML in props 1`] = `
         >
           <input
             class="nhsuk-checkboxes__input"
-            data-checkbox-exclusive-group="example"
             id="example-3"
             name="example"
             type="checkbox"
-            value="mines"
+            value="phone"
           />
           <label
             class="nhsuk-label nhsuk-checkboxes__label"
             for="example-3"
             id="example-3--label"
           >
-            Waste from mines or quarries
+            Phone
           </label>
         </div>
         <div
@@ -390,18 +378,17 @@ exports[`Checkboxes matches snapshot with HTML in props 1`] = `
         >
           <input
             class="nhsuk-checkboxes__input"
-            data-checkbox-exclusive-group="example"
             id="example-4"
             name="example"
             type="checkbox"
-            value="farm"
+            value="text"
           />
           <label
             class="nhsuk-label nhsuk-checkboxes__label"
             for="example-4"
             id="example-4--label"
           >
-            Farm or agricultural waste
+            Text message
           </label>
         </div>
       </div>
@@ -422,13 +409,13 @@ exports[`Checkboxes matches snapshot with an exclusive checkbox 1`] = `
       <legend
         class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l"
       >
-        What types of waste do you transport regularly?
+        How do you want to be contacted about this?
       </legend>
       <div
         class="nhsuk-hint"
         id="example--hint"
       >
-        Select all that apply
+        Select all options that are relevant to you
       </div>
       <div
         class="nhsuk-checkboxes"
@@ -441,18 +428,17 @@ exports[`Checkboxes matches snapshot with an exclusive checkbox 1`] = `
         >
           <input
             class="nhsuk-checkboxes__input"
-            data-checkbox-exclusive-group="example"
             id="example-1"
             name="example"
             type="checkbox"
-            value="animal"
+            value="email"
           />
           <label
             class="nhsuk-label nhsuk-checkboxes__label"
             for="example-1"
             id="example-1--label"
           >
-            Waste from animal carcasses
+            Email
           </label>
         </div>
         <div
@@ -460,18 +446,17 @@ exports[`Checkboxes matches snapshot with an exclusive checkbox 1`] = `
         >
           <input
             class="nhsuk-checkboxes__input"
-            data-checkbox-exclusive-group="example"
             id="example-2"
             name="example"
             type="checkbox"
-            value="mines"
+            value="phone"
           />
           <label
             class="nhsuk-label nhsuk-checkboxes__label"
             for="example-2"
             id="example-2--label"
           >
-            Waste from mines or quarries
+            Phone
           </label>
         </div>
         <div
@@ -479,18 +464,17 @@ exports[`Checkboxes matches snapshot with an exclusive checkbox 1`] = `
         >
           <input
             class="nhsuk-checkboxes__input"
-            data-checkbox-exclusive-group="example"
             id="example-3"
             name="example"
             type="checkbox"
-            value="farm"
+            value="text"
           />
           <label
             class="nhsuk-label nhsuk-checkboxes__label"
             for="example-3"
             id="example-3--label"
           >
-            Farm or agricultural waste
+            Text message
           </label>
         </div>
         <div
@@ -504,18 +488,131 @@ exports[`Checkboxes matches snapshot with an exclusive checkbox 1`] = `
           <input
             class="nhsuk-checkboxes__input"
             data-checkbox-exclusive="true"
-            data-checkbox-exclusive-group="example"
-            id="none"
+            id="example-4"
             name="example"
             type="checkbox"
             value="none"
           />
           <label
             class="nhsuk-label nhsuk-checkboxes__label"
-            for="none"
-            id="none--label"
+            for="example-4"
+            id="example-4--label"
           >
             None
+          </label>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+</div>
+`;
+
+exports[`Checkboxes matches snapshot with an exclusive checkbox and named groups 1`] = `
+<div>
+  <div
+    class="nhsuk-form-group"
+  >
+    <fieldset
+      aria-describedby="example--hint"
+      class="nhsuk-fieldset"
+    >
+      <legend
+        class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l"
+      >
+        How do you want to be contacted about this?
+      </legend>
+      <div
+        class="nhsuk-hint"
+        id="example--hint"
+      >
+        Select all options that are relevant to you
+      </div>
+      <div
+        class="nhsuk-checkboxes"
+        data-module="nhsuk-checkboxes"
+        data-nhsuk-checkboxes-init=""
+        id="example"
+      >
+        <div
+          class="nhsuk-checkboxes__item"
+        >
+          <input
+            class="nhsuk-checkboxes__input"
+            data-checkbox-exclusive-group="communication-preferences"
+            id="example-1"
+            name="example"
+            type="checkbox"
+            value="email"
+          />
+          <label
+            class="nhsuk-label nhsuk-checkboxes__label"
+            for="example-1"
+            id="example-1--label"
+          >
+            Email
+          </label>
+        </div>
+        <div
+          class="nhsuk-checkboxes__item"
+        >
+          <input
+            class="nhsuk-checkboxes__input"
+            data-checkbox-exclusive-group="communication-preferences"
+            id="example-2"
+            name="example"
+            type="checkbox"
+            value="phone"
+          />
+          <label
+            class="nhsuk-label nhsuk-checkboxes__label"
+            for="example-2"
+            id="example-2--label"
+          >
+            Phone
+          </label>
+        </div>
+        <div
+          class="nhsuk-checkboxes__item"
+        >
+          <input
+            class="nhsuk-checkboxes__input"
+            data-checkbox-exclusive-group="communication-preferences"
+            id="example-3"
+            name="example"
+            type="checkbox"
+            value="text"
+          />
+          <label
+            class="nhsuk-label nhsuk-checkboxes__label"
+            for="example-3"
+            id="example-3--label"
+          >
+            Text message
+          </label>
+        </div>
+        <div
+          class="nhsuk-checkboxes__divider"
+        >
+          or
+        </div>
+        <div
+          class="nhsuk-checkboxes__item"
+        >
+          <input
+            class="nhsuk-checkboxes__input"
+            data-checkbox-exclusive="true"
+            data-checkbox-exclusive-group="communication-preferences"
+            id="example-4"
+            name="example"
+            type="checkbox"
+            value="none"
+          />
+          <label
+            class="nhsuk-label nhsuk-checkboxes__label"
+            for="example-4"
+            id="example-4--label"
+          >
+            None of the above
           </label>
         </div>
       </div>
@@ -536,13 +633,13 @@ exports[`Checkboxes matches snapshot with error message 1`] = `
       <legend
         class="nhsuk-fieldset__legend nhsuk-fieldset__legend--l"
       >
-        What types of waste do you transport regularly?
+        How do you want to be contacted about this?
       </legend>
       <div
         class="nhsuk-hint"
         id="example--hint"
       >
-        Select all that apply
+        Select all options that are relevant to you
       </div>
       <span
         class="nhsuk-error-message"
@@ -566,18 +663,17 @@ exports[`Checkboxes matches snapshot with error message 1`] = `
         >
           <input
             class="nhsuk-checkboxes__input"
-            data-checkbox-exclusive-group="example"
             id="example-1"
             name="example"
             type="checkbox"
-            value="animal"
+            value="email"
           />
           <label
             class="nhsuk-label nhsuk-checkboxes__label"
             for="example-1"
             id="example-1--label"
           >
-            Waste from animal carcasses
+            Email
           </label>
         </div>
         <div
@@ -585,18 +681,17 @@ exports[`Checkboxes matches snapshot with error message 1`] = `
         >
           <input
             class="nhsuk-checkboxes__input"
-            data-checkbox-exclusive-group="example"
             id="example-2"
             name="example"
             type="checkbox"
-            value="mines"
+            value="phone"
           />
           <label
             class="nhsuk-label nhsuk-checkboxes__label"
             for="example-2"
             id="example-2--label"
           >
-            Waste from mines or quarries
+            Phone
           </label>
         </div>
         <div
@@ -604,18 +699,17 @@ exports[`Checkboxes matches snapshot with error message 1`] = `
         >
           <input
             class="nhsuk-checkboxes__input"
-            data-checkbox-exclusive-group="example"
             id="example-3"
             name="example"
             type="checkbox"
-            value="farm"
+            value="text"
           />
           <label
             class="nhsuk-label nhsuk-checkboxes__label"
             for="example-3"
             id="example-3--label"
           >
-            Farm or agricultural waste
+            Text message
           </label>
         </div>
       </div>
