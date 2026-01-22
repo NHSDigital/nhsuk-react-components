@@ -5,34 +5,32 @@ import { forwardRef, useContext } from 'react';
 
 import { CardContext } from '../CardContext.js';
 
-import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
+import { HeadingLevel } from '#components/utils/HeadingLevel.js';
+import { type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
 import { cardTypeIsCareCard, type CareCardType } from '#util/types/index.js';
 
-const genHiddenText = (cardType: CareCardType): string => {
+const genHiddenText = (cardType?: CareCardType) => {
   switch (cardType) {
     case 'emergency':
-      return 'Immediate action required: ';
+      return 'Immediate action required';
     case 'urgent':
-      return 'Urgent advice: ';
+      return 'Urgent advice';
     default:
-      return 'Non-urgent advice: ';
+      return 'Non-urgent advice';
   }
 };
 
 const CareHeading = forwardRef<HTMLHeadingElement, HeadingLevelProps & { careType: CareCardType }>(
-  ({ children, className, careType, headingLevel = 'h2', ...rest }, forwardedRef) => (
+  ({ children, className, careType, ...rest }, forwardedRef) => (
     <div className="nhsuk-card__heading-container">
       <HeadingLevel
         className={classNames('nhsuk-card__heading', className)}
-        headingLevel={headingLevel}
+        headingLevel="h2"
+        visuallyHiddenText={genHiddenText(careType)}
         ref={forwardedRef}
         {...rest}
       >
-        {/* eslint-disable-next-line jsx-a11y/aria-role */}
-        <span role="text">
-          <span className="nhsuk-u-visually-hidden">{genHiddenText(careType)}</span>
-          {children}
-        </span>
+        {children}
       </HeadingLevel>
       <span className="nhsuk-card--care__arrow" aria-hidden="true"></span>
     </div>
@@ -47,12 +45,12 @@ export const CardHeading = forwardRef<HTMLHeadingElement, HeadingLevelProps>(
       return <CareHeading {...props} careType={cardType} />;
     }
 
-    const { className, headingLevel = 'h2', ...rest } = props;
+    const { className, ...rest } = props;
 
     return (
       <HeadingLevel
         className={classNames('nhsuk-card__heading', className)}
-        headingLevel={headingLevel}
+        headingLevel="h2"
         ref={forwardedRef}
         {...rest}
       />

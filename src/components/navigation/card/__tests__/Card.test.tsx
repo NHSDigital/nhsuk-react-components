@@ -180,7 +180,42 @@ describe('Card', () => {
           </Card>,
         );
 
-        expect(container.querySelector('h2')).toHaveAccessibleName(`${visuallyHidden}: ${heading}`);
+        const headingEl = container.querySelector('h2');
+
+        expect(headingEl).toHaveTextContent(`${visuallyHidden}: ${heading}`);
+      });
+
+      it('renders the heading with custom visually hidden text', () => {
+        const { container } = render(
+          <Card cardType={cardType}>
+            <Card.Heading visuallyHiddenText="Custom">{heading}</Card.Heading>
+          </Card>,
+        );
+
+        const headingEl = container.querySelector('h2');
+
+        expect(headingEl).toHaveTextContent(`Custom: ${heading}`);
+      });
+
+      it('renders the heading with custom visually hidden HTML', () => {
+        const { container } = render(
+          <Card cardType={cardType}>
+            <Card.Heading
+              visuallyHiddenText={
+                <>
+                  Custom <em>with HTML</em>
+                </>
+              }
+            >
+              {heading}
+            </Card.Heading>
+          </Card>,
+        );
+
+        const headingEl = container.querySelector('h2');
+
+        expect(headingEl).toHaveTextContent(`Custom with HTML: ${heading}`);
+        expect(headingEl).toContainHTML('Custom <em>with HTML</em>');
       });
 
       it('renders the heading with custom heading level', () => {
@@ -190,7 +225,9 @@ describe('Card', () => {
           </Card>,
         );
 
-        expect(container.querySelector('h3')).toHaveAccessibleName(`${visuallyHidden}: ${heading}`);
+        const headingEl = container.querySelector('h3');
+
+        expect(headingEl).toHaveTextContent(`${visuallyHidden}: ${heading}`);
       });
 
       it.each<Required<Pick<HeadingLevelProps, 'size'>>>([

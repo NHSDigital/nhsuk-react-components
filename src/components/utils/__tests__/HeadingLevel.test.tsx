@@ -31,6 +31,31 @@ describe('HeadingLevel', () => {
     expect(headingEl).toHaveClass(`nhsuk-heading-${props.size}`);
   });
 
+  it('renders with visually hidden text', () => {
+    const { container } = render(<HeadingLevel visuallyHiddenText="Custom" />);
+
+    const visuallyHiddenEl = container.querySelector('.nhsuk-u-visually-hidden');
+
+    expect(visuallyHiddenEl).toHaveTextContent('Custom:');
+  });
+
+  it('renders with visually hidden HTML', () => {
+    const { container } = render(
+      <HeadingLevel
+        visuallyHiddenText={
+          <>
+            Custom <em>with HTML</em>
+          </>
+        }
+      />,
+    );
+
+    const visuallyHiddenEl = container.querySelector('.nhsuk-u-visually-hidden');
+
+    expect(visuallyHiddenEl).toHaveTextContent('Custom with HTML:');
+    expect(visuallyHiddenEl).toContainHTML('Custom <em>with HTML</em>:');
+  });
+
   it('console.warn when headingLevel is invalid', () => {
     const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
     // @ts-expect-error - testing invalid prop
