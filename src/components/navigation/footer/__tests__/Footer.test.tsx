@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 
-import { Footer } from '..';
+import { Footer, type FooterContentProps } from '..';
 
 jest.spyOn(console, 'warn').mockImplementation();
 
@@ -9,6 +9,51 @@ describe('Footer', () => {
     const { container } = render(<Footer />);
 
     expect(container).toMatchSnapshot('Footer');
+  });
+
+  describe('Footer.Content', () => {
+    it('matches snapshot', () => {
+      const { container } = render(<Footer.Content />);
+
+      expect(container).toMatchSnapshot('Footer.Content');
+    });
+
+    it('sets default column width', () => {
+      const { container } = render(<Footer.Content />);
+
+      const columnEl = container.querySelector('div');
+
+      expect(columnEl).toHaveClass(`nhsuk-grid-column-one-quarter`);
+    });
+
+    it.each<FooterContentProps>([
+      { width: 'full' },
+      { width: 'one-half' },
+      { width: 'one-third' },
+      { width: 'one-quarter' },
+    ])('sets custom column width %s', (props) => {
+      const { container } = render(<Footer.Content {...props} />);
+
+      const columnEl = container.querySelector('div');
+
+      expect(columnEl).toHaveClass(`nhsuk-grid-column-${props.width}`);
+    });
+  });
+
+  describe('Footer.Copyright', () => {
+    it('matches snapshot', () => {
+      const { container } = render(<Footer.Copyright />);
+
+      expect(container).toMatchSnapshot('Footer.Copyright');
+    });
+  });
+
+  describe('Footer.Heading', () => {
+    it('matches snapshot', () => {
+      const { container } = render(<Footer.Heading />);
+
+      expect(container).toMatchSnapshot('Footer.Heading');
+    });
   });
 
   describe('Footer.List', () => {
@@ -20,6 +65,22 @@ describe('Footer', () => {
       const { container } = render(<Footer.List />);
 
       expect(container).toMatchSnapshot('Footer.List');
+    });
+  });
+
+  describe('Footer.ListItem', () => {
+    it('matches snapshot', () => {
+      const { container } = render(<Footer.ListItem />);
+
+      expect(container).toMatchSnapshot('Footer.ListItem');
+    });
+  });
+
+  describe('Footer.ListItemLink', () => {
+    it('matches snapshot', () => {
+      const { container } = render(<Footer.ListItemLink />);
+
+      expect(container).toMatchSnapshot('Footer.ListItemLink');
     });
   });
 
@@ -99,22 +160,6 @@ describe('Footer', () => {
       expect(container).toContainHTML(
         '<p class="nhsuk-body-s">© East London NHS Foundation Trust</p>',
       );
-    });
-  });
-
-  describe('Footer.ListItem', () => {
-    it('matches snapshot', () => {
-      const { container } = render(<Footer.ListItem />);
-
-      expect(container).toMatchSnapshot('Footer.ListItem');
-    });
-  });
-
-  describe('Footer.Copyright', () => {
-    it('matches snapshot', () => {
-      const { container } = render(<Footer.Copyright />);
-
-      expect(container).toMatchSnapshot('Footer.Copyright');
     });
   });
 });

@@ -1,5 +1,13 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
+exports[`Footer Footer.Content matches snapshot: Footer.Content 1`] = `
+<div>
+  <div
+    class="nhsuk-grid-column-one-quarter"
+  />
+</div>
+`;
+
 exports[`Footer Footer.Copyright matches snapshot: Footer.Copyright 1`] = `
 <div>
   <p
@@ -7,6 +15,14 @@ exports[`Footer Footer.Copyright matches snapshot: Footer.Copyright 1`] = `
   >
     © NHS England
   </p>
+</div>
+`;
+
+exports[`Footer Footer.Heading matches snapshot: Footer.Heading 1`] = `
+<div>
+  <h2
+    class="nhsuk-footer__heading nhsuk-heading-s"
+  />
 </div>
 `;
 
@@ -27,6 +43,14 @@ exports[`Footer Footer.ListItem matches snapshot: Footer.ListItem 1`] = `
       class="nhsuk-footer__list-item-link"
     />
   </li>
+</div>
+`;
+
+exports[`Footer Footer.ListItemLink matches snapshot: Footer.ListItemLink 1`] = `
+<div>
+  <a
+    class="nhsuk-footer__list-item-link"
+  />
 </div>
 `;
 
