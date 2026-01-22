@@ -4,7 +4,7 @@ import { FormGroup } from '..';
 
 import { type TextInputProps } from '#components/form-elements';
 import { renderClient, renderServer } from '#util/components';
-import type { FormElementRenderProps } from '#util/types/FormTypes';
+import { type FormElementRenderProps } from '#util/types/FormTypes';
 
 expect.extend(toHaveNoViolations);
 

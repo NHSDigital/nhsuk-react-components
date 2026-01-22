@@ -1,4 +1,4 @@
-import type { FC } from 'react';
+import { type FC } from 'react';
 
 import { Heading, type HeadingProps } from '#components/typography/Heading.js';
 
