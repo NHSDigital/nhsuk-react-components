@@ -17,14 +17,21 @@ export const FooterMeta: FC<FooterMetaProps> = ({
 }) => {
   const items = Children.toArray(children);
 
+  // Allow custom copyright
+  const metaCopyright = items.find((child) => childIsOfComponentType(child, FooterCopyright));
+
+  // Allow meta list item
   const metaItems = items.filter((child) => childIsOfComponentType(child, FooterListItem));
-  const metaCopyright = items.filter((child) => childIsOfComponentType(child, FooterCopyright));
 
   return (
     <div className="nhsuk-footer__meta">
-      <h2 className="nhsuk-u-visually-hidden">{visuallyHiddenText}</h2>
-      <FooterList {...rest}>{metaItems}</FooterList>
-      {metaCopyright.length ? metaCopyright : <FooterCopyright />}
+      {metaItems.length ? (
+        <>
+          <h2 className="nhsuk-u-visually-hidden">{visuallyHiddenText}</h2>
+          <FooterList {...rest}>{metaItems}</FooterList>
+        </>
+      ) : null}
+      {metaCopyright ? metaCopyright : <FooterCopyright />}
     </div>
   );
 };

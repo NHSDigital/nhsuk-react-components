@@ -40,7 +40,7 @@ const FooterComponent = forwardRef<HTMLElement, FooterProps>(
               ))}
             </div>
           ))}
-          {meta}
+          {meta.length ? meta : <FooterMeta />}
         </Container>
       </footer>
     );

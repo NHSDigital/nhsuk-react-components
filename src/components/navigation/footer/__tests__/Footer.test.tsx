@@ -30,8 +30,22 @@ describe('Footer', () => {
       expect(container).toMatchSnapshot('Footer.Meta');
     });
 
+    it('matches snapshot with list item', () => {
+      const { container } = render(
+        <Footer.Meta>
+          <Footer.ListItem href="#">Example link</Footer.ListItem>
+        </Footer.Meta>,
+      );
+
+      expect(container).toMatchSnapshot();
+    });
+
     it('has default visually hidden text', () => {
-      const { container } = render(<Footer.Meta />);
+      const { container } = render(
+        <Footer.Meta>
+          <Footer.ListItem href="#">Example link</Footer.ListItem>
+        </Footer.Meta>,
+      );
 
       const visuallyHiddenEl = container.querySelector('.nhsuk-u-visually-hidden');
 
@@ -39,7 +53,11 @@ describe('Footer', () => {
     });
 
     it('has custom visually hidden text', () => {
-      const { container } = render(<Footer.Meta visuallyHiddenText="Custom" />);
+      const { container } = render(
+        <Footer.Meta visuallyHiddenText="Custom">
+          <Footer.ListItem href="#">Example link</Footer.ListItem>
+        </Footer.Meta>,
+      );
 
       const visuallyHiddenEl = container.querySelector('.nhsuk-u-visually-hidden');
 
@@ -54,7 +72,9 @@ describe('Footer', () => {
               Custom <em>with HTML</em>
             </>
           }
-        />,
+        >
+          <Footer.ListItem href="#">Example link</Footer.ListItem>
+        </Footer.Meta>,
       );
 
       const visuallyHiddenEl = container.querySelector('.nhsuk-u-visually-hidden');
