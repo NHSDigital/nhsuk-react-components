@@ -18,7 +18,6 @@ describe('Index', () => {
       'Button',
       'Card',
       'CardAction',
-      'CardContext',
       'CardDescription',
       'CardGroup',
       'CardGroupItem',

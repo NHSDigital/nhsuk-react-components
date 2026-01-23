@@ -1,22 +1,24 @@
-import { forwardRef, type ComponentPropsWithoutRef } from 'react';
+import { forwardRef, type ComponentPropsWithoutRef, type FC } from 'react';
 
 import { Card, CardHeading } from '#components/navigation/card/index.js';
 import { type HeadingProps } from '#components/typography/Heading.js';
 
-export const WarningCalloutHeading = forwardRef<HTMLDivElement, HeadingProps>(
-  ({ children, headingLevel, visuallyHiddenText, ...rest }, forwardedRef) => (
-    <CardHeading
-      headingLevel={headingLevel ?? 'h3'}
-      visuallyHiddenText={
-        visuallyHiddenText ??
-        (children?.toString().toLowerCase().includes('important') ? undefined : 'Important')
-      }
-      ref={forwardedRef}
-      {...rest}
-    >
-      {children}
-    </CardHeading>
-  ),
+export const WarningCalloutHeading: FC<HeadingProps> = ({
+  children,
+  headingLevel = 'h3',
+  visuallyHiddenText,
+  ...rest
+}) => (
+  <CardHeading
+    headingLevel={headingLevel}
+    visuallyHiddenText={
+      visuallyHiddenText ??
+      (children?.toString().toLowerCase().includes('important') ? undefined : 'Important')
+    }
+    {...rest}
+  >
+    {children}
+  </CardHeading>
 );
 
 const WarningCalloutComponent = forwardRef<HTMLDivElement, ComponentPropsWithoutRef<'div'>>(

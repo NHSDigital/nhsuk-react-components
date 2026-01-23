@@ -1,9 +1,6 @@
-'use client';
-
 import classNames from 'classnames';
 import { Children, forwardRef, type ComponentPropsWithoutRef } from 'react';
 
-import { CardContext } from './CardContext.js';
 import {
   CardAction,
   CardDescription,
@@ -96,31 +93,29 @@ const CardComponent = forwardRef<HTMLDivElement, CardProps>((props, forwardedRef
       ref={forwardedRef}
       {...rest}
     >
-      <CardContext.Provider value={{ cardType }}>
-        {cardType || actionItems.length ? (
-          <>
-            {imageItem}
-            {headingItem || actionItems.length ? (
-              <CardHeadingContainer>
-                {headingItem}
-                {actionsItem}
-              </CardHeadingContainer>
-            ) : null}
-            {contentItems.length ? <div className="nhsuk-card__content">{contentItems}</div> : null}
-          </>
-        ) : (
-          <>
-            {imageItem}
-            {headingItem || contentItems.length ? (
-              <div className="nhsuk-card__content">
-                {headingItem}
-                {contentItems}
-                {primary ? <ChevronRightCircleIcon /> : null}
-              </div>
-            ) : null}
-          </>
-        )}
-      </CardContext.Provider>
+      {cardType || actionItems.length ? (
+        <>
+          {imageItem}
+          {headingItem || actionItems.length ? (
+            <CardHeadingContainer cardType={cardType}>
+              {headingItem}
+              {actionsItem}
+            </CardHeadingContainer>
+          ) : null}
+          {contentItems.length ? <div className="nhsuk-card__content">{contentItems}</div> : null}
+        </>
+      ) : (
+        <>
+          {imageItem}
+          {headingItem || contentItems.length ? (
+            <div className="nhsuk-card__content">
+              {headingItem}
+              {contentItems}
+              {primary ? <ChevronRightCircleIcon /> : null}
+            </div>
+          ) : null}
+        </>
+      )}
     </div>
   );
 });
