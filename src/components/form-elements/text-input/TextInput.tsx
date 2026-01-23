@@ -36,7 +36,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       formGroupProps={{
         ...formGroupProps,
 
-        // Prevent form group 'beforeInput' overriding suffix
+        // Prevent form group 'beforeInput' overriding prefix
         beforeInput:
           formGroupProps?.beforeInput || prefix ? (
             <>
