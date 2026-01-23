@@ -111,6 +111,13 @@ describe('SummaryList', () => {
 
   describe('SummaryList.Action', () => {
     it('matches snapshot', () => {
+      const { container } = render(<SummaryList.Action href="#">Edit</SummaryList.Action>);
+
+      expect(container).toHaveTextContent('Edit');
+      expect(container).toMatchSnapshot();
+    });
+
+    it('matches snapshot with visually hidden text', () => {
       const { container } = render(
         <SummaryList.Action href="#" visuallyHiddenText="example key">
           Edit
@@ -118,6 +125,27 @@ describe('SummaryList', () => {
       );
 
       expect(container).toHaveTextContent('Edit example key');
+      expect(container).toMatchSnapshot();
+    });
+
+    it('renders with visually hidden HTML', () => {
+      const { container } = render(
+        <SummaryList.Action
+          href="#"
+          visuallyHiddenText={
+            <>
+              example key <em>with HTML</em>
+            </>
+          }
+        >
+          Edit
+        </SummaryList.Action>,
+      );
+
+      const visuallyHiddenEl = container.querySelector('.nhsuk-u-visually-hidden');
+
+      expect(visuallyHiddenEl).toContainHTML('example key <em>with HTML</em>');
+      expect(container).toHaveTextContent('Edit example key with HTML');
       expect(container).toMatchSnapshot();
     });
 

@@ -1,9 +1,9 @@
-import { forwardRef } from 'react';
+import { forwardRef, type ReactElement } from 'react';
 
 import { type AsElementLink } from '#util/types/LinkTypes.js';
 
 export interface SummaryListActionProps extends AsElementLink<HTMLAnchorElement> {
-  visuallyHiddenText: string;
+  visuallyHiddenText?: string | ReactElement;
 }
 
 export const SummaryListAction = forwardRef<HTMLAnchorElement, SummaryListActionProps>(
@@ -12,8 +12,20 @@ export const SummaryListAction = forwardRef<HTMLAnchorElement, SummaryListAction
 
     return (
       <Element ref={forwardedRef} {...rest}>
-        {children}
-        <span className="nhsuk-u-visually-hidden"> {visuallyHiddenText}</span>
+        {visuallyHiddenText ? (
+          <>
+            {children}
+            <span className="nhsuk-u-visually-hidden">
+              {typeof visuallyHiddenText === 'string' ? (
+                ` ${visuallyHiddenText}`
+              ) : (
+                <> {visuallyHiddenText}</>
+              )}
+            </span>
+          </>
+        ) : (
+          <>{children}</>
+        )}
       </Element>
     );
   },

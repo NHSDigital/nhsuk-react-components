@@ -6,11 +6,39 @@ exports[`SummaryList SummaryList.Action matches snapshot 1`] = `
     href="#"
   >
     Edit
+  </a>
+</div>
+`;
+
+exports[`SummaryList SummaryList.Action matches snapshot with visually hidden text 1`] = `
+<div>
+  <a
+    href="#"
+  >
+    Edit
+    <span
+      class="nhsuk-u-visually-hidden"
+    >
+       example key
+    </span>
+  </a>
+</div>
+`;
+
+exports[`SummaryList SummaryList.Action renders with visually hidden HTML 1`] = `
+<div>
+  <a
+    href="#"
+  >
+    Edit
     <span
       class="nhsuk-u-visually-hidden"
     >
        
-      example key
+      example key 
+      <em>
+        with HTML
+      </em>
     </span>
   </a>
 </div>
@@ -80,8 +108,7 @@ exports[`SummaryList SummaryList.Row matches snapshot with key, value and action
         <span
           class="nhsuk-u-visually-hidden"
         >
-           
-          name
+           name
         </span>
       </a>
     </dd>
@@ -120,8 +147,7 @@ exports[`SummaryList SummaryList.Row matches snapshot with key, value and multip
             <span
               class="nhsuk-u-visually-hidden"
             >
-               
-              name
+               name
             </span>
           </a>
         </li>
@@ -135,8 +161,7 @@ exports[`SummaryList SummaryList.Row matches snapshot with key, value and multip
             <span
               class="nhsuk-u-visually-hidden"
             >
-               
-              name
+               name
             </span>
           </a>
         </li>
