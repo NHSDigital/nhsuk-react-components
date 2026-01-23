@@ -62,8 +62,6 @@ Releases run in CI using github actions.
 
 To prepare a release create a new release TAG in github with your release version.
 
-> `NPM_TOKEN` should be stored in the repositories [secrets in GitHub](https://github.com/NHSDigital/nhsuk-react-components/settings/secrets/actions)
-
 - Create a new release with a tag like `major.minor.patch` against main.
 - If the change is a `beta` then select `pre-release` as true, this will make the `tag` point at `beta`. Otherwise the tag will be `latest`.
 
