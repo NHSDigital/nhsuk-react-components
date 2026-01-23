@@ -52,7 +52,6 @@ updates:
       tools:
         patterns:
           - '@storybook/*'
-          - 'lodash'
           - 'outdent'
           - 'sass-embedded'
           - 'storybook'

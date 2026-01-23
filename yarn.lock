@@ -4092,13 +4092,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash@npm:^4.17.21":
-  version: 4.17.21
-  resolution: "@types/lodash@npm:4.17.21"
-  checksum: 10c0/73cb006e047d8871e9d63f3a165543bf16c44a5b6fe3f9f6299e37cb8d67a7b1d55ac730959a81f9def510fd07232ff7e30e05413e5d5a12793baad84ebe36c3
-  languageName: node
-  linkType: hard
-
 "@types/mdx@npm:^2.0.0":
   version: 2.0.12
   resolution: "@types/mdx@npm:2.0.12"
@@ -8802,13 +8795,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lodash@npm:^4.17.23":
-  version: 4.17.23
-  resolution: "lodash@npm:4.17.23"
-  checksum: 10c0/1264a90469f5bb95d4739c43eb6277d15b6d9e186df4ac68c3620443160fc669e2f14c11e7d8b2ccf078b81d06147c01a8ccced9aab9f9f63d50dcf8cace6bf6
-  languageName: node
-  linkType: hard
-
 "loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
@@ -9213,7 +9199,6 @@ __metadata:
     "@types/eslint": "npm:^9.6.1"
     "@types/jest": "npm:^30.0.0"
     "@types/jest-axe": "npm:^3.5.9"
-    "@types/lodash": "npm:^4.17.21"
     "@types/node": "npm:^24.10.4"
     "@types/react": "npm:^19.2.8"
     "@types/react-dom": "npm:^19.2.3"
@@ -9232,7 +9217,6 @@ __metadata:
     jest: "npm:^30.2.0"
     jest-axe: "npm:^10.0.0"
     jest-environment-jsdom: "npm:^30.2.0"
-    lodash: "npm:^4.17.23"
     nhsuk-frontend: "npm:^10.2.2"
     outdent: "npm:^0.8.0"
     prettier: "npm:^3.7.4"
