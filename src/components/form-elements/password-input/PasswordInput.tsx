@@ -84,15 +84,6 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
           ...formGroupProps,
           'className': classNames('nhsuk-password-input', formGroupProps?.className),
           'data-module': 'nhsuk-password-input',
-          'afterInput': ({ id }) => (
-            <PasswordInputButton
-              aria-controls={id}
-              aria-label={showPasswordAriaLabelText ?? 'Show password'}
-              {...buttonProps}
-            >
-              {showPasswordText ?? 'Show'}
-            </PasswordInputButton>
-          ),
           'ref': moduleRef,
         }}
       >
@@ -112,6 +103,15 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
             autoComplete={autoComplete ?? 'current-password'}
             {...rest}
           />
+        )}
+        {({ id }) => (
+          <PasswordInputButton
+            aria-controls={id}
+            aria-label={showPasswordAriaLabelText ?? 'Show password'}
+            {...buttonProps}
+          >
+            {showPasswordText ?? 'Show'}
+          </PasswordInputButton>
         )}
       </FormGroup>
     );

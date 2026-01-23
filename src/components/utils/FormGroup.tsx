@@ -2,6 +2,7 @@
 
 import classNames from 'classnames';
 import {
+  Fragment,
   useContext,
   useEffect,
   useState,
@@ -25,8 +26,10 @@ import { type FormElementProps, type FormElementRenderProps } from '#util/types/
 export type FormGroupProps<
   P extends ComponentPropsWithoutRef<T>,
   T extends ElementType,
-> = FormElementProps<P, T> & {
-  children: (props: FormElementRenderProps<P, T>) => ReactNode;
+> = FormElementProps & {
+  children:
+    | ((props: FormElementRenderProps<P, T>) => ReactNode)
+    | ((props: FormElementRenderProps<P, T>) => ReactNode)[];
   inputType?: 'input' | 'radios' | 'select' | 'checkboxes' | 'dateinput' | 'textarea';
 };
 
@@ -99,9 +102,13 @@ export const FormGroup = <P extends ComponentPropsWithoutRef<T>, T extends Eleme
 
   const input = (
     <>
-      {beforeInput?.(childProps)}
-      {children(childProps)}
-      {afterInput?.(childProps)}
+      {beforeInput}
+      {Array.isArray(children)
+        ? children.map((child, index) => (
+            <Fragment key={`${elementID}-${index}`}>{child(childProps)}</Fragment>
+          ))
+        : children(childProps)}
+      {afterInput}
     </>
   );
 
@@ -137,7 +144,7 @@ export const FormGroup = <P extends ComponentPropsWithoutRef<T>, T extends Eleme
             {error}
           </ErrorMessage>
           {(inputType === 'input' || inputType === 'select') &&
-          !!(beforeInput || afterInput || inputWrapperProps) ? (
+          !!(beforeInput || afterInput || Array.isArray(children) || inputWrapperProps) ? (
             <div className="nhsuk-input-wrapper" {...inputWrapperProps}>
               {input}
             </div>

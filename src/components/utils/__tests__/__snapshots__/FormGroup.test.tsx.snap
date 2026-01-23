@@ -38,3 +38,63 @@ exports[`FormGroup matches snapshot 1`] = `
   </div>
 </div>
 `;
+
+exports[`FormGroup matches snapshot with multiple children (via server): client 1`] = `
+<div>
+  <div
+    class="nhsuk-form-group"
+  >
+    <div
+      class="nhsuk-input-wrapper"
+    >
+      <input
+        id="testId"
+        name="testId"
+      />
+      <button
+        aria-controls="testId"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`FormGroup matches snapshot with multiple children (via server): server 1`] = `
+<div>
+  <div
+    class="nhsuk-form-group"
+  >
+    <div
+      class="nhsuk-input-wrapper"
+    >
+      <input
+        id="testId"
+        name="testId"
+      />
+      <button
+        aria-controls="testId"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`FormGroup matches snapshot with multiple children 1`] = `
+<div>
+  <div
+    class="nhsuk-form-group"
+  >
+    <div
+      class="nhsuk-input-wrapper"
+    >
+      <input
+        id="testId"
+        name="testId"
+      />
+      <button
+        aria-controls="testId"
+      />
+    </div>
+  </div>
+</div>
+`;
