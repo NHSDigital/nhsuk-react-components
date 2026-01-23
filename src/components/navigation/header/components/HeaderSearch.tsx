@@ -40,7 +40,7 @@ export const HeaderSearch: FC<HeaderSearchProps> = ({
           placeholder={placeholder}
           autoComplete="off"
           formGroupProps={{
-            afterInput: () => (
+            afterInput: (
               <Button small>
                 <SearchIcon title={visuallyHiddenButton} />
               </Button>

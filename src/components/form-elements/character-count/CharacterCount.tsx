@@ -25,10 +25,7 @@ export interface CharacterCountElementProps extends ComponentPropsWithoutRef<'te
 }
 
 export type CharacterCountProps = CharacterCountElementProps &
-  Omit<
-    FormElementProps<CharacterCountElementProps, 'textarea'>,
-    'fieldsetProps' | 'legend' | 'legendProps'
-  >;
+  Omit<FormElementProps, 'fieldsetProps' | 'legend' | 'legendProps'>;
 
 export const CharacterCount = forwardRef<HTMLTextAreaElement, CharacterCountProps>(
   ({ maxLength, maxWords, threshold, formGroupProps, i18n = {}, ...rest }, forwardedRef) => {

@@ -26,10 +26,7 @@ export interface CheckboxesItemElementProps extends ComponentPropsWithoutRef<'in
 }
 
 export type CheckboxesItemProps = CheckboxesItemElementProps &
-  Omit<
-    FormElementProps<CheckboxesItemElementProps, 'input'>,
-    'fieldsetProps' | 'label' | 'legend' | 'legendProps'
-  >;
+  Omit<FormElementProps, 'fieldsetProps' | 'label' | 'legend' | 'legendProps'>;
 
 export const CheckboxesItem = forwardRef<HTMLInputElement, CheckboxesItemProps>(
   (props, forwardedRef) => {

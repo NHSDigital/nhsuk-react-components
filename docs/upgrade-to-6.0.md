@@ -56,7 +56,7 @@ You can now add inline buttons to text inputs and select menus using the `formGr
 ```jsx
 <TextInput
   formGroupProps={{
-    afterInput: () => (
+    afterInput: (
       <Button secondary small>
         Search
       </Button>

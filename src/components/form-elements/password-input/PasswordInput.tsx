@@ -30,10 +30,7 @@ export interface PasswordInputElementProps extends ComponentPropsWithoutRef<'inp
 }
 
 export type PasswordInputProps = PasswordInputElementProps &
-  Omit<
-    FormElementProps<PasswordInputElementProps, 'input'>,
-    'fieldsetProps' | 'legend' | 'legendProps'
-  >;
+  Omit<FormElementProps, 'fieldsetProps' | 'legend' | 'legendProps'>;
 
 const PasswordInputButton: FC<ComponentPropsWithRef<'button'>> = ({
   children,

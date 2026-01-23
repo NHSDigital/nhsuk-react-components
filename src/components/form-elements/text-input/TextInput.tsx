@@ -15,10 +15,7 @@ export interface TextInputElementProps extends ComponentPropsWithoutRef<'input'>
 }
 
 export type TextInputProps = TextInputElementProps &
-  Omit<
-    FormElementProps<TextInputElementProps, 'input'>,
-    'fieldsetProps' | 'legend' | 'legendProps'
-  >;
+  Omit<FormElementProps, 'fieldsetProps' | 'legend' | 'legendProps'>;
 
 const TextInputPrefix: FC<Pick<TextInputProps, 'prefix'>> = ({ prefix }) => (
   <div className="nhsuk-input-wrapper__prefix" aria-hidden="true">
@@ -41,25 +38,21 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
 
         // Prevent form group 'beforeInput' overriding suffix
         beforeInput:
-          formGroupProps?.beforeInput || prefix
-            ? () => (
-                <>
-                  {formGroupProps?.beforeInput}
-                  {prefix ? <TextInputPrefix prefix={prefix} /> : null}
-                </>
-              )
-            : undefined,
+          formGroupProps?.beforeInput || prefix ? (
+            <>
+              {formGroupProps?.beforeInput}
+              {prefix ? <TextInputPrefix prefix={prefix} /> : null}
+            </>
+          ) : undefined,
 
         // Prevent form group 'afterInput' overriding suffix
         afterInput:
-          formGroupProps?.afterInput || suffix
-            ? () => (
-                <>
-                  {formGroupProps?.afterInput}
-                  {suffix ? <TextInputSuffix suffix={suffix} /> : null}
-                </>
-              )
-            : undefined,
+          formGroupProps?.afterInput || suffix ? (
+            <>
+              {formGroupProps?.afterInput}
+              {suffix ? <TextInputSuffix suffix={suffix} /> : null}
+            </>
+          ) : undefined,
       }}
     >
       {({ width, className, code, error, type = 'text', prefix, suffix, ...rest }) => (

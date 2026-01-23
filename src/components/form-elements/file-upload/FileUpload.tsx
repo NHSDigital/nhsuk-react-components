@@ -20,10 +20,7 @@ export interface FileUploadElementProps extends ComponentPropsWithoutRef<'input'
 }
 
 export type FileUploadProps = FileUploadElementProps &
-  Omit<
-    FormElementProps<FileUploadElementProps, 'input'>,
-    'fieldsetProps' | 'legend' | 'legendProps'
-  >;
+  Omit<FormElementProps, 'fieldsetProps' | 'legend' | 'legendProps'>;
 
 export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
   ({ formGroupProps, ...props }, forwardedRef) => {

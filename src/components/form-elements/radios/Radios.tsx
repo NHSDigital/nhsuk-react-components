@@ -24,8 +24,7 @@ export interface RadiosElementProps extends ComponentPropsWithoutRef<'div'> {
   small?: boolean;
 }
 
-export type RadiosProps = RadiosElementProps &
-  Omit<FormElementProps<RadiosElementProps, 'div'>, 'label' | 'labelProps'>;
+export type RadiosProps = RadiosElementProps & Omit<FormElementProps, 'label' | 'labelProps'>;
 
 const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwardedRef) => {
   const { children, idPrefix, ...rest } = props;

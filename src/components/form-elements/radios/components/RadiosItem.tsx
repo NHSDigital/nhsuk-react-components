@@ -24,10 +24,7 @@ export interface RadiosItemElementProps extends ComponentPropsWithoutRef<'input'
 }
 
 export type RadiosItemProps = RadiosItemElementProps &
-  Omit<
-    FormElementProps<RadiosItemElementProps, 'input'>,
-    'fieldsetProps' | 'label' | 'legend' | 'legendProps'
-  >;
+  Omit<FormElementProps, 'fieldsetProps' | 'label' | 'legend' | 'legendProps'>;
 
 export const RadiosItem = forwardRef<HTMLInputElement, RadiosItemProps>((props, forwardedRef) => {
   const {
