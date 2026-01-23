@@ -2,7 +2,7 @@ import { type Meta, type StoryObj } from '@storybook/react-vite';
 
 import { Col, Container, Row } from '#components/layout/index.js';
 import { Card } from '#components/navigation/card/index.js';
-import { HeadingLevel } from '#components/utils/index.js';
+import { Heading } from '#components/typography/index.js';
 import { NavAZ } from '#patterns/nav-a-z/index.js';
 
 /**
@@ -19,6 +19,10 @@ const meta: Meta = {
     disabledLetters: [],
     letters: [],
   },
+  parameters: {
+    layout: 'fullscreen',
+    width: false,
+  },
 };
 export default meta;
 type Story = StoryObj;
@@ -29,7 +33,7 @@ export const Standard: Story = {
       <main className="nhsuk-main-wrapper" id="maincontent">
         <Row>
           <Col width="full">
-            <HeadingLevel headingLevel="h1">Health A to Z</HeadingLevel>
+            <Heading>Health A to Z</Heading>
 
             <NavAZ id="nhsuk-nav-a-z">
               <NavAZ.LinkItem href="#A">A</NavAZ.LinkItem>
@@ -60,21 +64,19 @@ export const Standard: Story = {
               <NavAZ.LinkItem href="#Z">Z</NavAZ.LinkItem>
             </NavAZ>
 
-            <Card cardType="feature">
-              <Card.Content>
-                <Card.Heading id="A">A</Card.Heading>
-                <ul className="nhsuk-list nhsuk-list--border">
-                  <li>
-                    <a href="/conditions/abdominal-aortic-aneurysm/">AAA</a>
-                  </li>
-                  <li>
-                    <a href="/conditions/abdominal-aortic-aneurysm/">Abdominal aortic aneurysm</a>
-                  </li>
-                  <li>
-                    <a href="/conditions/abscess/">Abscess</a>
-                  </li>
-                </ul>
-              </Card.Content>
+            <Card feature>
+              <Card.Heading id="A">A</Card.Heading>
+              <ul className="nhsuk-list nhsuk-list--border">
+                <li>
+                  <a href="/conditions/abdominal-aortic-aneurysm/">AAA</a>
+                </li>
+                <li>
+                  <a href="/conditions/abdominal-aortic-aneurysm/">Abdominal aortic aneurysm</a>
+                </li>
+                <li>
+                  <a href="/conditions/abscess/">Abscess</a>
+                </li>
+              </ul>
             </Card>
 
             <div className="nhsuk-back-to-top">
@@ -83,13 +85,11 @@ export const Standard: Story = {
               </a>
             </div>
 
-            <Card cardType="feature">
-              <Card.Content>
-                <Card.Heading id="B">B</Card.Heading>
-                <ul className="nhsuk-list nhsuk-list--border">
-                  <li>There are currently no conditions listed</li>
-                </ul>
-              </Card.Content>
+            <Card feature>
+              <Card.Heading id="B">B</Card.Heading>
+              <ul className="nhsuk-list nhsuk-list--border">
+                <li>There are currently no conditions listed</li>
+              </ul>
             </Card>
 
             <div className="nhsuk-back-to-top">
@@ -98,18 +98,16 @@ export const Standard: Story = {
               </a>
             </div>
 
-            <Card cardType="feature">
-              <Card.Content>
-                <Card.Heading id="C">C</Card.Heading>
-                <ul className="nhsuk-list nhsuk-list--border">
-                  <li>
-                    <a href="/conditions/chest-pain/">Chest pain</a>
-                  </li>
-                  <li>
-                    <a href="/conditions/cold-sores/">Cold sore</a>
-                  </li>
-                </ul>
-              </Card.Content>
+            <Card feature>
+              <Card.Heading id="C">C</Card.Heading>
+              <ul className="nhsuk-list nhsuk-list--border">
+                <li>
+                  <a href="/conditions/chest-pain/">Chest pain</a>
+                </li>
+                <li>
+                  <a href="/conditions/cold-sores/">Cold sore</a>
+                </li>
+              </ul>
             </Card>
 
             <div className="nhsuk-back-to-top">
@@ -118,21 +116,19 @@ export const Standard: Story = {
               </a>
             </div>
 
-            <Card cardType="feature">
-              <Card.Content>
-                <Card.Heading id="D">D</Card.Heading>
-                <ul className="nhsuk-list nhsuk-list--border">
-                  <li>
-                    <a href="/conditions/dandruff/">Dandruff</a>
-                  </li>
-                  <li>
-                    <a href="/conditions/dementia/">Dementia</a>
-                  </li>
-                  <li>
-                    <a href="/conditions/toothache/">Dental pain</a>
-                  </li>
-                </ul>
-              </Card.Content>
+            <Card feature>
+              <Card.Heading id="D">D</Card.Heading>
+              <ul className="nhsuk-list nhsuk-list--border">
+                <li>
+                  <a href="/conditions/dandruff/">Dandruff</a>
+                </li>
+                <li>
+                  <a href="/conditions/dementia/">Dementia</a>
+                </li>
+                <li>
+                  <a href="/conditions/toothache/">Dental pain</a>
+                </li>
+              </ul>
             </Card>
 
             <div className="nhsuk-back-to-top">

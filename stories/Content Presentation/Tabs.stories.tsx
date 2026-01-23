@@ -13,6 +13,9 @@ import { Tabs } from '#components/content-presentation/tabs/index.js';
 const meta: Meta<typeof Tabs> = {
   title: 'Content Presentation/Tabs',
   component: Tabs,
+  parameters: {
+    width: 'full',
+  },
 };
 
 export default meta;
@@ -51,7 +54,7 @@ export const Standard: Story = {
 export const DifferentAccessibleHeading: Story = {
   render: (args) => (
     <Tabs {...args}>
-      <Tabs.Title headingLevel="h1">Tabs title</Tabs.Title>
+      <Tabs.Title>Tabs title</Tabs.Title>
       <Tabs.List>
         <Tabs.ListItem id="past-day-2">Past day</Tabs.ListItem>
         <Tabs.ListItem id="past-week-2">Past week</Tabs.ListItem>

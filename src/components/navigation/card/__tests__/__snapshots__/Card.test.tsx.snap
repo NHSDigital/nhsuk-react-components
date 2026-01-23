@@ -146,127 +146,240 @@ exports[`Card Care card variant urgent matches the snapshot 1`] = `
 </div>
 `;
 
-exports[`Card matches snapshot (via server): client 1`] = `
+exports[`Card matches snapshot with multiple actions (via server): client 1`] = `
 <div>
-  <link
-    as="image"
-    href="imageSrc"
-    rel="preload"
-  />
   <div
     class="nhsuk-card"
   >
-    <img
-      alt="imageAlt"
-      class="nhsuk-card__img"
-      src="imageSrc"
-    />
     <div
-      class="nhsuk-card__content"
+      class="nhsuk-card__heading-container"
     >
       <h2
         class="nhsuk-card__heading"
       >
-        If you need help now but it's not an emergency
+        Regional Manager
       </h2>
+      <ul
+        class="nhsuk-card__actions"
+      >
+        <li
+          class="nhsuk-card__action"
+        >
+          <a
+            href="#/delete"
+          >
+            Delete
+            <span
+              class="nhsuk-u-visually-hidden"
+            >
+               (
+              <!-- -->
+              Regional Manager
+              <!-- -->
+              )
+            </span>
+          </a>
+        </li>
+        <li
+          class="nhsuk-card__action"
+        >
+          <a
+            href="#/withdraw"
+          >
+            Withdraw
+            <span
+              class="nhsuk-u-visually-hidden"
+            >
+               (
+              <!-- -->
+              Regional Manager
+              <!-- -->
+              )
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div
+      class="nhsuk-card__content"
+    >
       <p
         class="nhsuk-card__description"
       >
-        Go to 
-        <a
-          href="#"
-        >
-          111.nhs.uk
-        </a>
-         or 
-        <a
-          href="#"
-        >
-          call 111
-        </a>
+        Karen Francis
       </p>
     </div>
   </div>
 </div>
 `;
 
-exports[`Card matches snapshot (via server): server 1`] = `
+exports[`Card matches snapshot with multiple actions (via server): server 1`] = `
 <div>
-  <link
-    as="image"
-    href="imageSrc"
-    rel="preload"
-  />
   <div
     class="nhsuk-card"
   >
-    <img
-      alt="imageAlt"
-      class="nhsuk-card__img"
-      src="imageSrc"
-    />
     <div
-      class="nhsuk-card__content"
+      class="nhsuk-card__heading-container"
     >
       <h2
         class="nhsuk-card__heading"
       >
-        If you need help now but it's not an emergency
+        Regional Manager
       </h2>
+      <ul
+        class="nhsuk-card__actions"
+      >
+        <li
+          class="nhsuk-card__action"
+        >
+          <a
+            href="#/delete"
+          >
+            Delete
+            <span
+              class="nhsuk-u-visually-hidden"
+            >
+               (
+              <!-- -->
+              Regional Manager
+              <!-- -->
+              )
+            </span>
+          </a>
+        </li>
+        <li
+          class="nhsuk-card__action"
+        >
+          <a
+            href="#/withdraw"
+          >
+            Withdraw
+            <span
+              class="nhsuk-u-visually-hidden"
+            >
+               (
+              <!-- -->
+              Regional Manager
+              <!-- -->
+              )
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div
+      class="nhsuk-card__content"
+    >
       <p
         class="nhsuk-card__description"
       >
-        Go to 
-        <a
-          href="#"
-        >
-          111.nhs.uk
-        </a>
-         or 
-        <a
-          href="#"
-        >
-          call 111
-        </a>
+        Karen Francis
       </p>
     </div>
   </div>
 </div>
 `;
 
-exports[`Card matches snapshot 1`] = `
+exports[`Card matches snapshot with multiple actions 1`] = `
 <div>
   <div
     class="nhsuk-card"
   >
-    <img
-      alt="imageAlt"
-      class="nhsuk-card__img"
-      src="imageSrc"
-    />
     <div
-      class="nhsuk-card__content"
+      class="nhsuk-card__heading-container"
     >
       <h2
         class="nhsuk-card__heading"
       >
-        If you need help now but it's not an emergency
+        Regional Manager
       </h2>
+      <ul
+        class="nhsuk-card__actions"
+      >
+        <li
+          class="nhsuk-card__action"
+        >
+          <a
+            href="#/delete"
+          >
+            Delete
+            <span
+              class="nhsuk-u-visually-hidden"
+            >
+               (
+              Regional Manager
+              )
+            </span>
+          </a>
+        </li>
+        <li
+          class="nhsuk-card__action"
+        >
+          <a
+            href="#/withdraw"
+          >
+            Withdraw
+            <span
+              class="nhsuk-u-visually-hidden"
+            >
+               (
+              Regional Manager
+              )
+            </span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div
+      class="nhsuk-card__content"
+    >
       <p
         class="nhsuk-card__description"
       >
-        Go to 
+        Karen Francis
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Card matches snapshot with single action 1`] = `
+<div>
+  <div
+    class="nhsuk-card"
+  >
+    <div
+      class="nhsuk-card__heading-container"
+    >
+      <h2
+        class="nhsuk-card__heading"
+      >
+        Regional Manager
+      </h2>
+      <div
+        class="nhsuk-card__actions"
+      >
         <a
-          href="#"
+          href="#/delete"
         >
-          111.nhs.uk
+          Delete
+          <span
+            class="nhsuk-u-visually-hidden"
+          >
+             (
+            Regional Manager
+            )
+          </span>
         </a>
-         or 
-        <a
-          href="#"
-        >
-          call 111
-        </a>
+      </div>
+    </div>
+    <div
+      class="nhsuk-card__content"
+    >
+      <p
+        class="nhsuk-card__description"
+      >
+        Karen Francis
       </p>
     </div>
   </div>

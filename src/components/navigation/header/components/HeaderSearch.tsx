@@ -1,6 +1,8 @@
 import { type ComponentPropsWithoutRef, type FC } from 'react';
 
 import { SearchIcon } from '#components/content-presentation/index.js';
+import { Button } from '#components/form-elements/button/index.js';
+import { TextInput } from '#components/form-elements/text-input/index.js';
 
 export interface HeaderSearchProps extends ComponentPropsWithoutRef<'form'> {
   name?: string;
@@ -21,21 +23,30 @@ export const HeaderSearch: FC<HeaderSearchProps> = ({
 }) => {
   return (
     <search className="nhsuk-header__search">
-      <form className="nhsuk-header__search-form" id={id} action={action} method={method} {...rest}>
-        <label className="nhsuk-u-visually-hidden" htmlFor="search-field">
-          {visuallyHiddenLabel}
-        </label>
-        <input
-          className="nhsuk-header__search-input nhsuk-input"
+      <form
+        className="nhsuk-header__search-form"
+        id={id}
+        action={action}
+        method={method}
+        {...rest}
+        noValidate
+      >
+        <TextInput
+          label={visuallyHiddenLabel}
+          labelProps={{ className: 'nhsuk-u-visually-hidden' }}
           id="search-field"
           name={name}
           type="search"
           placeholder={placeholder}
           autoComplete="off"
+          formGroupProps={{
+            afterInput: (
+              <Button small>
+                <SearchIcon title={visuallyHiddenButton} />
+              </Button>
+            ),
+          }}
         />
-        <button className="nhsuk-header__search-submit" type="submit">
-          <SearchIcon title={visuallyHiddenButton} />
-        </button>
       </form>
     </search>
   );

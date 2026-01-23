@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { forwardRef, type ComponentPropsWithoutRef } from 'react';
+import { forwardRef, type ComponentPropsWithoutRef, type ReactElement } from 'react';
 
 import { type AsElementLink } from '#util/types/LinkTypes.js';
 
@@ -32,7 +32,7 @@ export const ContentsListItem = forwardRef<HTMLAnchorElement, ContentsListItemPr
 );
 
 export interface ContentsListProps extends ComponentPropsWithoutRef<'div'> {
-  visuallyHiddenText?: string;
+  visuallyHiddenText?: string | ReactElement;
 }
 
 const ContentsListComponent = forwardRef<HTMLElement, ContentsListProps>((props, forwardedRef) => {

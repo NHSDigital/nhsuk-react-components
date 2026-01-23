@@ -56,3 +56,75 @@ exports[`Panel matches snapshot 1`] = `
   </div>
 </div>
 `;
+
+exports[`Panel matches snapshot as interruption panel (via server): client 1`] = `
+<div>
+  <div
+    class="nhsuk-panel nhsuk-panel--interruption"
+  >
+    <h1
+      class="nhsuk-panel__title nhsuk-panel__title--l"
+    >
+      Jodie Brown had a COVID-19 vaccine less than 3 months ago
+    </h1>
+    <div
+      class="nhsuk-panel__body"
+    >
+      <p>
+        They had a COVID-19 vaccine on 25 September 2025.
+      </p>
+      <p>
+        For most people, the minimum recommended gap between COVID-19 vaccine doses is 3 months.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Panel matches snapshot as interruption panel (via server): server 1`] = `
+<div>
+  <div
+    class="nhsuk-panel nhsuk-panel--interruption"
+  >
+    <h1
+      class="nhsuk-panel__title nhsuk-panel__title--l"
+    >
+      Jodie Brown had a COVID-19 vaccine less than 3 months ago
+    </h1>
+    <div
+      class="nhsuk-panel__body"
+    >
+      <p>
+        They had a COVID-19 vaccine on 25 September 2025.
+      </p>
+      <p>
+        For most people, the minimum recommended gap between COVID-19 vaccine doses is 3 months.
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Panel matches snapshot as interruption panel 1`] = `
+<div>
+  <div
+    class="nhsuk-panel nhsuk-panel--interruption"
+  >
+    <h1
+      class="nhsuk-panel__title nhsuk-panel__title--l"
+    >
+      Jodie Brown had a COVID-19 vaccine less than 3 months ago
+    </h1>
+    <div
+      class="nhsuk-panel__body"
+    >
+      <p>
+        They had a COVID-19 vaccine on 25 September 2025.
+      </p>
+      <p>
+        For most people, the minimum recommended gap between COVID-19 vaccine doses is 3 months.
+      </p>
+    </div>
+  </div>
+</div>
+`;

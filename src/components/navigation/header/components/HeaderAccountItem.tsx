@@ -22,7 +22,7 @@ const HeaderAccountItemButton = forwardRef<HTMLButtonElement, HeaderAccountItemB
     const { formProps, ...buttonRest } = rest;
 
     return (
-      <form className="nhsuk-header__account-form" {...formProps}>
+      <form className="nhsuk-header__account-form" {...formProps} noValidate>
         <Element
           className={classNames('nhsuk-header__account-button', className)}
           ref={forwardedRef}

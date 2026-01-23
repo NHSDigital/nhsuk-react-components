@@ -38,3 +38,17 @@ export const WithErrorAndHintText: Story = {
     hint: 'It probably has some letters, numbers and maybe even some symbols in it',
   },
 };
+
+export const WithTranslations: Story = {
+  args: {
+    label: 'Cyfrinair',
+    i18n: {
+      showPassword: 'Datguddia',
+      hidePassword: 'Cuddio',
+      showPasswordAriaLabel: 'Datgelu cyfrinair',
+      hidePasswordAriaLabel: 'Cuddio cyfrinair',
+      passwordShownAnnouncement: 'Mae eich cyfrinair yn weladwy.',
+      passwordHiddenAnnouncement: "Mae eich cyfrinair wedi'i guddio.",
+    },
+  },
+};

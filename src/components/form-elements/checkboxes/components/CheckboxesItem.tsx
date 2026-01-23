@@ -21,14 +21,12 @@ export interface CheckboxesItemElementProps extends ComponentPropsWithoutRef<'in
   conditional?: ReactNode;
   forceShowConditional?: boolean;
   conditionalProps?: ComponentPropsWithRef<'div'>;
-  exclusive?: boolean;
+  exclusive?: true;
+  exclusiveGroup?: string;
 }
 
 export type CheckboxesItemProps = CheckboxesItemElementProps &
-  Omit<
-    FormElementProps<CheckboxesItemElementProps, 'input'>,
-    'fieldsetProps' | 'label' | 'legend' | 'legendProps'
-  >;
+  Omit<FormElementProps, 'fieldsetProps' | 'label' | 'legend' | 'legendProps'>;
 
 export const CheckboxesItem = forwardRef<HTMLInputElement, CheckboxesItemProps>(
   (props, forwardedRef) => {
@@ -43,7 +41,8 @@ export const CheckboxesItem = forwardRef<HTMLInputElement, CheckboxesItemProps>(
       checked,
       forceShowConditional,
       conditionalProps,
-      exclusive = false,
+      exclusive,
+      exclusiveGroup,
       ...rest
     } = props;
 
@@ -62,10 +61,6 @@ export const CheckboxesItem = forwardRef<HTMLInputElement, CheckboxesItemProps>(
 
     const inputProps: ComponentPropsWithDataAttributes<'input'> = rest;
 
-    if (exclusive) {
-      inputProps['data-checkbox-exclusive'] = 'true';
-    }
-
     return (
       <>
         <div className="nhsuk-checkboxes__item">
@@ -74,11 +69,12 @@ export const CheckboxesItem = forwardRef<HTMLInputElement, CheckboxesItemProps>(
             id={inputID}
             name={name}
             type="checkbox"
-            aria-controls={conditional ? `${inputID}--conditional` : undefined}
-            aria-describedby={hint ? `${inputID}--hint` : undefined}
-            data-checkbox-exclusive-group={name}
             checked={checked}
             defaultChecked={defaultChecked}
+            data-checkbox-exclusive={exclusive}
+            data-checkbox-exclusive-group={exclusiveGroup}
+            data-aria-controls={conditional ? `${inputID}--conditional` : undefined}
+            aria-describedby={hint ? `${inputID}--hint` : undefined}
             ref={forwardedRef}
             {...inputProps}
           />

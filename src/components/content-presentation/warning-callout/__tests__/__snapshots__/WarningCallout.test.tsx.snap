@@ -1,49 +1,52 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`WarningCallout adds visually hidden text when necessary: WarningCalloutWithTextRole 1`] = `
+exports[`WarningCallout matches snapshot 1`] = `
 <div>
   <div
-    class="nhsuk-warning-callout"
+    class="nhsuk-card nhsuk-card--warning"
   >
-    <h3
-      class="nhsuk-warning-callout__label"
+    <div
+      class="nhsuk-card__content"
     >
-      <span
-        role="text"
+      <h3
+        class="nhsuk-card__heading"
       >
         <span
-          class="nhsuk-u-visually-hidden"
+          role="text"
         >
-          Important: 
+          <span
+            class="nhsuk-u-visually-hidden"
+          >
+            Important: 
+          </span>
+          School, nursery or work
         </span>
-        School, nursery or work
-      </span>
-    </h3>
-    <p>
-      Stay away from school, nursery or work until all the spots have crusted over. This is usually 5 days after the spots first appeared.
-    </p>
+      </h3>
+      <p>
+        Stay away from school, nursery or work until all the spots have crusted over. This is usually 5 days after the spots first appeared.
+      </p>
+    </div>
   </div>
 </div>
 `;
 
-exports[`WarningCallout matches snapshot: WarningCallout 1`] = `
+exports[`WarningCallout matches snapshot without hidden text 1`] = `
 <div>
   <div
-    class="nhsuk-warning-callout"
+    class="nhsuk-card nhsuk-card--warning"
   >
-    <h3
-      class="nhsuk-warning-callout__label"
+    <div
+      class="nhsuk-card__content"
     >
-      Important
-      <span
-        class="nhsuk-u-visually-hidden"
+      <h3
+        class="nhsuk-card__heading"
       >
-        :
-      </span>
-    </h3>
-    <p>
-      For safety, tell your doctor or pharmacist if you're taking any other medicines, including herbal medicines, vitamins or supplements.
-    </p>
+        Important
+      </h3>
+      <p>
+        For safety, tell your doctor or pharmacist if you're taking any other medicines, including herbal medicines, vitamins or supplements.
+      </p>
+    </div>
   </div>
 </div>
 `;

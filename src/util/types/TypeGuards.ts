@@ -6,8 +6,6 @@ import {
   type ReactNode,
 } from 'react';
 
-import { type CardType, type CareCardType } from './NHSUKTypes.js';
-
 type WithProps<T extends ReactElement> = T & {
   props: HTMLAttributes<T>;
 };
@@ -43,9 +41,3 @@ export const childIsOfComponentType = <T extends HTMLElement, P extends HTMLAttr
     ? child.props.className.split(' ').includes(fallback.className)
     : false;
 };
-
-/**
- * Check whether the given card type is that of a care card.
- */
-export const cardTypeIsCareCard = (cardType: CardType | undefined): cardType is CareCardType =>
-  cardType === 'non-urgent' || cardType === 'urgent' || cardType === 'emergency';

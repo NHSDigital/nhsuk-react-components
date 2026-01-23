@@ -9,7 +9,7 @@ import { type FormElementProps } from '#util/types/FormTypes.js';
 export type SelectElementProps = ComponentPropsWithoutRef<'select'>;
 
 export type SelectProps = SelectElementProps &
-  Omit<FormElementProps<SelectElementProps, 'select'>, 'fieldsetProps' | 'legend' | 'legendProps'>;
+  Omit<FormElementProps, 'fieldsetProps' | 'legend' | 'legendProps'>;
 
 const SelectComponent = forwardRef<HTMLSelectElement, SelectProps>(
   ({ children, ...rest }, forwardedRef) => (

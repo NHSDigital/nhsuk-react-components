@@ -1,8 +1,8 @@
-import type { FC } from 'react';
+import { type FC } from 'react';
 
-import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
+import { Heading, type HeadingProps } from '#components/typography/Heading.js';
 
-export interface NotificationBannerTitleProps extends HeadingLevelProps {
+export interface NotificationBannerTitleProps extends HeadingProps {
   success?: boolean;
 }
 
@@ -13,14 +13,14 @@ export const NotificationBannerTitle: FC<NotificationBannerTitleProps> = ({
   success,
   ...rest
 }) => (
-  <HeadingLevel
+  <Heading
     className="nhsuk-notification-banner__title"
     headingLevel={headingLevel}
     id={id}
     {...rest}
   >
     {children || (success ? 'Success' : 'Important')}
-  </HeadingLevel>
+  </Heading>
 );
 
 NotificationBannerTitle.displayName = 'NotificationBanner.Title';

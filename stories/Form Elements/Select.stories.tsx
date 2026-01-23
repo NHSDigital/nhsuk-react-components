@@ -73,7 +73,7 @@ export const SelectWithDivider: Story = {
 export const SelectWithButton: Story = {
   args: {
     formGroupProps: {
-      afterInput: () => (
+      afterInput: (
         <Button secondary small>
           Search
         </Button>
@@ -86,7 +86,7 @@ export const SelectWithButtonAndError: Story = {
   args: {
     error: 'Select a location',
     formGroupProps: {
-      afterInput: () => (
+      afterInput: (
         <Button secondary small>
           Search
         </Button>

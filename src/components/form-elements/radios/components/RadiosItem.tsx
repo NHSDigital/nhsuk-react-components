@@ -24,10 +24,7 @@ export interface RadiosItemElementProps extends ComponentPropsWithoutRef<'input'
 }
 
 export type RadiosItemProps = RadiosItemElementProps &
-  Omit<
-    FormElementProps<RadiosItemElementProps, 'input'>,
-    'fieldsetProps' | 'label' | 'legend' | 'legendProps'
-  >;
+  Omit<FormElementProps, 'fieldsetProps' | 'label' | 'legend' | 'legendProps'>;
 
 export const RadiosItem = forwardRef<HTMLInputElement, RadiosItemProps>((props, forwardedRef) => {
   const {
@@ -74,10 +71,10 @@ export const RadiosItem = forwardRef<HTMLInputElement, RadiosItemProps>((props, 
           id={inputID}
           name={name}
           type="radio"
-          aria-controls={conditional ? `${inputID}--conditional` : undefined}
-          aria-describedby={hint ? `${inputID}--hint` : undefined}
           checked={checked}
           defaultChecked={defaultChecked}
+          data-aria-controls={conditional ? `${inputID}--conditional` : undefined}
+          aria-describedby={hint ? `${inputID}--hint` : undefined}
           ref={forwardedRef}
           {...rest}
         />

@@ -10,7 +10,7 @@ export type FormProps = ComponentPropsWithoutRef<'form'> & {
 
 export const Form: FC<FormProps> = ({ disableErrorFromComponents, ...rest }) => (
   <FormContext.Provider value={{ disableErrorFromComponents: Boolean(disableErrorFromComponents) }}>
-    <form {...rest} />
+    <form {...rest} noValidate />
   </FormContext.Provider>
 );
 

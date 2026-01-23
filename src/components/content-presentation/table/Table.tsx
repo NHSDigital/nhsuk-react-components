@@ -16,10 +16,11 @@ import {
   TableCell,
   TableContainer,
   TableHead,
-  TablePanel,
   TableRow,
   type TableCaptionProps,
 } from './components/index.js';
+
+import { type Card as _Card } from '#components/navigation/card/index.js';
 
 export interface TableProps extends ComponentPropsWithoutRef<'table'> {
   firstCellIsHeader?: boolean;
@@ -73,7 +74,6 @@ TableComponent.displayName = 'Table';
 
 export const Table = Object.assign(TableComponent, {
   Container: TableContainer,
-  Panel: TablePanel,
   Head: TableHead,
   Body: TableBody,
   Row: TableRow,

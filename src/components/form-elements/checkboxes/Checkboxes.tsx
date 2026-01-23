@@ -24,7 +24,7 @@ export interface CheckboxesElementProps extends ComponentPropsWithoutRef<'div'> 
 }
 
 export type CheckboxesProps = CheckboxesElementProps &
-  Omit<FormElementProps<CheckboxesElementProps, 'div'>, 'label' | 'labelProps'>;
+  Omit<FormElementProps, 'label' | 'labelProps'>;
 
 const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, forwardedRef) => {
   const { children, idPrefix, ...rest } = props;

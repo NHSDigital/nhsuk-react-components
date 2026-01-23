@@ -1,23 +1,19 @@
 'use client';
 
-import type { FC } from 'react';
+import { type FC } from 'react';
 
-import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
+import { Heading, type HeadingProps } from '#components/typography/Heading.js';
 
-export type NotificationBannerHeadingProps = HeadingLevelProps;
+export type NotificationBannerHeadingProps = HeadingProps;
 
 export const NotificationBannerHeading: FC<NotificationBannerHeadingProps> = ({
   children,
   headingLevel = 'h3',
   ...rest
 }) => (
-  <HeadingLevel
-    className="nhsuk-notification-banner__heading"
-    headingLevel={headingLevel}
-    {...rest}
-  >
+  <Heading className="nhsuk-notification-banner__heading" headingLevel={headingLevel} {...rest}>
     {children}
-  </HeadingLevel>
+  </Heading>
 );
 
 NotificationBannerHeading.displayName = 'NotificationBanner.Heading';

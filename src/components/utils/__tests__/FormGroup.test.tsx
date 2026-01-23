@@ -4,7 +4,7 @@ import { FormGroup } from '..';
 
 import { type TextInputProps } from '#components/form-elements';
 import { renderClient, renderServer } from '#util/components';
-import type { FormElementRenderProps } from '#util/types/FormTypes';
+import { type FormElementRenderProps } from '#util/types/FormTypes';
 
 expect.extend(toHaveNoViolations);
 
@@ -24,9 +24,41 @@ describe('FormGroup', () => {
     expect(container).toMatchSnapshot();
   });
 
+  it('matches snapshot with multiple children', async () => {
+    const { container } = await renderClient(
+      <FormGroup<TextInputProps, 'input'> id="testId">
+        {(props) => <input {...props} />}
+        {(props) => <button aria-controls={props.id} />}
+      </FormGroup>,
+      { className: 'nhsuk-form-group' },
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
   it('matches snapshot (via server)', async () => {
     const { container, element } = await renderServer(
       <FormGroup<TextInputProps, 'input'> id="testId">{(props) => <input {...props} />}</FormGroup>,
+      { className: 'nhsuk-form-group' },
+    );
+
+    expect(container).toMatchSnapshot('server');
+
+    await renderClient(element, {
+      className: 'nhsuk-form-group',
+      hydrate: true,
+      container,
+    });
+
+    expect(container).toMatchSnapshot('client');
+  });
+
+  it('matches snapshot with multiple children (via server)', async () => {
+    const { container, element } = await renderServer(
+      <FormGroup<TextInputProps, 'input'> id="testId">
+        {(props) => <input {...props} />}
+        {(props) => <button aria-controls={props.id} />}
+      </FormGroup>,
       { className: 'nhsuk-form-group' },
     );
 

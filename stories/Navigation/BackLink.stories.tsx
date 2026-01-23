@@ -5,16 +5,41 @@ import { BackLink } from '#components/navigation/back-link/index.js';
 const meta: Meta<typeof BackLink> = {
   title: 'Navigation/BackLink',
   component: BackLink,
-  args: { children: 'Go back', href: '/', asElement: 'a' },
+  render: (args) => <BackLink {...args} />,
 };
 export default meta;
 type Story = StoryObj<typeof BackLink>;
 
-export const StandardLink: Story = {};
+export const Standard: Story = {
+  name: 'Back link default',
+  args: {
+    href: '#',
+  },
+};
 
-export const BackLinkAsAButton: Story = {
+export const WithVisuallyHiddenText: Story = {
+  name: 'Back link with visually hidden text',
+  args: {
+    href: '#',
+    visuallyHiddenText: 'Back to',
+    children: 'Search results',
+  },
+};
+
+export const Button: Story = {
+  name: 'Back link as a button',
   args: {
     asElement: 'button',
-    href: undefined,
+  },
+};
+
+export const Reverse: Story = {
+  name: 'Back link reverse',
+  args: {
+    href: '#',
+    reverse: true,
+  },
+  globals: {
+    backgrounds: { value: 'dark' },
   },
 };

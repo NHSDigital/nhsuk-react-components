@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { forwardRef } from 'react';
 
-import type { AsElementLink } from '#util/types/index.js';
+import { type AsElementLink } from '#util/types/index.js';
 
 export type NotificationBannerLinkProps = AsElementLink<HTMLAnchorElement>;
 

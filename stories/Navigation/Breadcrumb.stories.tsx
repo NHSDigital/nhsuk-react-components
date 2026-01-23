@@ -1,6 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
-import { Container } from '#components/layout/index.js';
 import { Breadcrumb } from '#components/navigation/breadcrumb/index.js';
 
 /**
@@ -18,23 +17,44 @@ const meta: Meta<typeof Breadcrumb> = {
     },
   },
   render: (args) => (
-    <Container>
-      <Breadcrumb {...args}>
-        <Breadcrumb.Item href="/level/one">Level One</Breadcrumb.Item>
-        <Breadcrumb.Item href="/level/two">Level Two</Breadcrumb.Item>
-        <Breadcrumb.Item href="/level/three">Level Three</Breadcrumb.Item>
-        <Breadcrumb.Back href="/level/three">Level Three</Breadcrumb.Back>
-      </Breadcrumb>
-    </Container>
+    <Breadcrumb {...args}>
+      <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
+      <Breadcrumb.Item href="#">NHS services</Breadcrumb.Item>
+      <Breadcrumb.Item href="#">Hospitals</Breadcrumb.Item>
+    </Breadcrumb>
   ),
 };
 export default meta;
 type Story = StoryObj<typeof Breadcrumb>;
 
-export const Standard: Story = {};
+export const Standard: Story = {
+  name: 'Breadcrumb default',
+};
 
 export const OverrideAriaLabel: Story = {
+  name: 'Breadcrumb with custom ARIA label',
   args: {
     'aria-label': 'custom-aria-label',
+  },
+};
+
+export const OverrideBackLink: Story = {
+  name: 'Breadcrumb with custom back link text',
+  render: (args) => (
+    <Breadcrumb {...args}>
+      <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
+      <Breadcrumb.Item href="#">Advanced search</Breadcrumb.Item>
+      <Breadcrumb.Back href="#">Search results</Breadcrumb.Back>
+    </Breadcrumb>
+  ),
+};
+
+export const Reverse: Story = {
+  name: 'Breadcrumb reverse',
+  args: {
+    reverse: true,
+  },
+  globals: {
+    backgrounds: { value: 'dark' },
   },
 };

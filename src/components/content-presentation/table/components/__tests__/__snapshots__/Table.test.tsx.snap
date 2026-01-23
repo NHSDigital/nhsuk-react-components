@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`Table matches snapshot (via server): client 1`] = `
+exports[`Table matches snapshot (via server) 1`] = `
 <div>
   <table
     class="nhsuk-table"
@@ -80,7 +80,7 @@ exports[`Table matches snapshot (via server): client 1`] = `
 </div>
 `;
 
-exports[`Table matches snapshot (via server): server 1`] = `
+exports[`Table matches snapshot (via server) 2`] = `
 <div>
   <table
     class="nhsuk-table"
@@ -455,6 +455,1393 @@ exports[`Table matches snapshot when responsive 1`] = `
              
           </span>
           shingles, chickenpox
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`Table matches snapshot with custom HTML (via server) 1`] = `
+<div>
+  <table
+    class="nhsuk-table"
+  >
+    <caption
+      class="nhsuk-table__caption"
+    >
+      Skin symptoms and possible causes
+    </caption>
+    <thead
+      class="nhsuk-table__head"
+    >
+      <tr
+        class="nhsuk-table__row"
+      >
+        <th
+          class="nhsuk-table__header"
+          scope="col"
+        >
+          Name
+        </th>
+        <th
+          class="nhsuk-table__header"
+          scope="col"
+        >
+          Type
+        </th>
+        <th
+          class="nhsuk-table__header"
+          scope="col"
+        >
+          Description
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="nhsuk-table__body"
+    >
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          id
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          string
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          The ID of the table.
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          rows
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          array
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          <strong>
+            Required.
+          </strong>
+           The rows within the table component.
+          <!-- -->
+           
+          <a
+            href="#/macro-options"
+          >
+            See macro options for rows
+          </a>
+          .
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          head
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          array
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          Can be used to add a row of table header cells (
+          <code
+            class="app-code"
+          >
+            &lt;th&gt;
+          </code>
+          ) at the top of the table component.
+          <!-- -->
+           
+          <a
+            href="#/macro-options"
+          >
+            See macro options for head
+          </a>
+          .
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          caption
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          string
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          Caption text.
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          captionClasses
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          string
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          Classes for caption text size. Classes should correspond to the available typography heading classes.
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          firstCellIsHeader
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          string
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          If set to 
+          <code
+            class="app-code"
+          >
+            true
+          </code>
+          , the first cell in each row will be a table header (
+          <code
+            class="app-code"
+          >
+            &lt;th&gt;
+          </code>
+          ).
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          classes
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          string
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          Classes to add to the table container.
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          attributes
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          object
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          HTML attributes (for example data attributes) to add to the table container.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`Table matches snapshot with custom HTML (via server) 2`] = `
+<div>
+  <table
+    class="nhsuk-table"
+  >
+    <caption
+      class="nhsuk-table__caption"
+    >
+      Skin symptoms and possible causes
+    </caption>
+    <thead
+      class="nhsuk-table__head"
+    >
+      <tr
+        class="nhsuk-table__row"
+      >
+        <th
+          class="nhsuk-table__header"
+          scope="col"
+        >
+          Name
+        </th>
+        <th
+          class="nhsuk-table__header"
+          scope="col"
+        >
+          Type
+        </th>
+        <th
+          class="nhsuk-table__header"
+          scope="col"
+        >
+          Description
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="nhsuk-table__body"
+    >
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          id
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          string
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          The ID of the table.
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          rows
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          array
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          <strong>
+            Required.
+          </strong>
+           The rows within the table component.
+          <!-- -->
+           
+          <a
+            href="#/macro-options"
+          >
+            See macro options for rows
+          </a>
+          .
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          head
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          array
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          Can be used to add a row of table header cells (
+          <code
+            class="app-code"
+          >
+            &lt;th&gt;
+          </code>
+          ) at the top of the table component.
+          <!-- -->
+           
+          <a
+            href="#/macro-options"
+          >
+            See macro options for head
+          </a>
+          .
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          caption
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          string
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          Caption text.
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          captionClasses
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          string
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          Classes for caption text size. Classes should correspond to the available typography heading classes.
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          firstCellIsHeader
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          string
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          If set to 
+          <code
+            class="app-code"
+          >
+            true
+          </code>
+          , the first cell in each row will be a table header (
+          <code
+            class="app-code"
+          >
+            &lt;th&gt;
+          </code>
+          ).
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          classes
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          string
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          Classes to add to the table container.
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          attributes
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          object
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          HTML attributes (for example data attributes) to add to the table container.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`Table matches snapshot with custom HTML 1`] = `
+<div>
+  <table
+    class="nhsuk-table"
+  >
+    <caption
+      class="nhsuk-table__caption"
+    >
+      Skin symptoms and possible causes
+    </caption>
+    <thead
+      class="nhsuk-table__head"
+    >
+      <tr
+        class="nhsuk-table__row"
+      >
+        <th
+          class="nhsuk-table__header"
+          scope="col"
+        >
+          Name
+        </th>
+        <th
+          class="nhsuk-table__header"
+          scope="col"
+        >
+          Type
+        </th>
+        <th
+          class="nhsuk-table__header"
+          scope="col"
+        >
+          Description
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="nhsuk-table__body"
+    >
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          id
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          string
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          The ID of the table.
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          rows
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          array
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          <strong>
+            Required.
+          </strong>
+           The rows within the table component.
+           
+          <a
+            href="#/macro-options"
+          >
+            See macro options for rows
+          </a>
+          .
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          head
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          array
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          Can be used to add a row of table header cells (
+          <code
+            class="app-code"
+          >
+            &lt;th&gt;
+          </code>
+          ) at the top of the table component.
+           
+          <a
+            href="#/macro-options"
+          >
+            See macro options for head
+          </a>
+          .
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          caption
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          string
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          Caption text.
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          captionClasses
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          string
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          Classes for caption text size. Classes should correspond to the available typography heading classes.
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          firstCellIsHeader
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          string
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          If set to 
+          <code
+            class="app-code"
+          >
+            true
+          </code>
+          , the first cell in each row will be a table header (
+          <code
+            class="app-code"
+          >
+            &lt;th&gt;
+          </code>
+          ).
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          classes
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          string
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          Classes to add to the table container.
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <td
+          class="nhsuk-table__cell"
+        >
+          attributes
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          object
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          HTML attributes (for example data attributes) to add to the table container.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`Table matches snapshot with custom HTML when first cell is header 1`] = `
+<div>
+  <table
+    class="nhsuk-table"
+  >
+    <caption
+      class="nhsuk-table__caption"
+    >
+      Skin symptoms and possible causes
+    </caption>
+    <thead
+      class="nhsuk-table__head"
+    >
+      <tr
+        class="nhsuk-table__row"
+      >
+        <th
+          class="nhsuk-table__header"
+          scope="col"
+        >
+          Name
+        </th>
+        <th
+          class="nhsuk-table__header"
+          scope="col"
+        >
+          Type
+        </th>
+        <th
+          class="nhsuk-table__header"
+          scope="col"
+        >
+          Description
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="nhsuk-table__body"
+    >
+      <tr
+        class="nhsuk-table__row"
+      >
+        <th
+          class="nhsuk-table__header"
+          role="rowheader"
+          scope="row"
+        >
+          id
+        </th>
+        <td
+          class="nhsuk-table__cell"
+        >
+          string
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          The ID of the table.
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <th
+          class="nhsuk-table__header"
+          role="rowheader"
+          scope="row"
+        >
+          rows
+        </th>
+        <td
+          class="nhsuk-table__cell"
+        >
+          array
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          <strong>
+            Required.
+          </strong>
+           The rows within the table component.
+           
+          <a
+            href="#/macro-options"
+          >
+            See macro options for rows
+          </a>
+          .
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <th
+          class="nhsuk-table__header"
+          role="rowheader"
+          scope="row"
+        >
+          head
+        </th>
+        <td
+          class="nhsuk-table__cell"
+        >
+          array
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          Can be used to add a row of table header cells (
+          <code
+            class="app-code"
+          >
+            &lt;th&gt;
+          </code>
+          ) at the top of the table component.
+           
+          <a
+            href="#/macro-options"
+          >
+            See macro options for head
+          </a>
+          .
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <th
+          class="nhsuk-table__header"
+          role="rowheader"
+          scope="row"
+        >
+          caption
+        </th>
+        <td
+          class="nhsuk-table__cell"
+        >
+          string
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          Caption text.
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <th
+          class="nhsuk-table__header"
+          role="rowheader"
+          scope="row"
+        >
+          captionClasses
+        </th>
+        <td
+          class="nhsuk-table__cell"
+        >
+          string
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          Classes for caption text size. Classes should correspond to the available typography heading classes.
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <th
+          class="nhsuk-table__header"
+          role="rowheader"
+          scope="row"
+        >
+          firstCellIsHeader
+        </th>
+        <td
+          class="nhsuk-table__cell"
+        >
+          string
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          If set to 
+          <code
+            class="app-code"
+          >
+            true
+          </code>
+          , the first cell in each row will be a table header (
+          <code
+            class="app-code"
+          >
+            &lt;th&gt;
+          </code>
+          ).
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <th
+          class="nhsuk-table__header"
+          role="rowheader"
+          scope="row"
+        >
+          classes
+        </th>
+        <td
+          class="nhsuk-table__cell"
+        >
+          string
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          Classes to add to the table container.
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+      >
+        <th
+          class="nhsuk-table__header"
+          role="rowheader"
+          scope="row"
+        >
+          attributes
+        </th>
+        <td
+          class="nhsuk-table__cell"
+        >
+          object
+        </td>
+        <td
+          class="nhsuk-table__cell"
+        >
+          HTML attributes (for example data attributes) to add to the table container.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;
+
+exports[`Table matches snapshot with custom HTML when responsive 1`] = `
+<div>
+  <table
+    class="nhsuk-table-responsive"
+    role="table"
+  >
+    <caption
+      class="nhsuk-table__caption"
+    >
+      Skin symptoms and possible causes
+    </caption>
+    <thead
+      class="nhsuk-table__head"
+      role="rowgroup"
+    >
+      <tr
+        class="nhsuk-table__row"
+        role="row"
+      >
+        <th
+          class="nhsuk-table__header"
+          role="columnheader"
+          scope="col"
+        >
+          Name
+        </th>
+        <th
+          class="nhsuk-table__header"
+          role="columnheader"
+          scope="col"
+        >
+          Type
+        </th>
+        <th
+          class="nhsuk-table__header"
+          role="columnheader"
+          scope="col"
+        >
+          Description
+        </th>
+      </tr>
+    </thead>
+    <tbody
+      class="nhsuk-table__body"
+    >
+      <tr
+        class="nhsuk-table__row"
+        role="row"
+      >
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Name
+             
+          </span>
+          id
+        </td>
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Type
+             
+          </span>
+          string
+        </td>
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Description
+             
+          </span>
+          The ID of the table.
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+        role="row"
+      >
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Name
+             
+          </span>
+          rows
+        </td>
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Type
+             
+          </span>
+          array
+        </td>
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Description
+             
+          </span>
+          <span>
+            <strong>
+              Required.
+            </strong>
+             The rows within the table component.
+             
+            <a
+              href="#/macro-options"
+            >
+              See macro options for rows
+            </a>
+            .
+          </span>
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+        role="row"
+      >
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Name
+             
+          </span>
+          head
+        </td>
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Type
+             
+          </span>
+          array
+        </td>
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Description
+             
+          </span>
+          <span>
+            Can be used to add a row of table header cells (
+            <code
+              class="app-code"
+            >
+              &lt;th&gt;
+            </code>
+            ) at the top of the table component.
+             
+            <a
+              href="#/macro-options"
+            >
+              See macro options for head
+            </a>
+            .
+          </span>
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+        role="row"
+      >
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Name
+             
+          </span>
+          caption
+        </td>
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Type
+             
+          </span>
+          string
+        </td>
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Description
+             
+          </span>
+          Caption text.
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+        role="row"
+      >
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Name
+             
+          </span>
+          captionClasses
+        </td>
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Type
+             
+          </span>
+          string
+        </td>
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Description
+             
+          </span>
+          Classes for caption text size. Classes should correspond to the available typography heading classes.
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+        role="row"
+      >
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Name
+             
+          </span>
+          firstCellIsHeader
+        </td>
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Type
+             
+          </span>
+          string
+        </td>
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Description
+             
+          </span>
+          <span>
+            If set to 
+            <code
+              class="app-code"
+            >
+              true
+            </code>
+            , the first cell in each row will be a table header (
+            <code
+              class="app-code"
+            >
+              &lt;th&gt;
+            </code>
+            ).
+          </span>
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+        role="row"
+      >
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Name
+             
+          </span>
+          classes
+        </td>
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Type
+             
+          </span>
+          string
+        </td>
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Description
+             
+          </span>
+          Classes to add to the table container.
+        </td>
+      </tr>
+      <tr
+        class="nhsuk-table__row"
+        role="row"
+      >
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Name
+             
+          </span>
+          attributes
+        </td>
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Type
+             
+          </span>
+          object
+        </td>
+        <td
+          class="nhsuk-table__cell"
+          role="cell"
+        >
+          <span
+            aria-hidden="true"
+            class="nhsuk-table-responsive__heading"
+          >
+            Description
+             
+          </span>
+          HTML attributes (for example data attributes) to add to the table container.
         </td>
       </tr>
     </tbody>

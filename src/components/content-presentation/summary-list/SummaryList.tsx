@@ -3,7 +3,6 @@ import { forwardRef, type ComponentPropsWithoutRef } from 'react';
 
 import {
   SummaryListAction,
-  SummaryListActions,
   SummaryListKey,
   SummaryListRow,
   SummaryListValue,
@@ -34,5 +33,4 @@ export const SummaryList = Object.assign(SummaryListComponent, {
   Key: SummaryListKey,
   Value: SummaryListValue,
   Action: SummaryListAction,
-  Actions: SummaryListActions,
 });

@@ -6,20 +6,20 @@ import { forwardRef, type ComponentPropsWithoutRef } from 'react';
 import { DoAndDontListContext, type DoAndDontListType } from './DoAndDontListContext.js';
 import { DoAndDontListItem } from './components/index.js';
 
-import { HeadingLevel, type HeadingLevelProps } from '#components/utils/HeadingLevel.js';
+import { Heading, type HeadingProps } from '#components/typography/Heading.js';
 
 export interface DoAndDontListProps
-  extends ComponentPropsWithoutRef<'div'>, Pick<HeadingLevelProps, 'headingLevel'> {
+  extends ComponentPropsWithoutRef<'div'>, Pick<HeadingProps, 'headingLevel'> {
   listType: DoAndDontListType;
   heading?: string;
 }
 
 const DoAndDontListComponent = forwardRef<HTMLDivElement, DoAndDontListProps>(
-  ({ className, listType, children, heading, headingLevel, ...rest }, forwardedRef) => (
+  ({ className, listType, children, heading, headingLevel = 'h3', ...rest }, forwardedRef) => (
     <div className={classNames('nhsuk-do-dont-list', className)} ref={forwardedRef} {...rest}>
-      <HeadingLevel className="nhsuk-do-dont-list__label" headingLevel={headingLevel}>
+      <Heading className="nhsuk-do-dont-list__label" headingLevel={headingLevel}>
         {heading || (listType === 'do' ? 'Do' : "Don't")}
-      </HeadingLevel>
+      </Heading>
       {/* eslint-disable-next-line jsx-a11y/no-redundant-roles */}
       <ul
         className={classNames(

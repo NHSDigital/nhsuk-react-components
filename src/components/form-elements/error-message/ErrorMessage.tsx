@@ -1,8 +1,8 @@
 import classNames from 'classnames';
-import { type ComponentPropsWithoutRef, type FC } from 'react';
+import { type ComponentPropsWithoutRef, type FC, type ReactElement } from 'react';
 
 export interface ErrorMessageProps extends ComponentPropsWithoutRef<'span'> {
-  visuallyHiddenText?: string;
+  visuallyHiddenText?: string | ReactElement;
 }
 
 export const ErrorMessage: FC<ErrorMessageProps> = ({
@@ -19,7 +19,14 @@ export const ErrorMessage: FC<ErrorMessageProps> = ({
     <span className={classNames('nhsuk-error-message', className)} {...rest}>
       {visuallyHiddenText ? (
         <>
-          <span className="nhsuk-u-visually-hidden">{`${visuallyHiddenText}:`}</span> {children}
+          <span className="nhsuk-u-visually-hidden">
+            {typeof visuallyHiddenText === 'string' ? (
+              `${visuallyHiddenText}: `
+            ) : (
+              <>{visuallyHiddenText}: </>
+            )}
+          </span>
+          {children}
         </>
       ) : (
         <>{children}</>

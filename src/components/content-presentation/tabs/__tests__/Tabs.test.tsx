@@ -122,18 +122,17 @@ describe('Tabs', () => {
   });
 
   describe('Tabs.Title', () => {
-    it.each<TabsTitleProps | undefined>([
-      undefined,
+    it.each<TabsTitleProps>([
       { headingLevel: 'h1' },
       { headingLevel: 'h2' },
       { headingLevel: 'h3' },
       { headingLevel: 'h4' },
-    ])('renders heading level $headingLevel if specified', (props) => {
+    ])('renders with custom heading level $headingLevel', (props) => {
       const { container } = render(<Tabs.Title {...props}>Test title</Tabs.Title>);
 
       const title = container.querySelector('.nhsuk-tabs__title');
 
-      expect(title).toHaveProperty('tagName', props?.headingLevel?.toUpperCase() ?? 'H2');
+      expect(title).toHaveProperty('tagName', props.headingLevel?.toUpperCase());
     });
   });
 

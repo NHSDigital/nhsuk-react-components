@@ -2,8 +2,6 @@ import { render } from '@testing-library/react';
 
 import { Label, type LabelProps } from '..';
 
-import { type NHSUKSize } from '#util/types';
-
 describe('Label', () => {
   it('can be defaulted', () => {
     const { container } = render(<Label>Text</Label>);
@@ -12,7 +10,7 @@ describe('Label', () => {
     expect(container.innerHTML).toBe('<label class="nhsuk-label">Text</label>');
   });
 
-  it.each<NHSUKSize>(['s', 'm', 'l', 'xl'])('renders with custom size %s', (size) => {
+  it.each<LabelProps['size']>(['s', 'm', 'l', 'xl'])('renders with custom size %s', (size) => {
     const { container } = render(<Label size={size}>Text</Label>);
 
     const labelEl = container.querySelector('.nhsuk-label');
@@ -27,12 +25,12 @@ describe('Label', () => {
     const headingEl = container.querySelector('.nhsuk-label-wrapper');
     const labelEl = headingEl?.querySelector('.nhsuk-label');
 
-    expect(headingEl?.tagName).toBe('H1');
+    expect(headingEl).toHaveProperty('tagName', 'H1');
     expect(labelEl).toHaveTextContent('Text');
     expect(labelEl).not.toHaveClass(`nhsuk-label--xl`);
   });
 
-  it.each<NHSUKSize>(['s', 'm', 'l', 'xl'])(
+  it.each<LabelProps['size']>(['s', 'm', 'l', 'xl'])(
     'renders as page heading with custom size %s',
     (size) => {
       const { container } = render(
@@ -44,7 +42,7 @@ describe('Label', () => {
       const headingEl = container.querySelector('.nhsuk-label-wrapper');
       const labelEl = headingEl?.querySelector('.nhsuk-label');
 
-      expect(headingEl?.tagName).toBe('H1');
+      expect(headingEl).toHaveProperty('tagName', 'H1');
       expect(labelEl).toHaveTextContent('Text');
       expect(labelEl).toHaveClass(`nhsuk-label--${size}`);
     },
@@ -61,7 +59,7 @@ describe('Label', () => {
     const headingEl = container.querySelector('.nhsuk-label-wrapper');
     const labelEl = headingEl?.querySelector('.nhsuk-label');
 
-    expect(headingEl?.tagName).toBe(props?.headingLevel?.toUpperCase());
+    expect(headingEl).toHaveProperty('tagName', props.headingLevel?.toUpperCase());
     expect(labelEl).toHaveTextContent('Text');
   });
 

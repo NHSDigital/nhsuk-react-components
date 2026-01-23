@@ -70,6 +70,7 @@ exports[`Header Header.Account matches snapshot 1`] = `
               action="/log-out"
               class="nhsuk-header__account-form"
               method="post"
+              novalidate=""
             >
               <button
                 class="nhsuk-header__account-button"
@@ -132,40 +133,52 @@ exports[`Header matches snapshot (via server): client 1`] = `
           class="nhsuk-header__search-form"
           id="search"
           method="get"
+          novalidate=""
         >
-          <label
-            class="nhsuk-u-visually-hidden"
-            for="search-field"
+          <div
+            class="nhsuk-form-group"
           >
-            Search the NHS website
-          </label>
-          <input
-            autocomplete="off"
-            class="nhsuk-header__search-input nhsuk-input"
-            id="search-field"
-            name="q"
-            placeholder="Search"
-            type="search"
-          />
-          <button
-            class="nhsuk-header__search-submit"
-            type="submit"
-          >
-            <svg
-              aria-label="Search"
-              class="nhsuk-icon nhsuk-icon--search"
-              focusable="false"
-              height="16"
-              role="img"
-              viewBox="0 0 24 24"
-              width="16"
-              xmlns="http://www.w3.org/2000/svg"
+            <label
+              class="nhsuk-label nhsuk-u-visually-hidden"
+              for="search-field"
+              id="search-field--label"
             >
-              <path
-                d="m20.7 19.3-4.1-4.1a7 7 0 1 0-1.4 1.4l4 4.1a1 1 0 0 0 1.5 0c.4-.4.4-1 0-1.4ZM6 11a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"
+              Search the NHS website
+            </label>
+            <div
+              class="nhsuk-input-wrapper"
+            >
+              <input
+                autocomplete="off"
+                class="nhsuk-input"
+                id="search-field"
+                name="q"
+                placeholder="Search"
+                type="search"
               />
-            </svg>
-          </button>
+              <button
+                class="nhsuk-button nhsuk-button--small"
+                data-module="nhsuk-button"
+                data-nhsuk-button-init=""
+                type="submit"
+              >
+                <svg
+                  aria-label="Search"
+                  class="nhsuk-icon nhsuk-icon--search"
+                  focusable="false"
+                  height="16"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="16"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m20.7 19.3-4.1-4.1a7 7 0 1 0-1.4 1.4l4 4.1a1 1 0 0 0 1.5 0c.4-.4.4-1 0-1.4ZM6 11a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
         </form>
       </search>
     </div>
@@ -309,40 +322,51 @@ exports[`Header matches snapshot (via server): server 1`] = `
           class="nhsuk-header__search-form"
           id="search"
           method="get"
+          novalidate=""
         >
-          <label
-            class="nhsuk-u-visually-hidden"
-            for="search-field"
+          <div
+            class="nhsuk-form-group"
           >
-            Search the NHS website
-          </label>
-          <input
-            autocomplete="off"
-            class="nhsuk-header__search-input nhsuk-input"
-            id="search-field"
-            name="q"
-            placeholder="Search"
-            type="search"
-          />
-          <button
-            class="nhsuk-header__search-submit"
-            type="submit"
-          >
-            <svg
-              aria-label="Search"
-              class="nhsuk-icon nhsuk-icon--search"
-              focusable="false"
-              height="16"
-              role="img"
-              viewBox="0 0 24 24"
-              width="16"
-              xmlns="http://www.w3.org/2000/svg"
+            <label
+              class="nhsuk-label nhsuk-u-visually-hidden"
+              for="search-field"
+              id="search-field--label"
             >
-              <path
-                d="m20.7 19.3-4.1-4.1a7 7 0 1 0-1.4 1.4l4 4.1a1 1 0 0 0 1.5 0c.4-.4.4-1 0-1.4ZM6 11a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"
+              Search the NHS website
+            </label>
+            <div
+              class="nhsuk-input-wrapper"
+            >
+              <input
+                autocomplete="off"
+                class="nhsuk-input"
+                id="search-field"
+                name="q"
+                placeholder="Search"
+                type="search"
               />
-            </svg>
-          </button>
+              <button
+                class="nhsuk-button nhsuk-button--small"
+                data-module="nhsuk-button"
+                type="submit"
+              >
+                <svg
+                  aria-label="Search"
+                  class="nhsuk-icon nhsuk-icon--search"
+                  focusable="false"
+                  height="16"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="16"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m20.7 19.3-4.1-4.1a7 7 0 1 0-1.4 1.4l4 4.1a1 1 0 0 0 1.5 0c.4-.4.4-1 0-1.4ZM6 11a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
         </form>
       </search>
     </div>
@@ -487,40 +511,52 @@ exports[`Header matches snapshot 1`] = `
           class="nhsuk-header__search-form"
           id="search"
           method="get"
+          novalidate=""
         >
-          <label
-            class="nhsuk-u-visually-hidden"
-            for="search-field"
+          <div
+            class="nhsuk-form-group"
           >
-            Search the NHS website
-          </label>
-          <input
-            autocomplete="off"
-            class="nhsuk-header__search-input nhsuk-input"
-            id="search-field"
-            name="q"
-            placeholder="Search"
-            type="search"
-          />
-          <button
-            class="nhsuk-header__search-submit"
-            type="submit"
-          >
-            <svg
-              aria-label="Search"
-              class="nhsuk-icon nhsuk-icon--search"
-              focusable="false"
-              height="16"
-              role="img"
-              viewBox="0 0 24 24"
-              width="16"
-              xmlns="http://www.w3.org/2000/svg"
+            <label
+              class="nhsuk-label nhsuk-u-visually-hidden"
+              for="search-field"
+              id="search-field--label"
             >
-              <path
-                d="m20.7 19.3-4.1-4.1a7 7 0 1 0-1.4 1.4l4 4.1a1 1 0 0 0 1.5 0c.4-.4.4-1 0-1.4ZM6 11a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"
+              Search the NHS website
+            </label>
+            <div
+              class="nhsuk-input-wrapper"
+            >
+              <input
+                autocomplete="off"
+                class="nhsuk-input"
+                id="search-field"
+                name="q"
+                placeholder="Search"
+                type="search"
               />
-            </svg>
-          </button>
+              <button
+                class="nhsuk-button nhsuk-button--small"
+                data-module="nhsuk-button"
+                data-nhsuk-button-init=""
+                type="submit"
+              >
+                <svg
+                  aria-label="Search"
+                  class="nhsuk-icon nhsuk-icon--search"
+                  focusable="false"
+                  height="16"
+                  role="img"
+                  viewBox="0 0 24 24"
+                  width="16"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="m20.7 19.3-4.1-4.1a7 7 0 1 0-1.4 1.4l4 4.1a1 1 0 0 0 1.5 0c.4-.4.4-1 0-1.4ZM6 11a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"
+                  />
+                </svg>
+              </button>
+            </div>
+          </div>
         </form>
       </search>
     </div>

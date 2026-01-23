@@ -1,22 +1,18 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import { render } from '@testing-library/react';
 
-import { Card } from '..';
+import { Card, type CardProps } from '..';
 
+import { type HeadingProps } from '#components/typography/Heading.js';
 import { renderClient, renderServer } from '#util/components';
-import { type CardType } from '#util/types';
+import { type CareCardType } from '#util/types';
 
 describe('Card', () => {
-  it('matches snapshot', async () => {
+  it('matches snapshot with single action', async () => {
     const { container } = await renderClient(
       <Card>
-        <Card.Image src="imageSrc" alt="imageAlt" />
-        <Card.Content>
-          <Card.Heading>If you need help now but it&apos;s not an emergency</Card.Heading>
-          <Card.Description>
-            Go to <a href="#">111.nhs.uk</a> or <a href="#">call 111</a>
-          </Card.Description>
-        </Card.Content>
+        <Card.Heading>Regional Manager</Card.Heading>
+        <Card.Action href="#/delete">Delete</Card.Action>
+        <Card.Description>Karen Francis</Card.Description>
       </Card>,
       { className: 'nhsuk-card' },
     );
@@ -24,16 +20,27 @@ describe('Card', () => {
     expect(container).toMatchSnapshot();
   });
 
-  it('matches snapshot (via server)', async () => {
+  it('matches snapshot with multiple actions', async () => {
+    const { container } = await renderClient(
+      <Card>
+        <Card.Heading>Regional Manager</Card.Heading>
+        <Card.Action href="#/delete">Delete</Card.Action>
+        <Card.Action href="#/withdraw">Withdraw</Card.Action>
+        <Card.Description>Karen Francis</Card.Description>
+      </Card>,
+      { className: 'nhsuk-card' },
+    );
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it('matches snapshot with multiple actions (via server)', async () => {
     const { container, element } = await renderServer(
       <Card>
-        <Card.Image src="imageSrc" alt="imageAlt" />
-        <Card.Content>
-          <Card.Heading>If you need help now but it&apos;s not an emergency</Card.Heading>
-          <Card.Description>
-            Go to <a href="#">111.nhs.uk</a> or <a href="#">call 111</a>
-          </Card.Description>
-        </Card.Content>
+        <Card.Heading>Regional Manager</Card.Heading>
+        <Card.Action href="#/delete">Delete</Card.Action>
+        <Card.Action href="#/withdraw">Withdraw</Card.Action>
+        <Card.Description>Karen Francis</Card.Description>
       </Card>,
       { className: 'nhsuk-card' },
     );
@@ -52,13 +59,11 @@ describe('Card', () => {
   it('can render Card.Link as different elements', () => {
     const { container } = render(
       <Card clickable>
-        <Card.Content>
-          <Card.Heading>
-            <Card.Link asElement="button" type="button">
-              Click me!
-            </Card.Link>
-          </Card.Heading>
-        </Card.Content>
+        <Card.Heading>
+          <Card.Link asElement="button" type="button">
+            Click me!
+          </Card.Link>
+        </Card.Heading>
       </Card>,
     );
 
@@ -68,14 +73,12 @@ describe('Card', () => {
   it('adds clickable modifier', () => {
     const { container } = render(
       <Card clickable>
-        <Card.Content>
-          <Card.Heading className="nhsuk-heading-m">
-            <Card.Link href="#">Introduction to care and support</Card.Link>
-          </Card.Heading>
-          <Card.Description>
-            A quick guide for people who have care and support needs and their carers
-          </Card.Description>
-        </Card.Content>
+        <Card.Heading size="m">
+          <Card.Link href="#">Introduction to care and support</Card.Link>
+        </Card.Heading>
+        <Card.Description>
+          A quick guide for people who have care and support needs and their carers
+        </Card.Description>
       </Card>,
     );
 
@@ -84,33 +87,50 @@ describe('Card', () => {
     expect(cardEl).toHaveClass('nhsuk-card--clickable');
   });
 
-  it.each<{ cardType: CardType }>([
-    { cardType: 'clickable' },
-    { cardType: 'feature' },
-    { cardType: 'primary' },
-    { cardType: 'secondary' },
-  ])('adds $cardType card type modifier', ({ cardType }) => {
+  it.each<{ modifier: keyof CardProps }>([
+    { modifier: 'clickable' },
+    { modifier: 'feature' },
+    { modifier: 'primary' },
+    { modifier: 'secondary' },
+    { modifier: 'warning' },
+  ])('adds $modifier card type modifier', ({ modifier }) => {
     const { container } = render(
-      <Card cardType={cardType}>
-        <Card.Content>
-          <Card.Heading>Feature card heading</Card.Heading>
-          <Card.Description>Feature card description</Card.Description>
-        </Card.Content>
+      <Card {...{ [modifier]: true }}>
+        <Card.Heading>Example card heading</Card.Heading>
+        <Card.Description>Example card description</Card.Description>
       </Card>,
     );
 
     const cardEl = container.querySelector('.nhsuk-card');
     const cardHeadingEl = cardEl?.querySelector('.nhsuk-card__heading');
 
-    expect(cardEl).toHaveClass(`nhsuk-card--${cardType}`);
+    expect(cardEl).toHaveClass(`nhsuk-card--${modifier}`);
     expect(cardHeadingEl).toHaveClass('nhsuk-card__heading');
-    expect(cardHeadingEl?.tagName).toBe('H2');
+    expect(cardHeadingEl).toHaveProperty('tagName', 'H2');
+  });
+
+  it.each<Required<Pick<HeadingProps, 'size'>>>([
+    { size: 's' },
+    { size: 'm' },
+    { size: 'l' },
+    { size: 'xl' },
+  ])('renders the heading with custom size $size', (props) => {
+    const { container } = render(
+      <Card>
+        <Card.Heading {...props}>Example card heading</Card.Heading>
+      </Card>,
+    );
+
+    const cardEl = container.querySelector('.nhsuk-card');
+    const cardHeadingEl = cardEl?.querySelector('.nhsuk-card__heading');
+
+    expect(cardHeadingEl).toHaveClass(`nhsuk-heading-${props.size}`);
   });
 
   describe('Care card variant', () => {
     describe.each<{
       heading: string;
-      cardType: CardType;
+      cardType: CareCardType;
       visuallyHidden: string;
     }>([
       {
@@ -159,7 +179,42 @@ describe('Card', () => {
           </Card>,
         );
 
-        expect(container.querySelector('h2')).toHaveAccessibleName(`${visuallyHidden}: ${heading}`);
+        const headingEl = container.querySelector('h2');
+
+        expect(headingEl).toHaveTextContent(`${visuallyHidden}: ${heading}`);
+      });
+
+      it('renders the heading with custom visually hidden text', () => {
+        const { container } = render(
+          <Card cardType={cardType}>
+            <Card.Heading visuallyHiddenText="Custom">{heading}</Card.Heading>
+          </Card>,
+        );
+
+        const headingEl = container.querySelector('h2');
+
+        expect(headingEl).toHaveTextContent(`Custom: ${heading}`);
+      });
+
+      it('renders the heading with custom visually hidden HTML', () => {
+        const { container } = render(
+          <Card cardType={cardType}>
+            <Card.Heading
+              visuallyHiddenText={
+                <>
+                  Custom <em>with HTML</em>
+                </>
+              }
+            >
+              {heading}
+            </Card.Heading>
+          </Card>,
+        );
+
+        const headingEl = container.querySelector('h2');
+
+        expect(headingEl).toHaveTextContent(`Custom with HTML: ${heading}`);
+        expect(headingEl).toContainHTML('Custom <em>with HTML</em>');
       });
 
       it('renders the heading with custom heading level', () => {
@@ -169,7 +224,27 @@ describe('Card', () => {
           </Card>,
         );
 
-        expect(container.querySelector('h3')).toHaveAccessibleName(`${visuallyHidden}: ${heading}`);
+        const headingEl = container.querySelector('h3');
+
+        expect(headingEl).toHaveTextContent(`${visuallyHidden}: ${heading}`);
+      });
+
+      it.each<Required<Pick<HeadingProps, 'size'>>>([
+        { size: 's' },
+        { size: 'm' },
+        { size: 'l' },
+        { size: 'xl' },
+      ])('renders the heading with custom size $size', (props) => {
+        const { container } = render(
+          <Card cardType={cardType}>
+            <Card.Heading {...props}>Example card heading</Card.Heading>
+          </Card>,
+        );
+
+        const cardEl = container.querySelector('.nhsuk-card');
+        const cardHeadingEl = cardEl?.querySelector('.nhsuk-card__heading');
+
+        expect(cardHeadingEl).toHaveClass(`nhsuk-heading-${props.size}`);
       });
     });
   });
@@ -180,18 +255,14 @@ describe('Card', () => {
         <Card.Group>
           <Card.GroupItem width="one-half">
             <Card>
-              <Card.Content>
-                <Card.Heading>Test Card 1</Card.Heading>
-                <Card.Description>Test Card 1 Description</Card.Description>
-              </Card.Content>
+              <Card.Heading>Test Card 1</Card.Heading>
+              <Card.Description>Test Card 1 Description</Card.Description>
             </Card>
           </Card.GroupItem>
           <Card.GroupItem width="one-half">
             <Card>
-              <Card.Content>
-                <Card.Heading>Test Card 2</Card.Heading>
-                <Card.Description>Test Card 2 Description</Card.Description>
-              </Card.Content>
+              <Card.Heading>Test Card 2</Card.Heading>
+              <Card.Description>Test Card 2 Description</Card.Description>
             </Card>
           </Card.GroupItem>
         </Card.Group>,

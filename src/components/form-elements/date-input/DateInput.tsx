@@ -45,11 +45,7 @@ export interface DateInputElementProps extends Omit<
   onChange?: EventHandler<DateInputChangeEvent>;
 }
 
-export type DateInputProps = DateInputElementProps &
-  Omit<
-    FormElementProps<Omit<ComponentPropsWithoutRef<'div'>, 'defaultValue' | 'onChange'>, 'div'>,
-    'label' | 'labelProps'
-  >;
+export type DateInputProps = DateInputElementProps & Omit<FormElementProps, 'label' | 'labelProps'>;
 
 export type DateInputType = 'day' | 'month' | 'year';
 

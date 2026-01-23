@@ -12,7 +12,7 @@ import { type LabelProps } from '#components/form-elements/label/index.js';
 import { type LegendProps } from '#components/form-elements/legend/index.js';
 import { type ComponentPropsWithDataAttributes } from '#util/types/NHSUKTypes.js';
 
-export interface FormElementProps<P extends ComponentPropsWithoutRef<T>, T extends ElementType> {
+export interface FormElementProps {
   'fieldsetProps'?: FieldsetProps;
   'legend'?: string | ReactElement;
   'legendProps'?: LegendProps;
@@ -23,8 +23,8 @@ export interface FormElementProps<P extends ComponentPropsWithoutRef<T>, T exten
   'hint'?: string | ReactElement;
   'hintProps'?: HintTextProps;
   'formGroupProps'?: ComponentPropsWithDataAttributes<'div'> & {
-    beforeInput?: (props: FormElementRenderProps<P, T>) => ReactNode | undefined;
-    afterInput?: (props: FormElementRenderProps<P, T>) => ReactNode | undefined;
+    beforeInput?: ReactNode | undefined;
+    afterInput?: ReactNode | undefined;
   };
   'inputWrapperProps'?: ComponentPropsWithDataAttributes<'div'>;
   'id'?: string;

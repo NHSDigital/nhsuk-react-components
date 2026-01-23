@@ -1,9 +1,9 @@
 import classNames from 'classnames';
-import { type ComponentPropsWithoutRef, type FC } from 'react';
+import { type FC } from 'react';
 
-export type FooterListProps = ComponentPropsWithoutRef<'ul'>;
+import { type FooterContentProps } from './FooterContent.js';
 
-export const FooterList: FC<FooterListProps> = ({ children, className, ...rest }) => (
+export const FooterList: FC<FooterContentProps> = ({ children, className, width, ...rest }) => (
   <ul className={classNames('nhsuk-footer__list', className)} {...rest}>
     {children}
   </ul>

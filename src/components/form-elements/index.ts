@@ -5,6 +5,7 @@ export * from './date-input/index.js';
 export * from './error-message/index.js';
 export * from './error-summary/index.js';
 export * from './fieldset/index.js';
+export * from './file-upload/index.js';
 export * from './form/index.js';
 export * from './hint-text/index.js';
 export * from './label/index.js';

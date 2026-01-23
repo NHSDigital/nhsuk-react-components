@@ -40,7 +40,7 @@ exports[`Character Count matches snapshot (via server): client 1`] = `
     </div>
     <div
       aria-hidden="true"
-      class="nhsuk-hint nhsuk-character-count__message nhsuk-character-count__status"
+      class="nhsuk-hint nhsuk-character-count__status"
     >
       You have 200 characters remaining
     </div>
@@ -135,7 +135,7 @@ exports[`Character Count matches snapshot 1`] = `
     </div>
     <div
       aria-hidden="true"
-      class="nhsuk-hint nhsuk-character-count__message nhsuk-character-count__status"
+      class="nhsuk-hint nhsuk-character-count__status"
     >
       You have 200 characters remaining
     </div>

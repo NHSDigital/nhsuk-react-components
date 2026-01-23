@@ -9,10 +9,7 @@ import { type FormElementProps } from '#util/types/FormTypes.js';
 export type TextareaElementProps = ComponentPropsWithoutRef<'textarea'>;
 
 export type TextareaProps = TextareaElementProps &
-  Omit<
-    FormElementProps<TextareaElementProps, 'textarea'>,
-    'fieldsetProps' | 'legend' | 'legendProps'
-  >;
+  Omit<FormElementProps, 'fieldsetProps' | 'legend' | 'legendProps'>;
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, forwardedRef) => (
   <FormGroup<TextareaProps, 'textarea'> inputType="textarea" {...props}>

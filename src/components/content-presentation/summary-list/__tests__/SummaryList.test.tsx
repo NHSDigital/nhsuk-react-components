@@ -41,6 +41,48 @@ describe('SummaryList', () => {
       expect(container).toMatchSnapshot();
     });
 
+    it('matches snapshot with key and value', () => {
+      const { container } = render(
+        <SummaryList.Row>
+          <SummaryList.Key>Name</SummaryList.Key>
+          <SummaryList.Value>Karen Francis</SummaryList.Value>
+        </SummaryList.Row>,
+      );
+
+      expect(container).toMatchSnapshot();
+    });
+
+    it('matches snapshot with key, value and action', () => {
+      const { container } = render(
+        <SummaryList.Row>
+          <SummaryList.Key>Name</SummaryList.Key>
+          <SummaryList.Value>Karen Francis</SummaryList.Value>
+          <SummaryList.Action href="#" visuallyHiddenText="name">
+            Change
+          </SummaryList.Action>
+        </SummaryList.Row>,
+      );
+
+      expect(container).toMatchSnapshot();
+    });
+
+    it('matches snapshot with key, value and multiple actions', () => {
+      const { container } = render(
+        <SummaryList.Row>
+          <SummaryList.Key>Name</SummaryList.Key>
+          <SummaryList.Value>Karen Francis</SummaryList.Value>
+          <SummaryList.Action href="#" visuallyHiddenText="name">
+            Change
+          </SummaryList.Action>
+          <SummaryList.Action href="#" visuallyHiddenText="name">
+            Delete
+          </SummaryList.Action>
+        </SummaryList.Row>,
+      );
+
+      expect(container).toMatchSnapshot();
+    });
+
     it('matches snapshot without border', () => {
       const { container } = render(<SummaryList.Row noBorder>Row</SummaryList.Row>);
 
@@ -67,25 +109,15 @@ describe('SummaryList', () => {
     });
   });
 
-  describe('SummaryList.Actions', () => {
-    it('matches snapshot', () => {
-      const { container } = render(
-        <SummaryList.Actions>
-          <SummaryList.Action href="#" visuallyHiddenText="example key">
-            Edit
-          </SummaryList.Action>
-          <SummaryList.Action href="#" visuallyHiddenText="example key">
-            Delete
-          </SummaryList.Action>
-        </SummaryList.Actions>,
-      );
-
-      expect(container).toMatchSnapshot();
-    });
-  });
-
   describe('SummaryList.Action', () => {
     it('matches snapshot', () => {
+      const { container } = render(<SummaryList.Action href="#">Edit</SummaryList.Action>);
+
+      expect(container).toHaveTextContent('Edit');
+      expect(container).toMatchSnapshot();
+    });
+
+    it('matches snapshot with visually hidden text', () => {
       const { container } = render(
         <SummaryList.Action href="#" visuallyHiddenText="example key">
           Edit
@@ -93,6 +125,27 @@ describe('SummaryList', () => {
       );
 
       expect(container).toHaveTextContent('Edit example key');
+      expect(container).toMatchSnapshot();
+    });
+
+    it('renders with visually hidden HTML', () => {
+      const { container } = render(
+        <SummaryList.Action
+          href="#"
+          visuallyHiddenText={
+            <>
+              example key <em>with HTML</em>
+            </>
+          }
+        >
+          Edit
+        </SummaryList.Action>,
+      );
+
+      const visuallyHiddenEl = container.querySelector('.nhsuk-u-visually-hidden');
+
+      expect(visuallyHiddenEl).toContainHTML('example key <em>with HTML</em>');
+      expect(container).toHaveTextContent('Edit example key with HTML');
       expect(container).toMatchSnapshot();
     });
 

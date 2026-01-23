@@ -20,10 +20,7 @@ export interface IndividualDateInputElementProps extends ComponentPropsWithoutRe
 }
 
 export type IndividualDateInputProps = IndividualDateInputElementProps &
-  Omit<
-    FormElementProps<IndividualDateInputElementProps, 'input'>,
-    'error' | 'fieldsetProps' | 'legend' | 'legendProps'
-  >;
+  Omit<FormElementProps, 'error' | 'fieldsetProps' | 'legend' | 'legendProps'>;
 
 const labels: Record<'day' | 'month' | 'year', string> = {
   day: 'Day',

@@ -331,9 +331,8 @@ exports[`DateInput matches snapshot with HTML in props 1`] = `
         <span
           class="nhsuk-u-visually-hidden"
         >
-          Error:
+          Error: 
         </span>
-         
         Error text 
         <em>
           with HTML
@@ -543,9 +542,8 @@ exports[`DateInput matches snapshot with custom date fields and error message 1`
         <span
           class="nhsuk-u-visually-hidden"
         >
-          Error:
+          Error: 
         </span>
-         
         Date of birth must include a day
       </span>
       <div
@@ -654,9 +652,8 @@ exports[`DateInput matches snapshot with error message 1`] = `
         <span
           class="nhsuk-u-visually-hidden"
         >
-          Error:
+          Error: 
         </span>
-         
         Date of birth must include a day
       </span>
       <div

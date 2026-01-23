@@ -1,7 +1,10 @@
 'use client';
 
 import classNames from 'classnames';
-import { type PasswordInput as PasswordInputModule } from 'nhsuk-frontend';
+import {
+  type PasswordInput as PasswordInputModule,
+  type PasswordInputTranslations,
+} from 'nhsuk-frontend';
 import {
   forwardRef,
   useEffect,
@@ -23,13 +26,11 @@ export interface PasswordInputElementProps extends ComponentPropsWithoutRef<'inp
   showPasswordText?: string;
   showPasswordAriaLabelText?: string;
   buttonProps?: ComponentPropsWithRef<'button'>;
+  i18n?: PasswordInputTranslations;
 }
 
 export type PasswordInputProps = PasswordInputElementProps &
-  Omit<
-    FormElementProps<PasswordInputElementProps, 'input'>,
-    'fieldsetProps' | 'legend' | 'legendProps'
-  >;
+  Omit<FormElementProps, 'fieldsetProps' | 'legend' | 'legendProps'>;
 
 const PasswordInputButton: FC<ComponentPropsWithRef<'button'>> = ({
   children,
@@ -49,7 +50,7 @@ const PasswordInputButton: FC<ComponentPropsWithRef<'button'>> = ({
 );
 
 export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
-  ({ buttonProps, formGroupProps, ...props }, forwardedRef) => {
+  ({ buttonProps, formGroupProps, i18n = {}, ...props }, forwardedRef) => {
     const { showPasswordText, showPasswordAriaLabelText, ...rest } = props;
 
     const moduleRef = useRef<HTMLDivElement>(null);
@@ -65,9 +66,9 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
       }
 
       importRef.current = import('nhsuk-frontend')
-        .then(({ PasswordInput }) => setInstance(new PasswordInput(moduleRef.current)))
+        .then(({ PasswordInput }) => setInstance(new PasswordInput(moduleRef.current, { i18n })))
         .catch(setInstanceError);
-    }, [moduleRef, importRef, instance]);
+    }, [moduleRef, importRef, instance, i18n]);
 
     if (instanceError) {
       throw instanceError;
@@ -80,15 +81,6 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
           ...formGroupProps,
           'className': classNames('nhsuk-password-input', formGroupProps?.className),
           'data-module': 'nhsuk-password-input',
-          'afterInput': ({ id }) => (
-            <PasswordInputButton
-              aria-controls={id}
-              aria-label={showPasswordAriaLabelText ?? 'Show password'}
-              {...buttonProps}
-            >
-              {showPasswordText ?? 'Show'}
-            </PasswordInputButton>
-          ),
           'ref': moduleRef,
         }}
       >
@@ -108,6 +100,15 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
             autoComplete={autoComplete ?? 'current-password'}
             {...rest}
           />
+        )}
+        {({ id }) => (
+          <PasswordInputButton
+            aria-controls={id}
+            aria-label={showPasswordAriaLabelText ?? 'Show password'}
+            {...buttonProps}
+          >
+            {showPasswordText ?? 'Show'}
+          </PasswordInputButton>
         )}
       </FormGroup>
     );
