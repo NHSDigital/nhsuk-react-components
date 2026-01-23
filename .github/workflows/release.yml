@@ -8,6 +8,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    permissions:
+      id-token: write
+
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -39,11 +42,7 @@ jobs:
       - name: Publish npm package
         if: ${{ !github.event.release.prerelease }}
         run: npm publish --tag latest
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Publish npm package (pre-release)
         if: ${{ github.event.release.prerelease }}
         run: npm publish --tag beta
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
