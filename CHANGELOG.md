@@ -2,7 +2,13 @@
 
 ## Unreleased
 
-This version provides support for NHS.UK frontend v10.2 and includes:
+This version provides support for NHS.UK frontend v10.3 and includes:
+
+- [File upload component](https://service-manual.nhs.uk/design-system/components/file-upload)
+- [Interruption panel variant](https://service-manual.nhs.uk/design-system/components/panel#interruption-panel)
+- [Summary cards](https://service-manual.nhs.uk/design-system/components/summary-list#summary-cards)
+
+With additional support added for NHS.UK frontend v10.2 including:
 
 - [Password input component](https://service-manual.nhs.uk/design-system/components/password-input)
 - [Smaller and inline buttons](https://service-manual.nhs.uk/design-system/components/buttons#smaller-buttons)
