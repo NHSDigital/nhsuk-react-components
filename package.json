@@ -5,6 +5,10 @@
   "author": {
     "name": "NHS England"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NHSDigital/nhsuk-react-components.git"
+  },
   "sideEffects": false,
   "type": "module",
   "imports": {
