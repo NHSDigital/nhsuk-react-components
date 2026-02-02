@@ -28,6 +28,9 @@ const preview: Preview = {
         grey: { name: 'Grey', value: '#d8dde0' },
       },
     },
+    docs: {
+      codePanel: true,
+    },
     width: 'two-thirds',
     layout: 'fullscreen',
     initialGlobals: {
