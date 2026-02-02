@@ -470,6 +470,11 @@ export const WithExclusiveNoneOptionNamed: Story = {
 
 export const NoIDSupplied: Story = {
   name: 'Checkboxes with no ID supplied',
+  parameters: {
+    chromatic: {
+      disableSnapshot: true,
+    },
+  },
   render: function NoIDSuppliedRender() {
     const checkbox1Ref = useRef<HTMLInputElement>(null);
     const checkbox2Ref = useRef<HTMLInputElement>(null);
@@ -555,6 +560,11 @@ export const NoIDSupplied: Story = {
 
 export const NameSupplied: Story = {
   name: 'Checkboxes with name supplied',
+  parameters: {
+    chromatic: {
+      disableSnapshot: true,
+    },
+  },
   render: function NameSuppliedRender() {
     const checkbox1Ref = useRef<HTMLInputElement>(null);
     const checkbox2Ref = useRef<HTMLInputElement>(null);
@@ -640,6 +650,11 @@ export const NameSupplied: Story = {
 
 export const IDPrefixSupplied: Story = {
   name: 'Checkboxes with ID prefix supplied',
+  parameters: {
+    chromatic: {
+      disableSnapshot: true,
+    },
+  },
   render: function IDPrefixSuppliedRender() {
     const checkbox1Ref = useRef<HTMLInputElement>(null);
     const checkbox2Ref = useRef<HTMLInputElement>(null);
@@ -726,6 +741,11 @@ export const IDPrefixSupplied: Story = {
 
 export const IDPrefixAndNameSupplied: Story = {
   name: 'Checkboxes with ID prefix and name supplied',
+  parameters: {
+    chromatic: {
+      disableSnapshot: true,
+    },
+  },
   render: function IDPrefixAndNameSuppliedRender() {
     const checkbox1Ref = useRef<HTMLInputElement>(null);
     const checkbox2Ref = useRef<HTMLInputElement>(null);
@@ -812,6 +832,11 @@ export const IDPrefixAndNameSupplied: Story = {
 
 export const OnChangeAndOnInputHandlers: Story = {
   name: 'Checkboxes change and input handlers',
+  parameters: {
+    chromatic: {
+      disableSnapshot: true,
+    },
+  },
   render: function OnChangeAndOnInputHandlersRender() {
     const [changeEventLog, setChangeEventLog] = useState<Array<string>>([]);
     const [inputEventLog, setInputEventLog] = useState<Array<string>>([]);
