@@ -46,6 +46,58 @@ const preview: Preview = {
         ],
       },
     },
+    viewport: {
+      options: {
+        watch: {
+          name: 'Watch',
+          styles: {
+            width: '224px',
+            height: '184px',
+          },
+          type: 'other',
+        },
+        mobile: {
+          name: 'Mobile',
+          styles: {
+            width: '320px',
+            height: '568px',
+          },
+          type: 'mobile',
+        },
+        tablet: {
+          name: 'Tablet',
+          styles: {
+            width: '641px',
+            height: '768px',
+          },
+          type: 'tablet',
+        },
+        desktop: {
+          name: 'Desktop',
+          styles: {
+            width: '769px',
+            height: '1024px',
+          },
+          type: 'desktop',
+        },
+        desktopL: {
+          name: 'Large desktop',
+          styles: {
+            width: '990px',
+            height: '1024px',
+          },
+          type: 'desktop',
+        },
+        desktopXL: {
+          name: 'Extra large desktop',
+          styles: {
+            width: '1281px',
+            height: '1024px',
+          },
+          type: 'desktop',
+        },
+      },
+    },
   },
   tags: ['autodocs'],
 };
