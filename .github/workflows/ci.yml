@@ -61,6 +61,7 @@ jobs:
         with:
           autoAcceptChanges: main
           branchName: ${{ env.CHROMATIC_BRANCH}}
+          exitZeroOnChanges: false
           onlyChanged: ${{ github.event_name == 'pull_request' }}
           projectToken: ${{ env.CHROMATIC_PROJECT_TOKEN }}
           token: ${{ env.GITHUB_TOKEN }}
