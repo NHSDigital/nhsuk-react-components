@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
-import { useEffect, useRef, useState, type SyntheticEvent } from 'react';
+import { useEffect, useRef, useState, type ChangeEvent, type InputEvent } from 'react';
 
 import { Checkboxes } from '#components/form-elements/checkboxes/index.js';
 import { Fieldset } from '#components/form-elements/fieldset/Fieldset.js';
@@ -842,7 +842,7 @@ export const OnChangeAndOnInputHandlers: Story = {
     const [inputEventLog, setInputEventLog] = useState<Array<string>>([]);
     const [currentValue, setCurrentValue] = useState<Array<string>>([]);
 
-    const handleChange = (e: SyntheticEvent<HTMLInputElement>) => {
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
       const target = e.target as HTMLInputElement;
       setChangeEventLog([
         ...changeEventLog,
@@ -855,7 +855,7 @@ export const OnChangeAndOnInputHandlers: Story = {
       }
     };
 
-    const handleInput = (e: SyntheticEvent<HTMLInputElement>) => {
+    const handleInput = (e: InputEvent<HTMLInputElement>) => {
       const target = e.target as HTMLInputElement;
       setInputEventLog([
         ...inputEventLog,
