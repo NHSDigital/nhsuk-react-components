@@ -1,6 +1,6 @@
 # NHS.UK React components
 
-## 6.0.0-beta.5 - 23 January 2026
+## 6.0.0 - 10 March 2026
 
 This version provides support for NHS.UK frontend v10.3 and includes:
 
