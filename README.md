@@ -10,10 +10,11 @@ This repository contains the code for NHS.UK React components - a port of the [N
 
 ## Installation
 
-You can install this package using either `yarn` or `npm`.
+You can install this package using either `npm` or `yarn`.
 
 ```bash
 npm install --save nhsuk-react-components
+
 # Or
 yarn add nhsuk-react-components
 ```
@@ -21,19 +22,23 @@ yarn add nhsuk-react-components
 ## Usage
 
 ```jsx
-import { PureComponent } from 'react';
+import { DateInput, Form } from 'nhsuk-react-components';
 
-// You can import components from the global module
-import { Button } from 'nhsuk-react-components';
+<Form noValidate>
+  <DateInput
+    hint="For example, 15 3 1984"
+    legend="What is your date of birth?"
+    legendProps={{ size: 'l' }}
+    id="date-of-birth"
+    error="Date of birth must include a day"
+  >
+    <DateInput.Day />
+    <DateInput.Month error={false} />
+    <DateInput.Year error={false} />
+  </DateInput>
 
-// Or you can import components directly
-import { Button } from 'nhsuk-react-components/dist/esm/components/button';
-
-class GetStartedButton extends PureComponent {
-  render() {
-    return <Button>Click Me!</Button>;
-  }
-}
+  <Button>Save and continue</Button>
+</Form>;
 ```
 
 ## Upgrading
