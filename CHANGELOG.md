@@ -2,57 +2,41 @@
 
 ## 6.0.0 - 10 March 2026
 
-This version provides support for NHS.UK frontend v10.3 and includes:
+This version provides support for NHS.UK frontend v10.3.0
+
+You can follow the [upgrade to 6.0 migration guide](https://github.com/NHSDigital/nhsuk-react-components/blob/main/docs/upgrade-to-6.0.md) to see what's changed and what you need to update.
+
+- React v19 with strict mode support
+- React server-side rendering (SSR) support
+- React server components (RSC) support
+- Forwarded refs from all form inputs
+
+Features from NHS.UK frontend v10.3.0 include:
 
 - [File upload component](https://service-manual.nhs.uk/design-system/components/file-upload)
 - [Interruption panel variant](https://service-manual.nhs.uk/design-system/components/panel#interruption-panel)
 - [Summary cards](https://service-manual.nhs.uk/design-system/components/summary-list#summary-cards)
 
-With additional support added for NHS.UK frontend v10.2 including:
+Features from NHS.UK frontend v10.2.0 include:
 
 - [Password input component](https://service-manual.nhs.uk/design-system/components/password-input)
 - [Smaller and inline buttons](https://service-manual.nhs.uk/design-system/components/buttons#smaller-buttons)
 - [Text input styles for codes and sequences](https://service-manual.nhs.uk/design-system/components/text-input#codes-and-sequences)
 - [Select](https://service-manual.nhs.uk/design-system/components/select) dividers using `<Select.Divider />`
 
-For a full list of changes in this release please refer to the [migration doc](https://github.com/NHSDigital/nhsuk-react-components/blob/main/docs/upgrade-to-6.0.md).
-
-## 6.0.0-beta.4 - 5 November 2025
-
-This version provides support for NHS.UK frontend v10.1 and includes:
-
-- Support for HTML in legend, label and error props
-- Default legend and label to `isPageHeading: true` when `headingLevel` is set
-
-For a full list of changes in this release please refer to the [migration doc](https://github.com/NHSDigital/nhsuk-react-components/blob/main/docs/upgrade-to-6.0.md).
-
-## 6.0.0-beta.3 - 27 October 2025
-
-This version provides support for NHS.UK frontend v10.1 and includes:
+Features from NHS.UK frontend v10.1.0 include:
 
 - [Smaller radios](https://service-manual.nhs.uk/design-system/components/radios#smaller-radios) and [smaller checkboxes](https://service-manual.nhs.uk/design-system/components/checkboxes#smaller-checkboxes)
 - [Numbered pagination](https://service-manual.nhs.uk/design-system/components/pagination#for-navigating-between-pages-of-items)
-- React strict mode support
 
-For a full list of changes in this release please refer to the [migration doc](https://github.com/NHSDigital/nhsuk-react-components/blob/main/docs/upgrade-to-6.0.md).
+Features from NHS.UK frontend v10.0.0 include:
 
-## 6.0.0-beta.2 - 13 October 2025
+- [Header component with account section](https://service-manual.nhs.uk/design-system/components/header)
+- [Notification banner component](https://service-manual.nhs.uk/design-system/components/notification-banners)
+- [Panel component](https://service-manual.nhs.uk/design-system/components/panel)
+- [Full width buttons on mobile](https://service-manual.nhs.uk/design-system/components/buttons)
 
-This version provides support for NHS.UK frontend v10.x, React Server Components (RSC) and fixes a Rollup `'use client'` directive issue.
-
-For a full list of changes in this release please refer to the [migration doc](https://github.com/NHSDigital/nhsuk-react-components/blob/main/docs/upgrade-to-6.0.md).
-
-## 6.0.0-beta.1 - 8 October 2025
-
-This version provides support for NHS.UK frontend v10.x and adds the [panel component](https://service-manual.nhs.uk/design-system/components/panel) from the NHS.UK design system. Support for React v19 is also included.
-
-For a full list of changes in this release please refer to the [migration doc](https://github.com/NHSDigital/nhsuk-react-components/blob/main/docs/upgrade-to-6.0.md).
-
-## 6.0.0-beta.0 - 30 September 2025
-
-This version provides support for NHS.UK frontend v10.x.
-
-For a full list of changes in this release please refer to the [migration doc](https://github.com/NHSDigital/nhsuk-react-components/blob/main/docs/upgrade-to-6.0.md).
+For a full list of changes in this release please refer to the [upgrade to 6.0 migration guide](https://github.com/NHSDigital/nhsuk-react-components/blob/main/docs/upgrade-to-6.0.md).
 
 ## 5.0.0 - 4 November 2024
 
