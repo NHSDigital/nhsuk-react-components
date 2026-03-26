@@ -111,6 +111,9 @@ export const Reverse: Story = {
     reverse: true,
     children: 'Log out',
   },
+  globals: {
+    backgrounds: { value: 'dark' },
+  },
 };
 
 export const SmallReverse: Story = {
@@ -118,6 +121,9 @@ export const SmallReverse: Story = {
     reverse: true,
     small: true,
     children: 'Log out',
+  },
+  globals: {
+    backgrounds: { value: 'dark' },
   },
 };
 
