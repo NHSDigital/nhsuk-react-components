@@ -57,7 +57,7 @@ describe('Heading', () => {
   });
 
   it('console.warn when headingLevel is invalid', () => {
-    const consoleSpy = jest.spyOn(console, 'error').mockImplementation(() => {});
+    const consoleSpy = jest.spyOn(console, 'error').mockImplementation();
     // @ts-expect-error - testing invalid prop
     render(<Heading headingLevel="h7" />);
 

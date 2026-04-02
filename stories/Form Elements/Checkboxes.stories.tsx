@@ -29,11 +29,11 @@ const meta: Meta<typeof Checkboxes> = {
 export default meta;
 type Story = StoryObj<typeof Checkboxes>;
 
-type CheckboxState = {
+interface CheckboxState {
   box1: { name?: string; id?: string };
   box2: { name?: string; id?: string };
   box3: { name?: string; id?: string };
-};
+}
 
 export const Standard: Story = {
   name: 'Checkboxes default',
@@ -838,9 +838,9 @@ export const OnChangeAndOnInputHandlers: Story = {
     },
   },
   render: function OnChangeAndOnInputHandlersRender() {
-    const [changeEventLog, setChangeEventLog] = useState<Array<string>>([]);
-    const [inputEventLog, setInputEventLog] = useState<Array<string>>([]);
-    const [currentValue, setCurrentValue] = useState<Array<string>>([]);
+    const [changeEventLog, setChangeEventLog] = useState<string[]>([]);
+    const [inputEventLog, setInputEventLog] = useState<string[]>([]);
+    const [currentValue, setCurrentValue] = useState<string[]>([]);
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
       const target = e.target as HTMLInputElement;

@@ -35,7 +35,7 @@ const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwarde
   const [instance, setInstance] = useState<RadiosModule>();
   const [selectedRadio, setSelectedRadio] = useState<string>();
 
-  const _radioReferences: Array<string> = [];
+  const _radioReferences: string[] = [];
   let _radioCount = 0;
   let _radioIds: Record<string, string> = {};
 
@@ -63,7 +63,7 @@ const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwarde
   };
 
   const leaseReference = (): string => {
-    let reference: string = '';
+    let reference = '';
     do {
       reference = generateRandomName();
     } while (_radioReferences.includes(reference));

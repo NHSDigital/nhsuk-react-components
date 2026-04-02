@@ -202,7 +202,7 @@ describe('FormGroup', () => {
 
     expect(renderProps?.id).toHaveLength(11);
     expect(renderProps?.id).toContain('input');
-    expect(renderProps!['aria-describedby']).toBe(`${renderProps?.id}--error-message`);
+    expect(renderProps?.['aria-describedby']).toBe(`${renderProps?.id}--error-message`);
 
     expect(container.querySelector('.nhsuk-error-message')?.getAttribute('id')).toBe(
       `${renderProps?.id}--error-message`,
@@ -231,7 +231,7 @@ describe('FormGroup', () => {
     );
 
     expect(renderProps?.id).toBe('testID');
-    expect(renderProps!['aria-describedby']).toBe(`testID--error-message`);
+    expect(renderProps?.['aria-describedby']).toBe(`testID--error-message`);
 
     expect(container.querySelector('.nhsuk-error-message')?.getAttribute('id')).toBe(
       'testID--error-message',

@@ -17,11 +17,11 @@ import { DateInputDay, DateInputMonth, DateInputYear } from './components/index.
 import { FormGroup } from '#components/utils/index.js';
 import { type FormElementProps } from '#util/types/FormTypes.js';
 
-export type DateInputValue = {
+export interface DateInputValue {
   day: string;
   month: string;
   year: string;
-};
+}
 
 export interface DateInputChangeEvent extends Omit<
   ChangeEvent<DateInputElement>,

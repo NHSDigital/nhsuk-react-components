@@ -7,7 +7,6 @@
     "lib": ["ESNext", "DOM"],
     "outDir": "./dist",
     "rootDir": "./src",
-    "strict": true,
     "sourceMap": true,
     "target": "ES2015",
     "types": ["node"]

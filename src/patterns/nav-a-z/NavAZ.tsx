@@ -8,9 +8,9 @@ const alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 const processLetters = (
   children: ReactNode,
   fullAlphabet: boolean | undefined,
-  removedLetters: Array<string> | undefined,
-  disabledLetters: Array<string> | undefined,
-  letters: Array<string> | undefined,
+  removedLetters: string[] | undefined,
+  disabledLetters: string[] | undefined,
+  letters: string[] | undefined,
 ) => {
   const letterMap = (letter: string) => {
     if (removedLetters && removedLetters.includes(letter)) {
@@ -39,9 +39,9 @@ const processLetters = (
 
 export interface NavAZProps extends ComponentPropsWithoutRef<'div'> {
   fullAlphabet?: boolean;
-  removedLetters?: Array<string>;
-  disabledLetters?: Array<string>;
-  letters?: Array<string>;
+  removedLetters?: string[];
+  disabledLetters?: string[];
+  letters?: string[];
 }
 
 const NavAZComponent = forwardRef<HTMLElement, NavAZProps>((props, forwardedRef) => {
