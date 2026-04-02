@@ -35,7 +35,7 @@ const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, 
   const [instance, setInstance] = useState<CheckboxesModule>();
 
   const _boxReferences: string[] = [];
-  let _boxCount: number = 0;
+  let _boxCount = 0;
   let _boxIds: Record<string, string> = {};
 
   useImperativeHandle(forwardedRef, () => moduleRef.current!, [moduleRef]);
@@ -61,7 +61,7 @@ const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, 
   };
 
   const leaseReference = (): string => {
-    let reference: string = '';
+    let reference = '';
     do {
       reference = generateRandomName();
     } while (_boxReferences.includes(reference));

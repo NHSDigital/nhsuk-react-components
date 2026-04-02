@@ -2,10 +2,10 @@
 
 import { createContext } from 'react';
 
-export type IFormGroupContext = {
+export interface IFormGroupContext {
   passError: (componentId: string, error: boolean) => void;
   registerComponent: (componentId: string, deregister?: boolean) => void;
-};
+}
 
 export const FormGroupContext = createContext<IFormGroupContext>({
   passError: () => {},

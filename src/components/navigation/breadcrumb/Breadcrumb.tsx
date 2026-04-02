@@ -14,8 +14,8 @@ const BreadcrumbComponent = forwardRef<HTMLElement, BreadcrumbProps>((props, for
 
   // Split off any "Item" components
   const { ItemChildren, OtherChildren } = Children.toArray(children).reduce<{
-    ItemChildren: Array<ReactNode>;
-    OtherChildren: Array<ReactNode>;
+    ItemChildren: ReactNode[];
+    OtherChildren: ReactNode[];
   }>(
     (prev, child) => {
       if (childIsOfComponentType(child, BreadcrumbItem)) {
