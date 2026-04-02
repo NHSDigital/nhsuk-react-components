@@ -18,11 +18,11 @@ export default defineConfig([
   {
     files: ['**/*.{js,mjs,ts,tsx}'],
     extends: [
-      configPrettier,
       eslint.configs.recommended,
-      pluginTypeScript.configs.recommended,
       pluginImport.flatConfigs.recommended,
       pluginImport.flatConfigs.typescript,
+      pluginTypeScript.configs.recommended,
+      configPrettier,
     ],
     languageOptions: {
       parser: pluginTypeScript.parser,
