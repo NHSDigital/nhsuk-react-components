@@ -17,6 +17,7 @@ The updated [header](https://service-manual.nhs.uk/design-system/components/head
 - update navigation label from ’Primary navigation’ to ‘Menu’, and remove superfluous `role` and `id` attributes
 - update NHS logo in the header to have higher contrast when focused
 - refactor CSS classes and BEM naming, use hidden attributes instead of modifier classes, use generic search element
+- removed conditional "Home" navigation item, previously displayed on mobile and tablet only
 
 #### New file upload component
 
@@ -472,6 +473,7 @@ The updated header component from NHS.UK frontend v10.x has been added. You will
 - remove the automatically created `Header.Logo` component
 - remove the automatically created `Header.ServiceName` component
 - remove the automatically created `Header.NavDropdownMenu` component
+- remove the unsupported `<Header.NavItem href="/" home>` "Home" component
 - rename the `Header.Nav` component to `Header.Navigation`
 - rename the `Header.NavItem` component to `Header.NavigationItem`
 
@@ -491,6 +493,7 @@ The updated header component from NHS.UK frontend v10.x has been added. You will
 -     <Header.NavItem href="#">Example 2</Header.NavItem>
 -     <Header.NavItem href="#">Example 3</Header.NavItem>
 -     <Header.NavItem href="#">Example 4</Header.NavItem>
+-     <Header.NavItem href="/" home>Home</Header.NavItem>
 -     <Header.NavDropdownMenu />
 -   </Header.Nav>
 +   <Header.Navigation>
@@ -501,6 +504,8 @@ The updated header component from NHS.UK frontend v10.x has been added. You will
 +   </Header.Navigation>
   </Header>
 ```
+
+The conditional "Home" navigation item (mobile and tablet only) was removed in NHS.UK frontend v10.0.0 and is no longer necessary.
 
 ### Footer
 
