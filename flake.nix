@@ -31,7 +31,6 @@
           programs = {
             actionlint.enable = true;
             jsonfmt.enable = false;
-            mdformat.enable = true;
             oxfmt.enable = true;
           };
         });
@@ -55,6 +54,7 @@
 
         devShells.default = pkgs.mkShell {
           packages = with pkgs; [
+            actionlint
             corepack_24
             nodejs_24
             oxfmt
