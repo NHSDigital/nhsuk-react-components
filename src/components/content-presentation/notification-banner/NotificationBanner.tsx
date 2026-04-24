@@ -4,21 +4,21 @@ import classNames from 'classnames';
 import { type NotificationBanner as NotificationBannerModule } from 'nhsuk-frontend';
 import {
   Children,
+  type ComponentPropsWithoutRef,
   forwardRef,
   useEffect,
   useImperativeHandle,
   useRef,
   useState,
-  type ComponentPropsWithoutRef,
 } from 'react';
+
+import { childIsOfComponentType } from '#util/types/TypeGuards.js';
 
 import {
   NotificationBannerHeading,
   NotificationBannerLink,
   NotificationBannerTitle,
 } from './components/index.js';
-
-import { childIsOfComponentType } from '#util/types/TypeGuards.js';
 
 export interface NotificationBannerProps extends ComponentPropsWithoutRef<'div'> {
   success?: boolean;

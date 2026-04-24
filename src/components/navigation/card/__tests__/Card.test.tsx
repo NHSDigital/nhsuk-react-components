@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import { Card, type CardProps } from '..';
-
 import { type HeadingProps } from '#components/typography/Heading.js';
 import { renderClient, renderServer } from '#util/components';
 import { type CareCardType } from '#util/types';
+
+import { Card, type CardProps } from '..';
 
 describe('Card', () => {
   it('matches snapshot with single action', async () => {

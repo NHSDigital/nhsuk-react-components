@@ -1,9 +1,9 @@
 import classNames from 'classnames';
-import { Children, forwardRef, type ComponentPropsWithoutRef, type ReactNode } from 'react';
-
-import { BreadcrumbBack, BreadcrumbItem } from './components/index.js';
+import { Children, type ComponentPropsWithoutRef, type ReactNode, forwardRef } from 'react';
 
 import { childIsOfComponentType } from '#util/types/index.js';
+
+import { BreadcrumbBack, BreadcrumbItem } from './components/index.js';
 
 export interface BreadcrumbProps extends ComponentPropsWithoutRef<'nav'> {
   reverse?: boolean;

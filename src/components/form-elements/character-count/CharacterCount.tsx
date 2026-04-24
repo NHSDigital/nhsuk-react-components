@@ -6,12 +6,12 @@ import {
   type CharacterCountTranslations,
 } from 'nhsuk-frontend';
 import {
+  type ComponentPropsWithoutRef,
   forwardRef,
   useEffect,
   useImperativeHandle,
   useRef,
   useState,
-  type ComponentPropsWithoutRef,
 } from 'react';
 
 import { FormGroup } from '#components/utils/index.js';

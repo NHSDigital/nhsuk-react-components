@@ -1,8 +1,8 @@
 import { createRef } from 'react';
 
-import { CharacterCount } from '..';
-
 import { renderClient, renderServer } from '#util/components';
+
+import { CharacterCount } from '..';
 
 describe('Character Count', () => {
   it('matches snapshot', async () => {

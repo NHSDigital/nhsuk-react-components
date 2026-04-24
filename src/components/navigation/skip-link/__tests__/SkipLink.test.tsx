@@ -1,10 +1,10 @@
 import { waitFor } from '@testing-library/react';
 import { createRef } from 'react';
 
-import { SkipLink } from '..';
-
 import { Container } from '#components/layout';
 import { renderClient, renderServer } from '#util/components';
+
+import { SkipLink } from '..';
 
 describe('SkipLink', () => {
   it('matches snapshot', async () => {

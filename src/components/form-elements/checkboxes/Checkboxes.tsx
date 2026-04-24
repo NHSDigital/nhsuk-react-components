@@ -3,20 +3,20 @@
 import classNames from 'classnames';
 import { type Checkboxes as CheckboxesModule } from 'nhsuk-frontend';
 import {
+  type ComponentPropsWithoutRef,
   forwardRef,
   useEffect,
   useImperativeHandle,
   useRef,
   useState,
-  type ComponentPropsWithoutRef,
 } from 'react';
-
-import { CheckboxesContext, type ICheckboxesContext } from './CheckboxesContext.js';
-import { CheckboxesDivider, CheckboxesItem } from './components/index.js';
 
 import { FormGroup } from '#components/utils/index.js';
 import { generateRandomName } from '#util/tools/index.js';
 import { type FormElementProps } from '#util/types/FormTypes.js';
+
+import { CheckboxesContext, type ICheckboxesContext } from './CheckboxesContext.js';
+import { CheckboxesDivider, CheckboxesItem } from './components/index.js';
 
 export interface CheckboxesElementProps extends ComponentPropsWithoutRef<'div'> {
   idPrefix?: string;

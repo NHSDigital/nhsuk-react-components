@@ -3,13 +3,13 @@
 import classNames from 'classnames';
 import { type Button as ButtonModule } from 'nhsuk-frontend';
 import {
+  type ForwardedRef,
+  type MouseEvent,
   forwardRef,
   useEffect,
   useImperativeHandle,
   useRef,
   useState,
-  type ForwardedRef,
-  type MouseEvent,
 } from 'react';
 
 import { type AsElementLink } from '#util/types/LinkTypes.js';

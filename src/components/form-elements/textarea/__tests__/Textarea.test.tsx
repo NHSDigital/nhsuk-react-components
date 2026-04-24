@@ -1,8 +1,8 @@
 import { createRef } from 'react';
 
-import { Textarea } from '..';
-
 import { renderClient, renderServer } from '#util/components';
+
+import { Textarea } from '..';
 
 describe('Textarea', () => {
   it('matches snapshot', async () => {

@@ -1,12 +1,12 @@
 'use client';
 
 import classNames from 'classnames';
-import { forwardRef, type ComponentPropsWithoutRef } from 'react';
+import { type ComponentPropsWithoutRef, forwardRef } from 'react';
+
+import { Heading, type HeadingProps } from '#components/typography/Heading.js';
 
 import { DoAndDontListContext, type DoAndDontListType } from './DoAndDontListContext.js';
 import { DoAndDontListItem } from './components/index.js';
-
-import { Heading, type HeadingProps } from '#components/typography/Heading.js';
 
 export interface DoAndDontListProps
   extends ComponentPropsWithoutRef<'div'>, Pick<HeadingProps, 'headingLevel'> {

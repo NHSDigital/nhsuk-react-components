@@ -1,8 +1,8 @@
-import { createRef, type ComponentProps } from 'react';
-
-import { Header } from '..';
+import { type ComponentProps, createRef } from 'react';
 
 import { renderClient, renderServer } from '#util/components';
+
+import { Header } from '..';
 
 describe('Header', () => {
   it('matches snapshot', async () => {

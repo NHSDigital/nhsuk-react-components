@@ -1,8 +1,8 @@
 import { createRef } from 'react';
 
-import { Select } from '..';
-
 import { renderClient, renderServer } from '#util/components';
+
+import { Select } from '..';
 
 describe('Select', () => {
   afterEach(() => {

@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, type ReactNode } from 'react';
+import { type ReactNode, createContext } from 'react';
 
 export interface ITableContext {
   firstCellIsHeader: boolean;

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { forwardRef, type ComponentPropsWithoutRef, type FC } from 'react';
+import { type ComponentPropsWithoutRef, type FC, forwardRef } from 'react';
 
 export interface DetailsProps extends ComponentPropsWithoutRef<'details'> {
   expander?: boolean;

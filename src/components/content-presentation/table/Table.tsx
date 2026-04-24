@@ -2,25 +2,25 @@
 
 import classNames from 'classnames';
 import {
+  type ComponentPropsWithoutRef,
+  type ReactNode,
   forwardRef,
   useMemo,
   useState,
-  type ComponentPropsWithoutRef,
-  type ReactNode,
 } from 'react';
 
-import { TableContext, type ITableContext } from './TableContext.js';
+import { type Card as _Card } from '#components/navigation/card/index.js';
+
+import { type ITableContext, TableContext } from './TableContext.js';
 import {
   TableBody,
   TableCaption,
+  type TableCaptionProps,
   TableCell,
   TableContainer,
   TableHead,
   TableRow,
-  type TableCaptionProps,
 } from './components/index.js';
-
-import { type Card as _Card } from '#components/navigation/card/index.js';
 
 export interface TableProps extends ComponentPropsWithoutRef<'table'> {
   firstCellIsHeader?: boolean;

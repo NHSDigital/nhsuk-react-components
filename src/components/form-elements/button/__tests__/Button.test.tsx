@@ -1,8 +1,8 @@
-import { createRef, forwardRef, type ComponentProps, type Ref } from 'react';
-
-import { Button } from '..';
+import { type ComponentProps, type Ref, createRef, forwardRef } from 'react';
 
 import { renderClient, renderServer } from '#util/components';
+
+import { Button } from '..';
 
 const buttonTypes = [
   {

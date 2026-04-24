@@ -1,8 +1,8 @@
 import classNames from 'classnames';
-import { Children, forwardRef, type FC } from 'react';
+import { Children, type FC, forwardRef } from 'react';
 
 import { Heading, type HeadingProps } from '#components/typography/Heading.js';
-import { childIsOfComponentType, type CareCardType } from '#util/types/index.js';
+import { type CareCardType, childIsOfComponentType } from '#util/types/index.js';
 
 const genHiddenText = (cardType?: CareCardType) => {
   if (!cardType) {

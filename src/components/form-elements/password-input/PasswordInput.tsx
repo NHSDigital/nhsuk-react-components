@@ -6,14 +6,14 @@ import {
   type PasswordInputTranslations,
 } from 'nhsuk-frontend';
 import {
+  type ComponentPropsWithRef,
+  type ComponentPropsWithoutRef,
+  type FC,
   forwardRef,
   useEffect,
   useImperativeHandle,
   useRef,
   useState,
-  type ComponentPropsWithoutRef,
-  type ComponentPropsWithRef,
-  type FC,
 } from 'react';
 
 import { Button } from '#components/form-elements/button/index.js';

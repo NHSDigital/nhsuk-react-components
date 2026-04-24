@@ -4,14 +4,17 @@ import classNames from 'classnames';
 import { type Header as HeaderModule } from 'nhsuk-frontend';
 import {
   Children,
+  type ComponentPropsWithoutRef,
   forwardRef,
   useEffect,
   useImperativeHandle,
   useMemo,
   useRef,
   useState,
-  type ComponentPropsWithoutRef,
 } from 'react';
+
+import { Container } from '#components/layout/index.js';
+import { childIsOfComponentType } from '#util/types/index.js';
 
 import { HeaderContext, type IHeaderContext } from './HeaderContext.js';
 import {
@@ -24,9 +27,6 @@ import {
   HeaderServiceName,
   type HeaderServiceNameProps,
 } from './components/index.js';
-
-import { Container } from '#components/layout/index.js';
-import { childIsOfComponentType } from '#util/types/index.js';
 
 export interface HeaderProps extends ComponentPropsWithoutRef<'div'>, HeaderServiceNameProps {
   containerClasses?: string;

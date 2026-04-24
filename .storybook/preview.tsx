@@ -1,7 +1,8 @@
-import './storybook.scss';
 import { type Preview } from '@storybook/react-vite';
 
 import { Col, Container, Row } from '#components/layout/index.js';
+
+import './storybook.scss';
 
 const preview: Preview = {
   decorators: (Story, { parameters }) =>

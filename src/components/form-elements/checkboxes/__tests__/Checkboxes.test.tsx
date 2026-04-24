@@ -1,8 +1,8 @@
 import { createRef } from 'react';
 
-import { Checkboxes } from '..';
-
 import { renderClient, renderServer } from '#util/components';
+
+import { Checkboxes } from '..';
 
 describe('Checkboxes', () => {
   it('matches snapshot', async () => {

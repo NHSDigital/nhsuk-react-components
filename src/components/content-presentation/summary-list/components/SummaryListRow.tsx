@@ -1,9 +1,9 @@
 import classNames from 'classnames';
 import { Children, type ComponentPropsWithoutRef, type FC } from 'react';
 
-import { SummaryListAction } from './SummaryListAction.js';
-
 import { childIsOfComponentType } from '#util/types/index.js';
+
+import { SummaryListAction } from './SummaryListAction.js';
 
 export interface SummaryListRowProps extends ComponentPropsWithoutRef<'div'> {
   noBorder?: boolean;

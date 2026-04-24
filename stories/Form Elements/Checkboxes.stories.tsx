@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
-import { useEffect, useRef, useState, type ChangeEvent, type InputEvent } from 'react';
+import { type ChangeEvent, type InputEvent, useEffect, useRef, useState } from 'react';
 
 import { Checkboxes } from '#components/form-elements/checkboxes/index.js';
 import { Fieldset } from '#components/form-elements/fieldset/Fieldset.js';

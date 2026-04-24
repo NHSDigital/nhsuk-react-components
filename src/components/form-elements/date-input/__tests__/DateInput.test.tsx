@@ -1,9 +1,9 @@
 import { fireEvent } from '@testing-library/react';
 import { createRef } from 'react';
 
-import { DateInput, type DateInputChangeEvent } from '..';
-
 import { renderClient, renderServer } from '#util/components';
+
+import { DateInput, type DateInputChangeEvent } from '..';
 
 describe('DateInput', () => {
   it('matches snapshot', async () => {

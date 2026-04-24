@@ -2,20 +2,20 @@
 
 import classNames from 'classnames';
 import {
+  type ComponentPropsWithRef,
+  type ComponentPropsWithoutRef,
+  type ReactNode,
   forwardRef,
   useContext,
   useEffect,
   useState,
-  type ComponentPropsWithRef,
-  type ComponentPropsWithoutRef,
-  type ReactNode,
 } from 'react';
-
-import { CheckboxesContext, type ICheckboxesContext } from '../CheckboxesContext.js';
 
 import { HintText } from '#components/form-elements/hint-text/index.js';
 import { Label } from '#components/form-elements/label/index.js';
 import { type ComponentPropsWithDataAttributes, type FormElementProps } from '#util/types/index.js';
+
+import { CheckboxesContext, type ICheckboxesContext } from '../CheckboxesContext.js';
 
 export interface CheckboxesItemElementProps extends ComponentPropsWithoutRef<'input'> {
   conditional?: ReactNode;

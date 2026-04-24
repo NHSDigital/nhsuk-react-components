@@ -3,11 +3,11 @@
 import classNames from 'classnames';
 import {
   Children,
+  type ComponentPropsWithoutRef,
+  type FC,
   cloneElement,
   useContext,
   useEffect,
-  type ComponentPropsWithoutRef,
-  type FC,
 } from 'react';
 
 import { TableContext } from '../TableContext.js';

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { forwardRef, type ComponentPropsWithoutRef, type ReactElement } from 'react';
+import { type ComponentPropsWithoutRef, type ReactElement, forwardRef } from 'react';
 
 import { type AsElementLink } from '#util/types/LinkTypes.js';
 
