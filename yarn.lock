@@ -5519,6 +5519,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-plugin-node-import@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "eslint-plugin-node-import@npm:1.2.0"
+  dependencies:
+    globals: "npm:^17.3.0"
+  peerDependencies:
+    eslint: ">=7"
+  checksum: 10c0/b58e588b77d1fd55bd40ff5b99ba5c431f248389d5bce938c64d02c89488a2c7da617834331b4d2bbe13feb468fee1fafc340d44d13f77309e51a7447ea74674
+  languageName: node
+  linkType: hard
+
 "eslint-plugin-react-hooks@npm:^7.0.1":
   version: 7.0.1
   resolution: "eslint-plugin-react-hooks@npm:7.0.1"
@@ -6113,7 +6124,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"globals@npm:^17.5.0":
+"globals@npm:^17.3.0, globals@npm:^17.5.0":
   version: 17.5.0
   resolution: "globals@npm:17.5.0"
   checksum: 10c0/92828102ed2f5637907725f0478038bed02fc83e9fc89300bb753639ba7c022b6c02576fc772117302b431b204591db1f2fa909d26f3f0a9852cc856a941df3f
@@ -7948,6 +7959,7 @@ __metadata:
     eslint-import-resolver-typescript: "npm:^4.4.4"
     eslint-plugin-import: "npm:^2.32.0"
     eslint-plugin-jsx-a11y: "npm:^6.10.2"
+    eslint-plugin-node-import: "npm:^1.2.0"
     eslint-plugin-react: "npm:^7.37.5"
     eslint-plugin-react-hooks: "npm:^7.0.1"
     globals: "npm:^17.5.0"

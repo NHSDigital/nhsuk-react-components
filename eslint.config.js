@@ -5,6 +5,7 @@ import eslint from '@eslint/js';
 import configPrettier from 'eslint-config-prettier/flat';
 import pluginImport from 'eslint-plugin-import';
 import pluginJsxA11y from 'eslint-plugin-jsx-a11y';
+import pluginNodeImport from 'eslint-plugin-node-import';
 import pluginReact from 'eslint-plugin-react';
 import pluginReactHooks from 'eslint-plugin-react-hooks';
 import { defineConfig, globalIgnores } from 'eslint/config';
@@ -22,6 +23,7 @@ export default defineConfig([
       pluginImport.flatConfigs.recommended,
       pluginImport.flatConfigs.typescript,
       pluginTypeScript.configs.recommended,
+      pluginNodeImport.configs['flat/recommended'],
       configPrettier,
     ],
     languageOptions: {
@@ -44,9 +46,6 @@ export default defineConfig([
       'import/no-named-as-default-member': 'off',
       'import/no-unresolved': 'off',
       'import/no-unused-modules': 'off',
-
-      // Always import Node.js packages from `node:*`
-      'import/enforce-node-protocol-usage': ['error', 'always'],
 
       // Prefer rules that are type aware
       'no-redeclare': 'off',
