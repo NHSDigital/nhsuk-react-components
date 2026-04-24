@@ -79,6 +79,12 @@ updates:
   - package-ecosystem: github-actions
     directory: /
 
+    # Group actions into shared PR
+    groups:
+      actions:
+        patterns:
+          - '*'
+
     schedule:
       interval: 'monthly'
     cooldown:
