@@ -3,7 +3,6 @@ import { join } from 'node:path';
 import { includeIgnoreFile } from '@eslint/compat';
 import eslint from '@eslint/js';
 import configPrettier from 'eslint-config-prettier/flat';
-import pluginImport from 'eslint-plugin-import';
 import pluginJsxA11y from 'eslint-plugin-jsx-a11y';
 import pluginNodeImport from 'eslint-plugin-node-import';
 import pluginReact from 'eslint-plugin-react';
@@ -20,8 +19,6 @@ export default defineConfig([
     files: ['**/*.{js,mjs,ts,tsx}'],
     extends: [
       eslint.configs.recommended,
-      pluginImport.flatConfigs.recommended,
-      pluginImport.flatConfigs.typescript,
       pluginTypeScript.configs.recommended,
       pluginNodeImport.configs['flat/recommended'],
       configPrettier,
@@ -35,18 +32,6 @@ export default defineConfig([
       },
     },
     rules: {
-      // Turn off rules that are handled by TypeScript
-      // https://typescript-eslint.io/troubleshooting/typed-linting/performance/#eslint-plugin-import
-      'import/default': 'off',
-      'import/named': 'off',
-      'import/namespace': 'off',
-      'import/no-cycle': 'off',
-      'import/no-deprecated': 'off',
-      'import/no-named-as-default': 'off',
-      'import/no-named-as-default-member': 'off',
-      'import/no-unresolved': 'off',
-      'import/no-unused-modules': 'off',
-
       // Prefer rules that are type aware
       'no-redeclare': 'off',
       'no-undef': 'off',
@@ -60,12 +45,6 @@ export default defineConfig([
           ignoreRestSiblings: true,
         },
       ],
-    },
-    settings: {
-      'import/resolver': {
-        node: true,
-        typescript: true,
-      },
     },
   },
   {
