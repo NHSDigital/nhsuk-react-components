@@ -25,6 +25,7 @@ updates:
       lint:
         patterns:
           - '@eslint/*'
+          - '@trivago/prettier-plugin-*'
           - '@types/*'
           - 'eslint'
           - 'eslint-*'
