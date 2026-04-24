@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 import { createRef } from 'react';
 
-import { TextInput } from '..';
-
 import { renderClient, renderServer } from '#util/components';
 import { type InputWidth } from '#util/types';
+
+import { TextInput } from '..';
 
 describe('TextInput', () => {
   afterEach(() => {

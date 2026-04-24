@@ -3,12 +3,12 @@
 import classNames from 'classnames';
 import { type FileUpload as FileUploadModule, type FileUploadTranslations } from 'nhsuk-frontend';
 import {
+  type ComponentPropsWithoutRef,
   forwardRef,
   useEffect,
   useImperativeHandle,
   useRef,
   useState,
-  type ComponentPropsWithoutRef,
 } from 'react';
 
 import { FormGroup } from '#components/utils/index.js';

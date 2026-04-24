@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react';
 import { createRef } from 'react';
 
-import { Panel, type PanelTitleProps } from '..';
-
 import { renderClient, renderServer } from '#util/components';
+
+import { Panel, type PanelTitleProps } from '..';
 
 describe('Panel', () => {
   const Example = (props: Parameters<typeof Panel>[0]) => (

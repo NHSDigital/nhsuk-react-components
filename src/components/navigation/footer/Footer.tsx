@@ -1,19 +1,19 @@
 import classNames from 'classnames';
-import { Children, forwardRef, type ComponentPropsWithoutRef } from 'react';
+import { Children, type ComponentPropsWithoutRef, forwardRef } from 'react';
+
+import { Container } from '#components/layout/index.js';
+import { childIsOfComponentType } from '#util/types/index.js';
 
 import {
   FooterContent,
+  type FooterContentProps,
   FooterCopyright,
   FooterHeading,
   FooterList,
   FooterListItem,
   FooterListItemLink,
   FooterMeta,
-  type FooterContentProps,
 } from './components/index.js';
-
-import { Container } from '#components/layout/index.js';
-import { childIsOfComponentType } from '#util/types/index.js';
 
 export interface FooterProps extends ComponentPropsWithoutRef<'div'> {
   columns?: '1' | '2' | '3' | '4';

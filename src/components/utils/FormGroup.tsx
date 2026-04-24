@@ -2,17 +2,15 @@
 
 import classNames from 'classnames';
 import {
+  type ComponentPropsWithoutRef,
+  type ElementType,
   Fragment,
+  type JSX,
+  type ReactNode,
   useContext,
   useEffect,
   useState,
-  type ComponentPropsWithoutRef,
-  type ElementType,
-  type JSX,
-  type ReactNode,
 } from 'react';
-
-import { FormGroupContext, type IFormGroupContext } from './FormGroupContext.js';
 
 import { ErrorMessage } from '#components/form-elements/error-message/index.js';
 import { Fieldset } from '#components/form-elements/fieldset/index.js';
@@ -22,6 +20,8 @@ import { Label } from '#components/form-elements/label/index.js';
 import { Legend } from '#components/form-elements/legend/index.js';
 import { generateRandomID } from '#util/tools/index.js';
 import { type FormElementProps, type FormElementRenderProps } from '#util/types/FormTypes.js';
+
+import { FormGroupContext, type IFormGroupContext } from './FormGroupContext.js';
 
 export type FormGroupProps<
   P extends ComponentPropsWithoutRef<T>,

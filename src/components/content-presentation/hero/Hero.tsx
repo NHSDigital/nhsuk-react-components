@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { forwardRef, type ComponentPropsWithoutRef, type FC } from 'react';
+import { type ComponentPropsWithoutRef, type FC, forwardRef } from 'react';
 
 import { Col, Container, Row } from '#components/layout/index.js';
 import { Heading, type HeadingProps } from '#components/typography/Heading.js';

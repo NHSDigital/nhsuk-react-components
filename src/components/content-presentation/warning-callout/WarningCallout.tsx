@@ -1,4 +1,4 @@
-import { forwardRef, type ComponentPropsWithoutRef, type FC } from 'react';
+import { type ComponentPropsWithoutRef, type FC, forwardRef } from 'react';
 
 import { Card, CardHeading } from '#components/navigation/card/index.js';
 import { type HeadingProps } from '#components/typography/Heading.js';

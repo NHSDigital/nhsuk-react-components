@@ -4,17 +4,17 @@ import classNames from 'classnames';
 import { type ErrorSummary as ErrorSummaryModule } from 'nhsuk-frontend';
 import {
   Children,
+  type ComponentPropsWithoutRef,
   forwardRef,
   useEffect,
   useImperativeHandle,
   useRef,
   useState,
-  type ComponentPropsWithoutRef,
 } from 'react';
 
-import { ErrorSummaryList, ErrorSummaryListItem, ErrorSummaryTitle } from './components/index.js';
-
 import { childIsOfComponentType } from '#util/types/TypeGuards.js';
+
+import { ErrorSummaryList, ErrorSummaryListItem, ErrorSummaryTitle } from './components/index.js';
 
 export interface ErrorSummaryProps extends ComponentPropsWithoutRef<'div'> {
   disableAutoFocus?: boolean;

@@ -1,8 +1,8 @@
 import { createRef } from 'react';
 
-import { FileUpload } from '..';
-
 import { renderClient, renderServer } from '#util/components';
+
+import { FileUpload } from '..';
 
 describe('FileUpload', () => {
   afterEach(() => {

@@ -3,13 +3,13 @@
 import classNames from 'classnames';
 import { type Tabs as TabsModule } from 'nhsuk-frontend';
 import {
+  type ComponentPropsWithoutRef,
+  type FC,
   forwardRef,
   useEffect,
   useImperativeHandle,
   useRef,
   useState,
-  type ComponentPropsWithoutRef,
-  type FC,
 } from 'react';
 
 import { Heading, type HeadingProps } from '#components/typography/Heading.js';

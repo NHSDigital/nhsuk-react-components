@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { forwardRef, type ComponentPropsWithoutRef } from 'react';
+import { type ComponentPropsWithoutRef, forwardRef } from 'react';
 
 export interface ImagesProps extends ComponentPropsWithoutRef<'img'> {
   caption?: string;

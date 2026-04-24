@@ -1,9 +1,9 @@
 import { createRef } from 'react';
 
-import { PasswordInput } from '..';
-
 import { renderClient, renderServer } from '#util/components';
 import { type InputWidth } from '#util/types';
+
+import { PasswordInput } from '..';
 
 describe('PasswordInput', () => {
   afterEach(() => {

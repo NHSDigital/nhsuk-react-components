@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { forwardRef, type ComponentPropsWithoutRef } from 'react';
+import { type ComponentPropsWithoutRef, forwardRef } from 'react';
 
 export type TableContainerProps = ComponentPropsWithoutRef<'div'>;
 

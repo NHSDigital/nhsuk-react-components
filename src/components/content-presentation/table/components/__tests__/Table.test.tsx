@@ -1,8 +1,8 @@
 import { createRef } from 'react';
 
-import { Table } from '../..';
-
 import { renderClient, renderServer } from '#util/components';
+
+import { Table } from '../..';
 
 describe('Table', () => {
   const Example = (props: Parameters<typeof Table>[0]) => (

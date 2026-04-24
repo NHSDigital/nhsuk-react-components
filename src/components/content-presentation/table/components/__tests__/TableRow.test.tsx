@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 
 import { TableCell, TableRow } from '..';
-import { TableContext, TableSection, TableSectionContext, type ITableContext } from '../..';
+import { type ITableContext, TableContext, TableSection, TableSectionContext } from '../..';
 
 const assertCellText = (container: HTMLElement, cellNumber: number, text: string) => {
   expect(container.querySelector(`[data-test="cell-${cellNumber}"]`)).toHaveTextContent(text);

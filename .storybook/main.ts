@@ -1,6 +1,6 @@
 import { type StorybookConfig } from '@storybook/react-vite';
 import preserveDirectives from 'rollup-preserve-directives';
-import { mergeConfig, type InlineConfig } from 'vite';
+import { type InlineConfig, mergeConfig } from 'vite';
 import tsConfigPaths from 'vite-tsconfig-paths';
 
 const config: StorybookConfig = {

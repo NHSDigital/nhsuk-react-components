@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { forwardRef, type ElementType, type HTMLAttributes, type ReactElement } from 'react';
+import { type ElementType, type HTMLAttributes, type ReactElement, forwardRef } from 'react';
 
 import { type NHSUKSize } from '#util/types/NHSUKTypes.js';
 

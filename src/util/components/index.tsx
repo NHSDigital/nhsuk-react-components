@@ -1,6 +1,6 @@
-import { render, type RenderOptions as ClientOptions } from '@testing-library/react';
-import { act, StrictMode, type JSX } from 'react';
-import { renderToString, type ServerOptions } from 'react-dom/server';
+import { type RenderOptions as ClientOptions, render } from '@testing-library/react';
+import { type JSX, StrictMode, act } from 'react';
+import { type ServerOptions, renderToString } from 'react-dom/server';
 
 type RenderOptions =
   | { moduleName?: never; className: string }

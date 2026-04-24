@@ -1,9 +1,9 @@
 import { render } from '@testing-library/react';
 import { createRef } from 'react';
 
-import { Tabs, type TabsTitleProps } from '..';
-
 import { renderClient, renderServer } from '#util/components';
+
+import { Tabs, type TabsTitleProps } from '..';
 
 describe('Tabs', () => {
   it('matches snapshot', async () => {

@@ -1,9 +1,9 @@
 import {
-  isValidElement,
   type FC,
   type HTMLAttributes,
   type ReactElement,
   type ReactNode,
+  isValidElement,
 } from 'react';
 
 type WithProps<T extends ReactElement> = T & {

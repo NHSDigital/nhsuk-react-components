@@ -2,20 +2,20 @@
 
 import classNames from 'classnames';
 import {
+  type ComponentPropsWithRef,
+  type ComponentPropsWithoutRef,
+  type ReactNode,
   forwardRef,
   useContext,
   useEffect,
   useState,
-  type ComponentPropsWithRef,
-  type ComponentPropsWithoutRef,
-  type ReactNode,
 } from 'react';
-
-import { RadiosContext, type IRadiosContext } from '../RadiosContext.js';
 
 import { HintText } from '#components/form-elements/hint-text/index.js';
 import { Label } from '#components/form-elements/label/index.js';
 import { type FormElementProps } from '#util/types/FormTypes.js';
+
+import { type IRadiosContext, RadiosContext } from '../RadiosContext.js';
 
 export interface RadiosItemElementProps extends ComponentPropsWithoutRef<'input'> {
   conditional?: ReactNode;
