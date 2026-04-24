@@ -48,15 +48,6 @@ export default defineConfig([
       // Always import Node.js packages from `node:*`
       'import/enforce-node-protocol-usage': ['error', 'always'],
 
-      // Check import or require statements are A-Z ordered
-      'import/order': [
-        'error',
-        {
-          'alphabetize': { order: 'asc' },
-          'newlines-between': 'always',
-        },
-      ],
-
       // Prefer rules that are type aware
       'no-redeclare': 'off',
       'no-undef': 'off',
