@@ -121,20 +121,13 @@ describe('Radios', () => {
     expect(fieldRef.current).toHaveClass('nhsuk-radios__input');
   });
 
-  it('does not render the conditional content if checked is false', async () => {
+  it('does not render the conditional content if not checked', async () => {
     const { container } = await renderClient(
       <Radios id="example" name="example">
-        <Radios.Item
-          id="example-1"
-          value="yes"
-          checked={false}
-          conditional={<p className="conditional-test">Test</p>}
-        >
+        <Radios.Item value="yes" conditional={<p className="conditional-test">Test</p>}>
           Yes
         </Radios.Item>
-        <Radios.Item id="example-2" value="no">
-          No
-        </Radios.Item>
+        <Radios.Item value="no">No</Radios.Item>
       </Radios>,
       { moduleName: 'nhsuk-radios' },
     );
@@ -143,20 +136,13 @@ describe('Radios', () => {
     expect(conditionalElement?.parentElement).toHaveClass('nhsuk-radios__conditional--hidden');
   });
 
-  it('renders the conditional content if the radio reference = selected radio', async () => {
+  it('renders the conditional content if checked', async () => {
     const { container } = await renderClient(
       <Radios id="example" name="example">
-        <Radios.Item
-          id="example-1"
-          value="yes"
-          checked={true}
-          conditional={<p className="conditional-test">Test</p>}
-        >
+        <Radios.Item value="yes" conditional={<p className="conditional-test">Test</p>} checked>
           Yes
         </Radios.Item>
-        <Radios.Item id="example-2" value="no">
-          No
-        </Radios.Item>
+        <Radios.Item value="no">No</Radios.Item>
       </Radios>,
       { moduleName: 'nhsuk-radios' },
     );

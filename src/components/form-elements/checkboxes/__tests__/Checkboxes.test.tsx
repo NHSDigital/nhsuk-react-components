@@ -194,6 +194,42 @@ describe('Checkboxes', () => {
     expect(fieldRef.current).toHaveClass('nhsuk-checkboxes__input');
   });
 
+  it('does not render the conditional content if not checked', async () => {
+    const { container } = await renderClient(
+      <Checkboxes id="example" name="example">
+        <Checkboxes.Item value="email" conditional={<p className="conditional-test">Test</p>}>
+          Email
+        </Checkboxes.Item>
+        <Checkboxes.Item value="phone">Phone</Checkboxes.Item>
+        <Checkboxes.Item value="text">Text message</Checkboxes.Item>
+      </Checkboxes>,
+      { moduleName: 'nhsuk-checkboxes' },
+    );
+
+    const conditionalElement = container.querySelector('.conditional-test');
+    expect(conditionalElement?.parentElement).toHaveClass('nhsuk-checkboxes__conditional--hidden');
+  });
+
+  it('renders the conditional content if checked', async () => {
+    const { container } = await renderClient(
+      <Checkboxes id="example" name="example">
+        <Checkboxes.Item
+          value="email"
+          conditional={<p className="conditional-test">Test</p>}
+          checked
+        >
+          Email
+        </Checkboxes.Item>
+        <Checkboxes.Item value="phone">Phone</Checkboxes.Item>
+        <Checkboxes.Item value="text">Text message</Checkboxes.Item>
+      </Checkboxes>,
+      { moduleName: 'nhsuk-checkboxes' },
+    );
+
+    const conditionalElement = container.querySelector('.conditional-test');
+    expect(conditionalElement).toHaveTextContent('Test');
+  });
+
   it('sets attribute `data-checkbox-exclusive` when items are exclusive', async () => {
     const { container } = await renderClient(
       <Checkboxes id="example" name="example">
