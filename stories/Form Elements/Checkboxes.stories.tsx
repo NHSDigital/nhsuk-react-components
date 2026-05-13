@@ -104,7 +104,7 @@ export const WithValues: Story = {
     <Checkboxes {...args}>
       <Checkboxes.Item
         value="email"
-        checked
+        defaultChecked
         conditional={
           <TextInput
             label="Email address"
@@ -131,7 +131,7 @@ export const WithValues: Story = {
       </Checkboxes.Item>
       <Checkboxes.Item
         value="text"
-        checked
+        defaultChecked
         conditional={
           <TextInput
             label="Mobile phone number"
@@ -290,7 +290,7 @@ export const WithConditionalContentErrorNested: Story = {
       </Checkboxes.Item>
       <Checkboxes.Item
         value="phone"
-        checked
+        defaultChecked
         conditional={
           <TextInput
             label="Phone number"
