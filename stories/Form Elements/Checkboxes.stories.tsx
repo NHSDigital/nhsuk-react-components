@@ -39,6 +39,7 @@ export const Standard: Story = {
   name: 'Checkboxes default',
   args: {
     hint: 'Select all options that are relevant to you',
+    name: 'default',
   },
   render: (args) => (
     <Checkboxes {...args}>
@@ -58,6 +59,7 @@ export const WithCaption: Story = {
         How do you want to be contacted about this?
       </>
     ),
+    name: 'with-caption',
   },
   render: Standard.render,
 };
@@ -67,6 +69,7 @@ export const WithHintText: Story = {
   args: {
     legend: 'What is your nationality?',
     hint: 'If you have dual nationality, select all options that are relevant to you',
+    name: 'with-hint',
   },
   render: (args) => (
     <Checkboxes {...args}>
@@ -82,6 +85,7 @@ export const WithHintTextOnItems: Story = {
   args: {
     legend: 'What is your nationality?',
     hint: 'If you have dual nationality, select all options that are relevant to you',
+    name: 'with-hint-on-items',
   },
   render: (args) => (
     <Checkboxes {...args}>
@@ -97,8 +101,8 @@ export const WithHintTextOnItems: Story = {
 export const WithValues: Story = {
   name: 'Checkboxes with pre-checked values',
   args: {
-    name: 'exampleConditional1',
     error: 'Select how you want to be contacted',
+    name: 'with-values',
   },
   render: (args) => (
     <Checkboxes {...args}>
@@ -152,6 +156,7 @@ export const Small: Story = {
   args: {
     ...Standard.args,
     legendProps: { isPageHeading: true, size: 'm' },
+    name: 'small',
     small: true,
   },
   render: Standard.render,
@@ -162,6 +167,7 @@ export const SmallWithHintText: Story = {
   args: {
     ...WithHintText.args,
     legendProps: { isPageHeading: true, size: 'm' },
+    name: 'small-with-hint',
     small: true,
   },
   render: WithHintText.render,
@@ -172,6 +178,7 @@ export const SmallWithHintTextOnItems: Story = {
   args: {
     ...WithHintTextOnItems.args,
     legendProps: { isPageHeading: true, size: 'm' },
+    name: 'small-with-hint-on-items',
     small: true,
   },
   render: WithHintTextOnItems.render,
@@ -179,6 +186,9 @@ export const SmallWithHintTextOnItems: Story = {
 
 export const WithDisabledItem: Story = {
   name: 'Checkboxes with disabled item',
+  args: {
+    name: 'with-disabled-item',
+  },
   render: (args) => (
     <Checkboxes {...args}>
       <Checkboxes.Item value="red">Red</Checkboxes.Item>
@@ -194,6 +204,7 @@ export const WithError: Story = {
   name: 'Checkboxes with error message',
   args: {
     error: 'Select how you want to be contacted',
+    name: 'with-error',
   },
   render: Standard.render,
 };
@@ -203,6 +214,7 @@ export const WithHintAndError: Story = {
   args: {
     hint: 'Select all options that are relevant to you',
     error: 'Select how you want to be contacted',
+    name: 'with-hint-and-error',
   },
   render: Standard.render,
 };
@@ -210,8 +222,8 @@ export const WithHintAndError: Story = {
 export const WithConditionalContent: Story = {
   name: 'Checkboxes with conditional content',
   args: {
-    name: 'exampleConditional2',
     hint: 'Select all options that are relevant to you',
+    name: 'with-conditional-content',
   },
   render: (args) => (
     <Checkboxes {...args}>
@@ -263,6 +275,7 @@ export const WithConditionalContentError: Story = {
   args: {
     hint: 'Select all options that are relevant to you',
     error: 'Select how you like to be contacted',
+    name: 'with-conditional-content-error',
   },
   render: WithConditionalContent.render,
 };
@@ -270,8 +283,8 @@ export const WithConditionalContentError: Story = {
 export const WithConditionalContentErrorNested: Story = {
   name: 'Checkboxes with conditional content, error message (nested)',
   args: {
-    name: 'exampleConditional3',
     hint: 'Select all options that are relevant to you',
+    name: 'with-conditional-content-error-nested',
   },
   render: (args) => (
     <Checkboxes {...args}>
@@ -325,6 +338,7 @@ export const WithExclusiveNoneOption: Story = {
   args: {
     legend: 'How do you want to be contacted about this?',
     hint: 'Select all options that are relevant to you',
+    name: 'with-exclusive-none-option',
   },
   render: (args) => (
     <Checkboxes {...args}>
@@ -342,9 +356,9 @@ export const WithExclusiveNoneOption: Story = {
 export const WithExclusiveNoneOptionConditional: Story = {
   name: 'Checkboxes with "none of the above" option, conditional content',
   args: {
-    name: 'exampleConditional4',
     legend: 'How do you want to be contacted about this?',
     hint: 'Select all options that are relevant to you',
+    name: 'with-exclusive-none-option-conditional',
   },
   render: (args) => (
     <Checkboxes {...args}>
@@ -397,6 +411,9 @@ export const WithExclusiveNoneOptionConditional: Story = {
 
 export const WithExclusiveNoneOptionNamed: Story = {
   name: 'Checkboxes with "none of the above" option (named groups)',
+  args: {
+    name: 'with-exclusive-none-option-named',
+  },
   render: (args) => (
     <Fieldset>
       <Fieldset.Legend headingLevel="h1" size="l">
