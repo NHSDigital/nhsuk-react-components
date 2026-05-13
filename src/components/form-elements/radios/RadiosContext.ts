@@ -1,12 +1,13 @@
 'use client';
 
-import { createContext } from 'react';
+import { type ChangeEvent, createContext } from 'react';
 
 export interface IRadiosContext {
   name: string;
   getRadioId: (reference: string) => string;
   leaseReference: () => string;
   unleaseReference: (reference: string) => void;
+  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }
 
 export const RadiosContext = createContext<IRadiosContext>({
@@ -14,4 +15,5 @@ export const RadiosContext = createContext<IRadiosContext>({
   getRadioId: () => '',
   leaseReference: () => '',
   unleaseReference: () => {},
+  handleChange: () => {},
 });

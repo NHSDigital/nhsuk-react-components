@@ -2,6 +2,7 @@
 
 import classNames from 'classnames';
 import {
+  type ChangeEvent,
   type ComponentPropsWithRef,
   type ComponentPropsWithoutRef,
   type ReactNode,
@@ -44,11 +45,17 @@ export const CheckboxesItem = forwardRef<HTMLInputElement, CheckboxesItemProps>(
       defaultChecked,
       exclusive,
       exclusiveGroup,
+      onChange,
       ...rest
     } = props;
 
-    const { getBoxId, name, leaseReference, unleaseReference } =
-      useContext<ICheckboxesContext>(CheckboxesContext);
+    const {
+      name,
+      getBoxId,
+      leaseReference,
+      unleaseReference,
+      handleChange: ctxHandleChange,
+    } = useContext<ICheckboxesContext>(CheckboxesContext);
 
     const [checkboxReference] = useState<string>(leaseReference());
     const inputID = id || getBoxId(checkboxReference);
@@ -67,6 +74,14 @@ export const CheckboxesItem = forwardRef<HTMLInputElement, CheckboxesItemProps>(
 
     const inputProps: ComponentPropsWithDataAttributes<'input'> = rest;
 
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+      if (onChange) {
+        onChange(e);
+      }
+
+      ctxHandleChange(e);
+    };
+
     return (
       <>
         <div className="nhsuk-checkboxes__item">
@@ -81,6 +96,7 @@ export const CheckboxesItem = forwardRef<HTMLInputElement, CheckboxesItemProps>(
             data-checkbox-exclusive-group={exclusiveGroup}
             data-aria-controls={conditional ? `${inputID}--conditional` : undefined}
             aria-describedby={hint ? `${inputID}--hint` : undefined}
+            onChange={handleChange}
             ref={forwardedRef}
             {...inputProps}
           />

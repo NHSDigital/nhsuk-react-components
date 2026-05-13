@@ -3,6 +3,7 @@
 import classNames from 'classnames';
 import { type Checkboxes as CheckboxesModule } from 'nhsuk-frontend';
 import {
+  type ChangeEvent,
   type ComponentPropsWithoutRef,
   forwardRef,
   useEffect,
@@ -27,7 +28,7 @@ export type CheckboxesProps = CheckboxesElementProps &
   Omit<FormElementProps, 'label' | 'labelProps'>;
 
 const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, forwardedRef) => {
-  const { children, idPrefix = props.name, ...rest } = props;
+  const { children, idPrefix = props.name, onChange, ...rest } = props;
 
   const moduleRef = useRef<HTMLDivElement>(null);
   const importRef = useRef<Promise<CheckboxesModule | void>>(null);
@@ -79,6 +80,12 @@ const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, 
     _boxIds = {};
   };
 
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (onChange) {
+      onChange(e);
+    }
+  };
+
   if (instanceError) {
     throw instanceError;
   }
@@ -92,6 +99,7 @@ const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, 
           getBoxId: (reference) => getBoxId(id, reference),
           leaseReference,
           unleaseReference,
+          handleChange,
         };
         return (
           <div

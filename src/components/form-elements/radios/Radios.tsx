@@ -3,6 +3,7 @@
 import classNames from 'classnames';
 import { type Radios as RadiosModule } from 'nhsuk-frontend';
 import {
+  type ChangeEvent,
   type ComponentPropsWithoutRef,
   forwardRef,
   useEffect,
@@ -27,7 +28,7 @@ export interface RadiosElementProps extends ComponentPropsWithoutRef<'div'> {
 export type RadiosProps = RadiosElementProps & Omit<FormElementProps, 'label' | 'labelProps'>;
 
 const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwardedRef) => {
-  const { children, idPrefix = props.name, ...rest } = props;
+  const { children, idPrefix = props.name, onChange, ...rest } = props;
 
   const moduleRef = useRef<HTMLDivElement>(null);
   const importRef = useRef<Promise<RadiosModule | void>>(null);
@@ -80,6 +81,12 @@ const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwarde
     _radioIds = {};
   };
 
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (onChange) {
+      onChange(e);
+    }
+  };
+
   if (instanceError) {
     throw instanceError;
   }
@@ -93,6 +100,7 @@ const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwarde
           getRadioId: (reference) => getRadioId(id, reference),
           leaseReference: leaseReference,
           unleaseReference: unleaseReference,
+          handleChange,
         };
 
         return (

@@ -2,6 +2,7 @@
 
 import classNames from 'classnames';
 import {
+  type ChangeEvent,
   type ComponentPropsWithRef,
   type ComponentPropsWithoutRef,
   type ReactNode,
@@ -43,8 +44,13 @@ export const RadiosItem = forwardRef<HTMLInputElement, RadiosItemProps>((props, 
     ...rest
   } = props;
 
-  const { name, getRadioId, leaseReference, unleaseReference } =
-    useContext<IRadiosContext>(RadiosContext);
+  const {
+    name,
+    getRadioId,
+    leaseReference,
+    unleaseReference,
+    handleChange: ctxHandleChange,
+  } = useContext<IRadiosContext>(RadiosContext);
 
   const [radioReference] = useState<string>(leaseReference());
   const inputID = id || getRadioId(radioReference);
@@ -63,13 +69,18 @@ export const RadiosItem = forwardRef<HTMLInputElement, RadiosItemProps>((props, 
 
   const inputProps: ComponentPropsWithDataAttributes<'input'> = rest;
 
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (onChange) {
+      onChange(e);
+    }
+
+    ctxHandleChange(e);
+  };
+
   return (
     <>
       <div className="nhsuk-radios__item">
         <input
-          onChange={(e) => {
-            if (onChange) onChange(e);
-          }}
           className={classNames('nhsuk-radios__input', className)}
           id={inputID}
           name={name}
@@ -78,6 +89,7 @@ export const RadiosItem = forwardRef<HTMLInputElement, RadiosItemProps>((props, 
           defaultChecked={defaultChecked ?? (checked === undefined ? isChecked : undefined)}
           data-aria-controls={conditional ? `${inputID}--conditional` : undefined}
           aria-describedby={hint ? `${inputID}--hint` : undefined}
+          onChange={handleChange}
           ref={forwardedRef}
           {...inputProps}
         />
