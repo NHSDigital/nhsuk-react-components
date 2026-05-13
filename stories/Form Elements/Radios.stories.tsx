@@ -1,9 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
-import { useState } from 'react';
 
 import { Checkboxes } from '#components/form-elements/checkboxes/index.js';
 import { Radios } from '#components/form-elements/radios/index.js';
-import { TextInput } from '#components/form-elements/text-input/index.js';
 
 const meta: Meta<typeof Radios> = {
   title: 'Form Elements/Radios',
@@ -205,23 +203,15 @@ export const DisabledRadios: Story = {
 };
 
 export const RadiosWithError: Story = {
+  name: 'Radios with error message',
   args: {
+    error: 'Select yes if you have changed your name',
     idPrefix: 'error',
   },
-  render: function RadiosWithErrorRender(args) {
-    const [error, setError] = useState('Select yes if you have changed your name');
-    return (
-      <>
-        <Radios error={error} {...args}>
-          <Radios.Item value="yes">Yes</Radios.Item>
-          <Radios.Item value="no" defaultChecked>
-            No
-          </Radios.Item>
-        </Radios>
-        <TextInput value={error} onChange={(e) => setError(e.currentTarget.value)} />
-      </>
-    );
-  },
-
-  name: 'Radios With Error (String)',
+  render: (args) => (
+    <Radios {...args}>
+      <Radios.Item value="yes">Yes</Radios.Item>
+      <Radios.Item value="no">No</Radios.Item>
+    </Radios>
+  ),
 };

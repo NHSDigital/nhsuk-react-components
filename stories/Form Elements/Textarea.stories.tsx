@@ -1,7 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
-import { useState } from 'react';
 
-import { TextInput } from '#components/form-elements/text-input/index.js';
 import { Textarea } from '#components/form-elements/textarea/index.js';
 
 const meta: Meta<typeof Textarea> = {
@@ -28,15 +26,8 @@ export const TextareaWithAutoCompleteAttribute: Story = {
 };
 
 export const TextareaWithError: Story = {
-  render: function TextareaWithErrorRender(args) {
-    const [error, setError] = useState<string>('You must provide an explanation');
-    return (
-      <>
-        <Textarea error={error} {...args} />
-        <TextInput onChange={(e) => setError(e.currentTarget.value)} value={error} />
-      </>
-    );
+  name: 'Textarea with error message',
+  args: {
+    error: 'You must provide an explanation',
   },
-
-  name: 'Textarea With Error (String)',
 };
