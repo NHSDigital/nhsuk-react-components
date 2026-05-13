@@ -31,16 +31,17 @@ export type CheckboxesItemProps = CheckboxesItemElementProps &
 export const CheckboxesItem = forwardRef<HTMLInputElement, CheckboxesItemProps>(
   (props, forwardedRef) => {
     const {
-      id,
-      labelProps,
+      className,
       children,
+      id,
       hint,
       hintProps,
+      labelProps,
       conditional,
       conditionalProps,
       forceShowConditional,
-      defaultChecked,
       checked,
+      defaultChecked,
       exclusive,
       exclusiveGroup,
       ...rest
@@ -70,7 +71,7 @@ export const CheckboxesItem = forwardRef<HTMLInputElement, CheckboxesItemProps>(
       <>
         <div className="nhsuk-checkboxes__item">
           <input
-            className="nhsuk-checkboxes__input"
+            className={classNames('nhsuk-checkboxes__input', className)}
             id={inputID}
             name={name}
             type="checkbox"

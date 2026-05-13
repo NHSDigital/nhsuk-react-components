@@ -86,13 +86,13 @@ const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwarde
 
   return (
     <FormGroup<RadiosProps, 'div'> inputType="radios" {...rest}>
-      {({ className, inline, small, name, id, error, ...restRenderProps }) => {
+      {({ className, inline, small, name, id, idPrefix, error, ...restRenderProps }) => {
         resetRadioIds();
         const contextValue: IRadiosContext = {
+          name,
           getRadioId: (reference) => getRadioId(id, reference),
           leaseReference: leaseReference,
           unleaseReference: unleaseReference,
-          name,
         };
 
         return (
