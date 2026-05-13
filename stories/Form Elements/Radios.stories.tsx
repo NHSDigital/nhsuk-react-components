@@ -10,6 +10,7 @@ const meta: Meta<typeof Radios> = {
     legend: 'Have you changed your name?',
     legendProps: { isPageHeading: true, size: 'l' },
     hint: 'This includes changing your last name or spelling your name differently',
+    name: 'example',
   },
 };
 export default meta;
@@ -17,7 +18,7 @@ type Story = StoryObj<typeof Radios>;
 
 export const StandardRadios: Story = {
   args: {
-    idPrefix: 'standard',
+    name: 'standard',
   },
   render: (args) => (
     <Radios {...args}>
@@ -31,7 +32,7 @@ export const StandardRadios: Story = {
 
 export const InlineRadios: Story = {
   args: {
-    idPrefix: 'inline',
+    name: 'inline',
     inline: true,
   },
   render: (args) => (
@@ -51,6 +52,7 @@ export const RadiosWithCaption: Story = {
         <span className="nhsuk-caption-l">About you</span> Have you changed your name?
       </>
     ),
+    name: 'with-caption',
   },
   render: (args) => (
     <Radios {...args}>
@@ -66,7 +68,7 @@ export const RadiosWithConditionalContent: Story = {
   args: {
     legend: 'Impairment requirement',
     hint: 'Select relevant options',
-    idPrefix: 'conditional',
+    name: 'conditional',
   },
   render: (args) => {
     const impairmentsForm = (
@@ -101,7 +103,7 @@ export const RadiosWithADivider: Story = {
   args: {
     legend: 'How do you want to sign in?',
     hint: undefined,
-    idPrefix: 'divider',
+    name: 'divider',
   },
   render: (args) => (
     <Radios {...args}>
@@ -117,7 +119,7 @@ export const RadiosWithHintsOnItems: Story = {
   args: {
     legend: 'How do you want to sign in?',
     hint: undefined,
-    idPrefix: 'hints',
+    name: 'hints',
   },
   render: (args) => (
     <Radios {...args}>
@@ -141,7 +143,7 @@ export const SmallRadios: Story = {
   args: {
     ...StandardRadios.args,
     legendProps: { isPageHeading: true, size: 'm' },
-    idPrefix: 'small',
+    name: 'small',
     small: true,
   },
   render: StandardRadios.render,
@@ -151,6 +153,7 @@ export const SmallInlineRadios: Story = {
   args: {
     ...InlineRadios.args,
     legendProps: { isPageHeading: true, size: 'm' },
+    name: 'small-inline',
     small: true,
   },
   render: InlineRadios.render,
@@ -160,7 +163,7 @@ export const SmallRadiosWithConditionalContent: Story = {
   args: {
     ...RadiosWithConditionalContent.args,
     legendProps: { isPageHeading: true, size: 'm' },
-    idPrefix: 'small-conditional',
+    name: 'small-conditional',
     small: true,
   },
   render: RadiosWithConditionalContent.render,
@@ -170,7 +173,7 @@ export const SmallRadiosWithADivider: Story = {
   args: {
     ...RadiosWithADivider.args,
     legendProps: { isPageHeading: true, size: 'm' },
-    idPrefix: 'small-divider',
+    name: 'small-divider',
     small: true,
   },
   render: RadiosWithADivider.render,
@@ -180,7 +183,7 @@ export const SmallRadiosWithHintsOnItems: Story = {
   args: {
     ...RadiosWithHintsOnItems.args,
     legendProps: { isPageHeading: true, size: 'm' },
-    idPrefix: 'small-hints',
+    name: 'small-hints',
     small: true,
   },
   render: RadiosWithHintsOnItems.render,
@@ -188,7 +191,7 @@ export const SmallRadiosWithHintsOnItems: Story = {
 
 export const DisabledRadios: Story = {
   args: {
-    idPrefix: 'disabled',
+    name: 'disabled',
   },
   render: (args) => (
     <Radios {...args}>
@@ -206,7 +209,7 @@ export const RadiosWithError: Story = {
   name: 'Radios with error message',
   args: {
     error: 'Select yes if you have changed your name',
-    idPrefix: 'error',
+    name: 'error',
   },
   render: (args) => (
     <Radios {...args}>
