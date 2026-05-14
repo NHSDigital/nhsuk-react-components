@@ -11,6 +11,8 @@ import preserveDirectives from 'rollup-preserve-directives';
 import packageJson from './package.json' with { type: 'json' };
 import tsBuildConfig from './tsconfig.build.json' with { type: 'json' };
 
+const { NODE_ENV } = process.env;
+
 const { outDir } = tsBuildConfig.compilerOptions;
 const external = Object.keys(packageJson.peerDependencies);
 
@@ -73,7 +75,13 @@ export default defineConfig(
 
       // Handle warnings as errors
       onwarn(warning) {
-        throw new Error(warning.message, { cause: warning });
+        if (NODE_ENV === 'production') {
+          throw new Error(warning.message, {
+            cause: warning,
+          });
+        }
+
+        console.warn(warning.message);
       },
     }),
   ),
