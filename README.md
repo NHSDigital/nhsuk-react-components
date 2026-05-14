@@ -22,7 +22,7 @@ yarn add nhsuk-react-components
 ## Usage
 
 ```jsx
-import { DateInput, Form } from 'nhsuk-react-components';
+import { Button, DateInput, Form } from 'nhsuk-react-components';
 
 <Form noValidate>
   <DateInput
