@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
-import { type ChangeEvent, useState } from 'react';
+import { type ChangeEvent, Fragment, useState } from 'react';
 
 import { SummaryList } from '#components/content-presentation/summary-list/index.js';
 import { Radios } from '#components/form-elements/radios/index.js';
@@ -279,6 +279,47 @@ export const WithValues: Story = {
   ),
 };
 
+export const WithValueStateControlled: Story = {
+  name: 'Radios with pre-checked value state, controlled',
+  parameters: {
+    chromatic: {
+      disableSnapshot: true,
+    },
+  },
+  render: function WithValueStateControlledRender(args) {
+    const [value, setValue] = useState<string | undefined>('email');
+
+    const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+      setValue(target.value);
+    };
+
+    return (
+      <>
+        <Radios {...args}>
+          <Radios.Item value="email" checked={value === 'email'} onChange={handleChange}>
+            Email
+          </Radios.Item>
+          <Radios.Item value="phone" checked={value === 'phone'} onChange={handleChange}>
+            Phone
+          </Radios.Item>
+          <Radios.Item value="text" checked={value === 'text'} onChange={handleChange}>
+            Text message
+          </Radios.Item>
+        </Radios>
+
+        <SummaryList>
+          <SummaryList.Row>
+            <SummaryList.Key>Value</SummaryList.Key>
+            <SummaryList.Value>
+              <samp>{value ?? 'None'}</samp>
+            </SummaryList.Value>
+          </SummaryList.Row>
+        </SummaryList>
+      </>
+    );
+  },
+};
+
 export const WithConditionalContent: Story = {
   name: 'Radios with conditional content',
   args: {
@@ -322,6 +363,96 @@ export const WithConditionalContentValues: Story = {
       </Radios.Item>
     </Radios>
   ),
+};
+
+export const WithConditionalContentValuesStateControlled: Story = {
+  name: 'Radios with conditional content and pre-checked value state, controlled',
+  parameters: {
+    chromatic: {
+      disableSnapshot: true,
+    },
+  },
+  render: function WithConditionalContentValuesStateControlledRender(args) {
+    const [value, setValue] = useState<string | undefined>('email');
+    const [inputs, setInputs] = useState<Map<string, string>>(
+      new Map([['contact-by-email', 'karen.francis@example.com']]),
+    );
+
+    const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+      setValue(target.value);
+    };
+
+    const handleInput = ({ target }: ChangeEvent<HTMLInputElement>) => {
+      const updated = new Map(inputs);
+
+      updated.set(target.name, target.value);
+      setInputs(updated);
+    };
+
+    return (
+      <>
+        <Radios {...args}>
+          <Radios.Item
+            value="email"
+            conditional={
+              <ExampleEmail value={inputs?.get('contact-by-email')} onChange={handleInput} />
+            }
+            checked={value === 'email'}
+            onChange={handleChange}
+          >
+            Email
+          </Radios.Item>
+          <Radios.Item
+            value="phone"
+            conditional={
+              <ExamplePhoneNumber value={inputs?.get('contact-by-phone')} onChange={handleInput} />
+            }
+            checked={value === 'phone'}
+            onChange={handleChange}
+          >
+            Phone
+          </Radios.Item>
+          <Radios.Item
+            value="text"
+            conditional={
+              <ExampleMobilePhoneNumber
+                value={inputs?.get('contact-by-text')}
+                onChange={handleInput}
+              />
+            }
+            checked={value === 'text'}
+            onChange={handleChange}
+          >
+            Text message
+          </Radios.Item>
+        </Radios>
+
+        <SummaryList>
+          <SummaryList.Row>
+            <SummaryList.Key>Value</SummaryList.Key>
+            <SummaryList.Value>
+              <samp>{value ?? 'None'}</samp>
+            </SummaryList.Value>
+          </SummaryList.Row>
+          <SummaryList.Row>
+            <SummaryList.Key>Inputs</SummaryList.Key>
+            <SummaryList.Value>
+              {inputs.size ? (
+                [...inputs.entries()].map(([key, value]) => (
+                  <Fragment key={key}>
+                    <samp>{value}</samp>
+                    <br />
+                  </Fragment>
+                ))
+              ) : (
+                <samp>None</samp>
+              )}
+            </SummaryList.Value>
+          </SummaryList.Row>
+        </SummaryList>
+      </>
+    );
+  },
 };
 
 export const WithConditionalContentError: Story = {
