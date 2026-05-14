@@ -38,6 +38,8 @@ jobs:
 
       - name: Typescript build
         run: yarn build
+        env:
+          NODE_ENV: production
 
       - name: Publish npm package
         if: ${{ !github.event.release.prerelease }}

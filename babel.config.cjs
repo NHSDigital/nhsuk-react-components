@@ -1,6 +1,4 @@
-// Node.js environment with default
-// https://nodejs.org/en/learn/getting-started/nodejs-the-difference-between-development-and-production
-const { NODE_ENV = 'development' } = process.env;
+const { NODE_ENV } = process.env;
 
 /**
  * Babel config
@@ -27,7 +25,7 @@ module.exports = {
     [
       '@babel/preset-react',
       {
-        development: NODE_ENV === 'test' || NODE_ENV === 'development',
+        development: NODE_ENV !== 'production',
         runtime: 'automatic',
         useBuiltIns: true,
       },

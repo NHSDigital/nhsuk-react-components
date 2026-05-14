@@ -43,9 +43,13 @@ jobs:
 
       - name: Typescript build
         run: yarn build
+        env:
+          NODE_ENV: production
 
       - name: Storybook build
         run: yarn build-storybook
+        env:
+          NODE_ENV: production
 
       - name: Switch to PR branch
         if: ${{ github.event_name == 'pull_request' && env.CHROMATIC_PROJECT_TOKEN }}

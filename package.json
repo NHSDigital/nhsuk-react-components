@@ -49,7 +49,7 @@
   ],
   "scripts": {
     "cleanup": "rm -rf dist/ > /dev/null",
-    "build": "NODE_ENV=production yarn cleanup && rollup -c",
+    "build": "yarn cleanup && rollup -c",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test": "jest --color",
