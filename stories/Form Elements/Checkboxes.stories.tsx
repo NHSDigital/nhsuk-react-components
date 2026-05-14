@@ -1,5 +1,5 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
-import { type ChangeEvent, useState } from 'react';
+import { type ChangeEvent, Fragment, useState } from 'react';
 
 import { SummaryList } from '#components/content-presentation/summary-list/index.js';
 import { Checkboxes } from '#components/form-elements/checkboxes/index.js';
@@ -229,6 +229,55 @@ export const WithValues: Story = {
   ),
 };
 
+export const WithValueStateControlled: Story = {
+  name: 'Checkboxes with pre-checked values state, controlled',
+  parameters: {
+    chromatic: {
+      disableSnapshot: true,
+    },
+  },
+  render: function WithValueStateControlledRender(args) {
+    const [values, setValues] = useState<Set<string>>(new Set(['email', 'text']));
+
+    const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+      const updated = new Set(values);
+
+      if (target.checked) {
+        updated.add(target.value);
+      } else {
+        updated.delete(target.value);
+      }
+
+      setValues(updated);
+    };
+
+    return (
+      <>
+        <Checkboxes {...args}>
+          <Checkboxes.Item value="email" checked={values?.has('email')} onChange={handleChange}>
+            Email
+          </Checkboxes.Item>
+          <Checkboxes.Item value="phone" checked={values?.has('phone')} onChange={handleChange}>
+            Phone
+          </Checkboxes.Item>
+          <Checkboxes.Item value="text" checked={values?.has('text')} onChange={handleChange}>
+            Text message
+          </Checkboxes.Item>
+        </Checkboxes>
+
+        <SummaryList>
+          <SummaryList.Row>
+            <SummaryList.Key>Values</SummaryList.Key>
+            <SummaryList.Value>
+              <samp>{values.size ? [...values].join(', ') : 'None'}</samp>
+            </SummaryList.Value>
+          </SummaryList.Row>
+        </SummaryList>
+      </>
+    );
+  },
+};
+
 export const WithConditionalContent: Story = {
   name: 'Checkboxes with conditional content',
   args: {
@@ -276,6 +325,110 @@ export const WithConditionalContentValues: Story = {
       </Checkboxes.Item>
     </Checkboxes>
   ),
+};
+
+export const WithConditionalContentValuesStateControlled: Story = {
+  name: 'Checkboxes with conditional content and pre-checked values state, controlled',
+  args: {
+    name: 'with-conditional-content-values-state-controlled',
+  },
+  parameters: {
+    chromatic: {
+      disableSnapshot: true,
+    },
+  },
+  render: function WithConditionalContentValuesStateControlledRender(args) {
+    const [values, setValues] = useState<Set<string>>(new Set(['email', 'text']));
+    const [inputs, setInputs] = useState<Map<string, string>>(
+      new Map([
+        ['contact-by-email', 'karen.francis@example.com'],
+        ['contact-by-text', '07700 900362'],
+      ]),
+    );
+
+    const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+      const updated = new Set(values);
+
+      if (target.checked) {
+        updated.add(target.value);
+      } else {
+        updated.delete(target.value);
+      }
+
+      setValues(updated);
+    };
+
+    const handleInput = ({ target }: ChangeEvent<HTMLInputElement>) => {
+      const updated = new Map(inputs);
+
+      updated.set(target.name, target.value);
+      setInputs(updated);
+    };
+
+    return (
+      <>
+        <Checkboxes {...args}>
+          <Checkboxes.Item
+            value="email"
+            conditional={
+              <ExampleEmail value={inputs?.get('contact-by-email')} onChange={handleInput} />
+            }
+            checked={values?.has('email')}
+            onChange={handleChange}
+          >
+            Email
+          </Checkboxes.Item>
+          <Checkboxes.Item
+            value="phone"
+            conditional={
+              <ExamplePhoneNumber value={inputs?.get('contact-by-phone')} onChange={handleInput} />
+            }
+            checked={values?.has('phone')}
+            onChange={handleChange}
+          >
+            Phone
+          </Checkboxes.Item>
+          <Checkboxes.Item
+            value="text"
+            conditional={
+              <ExampleMobilePhoneNumber
+                value={inputs?.get('contact-by-text')}
+                onChange={handleInput}
+              />
+            }
+            checked={values?.has('text')}
+            onChange={handleChange}
+          >
+            Text message
+          </Checkboxes.Item>
+        </Checkboxes>
+
+        <SummaryList>
+          <SummaryList.Row>
+            <SummaryList.Key>Values</SummaryList.Key>
+            <SummaryList.Value>
+              <samp>{values.size ? [...values].join(', ') : 'None'}</samp>
+            </SummaryList.Value>
+          </SummaryList.Row>
+          <SummaryList.Row>
+            <SummaryList.Key>Inputs</SummaryList.Key>
+            <SummaryList.Value>
+              {inputs.size ? (
+                [...inputs.entries()].map(([key, value]) => (
+                  <Fragment key={key}>
+                    <samp>{value}</samp>
+                    <br />
+                  </Fragment>
+                ))
+              ) : (
+                <samp>None</samp>
+              )}
+            </SummaryList.Value>
+          </SummaryList.Row>
+        </SummaryList>
+      </>
+    );
+  },
 };
 
 export const WithConditionalContentError: Story = {
