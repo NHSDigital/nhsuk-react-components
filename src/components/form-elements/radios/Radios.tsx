@@ -33,7 +33,6 @@ const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwarde
   const importRef = useRef<Promise<RadiosModule | void>>(null);
   const [instanceError, setInstanceError] = useState<Error>();
   const [instance, setInstance] = useState<RadiosModule>();
-  const [selectedRadio, setSelectedRadio] = useState<string>();
 
   const _radioReferences: string[] = [];
   let _radioCount = 0;
@@ -76,10 +75,6 @@ const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwarde
     _radioReferences.splice(_radioReferences.indexOf(reference), 1);
   };
 
-  const setSelected = (radioReference: string): void => {
-    setSelectedRadio(radioReference);
-  };
-
   const resetRadioIds = (): void => {
     _radioCount = 0;
     _radioIds = {};
@@ -95,8 +90,6 @@ const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwarde
         resetRadioIds();
         const contextValue: IRadiosContext = {
           getRadioId: (reference) => getRadioId(id, reference),
-          selectedRadio: selectedRadio,
-          setSelected: setSelected,
           leaseReference: leaseReference,
           unleaseReference: unleaseReference,
           name,

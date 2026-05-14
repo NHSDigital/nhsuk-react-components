@@ -51,7 +51,12 @@ export const CheckboxesItem = forwardRef<HTMLInputElement, CheckboxesItemProps>(
 
     const [checkboxReference] = useState<string>(leaseReference());
     const inputID = id || getBoxId(checkboxReference);
-    const shouldShowConditional = !!(checked || defaultChecked);
+
+    const isChecked =
+      // 1. Checkbox is checked via props
+      !!(checked || defaultChecked) ||
+      // 2. Checkbox should be checked (to show conditional)
+      forceShowConditional;
 
     const { className: labelClassName, ...restLabelProps } = labelProps || {};
     const { className: hintClassName, ...restHintProps } = hintProps || {};
@@ -70,7 +75,7 @@ export const CheckboxesItem = forwardRef<HTMLInputElement, CheckboxesItemProps>(
             name={name}
             type="checkbox"
             checked={checked}
-            defaultChecked={defaultChecked || forceShowConditional}
+            defaultChecked={defaultChecked ?? (checked === undefined ? isChecked : undefined)}
             data-checkbox-exclusive={exclusive}
             data-checkbox-exclusive-group={exclusiveGroup}
             data-aria-controls={conditional ? `${inputID}--conditional` : undefined}
@@ -98,11 +103,7 @@ export const CheckboxesItem = forwardRef<HTMLInputElement, CheckboxesItemProps>(
           <div
             className={classNames(
               'nhsuk-checkboxes__conditional',
-              {
-                'nhsuk-checkboxes__conditional--hidden': !(
-                  shouldShowConditional || forceShowConditional
-                ),
-              },
+              { 'nhsuk-checkboxes__conditional--hidden': !isChecked },
               conditionalClassName,
             )}
             id={`${inputID}--conditional`}

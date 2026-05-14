@@ -43,28 +43,25 @@ export const RadiosItem = forwardRef<HTMLInputElement, RadiosItemProps>((props, 
     ...rest
   } = props;
 
-  const { name, getRadioId, setSelected, selectedRadio, leaseReference, unleaseReference } =
+  const { name, getRadioId, leaseReference, unleaseReference } =
     useContext<IRadiosContext>(RadiosContext);
+
   const [radioReference] = useState<string>(leaseReference());
   const inputID = id || getRadioId(radioReference);
-  const shouldShowConditional = selectedRadio === radioReference && checked !== false;
+
+  const isChecked =
+    // 1. Radio is checked via props
+    !!(checked || defaultChecked) ||
+    // 2. Radio should be checked (to show conditional)
+    forceShowConditional;
 
   useEffect(() => () => unleaseReference(radioReference));
-
-  useEffect(() => {
-    if (defaultChecked) setSelected(radioReference);
-  }, [defaultChecked, setSelected, radioReference]);
-
-  useEffect(() => {
-    if (checked) setSelected(radioReference);
-  }, [checked, setSelected, radioReference]);
 
   return (
     <>
       <div className="nhsuk-radios__item">
         <input
           onChange={(e) => {
-            setSelected(radioReference);
             if (onChange) onChange(e);
           }}
           className={classNames('nhsuk-radios__input', className)}
@@ -72,7 +69,7 @@ export const RadiosItem = forwardRef<HTMLInputElement, RadiosItemProps>((props, 
           name={name}
           type="radio"
           checked={checked}
-          defaultChecked={defaultChecked || forceShowConditional}
+          defaultChecked={defaultChecked ?? (checked === undefined ? isChecked : undefined)}
           data-aria-controls={conditional ? `${inputID}--conditional` : undefined}
           aria-describedby={hint ? `${inputID}--hint` : undefined}
           ref={forwardedRef}
@@ -93,7 +90,7 @@ export const RadiosItem = forwardRef<HTMLInputElement, RadiosItemProps>((props, 
       {conditional && (
         <div
           className={classNames('nhsuk-radios__conditional', {
-            'nhsuk-radios__conditional--hidden': !(shouldShowConditional || forceShowConditional),
+            'nhsuk-radios__conditional--hidden': !isChecked,
           })}
           id={`${inputID}--conditional`}
           {...conditionalProps}
