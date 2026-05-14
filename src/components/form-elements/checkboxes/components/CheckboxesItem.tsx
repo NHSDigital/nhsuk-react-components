@@ -37,10 +37,10 @@ export const CheckboxesItem = forwardRef<HTMLInputElement, CheckboxesItemProps>(
       hint,
       hintProps,
       conditional,
+      conditionalProps,
+      forceShowConditional,
       defaultChecked,
       checked,
-      forceShowConditional,
-      conditionalProps,
       exclusive,
       exclusiveGroup,
       ...rest
@@ -70,7 +70,7 @@ export const CheckboxesItem = forwardRef<HTMLInputElement, CheckboxesItemProps>(
             name={name}
             type="checkbox"
             checked={checked}
-            defaultChecked={defaultChecked}
+            defaultChecked={defaultChecked || forceShowConditional}
             data-checkbox-exclusive={exclusive}
             data-checkbox-exclusive-group={exclusiveGroup}
             data-aria-controls={conditional ? `${inputID}--conditional` : undefined}
