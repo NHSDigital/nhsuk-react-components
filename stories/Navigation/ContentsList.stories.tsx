@@ -6,13 +6,14 @@ import { ContentsList } from '#components/navigation/contents-list/index.js';
  * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/contents-list" target="_blank" rel="noopener noreferrer">here</a>.
  */
 const meta: Meta<typeof ContentsList> = {
-  title: 'Navigation/ContentsList',
+  title: 'Navigation/Contents list',
   component: ContentsList,
 };
+
 export default meta;
 type Story = StoryObj<typeof ContentsList>;
 
-export const Standard: Story = {
+export const Default: Story = {
   argTypes: {
     'aria-label': {
       control: 'text',

@@ -1,55 +1,86 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
-import { Checkboxes } from '#components/form-elements/checkboxes/index.js';
 import { Radios } from '#components/form-elements/radios/index.js';
+
+import { ExampleEmail, ExampleMobilePhoneNumber, ExamplePhoneNumber } from './TextInput.stories.js';
 
 const meta: Meta<typeof Radios> = {
   title: 'Form Elements/Radios',
   component: Radios,
   args: {
-    legend: 'Have you changed your name?',
+    legend: 'How do you want to be contacted about this?',
     legendProps: { isPageHeading: true, size: 'l' },
-    hint: 'This includes changing your last name or spelling your name differently',
     name: 'example',
   },
 };
+
 export default meta;
 type Story = StoryObj<typeof Radios>;
 
-export const StandardRadios: Story = {
+export const Default: Story = {
+  name: 'Radios default',
   args: {
-    name: 'standard',
+    legend: 'Are you 18 or over?',
+    name: 'default',
   },
   render: (args) => (
     <Radios {...args}>
       <Radios.Item value="yes">Yes</Radios.Item>
-      <Radios.Item value="no" defaultChecked>
-        No
-      </Radios.Item>
+      <Radios.Item value="no">No</Radios.Item>
     </Radios>
   ),
 };
 
-export const InlineRadios: Story = {
+export const Small: Story = {
+  name: 'Radios small',
   args: {
+    ...Default.args,
+    legendProps: { isPageHeading: true, size: 'm' },
+    name: 'small',
+    small: true,
+  },
+  render: (args) => (
+    <Radios {...args}>
+      <Radios.Item value="yes" defaultChecked>
+        Yes
+      </Radios.Item>
+      <Radios.Item value="no">No</Radios.Item>
+    </Radios>
+  ),
+};
+
+export const Inline: Story = {
+  name: 'Radios inline',
+  args: {
+    legend: 'Are you 18 or over?',
     name: 'inline',
     inline: true,
   },
   render: (args) => (
     <Radios {...args}>
       <Radios.Item value="yes">Yes</Radios.Item>
-      <Radios.Item value="no" defaultChecked>
-        No
-      </Radios.Item>
+      <Radios.Item value="no">No</Radios.Item>
     </Radios>
   ),
 };
 
-export const RadiosWithCaption: Story = {
+export const SmallInline: Story = {
+  name: 'Radios inline, small',
+  args: {
+    ...Inline.args,
+    legendProps: { isPageHeading: true, size: 'm' },
+    name: 'small-inline',
+    small: true,
+  },
+  render: Inline.render,
+};
+
+export const WithCaption: Story = {
+  name: 'Radios with caption',
   args: {
     legend: (
       <>
-        <span className="nhsuk-caption-l">About you</span> Have you changed your name?
+        <span className="nhsuk-caption-l">About you</span> Are you 18 or over?
       </>
     ),
     name: 'with-caption',
@@ -57,141 +88,127 @@ export const RadiosWithCaption: Story = {
   render: (args) => (
     <Radios {...args}>
       <Radios.Item value="yes">Yes</Radios.Item>
-      <Radios.Item value="no" defaultChecked>
-        No
-      </Radios.Item>
+      <Radios.Item value="no">No</Radios.Item>
     </Radios>
   ),
 };
 
-export const RadiosWithConditionalContent: Story = {
+export const SmallWithCaption: Story = {
+  name: 'Radios with caption, small',
   args: {
-    legend: 'Impairment requirement',
-    hint: 'Select relevant options',
-    name: 'conditional',
+    ...WithCaption.args,
+    legend: (
+      <>
+        <span className="nhsuk-caption-m">About you</span> Are you 18 or over?
+      </>
+    ),
+    legendProps: { isPageHeading: true, size: 'm' },
+    name: 'small-with-caption',
+    small: true,
   },
-  render: (args) => {
-    const impairmentsForm = (
-      <Checkboxes name="impairments" id="impairments">
-        <Checkboxes.Item value="autism">Autism</Checkboxes.Item>
-        <Checkboxes.Item value="developmental-conditions">
-          Developmental conditions (excluding autism)
-        </Checkboxes.Item>
-        <Checkboxes.Item value="dementia">Dementia</Checkboxes.Item>
-        <Checkboxes.Item value="learning-disability">Learning disability</Checkboxes.Item>
-        <Checkboxes.Item value="mental-health-condition">Mental Health Condition</Checkboxes.Item>
-        <Checkboxes.Item value="physical-disability">Physical disability</Checkboxes.Item>
-        <Checkboxes.Item value="sensory-disability">
-          Sensory disability - such as sight, hearing or verbal
-        </Checkboxes.Item>
-        <Checkboxes.Item value="long-term-condition">Long-term condition</Checkboxes.Item>
-      </Checkboxes>
-    );
-
-    return (
-      <Radios {...args}>
-        <Radios.Item value="yes" conditional={impairmentsForm}>
-          Patient requires an impairment to be added
-        </Radios.Item>
-        <Radios.Item value="no">Patient would prefer not to say</Radios.Item>
-      </Radios>
-    );
-  },
+  render: WithCaption.render,
 };
 
-export const RadiosWithADivider: Story = {
+export const WithHint: Story = {
+  name: 'Radios with hint',
   args: {
-    legend: 'How do you want to sign in?',
-    hint: undefined,
-    name: 'divider',
+    hint: 'Select 1 option',
+    name: 'with-hint',
   },
   render: (args) => (
     <Radios {...args}>
-      <Radios.Item value="government-gateway">Use Government Gateway</Radios.Item>
-      <Radios.Item value="nhsuk-login">Use NHS.UK login</Radios.Item>
-      <Radios.Divider>or</Radios.Divider>
-      <Radios.Item value="create-account">Create an account</Radios.Item>
+      <Radios.Item value="email">Email</Radios.Item>
+      <Radios.Item value="phone">Phone</Radios.Item>
+      <Radios.Item value="text">Text message</Radios.Item>
     </Radios>
   ),
 };
 
-export const RadiosWithHintsOnItems: Story = {
+export const SmallWithHint: Story = {
+  name: 'Radios with hint, small',
   args: {
-    legend: 'How do you want to sign in?',
-    hint: undefined,
-    name: 'hints',
+    ...WithHint.args,
+    legendProps: { isPageHeading: true, size: 'm' },
+    name: 'small-with-hint',
+    small: true,
+  },
+  render: WithHint.render,
+};
+
+export const WithHintOnItems: Story = {
+  name: 'Radios with hints on items',
+  args: {
+    legend: 'Do you have a mobile phone with signal?',
+    name: 'with-hint-on-items',
   },
   render: (args) => (
     <Radios {...args}>
-      <Radios.Item
-        value="government-gateway"
-        hint="You'll have a user ID if you've registered for self-assessment or filed a tax return online before."
-      >
-        Use Government Gateway
+      <Radios.Item value="mobile" hint="We will text you a 6 digit security code">
+        Yes, I have a mobile phone with signal
       </Radios.Item>
-      <Radios.Item
-        value="nhsuk-login"
-        hint="You'll have an account if you've already proved your identity with either Barclays, CitizenSafe, Digidentity, Experian, Post Office, Royal Mail or SecureIdentity."
-      >
-        Use NHS.UK login
+      <Radios.Item value="landline" hint="We will call you to give you a 6 digit security code">
+        No, I want to use my landline
       </Radios.Item>
     </Radios>
   ),
 };
 
-export const SmallRadios: Story = {
+export const SmallWithHintOnItems: Story = {
+  name: 'Radios with hints on items, small',
   args: {
-    ...StandardRadios.args,
+    ...WithHintOnItems.args,
     legendProps: { isPageHeading: true, size: 'm' },
-    name: 'small',
+    name: 'small-with-hint-on-items',
     small: true,
   },
-  render: StandardRadios.render,
+  render: WithHintOnItems.render,
 };
 
-export const SmallInlineRadios: Story = {
+export const WithError: Story = {
+  name: 'Radios with error message',
   args: {
-    ...InlineRadios.args,
+    error: 'Select how you want to be contacted',
+    name: 'with-error',
+  },
+  render: WithHint.render,
+};
+
+export const SmallWithError: Story = {
+  name: 'Radios with error message, small',
+  args: {
+    ...WithError.args,
     legendProps: { isPageHeading: true, size: 'm' },
-    name: 'small-inline',
+    name: 'small-with-error',
     small: true,
   },
-  render: InlineRadios.render,
+  render: WithError.render,
 };
 
-export const SmallRadiosWithConditionalContent: Story = {
+export const WithHintAndError: Story = {
+  name: 'Radios with error message and hint',
   args: {
-    ...RadiosWithConditionalContent.args,
+    hint: 'Select 1 option',
+    error: 'Select how you want to be contacted',
+    name: 'with-hint-and-error',
+  },
+  render: WithHint.render,
+};
+
+export const SmallWithHintAndError: Story = {
+  name: 'Radios with error message and hint, small',
+  args: {
+    ...WithHintAndError.args,
     legendProps: { isPageHeading: true, size: 'm' },
-    name: 'small-conditional',
+    name: 'small-with-hint-and-error',
     small: true,
   },
-  render: RadiosWithConditionalContent.render,
+  render: WithHintAndError.render,
 };
 
-export const SmallRadiosWithADivider: Story = {
+export const WithDisabledItems: Story = {
+  name: 'Radios with disabled items',
   args: {
-    ...RadiosWithADivider.args,
-    legendProps: { isPageHeading: true, size: 'm' },
-    name: 'small-divider',
-    small: true,
-  },
-  render: RadiosWithADivider.render,
-};
-
-export const SmallRadiosWithHintsOnItems: Story = {
-  args: {
-    ...RadiosWithHintsOnItems.args,
-    legendProps: { isPageHeading: true, size: 'm' },
-    name: 'small-hints',
-    small: true,
-  },
-  render: RadiosWithHintsOnItems.render,
-};
-
-export const DisabledRadios: Story = {
-  args: {
-    name: 'disabled',
+    name: 'with-disabled-items',
   },
   render: (args) => (
     <Radios {...args}>
@@ -205,16 +222,133 @@ export const DisabledRadios: Story = {
   ),
 };
 
-export const RadiosWithError: Story = {
-  name: 'Radios with error message',
+export const SmallWithDisabledItems: Story = {
+  name: 'Radios with disabled items, small',
   args: {
-    error: 'Select yes if you have changed your name',
-    name: 'error',
+    ...WithDisabledItems.args,
+    legendProps: { isPageHeading: true, size: 'm' },
+    name: 'small-with-disabled-items',
+    small: true,
+  },
+  render: WithDisabledItems.render,
+};
+
+export const WithDivider: Story = {
+  name: 'Radios with divider',
+  args: {
+    legend: "Have you had all the vaccinations you're eligible for in the UK?",
+    hint: 'You would have got these vaccinations at school, from your GP surgery or another healthcare provider',
+    name: 'with-divider',
   },
   render: (args) => (
     <Radios {...args}>
       <Radios.Item value="yes">Yes</Radios.Item>
       <Radios.Item value="no">No</Radios.Item>
+      <Radios.Divider>or</Radios.Divider>
+      <Radios.Item value="unknown">I do not know</Radios.Item>
+    </Radios>
+  ),
+};
+
+export const SmallWithDivider: Story = {
+  name: 'Radios divider, small',
+  args: {
+    ...WithDivider.args,
+    legendProps: { isPageHeading: true, size: 'm' },
+    name: 'small-with-divider',
+    small: true,
+  },
+  render: WithDivider.render,
+};
+
+export const WithValues: Story = {
+  name: 'Radios with pre-checked value',
+  args: {
+    name: 'with-values',
+  },
+  render: (args) => (
+    <Radios {...args}>
+      <Radios.Item value="email" defaultChecked>
+        Email
+      </Radios.Item>
+      <Radios.Item value="phone">Phone</Radios.Item>
+      <Radios.Item value="text">Text message</Radios.Item>
+    </Radios>
+  ),
+};
+
+export const WithConditionalContent: Story = {
+  name: 'Radios with conditional content',
+  args: {
+    hint: 'Select 1 option',
+    name: 'with-conditional-content',
+  },
+  render: (args) => (
+    <Radios {...args}>
+      <Radios.Item value="email" conditional={<ExampleEmail />}>
+        Email
+      </Radios.Item>
+      <Radios.Item value="phone" conditional={<ExamplePhoneNumber />}>
+        Phone
+      </Radios.Item>
+      <Radios.Item value="text" conditional={<ExampleMobilePhoneNumber />}>
+        Text message
+      </Radios.Item>
+    </Radios>
+  ),
+};
+
+export const WithConditionalContentValues: Story = {
+  name: 'Radios with conditional content and pre-checked value',
+  args: {
+    name: 'with-conditional-content-values',
+  },
+  render: (args) => (
+    <Radios {...args}>
+      <Radios.Item value="email" conditional={<ExampleEmail />} defaultChecked>
+        Email
+      </Radios.Item>
+      <Radios.Item value="phone" conditional={<ExamplePhoneNumber />}>
+        Phone
+      </Radios.Item>
+      <Radios.Item value="text" conditional={<ExampleMobilePhoneNumber />}>
+        Text message
+      </Radios.Item>
+    </Radios>
+  ),
+};
+
+export const WithConditionalContentError: Story = {
+  name: 'Radios with conditional content, error message',
+  args: {
+    hint: 'Select 1 option',
+    error: 'Select how you like to be contacted',
+    name: 'with-conditional-content-error',
+  },
+  render: WithConditionalContent.render,
+};
+
+export const WithConditionalContentErrorNested: Story = {
+  name: 'Radios with conditional content, error message (nested)',
+  args: {
+    hint: 'Select 1 option',
+    name: 'with-conditional-content-error-nested',
+  },
+  render: (args) => (
+    <Radios {...args}>
+      <Radios.Item value="email" conditional={<ExampleEmail />}>
+        Email
+      </Radios.Item>
+      <Radios.Item
+        value="phone"
+        conditional={<ExamplePhoneNumber error="Enter your phone number" />}
+        defaultChecked
+      >
+        Phone
+      </Radios.Item>
+      <Radios.Item value="text" conditional={<ExampleMobilePhoneNumber />}>
+        Text message
+      </Radios.Item>
     </Radios>
   ),
 };

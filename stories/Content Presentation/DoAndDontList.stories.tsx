@@ -16,13 +16,15 @@ import { DoAndDontList } from '#components/content-presentation/do-and-dont-list
  * See the <b><a href="#custom-prefix-text" >custom prefix text</a></b> story for an example.
  */
 const meta: Meta<typeof DoAndDontList> = {
-  title: 'Content Presentation/DoAndDontList',
+  title: "Content Presentation/Do and Don't list",
   component: DoAndDontList,
 };
+
 export default meta;
 type Story = StoryObj<typeof DoAndDontList>;
 
 export const Do: Story = {
+  name: "Do and Don't list (do)",
   args: {
     listType: 'do',
   },
@@ -40,6 +42,7 @@ export const Do: Story = {
 };
 
 export const Dont: Story = {
+  name: "Do and Don't list (don't)",
   args: {
     listType: 'dont',
   },
@@ -74,6 +77,7 @@ export const Dont: Story = {
  * | JSX       | The JSX will be rendered, such as `<span>`  |
  */
 export const CustomPrefixText: Story = {
+  name: "Do and Don't list with custom prefix",
   args: {
     listType: 'dont',
   },

@@ -21,7 +21,8 @@ const meta: Meta<typeof Tabs> = {
 export default meta;
 type Story = StoryObj<typeof Tabs>;
 
-export const Standard: Story = {
+export const Default: Story = {
+  name: 'Tabs default',
   render: (args) => (
     <Tabs {...args}>
       <Tabs.Title>Contents</Tabs.Title>
@@ -40,36 +41,6 @@ export const Standard: Story = {
       </Tabs.Contents>
 
       <Tabs.Contents id="past-month">
-        <p>Past month contents go here</p>
-      </Tabs.Contents>
-    </Tabs>
-  ),
-};
-
-/**
- * There is a heading available by using the `Tabs.Title` component.
- * This heading is hidden on larger screens, and is useful for accessibility concerns and screen readers.
- * It also displays if the user has JavaScript disabled.
- */
-export const DifferentAccessibleHeading: Story = {
-  render: (args) => (
-    <Tabs {...args}>
-      <Tabs.Title>Tabs title</Tabs.Title>
-      <Tabs.List>
-        <Tabs.ListItem id="past-day-2">Past day</Tabs.ListItem>
-        <Tabs.ListItem id="past-week-2">Past week</Tabs.ListItem>
-        <Tabs.ListItem id="past-month-2">Past month</Tabs.ListItem>
-      </Tabs.List>
-
-      <Tabs.Contents id="past-day-2">
-        <p>Past day contents go here</p>
-      </Tabs.Contents>
-
-      <Tabs.Contents id="past-week-2">
-        <p>Past week contents go here</p>
-      </Tabs.Contents>
-
-      <Tabs.Contents id="past-month-2">
         <p>Past month contents go here</p>
       </Tabs.Contents>
     </Tabs>

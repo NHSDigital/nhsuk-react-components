@@ -25,10 +25,12 @@ const meta: Meta<typeof Select> = {
     </Select>
   ),
 };
+
 export default meta;
 type Story = StoryObj<typeof Select>;
 
-export const Standard: Story = {
+export const Default: Story = {
+  name: 'Select default',
   render: (args) => (
     <Select {...args}>
       <Select.Option value="published">Recently published</Select.Option>
@@ -39,19 +41,22 @@ export const Standard: Story = {
   ),
 };
 
-export const SelectWithHintText: Story = {
+export const SelectWithHint: Story = {
+  name: 'Select with hint',
   args: {
     hint: 'This can be different to where you went before',
   },
 };
 
 export const SelectWithError: Story = {
+  name: 'Select with error message',
   args: {
     error: 'Select a location',
   },
 };
 
-export const SelectWithErrorAndHintText: Story = {
+export const SelectWithErrorAndHint: Story = {
+  name: 'Select with error message and hint',
   args: {
     hint: 'This can be different to where you went before',
     error: 'Select a location',
@@ -59,6 +64,7 @@ export const SelectWithErrorAndHintText: Story = {
 };
 
 export const SelectWithDivider: Story = {
+  name: 'Select with divider',
   render: (args) => (
     <Select {...args}>
       <Select.Option value="first-name-ascending">First name (A to Z)</Select.Option>
@@ -71,6 +77,7 @@ export const SelectWithDivider: Story = {
 };
 
 export const SelectWithButton: Story = {
+  name: 'Select with button',
   args: {
     formGroupProps: {
       afterInput: (
@@ -83,6 +90,7 @@ export const SelectWithButton: Story = {
 };
 
 export const SelectWithButtonAndError: Story = {
+  name: 'Select with button and error message',
   args: {
     error: 'Select a location',
     formGroupProps: {

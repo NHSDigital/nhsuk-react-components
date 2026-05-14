@@ -3,7 +3,7 @@ import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { ActionLink } from '#components/navigation/action-link/index.js';
 
 const meta: Meta<typeof ActionLink> = {
-  title: 'Navigation/ActionLink',
+  title: 'Navigation/Action link',
   component: ActionLink,
   render: (args) => <ActionLink {...args}>Find your nearest A&E</ActionLink>,
 };
@@ -11,7 +11,7 @@ const meta: Meta<typeof ActionLink> = {
 export default meta;
 type Story = StoryObj<typeof ActionLink>;
 
-export const Standard: Story = {
+export const Default: Story = {
   name: 'Action link default',
   args: {
     href: '#',

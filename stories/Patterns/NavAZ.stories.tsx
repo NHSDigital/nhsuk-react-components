@@ -7,7 +7,7 @@ import { NavAZ } from '#patterns/nav-a-z/index.js';
  */
 
 const meta: Meta<typeof NavAZ> = {
-  title: 'Patterns/NavAZ',
+  title: 'Patterns/A to Z navigation',
   component: NavAZ,
   args: {
     fullAlphabet: false,
@@ -16,12 +16,14 @@ const meta: Meta<typeof NavAZ> = {
     letters: [],
   },
 };
+
 export default meta;
 type Story = StoryObj<typeof NavAZ>;
 
-export const Basic: Story = {
+export const Default: Story = {
+  name: 'A to Z navigation default',
   render: (args) => (
-    <NavAZ>
+    <NavAZ {...args}>
       <NavAZ.LinkItem href="#A">A</NavAZ.LinkItem>
       <NavAZ.LinkItem href="#B">B</NavAZ.LinkItem>
       <NavAZ.LinkItem href="#C">C</NavAZ.LinkItem>
@@ -52,21 +54,38 @@ export const Basic: Story = {
   ),
 };
 
-export const UsingFullAlphabetProp: Story = { args: { fullAlphabet: true } };
+export const UsingFullAlphabetProp: Story = {
+  name: 'A to Z navigation using full alphabet',
+  args: {
+    fullAlphabet: true,
+  },
+};
 
 export const UsingFullAlphabetPropWithDisabledLetters: Story = {
-  args: { disabledLetters: ['A', 'B', 'C'], fullAlphabet: true },
+  name: 'A to Z navigation using full alphabet with disabled letters',
+  args: {
+    disabledLetters: ['A', 'B', 'C'],
+    fullAlphabet: true,
+  },
 };
 
 export const UsingFullAlphabetPropWithRemovedLetters: Story = {
-  args: { removedLetters: ['A', 'B', 'C'], fullAlphabet: true },
+  name: 'A to Z navigation using full alphabet with removed letters',
+  args: {
+    removedLetters: ['A', 'B', 'C'],
+    fullAlphabet: true,
+  },
 };
 
 export const UsingIndividualLetters: Story = {
-  args: { letters: ['A', 'B', 'C'] },
+  name: 'A to Z navigation using individual letters',
+  args: {
+    letters: ['A', 'B', 'C'],
+  },
 };
 
 export const UsingACombinationOfProps: Story = {
+  name: 'A to Z navigation (complex)',
   args: {
     letters: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split(''),
     disabledLetters: 'QWERTY'.split(''),

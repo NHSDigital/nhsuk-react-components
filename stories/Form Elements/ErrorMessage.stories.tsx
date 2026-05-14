@@ -6,7 +6,7 @@ import { ErrorMessage } from '#components/form-elements/error-message/index.js';
  * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/error-message" target="_blank" rel="noopener noreferrer">here</a>.
  */
 const meta: Meta<typeof ErrorMessage> = {
-  title: 'Form Elements/ErrorMessage',
+  title: 'Form Elements/Error message',
   component: ErrorMessage,
   args: {
     children: 'Enter your full name',
@@ -20,17 +20,22 @@ const meta: Meta<typeof ErrorMessage> = {
     },
   },
 };
+
 export default meta;
 type Story = StoryObj<typeof ErrorMessage>;
 
-export const Standard: Story = {};
+export const Default: Story = {
+  name: 'Error message default',
+};
 
 export const CustomVisuallyHiddenText: Story = {
+  name: 'Error message with custom visually hidden text',
   args: { visuallyHiddenText: 'Custom' },
   argTypes: { visuallyHiddenText: { control: false } },
 };
 
 export const EmptyVisuallyHiddenText: Story = {
+  name: 'Error message with empty visually hidden text',
   args: { visuallyHiddenText: '' },
   argTypes: { visuallyHiddenText: { control: false } },
 };

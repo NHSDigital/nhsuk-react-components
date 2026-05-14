@@ -11,10 +11,11 @@ const meta: Meta<typeof Footer> = {
     width: false,
   },
 };
+
 export default meta;
 type Story = StoryObj<typeof Footer>;
 
-export const Standard: Story = {
+export const Default: Story = {
   name: 'Footer default',
   render: (args) => (
     <Footer {...args}>
@@ -97,7 +98,7 @@ export const WithMetaAndNavigation: Story = {
 
 export const WithMetaLinksOnly: Story = {
   name: 'Footer with meta (links only)',
-  render: Standard.render,
+  render: Default.render,
 };
 
 export const WithMetaLinksAndHTML: Story = {

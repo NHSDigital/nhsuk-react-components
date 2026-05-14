@@ -3,7 +3,7 @@ import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { FileUpload } from '#components/form-elements/file-upload/index.js';
 
 const meta: Meta<typeof FileUpload> = {
-  title: 'Form Elements/FileUpload',
+  title: 'Form Elements/File upload',
   component: FileUpload,
   args: {
     id: 'input-example',
@@ -19,20 +19,26 @@ const meta: Meta<typeof FileUpload> = {
 export default meta;
 type Story = StoryObj<typeof FileUpload>;
 
-export const Standard: Story = {};
-export const WithHintText: Story = {
+export const Default: Story = {
+  name: 'File upload default',
+};
+
+export const WithHint: Story = {
+  name: 'File upload with hint',
   args: {
     hint: 'Your photo may be in your Pictures, Photos, Downloads or Desktop folder',
   },
 };
 
 export const WithError: Story = {
+  name: 'File upload with error message',
   args: {
     error: 'The selected file must be a JPG, BMP or TIF',
   },
 };
 
-export const WithErrorAndHintText: Story = {
+export const WithErrorAndHint: Story = {
+  name: 'File upload with error message and hint',
   args: {
     error: 'The selected file must be a JPG, BMP or TIF',
     hint: 'Your photo may be in your Pictures, Photos, Downloads or Desktop folder',
@@ -40,24 +46,28 @@ export const WithErrorAndHintText: Story = {
 };
 
 export const WithSmallPrimaryButton: Story = {
+  name: 'File upload with small primary button',
   args: {
     chooseFilesButtonClassList: ['nhsuk-button--small'],
   },
 };
 
 export const WithSecondaryButton: Story = {
+  name: 'File upload with secondary button',
   args: {
     chooseFilesButtonClassList: ['nhsuk-button--secondary'],
   },
 };
 
 export const WithSmallSecondaryButton: Story = {
+  name: 'File upload with small secondary button',
   args: {
     chooseFilesButtonClassList: ['nhsuk-button--small', 'nhsuk-button--secondary'],
   },
 };
 
 export const WithMultiple: Story = {
+  name: 'File upload with multiple',
   args: {
     label: 'Upload multiple files',
     multiple: true,
@@ -70,6 +80,7 @@ export const WithMultiple: Story = {
 };
 
 export const WithTranslations: Story = {
+  name: 'File upload with translations',
   args: {
     label: 'Upload multiple files',
     multiple: true,
@@ -88,6 +99,7 @@ export const WithTranslations: Story = {
 };
 
 export const Disabled: Story = {
+  name: 'File upload disabled',
   args: {
     disabled: true,
   },

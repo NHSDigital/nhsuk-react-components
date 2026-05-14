@@ -6,24 +6,51 @@ const meta: Meta<typeof Tag> = {
   title: 'Content Presentation/Tag',
   component: Tag,
 };
+
 export default meta;
 type Story = StoryObj<typeof Tag>;
 
-export const StandardTag: Story = { args: { children: 'Standard' } };
+export const Default: Story = {
+  name: 'Tag default',
+  args: {
+    children: 'Active',
+  },
+};
 
-export const AllColours: Story = {
+export const Colours: Story = {
+  name: 'Tag colours',
   render: () => (
-    <div className="tag-wrapper">
-      <Tag modifier="white">Started</Tag>
-      <Tag modifier="grey">Not started</Tag>
-      <Tag modifier="green">New</Tag>
-      <Tag modifier="aqua-green">Active</Tag>
-      <Tag modifier="blue">Pending</Tag>
-      <Tag modifier="purple">Received</Tag>
-      <Tag modifier="pink">Sent</Tag>
-      <Tag modifier="red">Rejected</Tag>
-      <Tag modifier="orange">Declined</Tag>
-      <Tag modifier="yellow">Delayed</Tag>
-    </div>
+    <>
+      <p>
+        <Tag modifier="white">In progress</Tag>
+      </p>
+      <p>
+        <Tag modifier="grey">Inactive</Tag>
+      </p>
+      <p>
+        <Tag modifier="green">New</Tag>
+      </p>
+      <p>
+        <Tag modifier="aqua-green">Active</Tag>
+      </p>
+      <p>
+        <Tag modifier="blue">Pending</Tag>
+      </p>
+      <p>
+        <Tag modifier="purple">Received</Tag>
+      </p>
+      <p>
+        <Tag modifier="pink">Sent</Tag>
+      </p>
+      <p>
+        <Tag modifier="red">Rejected</Tag>
+      </p>
+      <p>
+        <Tag modifier="orange">Declined</Tag>
+      </p>
+      <p>
+        <Tag modifier="yellow">Delayed</Tag>
+      </p>
+    </>
   ),
 };

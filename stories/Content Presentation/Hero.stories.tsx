@@ -10,29 +10,31 @@ const meta: Meta<typeof Hero> = {
     width: false,
   },
 };
+
 export default meta;
 type Story = StoryObj<typeof Hero>;
 
-export const HeroWithHeadingAndContent: Story = {
+export const Default: Story = {
+  name: 'Hero default',
   render: (args) => (
-    <Hero>
+    <Hero {...args}>
       <Hero.Heading>We&apos;re here for you.</Hero.Heading>
       <Hero.Text>Helping you take control of your health and wellbeing.</Hero.Text>
     </Hero>
   ),
 };
 
-export const HeroWithImageHeadingAndContent: Story = {
-  render: (args) => (
-    <Hero imageSrc="https://assets.nhs.uk/prod/images/S_0818_homepage_hero_1_F0147446.width-1000.jpg">
-      <Hero.Heading>We&apos;re here for you.</Hero.Heading>
-      <Hero.Text>Helping you take control of your health and wellbeing.</Hero.Text>
-    </Hero>
-  ),
+export const WithImage: Story = {
+  name: 'Hero with image',
+  args: {
+    imageSrc: 'https://assets.nhs.uk/prod/images/S_0818_homepage_hero_1_F0147446.width-1000.jpg',
+  },
 };
 
-export const HeroWithImageOnly: Story = {
-  render: (args) => (
-    <Hero imageSrc="https://assets.nhs.uk/prod/images/S_0818_homepage_hero_1_F0147446.width-1000.jpg" />
-  ),
+export const WithImageContent: Story = {
+  name: 'Hero with image, content',
+  args: {
+    imageSrc: 'https://assets.nhs.uk/prod/images/S_0818_homepage_hero_1_F0147446.width-1000.jpg',
+  },
+  render: Default.render,
 };

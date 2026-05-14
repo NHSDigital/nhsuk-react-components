@@ -5,7 +5,7 @@ import { Card } from '#components/navigation/card/index.js';
 import { BodyText } from '#components/typography/BodyText.js';
 
 const meta: Meta<typeof SummaryList> = {
-  title: 'Content Presentation/SummaryList',
+  title: 'Content Presentation/Summary list',
   component: SummaryList,
   argTypes: {
     noBorder: {
@@ -14,10 +14,11 @@ const meta: Meta<typeof SummaryList> = {
     },
   },
 };
+
 export default meta;
 type Story = StoryObj<typeof SummaryList>;
 
-export const Standard: Story = {
+export const Default: Story = {
   name: 'Summary list default',
   render: (args) => (
     <SummaryList {...args}>

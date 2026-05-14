@@ -25,11 +25,12 @@ const meta: Meta<typeof Card> = {
     },
   },
 };
+
 export default meta;
 type Story = StoryObj<typeof Card>;
 type StoryGroup = StoryObj<typeof Card.GroupItem>;
 
-export const Standard: Story = {
+export const Default: Story = {
   name: 'Basic card default',
   render: (args) => (
     <Card {...args}>

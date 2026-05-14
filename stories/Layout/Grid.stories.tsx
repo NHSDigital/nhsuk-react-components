@@ -10,6 +10,7 @@ const meta: Meta = {
     width: false,
   },
 };
+
 export default meta;
 
 export const Grid: StoryObj = {

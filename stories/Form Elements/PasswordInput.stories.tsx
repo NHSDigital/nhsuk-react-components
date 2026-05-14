@@ -3,7 +3,7 @@ import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { PasswordInput } from '#components/form-elements/password-input/index.js';
 
 const meta: Meta<typeof PasswordInput> = {
-  title: 'Form Elements/PasswordInput',
+  title: 'Form Elements/Password input',
   component: PasswordInput,
   args: {
     id: 'input-example',
@@ -19,20 +19,26 @@ const meta: Meta<typeof PasswordInput> = {
 export default meta;
 type Story = StoryObj<typeof PasswordInput>;
 
-export const Standard: Story = {};
-export const WithHintText: Story = {
+export const Default: Story = {
+  name: 'Password input default',
+};
+
+export const WithHint: Story = {
+  name: 'Password input with hint',
   args: {
     hint: 'It probably has some letters, numbers and maybe even some symbols in it',
   },
 };
 
 export const WithError: Story = {
+  name: 'Password input with error message',
   args: {
     error: 'Enter a password',
   },
 };
 
-export const WithErrorAndHintText: Story = {
+export const WithErrorAndHint: Story = {
+  name: 'Password input with error message and hint',
   args: {
     error: 'Enter a password',
     hint: 'It probably has some letters, numbers and maybe even some symbols in it',
@@ -40,6 +46,7 @@ export const WithErrorAndHintText: Story = {
 };
 
 export const WithTranslations: Story = {
+  name: 'Password input with translations',
   args: {
     label: 'Cyfrinair',
     i18n: {

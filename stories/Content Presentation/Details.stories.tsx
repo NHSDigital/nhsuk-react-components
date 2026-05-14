@@ -17,11 +17,19 @@ const meta: Meta<typeof Details> = {
   title: 'Content Presentation/Details',
   component: Details,
 };
+
 export default meta;
 type Story = StoryObj<typeof Details>;
 
-export const Standard: Story = {
-  argTypes: { expander: { table: { disable: true } } },
+export const Default: Story = {
+  name: 'Details default',
+  argTypes: {
+    expander: {
+      table: {
+        disable: true,
+      },
+    },
+  },
   render: ({ expander }) => (
     <Details expander={expander}>
       <Details.Summary>Where can I find my NHS number?</Details.Summary>
@@ -44,7 +52,10 @@ export const Standard: Story = {
 };
 
 export const Expander: Story = {
-  args: { expander: true },
+  name: 'Expander',
+  args: {
+    expander: true,
+  },
   render: ({ expander }) => (
     <Details expander={expander}>
       <Details.Summary>Opening times</Details.Summary>
@@ -95,6 +106,7 @@ export const Expander: Story = {
 };
 
 export const ExpanderGroup: Story = {
+  name: 'Expander group',
   render: (args) => (
     <Details.ExpanderGroup>
       <Details expander>

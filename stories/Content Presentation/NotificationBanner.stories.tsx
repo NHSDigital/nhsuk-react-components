@@ -15,14 +15,15 @@ import { NotificationBanner } from '#components/content-presentation/notificatio
  * - `NotificationBanner.Link`
  */
 const meta: Meta<typeof NotificationBanner> = {
-  title: 'Content Presentation/Notification Banner',
+  title: 'Content Presentation/Notification banner',
   component: NotificationBanner,
 };
+
 export default meta;
 type Story = StoryObj<typeof NotificationBanner>;
 
-export const StandardPanel: Story = {
-  args: {},
+export const Default: Story = {
+  name: 'Notification banner default',
   render: (args) => (
     <NotificationBanner {...args}>
       <NotificationBanner.Heading>
@@ -32,7 +33,8 @@ export const StandardPanel: Story = {
   ),
 };
 
-export const SuccessPanel: Story = {
+export const Success: Story = {
+  name: 'Notification banner success',
   args: {
     success: true,
   },
@@ -48,8 +50,8 @@ export const SuccessPanel: Story = {
   ),
 };
 
-export const StandardPanelWithLink: Story = {
-  args: {},
+export const WithLink: Story = {
+  name: 'Notification banner with link',
   render: (args) => (
     <NotificationBanner {...args}>
       <NotificationBanner.Heading>
@@ -60,7 +62,8 @@ export const StandardPanelWithLink: Story = {
   ),
 };
 
-export const StandardPanelWithCustomTitle: Story = {
+export const WithCustomTitle: Story = {
+  name: 'Notification banner with custom title',
   args: {
     title: 'Important Message',
   },
@@ -72,8 +75,8 @@ export const StandardPanelWithCustomTitle: Story = {
   ),
 };
 
-export const StandardPanelWithCustomTitleElement: Story = {
-  args: {},
+export const WithCustomTitleElement: Story = {
+  name: 'Notification banner with custom title element',
   render: (args) => (
     <NotificationBanner {...args}>
       <NotificationBanner.Title>
@@ -85,8 +88,8 @@ export const StandardPanelWithCustomTitleElement: Story = {
   ),
 };
 
-export const StandardPanelWithList: Story = {
-  args: {},
+export const WithList: Story = {
+  name: 'Notification banner with list',
   render: (args) => (
     <NotificationBanner {...args}>
       <NotificationBanner.Heading>4 files uploaded</NotificationBanner.Heading>
@@ -108,8 +111,8 @@ export const StandardPanelWithList: Story = {
   ),
 };
 
-export const StandardPanelWithLotsOfContent: Story = {
-  args: {},
+export const WithLotsOfContent: Story = {
+  name: 'Notification banner with lots of content',
   render: (args) => (
     <NotificationBanner {...args}>
       <NotificationBanner.Heading>

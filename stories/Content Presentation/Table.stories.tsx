@@ -7,10 +7,12 @@ const meta: Meta<typeof Table> = {
   title: 'Content Presentation/Table',
   component: Table,
 };
+
 export default meta;
 type Story = StoryObj<typeof Table>;
 
-export const StandardTable: Story = {
+export const Default: Story = {
+  name: 'Table default',
   args: {
     caption: 'Skin symptoms and possible causes',
   },
@@ -40,7 +42,8 @@ export const StandardTable: Story = {
   ),
 };
 
-export const TableCard: Story = {
+export const AsACard: Story = {
+  name: 'Table as a card',
   args: {
     caption: 'Impetigo can look similar to other skin conditions',
   },
@@ -73,7 +76,8 @@ export const TableCard: Story = {
   ),
 };
 
-export const ResponsiveTable: Story = {
+export const Responsive: Story = {
+  name: 'Table responsive',
   args: {
     caption: 'Ibuprofen syrup dosages for children',
     responsive: true,
@@ -108,7 +112,8 @@ export const ResponsiveTable: Story = {
   ),
 };
 
-export const ResponsiveTableWithCustomHTML: Story = {
+export const WithCustomHTML: Story = {
+  name: 'Table with custom HTML',
   args: {
     caption: 'Skin symptoms and possible causes',
   },
@@ -183,6 +188,7 @@ export const ResponsiveTableWithCustomHTML: Story = {
 };
 
 export const FirstCellAsHeader: Story = {
+  name: 'Table with first cell as header',
   args: {
     firstCellIsHeader: true,
   },
@@ -229,6 +235,7 @@ export const FirstCellAsHeader: Story = {
 };
 
 export const NumericCells: Story = {
+  name: 'Table with numeric cells',
   args: {
     caption: 'Number of cases',
   },

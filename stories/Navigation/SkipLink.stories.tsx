@@ -22,7 +22,7 @@ const CodeText: FC<{ children: ReactNode }> = ({ children }) => (
 );
 
 const meta: Meta<typeof SkipLink> = {
-  title: 'Navigation/SkipLink',
+  title: 'Navigation/Skip link',
   component: SkipLink,
   render: (args) => (
     <>
@@ -51,4 +51,4 @@ const meta: Meta<typeof SkipLink> = {
 export default meta;
 type Story = StoryObj<typeof SkipLink>;
 
-export const Standard: Story = {};
+export const Default: Story = {};
