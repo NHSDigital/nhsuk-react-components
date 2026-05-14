@@ -8,9 +8,9 @@ This repository contains the code for NHS.UK React components - a port of the [N
 
 [View documentation and examples](https://nhsdigital.github.io/nhsuk-react-components)
 
-## Installation
+## Install package
 
-You can install this package using either `npm` or `yarn`.
+You can install this package into your service using either `npm` or `yarn`.
 
 ```bash
 npm install --save nhsuk-react-components
@@ -40,6 +40,30 @@ import { DateInput, Form } from 'nhsuk-react-components';
   <Button>Save and continue</Button>
 </Form>;
 ```
+
+## Development
+
+To run this project locally, set up Yarn using [Node.js corepack](https://github.com/nodejs/corepack#readme)
+
+```bash
+npm install -g corepack
+corepack enable
+yarn install
+```
+
+Then run the following:
+
+1. **Build and watch package**
+
+   ```bash
+   yarn build --watch
+   ```
+
+2. **Open documentation and examples**
+
+   ```bash
+   yarn storybook
+   ```
 
 ## Upgrading
 
