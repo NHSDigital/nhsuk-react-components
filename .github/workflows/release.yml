@@ -36,7 +36,7 @@ jobs:
       - name: Jest Tests
         run: yarn test --coverage
 
-      - name: Typescript build
+      - name: Package build
         run: yarn build
         env:
           NODE_ENV: production

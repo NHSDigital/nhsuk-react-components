@@ -53,6 +53,7 @@ updates:
       tools:
         patterns:
           - '@storybook/*'
+          - 'del-cli'
           - 'outdent'
           - 'sass-embedded'
           - 'storybook'
