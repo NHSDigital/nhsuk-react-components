@@ -1,5 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
+import { type ChangeEvent, useState } from 'react';
 
+import { SummaryList } from '#components/content-presentation/summary-list/index.js';
 import { Radios } from '#components/form-elements/radios/index.js';
 
 import { ExampleEmail, ExampleMobilePhoneNumber, ExamplePhoneNumber } from './TextInput.stories.js';
@@ -355,4 +357,42 @@ export const WithConditionalContentErrorNested: Story = {
       </Radios.Item>
     </Radios>
   ),
+};
+
+export const OnChangeHandler: Story = {
+  name: 'Radios change handler',
+  args: {
+    name: 'change-handler',
+  },
+  parameters: {
+    chromatic: {
+      disableSnapshot: true,
+    },
+  },
+  render: function OnChangeHandlerRender(args) {
+    const [value, setValue] = useState<string | undefined>();
+
+    const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+      setValue(target.value);
+    };
+
+    return (
+      <>
+        <Radios onChange={handleChange} {...args}>
+          <Radios.Item value="email">Email</Radios.Item>
+          <Radios.Item value="phone">Phone</Radios.Item>
+          <Radios.Item value="text">Text message</Radios.Item>
+        </Radios>
+
+        <SummaryList>
+          <SummaryList.Row>
+            <SummaryList.Key>Value</SummaryList.Key>
+            <SummaryList.Value>
+              <samp>{value ?? 'None'}</samp>
+            </SummaryList.Value>
+          </SummaryList.Row>
+        </SummaryList>
+      </>
+    );
+  },
 };
