@@ -24,8 +24,8 @@ export const Icon: FC<IconProps> = ({
   children,
   iconType,
   modifier = iconType
-    ?.replace('nhsuk-icon__', '') // NHS.UK Frontend v9.x
-    .replace('nhsuk-icon--', ''), // NHS.UK Frontend v10.x
+    ?.replace('nhsuk-icon__', '') // NHS.UK frontend v9.x
+    .replace('nhsuk-icon--', ''), // NHS.UK frontend v10.x
   title,
   ...rest
 }) => (

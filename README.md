@@ -1,6 +1,6 @@
 # NHS.UK React components
 
-This repository contains the code for NHS.UK React components - a port of the [NHS.UK Frontend components](https://github.com/nhsuk/nhsuk-frontend).
+This repository contains the code for NHS.UK React components - a port of the [NHS.UK frontend components](https://github.com/nhsuk/nhsuk-frontend).
 
 [![GitHub Actions CI Status](https://github.com/NHSDigital/nhsuk-react-components/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/NHSDigital/nhsuk-react-components/actions?query=workflow%3A%22CI+Build%22+branch%3Amain) [![Bundle Size](https://img.shields.io/bundlephobia/minzip/nhsuk-react-components.svg)](https://bundlephobia.com/result?p=nhsuk-react-components)
 
