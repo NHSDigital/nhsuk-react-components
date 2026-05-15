@@ -1,6 +1,7 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
-import { type ChangeEvent, type InputEvent, useEffect, useRef, useState } from 'react';
+import { type ChangeEvent, useState } from 'react';
 
+import { SummaryList } from '#components/content-presentation/summary-list/index.js';
 import { Checkboxes } from '#components/form-elements/checkboxes/index.js';
 import { Fieldset } from '#components/form-elements/fieldset/Fieldset.js';
 import { BodyText } from '#components/typography/BodyText.js';
@@ -12,8 +13,6 @@ import { ExampleEmail, ExampleMobilePhoneNumber, ExamplePhoneNumber } from './Te
  * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/checkboxes" target="_blank" rel="noopener noreferrer">here</a>.
  *
  * ## Implementation notes
- *
- * For details on the new form design pattern, check the documentation for the `Form` component.
  *
  * The `Checkbox` component provides a `CheckboxesContext` context, which the `Checkboxes.Item` components use. When each box initially renders, it will attempt to assign itself an `id` by calling the `getBoxId` method in the context. This will assign each box a sequential ID using either the `idPrefix` or `name` supplied to the Checkbox. If neither are provided, the element will generate it's own unique identifier.
  */
@@ -30,12 +29,6 @@ const meta: Meta<typeof Checkboxes> = {
 
 export default meta;
 type Story = StoryObj<typeof Checkboxes>;
-
-interface CheckboxState {
-  box1: { name?: string; id?: string };
-  box2: { name?: string; id?: string };
-  box3: { name?: string; id?: string };
-}
 
 export const Default: Story = {
   name: 'Checkboxes default',
@@ -442,83 +435,51 @@ export const NoIDSupplied: Story = {
     },
   },
   render: function NoIDSuppliedRender() {
-    const checkbox1Ref = useRef<HTMLInputElement>(null);
-    const checkbox2Ref = useRef<HTMLInputElement>(null);
-    const checkbox3Ref = useRef<HTMLInputElement>(null);
-
-    const [checkboxState, setCheckboxState] = useState<CheckboxState>({
-      box1: {
-        name: '',
-        id: '',
-      },
-      box2: {
-        name: '',
-        id: '',
-      },
-      box3: {
-        name: '',
-        id: '',
-      },
-    });
-
-    useEffect(() => {
-      setCheckboxState({
-        box1: {
-          name: checkbox1Ref.current?.name,
-          id: checkbox1Ref.current?.id,
-        },
-        box2: {
-          name: checkbox2Ref.current?.name,
-          id: checkbox2Ref.current?.id,
-        },
-        box3: {
-          name: checkbox3Ref.current?.name,
-          id: checkbox3Ref.current?.id,
-        },
-      });
-    }, []);
+    const [checkbox1, setCheckbox1] = useState<HTMLInputElement | null>(null);
+    const [checkbox2, setCheckbox2] = useState<HTMLInputElement | null>(null);
+    const [checkbox3, setCheckbox3] = useState<HTMLInputElement | null>(null);
 
     return (
       <>
-        <h2>Scenario: No ID Supplied</h2>
-        <h5>Expected Behaviour</h5>
-        <ul className="nhsuk-hint">
-          <li>Boxes are selectable via their labels</li>
-          <li>The Checkboxes are assigned IDs</li>
+        <ul className="nhsuk-list nhsuk-list--bullet">
+          <li>Checkboxes are selectable via their labels</li>
+          <li>Checkboxes are assigned IDs</li>
         </ul>
-        <h5>Results</h5>
-        <ul className="nhsuk-hint">
-          <li>
-            Box 1 ID:
-            {checkboxState.box1.id}
-          </li>
-          <li>
-            Box 2 ID:
-            {checkboxState.box2.id}
-          </li>
-          <li>
-            Box 3 ID:
-            {checkboxState.box3.id}
-          </li>
-          <li>
-            Box 1 Name:
-            {checkboxState.box1.name}
-          </li>
-          <li>
-            Box 2 Name:
-            {checkboxState.box2.name}
-          </li>
-          <li>
-            Box 3 Name:
-            {checkboxState.box3.name}
-          </li>
-        </ul>
-        <h5>Component</h5>
+
+        <hr />
+
         <Checkboxes>
-          <Checkboxes.Item ref={checkbox1Ref}>Box 1</Checkboxes.Item>
-          <Checkboxes.Item ref={checkbox2Ref}>Box 2</Checkboxes.Item>
-          <Checkboxes.Item ref={checkbox3Ref}>Box 3</Checkboxes.Item>
+          <Checkboxes.Item ref={(el) => setCheckbox1(el)}>Box 1</Checkboxes.Item>
+          <Checkboxes.Item ref={(el) => setCheckbox2(el)}>Box 2</Checkboxes.Item>
+          <Checkboxes.Item ref={(el) => setCheckbox3(el)}>Box 3</Checkboxes.Item>
         </Checkboxes>
+
+        {[
+          { name: 'Box 1', el: checkbox1 },
+          { name: 'Box 2', el: checkbox2 },
+          { name: 'Box 3', el: checkbox3 },
+        ].map(({ name, el }) => (
+          <SummaryList key={name}>
+            <SummaryList.Row>
+              <SummaryList.Key>Label</SummaryList.Key>
+              <SummaryList.Value>
+                <samp>{name}</samp>
+              </SummaryList.Value>
+            </SummaryList.Row>
+            <SummaryList.Row>
+              <SummaryList.Key>Name</SummaryList.Key>
+              <SummaryList.Value>
+                <samp>{el?.name}</samp>
+              </SummaryList.Value>
+            </SummaryList.Row>
+            <SummaryList.Row noBorder>
+              <SummaryList.Key>ID</SummaryList.Key>
+              <SummaryList.Value>
+                <samp>{el?.id}</samp>
+              </SummaryList.Value>
+            </SummaryList.Row>
+          </SummaryList>
+        ))}
       </>
     );
   },
@@ -532,83 +493,51 @@ export const NameSupplied: Story = {
     },
   },
   render: function NameSuppliedRender() {
-    const checkbox1Ref = useRef<HTMLInputElement>(null);
-    const checkbox2Ref = useRef<HTMLInputElement>(null);
-    const checkbox3Ref = useRef<HTMLInputElement>(null);
-
-    const [checkboxState, setCheckboxState] = useState<CheckboxState>({
-      box1: {
-        name: '',
-        id: '',
-      },
-      box2: {
-        name: '',
-        id: '',
-      },
-      box3: {
-        name: '',
-        id: '',
-      },
-    });
-
-    useEffect(() => {
-      setCheckboxState({
-        box1: {
-          name: checkbox1Ref.current?.name,
-          id: checkbox1Ref.current?.id,
-        },
-        box2: {
-          name: checkbox2Ref.current?.name,
-          id: checkbox2Ref.current?.id,
-        },
-        box3: {
-          name: checkbox3Ref.current?.name,
-          id: checkbox3Ref.current?.id,
-        },
-      });
-    }, []);
+    const [checkbox1, setCheckbox1] = useState<HTMLInputElement | null>(null);
+    const [checkbox2, setCheckbox2] = useState<HTMLInputElement | null>(null);
+    const [checkbox3, setCheckbox3] = useState<HTMLInputElement | null>(null);
 
     return (
       <>
-        <h2>Scenario: Name Supplied</h2>
-        <h5>Expected Behaviour</h5>
-        <ul className="nhsuk-hint">
-          <li>Boxes are selectable via their labels</li>
-          <li>The Checkboxes are assigned IDs according to the Checkboxes Name</li>
+        <ul className="nhsuk-list nhsuk-list--bullet">
+          <li>Checkboxes are selectable via their labels</li>
+          <li>Checkboxes have the same name as the checkboxes component</li>
         </ul>
-        <h5>Results</h5>
-        <ul className="nhsuk-hint">
-          <li>
-            Box 1 ID:
-            {checkboxState.box1.id}
-          </li>
-          <li>
-            Box 2 ID:
-            {checkboxState.box2.id}
-          </li>
-          <li>
-            Box 3 ID:
-            {checkboxState.box3.id}
-          </li>
-          <li>
-            Box 1 Name:
-            {checkboxState.box1.name}
-          </li>
-          <li>
-            Box 2 Name:
-            {checkboxState.box2.name}
-          </li>
-          <li>
-            Box 3 Name:
-            {checkboxState.box3.name}
-          </li>
-        </ul>
-        <h5>Component</h5>
+
+        <hr />
+
         <Checkboxes name="name-supplied">
-          <Checkboxes.Item ref={checkbox1Ref}>Box 1</Checkboxes.Item>
-          <Checkboxes.Item ref={checkbox2Ref}>Box 2</Checkboxes.Item>
-          <Checkboxes.Item ref={checkbox3Ref}>Box 3</Checkboxes.Item>
+          <Checkboxes.Item ref={(el) => setCheckbox1(el)}>Box 1</Checkboxes.Item>
+          <Checkboxes.Item ref={(el) => setCheckbox2(el)}>Box 2</Checkboxes.Item>
+          <Checkboxes.Item ref={(el) => setCheckbox3(el)}>Box 3</Checkboxes.Item>
         </Checkboxes>
+
+        {[
+          { name: 'Box 1', el: checkbox1 },
+          { name: 'Box 2', el: checkbox2 },
+          { name: 'Box 3', el: checkbox3 },
+        ].map(({ name, el }) => (
+          <SummaryList key={name}>
+            <SummaryList.Row>
+              <SummaryList.Key>Label</SummaryList.Key>
+              <SummaryList.Value>
+                <samp>{name}</samp>
+              </SummaryList.Value>
+            </SummaryList.Row>
+            <SummaryList.Row>
+              <SummaryList.Key>Name</SummaryList.Key>
+              <SummaryList.Value>
+                <samp>{el?.name}</samp>
+              </SummaryList.Value>
+            </SummaryList.Row>
+            <SummaryList.Row noBorder>
+              <SummaryList.Key>ID</SummaryList.Key>
+              <SummaryList.Value>
+                <samp>{el?.id}</samp>
+              </SummaryList.Value>
+            </SummaryList.Row>
+          </SummaryList>
+        ))}
       </>
     );
   },
@@ -622,84 +551,52 @@ export const IDPrefixSupplied: Story = {
     },
   },
   render: function IDPrefixSuppliedRender() {
-    const checkbox1Ref = useRef<HTMLInputElement>(null);
-    const checkbox2Ref = useRef<HTMLInputElement>(null);
-    const checkbox3Ref = useRef<HTMLInputElement>(null);
-
-    const [checkboxState, setCheckboxState] = useState<CheckboxState>({
-      box1: {
-        name: '',
-        id: '',
-      },
-      box2: {
-        name: '',
-        id: '',
-      },
-      box3: {
-        name: '',
-        id: '',
-      },
-    });
-
-    useEffect(() => {
-      setCheckboxState({
-        box1: {
-          name: checkbox1Ref.current?.name,
-          id: checkbox1Ref.current?.id,
-        },
-        box2: {
-          name: checkbox2Ref.current?.name,
-          id: checkbox2Ref.current?.id,
-        },
-        box3: {
-          name: checkbox3Ref.current?.name,
-          id: checkbox3Ref.current?.id,
-        },
-      });
-    }, []);
+    const [checkbox1, setCheckbox1] = useState<HTMLInputElement | null>(null);
+    const [checkbox2, setCheckbox2] = useState<HTMLInputElement | null>(null);
+    const [checkbox3, setCheckbox3] = useState<HTMLInputElement | null>(null);
 
     return (
       <>
-        <h2>Scenario: ID Prefix Supplied</h2>
-        <h5>Expected Behaviour</h5>
-        <ul className="nhsuk-hint">
-          <li>Boxes are selectable via their labels</li>
-          <li>The Checkboxes are assigned IDs according to the ID prefix</li>
-          <li>The Checkboxes are assigned randomly generated names</li>
+        <ul className="nhsuk-list nhsuk-list--bullet">
+          <li>Checkboxes are selectable via their labels</li>
+          <li>Checkboxes are assigned IDs according to the ID prefix</li>
+          <li>Checkboxes are assigned randomly generated names</li>
         </ul>
-        <h5>Results</h5>
-        <ul className="nhsuk-hint">
-          <li>
-            Box 1 ID:
-            {checkboxState.box1.id}
-          </li>
-          <li>
-            Box 2 ID:
-            {checkboxState.box2.id}
-          </li>
-          <li>
-            Box 3 ID:
-            {checkboxState.box3.id}
-          </li>
-          <li>
-            Box 1 Name:
-            {checkboxState.box1.name}
-          </li>
-          <li>
-            Box 2 Name:
-            {checkboxState.box2.name}
-          </li>
-          <li>
-            Box 3 Name:
-            {checkboxState.box3.name}
-          </li>
-        </ul>
-        <h5>Component</h5>
+
+        <hr />
+
         <Checkboxes idPrefix="idprefix">
-          <Checkboxes.Item ref={checkbox1Ref}>Box 1</Checkboxes.Item>
-          <Checkboxes.Item ref={checkbox2Ref}>Box 2</Checkboxes.Item>
-          <Checkboxes.Item ref={checkbox3Ref}>Box 3</Checkboxes.Item>
+          <Checkboxes.Item ref={(el) => setCheckbox1(el)}>Box 1</Checkboxes.Item>
+          <Checkboxes.Item ref={(el) => setCheckbox2(el)}>Box 2</Checkboxes.Item>
+          <Checkboxes.Item ref={(el) => setCheckbox3(el)}>Box 3</Checkboxes.Item>
         </Checkboxes>
+
+        {[
+          { name: 'Box 1', el: checkbox1 },
+          { name: 'Box 2', el: checkbox2 },
+          { name: 'Box 3', el: checkbox3 },
+        ].map(({ name, el }) => (
+          <SummaryList key={name}>
+            <SummaryList.Row>
+              <SummaryList.Key>Label</SummaryList.Key>
+              <SummaryList.Value>
+                <samp>{name}</samp>
+              </SummaryList.Value>
+            </SummaryList.Row>
+            <SummaryList.Row>
+              <SummaryList.Key>Name</SummaryList.Key>
+              <SummaryList.Value>
+                <samp>{el?.name}</samp>
+              </SummaryList.Value>
+            </SummaryList.Row>
+            <SummaryList.Row noBorder>
+              <SummaryList.Key>ID</SummaryList.Key>
+              <SummaryList.Value>
+                <samp>{el?.id}</samp>
+              </SummaryList.Value>
+            </SummaryList.Row>
+          </SummaryList>
+        ))}
       </>
     );
   },
@@ -713,151 +610,98 @@ export const IDPrefixAndNameSupplied: Story = {
     },
   },
   render: function IDPrefixAndNameSuppliedRender() {
-    const checkbox1Ref = useRef<HTMLInputElement>(null);
-    const checkbox2Ref = useRef<HTMLInputElement>(null);
-    const checkbox3Ref = useRef<HTMLInputElement>(null);
-
-    const [checkboxState, setCheckboxState] = useState<CheckboxState>({
-      box1: {
-        name: '',
-        id: '',
-      },
-      box2: {
-        name: '',
-        id: '',
-      },
-      box3: {
-        name: '',
-        id: '',
-      },
-    });
-
-    useEffect(() => {
-      setCheckboxState({
-        box1: {
-          name: checkbox1Ref.current?.name,
-          id: checkbox1Ref.current?.id,
-        },
-        box2: {
-          name: checkbox2Ref.current?.name,
-          id: checkbox2Ref.current?.id,
-        },
-        box3: {
-          name: checkbox3Ref.current?.name,
-          id: checkbox3Ref.current?.id,
-        },
-      });
-    }, []);
+    const [checkbox1, setCheckbox1] = useState<HTMLInputElement | null>(null);
+    const [checkbox2, setCheckbox2] = useState<HTMLInputElement | null>(null);
+    const [checkbox3, setCheckbox3] = useState<HTMLInputElement | null>(null);
 
     return (
       <>
-        <h2>Scenario: ID Prefix and Name Supplied</h2>
-        <h5>Expected Behaviour</h5>
-        <ul className="nhsuk-hint">
-          <li>Boxes are selectable via their labels</li>
-          <li>The Checkboxes are assigned IDs according to the ID prefix</li>
-          <li>The Checkboxes have the same name as the Checkboxes component</li>
+        <ul className="nhsuk-list nhsuk-list--bullet">
+          <li>Checkboxes are selectable via their labels</li>
+          <li>Checkboxes are assigned IDs according to the ID prefix</li>
+          <li>Checkboxes have the same name as the checkboxes component</li>
         </ul>
-        <h5>Results</h5>
-        <ul className="nhsuk-hint">
-          <li>
-            Box 1 ID:
-            {checkboxState.box1.id}
-          </li>
-          <li>
-            Box 2 ID:
-            {checkboxState.box2.id}
-          </li>
-          <li>
-            Box 3 ID:
-            {checkboxState.box3.id}
-          </li>
-          <li>
-            Box 1 Name:
-            {checkboxState.box1.name}
-          </li>
-          <li>
-            Box 2 Name:
-            {checkboxState.box2.name}
-          </li>
-          <li>
-            Box 3 Name:
-            {checkboxState.box3.name}
-          </li>
-        </ul>
-        <h5>Component</h5>
+
+        <hr />
+
         <Checkboxes idPrefix="idprefix-name" name="testname">
-          <Checkboxes.Item ref={checkbox1Ref}>Box 1</Checkboxes.Item>
-          <Checkboxes.Item ref={checkbox2Ref}>Box 2</Checkboxes.Item>
-          <Checkboxes.Item ref={checkbox3Ref}>Box 3</Checkboxes.Item>
+          <Checkboxes.Item ref={(el) => setCheckbox1(el)}>Box 1</Checkboxes.Item>
+          <Checkboxes.Item ref={(el) => setCheckbox2(el)}>Box 2</Checkboxes.Item>
+          <Checkboxes.Item ref={(el) => setCheckbox3(el)}>Box 3</Checkboxes.Item>
         </Checkboxes>
+
+        {[
+          { name: 'Box 1', el: checkbox1 },
+          { name: 'Box 2', el: checkbox2 },
+          { name: 'Box 3', el: checkbox3 },
+        ].map(({ name, el }) => (
+          <SummaryList key={name}>
+            <SummaryList.Row>
+              <SummaryList.Key>Label</SummaryList.Key>
+              <SummaryList.Value>
+                <samp>{name}</samp>
+              </SummaryList.Value>
+            </SummaryList.Row>
+            <SummaryList.Row>
+              <SummaryList.Key>Name</SummaryList.Key>
+              <SummaryList.Value>
+                <samp>{el?.name}</samp>
+              </SummaryList.Value>
+            </SummaryList.Row>
+            <SummaryList.Row noBorder>
+              <SummaryList.Key>ID</SummaryList.Key>
+              <SummaryList.Value>
+                <samp>{el?.id}</samp>
+              </SummaryList.Value>
+            </SummaryList.Row>
+          </SummaryList>
+        ))}
       </>
     );
   },
 };
 
-export const OnChangeAndOnInputHandlers: Story = {
-  name: 'Checkboxes change and input handlers',
+export const OnChangeHandler: Story = {
+  name: 'Checkboxes change handler',
+  args: {
+    name: 'change-handler',
+  },
   parameters: {
     chromatic: {
       disableSnapshot: true,
     },
   },
-  render: function OnChangeAndOnInputHandlersRender() {
-    const [changeEventLog, setChangeEventLog] = useState<string[]>([]);
-    const [inputEventLog, setInputEventLog] = useState<string[]>([]);
-    const [currentValue, setCurrentValue] = useState<string[]>([]);
+  render: function OnChangeHandlerRender(args) {
+    const [values, setValues] = useState<Set<string>>(new Set());
 
-    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-      const target = e.target as HTMLInputElement;
-      setChangeEventLog([
-        ...changeEventLog,
-        `[${target.id}] Value: ${target.value}, Checked: ${target.checked}`,
-      ]);
-      if (currentValue.includes(target.value)) {
-        setCurrentValue(currentValue.filter((x) => x !== target.value));
+    const handleChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+      const updated = new Set(values);
+
+      if (target.checked) {
+        updated.add(target.value);
       } else {
-        setCurrentValue([...currentValue, target.value]);
+        updated.delete(target.value);
       }
-    };
 
-    const handleInput = (e: InputEvent<HTMLInputElement>) => {
-      const target = e.target as HTMLInputElement;
-      setInputEventLog([
-        ...inputEventLog,
-        `[${target.id}] Value: ${target.value}, Checked: ${target.checked}`,
-      ]);
+      setValues(updated);
     };
 
     return (
       <>
-        <h2>Scenario: onChange and onInput handlers are bound without any other props</h2>
-        <h5>Expected Behaviour</h5>
-        <ul className="nhsuk-hint">
-          <li>OnChange Handlers are fired using the generated IDs and Names</li>
-          <li>The value is passed through</li>
-        </ul>
-        <h5>Component</h5>
-        <Checkboxes onChange={handleChange} onInput={handleInput}>
+        <Checkboxes onChange={handleChange} {...args}>
           <Checkboxes.Item value="1">Box 1</Checkboxes.Item>
           <Checkboxes.Item value="2">Box 2</Checkboxes.Item>
           <Checkboxes.Item value="3">Box 3</Checkboxes.Item>
         </Checkboxes>
-        <br />
-        <h5>Current Value</h5>
-        <pre>{JSON.stringify(currentValue, null, 2)}</pre>
-        <h5>Change Events</h5>
-        <ul className="nhsuk-hint">
-          {changeEventLog.map((event, index) => (
-            <li key={index}>{event}</li>
-          ))}
-        </ul>
-        <h5>Input Events</h5>
-        <ul className="nhsuk-hint">
-          {inputEventLog.map((event, index) => (
-            <li key={index}>{event}</li>
-          ))}
-        </ul>
+
+        <SummaryList>
+          <SummaryList.Row>
+            <SummaryList.Key>Values</SummaryList.Key>
+            <SummaryList.Value>
+              <samp>{values.size ? [...values].join(', ') : 'None'}</samp>
+            </SummaryList.Value>
+          </SummaryList.Row>
+        </SummaryList>
       </>
     );
   },
