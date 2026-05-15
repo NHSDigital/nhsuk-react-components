@@ -1,6 +1,6 @@
 # NHS.UK React components
 
-## Unreleased
+## 6.0.1 - 18 May 2026
 
 This is a bug fix release.
 
