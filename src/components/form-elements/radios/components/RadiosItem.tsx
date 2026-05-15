@@ -2,6 +2,7 @@
 
 import classNames from 'classnames';
 import {
+  type ChangeEvent,
   type ComponentPropsWithRef,
   type ComponentPropsWithoutRef,
   type ReactNode,
@@ -13,7 +14,7 @@ import {
 
 import { HintText } from '#components/form-elements/hint-text/index.js';
 import { Label } from '#components/form-elements/label/index.js';
-import { type FormElementProps } from '#util/types/FormTypes.js';
+import { type ComponentPropsWithDataAttributes, type FormElementProps } from '#util/types/index.js';
 
 import { type IRadiosContext, RadiosContext } from '../RadiosContext.js';
 
@@ -35,68 +36,88 @@ export const RadiosItem = forwardRef<HTMLInputElement, RadiosItemProps>((props, 
     hintProps,
     labelProps,
     conditional,
-    forceShowConditional,
     conditionalProps,
+    forceShowConditional,
     checked,
     defaultChecked,
     onChange,
     ...rest
   } = props;
 
-  const { name, getRadioId, setSelected, selectedRadio, leaseReference, unleaseReference } =
-    useContext<IRadiosContext>(RadiosContext);
+  const {
+    name,
+    getRadioId,
+    leaseReference,
+    unleaseReference,
+    handleChange: ctxHandleChange,
+  } = useContext<IRadiosContext>(RadiosContext);
+
   const [radioReference] = useState<string>(leaseReference());
   const inputID = id || getRadioId(radioReference);
-  const shouldShowConditional = selectedRadio === radioReference && checked !== false;
+
+  const { className: labelClassName, ...restLabelProps } = labelProps || {};
+  const { className: hintClassName, ...restHintProps } = hintProps || {};
+  const { className: conditionalClassName, ...restConditionalProps } = conditionalProps || {};
+
+  const isChecked =
+    // 1. Radio is checked via props
+    !!(checked || defaultChecked) ||
+    // 2. Radio should be checked (to show conditional)
+    forceShowConditional;
 
   useEffect(() => () => unleaseReference(radioReference));
 
-  useEffect(() => {
-    if (defaultChecked) setSelected(radioReference);
-  }, [defaultChecked, setSelected, radioReference]);
+  const inputProps: ComponentPropsWithDataAttributes<'input'> = rest;
 
-  useEffect(() => {
-    if (checked) setSelected(radioReference);
-  }, [checked, setSelected, radioReference]);
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (onChange) {
+      onChange(e);
+    }
+
+    ctxHandleChange(e);
+  };
 
   return (
     <>
       <div className="nhsuk-radios__item">
         <input
-          onChange={(e) => {
-            setSelected(radioReference);
-            if (onChange) onChange(e);
-          }}
           className={classNames('nhsuk-radios__input', className)}
           id={inputID}
           name={name}
           type="radio"
           checked={checked}
-          defaultChecked={defaultChecked}
+          defaultChecked={defaultChecked ?? (checked === undefined ? isChecked : undefined)}
           data-aria-controls={conditional ? `${inputID}--conditional` : undefined}
           aria-describedby={hint ? `${inputID}--hint` : undefined}
+          onChange={handleChange}
           ref={forwardedRef}
-          {...rest}
+          {...inputProps}
         />
         <Label
-          className="nhsuk-radios__label"
+          className={classNames('nhsuk-radios__label', labelClassName)}
           id={`${inputID}--label`}
           htmlFor={inputID}
-          {...labelProps}
+          {...restLabelProps}
         >
           {children}
         </Label>
-        <HintText className="nhsuk-radios__hint" id={`${inputID}--hint`} {...hintProps}>
+        <HintText
+          className={classNames('nhsuk-radios__hint', hintClassName)}
+          id={`${inputID}--hint`}
+          {...restHintProps}
+        >
           {hint}
         </HintText>
       </div>
       {conditional && (
         <div
-          className={classNames('nhsuk-radios__conditional', {
-            'nhsuk-radios__conditional--hidden': !(shouldShowConditional || forceShowConditional),
-          })}
+          className={classNames(
+            'nhsuk-radios__conditional',
+            { 'nhsuk-radios__conditional--hidden': !isChecked },
+            conditionalClassName,
+          )}
           id={`${inputID}--conditional`}
-          {...conditionalProps}
+          {...restConditionalProps}
         >
           {conditional}
         </div>

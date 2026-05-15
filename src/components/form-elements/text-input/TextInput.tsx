@@ -55,7 +55,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           ) : undefined,
       }}
     >
-      {({ width, className, code, error, type = 'text', prefix, suffix, ...rest }) => (
+      {({ width, className, code, error, type = 'text', prefix, suffix, ...restRenderProps }) => (
         <input
           className={classNames(
             'nhsuk-input',
@@ -66,7 +66,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           )}
           ref={forwardedRef}
           type={type}
-          {...rest}
+          {...restRenderProps}
         />
       )}
     </FormGroup>

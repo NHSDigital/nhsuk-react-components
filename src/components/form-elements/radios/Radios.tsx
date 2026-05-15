@@ -3,6 +3,7 @@
 import classNames from 'classnames';
 import { type Radios as RadiosModule } from 'nhsuk-frontend';
 import {
+  type ChangeEvent,
   type ComponentPropsWithoutRef,
   forwardRef,
   useEffect,
@@ -27,13 +28,12 @@ export interface RadiosElementProps extends ComponentPropsWithoutRef<'div'> {
 export type RadiosProps = RadiosElementProps & Omit<FormElementProps, 'label' | 'labelProps'>;
 
 const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwardedRef) => {
-  const { children, idPrefix, ...rest } = props;
+  const { children, idPrefix = props.name, onChange, ...rest } = props;
 
   const moduleRef = useRef<HTMLDivElement>(null);
   const importRef = useRef<Promise<RadiosModule | void>>(null);
   const [instanceError, setInstanceError] = useState<Error>();
   const [instance, setInstance] = useState<RadiosModule>();
-  const [selectedRadio, setSelectedRadio] = useState<string>();
 
   const _radioReferences: string[] = [];
   let _radioCount = 0;
@@ -76,13 +76,15 @@ const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwarde
     _radioReferences.splice(_radioReferences.indexOf(reference), 1);
   };
 
-  const setSelected = (radioReference: string): void => {
-    setSelectedRadio(radioReference);
-  };
-
   const resetRadioIds = (): void => {
     _radioCount = 0;
     _radioIds = {};
+  };
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (onChange) {
+      onChange(e);
+    }
   };
 
   if (instanceError) {
@@ -91,15 +93,14 @@ const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwarde
 
   return (
     <FormGroup<RadiosProps, 'div'> inputType="radios" {...rest}>
-      {({ className, inline, small, name, id, error, ...restRenderProps }) => {
+      {({ className, inline, small, name, id, idPrefix, error, ...restRenderProps }) => {
         resetRadioIds();
         const contextValue: IRadiosContext = {
+          name,
           getRadioId: (reference) => getRadioId(id, reference),
-          selectedRadio: selectedRadio,
-          setSelected: setSelected,
           leaseReference: leaseReference,
           unleaseReference: unleaseReference,
-          name,
+          handleChange,
         };
 
         return (
@@ -113,7 +114,7 @@ const RadiosComponent = forwardRef<HTMLDivElement, RadiosProps>((props, forwarde
               className,
             )}
             data-module="nhsuk-radios"
-            id={id}
+            id={id === rest.id ? id : undefined}
             ref={moduleRef}
             {...restRenderProps}
           >

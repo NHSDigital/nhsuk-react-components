@@ -2,6 +2,7 @@
 
 import classNames from 'classnames';
 import {
+  type ChangeEvent,
   type ComponentPropsWithRef,
   type ComponentPropsWithoutRef,
   type ReactNode,
@@ -31,27 +32,39 @@ export type CheckboxesItemProps = CheckboxesItemElementProps &
 export const CheckboxesItem = forwardRef<HTMLInputElement, CheckboxesItemProps>(
   (props, forwardedRef) => {
     const {
-      id,
-      labelProps,
+      className,
       children,
+      id,
       hint,
       hintProps,
+      labelProps,
       conditional,
-      defaultChecked,
-      checked,
-      forceShowConditional,
       conditionalProps,
+      forceShowConditional,
+      checked,
+      defaultChecked,
       exclusive,
       exclusiveGroup,
+      onChange,
       ...rest
     } = props;
 
-    const { getBoxId, name, leaseReference, unleaseReference } =
-      useContext<ICheckboxesContext>(CheckboxesContext);
+    const {
+      name,
+      getBoxId,
+      leaseReference,
+      unleaseReference,
+      handleChange: ctxHandleChange,
+    } = useContext<ICheckboxesContext>(CheckboxesContext);
 
     const [checkboxReference] = useState<string>(leaseReference());
     const inputID = id || getBoxId(checkboxReference);
-    const shouldShowConditional = !!(checked || defaultChecked);
+
+    const isChecked =
+      // 1. Checkbox is checked via props
+      !!(checked || defaultChecked) ||
+      // 2. Checkbox should be checked (to show conditional)
+      forceShowConditional;
 
     const { className: labelClassName, ...restLabelProps } = labelProps || {};
     const { className: hintClassName, ...restHintProps } = hintProps || {};
@@ -61,20 +74,29 @@ export const CheckboxesItem = forwardRef<HTMLInputElement, CheckboxesItemProps>(
 
     const inputProps: ComponentPropsWithDataAttributes<'input'> = rest;
 
+    const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+      if (onChange) {
+        onChange(e);
+      }
+
+      ctxHandleChange(e);
+    };
+
     return (
       <>
         <div className="nhsuk-checkboxes__item">
           <input
-            className="nhsuk-checkboxes__input"
+            className={classNames('nhsuk-checkboxes__input', className)}
             id={inputID}
             name={name}
             type="checkbox"
             checked={checked}
-            defaultChecked={defaultChecked}
+            defaultChecked={defaultChecked ?? (checked === undefined ? isChecked : undefined)}
             data-checkbox-exclusive={exclusive}
             data-checkbox-exclusive-group={exclusiveGroup}
             data-aria-controls={conditional ? `${inputID}--conditional` : undefined}
             aria-describedby={hint ? `${inputID}--hint` : undefined}
+            onChange={handleChange}
             ref={forwardedRef}
             {...inputProps}
           />
@@ -98,11 +120,7 @@ export const CheckboxesItem = forwardRef<HTMLInputElement, CheckboxesItemProps>(
           <div
             className={classNames(
               'nhsuk-checkboxes__conditional',
-              {
-                'nhsuk-checkboxes__conditional--hidden': !(
-                  shouldShowConditional || forceShowConditional
-                ),
-              },
+              { 'nhsuk-checkboxes__conditional--hidden': !isChecked },
               conditionalClassName,
             )}
             id={`${inputID}--conditional`}

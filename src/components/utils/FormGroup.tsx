@@ -55,7 +55,11 @@ export const FormGroup = <P extends ComponentPropsWithoutRef<T>, T extends Eleme
   const { registerComponent, passError } = useContext<IFormGroupContext>(FormGroupContext);
   const { disableErrorFromComponents } = useFormContext();
 
-  const elementID = id ?? generatedID;
+  // Use `name` prop when `id` is missing, otherwise server-side rendered (SSR)
+  // components will use different generated IDs after client-side hydration
+  // https://react.dev/link/hydration-mismatch
+  const elementID = name && !id ? `${name}-${inputType}` : (id ?? generatedID);
+
   const labelID = `${elementID}--label`;
   const errorID = `${elementID}--error-message`;
   const hintID = `${elementID}--hint`;

@@ -36,8 +36,9 @@ export const Default: Story = {
  * Sometimes, rather than counting the number of characters, it is useful to count the number of words instead.
  */
 export const WordCountLimit: Story = {
-  name: 'Character count wth maxwords',
+  name: 'Character count with maxwords',
   args: {
+    id: 'with-word-count',
     maxWords: 150,
   },
 };
@@ -48,18 +49,20 @@ export const WordCountLimit: Story = {
  * Use the `threshold` prop to only show the count message when users have reached that percentage of the limit.
  */
 export const MessageThreshold: Story = {
-  name: 'Character count wth threshold',
+  name: 'Character count with threshold',
   args: {
+    id: 'with-threshold',
     maxLength: 112,
     threshold: 75,
   },
 };
 
 export const WithTranslations: Story = {
-  name: 'Character count wth translations',
+  name: 'Character count with translations',
   args: {
     label: 'Allwch chi roi mwy o fanylion?',
     hint: 'Peidiwch â chynnwys gwybodaeth bersonol, fel eich enw, dyddiad geni na rhif y GIG',
+    id: 'with-translations',
     maxLength: 200,
     i18n: {
       charactersUnderLimit: {

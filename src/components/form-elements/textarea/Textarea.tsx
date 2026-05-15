@@ -13,12 +13,12 @@ export type TextareaProps = TextareaElementProps &
 
 export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>((props, forwardedRef) => (
   <FormGroup<TextareaProps, 'textarea'> inputType="textarea" {...props}>
-    {({ children, className, error, ...rest }) => (
+    {({ children, className, error, ...restRenderProps }) => (
       <>
         <textarea
           className={classNames('nhsuk-textarea', { 'nhsuk-textarea--error': error }, className)}
           ref={forwardedRef}
-          {...rest}
+          {...restRenderProps}
         />
         {children}
       </>
