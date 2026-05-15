@@ -305,7 +305,11 @@ export const WithConditionalContentValues: Story = {
   },
   render: (args) => (
     <Radios {...args}>
-      <Radios.Item value="email" conditional={<ExampleEmail />} defaultChecked>
+      <Radios.Item
+        value="email"
+        conditional={<ExampleEmail defaultValue="karen.francis@example.com" />}
+        defaultChecked
+      >
         Email
       </Radios.Item>
       <Radios.Item value="phone" conditional={<ExamplePhoneNumber />}>

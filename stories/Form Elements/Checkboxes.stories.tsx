@@ -257,13 +257,21 @@ export const WithConditionalContentValues: Story = {
   },
   render: (args) => (
     <Checkboxes {...args}>
-      <Checkboxes.Item value="email" conditional={<ExampleEmail />} defaultChecked>
+      <Checkboxes.Item
+        value="email"
+        conditional={<ExampleEmail defaultValue="karen.francis@example.com" />}
+        defaultChecked
+      >
         Email
       </Checkboxes.Item>
       <Checkboxes.Item value="phone" conditional={<ExamplePhoneNumber />}>
         Phone
       </Checkboxes.Item>
-      <Checkboxes.Item value="text" conditional={<ExampleMobilePhoneNumber />} defaultChecked>
+      <Checkboxes.Item
+        value="text"
+        conditional={<ExampleMobilePhoneNumber defaultValue="07700 900362" />}
+        defaultChecked
+      >
         Text message
       </Checkboxes.Item>
     </Checkboxes>
