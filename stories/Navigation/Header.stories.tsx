@@ -11,10 +11,12 @@ const meta: Meta<typeof Header> = {
     width: false,
   },
 };
+
 export default meta;
 type Story = StoryObj<typeof Header>;
 
-export const HeaderDefault: Story = {
+export const Default: Story = {
+  name: 'Header default',
   args: {
     service: {
       text: 'Digital service manual',
@@ -38,7 +40,8 @@ export const HeaderDefault: Story = {
   ),
 };
 
-export const HeaderBasic: Story = {
+export const Basic: Story = {
+  name: 'Header basic',
   args: {
     logo: {
       href: '/',
@@ -47,7 +50,8 @@ export const HeaderBasic: Story = {
   render: (args) => <Header {...args} />,
 };
 
-export const HeaderWithServiceName: Story = {
+export const WithServiceName: Story = {
+  name: 'Header with service name',
   args: {
     service: {
       text: 'Manage patients',
@@ -57,7 +61,8 @@ export const HeaderWithServiceName: Story = {
   render: (args) => <Header {...args} />,
 };
 
-export const HeaderWithSearch: Story = {
+export const WithSearch: Story = {
+  name: 'Header with search',
   args: {
     logo: {
       href: '/',
@@ -70,7 +75,8 @@ export const HeaderWithSearch: Story = {
   ),
 };
 
-export const HeaderWithNavigation: Story = {
+export const WithNavigation: Story = {
+  name: 'Header with navigation',
   args: {
     logo: {
       href: '/',
@@ -91,7 +97,8 @@ export const HeaderWithNavigation: Story = {
   ),
 };
 
-export const HeaderWithAccount: Story = {
+export const WithAccount: Story = {
+  name: 'Header with account',
   args: {
     service: {
       text: 'Manage patients',
@@ -112,7 +119,8 @@ export const HeaderWithAccount: Story = {
   ),
 };
 
-export const HeaderWithAccountComplex: Story = {
+export const WithAccountComplex: Story = {
+  name: 'Header with account (complex)',
   args: {
     service: {
       text: 'Manage patients',
@@ -139,7 +147,8 @@ export const HeaderWithAccountComplex: Story = {
   ),
 };
 
-export const HeaderOrganisationalBlueWithNavigation: Story = {
+export const BlueWithNavigation: Story = {
+  name: 'Header blue with navigation',
   args: {
     logo: { href: '/' },
     organisation: {
@@ -164,7 +173,8 @@ export const HeaderOrganisationalBlueWithNavigation: Story = {
   ),
 };
 
-export const HeaderOrganisationalWhiteWithNavigation: Story = {
+export const WhiteWithNavigation: Story = {
+  name: 'Header white with navigation',
   args: {
     logo: { href: '/' },
     organisation: {
@@ -190,7 +200,8 @@ export const HeaderOrganisationalWhiteWithNavigation: Story = {
   ),
 };
 
-export const HeaderOrganisationalWhiteWithNavigationWhite: Story = {
+export const WhiteWithNavigationWhite: Story = {
+  name: 'Header white with navigation (white)',
   args: {
     logo: { href: '/' },
     organisation: {
@@ -216,7 +227,8 @@ export const HeaderOrganisationalWhiteWithNavigationWhite: Story = {
   ),
 };
 
-export const HeaderWithCustomNavItemComponent: Story = {
+export const WithCustomNavigationItemComponent: Story = {
+  name: 'Header with custom navigation item component',
   args: {
     logo: { href: '/' },
     organisation: {

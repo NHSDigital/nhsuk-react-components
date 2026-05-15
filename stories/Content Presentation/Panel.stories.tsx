@@ -7,10 +7,12 @@ const meta: Meta<typeof Panel> = {
   title: 'Content Presentation/Panel',
   component: Panel,
 };
+
 export default meta;
 type Story = StoryObj<typeof Panel>;
 
-export const StandardPanel: Story = {
+export const Default: Story = {
+  name: 'Panel default',
   render: (args) => (
     <Panel {...args}>
       <Panel.Title>Booking complete</Panel.Title>

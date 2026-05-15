@@ -3,7 +3,7 @@ import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { InsetText } from '#components/content-presentation/inset-text/index.js';
 
 const meta: Meta<typeof InsetText> = {
-  title: 'Content Presentation/InsetText',
+  title: 'Content Presentation/Inset text',
   component: InsetText,
   render: (args) => (
     <InsetText {...args}>
@@ -17,7 +17,8 @@ const meta: Meta<typeof InsetText> = {
     </InsetText>
   ),
 };
+
 export default meta;
 type Story = StoryObj<typeof InsetText>;
 
-export const Standard: Story = {};
+export const Default: Story = {};

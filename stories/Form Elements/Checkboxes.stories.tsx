@@ -3,9 +3,10 @@ import { type ChangeEvent, type InputEvent, useEffect, useRef, useState } from '
 
 import { Checkboxes } from '#components/form-elements/checkboxes/index.js';
 import { Fieldset } from '#components/form-elements/fieldset/Fieldset.js';
-import { TextInput } from '#components/form-elements/text-input/index.js';
 import { BodyText } from '#components/typography/BodyText.js';
 import { Heading } from '#components/typography/Heading.js';
+
+import { ExampleEmail, ExampleMobilePhoneNumber, ExamplePhoneNumber } from './TextInput.stories.js';
 
 /**
  * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/checkboxes" target="_blank" rel="noopener noreferrer">here</a>.
@@ -26,6 +27,7 @@ const meta: Meta<typeof Checkboxes> = {
     name: 'example',
   },
 };
+
 export default meta;
 type Story = StoryObj<typeof Checkboxes>;
 
@@ -35,10 +37,11 @@ interface CheckboxState {
   box3: { name?: string; id?: string };
 }
 
-export const Standard: Story = {
+export const Default: Story = {
   name: 'Checkboxes default',
   args: {
     hint: 'Select all options that are relevant to you',
+    name: 'default',
   },
   render: (args) => (
     <Checkboxes {...args}>
@@ -47,6 +50,17 @@ export const Standard: Story = {
       <Checkboxes.Item value="text">Text message</Checkboxes.Item>
     </Checkboxes>
   ),
+};
+
+export const Small: Story = {
+  name: 'Checkboxes small',
+  args: {
+    ...Default.args,
+    legendProps: { isPageHeading: true, size: 'm' },
+    name: 'small',
+    small: true,
+  },
+  render: Default.render,
 };
 
 export const WithCaption: Story = {
@@ -58,15 +72,34 @@ export const WithCaption: Story = {
         How do you want to be contacted about this?
       </>
     ),
+    name: 'with-caption',
   },
-  render: Standard.render,
+  render: Default.render,
 };
 
-export const WithHintText: Story = {
+export const SmallWithCaption: Story = {
+  name: 'Checkboxes with caption, small',
+  args: {
+    ...WithCaption.args,
+    legend: (
+      <>
+        <span className="nhsuk-caption-m">About you</span> How do you want to be contacted about
+        this?
+      </>
+    ),
+    legendProps: { isPageHeading: true, size: 'm' },
+    name: 'small-with-caption',
+    small: true,
+  },
+  render: WithCaption.render,
+};
+
+export const WithHint: Story = {
   name: 'Checkboxes with hint',
   args: {
     legend: 'What is your nationality?',
     hint: 'If you have dual nationality, select all options that are relevant to you',
+    name: 'with-hint',
   },
   render: (args) => (
     <Checkboxes {...args}>
@@ -77,11 +110,23 @@ export const WithHintText: Story = {
   ),
 };
 
-export const WithHintTextOnItems: Story = {
+export const SmallWithHint: Story = {
+  name: 'Checkboxes with hint, small',
+  args: {
+    ...WithHint.args,
+    legendProps: { isPageHeading: true, size: 'm' },
+    name: 'small-with-hint',
+    small: true,
+  },
+  render: WithHint.render,
+};
+
+export const WithHintOnItems: Story = {
   name: 'Checkboxes with hints on items',
   args: {
     legend: 'What is your nationality?',
     hint: 'If you have dual nationality, select all options that are relevant to you',
+    name: 'with-hint-on-items',
   },
   render: (args) => (
     <Checkboxes {...args}>
@@ -94,91 +139,63 @@ export const WithHintTextOnItems: Story = {
   ),
 };
 
-export const WithValues: Story = {
-  name: 'Checkboxes with pre-checked values',
+export const SmallWithHintOnItems: Story = {
+  name: 'Checkboxes with hints on items, small',
   args: {
-    name: 'exampleConditional1',
+    ...WithHintOnItems.args,
+    legendProps: { isPageHeading: true, size: 'm' },
+    name: 'small-with-hint-on-items',
+    small: true,
+  },
+  render: WithHintOnItems.render,
+};
+
+export const WithError: Story = {
+  name: 'Checkboxes with error message',
+  args: {
     error: 'Select how you want to be contacted',
+    name: 'with-error',
   },
-  render: (args) => (
-    <Checkboxes {...args}>
-      <Checkboxes.Item
-        value="email"
-        checked
-        conditional={
-          <TextInput
-            label="Email address"
-            name="email"
-            spellCheck="false"
-            className="nhsuk-u-width-two-thirds"
-          />
-        }
-      >
-        Email
-      </Checkboxes.Item>
-      <Checkboxes.Item
-        value="phone"
-        conditional={
-          <TextInput
-            label="Phone number"
-            name="phone"
-            type="tel"
-            className="nhsuk-u-width-two-thirds"
-          />
-        }
-      >
-        Phone
-      </Checkboxes.Item>
-      <Checkboxes.Item
-        value="text"
-        checked
-        conditional={
-          <TextInput
-            label="Mobile phone number"
-            name="mobile"
-            type="tel"
-            className="nhsuk-u-width-two-thirds"
-          />
-        }
-      >
-        Text message
-      </Checkboxes.Item>
-    </Checkboxes>
-  ),
+  render: Default.render,
 };
 
-export const Small: Story = {
-  name: 'Checkboxes small',
+export const SmallWithError: Story = {
+  name: 'Checkboxes with error message, small',
   args: {
-    ...Standard.args,
+    ...WithError.args,
     legendProps: { isPageHeading: true, size: 'm' },
+    name: 'small-with-error',
     small: true,
   },
-  render: Standard.render,
+  render: WithError.render,
 };
 
-export const SmallWithHintText: Story = {
-  name: 'Checkboxes small with hint',
+export const WithHintAndError: Story = {
+  name: 'Checkboxes with error message and hint',
   args: {
-    ...WithHintText.args,
-    legendProps: { isPageHeading: true, size: 'm' },
-    small: true,
+    hint: 'Select all options that are relevant to you',
+    error: 'Select how you want to be contacted',
+    name: 'with-hint-and-error',
   },
-  render: WithHintText.render,
+  render: Default.render,
 };
 
-export const SmallWithHintTextOnItems: Story = {
-  name: 'Checkboxes small with hints on items',
+export const SmallWithHintAndError: Story = {
+  name: 'Checkboxes with error message and hint, small',
   args: {
-    ...WithHintTextOnItems.args,
+    ...WithHintAndError.args,
     legendProps: { isPageHeading: true, size: 'm' },
+    name: 'small-with-hint-and-error',
     small: true,
   },
-  render: WithHintTextOnItems.render,
+  render: WithHintAndError.render,
 };
 
 export const WithDisabledItem: Story = {
   name: 'Checkboxes with disabled item',
+  args: {
+    name: 'with-disabled-item',
+  },
   render: (args) => (
     <Checkboxes {...args}>
       <Checkboxes.Item value="red">Red</Checkboxes.Item>
@@ -190,68 +207,70 @@ export const WithDisabledItem: Story = {
   ),
 };
 
-export const WithError: Story = {
-  name: 'Checkboxes with error message',
+export const SmallWithDisabledItem: Story = {
+  name: 'Checkboxes with disabled item, small',
   args: {
-    error: 'Select how you want to be contacted',
+    ...WithDisabledItem.args,
+    legendProps: { isPageHeading: true, size: 'm' },
+    name: 'small-with-disabled-item',
+    small: true,
   },
-  render: Standard.render,
+  render: WithDisabledItem.render,
 };
 
-export const WithHintAndError: Story = {
-  name: 'Checkboxes with hint and error',
+export const WithValues: Story = {
+  name: 'Checkboxes with pre-checked values',
   args: {
-    hint: 'Select all options that are relevant to you',
-    error: 'Select how you want to be contacted',
+    name: 'with-values',
   },
-  render: Standard.render,
+  render: (args) => (
+    <Checkboxes {...args}>
+      <Checkboxes.Item value="email" defaultChecked>
+        Email
+      </Checkboxes.Item>
+      <Checkboxes.Item value="phone">Phone</Checkboxes.Item>
+      <Checkboxes.Item value="text" defaultChecked>
+        Text message
+      </Checkboxes.Item>
+    </Checkboxes>
+  ),
 };
 
 export const WithConditionalContent: Story = {
   name: 'Checkboxes with conditional content',
   args: {
-    name: 'exampleConditional2',
     hint: 'Select all options that are relevant to you',
+    name: 'with-conditional-content',
   },
   render: (args) => (
     <Checkboxes {...args}>
-      <Checkboxes.Item
-        value="email"
-        conditional={
-          <TextInput
-            label="Email address"
-            name="email"
-            spellCheck="false"
-            className="nhsuk-u-width-two-thirds"
-          />
-        }
-      >
+      <Checkboxes.Item value="email" conditional={<ExampleEmail />}>
         Email
       </Checkboxes.Item>
-      <Checkboxes.Item
-        value="phone"
-        conditional={
-          <TextInput
-            label="Phone number"
-            name="phone"
-            type="tel"
-            className="nhsuk-u-width-two-thirds"
-          />
-        }
-      >
+      <Checkboxes.Item value="phone" conditional={<ExamplePhoneNumber />}>
         Phone
       </Checkboxes.Item>
-      <Checkboxes.Item
-        value="text"
-        conditional={
-          <TextInput
-            label="Mobile phone number"
-            name="mobile"
-            type="tel"
-            className="nhsuk-u-width-two-thirds"
-          />
-        }
-      >
+      <Checkboxes.Item value="text" conditional={<ExampleMobilePhoneNumber />}>
+        Text message
+      </Checkboxes.Item>
+    </Checkboxes>
+  ),
+};
+
+export const WithConditionalContentValues: Story = {
+  name: 'Checkboxes with conditional content and pre-checked values',
+  args: {
+    name: 'with-conditional-content-values',
+  },
+  render: (args) => (
+    <Checkboxes {...args}>
+      <Checkboxes.Item value="email" conditional={<ExampleEmail />} defaultChecked>
+        Email
+      </Checkboxes.Item>
+      <Checkboxes.Item value="phone" conditional={<ExamplePhoneNumber />}>
+        Phone
+      </Checkboxes.Item>
+      <Checkboxes.Item value="text" conditional={<ExampleMobilePhoneNumber />} defaultChecked>
         Text message
       </Checkboxes.Item>
     </Checkboxes>
@@ -263,6 +282,7 @@ export const WithConditionalContentError: Story = {
   args: {
     hint: 'Select all options that are relevant to you',
     error: 'Select how you like to be contacted',
+    name: 'with-conditional-content-error',
   },
   render: WithConditionalContent.render,
 };
@@ -270,50 +290,22 @@ export const WithConditionalContentError: Story = {
 export const WithConditionalContentErrorNested: Story = {
   name: 'Checkboxes with conditional content, error message (nested)',
   args: {
-    name: 'exampleConditional3',
     hint: 'Select all options that are relevant to you',
+    name: 'with-conditional-content-error-nested',
   },
   render: (args) => (
     <Checkboxes {...args}>
-      <Checkboxes.Item
-        value="email"
-        conditional={
-          <TextInput
-            label="Email address"
-            name="email"
-            spellCheck="false"
-            className="nhsuk-u-width-two-thirds"
-          />
-        }
-      >
+      <Checkboxes.Item value="email" conditional={<ExamplePhoneNumber />}>
         Email
       </Checkboxes.Item>
       <Checkboxes.Item
         value="phone"
-        checked
-        conditional={
-          <TextInput
-            label="Phone number"
-            error="Enter your phone number"
-            name="phone"
-            type="tel"
-            className="nhsuk-u-width-two-thirds"
-          />
-        }
+        conditional={<ExampleEmail error="Enter your phone number" />}
+        defaultChecked
       >
         Phone
       </Checkboxes.Item>
-      <Checkboxes.Item
-        value="text"
-        conditional={
-          <TextInput
-            label="Mobile phone number"
-            name="mobile"
-            type="tel"
-            className="nhsuk-u-width-two-thirds"
-          />
-        }
-      >
+      <Checkboxes.Item value="text" conditional={<ExampleMobilePhoneNumber />}>
         Text message
       </Checkboxes.Item>
     </Checkboxes>
@@ -325,6 +317,7 @@ export const WithExclusiveNoneOption: Story = {
   args: {
     legend: 'How do you want to be contacted about this?',
     hint: 'Select all options that are relevant to you',
+    name: 'with-exclusive-none-option',
   },
   render: (args) => (
     <Checkboxes {...args}>
@@ -342,49 +335,19 @@ export const WithExclusiveNoneOption: Story = {
 export const WithExclusiveNoneOptionConditional: Story = {
   name: 'Checkboxes with "none of the above" option, conditional content',
   args: {
-    name: 'exampleConditional4',
     legend: 'How do you want to be contacted about this?',
     hint: 'Select all options that are relevant to you',
+    name: 'with-exclusive-none-option-conditional',
   },
   render: (args) => (
     <Checkboxes {...args}>
-      <Checkboxes.Item
-        value="email"
-        conditional={
-          <TextInput
-            label="Email address"
-            name="email"
-            spellCheck="false"
-            className="nhsuk-u-width-two-thirds"
-          />
-        }
-      >
+      <Checkboxes.Item value="email" conditional={<ExampleEmail />}>
         Email
       </Checkboxes.Item>
-      <Checkboxes.Item
-        value="phone"
-        conditional={
-          <TextInput
-            label="Phone number"
-            name="phone"
-            type="tel"
-            className="nhsuk-u-width-two-thirds"
-          />
-        }
-      >
+      <Checkboxes.Item value="phone" conditional={<ExamplePhoneNumber />}>
         Phone
       </Checkboxes.Item>
-      <Checkboxes.Item
-        value="text"
-        conditional={
-          <TextInput
-            label="Mobile phone number"
-            name="mobile"
-            type="tel"
-            className="nhsuk-u-width-two-thirds"
-          />
-        }
-      >
+      <Checkboxes.Item value="text" conditional={<ExampleMobilePhoneNumber />}>
         Text message
       </Checkboxes.Item>
       <Checkboxes.Divider />
@@ -397,6 +360,9 @@ export const WithExclusiveNoneOptionConditional: Story = {
 
 export const WithExclusiveNoneOptionNamed: Story = {
   name: 'Checkboxes with "none of the above" option (named groups)',
+  args: {
+    name: 'with-exclusive-none-option-named',
+  },
   render: (args) => (
     <Fieldset>
       <Fieldset.Legend headingLevel="h1" size="l">

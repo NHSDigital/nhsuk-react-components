@@ -10,10 +10,12 @@ const meta: Meta<typeof Fieldset> = {
   title: 'Form Elements/Fieldset',
   component: Fieldset,
 };
+
 export default meta;
 type Story = StoryObj<typeof Fieldset>;
 
-export const Standard: Story = {
+export const Default: Story = {
+  name: 'Fieldset default',
   render: (args) => (
     <Fieldset {...args}>
       <Fieldset.Legend isPageHeading size="l">
@@ -50,7 +52,7 @@ export const Standard: Story = {
 };
 
 export const WithCustomLegendSizeS: Story = {
-  name: 'With Bold Text (S)',
+  name: 'Fieldset with size S legend',
   render: (args) => (
     <Fieldset {...args}>
       <Fieldset.Legend isPageHeading size="s">
@@ -61,7 +63,7 @@ export const WithCustomLegendSizeS: Story = {
 };
 
 export const WithCustomLegendSizeM: Story = {
-  name: 'With Custom Size (M)',
+  name: 'Fieldset with size M legend',
   render: (args) => (
     <Fieldset {...args}>
       <Fieldset.Legend isPageHeading size="m">
@@ -72,7 +74,7 @@ export const WithCustomLegendSizeM: Story = {
 };
 
 export const WithCustomLegendSizeL: Story = {
-  name: 'With Custom Size (L)',
+  name: 'Fieldset with size L legend',
   render: (args) => (
     <Fieldset {...args}>
       <Fieldset.Legend isPageHeading size="l">
@@ -83,7 +85,7 @@ export const WithCustomLegendSizeL: Story = {
 };
 
 export const WithCustomLegendSizeXL: Story = {
-  name: 'With Custom Size (XL)',
+  name: 'Fieldset with size XL legend',
   render: (args) => (
     <Fieldset {...args}>
       <Fieldset.Legend isPageHeading size="xl">

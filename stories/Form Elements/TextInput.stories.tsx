@@ -1,11 +1,12 @@
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
 import { Button } from '#components/form-elements/button/Button.js';
-import { TextInput } from '#components/form-elements/text-input/index.js';
+import { TextInput, type TextInputProps } from '#components/form-elements/text-input/index.js';
 
 const meta: Meta<typeof TextInput> = {
-  title: 'Form Elements/TextInput',
+  title: 'Form Elements/Text input',
   component: TextInput,
+  excludeStories: /^Example/,
   args: {
     id: 'input-example',
     name: 'example',
@@ -20,8 +21,12 @@ const meta: Meta<typeof TextInput> = {
 export default meta;
 type Story = StoryObj<typeof TextInput>;
 
-export const Standard: Story = {};
-export const WithHintText: Story = {
+export const Default: Story = {
+  name: 'Text input default',
+};
+
+export const WithHint: Story = {
+  name: 'Text input with hint',
   args: {
     label: 'What is your NHS number?',
     code: true,
@@ -37,6 +42,7 @@ export const WithHintText: Story = {
 };
 
 export const WithError: Story = {
+  name: 'Text input with error message',
   args: {
     label: 'What is your NHS number?',
     error: 'Enter NHS number',
@@ -46,7 +52,8 @@ export const WithError: Story = {
   },
 };
 
-export const WithErrorAndHintText: Story = {
+export const WithErrorAndHint: Story = {
+  name: 'Text input with error message and hint',
   args: {
     label: 'What is your NHS number?',
     error: 'Enter NHS number',
@@ -63,6 +70,7 @@ export const WithErrorAndHintText: Story = {
 };
 
 export const WithWidthModifier: Story = {
+  name: 'Text input with width modifier',
   args: {
     label: 'What is your NHS number?',
     width: 10,
@@ -79,6 +87,7 @@ export const WithWidthModifier: Story = {
 };
 
 export const WithPrefix: Story = {
+  name: 'Text input with prefix',
   args: {
     label: 'Cost in pounds',
     prefix: '£',
@@ -87,6 +96,7 @@ export const WithPrefix: Story = {
 };
 
 export const WithSuffix: Story = {
+  name: 'Text input with suffix',
   args: {
     label: 'Weight in kilograms',
     suffix: 'kg',
@@ -95,6 +105,7 @@ export const WithSuffix: Story = {
 };
 
 export const WithPrefixAndSuffix: Story = {
+  name: 'Text input with prefix and suffix',
   args: {
     label: 'Cost per item, in pounds',
     prefix: '£',
@@ -104,6 +115,7 @@ export const WithPrefixAndSuffix: Story = {
 };
 
 export const WithPrefixAndSuffixAndError: Story = {
+  name: 'Text input with prefix and suffix and error message',
   args: {
     label: 'Cost per item, in pounds',
     error: 'Enter a cost per item, in pounds',
@@ -114,6 +126,7 @@ export const WithPrefixAndSuffixAndError: Story = {
 };
 
 export const WithButton: Story = {
+  name: 'Text input with button',
   args: {
     label: 'What is your NHS number?',
     width: 10,
@@ -131,6 +144,7 @@ export const WithButton: Story = {
 };
 
 export const WithButtonAndError: Story = {
+  name: 'Text input with button and error message',
   args: {
     label: 'What is your NHS number?',
     error: 'Enter NHS number',
@@ -147,3 +161,33 @@ export const WithButtonAndError: Story = {
     },
   },
 };
+
+export const ExampleEmail = (args: TextInputProps) => (
+  <TextInput
+    label="Email address"
+    name="contact-by-email"
+    className="nhsuk-u-width-two-thirds"
+    spellCheck="false"
+    {...args}
+  />
+);
+
+export const ExamplePhoneNumber = (args: TextInputProps) => (
+  <TextInput
+    label="Phone number"
+    name="contact-by-phone"
+    type="tel"
+    className="nhsuk-u-width-two-thirds"
+    {...args}
+  />
+);
+
+export const ExampleMobilePhoneNumber = (args: TextInputProps) => (
+  <TextInput
+    label="Mobile phone number"
+    name="contact-by-text"
+    type="tel"
+    className="nhsuk-u-width-two-thirds"
+    {...args}
+  />
+);

@@ -24,10 +24,11 @@ const meta: Meta<typeof Breadcrumb> = {
     </Breadcrumb>
   ),
 };
+
 export default meta;
 type Story = StoryObj<typeof Breadcrumb>;
 
-export const Standard: Story = {
+export const Default: Story = {
   name: 'Breadcrumb default',
 };
 

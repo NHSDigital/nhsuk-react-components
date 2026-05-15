@@ -14,38 +14,40 @@ const meta: Meta<typeof Label> = {
     size: { control: 'select', options: [undefined, 's', 'm', 'l', 'xl'] },
   },
 };
+
 export default meta;
 type Story = StoryObj<typeof Label>;
 
-export const Standard: Story = {
+export const Default: Story = {
+  name: 'Label default',
   args: {
     size: 'l',
   },
 };
 
 export const WithCustomSizeS: Story = {
-  name: 'With Bold Text (S)',
+  name: 'Label with size S text',
   args: {
     size: 's',
   },
 };
 
 export const WithCustomSizeM: Story = {
-  name: 'With Custom Size (M)',
+  name: 'Label with size M text',
   args: {
     size: 'm',
   },
 };
 
 export const WithCustomSizeL: Story = {
-  name: 'With Custom Size (L)',
+  name: 'Label with size L text',
   args: {
     size: 'l',
   },
 };
 
 export const WithCustomSizeXL: Story = {
-  name: 'With Custom Size (XL)',
+  name: 'Label with size XL text',
   args: {
     size: 'xl',
   },

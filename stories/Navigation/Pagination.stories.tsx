@@ -9,10 +9,12 @@ const meta: Meta<typeof Pagination> = {
     width: 'full',
   },
 };
+
 export default meta;
 type Story = StoryObj<typeof Pagination>;
 
-export const Standard: Story = {
+export const Default: Story = {
+  name: 'Pagination default',
   render: (args) => (
     <Pagination {...args}>
       <Pagination.Item href="/section/treatments" labelText="Treatments" previous />
@@ -22,6 +24,7 @@ export const Standard: Story = {
 };
 
 export const WithOnlyNext: Story = {
+  name: 'Pagination with only next',
   render: (args) => (
     <Pagination {...args}>
       <Pagination.Item href="/section/treatments" labelText="Symptoms" next />
@@ -30,6 +33,7 @@ export const WithOnlyNext: Story = {
 };
 
 export const WithOnlyPrevious: Story = {
+  name: 'Pagination with only previous',
   render: (args) => (
     <Pagination {...args}>
       <Pagination.Item href="/section/treatments" labelText="Treatments" previous />
@@ -38,6 +42,7 @@ export const WithOnlyPrevious: Story = {
 };
 
 export const WithTranslations: Story = {
+  name: 'Pagination with translations',
   render: (args) => (
     <Pagination {...args}>
       <Pagination.Item href="/section/treatments" labelText="Driniaethau" previous>
@@ -51,6 +56,7 @@ export const WithTranslations: Story = {
 };
 
 export const Numbered: Story = {
+  name: 'Pagination numbered',
   render: (args) => (
     <Pagination {...args}>
       <Pagination.Link href="/results?page=1" previous />
@@ -63,6 +69,7 @@ export const Numbered: Story = {
 };
 
 export const NumberedFirstPage: Story = {
+  name: 'Pagination numbered first page',
   render: (args) => (
     <Pagination {...args}>
       <Pagination.Item href="/results?page=1" number={1} current />
@@ -74,6 +81,7 @@ export const NumberedFirstPage: Story = {
 };
 
 export const NumberedLastPage: Story = {
+  name: 'Pagination numbered last page',
   render: (args) => (
     <Pagination {...args}>
       <Pagination.Link href="/results?page=2" previous />
@@ -85,6 +93,7 @@ export const NumberedLastPage: Story = {
 };
 
 export const NumberedWithManyPages: Story = {
+  name: 'Pagination numbered with many pages',
   render: (args) => (
     <Pagination {...args}>
       <Pagination.Link href="/results?page=9" previous />
@@ -103,6 +112,7 @@ export const NumberedWithManyPages: Story = {
 };
 
 export const NumberedWithTranslations: Story = {
+  name: 'Pagination numbered with translations',
   render: (args) => (
     <Pagination {...args}>
       <Pagination.Link href="/results?page=1" previous>

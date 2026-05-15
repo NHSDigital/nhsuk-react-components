@@ -48,13 +48,15 @@ const meta: Meta<typeof Button> = {
 export default meta;
 type Story = StoryObj<typeof Button>;
 
-export const Primary: Story = {
+export const Default: Story = {
+  name: 'Button default',
   args: {
     children: 'Save and continue',
   },
 };
 
-export const SmallPrimary: Story = {
+export const SmallDefault: Story = {
+  name: 'Button default, small',
   args: {
     small: true,
     children: 'Save and continue',
@@ -62,6 +64,7 @@ export const SmallPrimary: Story = {
 };
 
 export const Secondary: Story = {
+  name: 'Button secondary',
   args: {
     secondary: true,
     children: 'Find my location',
@@ -69,6 +72,7 @@ export const Secondary: Story = {
 };
 
 export const SmallSecondary: Story = {
+  name: 'Button secondary, small',
   args: {
     secondary: true,
     small: true,
@@ -77,6 +81,7 @@ export const SmallSecondary: Story = {
 };
 
 export const Warning: Story = {
+  name: 'Button warning',
   args: {
     warning: true,
     children: 'Yes, delete this vaccine',
@@ -84,6 +89,7 @@ export const Warning: Story = {
 };
 
 export const SmallWarning: Story = {
+  name: 'Button warning, small',
   args: {
     warning: true,
     small: true,
@@ -92,6 +98,7 @@ export const SmallWarning: Story = {
 };
 
 export const Login: Story = {
+  name: 'Button login',
   args: {
     login: true,
     children: 'Continue to NHS login',
@@ -99,6 +106,7 @@ export const Login: Story = {
 };
 
 export const SmallLogin: Story = {
+  name: 'Button login, small',
   args: {
     login: true,
     small: true,
@@ -107,47 +115,83 @@ export const SmallLogin: Story = {
 };
 
 export const Reverse: Story = {
+  name: 'Button reverse',
   args: {
     reverse: true,
     children: 'Log out',
   },
+  globals: {
+    backgrounds: { value: 'dark' },
+  },
 };
 
 export const SmallReverse: Story = {
+  name: 'Button reverse, small',
   args: {
     reverse: true,
     small: true,
     children: 'Log out',
   },
+  globals: {
+    backgrounds: { value: 'dark' },
+  },
 };
 
 /**
- *
  * Disabled buttons have poor contrast and can confuse some users. Only use them if user research shows it makes things easier for users to understand.
- *
  */
+export const Disabled: Story = {
+  name: 'Button disabled',
+  args: {
+    disabled: true,
+    children: 'Disabled button',
+  },
+};
 
-export const Disabled: Story = { args: { disabled: true, children: 'Disabled' } };
-export const LinkButton: Story = { args: { href: '/', children: 'As a Link' } };
-export const ForceButton: Story = { args: { as: 'button', children: 'As a Button' } };
-export const ForceAnchor: Story = { args: { as: 'a', children: 'As an Anchor' } };
+export const SmallDisabled: Story = {
+  name: 'Button disabled, small',
+  args: {
+    small: true,
+    disabled: true,
+    children: 'Disabled button',
+  },
+};
+
+export const AsALink: Story = {
+  name: 'Button as a link',
+  args: {
+    href: '/',
+    children: 'Link button',
+  },
+};
+
+export const SmallAsALink: Story = {
+  name: 'Button as a link, small',
+  args: {
+    href: '/',
+    small: true,
+    children: 'Link button',
+  },
+};
 
 /**
  * You can test this button by opening the browser console. It will log the current dateTime once per debounce.
  */
 export const PreventDoubleClickButton: Story = {
+  name: 'Button with double click prevented',
   args: {
     preventDoubleClick: true,
     onClick: () => console.log(new Date()),
-    children: 'Debounced Button',
+    children: 'Save and continue',
   },
 };
 
 export const PreventDoubleClickLinkButton: Story = {
+  name: 'Button as a link with double click prevented',
   args: {
-    preventDoubleClick: true,
     href: '#',
+    preventDoubleClick: true,
     onClick: () => console.log(new Date()),
-    children: 'Debounced Button as Link',
+    children: 'Save and continue',
   },
 };

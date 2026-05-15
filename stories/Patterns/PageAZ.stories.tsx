@@ -12,7 +12,7 @@ import { NavAZ } from '#patterns/nav-a-z/index.js';
  */
 
 const meta: Meta = {
-  title: 'Patterns/PageAZ',
+  title: 'Patterns/A to Z page',
   args: {
     fullAlphabet: false,
     removedLetters: [],
@@ -24,10 +24,12 @@ const meta: Meta = {
     width: false,
   },
 };
+
 export default meta;
 type Story = StoryObj;
 
-export const Standard: Story = {
+export const Default: Story = {
+  name: 'A to Z page default',
   render: () => (
     <Container>
       <main className="nhsuk-main-wrapper" id="maincontent">

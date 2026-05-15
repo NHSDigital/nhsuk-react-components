@@ -4,12 +4,14 @@ import { type InlineConfig, mergeConfig } from 'vite';
 import tsConfigPaths from 'vite-tsconfig-paths';
 
 const config: StorybookConfig = {
-  stories: ['../stories/**/*.stories.@(ts|tsx)', '../stories/**/*.mdx'],
   addons: ['@storybook/addon-links', '@storybook/addon-docs'],
   framework: {
     name: '@storybook/react-vite',
     options: {},
   },
+
+  staticDirs: ['../node_modules/nhsuk-frontend/dist/nhsuk'],
+  stories: ['../stories/**/*.stories.@(ts|tsx)', '../stories/**/*.mdx'],
 
   typescript: {
     reactDocgen: 'react-docgen-typescript',

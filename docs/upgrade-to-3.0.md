@@ -34,7 +34,7 @@ This has been removed due to causing accessibility issues in Safari (see the [up
 
 ## The `long` variant of the Transactional Service Name component has been removed
 
-In NHS.UK Frontend v5 and above, the header text now defaults to wrapping underneath the logo without the need for a modifier. It is safe to remove the `long` prop from the `<Header.ServiceName>` component.
+In NHS.UK frontend v5 and above, the header text now defaults to wrapping underneath the logo without the need for a modifier. It is safe to remove the `long` prop from the `<Header.ServiceName>` component.
 
 ## The `prefixText` prop has been added to the `DoDontList.Item` component
 
