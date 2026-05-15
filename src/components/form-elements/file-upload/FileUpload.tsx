@@ -60,12 +60,12 @@ export const FileUpload = forwardRef<HTMLInputElement, FileUploadProps>(
           'ref': moduleRef,
         }}
       >
-        {({ width, className, error, autoComplete, ...rest }) => (
+        {({ width, className, error, autoComplete, ...restRenderProps }) => (
           <input
             className={classNames('nhsuk-file-upload__input', className)}
             ref={forwardedRef}
             type="file"
-            {...rest}
+            {...restRenderProps}
           />
         )}
       </FormGroup>

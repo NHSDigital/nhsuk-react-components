@@ -27,7 +27,7 @@ export type CheckboxesProps = CheckboxesElementProps &
   Omit<FormElementProps, 'label' | 'labelProps'>;
 
 const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, forwardedRef) => {
-  const { children, idPrefix, ...rest } = props;
+  const { children, idPrefix = props.name, ...rest } = props;
 
   const moduleRef = useRef<HTMLDivElement>(null);
   const importRef = useRef<Promise<CheckboxesModule | void>>(null);
@@ -101,7 +101,7 @@ const CheckboxesComponent = forwardRef<HTMLDivElement, CheckboxesProps>((props, 
               className,
             )}
             data-module="nhsuk-checkboxes"
-            id={id}
+            id={id === rest.id ? id : undefined}
             ref={moduleRef}
             {...restRenderProps}
           >

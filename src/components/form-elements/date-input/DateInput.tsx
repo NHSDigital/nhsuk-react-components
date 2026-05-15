@@ -98,7 +98,7 @@ const DateInputComponent = forwardRef<HTMLDivElement, DateInputProps>(
           return (
             <div
               className={classNames('nhsuk-date-input', className)}
-              id={id}
+              id={id === rest.id ? id : undefined}
               ref={forwardedRef}
               {...restRenderProps}
             >

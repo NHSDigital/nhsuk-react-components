@@ -84,7 +84,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
           'ref': moduleRef,
         }}
       >
-        {({ width, className, error, autoComplete, ...rest }) => (
+        {({ width, className, error, autoComplete, ...restRenderProps }) => (
           <input
             className={classNames(
               'nhsuk-input',
@@ -98,7 +98,7 @@ export const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
             spellCheck="false"
             autoCapitalize="none"
             autoComplete={autoComplete ?? 'current-password'}
-            {...rest}
+            {...restRenderProps}
           />
         )}
         {({ id }) => (

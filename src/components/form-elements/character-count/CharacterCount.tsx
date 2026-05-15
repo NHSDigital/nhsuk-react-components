@@ -64,7 +64,7 @@ export const CharacterCount = forwardRef<HTMLTextAreaElement, CharacterCountProp
         }}
         {...rest}
       >
-        {({ className, id, error, 'aria-describedby': ariaDescribedBy, ...rest }) => (
+        {({ className, id, error, 'aria-describedby': ariaDescribedBy, ...restRenderProps }) => (
           <>
             <textarea
               className={classNames(
@@ -76,7 +76,7 @@ export const CharacterCount = forwardRef<HTMLTextAreaElement, CharacterCountProp
               id={id}
               aria-describedby={ariaDescribedBy ? `${id}-info ${ariaDescribedBy}` : `${id}-info`}
               ref={forwardedRef}
-              {...rest}
+              {...restRenderProps}
             />
             <div className="nhsuk-hint nhsuk-character-count__message" id={`${id}-info`}>
               {maxWords
