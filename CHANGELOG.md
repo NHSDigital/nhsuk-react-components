@@ -1,5 +1,15 @@
 # NHS.UK React components
 
+## Unreleased
+
+This is a bug fix release.
+
+Note: Form components with missing `id` (or `idPrefix`) now fall back to the `name` prop before generating IDs. This helps prevent [hydration mismatch](https://react.dev/link/hydration-mismatch) errors with server-side rendered (SSR) HTML.
+
+### :wrench: **Fixes**
+
+- [#377: Fix radios component with `defaultChecked` inputs and conditional content](https://github.com/NHSDigital/nhsuk-react-components/pull/377)
+
 ## 6.0.0 - 10 March 2026
 
 This version provides support for NHS.UK frontend v10.3.0
