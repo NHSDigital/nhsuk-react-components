@@ -38,6 +38,7 @@ export const Default: Story = {
 export const WordCountLimit: Story = {
   name: 'Character count with maxwords',
   args: {
+    id: 'with-word-count',
     maxWords: 150,
   },
 };
@@ -50,6 +51,7 @@ export const WordCountLimit: Story = {
 export const MessageThreshold: Story = {
   name: 'Character count with threshold',
   args: {
+    id: 'with-threshold',
     maxLength: 112,
     threshold: 75,
   },
@@ -60,6 +62,7 @@ export const WithTranslations: Story = {
   args: {
     label: 'Allwch chi roi mwy o fanylion?',
     hint: 'Peidiwch â chynnwys gwybodaeth bersonol, fel eich enw, dyddiad geni na rhif y GIG',
+    id: 'with-translations',
     maxLength: 200,
     i18n: {
       charactersUnderLimit: {
