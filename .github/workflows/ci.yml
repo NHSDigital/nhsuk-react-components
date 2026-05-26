@@ -16,6 +16,8 @@ jobs:
       CHROMATIC_SLUG: ${{ github.repository }}
       CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
     steps:
       - name: Checkout
@@ -40,6 +42,10 @@ jobs:
 
       - name: Jest Tests
         run: yarn test --coverage
+
+      - name: Sonar analysis
+        if: ${{ env.SONAR_TOKEN }}
+        uses: SonarSource/sonarqube-scan-action@v7
 
       - name: Package build
         run: yarn build
