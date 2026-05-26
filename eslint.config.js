@@ -1,6 +1,6 @@
 import { join } from 'node:path';
 
-import { includeIgnoreFile } from '@eslint/compat';
+import { includeIgnoreFile } from '@eslint/config-helpers';
 import eslint from '@eslint/js';
 import configPrettier from 'eslint-config-prettier/flat';
 import pluginJsxA11y from 'eslint-plugin-jsx-a11y';
