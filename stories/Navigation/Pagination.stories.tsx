@@ -1,3 +1,4 @@
+import { Markdown } from '@storybook/addon-docs/blocks';
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
 import { Pagination } from '#components/navigation/pagination/index.js';
@@ -6,6 +7,16 @@ const meta: Meta<typeof Pagination> = {
   title: 'Navigation/Pagination',
   component: Pagination,
   parameters: {
+    docs: {
+      subtitle: (
+        <Markdown>
+          To learn more about the pagination component and when to use it, visit the [design system
+          in the NHS digital service
+          manual](https://service-manual.nhs.uk/design-system/components/pagination) for guidance,
+          examples and options.
+        </Markdown>
+      ),
+    },
     width: 'full',
   },
 };

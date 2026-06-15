@@ -1,21 +1,23 @@
+import { Markdown } from '@storybook/addon-docs/blocks';
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
 import { ErrorSummary } from '#components/form-elements/error-summary/index.js';
 
-/**
- * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/error-summary" target="_blank" rel="noopener noreferrer">here</a>.
- *
- * ## Implementation notes
- *
- * The `ErrorSummary` component has three subcomponents:
- *
- * - `ErrorSummary.Title`
- * - `ErrorSummary.List`
- * - `ErrorSummary.ListItem`
- */
 const meta: Meta<typeof ErrorSummary> = {
   title: 'Form Elements/Error summary',
   component: ErrorSummary,
+  parameters: {
+    docs: {
+      subtitle: (
+        <Markdown>
+          To learn more about the error summary component and when to use it, visit the [design
+          system in the NHS digital service
+          manual](https://service-manual.nhs.uk/design-system/components/error-summary) for
+          guidance, examples and options.
+        </Markdown>
+      ),
+    },
+  },
 };
 
 export default meta;

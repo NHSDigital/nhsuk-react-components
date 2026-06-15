@@ -1,18 +1,23 @@
+import { Markdown } from '@storybook/addon-docs/blocks';
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
 import { CharacterCount } from '#components/form-elements/character-count/index.js';
 
-/**
- * Help users know how much text they can enter when there is a limit on the number of characters.
- *
- * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/components/character-count" target="_blank" rel="noopener noreferrer">here</a>.
- *
- * Further information about this component can be found in the <a href='https://service-manual.nhs.uk/design-system/components/character-count'>NHS digital service manual.</a>
- */
-
 const meta: Meta<typeof CharacterCount> = {
   title: 'Form Elements/Character count',
   component: CharacterCount,
+  parameters: {
+    docs: {
+      subtitle: (
+        <Markdown>
+          To learn more about the character count component and when to use it, visit the [design
+          system in the NHS digital service
+          manual](https://service-manual.nhs.uk/design-system/components/character-count) for
+          guidance, examples and options.
+        </Markdown>
+      ),
+    },
+  },
   args: {
     label: 'Can you provide more detail?',
     labelProps: { isPageHeading: true, size: 'l' },
@@ -32,9 +37,6 @@ export const Default: Story = {
   },
 };
 
-/**
- * Sometimes, rather than counting the number of characters, it is useful to count the number of words instead.
- */
 export const WordCountLimit: Story = {
   name: 'Character count with maxwords',
   args: {
@@ -43,11 +45,6 @@ export const WordCountLimit: Story = {
   },
 };
 
-/**
- * If the limit is much higher than most users are likely to reach, you can choose to only display the message after a user has entered a certain amount.
- *
- * Use the `threshold` prop to only show the count message when users have reached that percentage of the limit.
- */
 export const MessageThreshold: Story = {
   name: 'Character count with threshold',
   args: {

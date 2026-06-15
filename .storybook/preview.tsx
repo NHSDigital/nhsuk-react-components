@@ -1,3 +1,4 @@
+import { Description, Stories, Subtitle, Title } from '@storybook/addon-docs/blocks';
 import { type Preview } from '@storybook/react-vite';
 
 import { Col, Container, Row } from '#components/layout/index.js';
@@ -31,6 +32,14 @@ const preview: Preview = {
     },
     docs: {
       codePanel: true,
+      page: () => (
+        <>
+          <Title />
+          <Subtitle />
+          <Description />
+          <Stories />
+        </>
+      ),
     },
     width: 'two-thirds',
     layout: 'fullscreen',

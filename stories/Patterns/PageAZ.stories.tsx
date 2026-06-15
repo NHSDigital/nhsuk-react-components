@@ -5,12 +5,6 @@ import { Card } from '#components/navigation/card/index.js';
 import { Heading } from '#components/typography/index.js';
 import { NavAZ } from '#patterns/nav-a-z/index.js';
 
-/**
- * A to Z is a way of presenting a number of pages alphabetically.
- *
- * See the NHS digital service manual: https://service-manual.nhs.uk/design-system/patterns/a-to-z-page
- */
-
 const meta: Meta = {
   title: 'Patterns/A to Z page',
   args: {

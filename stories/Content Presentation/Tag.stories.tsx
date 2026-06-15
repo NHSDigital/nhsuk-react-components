@@ -1,3 +1,4 @@
+import { Markdown } from '@storybook/addon-docs/blocks';
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
 import { Tag } from '#components/content-presentation/tag/index.js';
@@ -5,6 +6,17 @@ import { Tag } from '#components/content-presentation/tag/index.js';
 const meta: Meta<typeof Tag> = {
   title: 'Content Presentation/Tag',
   component: Tag,
+  parameters: {
+    docs: {
+      subtitle: (
+        <Markdown>
+          To learn more about the tag component and when to use it, visit the [design system in the
+          NHS digital service manual](https://service-manual.nhs.uk/design-system/components/tag)
+          for guidance, examples and options.
+        </Markdown>
+      ),
+    },
+  },
 };
 
 export default meta;

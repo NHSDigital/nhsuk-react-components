@@ -1,47 +1,23 @@
+import { Markdown } from '@storybook/addon-docs/blocks';
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
 import { Button } from '#components/form-elements/button/index.js';
 
-/**
- * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/components/button" target="_blank" rel="noopener noreferrer">here</a>.
- *
- * ## Implementation notes
- *
- * The `Button` component from `nhsuk-react-components` will either render a standard `<button>` or `<a>` element depending on whether an `href` prop is supplied.
- *
- * If you want to use a specific component instead of the wrapper, you can supply the `as="a"` or `as="button"` props.
- *
- * ## Usage
- *
- * ### As a button
- *
- * ```jsx
- * import { Button } from "nhsuk-react-components";
- *
- * const Element = () => {
- *   return (
- *     <Button>Button</Button>
- *   );
- * }
- * ```
- *
- * ### As a link
- *
- * ```jsx
- * import { Button } from "nhsuk-react-components";
- *
- * const ButtonEl = () => (
- *   <Button as="a">Anchor</Button>
- * );
- *
- * const ButtonEl2 = () => (
- *   <Button href="/link">Anchor</Button>
- * );
- * ```
- */
 const meta: Meta<typeof Button> = {
   title: 'Form Elements/Button',
   component: Button,
+  parameters: {
+    docs: {
+      subtitle: (
+        <Markdown>
+          To learn more about the button component and when to use it, visit the [design system in
+          the NHS digital service
+          manual](https://service-manual.nhs.uk/design-system/components/button) for guidance,
+          examples and options.
+        </Markdown>
+      ),
+    },
+  },
   render: (args) => <Button {...args} />,
 };
 
@@ -137,9 +113,6 @@ export const SmallReverse: Story = {
   },
 };
 
-/**
- * Disabled buttons have poor contrast and can confuse some users. Only use them if user research shows it makes things easier for users to understand.
- */
 export const Disabled: Story = {
   name: 'Button disabled',
   args: {
@@ -174,9 +147,6 @@ export const SmallAsALink: Story = {
   },
 };
 
-/**
- * You can test this button by opening the browser console. It will log the current dateTime once per debounce.
- */
 export const PreventDoubleClickButton: Story = {
   name: 'Button with double click prevented',
   args: {

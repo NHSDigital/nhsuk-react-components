@@ -1,3 +1,4 @@
+import { Markdown } from '@storybook/addon-docs/blocks';
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
 import { BackLink } from '#components/navigation/back-link/index.js';
@@ -5,6 +6,18 @@ import { BackLink } from '#components/navigation/back-link/index.js';
 const meta: Meta<typeof BackLink> = {
   title: 'Navigation/Back link',
   component: BackLink,
+  parameters: {
+    docs: {
+      subtitle: (
+        <Markdown>
+          To learn more about the back link component and when to use it, visit the [design system
+          in the NHS digital service
+          manual](https://service-manual.nhs.uk/design-system/components/back-link) for guidance,
+          examples and options.
+        </Markdown>
+      ),
+    },
+  },
   render: (args) => <BackLink {...args} />,
 };
 

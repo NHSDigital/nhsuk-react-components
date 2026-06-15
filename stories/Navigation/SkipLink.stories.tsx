@@ -1,3 +1,4 @@
+import { Markdown } from '@storybook/addon-docs/blocks';
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { type FC, type ReactNode } from 'react';
 
@@ -24,6 +25,20 @@ const CodeText: FC<{ children: ReactNode }> = ({ children }) => (
 const meta: Meta<typeof SkipLink> = {
   title: 'Navigation/Skip link',
   component: SkipLink,
+  parameters: {
+    docs: {
+      subtitle: (
+        <Markdown>
+          To learn more about the skip link component and when to use it, visit the [design system
+          in the NHS digital service
+          manual](https://service-manual.nhs.uk/design-system/components/skip-link) for guidance,
+          examples and options.
+        </Markdown>
+      ),
+    },
+    layout: 'fullscreen',
+    width: false,
+  },
   render: (args) => (
     <>
       <HintText>

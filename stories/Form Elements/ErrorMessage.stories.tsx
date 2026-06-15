@@ -1,13 +1,23 @@
+import { Markdown } from '@storybook/addon-docs/blocks';
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
 import { ErrorMessage } from '#components/form-elements/error-message/index.js';
 
-/**
- * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/error-message" target="_blank" rel="noopener noreferrer">here</a>.
- */
 const meta: Meta<typeof ErrorMessage> = {
   title: 'Form Elements/Error message',
   component: ErrorMessage,
+  parameters: {
+    docs: {
+      subtitle: (
+        <Markdown>
+          To learn more about the error message component and when to use it, visit the [design
+          system in the NHS digital service
+          manual](https://service-manual.nhs.uk/design-system/components/error-message) for
+          guidance, examples and options.
+        </Markdown>
+      ),
+    },
+  },
   args: {
     children: 'Enter your full name',
   },

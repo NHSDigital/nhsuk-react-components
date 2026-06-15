@@ -1,21 +1,23 @@
+import { Markdown } from '@storybook/addon-docs/blocks';
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
 import { Details } from '#components/content-presentation/details/index.js';
 
-/**
- * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/contents-list" target="_blank">here</a>.
- *
- * ## Implementation notes
- *
- * The `Details` component has three subcomponents:
- *
- * - `Details.Summary`
- * - `Details.Text`
- * - `Details.ExpanderGroup`
- */
 const meta: Meta<typeof Details> = {
   title: 'Content Presentation/Details',
   component: Details,
+  parameters: {
+    docs: {
+      subtitle: (
+        <Markdown>
+          To learn more about the details component and when to use it, visit the [design system in
+          the NHS digital service
+          manual](https://service-manual.nhs.uk/design-system/components/details) for guidance,
+          examples and options.
+        </Markdown>
+      ),
+    },
+  },
 };
 
 export default meta;

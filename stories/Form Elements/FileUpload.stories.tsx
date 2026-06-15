@@ -1,3 +1,4 @@
+import { Markdown } from '@storybook/addon-docs/blocks';
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
 import { FileUpload } from '#components/form-elements/file-upload/index.js';
@@ -5,6 +6,18 @@ import { FileUpload } from '#components/form-elements/file-upload/index.js';
 const meta: Meta<typeof FileUpload> = {
   title: 'Form Elements/File upload',
   component: FileUpload,
+  parameters: {
+    docs: {
+      subtitle: (
+        <Markdown>
+          To learn more about the file upload component and when to use it, visit the [design system
+          in the NHS digital service
+          manual](https://service-manual.nhs.uk/design-system/components/file-upload) for guidance,
+          examples and options.
+        </Markdown>
+      ),
+    },
+  },
   args: {
     id: 'input-example',
     name: 'example',

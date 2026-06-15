@@ -1,3 +1,4 @@
+import { Markdown } from '@storybook/addon-docs/blocks';
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
 import { Images } from '#components/content-presentation/images/index.js';
@@ -5,6 +6,18 @@ import { Images } from '#components/content-presentation/images/index.js';
 const meta: Meta<typeof Images> = {
   title: 'Content Presentation/Images',
   component: Images,
+  parameters: {
+    docs: {
+      subtitle: (
+        <Markdown>
+          To learn more about the images component and when to use it, visit the [design system in
+          the NHS digital service
+          manual](https://service-manual.nhs.uk/design-system/components/images) for guidance,
+          examples and options.
+        </Markdown>
+      ),
+    },
+  },
 };
 
 export default meta;

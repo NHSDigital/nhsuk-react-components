@@ -1,3 +1,4 @@
+import { Markdown } from '@storybook/addon-docs/blocks';
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { useState } from 'react';
 
@@ -6,6 +7,18 @@ import { DateInput, type DateInputValue } from '#components/form-elements/date-i
 const meta: Meta<typeof DateInput> = {
   title: 'Form Elements/Date input',
   component: DateInput,
+  parameters: {
+    docs: {
+      subtitle: (
+        <Markdown>
+          To learn more about the date input component and when to use it, visit the [design system
+          in the NHS digital service
+          manual](https://service-manual.nhs.uk/design-system/components/date-input) for guidance,
+          examples and options.
+        </Markdown>
+      ),
+    },
+  },
   args: {
     legend: 'What is your date of birth?',
     legendProps: { isPageHeading: true, size: 'l' },

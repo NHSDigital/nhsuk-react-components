@@ -1,3 +1,4 @@
+import { Markdown } from '@storybook/addon-docs/blocks';
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
 import { WarningCallout } from '#components/content-presentation/warning-callout/index.js';
@@ -5,6 +6,18 @@ import { WarningCallout } from '#components/content-presentation/warning-callout
 const meta: Meta<typeof WarningCallout> = {
   title: 'Content Presentation/Warning callout',
   component: WarningCallout,
+  parameters: {
+    docs: {
+      subtitle: (
+        <Markdown>
+          To learn more about the warning callout component and when to use it, visit the [design
+          system in the NHS digital service
+          manual](https://service-manual.nhs.uk/design-system/components/warning-callout) for
+          guidance, examples and options.
+        </Markdown>
+      ),
+    },
+  },
 };
 
 export default meta;

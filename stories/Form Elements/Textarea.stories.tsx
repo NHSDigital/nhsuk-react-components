@@ -1,3 +1,4 @@
+import { Markdown } from '@storybook/addon-docs/blocks';
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
 import { Textarea } from '#components/form-elements/textarea/index.js';
@@ -5,6 +6,18 @@ import { Textarea } from '#components/form-elements/textarea/index.js';
 const meta: Meta<typeof Textarea> = {
   title: 'Form Elements/Textarea',
   component: Textarea,
+  parameters: {
+    docs: {
+      subtitle: (
+        <Markdown>
+          To learn more about the textarea component and when to use it, visit the [design system in
+          the NHS digital service
+          manual](https://service-manual.nhs.uk/design-system/components/textarea) for guidance,
+          examples and options.
+        </Markdown>
+      ),
+    },
+  },
   args: {
     label: 'Can you provide more detail?',
     labelProps: { isPageHeading: true, size: 'l' },
