@@ -438,7 +438,7 @@ export const FeatureCardWithNestedCardAndSummaryList: Story = {
           <SummaryList.Row noBorder>
             <SummaryList.Key>Response</SummaryList.Key>
             <SummaryList.Value>
-              <Tag modifier="orange">Follow up requested</Tag>
+              <Tag colour="orange">Follow up requested</Tag>
             </SummaryList.Value>
           </SummaryList.Row>
         </SummaryList>

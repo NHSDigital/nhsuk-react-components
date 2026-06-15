@@ -719,6 +719,15 @@ If you are using the `Table.Panel` child component, you must migrate to the feat
 +   <Card.Heading>Other conditions like impetigo</Card.Heading>
 ```
 
+### Tags
+
+To align with NHS.UK frontend, you must rename the `Tag` prop `color` to `colour`:
+
+```patch
+- <Tag color="white">In progress</Tag>
++ <Tag colour="white">In progress</Tag>
+```
+
 ### Textarea
 
 You must rename the `Textarea` prop `textareaRef` to `ref` for consistency with other components:
