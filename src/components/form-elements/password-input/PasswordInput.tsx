@@ -40,7 +40,7 @@ const PasswordInputButton: FC<ComponentPropsWithRef<'button'>> = ({
   <Button
     className={classNames('nhsuk-password-input__toggle nhsuk-js-password-input-toggle', className)}
     type="button"
-    secondary
+    variant="secondary"
     small
     hidden
     {...rest}

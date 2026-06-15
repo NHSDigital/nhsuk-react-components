@@ -48,7 +48,7 @@ You can now use smaller versions of [buttons](https://service-manual.nhs.uk/desi
 
 By default, the secondary button is transparent and has no colour.
 
-You can now make the [button](https://service-manual.nhs.uk/design-system/components/button) component white when you use it on darker backgrounds by adding the `secondarySolid` prop.
+You can now make the [button](https://service-manual.nhs.uk/design-system/components/button) component white when you use it on darker backgrounds by setting the `variant` prop to `'secondary-solid'`.
 
 #### Add inline buttons to text inputs and select menus
 
@@ -58,7 +58,7 @@ You can now add inline buttons to text inputs and select menus using the `formGr
 <TextInput
   formGroupProps={{
     afterInput: (
-      <Button secondary small>
+      <Button variant="secondary" small>
         Search
       </Button>
     ),

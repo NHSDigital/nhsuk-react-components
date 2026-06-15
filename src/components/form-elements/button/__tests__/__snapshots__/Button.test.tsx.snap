@@ -1,6 +1,114 @@
 // Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
-exports[`Button as a link button types login matches snapshot 1`] = `
+exports[`Button Disabled matches snapshot: DisabledButton 1`] = `
+<div>
+  <button
+    aria-disabled="true"
+    class="nhsuk-button"
+    data-module="nhsuk-button"
+    data-nhsuk-button-init=""
+    disabled=""
+    type="submit"
+  >
+    Save and continue
+  </button>
+</div>
+`;
+
+exports[`Button Variants brand matches snapshot 1`] = `
+<div>
+  <button
+    class="nhsuk-button nhsuk-button--brand"
+    data-module="nhsuk-button"
+    data-nhsuk-button-init=""
+    type="submit"
+  >
+    Find my location
+  </button>
+</div>
+`;
+
+exports[`Button Variants login matches snapshot 1`] = `
+<div>
+  <button
+    class="nhsuk-button nhsuk-button--login"
+    data-module="nhsuk-button"
+    data-nhsuk-button-init=""
+    type="submit"
+  >
+    Find my location
+  </button>
+</div>
+`;
+
+exports[`Button Variants reverse matches snapshot 1`] = `
+<div>
+  <button
+    class="nhsuk-button nhsuk-button--reverse"
+    data-module="nhsuk-button"
+    data-nhsuk-button-init=""
+    type="submit"
+  >
+    Find my location
+  </button>
+</div>
+`;
+
+exports[`Button Variants secondary matches snapshot 1`] = `
+<div>
+  <button
+    class="nhsuk-button nhsuk-button--secondary"
+    data-module="nhsuk-button"
+    data-nhsuk-button-init=""
+    type="submit"
+  >
+    Find my location
+  </button>
+</div>
+`;
+
+exports[`Button Variants secondary-solid matches snapshot 1`] = `
+<div>
+  <button
+    class="nhsuk-button nhsuk-button--secondary-solid"
+    data-module="nhsuk-button"
+    data-nhsuk-button-init=""
+    type="submit"
+  >
+    Find my location
+  </button>
+</div>
+`;
+
+exports[`Button Variants warning matches snapshot 1`] = `
+<div>
+  <button
+    class="nhsuk-button nhsuk-button--warning"
+    data-module="nhsuk-button"
+    data-nhsuk-button-init=""
+    type="submit"
+  >
+    Find my location
+  </button>
+</div>
+`;
+
+exports[`Button as a link Variants brand matches snapshot 1`] = `
+<div>
+  <a
+    class="nhsuk-button nhsuk-button--brand"
+    data-module="nhsuk-button"
+    data-nhsuk-button-init=""
+    draggable="false"
+    href="/"
+    role="button"
+  >
+    Find my location
+  </a>
+</div>
+`;
+
+exports[`Button as a link Variants login matches snapshot 1`] = `
 <div>
   <a
     class="nhsuk-button nhsuk-button--login"
@@ -15,7 +123,7 @@ exports[`Button as a link button types login matches snapshot 1`] = `
 </div>
 `;
 
-exports[`Button as a link button types reverse matches snapshot 1`] = `
+exports[`Button as a link Variants reverse matches snapshot 1`] = `
 <div>
   <a
     class="nhsuk-button nhsuk-button--reverse"
@@ -30,7 +138,7 @@ exports[`Button as a link button types reverse matches snapshot 1`] = `
 </div>
 `;
 
-exports[`Button as a link button types secondary matches snapshot 1`] = `
+exports[`Button as a link Variants secondary matches snapshot 1`] = `
 <div>
   <a
     class="nhsuk-button nhsuk-button--secondary"
@@ -45,7 +153,7 @@ exports[`Button as a link button types secondary matches snapshot 1`] = `
 </div>
 `;
 
-exports[`Button as a link button types secondarySolid matches snapshot 1`] = `
+exports[`Button as a link Variants secondary-solid matches snapshot 1`] = `
 <div>
   <a
     class="nhsuk-button nhsuk-button--secondary-solid"
@@ -60,22 +168,7 @@ exports[`Button as a link button types secondarySolid matches snapshot 1`] = `
 </div>
 `;
 
-exports[`Button as a link button types small matches snapshot 1`] = `
-<div>
-  <a
-    class="nhsuk-button nhsuk-button--small"
-    data-module="nhsuk-button"
-    data-nhsuk-button-init=""
-    draggable="false"
-    href="/"
-    role="button"
-  >
-    Find my location
-  </a>
-</div>
-`;
-
-exports[`Button as a link button types warning matches snapshot 1`] = `
+exports[`Button as a link Variants warning matches snapshot 1`] = `
 <div>
   <a
     class="nhsuk-button nhsuk-button--warning"
@@ -102,99 +195,6 @@ exports[`Button as a link matches snapshot: LinkButton 1`] = `
   >
     Find my location
   </a>
-</div>
-`;
-
-exports[`Button button types login matches snapshot 1`] = `
-<div>
-  <button
-    class="nhsuk-button nhsuk-button--login"
-    data-module="nhsuk-button"
-    data-nhsuk-button-init=""
-    type="submit"
-  >
-    Find my location
-  </button>
-</div>
-`;
-
-exports[`Button button types reverse matches snapshot 1`] = `
-<div>
-  <button
-    class="nhsuk-button nhsuk-button--reverse"
-    data-module="nhsuk-button"
-    data-nhsuk-button-init=""
-    type="submit"
-  >
-    Find my location
-  </button>
-</div>
-`;
-
-exports[`Button button types secondary matches snapshot 1`] = `
-<div>
-  <button
-    class="nhsuk-button nhsuk-button--secondary"
-    data-module="nhsuk-button"
-    data-nhsuk-button-init=""
-    type="submit"
-  >
-    Find my location
-  </button>
-</div>
-`;
-
-exports[`Button button types secondarySolid matches snapshot 1`] = `
-<div>
-  <button
-    class="nhsuk-button nhsuk-button--secondary-solid"
-    data-module="nhsuk-button"
-    data-nhsuk-button-init=""
-    type="submit"
-  >
-    Find my location
-  </button>
-</div>
-`;
-
-exports[`Button button types small matches snapshot 1`] = `
-<div>
-  <button
-    class="nhsuk-button nhsuk-button--small"
-    data-module="nhsuk-button"
-    data-nhsuk-button-init=""
-    type="submit"
-  >
-    Find my location
-  </button>
-</div>
-`;
-
-exports[`Button button types warning matches snapshot 1`] = `
-<div>
-  <button
-    class="nhsuk-button nhsuk-button--warning"
-    data-module="nhsuk-button"
-    data-nhsuk-button-init=""
-    type="submit"
-  >
-    Find my location
-  </button>
-</div>
-`;
-
-exports[`Button disabled matches snapshot: DisabledButton 1`] = `
-<div>
-  <button
-    aria-disabled="true"
-    class="nhsuk-button"
-    data-module="nhsuk-button"
-    data-nhsuk-button-init=""
-    disabled=""
-    type="submit"
-  >
-    Save and continue
-  </button>
 </div>
 `;
 
