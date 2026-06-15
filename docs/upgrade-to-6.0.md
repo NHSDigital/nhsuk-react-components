@@ -333,10 +333,11 @@ To align with NHS.UK frontend, icons unused by components have been removed:
 - `ChevronLeftIcon`
 - `ChevronRightIcon`
 - `ChevronDownIcon`
-- `CloseIcon`
 - `EmdashIcon` and `SmallEmdashIcon`
-- `MinusIcon`
-- `PlusIcon`
+
+With the following icons renamed:
+
+- `CloseIcon` renamed to `CrossIcon`
 
 ### Back link
 
