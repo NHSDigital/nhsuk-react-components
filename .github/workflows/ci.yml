@@ -21,7 +21,7 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10
         with:
           fetch-depth: 0
 
@@ -45,7 +45,7 @@ jobs:
 
       - name: Sonar analysis
         if: ${{ env.SONAR_TOKEN }}
-        uses: SonarSource/sonarqube-scan-action@7006c4492b2e0ee0f816d36501671557c97f5995
+        uses: SonarSource/sonarqube-scan-action@713881670b6b3676cda39549040e2d88c70d582e
 
       - name: Package build
         run: yarn build
@@ -59,7 +59,7 @@ jobs:
 
       - name: Switch to PR branch
         if: ${{ github.event_name == 'pull_request' && env.CHROMATIC_PROJECT_TOKEN }}
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10
         with:
           clean: false
           fetch-depth: 0
@@ -67,7 +67,7 @@ jobs:
 
       - name: Storybook deploy
         if: ${{ env.CHROMATIC_PROJECT_TOKEN }}
-        uses: chromaui/action@8d925269a481085d451544f6bd9aa2ab3af55b5d
+        uses: chromaui/action@05812acac141ce7d317a3f787be88122bca27cf4
         with:
           autoAcceptChanges: main
           branchName: ${{ env.CHROMATIC_BRANCH}}
