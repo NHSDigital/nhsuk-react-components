@@ -8435,10 +8435,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nhsuk-frontend@npm:^10.3.1":
-  version: 10.3.1
-  resolution: "nhsuk-frontend@npm:10.3.1"
-  checksum: 10c0/66941f6dd2ce4c275c66b54880e6b7e9ae96b3b3479a1797c5bba4a7d58f7b8c029189e51f6628c017b3d173c81996c910545a4373c04766f139a994f13ac82d
+"nhsuk-frontend@npm:^10.5.2":
+  version: 10.5.2
+  resolution: "nhsuk-frontend@npm:10.5.2"
+  peerDependencies:
+    "@prettier/sync": ^0.6.0
+    highlight.js: ^11.0.0
+    nunjucks: ^3.0.0
+    outdent: ^0.8.0
+    slug: ^9.0.0 || ^11.0.0
+  peerDependenciesMeta:
+    "@prettier/sync":
+      optional: true
+    highlight.js:
+      optional: true
+    nunjucks:
+      optional: true
+    outdent:
+      optional: true
+    slug:
+      optional: true
+  checksum: 10c0/d21c0b9aa1371af8fba5f538448bddafde0c4de2a4f56c0fe668ab7accef10790f97d495b6ed94255dc10dce8f11d52381b8536bcd8e8765597a636f3c7890f5
   languageName: node
   linkType: hard
 
@@ -8486,7 +8503,7 @@ __metadata:
     jest: "npm:^30.4.2"
     jest-axe: "npm:^10.0.0"
     jest-environment-jsdom: "npm:^30.4.1"
-    nhsuk-frontend: "npm:^10.3.1"
+    nhsuk-frontend: "npm:^10.5.2"
     outdent: "npm:^0.8.0"
     prettier: "npm:^3.8.3"
     react: "npm:^19.2.7"
