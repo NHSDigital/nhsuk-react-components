@@ -18,13 +18,6 @@ const meta: Meta<typeof Details> = {
       ),
     },
   },
-};
-
-export default meta;
-type Story = StoryObj<typeof Details>;
-
-export const Default: Story = {
-  name: 'Details default',
   argTypes: {
     expander: {
       table: {
@@ -32,8 +25,15 @@ export const Default: Story = {
       },
     },
   },
-  render: ({ expander }) => (
-    <Details expander={expander}>
+};
+
+export default meta;
+type Story = StoryObj<typeof Details>;
+
+export const Default: Story = {
+  name: 'Details default',
+  render: (args) => (
+    <Details {...args}>
       <Details.Summary>Where can I find my NHS number?</Details.Summary>
       <Details.Text>
         <p>An NHS number is a 10 digit number, like 485 777 3456.</p>
@@ -53,16 +53,73 @@ export const Default: Story = {
   ),
 };
 
+export const Reverse: Story = {
+  name: 'Reverse',
+  args: {
+    variant: 'reverse',
+  },
+  globals: {
+    backgrounds: { value: 'dark' },
+  },
+  render: (args) => (
+    <Details {...args}>
+      <Details.Summary>Opening times</Details.Summary>
+      <Details.Text>
+        <table className="nhsuk-table nhsuk-table--reverse">
+          <tbody>
+            <tr>
+              <th>
+                <strong>Day of the week</strong>
+              </th>
+              <th>
+                <strong>Opening hours</strong>
+              </th>
+            </tr>
+            <tr>
+              <th>Monday</th>
+              <td>9am to 6pm</td>
+            </tr>
+            <tr>
+              <th>Tuesday</th>
+              <td>9am to 6pm</td>
+            </tr>
+            <tr>
+              <th>Wednesday</th>
+              <td>9am to 6pm</td>
+            </tr>
+            <tr>
+              <th>Thursday</th>
+              <td>9am to 6pm</td>
+            </tr>
+            <tr>
+              <th>Friday</th>
+              <td>9am to 6pm</td>
+            </tr>
+            <tr>
+              <th>Saturday</th>
+              <td>9am to 1pm</td>
+            </tr>
+            <tr>
+              <th>Sunday</th>
+              <td>Closed</td>
+            </tr>
+          </tbody>
+        </table>
+      </Details.Text>
+    </Details>
+  ),
+};
+
 export const Expander: Story = {
   name: 'Expander',
   args: {
     expander: true,
   },
-  render: ({ expander }) => (
-    <Details expander={expander}>
+  render: (args) => (
+    <Details {...args}>
       <Details.Summary>Opening times</Details.Summary>
       <Details.Text>
-        <table>
+        <table className="nhsuk-table">
           <tbody>
             <tr>
               <th>
@@ -109,9 +166,12 @@ export const Expander: Story = {
 
 export const ExpanderGroup: Story = {
   name: 'Expander group',
+  args: {
+    expander: true,
+  },
   render: (args) => (
     <Details.ExpanderGroup>
-      <Details expander>
+      <Details {...args}>
         <Details.Summary>How to measure your blood glucose levels</Details.Summary>
         <Details.Text>
           <p>
@@ -122,12 +182,12 @@ export const ExpanderGroup: Story = {
           <ul>
             <li>a blood glucose metre</li>
             <li>small needles called lancets</li>
-            <li>a plastic pen to hold the lancest</li>
+            <li>a plastic pen to hold the lancets</li>
             <li>small test strips</li>
           </ul>
         </Details.Text>
       </Details>
-      <Details expander>
+      <Details {...args}>
         <Details.Summary>When to check your blood glucose level</Details.Summary>
         <Details.Text>
           <p>Try to check your blood:</p>
