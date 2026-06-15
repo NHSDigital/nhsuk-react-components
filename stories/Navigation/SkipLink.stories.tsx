@@ -1,26 +1,8 @@
 import { Markdown } from '@storybook/addon-docs/blocks';
 import { type Meta, type StoryObj } from '@storybook/react-vite';
-import { type FC, type ReactNode } from 'react';
 
-import { HintText } from '#components/form-elements/hint-text/index.js';
 import { Col, Container, Row } from '#components/layout/index.js';
 import { SkipLink } from '#components/navigation/skip-link/index.js';
-
-const CodeText: FC<{ children: ReactNode }> = ({ children }) => (
-  <span
-    style={{
-      fontFamily: 'monospace',
-      marginLeft: 5,
-      marginRight: 5,
-      fontSize: 14,
-      padding: 3,
-      backgroundColor: 'rgba(255, 0, 0, 0.15)',
-      borderRadius: 5,
-    }}
-  >
-    {children}
-  </span>
-);
 
 const meta: Meta<typeof SkipLink> = {
   title: 'Navigation/Skip link',
@@ -41,11 +23,13 @@ const meta: Meta<typeof SkipLink> = {
   },
   render: (args) => (
     <>
-      <HintText>
-        Press
-        <CodeText>tab</CodeText>
-        to show the SkipLink
-      </HintText>
+      <p className="nhsuk-u-padding-4 nhsuk-u-secondary-text-colour">
+        Press{' '}
+        <kbd>
+          <kbd>Tab</kbd>
+        </kbd>{' '}
+        to show the skip link
+      </p>
 
       <SkipLink {...args} />
 
