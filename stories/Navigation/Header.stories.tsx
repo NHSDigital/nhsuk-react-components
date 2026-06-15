@@ -1,3 +1,4 @@
+import { Markdown } from '@storybook/addon-docs/blocks';
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { type ComponentProps } from 'react';
 
@@ -7,6 +8,16 @@ const meta: Meta<typeof Header> = {
   title: 'Navigation/Header',
   component: Header,
   parameters: {
+    docs: {
+      subtitle: (
+        <Markdown>
+          To learn more about the header component and when to use it, visit the [design system in
+          the NHS digital service
+          manual](https://service-manual.nhs.uk/design-system/components/header) for guidance,
+          examples and options.
+        </Markdown>
+      ),
+    },
     layout: 'fullscreen',
     width: false,
   },

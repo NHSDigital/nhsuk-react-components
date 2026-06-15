@@ -1,13 +1,23 @@
+import { Markdown } from '@storybook/addon-docs/blocks';
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
 import { Breadcrumb } from '#components/navigation/breadcrumb/index.js';
 
-/**
- * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/components/breadcrumb" target="_blank">here</a>.
- */
 const meta: Meta<typeof Breadcrumb> = {
   title: 'Navigation/Breadcrumb',
   component: Breadcrumb,
+  parameters: {
+    docs: {
+      subtitle: (
+        <Markdown>
+          To learn more about the breadcrumb component and when to use it, visit the [design system
+          in the NHS digital service
+          manual](https://service-manual.nhs.uk/design-system/components/breadcrumbs) for guidance,
+          examples and options.
+        </Markdown>
+      ),
+    },
+  },
   argTypes: {
     'aria-label': {
       control: 'text',

@@ -2,10 +2,6 @@ import { type Meta, type StoryObj } from '@storybook/react-vite';
 
 import { NavAZ } from '#patterns/nav-a-z/index.js';
 
-/**
- * This component is generally used as part of the 'A to Z page' pattern.
- */
-
 const meta: Meta<typeof NavAZ> = {
   title: 'Patterns/A to Z navigation',
   component: NavAZ,

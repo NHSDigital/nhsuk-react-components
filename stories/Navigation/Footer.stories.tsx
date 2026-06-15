@@ -1,3 +1,4 @@
+import { Markdown } from '@storybook/addon-docs/blocks';
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
 import { Footer } from '#components/navigation/footer/index.js';
@@ -7,6 +8,16 @@ const meta: Meta<typeof Footer> = {
   title: 'Navigation/Footer',
   component: Footer,
   parameters: {
+    docs: {
+      subtitle: (
+        <Markdown>
+          To learn more about the footer component and when to use it, visit the [design system in
+          the NHS digital service
+          manual](https://service-manual.nhs.uk/design-system/components/footer) for guidance,
+          examples and options.
+        </Markdown>
+      ),
+    },
     layout: 'fullscreen',
     width: false,
   },

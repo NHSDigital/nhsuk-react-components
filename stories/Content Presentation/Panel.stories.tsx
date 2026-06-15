@@ -1,3 +1,4 @@
+import { Markdown } from '@storybook/addon-docs/blocks';
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
 import { Panel } from '#components/content-presentation/panel/index.js';
@@ -6,6 +7,18 @@ import { Button } from '#components/form-elements/button/index.js';
 const meta: Meta<typeof Panel> = {
   title: 'Content Presentation/Panel',
   component: Panel,
+  parameters: {
+    docs: {
+      subtitle: (
+        <Markdown>
+          To learn more about the panel component and when to use it, visit the [design system in
+          the NHS digital service
+          manual](https://service-manual.nhs.uk/design-system/components/panel) for guidance,
+          examples and options.
+        </Markdown>
+      ),
+    },
+  },
 };
 
 export default meta;

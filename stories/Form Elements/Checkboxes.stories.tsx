@@ -1,3 +1,4 @@
+import { Markdown } from '@storybook/addon-docs/blocks';
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { type ChangeEvent, Fragment, useState } from 'react';
 
@@ -9,17 +10,21 @@ import { Heading } from '#components/typography/Heading.js';
 
 import { ExampleEmail, ExampleMobilePhoneNumber, ExamplePhoneNumber } from './TextInput.stories.js';
 
-/**
- * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/checkboxes" target="_blank" rel="noopener noreferrer">here</a>.
- *
- * ## Implementation notes
- *
- * The `Checkbox` component provides a `CheckboxesContext` context, which the `Checkboxes.Item` components use. When each box initially renders, it will attempt to assign itself an `id` by calling the `getBoxId` method in the context. This will assign each box a sequential ID using either the `idPrefix` or `name` supplied to the Checkbox. If neither are provided, the element will generate it's own unique identifier.
- */
-
 const meta: Meta<typeof Checkboxes> = {
   title: 'Form Elements/Checkboxes',
   component: Checkboxes,
+  parameters: {
+    docs: {
+      subtitle: (
+        <Markdown>
+          To learn more about the checkboxes component and when to use it, visit the [design system
+          in the NHS digital service
+          manual](https://service-manual.nhs.uk/design-system/components/checkboxes) for guidance,
+          examples and options.
+        </Markdown>
+      ),
+    },
+  },
   args: {
     legend: 'How do you want to be contacted about this?',
     legendProps: { isPageHeading: true, size: 'l' },

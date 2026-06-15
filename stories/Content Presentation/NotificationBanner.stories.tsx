@@ -1,22 +1,24 @@
+import { Markdown } from '@storybook/addon-docs/blocks';
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
 import { NotificationBannerLink } from '#components/content-presentation/notification-banner/components/index.js';
 import { NotificationBanner } from '#components/content-presentation/notification-banner/index.js';
 
-/**
- * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/notification-banner" target="_blank">here</a>.
- *
- * ## Implementation notes
- *
- * The `NotificationBanner` component has three subcomponents:
- *
- * - `NotificationBanner.Title`
- * - `NotificationBanner.Heading`
- * - `NotificationBanner.Link`
- */
 const meta: Meta<typeof NotificationBanner> = {
   title: 'Content Presentation/Notification banner',
   component: NotificationBanner,
+  parameters: {
+    docs: {
+      subtitle: (
+        <Markdown>
+          To learn more about the notification banner component and when to use it, visit the
+          [design system in the NHS digital service
+          manual](https://service-manual.nhs.uk/design-system/components/notification-banners) for
+          guidance, examples and options.
+        </Markdown>
+      ),
+    },
+  },
 };
 
 export default meta;

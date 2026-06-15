@@ -1,3 +1,4 @@
+import { Markdown } from '@storybook/addon-docs/blocks';
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 import { type ChangeEvent, Fragment, useState } from 'react';
 
@@ -9,6 +10,18 @@ import { ExampleEmail, ExampleMobilePhoneNumber, ExamplePhoneNumber } from './Te
 const meta: Meta<typeof Radios> = {
   title: 'Form Elements/Radios',
   component: Radios,
+  parameters: {
+    docs: {
+      subtitle: (
+        <Markdown>
+          To learn more about the radios component and when to use it, visit the [design system in
+          the NHS digital service
+          manual](https://service-manual.nhs.uk/design-system/components/radios) for guidance,
+          examples and options.
+        </Markdown>
+      ),
+    },
+  },
   args: {
     legend: 'How do you want to be contacted about this?',
     legendProps: { isPageHeading: true, size: 'l' },

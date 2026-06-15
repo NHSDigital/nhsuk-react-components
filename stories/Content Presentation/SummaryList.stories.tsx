@@ -1,3 +1,4 @@
+import { Markdown } from '@storybook/addon-docs/blocks';
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
 import { SummaryList } from '#components/content-presentation/summary-list/index.js';
@@ -7,6 +8,18 @@ import { BodyText } from '#components/typography/BodyText.js';
 const meta: Meta<typeof SummaryList> = {
   title: 'Content Presentation/Summary list',
   component: SummaryList,
+  parameters: {
+    docs: {
+      subtitle: (
+        <Markdown>
+          To learn more about the summary list component and when to use it, visit the [design
+          system in the NHS digital service
+          manual](https://service-manual.nhs.uk/design-system/components/summary-list) for guidance,
+          examples and options.
+        </Markdown>
+      ),
+    },
+  },
   argTypes: {
     noBorder: {
       type: 'boolean',

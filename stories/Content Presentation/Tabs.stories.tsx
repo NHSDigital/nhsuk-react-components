@@ -1,19 +1,21 @@
+import { Markdown } from '@storybook/addon-docs/blocks';
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
 import { Tabs } from '#components/content-presentation/tabs/index.js';
-
-/**
- * The tabs component lets users navigate between related sections of content, displaying 1 section at a time.
- *
- * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/components/tabs" target="_blank" rel="noopener noreferrer">here</a>.
- *
- * Further information about this component can be found in the <a href='https://service-manual.nhs.uk/design-system/components/tabs'>NHS digital service manual.</a>
- */
 
 const meta: Meta<typeof Tabs> = {
   title: 'Content Presentation/Tabs',
   component: Tabs,
   parameters: {
+    docs: {
+      subtitle: (
+        <Markdown>
+          To learn more about the tabs component and when to use it, visit the [design system in the
+          NHS digital service manual](https://service-manual.nhs.uk/design-system/components/tabs)
+          for guidance, examples and options.
+        </Markdown>
+      ),
+    },
     width: 'full',
   },
 };

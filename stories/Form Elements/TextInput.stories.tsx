@@ -1,3 +1,4 @@
+import { Markdown } from '@storybook/addon-docs/blocks';
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
 import { Button } from '#components/form-elements/button/Button.js';
@@ -7,6 +8,18 @@ const meta: Meta<typeof TextInput> = {
   title: 'Form Elements/Text input',
   component: TextInput,
   excludeStories: /^Example/,
+  parameters: {
+    docs: {
+      subtitle: (
+        <Markdown>
+          To learn more about the text input component and when to use it, visit the [design system
+          in the NHS digital service
+          manual](https://service-manual.nhs.uk/design-system/components/text-input) for guidance,
+          examples and options.
+        </Markdown>
+      ),
+    },
+  },
   args: {
     id: 'input-example',
     name: 'example',

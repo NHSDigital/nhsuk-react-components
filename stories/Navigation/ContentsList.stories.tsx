@@ -1,13 +1,23 @@
+import { Markdown } from '@storybook/addon-docs/blocks';
 import { type Meta, type StoryObj } from '@storybook/react-vite';
 
 import { ContentsList } from '#components/navigation/contents-list/index.js';
 
-/**
- * This component can be found in the `nhsuk-frontend` repository <a href="https://github.com/nhsuk/nhsuk-frontend/tree/main/packages/nhsuk-frontend/src/nhsuk/components/contents-list" target="_blank" rel="noopener noreferrer">here</a>.
- */
 const meta: Meta<typeof ContentsList> = {
   title: 'Navigation/Contents list',
   component: ContentsList,
+  parameters: {
+    docs: {
+      subtitle: (
+        <Markdown>
+          To learn more about the contents list component and when to use it, visit the [design
+          system in the NHS digital service
+          manual](https://service-manual.nhs.uk/design-system/components/contents-list) for
+          guidance, examples and options.
+        </Markdown>
+      ),
+    },
+  },
 };
 
 export default meta;
