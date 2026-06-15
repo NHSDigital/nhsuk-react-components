@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-deprecated */
 import classNames from 'classnames';
 import { type ComponentPropsWithoutRef, type FC } from 'react';
 

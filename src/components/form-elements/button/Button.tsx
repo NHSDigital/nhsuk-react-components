@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-deprecated */
 'use client';
 
 import classNames from 'classnames';
