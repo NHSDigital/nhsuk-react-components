@@ -5,6 +5,10 @@ import tsConfigPaths from 'vite-tsconfig-paths';
 
 const config: StorybookConfig = {
   addons: ['@storybook/addon-docs'],
+  features: {
+    actions: false,
+    interactions: false,
+  },
   framework: '@storybook/react-vite',
 
   staticDirs: ['../node_modules/nhsuk-frontend/dist/nhsuk'],
