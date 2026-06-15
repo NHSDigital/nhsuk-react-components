@@ -23,6 +23,9 @@ export interface TagProps extends ComponentPropsWithoutRef<'strong'> {
    * @deprecated Use `colour` instead.
    */
   modifier?: TagProps['colour'];
+
+  border?: boolean;
+  noBorder?: boolean;
 }
 
 export const Tag: FC<TagProps> = ({
@@ -30,10 +33,19 @@ export const Tag: FC<TagProps> = ({
   modifier,
   color,
   colour = color ?? modifier,
+  border = true,
+  noBorder = false,
   ...rest
 }) => (
   <strong
-    className={classNames('nhsuk-tag', { [`nhsuk-tag--${colour}`]: colour }, className)}
+    className={classNames(
+      'nhsuk-tag',
+      {
+        [`nhsuk-tag--${colour}`]: colour,
+        'nhsuk-tag--no-border': noBorder || !border,
+      },
+      className,
+    )}
     {...rest}
   />
 );

@@ -66,3 +66,64 @@ export const Colours: Story = {
     </>
   ),
 };
+
+export const ColoursWithoutBorder: Story = {
+  name: 'Tag colours without border',
+  globals: {
+    backgrounds: { value: 'dark' },
+  },
+  render: () => (
+    <>
+      <p>
+        <Tag colour="white" noBorder>
+          In progress
+        </Tag>
+      </p>
+      <p>
+        <Tag colour="grey" noBorder>
+          Inactive
+        </Tag>
+      </p>
+      <p>
+        <Tag colour="green" noBorder>
+          New
+        </Tag>
+      </p>
+      <p>
+        <Tag colour="aqua-green" noBorder>
+          Active
+        </Tag>
+      </p>
+      <p>
+        <Tag colour="blue" noBorder>
+          Pending
+        </Tag>
+      </p>
+      <p>
+        <Tag colour="purple" noBorder>
+          Received
+        </Tag>
+      </p>
+      <p>
+        <Tag colour="pink" noBorder>
+          Sent
+        </Tag>
+      </p>
+      <p>
+        <Tag colour="red" noBorder>
+          Rejected
+        </Tag>
+      </p>
+      <p>
+        <Tag colour="orange" noBorder>
+          Declined
+        </Tag>
+      </p>
+      <p>
+        <Tag colour="yellow" noBorder>
+          Delayed
+        </Tag>
+      </p>
+    </>
+  ),
+};
