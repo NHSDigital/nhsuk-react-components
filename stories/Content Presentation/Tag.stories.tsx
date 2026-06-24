@@ -34,34 +34,95 @@ export const Colours: Story = {
   render: () => (
     <>
       <p>
-        <Tag modifier="white">In progress</Tag>
+        <Tag colour="white">In progress</Tag>
       </p>
       <p>
-        <Tag modifier="grey">Inactive</Tag>
+        <Tag colour="grey">Inactive</Tag>
       </p>
       <p>
-        <Tag modifier="green">New</Tag>
+        <Tag colour="green">New</Tag>
       </p>
       <p>
-        <Tag modifier="aqua-green">Active</Tag>
+        <Tag colour="aqua-green">Active</Tag>
       </p>
       <p>
-        <Tag modifier="blue">Pending</Tag>
+        <Tag colour="blue">Pending</Tag>
       </p>
       <p>
-        <Tag modifier="purple">Received</Tag>
+        <Tag colour="purple">Received</Tag>
       </p>
       <p>
-        <Tag modifier="pink">Sent</Tag>
+        <Tag colour="pink">Sent</Tag>
       </p>
       <p>
-        <Tag modifier="red">Rejected</Tag>
+        <Tag colour="red">Rejected</Tag>
       </p>
       <p>
-        <Tag modifier="orange">Declined</Tag>
+        <Tag colour="orange">Declined</Tag>
       </p>
       <p>
-        <Tag modifier="yellow">Delayed</Tag>
+        <Tag colour="yellow">Delayed</Tag>
+      </p>
+    </>
+  ),
+};
+
+export const ColoursWithoutBorder: Story = {
+  name: 'Tag colours without border',
+  globals: {
+    backgrounds: { value: 'dark' },
+  },
+  render: () => (
+    <>
+      <p>
+        <Tag colour="white" noBorder>
+          In progress
+        </Tag>
+      </p>
+      <p>
+        <Tag colour="grey" noBorder>
+          Inactive
+        </Tag>
+      </p>
+      <p>
+        <Tag colour="green" noBorder>
+          New
+        </Tag>
+      </p>
+      <p>
+        <Tag colour="aqua-green" noBorder>
+          Active
+        </Tag>
+      </p>
+      <p>
+        <Tag colour="blue" noBorder>
+          Pending
+        </Tag>
+      </p>
+      <p>
+        <Tag colour="purple" noBorder>
+          Received
+        </Tag>
+      </p>
+      <p>
+        <Tag colour="pink" noBorder>
+          Sent
+        </Tag>
+      </p>
+      <p>
+        <Tag colour="red" noBorder>
+          Rejected
+        </Tag>
+      </p>
+      <p>
+        <Tag colour="orange" noBorder>
+          Declined
+        </Tag>
+      </p>
+      <p>
+        <Tag colour="yellow" noBorder>
+          Delayed
+        </Tag>
       </p>
     </>
   ),

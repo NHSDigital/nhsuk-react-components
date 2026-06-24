@@ -48,7 +48,7 @@ You can now use smaller versions of [buttons](https://service-manual.nhs.uk/desi
 
 By default, the secondary button is transparent and has no colour.
 
-You can now make the [button](https://service-manual.nhs.uk/design-system/components/button) component white when you use it on darker backgrounds by adding the `secondarySolid` prop.
+You can now make the [button](https://service-manual.nhs.uk/design-system/components/button) component white when you use it on darker backgrounds by setting the `variant` prop to `'secondary-solid'`.
 
 #### Add inline buttons to text inputs and select menus
 
@@ -58,7 +58,7 @@ You can now add inline buttons to text inputs and select menus using the `formGr
 <TextInput
   formGroupProps={{
     afterInput: (
-      <Button secondary small>
+      <Button variant="secondary" small>
         Search
       </Button>
     ),
@@ -333,10 +333,11 @@ To align with NHS.UK frontend, icons unused by components have been removed:
 - `ChevronLeftIcon`
 - `ChevronRightIcon`
 - `ChevronDownIcon`
-- `CloseIcon`
 - `EmdashIcon` and `SmallEmdashIcon`
-- `MinusIcon`
-- `PlusIcon`
+
+With the following icons renamed:
+
+- `CloseIcon` renamed to `CrossIcon`
 
 ### Back link
 
@@ -717,6 +718,15 @@ If you are using the `Table.Panel` child component, you must migrate to the feat
 - <Table.Panel heading="Other conditions like impetigo">
 + <Card feature>
 +   <Card.Heading>Other conditions like impetigo</Card.Heading>
+```
+
+### Tags
+
+To align with NHS.UK frontend, you must rename the `Tag` prop `color` to `colour`:
+
+```patch
+- <Tag color="white">In progress</Tag>
++ <Tag colour="white">In progress</Tag>
 ```
 
 ### Textarea

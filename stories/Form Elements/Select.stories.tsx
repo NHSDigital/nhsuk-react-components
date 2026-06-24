@@ -94,7 +94,7 @@ export const SelectWithButton: Story = {
   args: {
     formGroupProps: {
       afterInput: (
-        <Button secondary small>
+        <Button variant="secondary" small>
           Search
         </Button>
       ),
@@ -108,7 +108,7 @@ export const SelectWithButtonAndError: Story = {
     error: 'Select a location',
     formGroupProps: {
       afterInput: (
-        <Button secondary small>
+        <Button variant="secondary" small>
           Search
         </Button>
       ),

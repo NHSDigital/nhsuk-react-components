@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-deprecated */
 'use client';
 
 import classNames from 'classnames';
@@ -26,24 +27,48 @@ export interface ButtonLinkProps extends ButtonBaseProps, AsElementLink<HTMLAnch
 }
 
 interface ButtonBaseProps {
-  secondary?: boolean;
-  secondarySolid?: boolean;
-  reverse?: boolean;
-  warning?: boolean;
-  login?: boolean;
   small?: boolean;
+  variant?: 'brand' | 'login' | 'reverse' | 'secondary' | 'secondary-solid' | 'warning';
   preventDoubleClick?: boolean;
+
+  /**
+   * @deprecated Use `variant` instead.
+   */
+  secondary?: boolean;
+
+  /**
+   * @deprecated Use `variant` instead.
+   */
+  secondarySolid?: boolean;
+
+  /**
+   * @deprecated Use `variant` instead.
+   */
+  reverse?: boolean;
+
+  /**
+   * @deprecated Use `variant` instead.
+   */
+  warning?: boolean;
+
+  /**
+   * @deprecated Use `variant` instead.
+   */
+  login?: boolean;
 }
 
 function getButtonClassNames(props: ButtonProps | ButtonLinkProps) {
   return classNames(
     'nhsuk-button',
-    { 'nhsuk-button--secondary': props.secondary },
-    { 'nhsuk-button--secondary-solid': props.secondarySolid },
-    { 'nhsuk-button--reverse': props.reverse },
-    { 'nhsuk-button--warning': props.warning },
-    { 'nhsuk-button--login': props.login },
-    { 'nhsuk-button--small': props.small },
+    {
+      'nhsuk-button--secondary': props.variant === 'secondary' || props.secondary,
+      'nhsuk-button--secondary-solid': props.variant === 'secondary-solid' || props.secondarySolid,
+      'nhsuk-button--reverse': props.variant === 'reverse' || props.reverse,
+      'nhsuk-button--warning': props.variant === 'warning' || props.warning,
+      'nhsuk-button--login': props.variant === 'login' || props.login,
+      'nhsuk-button--brand': props.variant === 'brand',
+      'nhsuk-button--small': props.small,
+    },
     props.className,
   );
 }
@@ -59,6 +84,7 @@ const ButtonComponent = forwardRef<HTMLButtonElement, ButtonProps>((props, forwa
     warning,
     login,
     small,
+    variant,
     type = 'submit',
     preventDoubleClick,
     onClick,
@@ -119,6 +145,7 @@ const ButtonLinkComponent = forwardRef<HTMLAnchorElement, ButtonLinkProps>(
       warning,
       login,
       small,
+      variant,
       preventDoubleClick,
       onClick,
       ...rest

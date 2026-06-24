@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-deprecated */
 import classNames from 'classnames';
 import { type ComponentPropsWithoutRef, type FC } from 'react';
 
 export interface TagProps extends ComponentPropsWithoutRef<'strong'> {
-  modifier?:
+  colour?:
     | 'white'
     | 'grey'
     | 'green'
@@ -15,14 +16,37 @@ export interface TagProps extends ComponentPropsWithoutRef<'strong'> {
     | 'yellow';
 
   /**
-   * @deprecated Use `modifier` instead.
+   * @deprecated Use `colour` instead.
    */
-  color?: TagProps['modifier'];
+  color?: TagProps['colour'];
+
+  /**
+   * @deprecated Use `colour` instead.
+   */
+  modifier?: TagProps['colour'];
+
+  border?: boolean;
+  noBorder?: boolean;
 }
 
-export const Tag: FC<TagProps> = ({ className, color, modifier = color, ...rest }) => (
+export const Tag: FC<TagProps> = ({
+  className,
+  modifier,
+  color,
+  colour = color ?? modifier,
+  border = true,
+  noBorder = false,
+  ...rest
+}) => (
   <strong
-    className={classNames('nhsuk-tag', { [`nhsuk-tag--${modifier}`]: modifier }, className)}
+    className={classNames(
+      'nhsuk-tag',
+      {
+        [`nhsuk-tag--${colour}`]: colour,
+        'nhsuk-tag--no-border': noBorder || !border,
+      },
+      className,
+    )}
     {...rest}
   />
 );
