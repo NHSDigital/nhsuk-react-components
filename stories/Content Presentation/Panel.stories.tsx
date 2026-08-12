@@ -47,7 +47,7 @@ export const InterruptionPanel: Story = {
         For most people, the minimum recommended gap between COVID-19 vaccine doses is 3 months.
       </p>
       <div className="nhsuk-button-group">
-        <Button href="#/continue" reverse>
+        <Button href="#/continue" variant="reverse">
           Continue anyway
         </Button>
         <a href="#/cancel">Cancel</a>
@@ -70,7 +70,7 @@ export const InterruptionPanelCancel: Story = {
       </p>
       <p>Cancelling your appointment cannot be undone.</p>
       <div className="nhsuk-button-group">
-        <Button href="#/cancel" reverse>
+        <Button href="#/cancel" variant="reverse">
           Cancel appointment
         </Button>
         <a href="#/change">Change my weight</a>
@@ -91,7 +91,7 @@ export const InterruptionPanelContinue: Story = {
         You entered your weight as <b>21.4 kilograms</b>. This is lower than expected.
       </p>
       <div className="nhsuk-button-group">
-        <Button href="#/continue" reverse>
+        <Button href="#/continue" variant="reverse">
           Yes, this is correct
         </Button>
         <a href="#/change">Change my weight</a>

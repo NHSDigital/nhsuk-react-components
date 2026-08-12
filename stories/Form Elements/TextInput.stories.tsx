@@ -148,7 +148,7 @@ export const WithButton: Story = {
     spellCheck: false,
     formGroupProps: {
       afterInput: (
-        <Button secondary small>
+        <Button variant="secondary" small>
           Search
         </Button>
       ),
@@ -167,7 +167,7 @@ export const WithButtonAndError: Story = {
     spellCheck: false,
     formGroupProps: {
       afterInput: (
-        <Button secondary small>
+        <Button variant="secondary" small>
           Search
         </Button>
       ),
