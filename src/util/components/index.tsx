@@ -3,8 +3,7 @@ import { type JSX, StrictMode, act } from 'react';
 import { type ServerOptions, renderToString } from 'react-dom/server';
 
 type RenderOptions =
-  | { moduleName?: never; className: string }
-  | { moduleName: string; className?: never };
+  { moduleName?: never; className: string } | { moduleName: string; className?: never };
 
 /**
  * Render using server-side rendering

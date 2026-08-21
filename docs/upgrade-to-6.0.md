@@ -196,7 +196,7 @@ All components have been tested as React Server Components (RSC) but due to [mul
 
 ### Update the JavaScript supported script snippet
 
-You must now use the NHS.UK frontend v10.x feature detection snippet to check for `<script type="module">`. This change enables styling for JavaScript features in [supported browsers]() only:
+You must now use the NHS.UK frontend v10.x feature detection snippet to check for `<script type="module">`. This change enables styling for JavaScript features in [supported browsers](https://github.com/nhsuk/nhsuk-frontend/blob/main/docs/contributing/browser-support.md) only:
 
 ```patch
 - <body class="js-enabled">
