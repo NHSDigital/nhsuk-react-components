@@ -3,12 +3,20 @@ import { type ComponentPropsWithoutRef, type FC, forwardRef } from 'react';
 
 export interface DetailsProps extends ComponentPropsWithoutRef<'details'> {
   expander?: boolean;
+  variant?: 'reverse';
 }
 
 const DetailsComponent = forwardRef<HTMLDetailsElement, DetailsProps>(
-  ({ className, expander, ...rest }, forwardedRef) => (
+  ({ className, expander, variant, ...rest }, forwardedRef) => (
     <details
-      className={classNames('nhsuk-details', { 'nhsuk-expander': expander }, className)}
+      className={classNames(
+        'nhsuk-details',
+        {
+          'nhsuk-expander': expander,
+          'nhsuk-details--reverse': variant === 'reverse',
+        },
+        className,
+      )}
       ref={forwardedRef}
       {...rest}
     />
