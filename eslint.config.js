@@ -36,6 +36,7 @@ export default defineConfig([
       'no-redeclare': 'off',
       'no-undef': 'off',
       'no-unused-vars': 'off',
+      '@typescript-eslint/no-deprecated': 'warn',
       '@typescript-eslint/no-redeclare': 'error',
       '@typescript-eslint/no-unused-vars': [
         'error',

@@ -47,6 +47,15 @@ describe('Details', () => {
     expect(detailsEl).toHaveClass('nhsuk-expander');
   });
 
+  it('adds reverse variant', async () => {
+    const { modules } = await renderClient(<Details variant="reverse" />, {
+      className: 'nhsuk-details',
+    });
+
+    const [detailsEl] = modules;
+    expect(detailsEl).toHaveClass('nhsuk-details--reverse');
+  });
+
   it('forwards refs', async () => {
     const ref = createRef<HTMLDetailsElement>();
 

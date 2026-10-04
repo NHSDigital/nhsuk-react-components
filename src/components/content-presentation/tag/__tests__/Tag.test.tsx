@@ -16,7 +16,7 @@ describe('Tag', () => {
     expect(container.querySelector('strong.nhsuk-tag')).toBeTruthy();
   });
 
-  it.each<ComponentPropsWithoutRef<typeof Tag>['modifier']>([
+  it.each<ComponentPropsWithoutRef<typeof Tag>['colour']>([
     'white',
     'grey',
     'green',
@@ -28,7 +28,7 @@ describe('Tag', () => {
     'orange',
     'yellow',
   ])('adds colour class %s ', (colour) => {
-    const { container } = render(<Tag modifier={colour} />);
+    const { container } = render(<Tag colour={colour} />);
 
     expect(container.querySelector(`strong.nhsuk-tag.nhsuk-tag--${colour}`)).toBeTruthy();
   });

@@ -1,9 +1,10 @@
+/* eslint-disable @typescript-eslint/no-deprecated */
 import classNames from 'classnames';
 import { type ComponentPropsWithoutRef, type FC } from 'react';
 
 export interface IconProps extends ComponentPropsWithoutRef<'svg'> {
   title?: string;
-  modifier?:
+  name?:
     | 'arrow-left'
     | 'arrow-right'
     | 'arrow-right-circle'
@@ -14,18 +15,25 @@ export interface IconProps extends ComponentPropsWithoutRef<'svg'> {
     | 'user';
 
   /**
-   * @deprecated Use `modifier` instead.
+   * @deprecated Use `name` instead.
    */
-  iconType?: IconProps['modifier'];
+  iconType?: IconProps['name'];
+
+  /**
+   * @deprecated Use `name` instead.
+   */
+  modifier?: IconProps['name'];
 }
 
 export const Icon: FC<IconProps> = ({
   className,
   children,
+  name,
   iconType,
-  modifier = iconType
-    ?.replace('nhsuk-icon__', '') // NHS.UK frontend v9.x
-    .replace('nhsuk-icon--', ''), // NHS.UK frontend v10.x
+  modifier = name ??
+    iconType
+      ?.replace('nhsuk-icon__', '') // NHS.UK frontend v9.x
+      .replace('nhsuk-icon--', ''), // NHS.UK frontend v10.x
   title,
   ...rest
 }) => (

@@ -2,38 +2,38 @@ import { type ComponentProps, type Ref, createRef, forwardRef } from 'react';
 
 import { renderClient, renderServer } from '#util/components';
 
-import { Button } from '..';
+import { Button, type ButtonProps } from '..';
 
-const buttonTypes = [
+const buttonTypes: Pick<Required<ButtonProps>, 'variant' | 'children' | 'className'>[] = [
   {
-    type: 'secondary',
-    text: 'Find my location',
+    variant: 'secondary',
+    children: 'Find my location',
     className: 'nhsuk-button--secondary',
   },
   {
-    type: 'secondarySolid',
-    text: 'Find my location',
+    variant: 'secondary-solid',
+    children: 'Find my location',
     className: 'nhsuk-button--secondary-solid',
   },
   {
-    type: 'reverse',
-    text: 'Log out',
+    variant: 'reverse',
+    children: 'Log out',
     className: 'nhsuk-button--reverse',
   },
   {
-    type: 'warning',
-    text: 'Yes, delete this vaccine',
+    variant: 'warning',
+    children: 'Yes, delete this vaccine',
     className: 'nhsuk-button--warning',
   },
   {
-    type: 'login',
-    text: 'Continue to NHS login',
+    variant: 'login',
+    children: 'Continue to NHS login',
     className: 'nhsuk-button--login',
   },
   {
-    type: 'small',
-    text: 'Search',
-    className: 'nhsuk-button--small',
+    variant: 'brand',
+    children: 'Continue to NHS login',
+    className: 'nhsuk-button--brand',
   },
 ];
 
@@ -132,7 +132,7 @@ describe('Button', () => {
     expect(buttonEl2.dataset).toHaveProperty('customLink', 'true');
   });
 
-  describe('disabled', () => {
+  describe('Disabled', () => {
     it('matches snapshot', async () => {
       const { container } = await renderClient(<Button disabled>Save and continue</Button>, {
         moduleName: 'nhsuk-button',
@@ -154,25 +154,35 @@ describe('Button', () => {
     });
   });
 
-  describe('button types', () => {
-    describe.each(buttonTypes)('$type', ({ type, className }) => {
+  describe('Variants', () => {
+    describe.each(buttonTypes)('$variant', ({ className, ...props }) => {
       it('matches snapshot', async () => {
-        const { container } = await renderClient(
-          <Button {...{ [type]: true }}>Find my location</Button>,
-          { moduleName: 'nhsuk-button' },
-        );
+        const { container } = await renderClient(<Button {...props}>Find my location</Button>, {
+          moduleName: 'nhsuk-button',
+        });
 
         expect(container).toMatchSnapshot();
       });
 
-      it(`adds correct classes for type - ${type}`, async () => {
+      it('adds correct classes for variant', async () => {
+        const { modules } = await renderClient(<Button {...props}>Find my location</Button>, {
+          moduleName: 'nhsuk-button',
+        });
+
+        const [buttonEl] = modules;
+        expect(buttonEl).toHaveClass(className);
+      });
+
+      it('adds small size class', async () => {
         const { modules } = await renderClient(
-          <Button {...{ [type]: true }}>Find my location</Button>,
+          <Button {...props} small>
+            Find my location
+          </Button>,
           { moduleName: 'nhsuk-button' },
         );
 
         const [buttonEl] = modules;
-        expect(buttonEl).toHaveClass(className);
+        expect(buttonEl).toHaveClass('nhsuk-button--small');
       });
     });
   });
@@ -243,11 +253,11 @@ describe('Button as a link', () => {
     expect(buttonEl).toHaveTextContent('Find my location');
   });
 
-  describe('button types', () => {
-    describe.each(buttonTypes)('$type', ({ type, className }) => {
+  describe('Variants', () => {
+    describe.each(buttonTypes)('$variant', ({ className, ...props }) => {
       it('matches snapshot', async () => {
         const { container } = await renderClient(
-          <Button href="/" {...{ [type]: true }}>
+          <Button href="/" {...props}>
             Find my location
           </Button>,
           { moduleName: 'nhsuk-button' },
@@ -256,9 +266,9 @@ describe('Button as a link', () => {
         expect(container).toMatchSnapshot();
       });
 
-      it(`adds correct classes for type - ${type}`, async () => {
+      it('adds correct classes for variant', async () => {
         const { modules } = await renderClient(
-          <Button href="/" {...{ [type]: true }}>
+          <Button href="/" {...props}>
             Find my location
           </Button>,
           { moduleName: 'nhsuk-button' },
@@ -266,6 +276,18 @@ describe('Button as a link', () => {
 
         const [buttonEl] = modules;
         expect(buttonEl).toHaveClass(className);
+      });
+
+      it('adds small size class', async () => {
+        const { modules } = await renderClient(
+          <Button href="/" {...props} small>
+            Find my location
+          </Button>,
+          { moduleName: 'nhsuk-button' },
+        );
+
+        const [buttonEl] = modules;
+        expect(buttonEl).toHaveClass('nhsuk-button--small');
       });
     });
   });
