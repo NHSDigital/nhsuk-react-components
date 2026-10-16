@@ -29,7 +29,7 @@ jobs:
         run: corepack enable
 
       - name: Set up Node.js
-        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1
         with:
           cache: yarn
           node-version-file: .nvmrc
@@ -45,7 +45,7 @@ jobs:
 
       - name: Sonar analysis
         if: ${{ env.SONAR_TOKEN }}
-        uses: SonarSource/sonarqube-scan-action@ba9859eae8dd6bd29e412f25ddbbef3d032000f4
+        uses: SonarSource/sonarqube-scan-action@d209202bc7d53ff1cc128f7f907dac145c9d6ae9
 
       - name: Package build
         run: yarn build
@@ -67,7 +67,7 @@ jobs:
 
       - name: Storybook deploy
         if: ${{ env.CHROMATIC_PROJECT_TOKEN }}
-        uses: chromaui/action@6b3c2820222d23bad770d57a4ad5e2d1c91f92e9
+        uses: chromaui/action@38afd264ef2241136f12d039093c2724748bec08
         with:
           autoAcceptChanges: main
           branchName: ${{ env.CHROMATIC_BRANCH}}
